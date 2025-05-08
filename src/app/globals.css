@@ -1,8 +1,35 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme variables */
+    --background: #FAFAFA;
+    --background-secondary: #F0F0F0;
+    --text: #1A1A1A;
+    --text-secondary: #4A4A4A;
+    --accent: #D4A76A;
+    --accent-hover: #C69555;
+    --border: rgba(0, 0, 0, 0.1);
+    --terminal-green: #0A3200;
+    --terminal-amber: #FFB000;
+  }
+
+  .dark {
+    /* Dark theme variables */
+    --background: #1A1A1A;
+    --background-secondary: #2A2A2A;
+    --text: #FAFAFA;
+    --text-secondary: #A0A0A0;
+    --accent: #FFB000;
+    --accent-hover: #FFC033;
+    --border: rgba(255, 176, 0, 0.3);
+    --terminal-green: #0A3200;
+    --terminal-amber: #FFB000;
+  }
 }
 
 @theme inline {
@@ -124,4 +151,48 @@
 /* Vintage photo filter */
 .vintage-filter {
   filter: sepia(0.3) contrast(1.1) brightness(0.9) saturate(0.8);
+}
+
+/* Terminal effects */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Responsive design utilities */
+@layer utilities {
+  .max-w-content {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  @screen sm {
+    .max-w-content {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  @screen lg {
+    .max-w-content {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
 }

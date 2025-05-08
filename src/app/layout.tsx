@@ -1,47 +1,32 @@
-import type { Metadata } from "next";
-import { Inter, Space_Grotesk, DM_Sans, VT323 } from "next/font/google";
-import "./globals.css";
-import Layout from "@components/layout/Layout"; // Import the Layout component
-import { NavigationProvider } from "@components/navigation/NavigationContext";
+'use client';
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: 'swap',
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-});
-
-const vt323 = VT323({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-vt323",
-});
-
-export const metadata: Metadata = {
-  title: "Boise Gun Club",
-  description: "Home of Boise's premier shooting range and gun club",
-};
+import { useEffect } from 'react';
+import { ThemeProvider } from '@components/ui/ThemeContext';
+import './globals.css';
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
   }) {
+  // Apply theme class based on system preference
+  useEffect(() => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${dmSans.variable} ${vt323.variable}`}>
-      <body className="font-inter antialiased">
-        <NavigationProvider>
-          <Layout>{children}</Layout>
-        </NavigationProvider>
+    <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=VT323&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+      </head>
+      <body>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

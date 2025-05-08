@@ -4,6 +4,8 @@ import { FC } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useInView } from 'react-intersection-observer';
+import { useAnimation } from 'framer-motion';
 
 interface EventCardProps {
     title: string;
@@ -29,12 +31,22 @@ const EventCard: FC<EventCardProps> = ({
     description,
     imageUrl
 }) => {
+    const { ref, inView } = useInView({
+        threshold: 0.1,
+        triggerOnce: true
+    });
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 }
+    };
     return (
         <motion.div
+            ref={ref}
+            animate={inView ? 'visible' : 'hidden'}
+            variants={cardVariants}
+            transition={{ duration: 0.5 }}
             className="relative group"
-            whileHover={{ scale: 1.02 }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
         >
             {/* Glass card container */}
             <div className="relative overflow-hidden rounded-lg bg-white/10 backdrop-blur-md
@@ -56,11 +68,6 @@ const EventCard: FC<EventCardProps> = ({
                         className="object-cover transition-transform group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    {/* Category badge */}
-                    <div className={`absolute top-4 right-4 px-3 py-1 rounded-full 
-                                   font-vt323 text-white text-sm ${categoryColors[category]}`}>
-                        {category.toUpperCase()}
-                    </div>
                 </div>
 
                 {/* Content area */}
