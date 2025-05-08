@@ -1,9 +1,5 @@
 import HomePage from '@components/home/HomePage';
 
-<<<<<<< HEAD
-export default function Page() {
-  return <HomePage />;
-=======
 import HeroSection from '@components/home/HeroSection';
 import SmokyButton from '../../components/ui/SmokeyButton';
 import GlassCard from '../../components/ui/GlassCard';
@@ -43,5 +39,3 @@ export default function Home() {
       </div>
     </main>
   );
->>>>>>> a24a0d8 (Implemented the hero section of the home page)
-}

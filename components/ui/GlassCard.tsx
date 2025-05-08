@@ -1,8 +1,8 @@
+'use client';
 import { motion } from 'framer-motion';
 
+
 export default function GlassCard({
-    image,
-    imageAlt,
     children,
     className = '',
     ...props
