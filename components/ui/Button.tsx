@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 export default function Button({
     children,
     variant = 'primary',
@@ -17,11 +19,13 @@ export default function Button({
     };
 
     return (
-        <button
+        <motion.button
             className={`${baseStyles} ${variantStyles[variant]} ${className}`}
             {...props}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
         >
             {children}
-        </button>
+        </motion.button>
     );
 }
