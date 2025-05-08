@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Sans, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import Layout from "../../components/layout/Layout"; // Import the Layout component
-import { NavigationProvider } from "../../components/navigation/NavigationContext";
+import Layout from "@components/layout/Layout"; // Import the Layout component
+import { NavigationProvider } from "@components/navigation/NavigationContext";
 
 const inter = Inter({
   subsets: ["latin"],
