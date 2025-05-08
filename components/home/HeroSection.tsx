@@ -4,6 +4,7 @@ import { FC, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Logo from '@components/common/Logo';
 
 // Time-based gradient configurations
 const gradientsByTime = {
@@ -76,14 +77,22 @@ const HeroSection: FC = () => {
                     transition={{ duration: 1, ease: 'easeOut' }}
                     className="mb-12"
                 >
-                    <Image
-                        src="/images/logo.webp"
-                        alt="Boise Gun Club Logo"
-                        width={180}
-                        height={180}
-                        className="mx-auto mb-8"
-                        priority
-                    />
+                    <div className="relative mb-8 mx-auto">
+                        <Logo className="w-32 h-32 md:w-44 md:h-44 text-[#D4A76A] mx-auto
+                                      filter drop-shadow-lg" />
+                        <motion.div
+                            className="absolute inset-0 bg-[#D4A76A]/20 blur-2xl rounded-full"
+                            animate={{
+                                scale: [1, 1.2, 1],
+                                opacity: [0.5, 0.3, 0.5]
+                            }}
+                            transition={{
+                                duration: 4,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                        />
+                    </div>
                     <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-white mb-4
                                  tracking-tight leading-tight">
                         Boise Gun Club
