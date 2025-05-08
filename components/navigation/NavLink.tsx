@@ -24,46 +24,39 @@ export default function NavLink({ href, label, children }: NavLinkProps) {
         >
             <Link
                 href={href}
-                className={`relative z-10 text-lg freeform-text transition-colors duration-200 ${isActive ? 'text-[#F5E8C7] font-bold' : 'text-white hover:text-[#F5E8C7]'
-                    }`}
+                className={`
+                    relative z-10 text-base font-medium tracking-wide transition-all duration-300
+                    ${isActive
+                        ? 'text-white'
+                        : 'text-gray-300 hover:text-white'
+                    }
+                `}
             >
                 {label}
                 {children}
             </Link>
 
-            {/* Smoke wisp effect on hover */}
-            {isHovering && (
-                <motion.div
-                    className="absolute -z-10 rounded-full w-16 h-16 pointer-events-none"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                >
-                    {/* Multiple smoke particles for more realistic effect */}
-                    {[...Array(3)].map((_, i) => (
-                        <motion.div
-                            key={i}
-                            className="absolute bg-gradient-to-t from-[#E67E22]/20 to-[#F5E8C7]/5 rounded-full smoke-wisp"
-                            style={{
-                                width: `${20 + i * 10}px`,
-                                height: `${20 + i * 10}px`,
-                                left: `${10 - i * 5}px`,
-                                top: `${10 - i * 5}px`,
-                                animationDelay: `${i * 0.2}s`,
-                            }}
-                        />
-                    ))}
-                </motion.div>
-            )}
+            {/* Hover effect */}
+            <motion.div
+                className="absolute -inset-2 rounded-lg -z-10"
+                initial={false}
+                animate={{
+                    background: isHovering
+                        ? 'linear-gradient(to right, rgba(230, 126, 34, 0.1), rgba(245, 232, 199, 0.1))'
+                        : 'none',
+                    opacity: isHovering ? 1 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+            />
 
             {/* Active indicator */}
             {isActive && (
                 <motion.div
                     layoutId="activeNavLink"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#E67E22] rounded-full"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#E67E22] to-[#F5A623]"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.3 }}
                 />
             )}
         </motion.div>

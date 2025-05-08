@@ -47,44 +47,45 @@ export default function NavBar() {
 
     return (
         <>
-            {/* Announcements bar - only visible on larger screens */}
+            {/* Announcements bar */}
             {clubAnnouncements.length > 0 && (
                 <div
                     ref={announcementRef}
-                    className="hidden lg:block bg-[#E67E22] text-white py-1 px-4 text-center text-sm fixed top-0 w-full z-50"
+                    className="hidden lg:block bg-gradient-to-r from-[#E67E22] to-[#F5A623] text-white py-2 px-4 text-center text-sm fixed top-0 w-full z-50 shadow-md"
                 >
                     <div className="container mx-auto overflow-hidden relative">
                         <div className="flex space-x-8 animate-marquee whitespace-nowrap">
                             {clubAnnouncements.map((announcement, index) => (
-                                <span key={index} className="mx-4">• {announcement}</span>
+                                <span key={index} className="mx-4 font-medium">• {announcement}</span>
                             ))}
                             {/* Duplicate announcements to create seamless loop */}
                             {clubAnnouncements.map((announcement, index) => (
-                                <span key={`dup-${index}`} className="mx-4">• {announcement}</span>
+                                <span key={`dup-${index}`} className="mx-4 font-medium">• {announcement}</span>
                             ))}
                         </div>
                     </div>
                 </div>
             )}
 
+            {/* Main Navigation */}
             <nav
-                className={`fixed ${clubAnnouncements.length > 0 ? 'top-6 lg:top-8' : 'top-0'} left-0 w-full z-40 transition-all duration-300 ${isScrolled
-                    ? 'py-2 backdrop-blur-md bg-[#3A2618]/80 shadow-lg'
-                    : 'py-4 bg-transparent'
-                    }`}
+                className={`fixed ${clubAnnouncements.length > 0 ? 'top-8 lg:top-10' : 'top-0'} left-0 w-full z-40 transition-all duration-300`}
             >
-                <div className="relative">
-                    {/* Glassmorphism decorative elements */}
+                <div className={`relative transition-all duration-300 ${isScrolled
+                    ? 'py-2 bg-[#1A1A1A]/85 backdrop-blur-lg shadow-lg'
+                    : 'py-4 bg-gradient-to-b from-black/50 to-transparent'
+                    }`}>
+                    {/* Glassmorphism effects */}
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                        <div className="absolute -top-4 left-1/4 w-24 h-24 rounded-full bg-[#E67E22]/20 blur-xl"></div>
-                        <div className="absolute -bottom-4 right-1/4 w-32 h-32 rounded-full bg-[#F5E8C7]/20 blur-xl"></div>
+                        <div className="absolute -top-4 left-1/4 w-32 h-32 rounded-full bg-[#E67E22]/10 blur-2xl"></div>
+                        <div className="absolute -bottom-4 right-1/4 w-40 h-40 rounded-full bg-[#F5E8C7]/10 blur-2xl"></div>
                     </div>
 
                     {/* Border effect */}
-                    <div className="absolute inset-0 border-b border-white/10 pointer-events-none"></div>
+                    <div className={`absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-0'}`}></div>
 
-                    <div className="container mx-auto px-4">
-                        <div className="flex items-center justify-between relative z-10">
+                    <div className="container mx-auto px-4 relative z-10">
+                        <div className="flex items-center justify-between">
                             {/* Logo */}
                             <NavLogo />
 
@@ -94,44 +95,40 @@ export default function NavBar() {
                                     <NavLink key={link.href} href={link.href} label={link.label} />
                                 ))}
 
-                                {/* Login/Member button with special styling */}
+                                {/* Member Login Button */}
                                 <motion.div
                                     whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
                                     className="relative"
                                 >
-                                    <Link href="/membership" className="relative z-10 px-6 py-2 rounded-lg bg-[#E67E22] text-white font-dmSans font-bold">
+                                    <Link
+                                        href="/membership"
+                                        className="relative z-10 px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#E67E22] to-[#F5A623] text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300"
+                                    >
                                         Member Login
                                     </Link>
-                                    {/* Smoky effect behind the button */}
-                                    <motion.div
-                                        className="absolute inset-0 bg-[#F5E8C7]/20 rounded-lg blur-sm -z-10"
-                                        whileHover={{
-                                            scale: 1.2,
-                                            rotate: 5,
-                                            opacity: 0.8
-                                        }}
-                                        transition={{ duration: 0.3 }}
-                                    />
+                                    {/* Button glow effect */}
+                                    <div className="absolute inset-0 bg-[#E67E22]/20 rounded-lg blur-xl -z-10 transition-transform duration-300"></div>
                                 </motion.div>
                             </div>
 
-                            {/* Mobile menu toggle */}
+                            {/* Mobile Menu Button */}
                             <button
-                                className="lg:hidden text-white p-2"
+                                className="lg:hidden relative z-10 p-2 text-white"
                                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                                 aria-label="Toggle menu"
                             >
                                 <div className="w-6 h-5 flex flex-col justify-between">
-                                    <span className={`w-full h-0.5 bg-white transform transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                                    <span className={`w-full h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
-                                    <span className={`w-full h-0.5 bg-white transform transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                                    <span className={`w-full h-0.5 bg-current transform transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                                    <span className={`w-full h-0.5 bg-current transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
+                                    <span className={`w-full h-0.5 bg-current transform transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
                                 </div>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                {/* Mobile menu */}
+                {/* Mobile Menu */}
                 <AnimatePresence>
                     {isMobileMenuOpen && (
                         <MobileMenu
@@ -142,7 +139,7 @@ export default function NavBar() {
                 </AnimatePresence>
             </nav>
 
-            {/* Add some global styles for the announcements animation */}
+            {/* Global styles */}
             <style jsx global>{`
                 @keyframes marquee {
                     0% { transform: translateX(0); }
