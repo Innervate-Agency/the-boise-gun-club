@@ -1,0 +1,28 @@
+/* Scanlines effect */
+.bg-scanlines {
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 1px,
+        rgba(0, 0, 0, 0.3) 1px,
+        rgba(0, 0, 0, 0.3) 2px
+    );
+    background-size: 100% 2px;
+    animation: scanlines 1s steps(60) infinite;
+}
+
+@keyframes scanlines {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 2px;
+    }
+}
+
+/* Glow effect for active filters */
+.glow {
+    box-shadow: 0 0 10px rgba(78, 205, 196, 0.3),
+                0 0 20px rgba(78, 205, 196, 0.2),
+                0 0 30px rgba(78, 205, 196, 0.1);
+} 
