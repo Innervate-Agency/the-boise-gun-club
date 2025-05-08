@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Layout from "../../components/layout/Layout"; // Import the Layout component
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
+  variable: "--font-space-grotesk",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
 });
 
 export const metadata: Metadata = {
@@ -24,8 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
   }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${dmSans.variable}`}>
+      <body className="font-inter">
         <Layout>{children}</Layout>
       </body>
     </html>

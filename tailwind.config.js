@@ -17,7 +17,9 @@ module.exports = {
         // Add your other colors here
       },
       fontFamily: {
-        // Add your fonts here after setting them up
+        inter: ['var(--font-inter)'],
+        spaceGrotesk: ['var(--font-space-grotesk)'],
+        dmSans: ['var(--font-dm-sans)'],
       }
     },
   },
