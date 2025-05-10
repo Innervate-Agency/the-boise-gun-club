@@ -1,11 +1,9 @@
 'use client';
 
-import { FC } from 'react';
-import { motion } from 'framer-motion';
+import { FC, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useInView } from 'react-intersection-observer';
-import { useAnimation } from 'framer-motion';
 
 interface EventCardProps {
     title: string;
@@ -16,11 +14,12 @@ interface EventCardProps {
     imageUrl: string;
 }
 
+// Updated color scheme based on brand guidelines
 const categoryColors = {
-    competition: 'bg-[#FF6B35]',
-    training: 'bg-[#4ECDC4]',
-    social: 'bg-[#FFB000]',
-    maintenance: 'bg-[#96A7CF]'
+    competition: '#F25D27', // Brand orange
+    training: '#2484BF',    // Brand blue
+    social: '#F2B950',      // Yellow
+    maintenance: '#96A7CF'  // Light blue/slate
 };
 
 const EventCard: FC<EventCardProps> = ({
@@ -31,33 +30,24 @@ const EventCard: FC<EventCardProps> = ({
     description,
     imageUrl
 }) => {
-    const { ref, inView } = useInView({
-        threshold: 0.1,
-        triggerOnce: true
-    });
+    const ref = useRef<HTMLDivElement>(null);
+    const isInView = useInView(ref, { once: false, amount: 0.2 });
 
-    const cardVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
-    };
     return (
         <motion.div
             ref={ref}
-            animate={inView ? 'visible' : 'hidden'}
-            variants={cardVariants}
-            transition={{ duration: 0.5 }}
-            className="relative group"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6 }}
+            className="h-full"
         >
-            {/* Glass card container */}
-            <div className="relative overflow-hidden rounded-lg bg-white/10 backdrop-blur-md
-                          border border-white/20 shadow-xl">
-                {/* Wood grain texture overlay */}
-                <div className="absolute inset-0 opacity-5 mix-blend-overlay 
-                              bg-[url('/textures/wood-grain.png')] pointer-events-none" />
-
-                {/* Smoke effect on hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity
-                              bg-gradient-to-t from-white/10 to-transparent pointer-events-none" />
+            {/* Glassmorphic card */}
+            <motion.div
+                className="relative overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 rounded shadow-lg h-full flex flex-col"
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            >
+                {/* Subtle grid pattern */}
+                <div className="absolute inset-0 bg-[url('/images/Grid/Grid (1).jpg')] bg-cover opacity-5 mix-blend-overlay pointer-events-none"></div>
 
                 {/* Event image */}
                 <div className="relative h-48 overflow-hidden">
@@ -65,43 +55,61 @@ const EventCard: FC<EventCardProps> = ({
                         src={imageUrl}
                         alt={title}
                         fill
-                        className="object-cover transition-transform group-hover:scale-105"
+                        className="object-cover"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
+
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121212] to-transparent opacity-70"></div>
+
+                    {/* Category tag */}
+                    <div
+                        className="absolute top-4 right-4 px-3 py-1 rounded text-xs font-bold uppercase"
+                        style={{
+                            backgroundColor: `${categoryColors[category]}30`,
+                            color: categoryColors[category]
+                        }}
+                    >
+                        {category}
+                    </div>
+
+                    {/* Date and time */}
+                    <div className="absolute bottom-4 left-4 text-white">
+                        <div className="text-lg font-bold font-['Refrigerator_Deluxe']">
+                            {date}
+                        </div>
+                        <div className="text-sm opacity-90 font-['Museo']">
+                            {time}
+                        </div>
+                    </div>
                 </div>
 
-                {/* Content area */}
-                <div className="p-6 space-y-4">
-                    {/* Title */}
-                    <h3 className="font-space-grotesk text-2xl font-bold text-amber-100
-                                 tracking-wider leading-tight">
+                {/* Event content */}
+                <div className="p-5 flex-grow flex flex-col">
+                    <h3 className="text-xl font-bold text-white mb-3 font-['Refrigerator_Deluxe']">
                         {title}
                     </h3>
 
-                    {/* Date/Time info */}
-                    <div className="flex items-center space-x-4 font-vt323 text-white/80">
-                        <span>{date}</span>
-                        <div className="w-1 h-1 bg-white/40 rounded-full" />
-                        <span>{time}</span>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-white/70 line-clamp-2">
-                        {description}
+                    <p className="text-white/70 text-sm mb-5 flex-grow font-['Museo']">
+                        {description.length > 120
+                            ? `${description.substring(0, 120)}...`
+                            : description}
                     </p>
 
-                    {/* CTA Button */}
-                    <Link href={`/events/${encodeURIComponent(title)}`}
-                        className="inline-block mt-4 px-6 py-2 rounded-lg
-                                   bg-white/10 backdrop-blur border border-white/20
-                                   font-vt323 text-lg text-white
-                                   transition-all duration-300
-                                   hover:bg-white/20 hover:border-white/30
-                                   hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                        VIEW DETAILS {'>'}
+                    <Link
+                        href="/events"
+                        className="text-[#F25D27] hover:text-[#F25D27]/80 font-['Refrigerator_Deluxe'] text-sm flex items-center self-start mt-auto"
+                    >
+                        LEARN MORE
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
                     </Link>
                 </div>
-            </div>
+
+                {/* Subtle smoke effect on hover */}
+                <div className="absolute inset-0 bg-[url('/images/Smoke/Background_01.jpg')] bg-cover opacity-0 hover:opacity-5 transition-opacity duration-300 pointer-events-none"></div>
+            </motion.div>
         </motion.div>
     );
 };

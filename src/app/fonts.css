@@ -1,0 +1,22 @@
+/* Font overrides to be included in the layout */
+
+/* Apply typography globally */
+html, body {
+  font-family: "museo-sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* Headings specific styles */
+h1, h2, h3, h4, h5, h6, .heading, .font-heading, [class*="heading"] {
+  font-family: "refrigerator-deluxe", "DM Sans", serif !important;
+  font-weight: 700;
+}
+
+/* Body text */
+p, span, div, a, button, input, textarea, select, li {
+  font-family: inherit;
+}
+
+/* Override any Times New Roman fallbacks */
+* {
+  font-family: inherit;
+} 

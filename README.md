@@ -1,4 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Boise Gun Club Website
+
+## Font Requirements
+
+The site uses the following premium fonts through Adobe Fonts (Typekit):
+
+- "refrigerator-deluxe" for headings and titles
+- "museo-sans" for body text and UI elements
+
+The Adobe Fonts integration has been set up in `src/app/layout.tsx` using the direct CSS link method:
+```html
+<link rel="stylesheet" href="https://use.typekit.net/gly5pnr.css">
+```
+
+### Font Usage
+
+For consistency, use these utility classes across components:
+
+```jsx
+// For headings and titles
+<h1 className="font-heading">Heading Text</h1>
+
+// For body text
+<p className="font-body">Body content</p>
+```
+
+Or reference the fonts directly in Tailwind classes:
+
+```jsx
+<h1 className="font-['refrigerator-deluxe']">Heading Text</h1>
+<p className="font-['museo-sans']">Body content</p>
+```
+
+"DM Sans" is included as a fallback if Adobe Fonts fails to load.
 
 ## Getting Started
 

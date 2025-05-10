@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CalendarProvider, useCalendar } from './CalendarContext';
-import { useTheme, ThemeProvider } from '../ui/ThemeContext';
+import { useTheme } from '../ui/ThemeContext';
 import { colors } from '../ui/theme';
 import MonthView from './MonthView';
 import WeekView from './WeekView';
@@ -75,7 +75,7 @@ function CalendarHeader() {
         <div className="border-b border-border pb-4 mb-6">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <motion.h2
-                    className="font-['VT323'] text-2xl text-accent tracking-wider"
+                    className="font-['VT323'] calendar-text-2xl text-accent tracking-wider"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
@@ -88,7 +88,7 @@ function CalendarHeader() {
                             <button
                                 key={mode}
                                 onClick={() => setViewMode(mode)}
-                                className={`px-4 py-2 font-['VT323'] uppercase tracking-wider text-sm
+                                className={`px-6 py-3 font-['VT323'] uppercase tracking-wider calendar-text
                                     ${viewMode === mode
                                         ? 'text-accent border border-accent'
                                         : 'text-textSecondary hover:text-accent transition-colors'
@@ -122,7 +122,12 @@ function CalendarContent() {
     }, []);
 
     return (
-        <div className="relative min-h-screen bg-background text-text p-4 sm:p-8 max-w-[1600px] mx-auto">
+        <div className="calendar relative min-h-screen bg-background text-text p-4 sm:p-8 mx-auto"
+            style={{
+                maxWidth: '1600px',
+                isolation: 'isolate',
+                contain: 'content',
+            }}>
             {/* Scanline effect - only in dark mode */}
             {colorScheme === 'dark' && showScanline && (
                 <div
@@ -157,6 +162,7 @@ function CalendarContent() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
                                 transition={{ duration: 0.3 }}
+                                className="calendar-text"
                             >
                                 {viewMode === 'month' && <MonthView />}
                                 {viewMode === 'week' && <WeekView />}
@@ -171,7 +177,7 @@ function CalendarContent() {
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: 50 }}
-                            className="lg:col-span-1"
+                            className="lg:col-span-1 calendar-text"
                         >
                             <EventDetail />
                         </motion.div>
@@ -185,10 +191,8 @@ function CalendarContent() {
 // Exported Calendar component with providers
 export default function Calendar() {
     return (
-        <ThemeProvider>
-            <CalendarProvider>
-                <CalendarContent />
-            </CalendarProvider>
-        </ThemeProvider>
+        <CalendarProvider>
+            <CalendarContent />
+        </CalendarProvider>
     );
 } 

@@ -24,6 +24,8 @@ module.exports = {
         terminalAmber: 'var(--terminal-amber)',
       },
       fontFamily: {
+        'heading': ['refrigerator-deluxe', 'DM Sans', 'serif'],
+        'body': ['museo-sans', 'DM Sans', 'system-ui', 'sans-serif'],
         'vt323': ['VT323', 'monospace'],
         'space-grotesk': ['Space Grotesk', 'sans-serif'],
       },

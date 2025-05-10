@@ -53,7 +53,7 @@ export default function MobileMenu({ links, onClose }: MobileMenuProps) {
         >
             {/* Backdrop */}
             <motion.div
-                className="absolute inset-0 bg-[#3A2618]/90 backdrop-blur-md"
+                className="absolute inset-0 bg-[var(--bg-primary)]/90 backdrop-blur-md"
                 onClick={onClose}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -62,9 +62,12 @@ export default function MobileMenu({ links, onClose }: MobileMenuProps) {
 
             {/* Glassmorphism decorative elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-1/4 left-1/3 w-40 h-40 rounded-full bg-[#E67E22]/20 blur-xl"></div>
-                <div className="absolute bottom-1/4 right-1/3 w-56 h-56 rounded-full bg-[#F5E8C7]/20 blur-xl"></div>
+                <div className="absolute top-1/4 left-1/3 w-40 h-40 rounded-full bg-[var(--accent-primary)]/20 blur-xl"></div>
+                <div className="absolute bottom-1/4 right-1/3 w-56 h-56 rounded-full bg-[var(--accent-secondary)]/20 blur-xl"></div>
             </div>
+
+            {/* Background grid */}
+            <div className="absolute inset-0 grid-bg opacity-5 pointer-events-none"></div>
 
             {/* Menu content */}
             <div className="relative h-full flex flex-col items-center justify-center p-8">
@@ -73,8 +76,7 @@ export default function MobileMenu({ links, onClose }: MobileMenuProps) {
                         <motion.li key={link.href} variants={itemVariants}>
                             <Link
                                 href={link.href}
-                                className={`block text-center text-2xl py-3 font-dmSans text-white border-b border-white/10 transition-colors ${pathname === link.href ? 'text-[#E67E22] font-bold' : 'hover:text-[#F5E8C7]'
-                                    }`}
+                                className={`block text-center text-2xl py-3 font-heading text-[var(--text-primary)] border-b border-[var(--glass-border)] transition-colors ${pathname === link.href ? 'text-[var(--accent-primary)] font-bold' : 'hover:text-[var(--accent-secondary)]'}`}
                                 onClick={onClose}
                             >
                                 {link.label}
@@ -84,10 +86,10 @@ export default function MobileMenu({ links, onClose }: MobileMenuProps) {
                     <motion.li variants={itemVariants}>
                         <Link
                             href="/membership"
-                            className="block text-center mt-8 py-3 rounded-lg bg-[#E67E22] text-white font-dmSans font-bold text-2xl"
+                            className="block text-center mt-8 py-3 rounded-lg btn-gradient font-heading font-bold text-white text-2xl"
                             onClick={onClose}
                         >
-                            Member Login
+                            MEMBER LOGIN
                         </Link>
                     </motion.li>
                 </motion.ul>

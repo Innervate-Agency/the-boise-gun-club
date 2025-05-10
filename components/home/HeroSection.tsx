@@ -1,15 +1,174 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import ImageGallery from '@components/common/ImageGallery';
+import Image from 'next/image';
 
-// Sample upcoming event data
-const upcomingEvent = {
-    title: "Summer Shooting Competition",
-    date: "July 15, 2023",
-    url: "/events/summer-competition"
+// Smoke wisp component
+const SmokeWisp = ({ index }: { index: number }) => {
+    const randomX = Math.random() * 100;
+    const randomDelay = Math.random() * 5;
+    const randomDuration = 20 + Math.random() * 30;
+
+    return (
+        <motion.div
+            className="absolute opacity-[0.08] blur-xl"
+            style={{
+                width: '300px',
+                height: '300px',
+                left: `${randomX}%`,
+                top: '20%',
+                background: 'url("/images/Smoke/Background_0' + ((index % 9) + 1) + '.jpg")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                borderRadius: '50%',
+            }}
+            initial={{ opacity: 0, scale: 0.5, y: 100 }}
+            animate={{
+                opacity: [0, 0.08, 0],
+                scale: [0.7, 1.2],
+                y: [100, -200],
+                x: [0, Math.random() * 100 - 50]
+            }}
+            transition={{
+                duration: randomDuration,
+                ease: "easeOut",
+                delay: randomDelay,
+                repeat: Infinity,
+                repeatDelay: Math.random() * 5
+            }}
+        />
+    );
+};
+
+// Clay target component
+const ClayTarget = ({ broken = false }: { broken?: boolean }) => {
+    return broken ? (
+        // Broken clay target with fragments
+        <div className="relative">
+            {Array.from({ length: 6 }).map((_, i) => (
+                <motion.div
+                    key={i}
+                    className="absolute bg-[var(--accent-primary)]"
+                    style={{
+                        width: `${8 + Math.random() * 15}px`,
+                        height: `${8 + Math.random() * 15}px`,
+                        borderRadius: '50%',
+                        left: '50%',
+                        top: '50%',
+                    }}
+                    initial={{ x: 0, y: 0, opacity: 1 }}
+                    animate={{
+                        x: Math.random() * 100 - 50,
+                        y: Math.random() * 100 - 50,
+                        opacity: [1, 0],
+                        scale: [1, 0.5]
+                    }}
+                    transition={{
+                        duration: 1.5,
+                        ease: "easeOut",
+                        delay: 0.1 * i
+                    }}
+                />
+            ))}
+        </div>
+    ) : (
+        // Whole clay target
+        <motion.div
+            className="w-12 h-12 rounded-full bg-[var(--accent-primary)] shadow-lg"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+        />
+    );
+};
+
+// Typewriter effect
+const TypewriterText = ({ text }: { text: string }) => {
+    const [displayText, setDisplayText] = useState("");
+
+    useEffect(() => {
+        let i = 0;
+        const timer = setInterval(() => {
+            if (i < text.length) {
+                setDisplayText(prev => prev + text.charAt(i));
+                i++;
+            } else {
+                clearInterval(timer);
+            }
+        }, 80);
+
+        return () => clearInterval(timer);
+    }, [text]);
+
+    return (
+        <span className="inline-block relative">
+            {displayText}
+            <span className="absolute -right-[0.5em] top-0 h-full w-[0.3em] bg-[var(--accent-gold)] animate-blink"></span>
+        </span>
+    );
+};
+
+// Retro sun effect
+const RetroSun = () => {
+    return (
+        <div className="absolute bottom-40 left-1/2 -translate-x-1/2 z-0 opacity-50">
+            <div className="relative w-60 h-60">
+                <motion.div
+                    className="absolute inset-0 rounded-full bg-gradient-to-b from-[var(--accent-orangered)] to-[var(--accent-gold)] retrowave-sun"
+                    animate={{
+                        scale: [1, 1.05, 1],
+                        y: [0, -5, 0]
+                    }}
+                    transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
+
+                {/* Sun rays */}
+                {Array.from({ length: 12 }).map((_, i) => (
+                    <motion.div
+                        key={i}
+                        className="absolute top-1/2 left-1/2 w-40 h-1 bg-[var(--accent-primary)]/30"
+                        style={{
+                            transformOrigin: 'left center',
+                            rotate: `${i * 30}deg`,
+                        }}
+                        animate={{
+                            opacity: [0.2, 0.4, 0.2],
+                            scaleX: [1, 1.1, 1]
+                        }}
+                        transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: i * 0.2
+                        }}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+};
+
+// Disco ball glimmer effect
+const DiscoGlimmer = () => {
+    return (
+        <motion.div
+            className="absolute top-20 right-20 w-20 h-20 rounded-full disco-effect"
+            animate={{
+                rotate: 360
+            }}
+            transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "linear"
+            }}
+        />
+    );
 };
 
 const HeroSection = () => {
@@ -20,191 +179,151 @@ const HeroSection = () => {
     });
 
     // Use transform values for parallax effects
-    const yBg = useTransform(scrollYProgress, [0, 1], [0, 400]);
-    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+    const yBg = useTransform(scrollYProgress, [0, 1], [0, 300]);
+    const opacityBg = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+    const gridScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
-    // State for bubble animation
-    const [bubbles, setBubbles] = useState<Array<{ id: number, x: number, y: number, size: number, delay: number }>>([]);
+    // Smoke particles
+    const wisps = Array.from({ length: 8 }, (_, i) => i);
 
-    // Generate bubbles for background
+    // Trigger clay target animation on scroll
+    const [targetBroken, setTargetBroken] = useState(false);
+
     useEffect(() => {
-        const newBubbles = [];
-        for (let i = 0; i < 12; i++) {
-            newBubbles.push({
-                id: i,
-                x: Math.random() * 100,
-                y: Math.random() * 100,
-                size: 20 + Math.random() * 80,
-                delay: Math.random() * 5
-            });
-        }
-        setBubbles(newBubbles);
-    }, []);
+        const handleScroll = () => {
+            if (window.scrollY > 100 && !targetBroken) {
+                setTargetBroken(true);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [targetBroken]);
 
     return (
         <div
             ref={containerRef}
-            className="relative overflow-hidden min-h-[80vh] bg-[#1E352F]"
+            className="relative overflow-hidden h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]"
         >
-            {/* 70s Style Bubble Background */}
-            <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+            {/* Base layer - Grid background with parallax */}
+            <motion.div 
+                className="absolute inset-0 w-full h-full z-0"
+                style={{ 
+                    y: yBg,
+                    opacity: opacityBg,
+                    scale: gridScale
+                }}
+            >
+                <div className="absolute inset-0 bg-[var(--bg-primary)]"></div>
+
+                {/* Perspective grid with retrowave glow */}
+                <div className="absolute inset-0 bg-[url('/images/Grid/Grid (3).jpg')] bg-cover bg-center opacity-40 mix-blend-screen retrowave-grid"></div>
+
+                {/* Colored gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-darkred)]/20 to-[var(--accent-gold)]/10 mix-blend-screen"></div>
+
+                {/* Subtle grain texture */}
+                <div className="absolute inset-0 bg-[url('/textures/grain.png')] opacity-10 mix-blend-multiply"></div>
+            </motion.div>
+
+            {/* Retro sun effect */}
+            <RetroSun />
+
+            {/* Disco glimmer */}
+            <DiscoGlimmer />
+
+            {/* Light smoke wisps drifting across grid */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none z-1">
+                {wisps.map((_, i) => (
+                    <SmokeWisp key={i} index={i} />
+                ))}
+            </div>
+
+            {/* Content layer */}
+            <div className="relative z-10 container mx-auto h-full flex items-center px-6">
                 <motion.div
-                    className="absolute inset-0 z-0"
-                    style={{ y: yBg }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="mt-20 md:mt-0 max-w-3xl"
                 >
-                    {bubbles.map(bubble => (
+                    {/* Clay target animation positioned to the side */}
+                    <div className="absolute -right-4 top-1/3 md:right-24 opacity-90">
+                        <ClayTarget broken={targetBroken} />
+                    </div>
+
+                    {/* Glassmorphic card */}
+                    <div className="backdrop-blur-md bg-[var(--glass-bg)] border border-[var(--glass-border)] p-8 md:p-10 rounded shadow-xl relative overflow-hidden glass-effect">
+                        {/* Subtle grid pattern within glass panel */}
+                        <div className="absolute inset-0 bg-[url('/images/Grid/Grid (1).jpg')] bg-cover opacity-5 mix-blend-overlay pointer-events-none"></div>
+
+                        {/* Logo & Text content */}
                         <motion.div
-                            key={bubble.id}
-                            className="absolute rounded-full bg-[#FFC300]/20"
-                            style={{
-                                left: `${bubble.x}%`,
-                                top: `${bubble.y}%`,
-                                width: bubble.size,
-                                height: bubble.size,
-                            }}
-                            initial={{ scale: 0, opacity: 0 }}
-                            animate={{
-                                scale: [0, 1.2, 1],
-                                opacity: [0, 0.7, 0.5]
-                            }}
-                            transition={{
-                                duration: 3,
-                                delay: bubble.delay,
-                                repeat: Infinity,
-                                repeatType: "reverse"
-                            }}
-                        />
-                    ))}
-                </motion.div>
-            </div>
-
-            {/* 70s Geometric Pattern */}
-            <div className="absolute inset-0 z-0 opacity-10">
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <pattern id="seventies-geo" width="60" height="60" patternUnits="userSpaceOnUse">
-                            <path d="M0,30 L60,30 M30,0 L30,60" stroke="#FFC300" strokeWidth="1" />
-                            <circle cx="30" cy="30" r="20" fill="none" stroke="#FFC300" strokeWidth="1" />
-                            <rect x="5" y="5" width="50" height="50" fill="none" stroke="#E67E22" strokeWidth="1" rx="10" ry="10" />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#seventies-geo)" />
-                </svg>
-            </div>
-
-            {/* Main Content Container */}
-            <div className="container mx-auto px-4 relative z-10 pt-20 pb-16">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                    {/* Left column: Text and CTA */}
-                    <motion.div
-                        className="flex flex-col space-y-6 z-10"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                    >
-                        <h1 className="text-5xl md:text-7xl font-bold text-white" style={{
-                            fontFamily: 'var(--font-dm-sans)',
-                            letterSpacing: '-0.04em',
-                            textShadow: '2px 2px 0px #FFC300'
-                        }}>
-                            BOISE GUN CLUB
-                        </h1>
-
-                        <h2 className="text-2xl md:text-3xl italic text-[#FFC300]" style={{
-                            fontFamily: 'var(--font-space-grotesk)',
-                        }}>
-                            Where Tradition Meets Precision
-                        </h2>
-
-                        <p className="text-white/80 text-lg md:text-xl max-w-md">
-                            Join our community of passionate shooters in Idaho's premier gun club, featuring state-of-the-art ranges and world-class training facilities.
-                        </p>
-
-                        {/* Groovy call-to-action buttons with bubble effect */}
-                        <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                            <Link href="/membership">
-                                <motion.div
-                                    className="relative group"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.98 }}
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-[#F5E8C7] to-[#E67E22] rounded-full blur-md group-hover:blur-lg transition-all duration-300 -z-10" />
-                                    <button
-                                        className="relative z-0 bg-[#FFC300] hover:bg-[#E67E22] transition-colors duration-300 text-[#1E352F] font-bold py-4 px-8 rounded-full text-lg"
-                                        style={{ fontFamily: 'var(--font-dm-sans)' }}
-                                    >
-                                        JOIN NOW
-                                    </button>
-                                </motion.div>
-                            </Link>
-
-                            <Link href="/events">
-                                <motion.button
-                                    className="bg-transparent hover:bg-white/10 border-2 border-white/70 text-white py-4 px-8 rounded-full text-lg transition-colors duration-300"
-                                    style={{ fontFamily: 'var(--font-dm-sans)' }}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.98 }}
-                                >
-                                    VIEW EVENTS
-                                </motion.button>
-                            </Link>
-                        </div>
-
-                        {/* Upcoming Event Banner */}
-                        {upcomingEvent && (
-                            <motion.div
-                                className="mt-8 p-4 rounded-lg bg-[#36454F]/80 backdrop-blur-sm border-l-4 border-[#FFC300]"
-                                initial={{ x: -20, opacity: 0 }}
-                                animate={{ x: 0, opacity: 1 }}
-                                transition={{ delay: 0.6 }}
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 0.5, delay: 0.6 }}
+                        >
+                            <h1
+                                className="text-5xl md:text-7xl font-bold mb-4 leading-none"
+                                style={{
+                                    fontFamily: "'Refrigerator_Deluxe', sans-serif",
+                                    letterSpacing: "0.01em",
+                                    textTransform: "uppercase",
+                                    background: "var(--gradient-primary)",
+                                    WebkitBackgroundClip: "text",
+                                    WebkitTextFillColor: "transparent",
+                                    backgroundClip: "text",
+                                }}
                             >
-                                <p className="text-white text-sm uppercase tracking-wider mb-1">Upcoming Event</p>
-                                <h3 className="text-[#FFC300] text-xl font-bold mb-1">{upcomingEvent.title}</h3>
-                                <div className="flex justify-between items-center">
-                                    <p className="text-white/80">{upcomingEvent.date}</p>
+                                BOISE GUN CLUB
+                            </h1>
+
+                            <h2 className="text-lg md:text-xl mb-6 text-[var(--accent-primary)] font-['Museo']">
+                                <TypewriterText text="Idaho's Premier Shotgun Sports Facility" />
+                            </h2>
+
+                            <p className="text-[var(--text-primary)] text-base md:text-lg mb-8 max-w-md font-['Museo']">
+                                Join our community of passionate shooters featuring state-of-the-art ranges and world-class training facilities since 1898.
+                            </p>
+
+                            {/* Retro CTA Buttons */}
+                            <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
+                                <motion.div
+                                    className="relative"
+                                    whileHover={{ scale: 1.03, rotate: 1 }}
+                                    whileTap={{ scale: 0.98, rotate: -1 }}
+                                >
                                     <Link
-                                        href={upcomingEvent.url}
-                                        className="text-[#FFC300] hover:text-white transition-colors duration-200 text-sm font-bold uppercase flex items-center gap-1"
+                                        href="/membership"
+                                        className="block bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] hover:from-[var(--accent-secondary)] hover:to-[var(--accent-primary)] text-white font-bold py-3 px-8 rounded text-base md:text-lg transition-all duration-300 shadow-lg font-['Refrigerator_Deluxe'] pulse"
                                     >
-                                        Learn More
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                                        </svg>
+                                        BECOME A MEMBER
                                     </Link>
-                                </div>
-                            </motion.div>
-                        )}
-                    </motion.div>
 
-                    {/* Right column: Image Gallery */}
-                    <motion.div
-                        style={{ opacity }}
-                        className="hidden lg:block relative h-full"
-                    >
-                        <ImageGallery withParallax={true} withVintageEffect={true} />
-                    </motion.div>
-                </div>
+                                    {/* Subtle glow effect */}
+                                    <div className="absolute inset-0 -z-10 bg-[var(--accent-primary)] blur-md opacity-30 rounded"></div>
+                                </motion.div>
 
-                {/* Mobile Gallery (shown below content on small screens) */}
-                <motion.div
-                    className="lg:hidden mt-12"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                >
-                    <ImageGallery withParallax={false} withVintageEffect={true} />
+                                <motion.div
+                                    className="relative"
+                                    whileHover={{ scale: 1.03, rotate: -1 }}
+                                    whileTap={{ scale: 0.98, rotate: 1 }}
+                                >
+                                    <Link 
+                                        href="/events"
+                                        className="block border-2 border-[var(--accent-darkred)] text-[var(--accent-darkred)] hover:bg-[var(--accent-darkred)]/5 py-3 px-8 rounded text-base md:text-lg transition-all duration-300 shadow-lg font-['Refrigerator_Deluxe']"
+                                    >
+                                        VIEW SCHEDULE
+                                    </Link>
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    </div>
                 </motion.div>
             </div>
 
-            {/* Bottom Wave Design - 70s Inspired */}
-            <div className="absolute bottom-0 left-0 right-0 h-24 z-0 overflow-hidden">
-                <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="absolute bottom-0 left-0 w-full h-full">
-                    <path
-                        d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
-                        fill="#36454F"
-                    ></path>
-                </svg>
-            </div>
+            {/* Bottom gradient fade */}
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[var(--bg-primary)] to-transparent z-5"></div>
         </div>
     );
 };

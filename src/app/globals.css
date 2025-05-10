@@ -5,31 +5,144 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    /* Light theme variables */
-    --background: #FAFAFA;
-    --background-secondary: #F0F0F0;
-    --text: #1A1A1A;
-    --text-secondary: #4A4A4A;
-    --accent: #D4A76A;
-    --accent-hover: #C69555;
-    --border: rgba(0, 0, 0, 0.1);
-    --terminal-green: #0A3200;
-    --terminal-amber: #FFB000;
+  /* Default text size */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
-  .dark {
-    /* Dark theme variables */
-    --background: #1A1A1A;
-    --background-secondary: #2A2A2A;
-    --text: #FAFAFA;
-    --text-secondary: #A0A0A0;
-    --accent: #FFB000;
-    --accent-hover: #FFC033;
-    --border: rgba(255, 176, 0, 0.3);
-    --terminal-green: #0A3200;
-    --terminal-amber: #FFB000;
+  /* Apply font family to body directly */
+  body {
+    font-family: "museo-sans", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   }
+
+  /* Larger text for calendar components */
+  .calendar-text {
+    font-size: 20px;
+    @apply leading-relaxed;
+  }
+
+  .calendar-text-xl {
+    font-size: 24px;
+    @apply leading-relaxed;
+  }
+
+  .calendar-text-2xl {
+    font-size: 32px;
+    @apply leading-relaxed;
+  }
+
+  /* Base theme variables with light mode defaults - 70s COLOR PALETTE */
+  :root {
+    /* Core colors */
+    --bg-primary: #FFFFFF; /* White background */
+    --bg-secondary: #F9F9F9; /* Light off-white secondary background */
+    --text-primary: #141517; /* Dark gray text */
+    --text-secondary: #561806; /* Dark brown text */
+    
+    /* Accent colors - from branding guide 70s palette */
+    --accent-primary: #F25D27; /* Orange */
+    --accent-secondary: #D97904; /* Burnt orange */
+    --accent-tertiary: #51A696; /* Teal */
+    --accent-quaternary: #2484BF; /* Blue */
+    
+    /* Additional accent colors */
+    --accent-olive: #706B28; /* Olive green */
+    --accent-yellow: #FFCC52; /* Bright yellow */
+    --accent-orangered: #D54F00; /* Bright red-orange */
+    --accent-darkred: #8C2323; /* Dark red */
+    --accent-deepblue: #2467B8; /* Deep blue */
+    --accent-gold: #F2CF63; /* Gold */
+    --accent-darkteal: #027368; /* Dark teal */
+    
+    /* UI elements */
+    --grid-color: rgba(20, 21, 23, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(242, 93, 39, 0.4);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(90deg, #F25D27, #D97904);
+    --gradient-secondary: linear-gradient(90deg, #51A696, #2484BF);
+    --gradient-retro: linear-gradient(180deg, #D54F00, #F25D27, #FFCC52);
+    --gradient-sunset: linear-gradient(45deg, #D54F00, #F25D27, #F2CF63);
+    
+    /* Special elements */
+    --shadow-color: rgba(20, 21, 23, 0.2);
+    --glow-color: rgba(242, 93, 39, 0.6);
+    
+    /* Transitions */
+    --transition-speed: 0.3s;
+    
+    /* Containers */
+    --terminal-green: #51A696;
+    --terminal-amber: #F2B950;
+    --footer-bg: #141517;
+  }
+
+  /* Dark theme variables */
+  [data-theme='dark'] {
+    --bg-primary: #141517; /* Dark gray background */
+    --bg-secondary: #232323; /* Slightly lighter gray */
+    --text-primary: #F9F9F9; /* Off-white text */
+    --text-secondary: #F2CF63; /* Gold text */
+    
+    /* Accent colors - kept vibrant even in dark mode */
+    --accent-primary: #F25D27; /* Orange */
+    --accent-secondary: #FFB65A; /* Light orange */
+    --accent-tertiary: #51A696; /* Teal */
+    --accent-quaternary: #2484BF; /* Blue */
+    
+    /* Additional accent colors - dark mode */
+    --accent-olive: #706B28; /* Olive green */
+    --accent-yellow: #FFCC52; /* Bright yellow */
+    --accent-orangered: #FF7F20; /* Bright orange */
+    --accent-darkred: #8C2323; /* Dark red */
+    --accent-deepblue: #2467B8; /* Deep blue */
+    --accent-gold: #F2CF63; /* Gold */
+    --accent-darkteal: #027368; /* Dark teal */
+    
+    /* UI elements */
+    --grid-color: rgba(242, 218, 140, 0.1);
+    --glass-bg: rgba(20, 21, 23, 0.7);
+    --glass-border: rgba(242, 93, 39, 0.3);
+    
+    /* Gradients remain vibrant */
+    --gradient-primary: linear-gradient(90deg, #F25D27, #FFB65A);
+    --gradient-secondary: linear-gradient(90deg, #51A696, #2484BF);
+    --gradient-retro: linear-gradient(180deg, #D54F00, #F25D27, #FFCC52);
+    --gradient-sunset: linear-gradient(45deg, #561806, #F25D27, #F2CF63);
+    
+    /* Special elements */
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --glow-color: rgba(255, 182, 90, 0.5);
+  }
+
+  /* Apply transitions for theme switching */
+  * {
+    transition: background-color var(--transition-speed) ease,
+                color var(--transition-speed) ease,
+                border-color var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
+  }
+
+  /* Typography defaults with variables */
+  h1 { @apply text-4xl md:text-5xl font-bold; color: var(--text-primary); }
+  h2 { @apply text-3xl md:text-4xl font-bold; color: var(--text-primary); }
+  h3 { @apply text-2xl md:text-3xl font-bold; color: var(--text-primary); }
+  h4 { @apply text-xl md:text-2xl font-bold; color: var(--text-primary); }
+  p { @apply text-lg md:text-xl; color: var(--text-primary); }
+  button { @apply text-lg md:text-xl; }
+  input { @apply text-lg md:text-xl; }
+
+  /* Calendar-specific text sizes */
+  .calendar h1 { @apply text-4xl md:text-5xl font-bold; }
+  .calendar h2 { @apply text-3xl md:text-4xl font-bold; }
+  .calendar h3 { @apply text-2xl md:text-3xl font-bold; }
+  .calendar p { @apply text-lg md:text-xl; }
+  .calendar button { @apply text-lg md:text-xl; }
+  .calendar input { @apply text-lg md:text-xl; }
 }
 
 @theme inline {
@@ -43,7 +156,7 @@
 
 /* Glass effect for navigation */
 .glass-nav {
-  background: rgba(58, 38, 24, 0.7);
+  background: rgba(86, 24, 6, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -143,14 +256,34 @@
 }
 
 .gradient-shift {
-  background: linear-gradient(270deg, #F5E8C7, #E67E22, #FFC300);
+  background: linear-gradient(270deg, #F2DA8C, #F25D27, #FFCC52);
   background-size: 600% 600%;
   animation: gradient-shift 15s ease infinite;
 }
 
 /* Vintage photo filter */
 .vintage-filter {
-  filter: sepia(0.3) contrast(1.1) brightness(0.9) saturate(0.8);
+  filter: sepia(0.3) contrast(1.1) brightness(0.9) saturate(1.2);
+}
+
+/* Retrowave grid effect */
+.retrowave-grid {
+  background-image: linear-gradient(0deg, rgba(242, 93, 39, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(242, 93, 39, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center center;
+  position: relative;
+  overflow: hidden;
+}
+
+.retrowave-grid::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 0%, var(--accent-primary) 100%);
+  opacity: 0.1;
+  pointer-events: none;
 }
 
 /* Terminal effects */
@@ -195,4 +328,264 @@
       padding-right: 4rem;
     }
   }
+}
+
+/* Footer social icons - always maintain proper sizing */
+.footer-socials svg {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  max-width: 24px !important;
+  max-height: 24px !important;
+  font-size: 16px !important;
+}
+
+/* Add font fallback definitions in case Adobe Fonts fails to load */
+@font-face {
+  font-family: 'refrigerator-deluxe';
+  src: local('DM Sans Bold');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'museo-sans';
+  src: local('DM Sans');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Font utility classes */
+.font-heading {
+  font-family: "refrigerator-deluxe", serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.font-body {
+  font-family: "museo-sans", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+}
+
+/* Custom Utility Classes for Dynamic Theming */
+.bg-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.accent-primary {
+  color: var(--accent-primary);
+}
+
+.accent-secondary {
+  color: var(--accent-secondary);
+}
+
+.accent-tertiary {
+  color: var(--accent-tertiary);
+}
+
+.accent-quaternary {
+  color: var(--accent-quaternary);
+}
+
+.accent-olive {
+  color: var(--accent-olive);
+}
+
+.accent-yellow {
+  color: var(--accent-yellow);
+}
+
+.accent-orangered {
+  color: var(--accent-orangered);
+}
+
+.accent-darkred {
+  color: var(--accent-darkred);
+}
+
+.accent-deepblue {
+  color: var(--accent-deepblue);
+}
+
+.accent-gold {
+  color: var(--accent-gold);
+}
+
+.accent-darkteal {
+  color: var(--accent-darkteal);
+}
+
+.border-accent {
+  border-color: var(--accent-primary);
+}
+
+/* Glass effect - themed */
+.glass-effect {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+/* Glassmorphic button */
+.btn-glass {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.btn-glass:hover {
+  box-shadow: 0 0 15px var(--glow-color);
+  border-color: var(--accent-primary);
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* Multi-color psychedelic gradient text */
+.psychedelic-text {
+  background: linear-gradient(90deg, #F25D27, #FFCC52, #51A696, #2484BF, #D54F00);
+  background-size: 400% 100%;
+  animation: gradient-shift 8s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* Gradient button */
+.btn-gradient {
+  background: var(--gradient-primary);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  box-shadow: 0 0 15px var(--glow-color);
+  transform: translateY(-2px);
+}
+
+/* Grid background - themed */
+.grid-bg {
+  background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Perspective grid */
+.grid-perspective {
+  background-image: 
+    radial-gradient(circle at 50% 50%, var(--grid-color) 1px, transparent 0),
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 8px 8px, 40px 40px, 40px 40px;
+  background-position: 0 0, 0 0, 0 0;
+}
+
+/* Retrowave sun effect */
+.retrowave-sun {
+  position: relative;
+  background: linear-gradient(0deg, #F25D27, #FFCC52);
+  border-radius: 50%;
+}
+
+.retrowave-sun::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(242, 93, 39, 0.6) 0%, rgba(242, 93, 39, 0) 70%);
+  z-index: -1;
+}
+
+/* Blinking cursor animation */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* Pulse effect for buttons */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--glow-color);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(242, 93, 39, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(242, 93, 39, 0);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Disco ball effect */
+@keyframes disco-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.disco-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.disco-effect::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-conic-gradient(
+    #F25D27 0deg 10deg,
+    #FFCC52 10deg 20deg,
+    #51A696 20deg 30deg,
+    #2484BF 30deg 40deg
+  );
+  opacity: 0.1;
+  animation: disco-rotate 10s linear infinite;
+  pointer-events: none;
 }

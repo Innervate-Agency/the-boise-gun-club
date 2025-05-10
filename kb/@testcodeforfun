@@ -1,0 +1,756 @@
+// components/AccessibilityFeatures.jsx
+import { useEffect } from 'react';
+
+const AccessibilityFeatures = () => {
+  // Increase base font size for better readability
+  useEffect(() => {
+    document.documentElement.style.fontSize = '18px';
+    
+    // Enhanced contrast for all text elements
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+      body {
+        --min-text-contrast: 4.5;
+      }
+      
+      p, span, div {
+        font-weight: 400 !important;
+        letter-spacing: 0.015em !important;
+        line-height: 1.6 !important;
+      }
+      
+      .text-white {
+        color: rgba(255, 255, 255, 0.95) !important;
+      }
+    `;
+    document.head.appendChild(styleElement);
+    
+    return () => {
+      document.head.removeChild(styleElement);
+    };
+  }, []);
+  
+  // Additional accessibility features
+  useEffect(() => {
+    // Increased focus visibility
+    const focusStyleElement = document.createElement('style');
+    focusStyleElement.textContent = `
+      *:focus {
+        outline: 3px solid #F25D27 !important;
+        outline-offset: 2px !important;
+      }
+    `;
+    document.head.appendChild(focusStyleElement);
+    
+    return () => {
+      document.head.removeChild(focusStyleElement);
+    };
+  }, []);
+  
+  return null; // This component doesn't render anything
+};
+
+// components/EventsSection.jsx
+const EventsSection = ({ events }) => {
+  return (
+    <section className="py-20 relative">
+      {/* Background with grid and smoke */}
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src="/images/grid/grid-02.jpg" 
+          alt="" 
+          fill 
+          className="object-cover opacity-30" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#121212]/80 to-[#121212]/95" />
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Section header with animated underline */}
+        <SectionHeader>UPCOMING EVENTS</SectionHeader>
+        
+        {/* Event cards */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {events.map((event, index) => (
+            <EventCard key={event.id} event={event} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Individual event card with glassmorphism and hover effects
+const EventCard = ({ event, index }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1 }}
+      whileHover={{ y: -5 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="group"
+    >
+      <GlassmorphicPanel intensity={0.2} highlightIntensity={0.15} className="h-full p-6">
+        {/* Terminal-inspired date display */}
+        <div className="flex items-center">
+          <motion.div 
+            className="text-[#F25D27] font-display text-2xl mr-4"
+            animate={{ opacity: [1, 0.8, 1] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          >
+            {formatDate(event.date)}
+          </motion.div>
+          
+          {/* Scan line effect */}
+          <motion.div 
+            className="h-px bg-[#F25D27]/30 flex-grow"
+            animate={{ 
+              scaleX: [0, 1], 
+              opacity: [0.3, 0.7, 0.3]
+            }}
+            transition={{ 
+              repeat: Infinity, 
+              duration: 3,
+              ease: "linear"
+            }}
+          />
+        </div>
+        
+        {/* Event title */}
+        <h3 className="mt-4 text-white font-display text-xl">
+          {event.title}
+        </h3>
+        
+        {/* Event description with line clamp */}
+        <p className="mt-2 text-[#F2DAAC] font-body line-clamp-2">
+          {event.description}
+        </p>
+        
+        {/* Learn more link with arrow animation */}
+        <div className="mt-4 flex items-center">
+          <Link href={`/events/${event.id}`} className="text-[#F25D27] font-body flex items-center group">
+            LEARN MORE
+            <motion.span
+              animate={{ x: isHovered ? 5 : 0 }}
+              transition={{ duration: 0.2 }}
+              className="ml-2"
+            >
+              →
+            </motion.span>
+          </Link>
+        </div>
+      </GlassmorphicPanel>
+    </motion.div>
+  );
+};
+
+// styles/responsive.js - Import in _app.js
+const mobileOptimizations = `
+  /* Large touch targets for older users */
+  @media (max-width: 768px) {
+    button, a, [role="button"] {
+      min-height: 44px !important;
+      min-width: 44px !important;
+    }
+    
+    /* Increased spacing for readability */
+    p, h1, h2, h3, h4, h5, h6 {
+      padding: 0.25rem 0;
+    }
+    
+    /* Font size adjustments */
+    html {
+      font-size: 20px;
+    }
+    
+    /* Simplified animations for performance */
+    .mobile-simplified-animation {
+      animation-duration: 50% !important;
+      transition-duration: 50% !important;
+    }
+  }
+  
+  /* High contrast mode detection */
+  @media (prefers-contrast: more) {
+    :root {
+      --glass-opacity: 0.9 !important;
+      --glass-blur: 0px !important;
+    }
+    
+    * {
+      text-shadow: none !important;
+    }
+  }
+  
+  /* Reduce motion preference */
+  @media (prefers-reduced-motion) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+`;
+
+
+// pages/_app.js - Configure custom page transitions
+import { AnimatePresence, motion } from 'framer-motion';
+import { SmokeProvider } from '../contexts/SmokeContext';
+
+function MyApp({ Component, pageProps, router }) {
+  return (
+    <SmokeProvider> // Custom context for shared smoke effects
+      <AnimatePresence mode="wait">
+        <motion.div key={router.route} className="page-wrap"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}>
+          <Component {...pageProps} />
+        </motion.div>
+      </AnimatePresence>
+    </SmokeProvider>
+  );
+}
+
+// components/Hero.jsx
+const Hero = () => {
+  const { scrollYProgress } = useScroll();
+  const gridRef = useRef(null);
+  const { style, handleMouseMove } = useParallaxGrid(gridRef);
+  
+  // Dynamic smoke opacity based on scroll
+  const smokeOpacity = useTransform(scrollYProgress, [0, 0.3], [0.8, 0]);
+  
+  return (
+    <motion.section 
+      className="h-screen relative overflow-hidden"
+      onMouseMove={handleMouseMove}>
+      
+      {/* Dynamic grid background */}
+      <motion.div ref={gridRef} style={style} className="absolute inset-0 z-0">
+        <Image 
+          src="/images/grid/grid-01.jpg" 
+          alt="" 
+          fill 
+          className="object-cover"
+          priority 
+        />
+      </motion.div>
+      
+      {/* Gradient smoke overlay */}
+      <motion.div 
+        className="absolute inset-0 z-10" 
+        style={{ 
+          opacity: smokeOpacity,
+          background: 'linear-gradient(135deg, rgba(82,22,35,0.4) 0%, rgba(242,185,80,0.2) 100%)',
+          mixBlendMode: 'overlay' 
+        }} 
+      />
+      
+      {/* Interactive smoke particles system */}
+      <SmokeParticles 
+        intensity={30} 
+        color="#F2B950" 
+        speed={0.5} 
+        className="absolute inset-0 z-20" 
+      />
+      
+      {/* Content with glassmorphism */}
+      <div className="container mx-auto relative z-30 h-full flex items-center">
+        <GlassmorphicPanel 
+          intensity={0.15} 
+          highlightIntensity={0.25}
+          className="p-8 lg:p-12 max-w-3xl">
+          
+          <AnimatedLogo />
+          
+          <motion.h1 
+            className="text-5xl md:text-7xl font-display text-white leading-none"
+            variants={letterStaggerVariants}
+            initial="initial"
+            animate="animate">
+            BOISE<br/>GUN CLUB
+          </motion.h1>
+          
+          <motion.p 
+            className="mt-4 text-xl md:text-2xl font-body text-[#F2DAAC]"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}>
+            Idaho's Premier Shotgun Sports Facility
+          </motion.p>
+          
+          <div className="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+            <NeonButton primary>BECOME A MEMBER</NeonButton>
+            <NeonButton>VIEW SCHEDULE</NeonButton>
+          </div>
+        </GlassmorphicPanel>
+      </div>
+    </motion.section>
+  );
+};
+
+// components/FacilitySection.jsx
+const FacilitySection = () => {
+  const { scrollYProgress } = useScroll();
+  
+  // Parallax values for different elements
+  const y1 = useTransform(scrollYProgress, [0.3, 0.8], [0, -50]);
+  const y2 = useTransform(scrollYProgress, [0.3, 0.8], [0, -30]);
+  const y3 = useTransform(scrollYProgress, [0.3, 0.8], [0, -70]);
+  
+  return (
+    <section className="py-24 relative">
+      {/* Background with grid and smoke */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image 
+          src="/images/grid/grid-03.jpg" 
+          alt="" 
+          fill 
+          className="object-cover" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-[#121212]/80" />
+        
+        {/* Smoke overlays with brand colors */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-radial from-[#F2B950]/20 to-transparent"
+          style={{ 
+            top: '30%',
+            left: '20%',
+            width: '40%',
+            height: '40%',
+            opacity: useTransform(scrollYProgress, [0.3, 0.5, 0.7], [0, 0.5, 0])
+          }}
+        />
+        <motion.div
+          className="absolute inset-0 bg-gradient-radial from-[#F25D27]/15 to-transparent"
+          style={{ 
+            top: '40%',
+            right: '20%',
+            width: '50%',
+            height: '60%',
+            opacity: useTransform(scrollYProgress, [0.3, 0.5, 0.7], [0, 0.7, 0])
+          }}
+        />
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <SectionHeader>EXPERIENCE THE TRADITION</SectionHeader>
+        
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Three facility highlights with parallax effect */}
+          <motion.div style={{ y: y1 }}>
+            <FacilityCard
+              title="RANGES"
+              icon="/images/range-icon.svg"
+              description="State-of-the-art shooting ranges designed for all skill levels. Practice your aim with our 15 trap fields, 5 skeet fields, and 5-stand sporting clays."
+            />
+          </motion.div>
+          
+          <motion.div style={{ y: y2 }}>
+            <FacilityCard
+              title="TRAINING"
+              icon="/images/training-icon.svg"
+              description="Learn from certified instructors with decades of experience. Our training programs cover safety, technique, and advanced skills for beginners to experts."
+            />
+          </motion.div>
+          
+          <motion.div style={{ y: y3 }}>
+            <FacilityCard
+              title="COMPETITIONS"
+              icon="/images/trophy-icon.svg"
+              description="Test your skills in local, regional, and national competitions. Join our community of passionate shooters in friendly competition year-round."
+            />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const FacilityCard = ({ title, icon, description }) => {
+  return (
+    <GlassmorphicPanel intensity={0.1} highlightIntensity={0.2} className="p-6 h-full">
+      {/* Icon with glow effect */}
+      <motion.div 
+        className="w-16 h-16 mx-auto mb-6 relative"
+        whileHover={{ scale: 1.05 }}
+      >
+        <motion.div
+          className="absolute inset-0 rounded-full bg-[#F25D27]/30"
+          animate={{ 
+            boxShadow: ['0 0 10px #F25D27', '0 0 20px #F25D27', '0 0 10px #F25D27'] 
+          }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <Image src={icon} alt={title} width={64} height={64} className="relative z-10" />
+      </motion.div>
+      
+      {/* Title */}
+      <h3 className="text-center text-white font-display text-2xl mb-4">
+        {title}
+      </h3>
+      
+      {/* Description */}
+      <p className="text-center text-[#F2DAAC] font-body">
+        {description}
+      </p>
+      
+      {/* CTA link */}
+      <div className="mt-6 text-center">
+        <Link href="#" className="text-[#F25D27] font-body hover:underline">
+          LEARN MORE
+        </Link>
+      </div>
+    </GlassmorphicPanel>
+  );
+};
+
+// hooks/useParallaxGrid.js - Dynamic grid parallax effect
+export function useParallaxGrid(gridRef) {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { scrollYProgress } = useScroll();
+  
+  // Transform grid based on scroll and mouse position
+  const gridTransform = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["perspective(1000px) rotateX(20deg)", "perspective(1000px) rotateX(0deg)"]
+  );
+  
+  // Handle mouse parallax with throttling for performance
+  const handleMouseMove = throttle((e) => {
+    const { clientX, clientY } = e;
+    const moveX = clientX - window.innerWidth / 2;
+    const moveY = clientY - window.innerHeight / 2;
+    setMousePosition({ x: moveX / 50, y: moveY / 50 });
+  }, 50);
+  
+  // Combined transforms for rich interaction
+  return {
+    style: {
+      transform: `${gridTransform} translate3d(${mousePosition.x}px, ${mousePosition.y}px, 0)`,
+    },
+    handleMouseMove
+  };
+}
+
+// components/ui/GlassmorphicPanel.jsx
+const GlassmorphicPanel = ({ 
+  children, 
+  intensity = 0.2, 
+  highlightIntensity = 0.1,
+  className
+}) => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const panelRef = useRef(null);
+  
+  // Dynamic light reflection based on mouse position
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (!panelRef.current) return;
+      
+      const rect = panelRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      setMousePosition({
+        x: x / rect.width,
+        y: y / rect.height
+      });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+  
+  // Calculate reflection gradient position
+  const gradientPosition = {
+    x: mousePosition.x * 100,
+    y: mousePosition.y * 100
+  };
+  
+  return (
+    <div 
+      ref={panelRef}
+      className={`relative rounded-lg overflow-hidden ${className}`}
+      style={{
+        backgroundColor: `rgba(18, 18, 18, ${intensity})`,
+        backdropFilter: 'blur(10px)',
+        border: `1px solid rgba(255, 255, 255, ${highlightIntensity * 0.5})`,
+        boxShadow: `0 10px 30px rgba(0, 0, 0, 0.5), 
+                   inset 0 0 30px rgba(0, 0, 0, 0.3)`,
+      }}>
+      
+      {/* Dynamic light reflection */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, 
+                     rgba(255, 255, 255, ${highlightIntensity}) 0%, 
+                     rgba(255, 255, 255, 0) 60%)`,
+          opacity: 0.7
+        }}
+      />
+      
+      {/* Content */}
+      <div className="relative z-10">
+        {children}
+      </div>
+    </div>
+  );
+};
+
+// components/effects/SmokeParticles.jsx
+const SmokeParticles = ({ intensity = 20, color = '#FFFFFF', speed = 1, className }) => {
+  const canvasRef = useRef(null);
+  const particlesRef = useRef([]);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const animationRef = useRef(null);
+  
+  // Initialize particles and canvas
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (canvasRef.current) {
+        const { width, height } = canvasRef.current.getBoundingClientRect();
+        setDimensions({ width, height });
+        canvasRef.current.width = width;
+        canvasRef.current.height = height;
+        
+        // Initialize particles
+        particlesRef.current = Array.from({ length: intensity }, () => createParticle(width, height));
+      }
+    };
+    
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    
+    return () => {
+      window.removeEventListener('resize', updateDimensions);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [intensity]);
+  
+  // Animation loop for smoke particles
+  useEffect(() => {
+    if (!canvasRef.current || dimensions.width === 0) return;
+    
+    const ctx = canvasRef.current.getContext('2d');
+    
+    const animate = () => {
+      ctx.clearRect(0, 0, dimensions.width, dimensions.height);
+      
+      particlesRef.current.forEach((particle, index) => {
+        // Update particle position
+        particle.x += Math.sin(particle.angle) * particle.speed * speed;
+        particle.y += Math.cos(particle.angle) * particle.speed * speed - particle.gravity;
+        particle.angle += particle.angleChange;
+        
+        // Fade out particle
+        particle.opacity -= particle.fadeSpeed;
+        
+        // Draw particle as smoky blob
+        const gradient = ctx.createRadialGradient(
+          particle.x, particle.y, 0,
+          particle.x, particle.y, particle.size
+        );
+        
+        // Parse color to RGB for gradient
+        const colorRgb = hexToRgb(color);
+        
+        gradient.addColorStop(0, `rgba(${colorRgb.r}, ${colorRgb.g}, ${colorRgb.b}, ${particle.opacity})`);
+        gradient.addColorStop(1, `rgba(${colorRgb.r}, ${colorRgb.g}, ${colorRgb.b}, 0)`);
+        
+        ctx.globalCompositeOperation = 'screen';
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+        
+        // Reset particle if faded out
+        if (particle.opacity <= 0) {
+          particlesRef.current[index] = createParticle(dimensions.width, dimensions.height);
+        }
+      });
+      
+      animationRef.current = requestAnimationFrame(animate);
+    };
+    
+    animate();
+    
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [color, dimensions, speed]);
+  
+  // Create new particle with random properties
+  const createParticle = (width, height) => ({
+    x: Math.random() * width,
+    y: height + Math.random() * 100,
+    size: Math.random() * 50 + 20,
+    speed: Math.random() * 1 + 0.5,
+    opacity: Math.random() * 0.5 + 0.1,
+    fadeSpeed: Math.random() * 0.01 + 0.005,
+    angle: Math.random() * Math.PI * 2,
+    angleChange: Math.random() * 0.01 - 0.005,
+    gravity: Math.random() * 0.5 + 0.1
+  });
+  
+  // Utility to convert hex color to RGB
+  const hexToRgb = (hex) => {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : { r: 255, g: 255, b: 255 };
+  };
+  
+  return (
+    <canvas 
+      ref={canvasRef} 
+      className={`pointer-events-none ${className}`}
+    />
+  );
+};
+
+// components/Navigation.jsx
+const Navigation = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { scrollY } = useScroll();
+  const navRef = useRef(null);
+  
+  // Dynamic navigation appearance based on scroll
+  useEffect(() => {
+    return scrollY.onChange(latest => {
+      setIsScrolled(latest > 50);
+    });
+  }, [scrollY]);
+  
+  return (
+    <motion.header
+      ref={navRef}
+      className="fixed top-0 left-0 right-0 z-50"
+      animate={{
+        backgroundColor: isScrolled ? 'rgba(18, 18, 18, 0.85)' : 'rgba(18, 18, 18, 0)',
+        backdropFilter: isScrolled ? 'blur(10px)' : 'blur(0px)',
+        borderBottom: isScrolled 
+          ? '1px solid rgba(242, 93, 39, 0.3)' 
+          : '1px solid rgba(255, 255, 255, 0)'
+      }}
+      transition={{ duration: 0.3 }}
+    >
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <motion.div 
+              className="mr-3"
+              whileHover={{ rotate: [-5, 5, -5, 5, 0], transition: { duration: 0.5 } }}>
+              <Image 
+                src="/images/clay-target.svg" 
+                alt="Boise Gun Club" 
+                width={40} 
+                height={40} 
+              />
+            </motion.div>
+            <span className="text-white font-display text-2xl tracking-wider">
+              BOISE GUN CLUB
+            </span>
+          </Link>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {['HOME', 'ABOUT', 'EVENTS', 'RANGES', 'MEMBERSHIP', 'CONTACT'].map((item) => (
+              <NavItem key={item} label={item} />
+            ))}
+            <NeonButton primary className="ml-4">MEMBER LOGIN</NeonButton>
+          </div>
+          
+          {/* Mobile Navigation Toggle */}
+          <MobileMenuButton />
+        </div>
+      </div>
+      
+      {/* Mobile Navigation Drawer */}
+      <MobileNavDrawer />
+    </motion.header>
+  );
+};
+
+// Interactive NavItem with animations
+const NavItem = ({ label, href = '#' }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  return (
+    <Link href={href}>
+      <motion.div
+        className="relative py-2 text-white font-body text-lg"
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+      >
+        {label}
+        <motion.div 
+          className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#F25D27]"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+        />
+      </motion.div>
+    </Link>
+  );
+};
+
+// components/ui/NeonButton.jsx
+const NeonButton = ({ children, primary, ...props }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  const baseColor = primary ? '#F25D27' : 'transparent';
+  const glowColor = primary ? 'rgba(242, 93, 39, 0.7)' : 'rgba(255, 255, 255, 0.3)';
+  
+  return (
+    <motion.button
+      className={`relative px-6 py-3 rounded-md font-display text-lg tracking-wider
+                ${primary ? 'text-white' : 'text-white border border-white/30'}`}
+      style={{
+        backgroundColor: baseColor,
+        boxShadow: isHovered ? `0 0 20px ${glowColor}` : 'none',
+        transition: 'all 0.3s ease'
+      }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      whileTap={{ scale: 0.97 }}
+      {...props}
+    >
+      {/* Glow effect */}
+      <motion.div
+        className="absolute inset-0 rounded-md"
+        animate={{
+          boxShadow: isHovered 
+            ? `0 0 8px ${glowColor}, 0 0 15px ${glowColor}` 
+            : `0 0 0px transparent`
+        }}
+        transition={{ duration: 0.3 }}
+      />
+      
+      {/* Label with subtle hover animation */}
+      <motion.span 
+        className="relative z-10"
+        animate={{ 
+          textShadow: isHovered 
+            ? `0 0 5px rgba(255,255,255,0.8)` 
+            : `0 0 0px transparent`
+        }}>
+        {children}
+      </motion.span>
+    </motion.button>
+  );
+};
