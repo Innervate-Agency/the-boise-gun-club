@@ -1,220 +1,247 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform, useSpring, useAnimation, MotionStyle } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
-import { useThrottledCallback } from 'use-debounce';
-// import WavyGridBackground from './effects/WavyGridBackground'; // No longer using WavyGridBackground
-import { ClayTarget } from './effects/ClayTarget';
-import { SmokeCanvas } from './effects/SmokeCanvas'; // Assuming this is your smoke component
-// import { useInView } from 'react-intersection-observer';
-
-/**
- * HeroSection Component
- * 
- * This component serves as the main hero section for the homepage. It includes:
- * - A dynamic background with motion effects using Framer Motion.
- * - Interactive perspective animations based on mouse movement.
- * - A welcoming heading and description for the shotgun sports complex.
- * - Call-to-action buttons for membership and event schedules.
- * - Visual effects like a clay target animation and a shotgun shell with falling BBs.
- * - Accessibility features such as reduced motion support.
- */
+import { useState, useEffect, useRef } from 'react';
+import WavyGridBackground from './effects/WavyGridBackground';
 
 const HeroSection = () => {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const containerRef = useRef<HTMLDivElement>(null);
-    const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-// const [isInView, setIsInView] = useState(false); // Removed as unused
-// const { ref, inView } = useInView({ // Removed as unused
-//     root: null,
-//     rootMargin: '0px',
-//     threshold: 0.1,
-//     triggerOnce: true,
-//     initialInView: true,
-// });
-// useEffect(() => { // Removed as unused
-//     setIsInView(inView);
-// }, [inView]);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end start"]
+    });
 
-    // Mouse-based perspective animations are removed as per the new request for static background
-    // const MAX_ROTATION = 8;
-    // const rotateXSpring = useSpring(0, { stiffness: 180, damping: 25 });
-    // const rotateYSpring = useSpring(0, { stiffness: 180, damping: 25 });
+    // Parallax values
+    const titleY = useTransform(scrollYProgress, [0, 0.3], [0, -50]);
+    const subtitleY = useTransform(scrollYProgress, [0, 0.3], [0, -25]);
+    const ctaY = useTransform(scrollYProgress, [0, 0.3], [0, -15]);
+    const logoY = useTransform(scrollYProgress, [0, 0.3], [0, -100]);
+    const logoScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.8]);
+    const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
     useEffect(() => {
-        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-        const updatePrefersReducedMotion = (matches: boolean) => {
-            setPrefersReducedMotion(matches);
-            // if (matches) { // No spring-based rotations to reset now
-            //     rotateXSpring.set(0, false);
-            //     rotateYSpring.set(0, false);
-            // }
+        const handleMouseMove = (e: MouseEvent) => {
+            setMousePosition({
+                x: (e.clientX - window.innerWidth / 2) / 25,
+                y: (e.clientY - window.innerHeight / 2) / 25
+            });
         };
-        updatePrefersReducedMotion(mediaQuery.matches);
-        const handleChange = (e: MediaQueryListEvent) => updatePrefersReducedMotion(e.matches);
-        mediaQuery.addEventListener('change', handleChange);
-        return () => mediaQuery.removeEventListener('change', handleChange);
-    }, []); // Removed spring dependencies
 
-    // Mouse move and leave handlers for perspective are no longer needed
-    // const handlePointerMove = useThrottledCallback(...);
-    // const handlePointerLeave = useThrottledCallback(...);
-
-    // backgroundWrapperStyle and variants are no longer needed for WavyGrid
-    // const backgroundWrapperStyle: MotionStyle = { ... };
-    // const backgroundVariants = { ... };
-    // const backgroundAnimation = useAnimation();
-    // useEffect(() => { backgroundAnimation.start('visible'); }, [backgroundAnimation]);
-
-    const { scrollYProgress: shellScrollYProgress } = useScroll();
-    const shellY = useTransform(shellScrollYProgress, [0, 1], [0, -100]);
-    const shellStyle = { y: shellY };
-    const shellAnimation = useAnimation();
-    useEffect(() => { shellAnimation.start('visible'); }, [shellAnimation]);
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
 
     return (
-        <div
-            ref={containerRef}
-            className="relative overflow-hidden h-screen bg-[var(--dark-bg)] text-[var(--text-primary)]" // Use dark-bg as fallback
-            // onPointerMove and onPointerLeave removed
-            // style={{ perspective: '1000px' }} // Perspective for dynamic grid removed
-        >
-            {/* Static Background Image Layer */}
-            <div
-                className="absolute inset-0 z-0" // z-0 to be behind everything
-                style={{
-                    backgroundImage: "url('/images/Grid/Grid (3).jpg')", // Assuming this path
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}
+        <section ref={containerRef} className="relative h-screen overflow-hidden bg-[var(--bg-primary)] text-white">
+            {/* Dramatic WavyGrid background */}
+            <WavyGridBackground
+                lineColor="rgba(242, 135, 5, 0.2)"
+                numLinesX={35}
+                numLinesY={20}
+                waveAmplitude={5}
+                waveFrequency={0.02}
+                waveSpeed={0.05}
+                gridRotationX={65}
+                perspectiveValue={1000}
+                gridScale={2}
+                className="absolute inset-0 z-0"
             />
 
-            {/* Gradient Overlay */}
-            <div
-                className="absolute inset-0 z-1" // z-1 to be above image, below smoke and content
-                style={{
-                    background: 'linear-gradient(to bottom, rgba(18, 18, 18, 0.6) 0%, rgba(242, 135, 5, 0.4) 70%, rgba(242, 135, 5, 0.7) 100%)', // Dark to Lahoma Orange, transparent
-                }}
-            />
+            {/* Deep gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-radial from-transparent via-[rgba(18,18,18,0.6)] to-[rgba(18,18,18,0.9)] z-[1]" />
 
-            {/* Smoke Effects Layer */}
-            {!prefersReducedMotion && (
-                <div className="absolute inset-0 z-2 pointer-events-none"> {/* z-2 for smoke */}
-                    <SmokeCanvas /> {/* Assuming SmokeCanvas handles its own positioning and animation */}
-                </div>
-            )}
+            {/* Floating geometric accent elements */}
+            <div className="absolute inset-0 z-[2] overflow-hidden">
+                {/* Large glowing orb */}
+                <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-[#F25D27]/10 to-[#F2CB05]/5 rounded-full blur-[140px] transform -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                        transform: `translate(calc(-50% + ${mousePosition.x * 0.3}px), calc(-50% + ${mousePosition.y * 0.3}px))`
+                    }}
+                />
 
-            {/* Content layer - ensure z-index is highest */}
-            <div className="relative z-10 container mx-auto h-full flex flex-col justify-center px-6"> {/* Main content on z-10 */}
+                {/* Secondary glow */}
+                <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-to-tr from-[#521623]/20 to-[#F28705]/5 rounded-full blur-[100px] transform translate-x-1/2 translate-y-1/2"
+                    style={{
+                        transform: `translate(calc(50% - ${mousePosition.x * 0.5}px), calc(50% - ${mousePosition.y * 0.5}px))`
+                    }}
+                />
+
+                {/* Clay target fragments */}
+                {Array.from({ length: 5 }).map((_, i) => (
+                    <motion.div
+                        key={i}
+                        className="absolute w-1 h-1 bg-[#F28705] rounded-full"
+                        style={{
+                            top: `${Math.random() * 100}%`,
+                            left: `${Math.random() * 100}%`,
+                            opacity: 0.6,
+                            boxShadow: '0 0 10px 2px rgba(242, 135, 5, 0.3)'
+                        }}
+                        animate={{
+                            y: [0, -(50 + Math.random() * 100)],
+                            x: [0, (Math.random() * 60) - 30],
+                            opacity: [0.6, 0],
+                            scale: [1, 0.5]
+                        }}
+                        transition={{
+                            duration: 4 + Math.random() * 4,
+                            repeat: Infinity,
+                            delay: Math.random() * 5
+                        }}
+                    />
+                ))}
+            </div>
+
+            {/* Main Content with Parallax */}
+            <motion.div 
+                className="relative z-10 flex flex-col items-center justify-center h-full px-8 md:px-12"
+                style={{ opacity }}
+            >
+                {/* Logo with premium glow effect */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="max-w-4xl mx-auto text-center"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                    className="mb-10 relative"
+                    style={{ y: logoY, scale: logoScale }}
                 >
-                    {/* Main heading */}
+                    <div className="w-28 h-28 rounded-full bg-gradient-to-br from-[#F28705] to-[#E85E27] p-[3px] shadow-[0_0_40px_rgba(242,135,5,0.4)]">
+                        <div className="w-full h-full rounded-full bg-black flex items-center justify-center backdrop-blur-lg border border-[rgba(242,135,5,0.3)]">
+                            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#F28705] to-[#E85E27] flex items-center justify-center animate-pulse">
+                                <div className="w-16 h-16 rounded-full bg-[rgba(0,0,0,0.7)] backdrop-blur-sm flex items-center justify-center">
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#F28705] to-[#E85E27]" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Light rays */}
+                    <div className="absolute -top-4 -left-4 -right-4 -bottom-4 rounded-full bg-[#F28705]/10 animate-pulse blur-xl" />
+                </motion.div>
+
+                {/* Modern Typography Stack */}
+                <div className="text-center max-w-7xl">
                     <motion.h1
-                        className="text-6xl md:text-8xl font-['Refrigerator_Deluxe'] mb-6 leading-tight"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
+                        initial={{ y: 50, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        className="font-heading text-6xl md:text-8xl lg:text-[10rem] leading-[0.85] mb-2 tracking-tight uppercase"
+                        style={{ y: titleY }}
                     >
-                        WELCOME TO{" "}
-                        <span className="gradient-text">
-                            Idaho&apos;s Premier Shotgun Sports Complex
+                        <span className="block">Boise</span>
+                        <span className="gradient-text bg-gradient-to-r from-[#F28705] via-[#F2CB05] to-[#F28705] block mt-4">
+                            Gun Club
                         </span>
                     </motion.h1>
 
-                    {/* Description */}
                     <motion.p
-                        className="text-xl font-['Museo_Sans'] md:text-2xl text-[var(--text-secondary)] mb-12 font-body max-w-3xl mx-auto "
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.6 }}
+                        initial={{ y: 50, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                        className="font-heading text-2xl md:text-3xl text-white/60 mt-4 tracking-[0.3em] lg:mt-8"
+                        style={{ y: titleY }}
                     >
-                        Join our community of passionate shooters featuring state-of-the-art ranges and world-class training facilities since 1898.
+                        EST. 1898
                     </motion.p>
+                </div>
 
-                    {/* CTA Buttons */}
-                    <motion.div
-                        className="flex flex-col sm:flex-row gap-6 justify-center"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.9 }}
+                {/* Tagline */}
+                <motion.p
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-body text-xl md:text-2xl text-white/80 max-w-3xl text-center mt-12"
+                    style={{ y: subtitleY }}
+                >
+                    Idaho&apos;s Premier Shotgun Sports Complex<br />
+                    Where legends are forged and clay meets steel.
+                </motion.p>
+
+                {/* CTA Buttons with enhanced hover effects */}
+                <motion.div
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1, delay: 1, ease: [0.22, 1, 0.36, 1] }}
+                    className="flex flex-col sm:flex-row gap-6 mt-12"
+                    style={{ y: ctaY }}
+                >
+                    <Link
+                        href="/membership"
+                        className="group relative overflow-hidden"
                     >
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <Link
-                                href="/membership"
-                                className="block bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-bold py-4 px-8 rounded-lg text-lg md:text-xl transition-all duration-300 shadow-lg font-heading pulse hover:shadow-[0_0_20px_rgba(242,93,39,0.3)]"
-                            >
-                                BECOME A MEMBER
-                            </Link>
-                        </motion.div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#F28705] to-[#E85E27] blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#F28705]/20 to-[#E85E27]/20 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110" />
 
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <Link
-                                href="/events"
-                                className="block border-2 border-[var(--accent-primary)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/5 py-4 px-8 rounded-lg text-lg md:text-xl transition-all duration-300 shadow-lg font-heading"
-                            >
-                                VIEW SCHEDULE
-                            </Link>
-                        </motion.div>
-                    </motion.div>
+                        <button className="relative bg-gradient-to-r from-[#F28705] to-[#E85E27] text-white px-10 py-5 rounded-lg font-heading text-lg tracking-wide transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(242,135,5,0.6)] group-hover:scale-105 group-hover:translate-y-[-2px] overflow-hidden">
+                            <span className="relative z-10">JOIN THE CLUB</span>
+                            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+                        </button>
+                    </Link>
+
+                    <Link
+                        href="/ranges"
+                        className="group relative overflow-hidden"
+                    >
+                        <div className="absolute inset-0 border-2 border-[#F28705] blur-lg opacity-0 group-hover:opacity-70 transition-all duration-500" />
+
+                        <button className="relative border-2 border-[#F28705] text-[#F28705] px-10 py-5 rounded-lg font-heading text-lg tracking-wide transition-all duration-500 backdrop-blur-md bg-[rgba(18,18,18,0.3)] group-hover:bg-[#F28705]/20 group-hover:text-white group-hover:scale-105 group-hover:translate-y-[-2px] group-hover:shadow-[0_0_20px_rgba(242,135,5,0.3)] overflow-hidden">
+                            <span className="relative z-10">VISIT RANGES</span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#F28705]/0 to-[#F28705]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        </button>
+                    </Link>
                 </motion.div>
+            </motion.div>
 
-                {/* Clay target animation */}
-                {!prefersReducedMotion && (
-                    <div className="absolute -right-20 top-1/4 md:right-[-120px] opacity-90">
-                        <ClayTarget
-                            onClick={() => { }}
-                        />
-                    </div>
-                )}
-            </div>
-
-            {/* Scroll Affordance */}
+            {/* Enhanced Scroll Indicator - Shotgun Shell Design */}
             <motion.div
-                className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-10" // Ensure this is above gradient/smoke
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5 }}
-                style={shellStyle}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: [0, 10, 0], opacity: 1 }}
+                transition={{
+                    opacity: { delay: 1.8 },
+                    y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                }}
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
             >
-                {/* ... Shotgun shell ... */}
-                <div className="relative w-8 h-16">
-                    <motion.div
-                        className="absolute top-0 w-8 h-12 bg-gradient-to-b from-[#F2B950] to-[#F27127] rounded-t-lg"
-                        animate={{ y: [0, 4, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                    {Array.from({ length: 3 }).map((_, i) => (
+                {/* Shotgun shell */}
+                <div className="relative h-16 w-8">
+                    {/* Shell casing */}
+                    <div className="absolute w-8 h-10 rounded-t-md overflow-hidden bg-gradient-to-b from-[#F2CB05] to-[#F28705]">
+                        {/* Shell ridges */}
+                        <div className="w-full h-full flex flex-col justify-around opacity-30">
+                            <div className="h-[1px] w-full bg-black"></div>
+                            <div className="h-[1px] w-full bg-black"></div>
+                            <div className="h-[1px] w-full bg-black"></div>
+                        </div>
+                    </div>
+
+                    {/* Shell cap */}
+                    <div className="absolute top-10 w-8 h-2 bg-[#303030] rounded-b-sm"></div>
+
+                    {/* Falling BBs */}
+                    {[1, 2, 3].map((i) => (
                         <motion.div
                             key={i}
-                            className="absolute w-2 h-2 rounded-full bg-[#808080]"
-                            style={{ left: `${(i + 1) * 8}px`, top: "50%" }}
-                            animate={{ y: [0, 30], opacity: [1, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2, ease: "easeIn" }}
+                            className="absolute w-1.5 h-1.5 rounded-full bg-[#808080]"
+                            style={{ left: `${i * 2 + 1}px`, top: "12px" }}
+                            animate={{
+                                y: [0, 30],
+                                opacity: [1, 0],
+                            }}
+                            transition={{
+                                duration: 1.5,
+                                repeat: Infinity,
+                                delay: i * 0.2,
+                                ease: "easeIn"
+                            }}
                         />
                     ))}
                 </div>
-                <motion.span
-                    className="text-[var(--text-secondary)] text-sm uppercase tracking-wider"
-                    animate={{ y: [0, 4, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                >
-                    Scroll to Explore
-                </motion.span>
-            </motion.div>
 
-            {/* Optional: Bottom fade for content area, ensure it's above the main background gradient */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--dark-bg)] to-transparent z-5" />
-        </div>
+                <span className="text-sm font-heading text-white/40 uppercase tracking-wider">Scroll</span>
+            </motion.div>
+        </section>
     );
 };
 

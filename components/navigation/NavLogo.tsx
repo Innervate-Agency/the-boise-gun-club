@@ -20,8 +20,8 @@ export default function NavLogo() {
                         Est. 1898
                     </p>
                     <h1 className="text-xl md:text-5xl text-white font-heading tracking-wide">
-                        <span style={{ fontWeight: 900 }}>BOISE</span>
-                        <span style={{ fontWeight: 300 }}> GUN CLUB</span>
+                        <span className="font-[900]">BOISE</span>
+                        <span className="font-[100]">GUNCLUB</span>
                     </h1>
                     <p className="text-[8px] md:text-[12px] text-white/70 uppercase tracking-wider font-body">
                         Idaho&apos;s Premier Shotgun Sports Facility

@@ -223,97 +223,135 @@ const HomePage: FC = () => {
             {/* Hero Section */}
             <HeroSection />
 
-            {/* Upcoming Events Section - Modern Glassmorphic */}
-            <section className="relative py-20 overflow-hidden">
+            {/* Upcoming Events Section - Modern Glassmorphism */}
+            <section className="relative py-32 overflow-hidden">
                 {/* Background elements */}
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute inset-0 bg-[url('/images/Grid/Grid (2).jpg')] bg-cover opacity-15 mix-blend-screen retrowave-grid"></div>
                     <SmokeAnimation />
+
+                    {/* Enhanced glow orbs */}
+                    <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-[var(--accent-primary)]/5 to-[var(--accent-secondary)]/10 blur-[120px]"></div>
+                    <div className="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-[var(--accent-darkred)]/5 to-[var(--accent-gold)]/10 blur-[150px]"></div>
                 </div>
 
-                <div className="container mx-auto px-4 relative z-10">
-                    {/* Section header */}
-                    <div className="text-center mb-16">
-                        <h2 className="font-['Refrigerator_Deluxe'] text-4xl md:text-5xl font-bold text-[var(--text-primary)] tracking-wider mb-4 psychedelic-text">
-                            UPCOMING EVENTS
-                        </h2>
-                        <div className="h-1 w-24 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] mx-auto"></div>
+                <div className="container mx-auto px-6 relative z-10">
+                    {/* Section header with 3D typography */}
+                    <div className="text-center mb-24">
+                        <div className="inline-block relative">
+                            <h2 className="font-heading text-5xl md:text-6xl font-bold tracking-wider mb-6 uppercase psychedelic-text">
+                                Upcoming Events
+                            </h2>
+                            <div className="absolute -bottom-4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--accent-primary)] to-transparent"></div>
+                        </div>
+                        <p className="text-[var(--text-secondary)] max-w-2xl mx-auto mt-6 font-body text-lg">
+                            Join us for these exciting upcoming events at the Boise Gun Club
+                        </p>
                     </div>
 
-                    {/* Events - Horizontal glassmorphic cards */}
-                    <div className="space-y-6">
+                    {/* Events - Modern horizontal cards with mica effect */}
+                    <div className="space-y-8">
                         {upcomingEvents.map((event, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: index * 0.2 }}
-                                className="backdrop-blur-md bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded overflow-hidden shadow-lg relative"
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.7, delay: index * 0.1 }}
+                                className="backdrop-blur-xl bg-[rgba(18,18,18,0.5)] border border-[rgba(255,255,255,0.08)] rounded-2xl overflow-hidden shadow-2xl relative group"
                                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
                             >
+                                {/* Hover glow effect */}
+                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-[var(--accent-primary)]/0 via-[var(--accent-primary)]/5 to-[var(--accent-primary)]/0"></div>
+
+                                {/* Decorative gradient line */}
+                                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--accent-primary)] to-transparent opacity-40"></div>
+
                                 <div className="flex flex-col md:flex-row">
-                                    {/* Date column */}
-                                    <div className="w-full md:w-40 flex-shrink-0 bg-[var(--accent-primary)]/10 p-4 flex flex-row md:flex-col items-center md:items-start justify-between md:justify-center text-[var(--accent-primary)]">
+                                    {/* Date column with enhanced styling */}
+                                    <div className="w-full md:w-52 flex-shrink-0 bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/5 p-6 flex flex-row md:flex-col items-center md:items-start justify-between md:justify-center text-[var(--accent-primary)]">
                                         <div className="text-center md:text-left">
-                                            <div className="text-lg md:text-2xl font-bold font-['Refrigerator_Deluxe']">
+                                            <div className="text-2xl md:text-3xl font-bold font-heading mb-1">
                                                 {event.date.split(' ')[1].replace(',', '')}
                                             </div>
-                                            <div className="text-sm md:text-base font-['Museo']">
+                                            <div className="text-base md:text-lg font-body opacity-80">
                                                 {event.date.split(' ')[0]} {event.time}
                                             </div>
                                         </div>
-                                        <div className="text-xs px-2 py-1 rounded bg-[var(--accent-primary)]/20 uppercase md:mt-3">
+                                        <div className="text-xs px-3 py-1.5 rounded-full bg-[var(--accent-primary)]/20 uppercase mt-3 font-heading tracking-wider">
                                             {event.category}
                                         </div>
                                     </div>
 
                                     {/* Event content */}
-                                    <div className="p-6 flex-grow">
-                                        <h3 className="text-xl font-bold mb-2 text-[var(--text-primary)] font-['Refrigerator_Deluxe']">
+                                    <div className="p-8 flex-grow">
+                                        <h3 className="text-2xl font-bold mb-3 text-[var(--text-primary)] font-heading">
                                             {event.title}
                                         </h3>
-                                        <p className="text-[var(--text-secondary)] mb-4 text-sm font-['Museo']">
+                                        <p className="text-[var(--text-secondary)] mb-4 text-base font-body leading-relaxed">
                                             {event.description}
                                         </p>
-                                        <Link href="/events" className="text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] font-['Refrigerator_Deluxe'] text-sm flex items-center">
-                                            LEARN MORE
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <Link href="/events" className="group inline-flex items-center font-heading text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] transition-colors duration-300">
+                                            <span>LEARN MORE</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                             </svg>
                                         </Link>
                                     </div>
                                 </div>
-
-                                {/* Hover effect - subtle smoke */}
-                                <div className="absolute inset-0 bg-[url('/images/Smoke/Background_01.jpg')] bg-cover opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none"></div>
                             </motion.div>
                         ))}
                     </div>
 
-                    {/* View all events button */}
-                    <div className="mt-10 text-center">
-                        <Link href="/events" className="inline-block px-8 py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] hover:from-[var(--accent-secondary)] hover:to-[var(--accent-primary)] text-white rounded font-['Refrigerator_Deluxe'] shadow-lg transition-all duration-300 pulse">
-                            VIEW ALL EVENTS
+                    {/* View all events button with modern hover effect */}
+                    <div className="mt-16 text-center">
+                        <Link href="/events" className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white rounded-lg font-heading shadow-lg overflow-hidden">
+                            <span className="relative z-10">VIEW ALL EVENTS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 relative z-10 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                            {/* Button glow */}
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-x-0 group-hover:scale-x-100 bg-white/20 origin-left"></div>
+                            {/* External glow */}
+                            <div className="absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg blur-md bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)]"></div>
                         </Link>
                     </div>
                 </div>
             </section>
 
-            {/* Facility Highlights Section */}
-            <section className="relative py-20 bg-[var(--bg-secondary)]">
+            {/* Divider with clay target animation */}
+            <div className="relative h-32 overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-full h-px bg-gradient-to-r from-transparent via-[var(--accent-primary)]/30 to-transparent"></div>
+                    <div className="absolute w-12 h-12 bg-[var(--bg-primary)] rounded-full flex items-center justify-center border border-[var(--accent-primary)]/20">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--accent-primary)]/80 to-[var(--accent-secondary)]/80"></div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Facility Highlights Section - Modern Cards with Depth */}
+            <section className="relative py-32 bg-[var(--bg-secondary)]">
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute inset-0 bg-[url('/images/Grid/Grid (4).jpg')] bg-cover opacity-5 mix-blend-screen retrowave-grid"></div>
+                    {/* Enhanced lighting effects */}
+                    <div className="absolute top-0 right-0 left-0 h-[30%] bg-gradient-to-b from-[var(--accent-tertiary)]/5 to-transparent"></div>
+                    <div className="absolute bottom-0 right-0 left-0 h-[30%] bg-gradient-to-t from-[var(--accent-quaternary)]/5 to-transparent"></div>
                 </div>
 
-                <div className="container mx-auto px-4 relative z-10">
-                    <div className="text-center mb-16">
-                        <h2 className="font-['Refrigerator_Deluxe'] text-4xl md:text-5xl font-bold text-[var(--text-primary)] tracking-wider mb-4 gradient-text">
-                            FACILITY HIGHLIGHTS
-                        </h2>
-                        <div className="h-1 w-24 bg-gradient-to-r from-[var(--accent-tertiary)] to-[var(--accent-quaternary)] mx-auto"></div>
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-24">
+                        <div className="md:max-w-2xl">
+                            <h2 className="font-heading text-5xl md:text-6xl font-bold tracking-wider mb-6 gradient-text text-right md:text-left">
+                                FACILITY HIGHLIGHTS
+                            </h2>
+                            <div className="h-1 w-24 bg-gradient-to-r from-[var(--accent-tertiary)] to-[var(--accent-quaternary)] md:ml-0 ml-auto"></div>
+                        </div>
+                        <p className="text-[var(--text-secondary)] md:max-w-md mt-4 md:mt-0 text-lg font-body text-right md:text-right">
+                            Our world-class facilities provide the perfect environment for shooters of all skill levels
+                        </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                         {facilityHighlights.map((item, index) => (
                             <FacilityCard
                                 key={index}
@@ -328,21 +366,34 @@ const HomePage: FC = () => {
                 </div>
             </section>
 
-            {/* Stats & Testimonial Section */}
-            <section className="relative py-20 bg-[var(--accent-darkred)]">
+            {/* Divider with angled design */}
+            <div className="relative h-32 overflow-hidden">
+                <div className="absolute inset-0">
+                    <div className="absolute inset-0 skew-y-2 bg-[var(--accent-darkred)]"></div>
+                </div>
+            </div>
+
+            {/* Stats & Testimonial Section - Elevated Design */}
+            <section className="relative py-32 bg-[var(--accent-darkred)]">
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute inset-0 bg-[url('/images/Grid/Grid (3).jpg')] bg-cover opacity-5 mix-blend-screen"></div>
+                    <div className="absolute inset-0 bg-[url('/images/Grid/Grid (3).jpg')] bg-cover opacity-10 mix-blend-screen"></div>
                     <SmokeAnimation />
+                    {/* Enhanced dot matrix pattern */}
+                    <div className="absolute inset-0 opacity-5"
+                        style={{
+                            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)',
+                            backgroundSize: '40px 40px'
+                        }}></div>
                 </div>
 
-                <div className="container mx-auto px-4 relative z-10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        {/* Stats */}
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+                        {/* Stats with enhanced visualization */}
                         <div>
-                            <h2 className="font-['Refrigerator_Deluxe'] text-3xl font-bold text-white mb-10">
+                            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-12">
                                 CLUB STATISTICS
                             </h2>
-                            <div className="grid grid-cols-2 gap-8">
+                            <div className="grid grid-cols-2 gap-x-8 gap-y-12">
                                 {clubStats.map((stat, index) => (
                                     <StatCard
                                         key={index}
@@ -353,33 +404,34 @@ const HomePage: FC = () => {
                             </div>
                         </div>
 
-                        {/* Testimonial */}
+                        {/* Testimonial with premium mica design */}
                         <div>
-                            <h2 className="font-['Refrigerator_Deluxe'] text-3xl font-bold text-white mb-10">
+                            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-12">
                                 MEMBER TESTIMONIAL
                             </h2>
-                            <div className="backdrop-blur-md bg-white/20 border border-white/20 p-6 rounded shadow-lg relative glass-effect">
-                                {/* Grid pattern within glass panel */}
-                                <div className="absolute inset-0 bg-[url('/images/Grid/Grid (1).jpg')] bg-cover opacity-5 mix-blend-overlay"></div>
+                            <div className="backdrop-blur-xl bg-[rgba(255,255,255,0.06)] border border-[rgba(255,255,255,0.1)] p-8 rounded-2xl shadow-2xl relative overflow-hidden">
+                                {/* Decorative elements */}
+                                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+                                <div className="absolute -right-14 -top-14 w-28 h-28 rounded-full bg-gradient-to-br from-[var(--accent-gold)]/20 to-transparent blur-2xl"></div>
 
                                 <div className="relative z-10">
-                                    <div className="text-[var(--accent-gold)] text-4xl leading-none mb-2">"</div>
-                                    <p className="text-white italic mb-6 font-['Museo']">
+                                    <div className="text-[var(--accent-gold)] text-6xl leading-none mb-2 font-heading">"</div>
+                                    <p className="text-white text-lg italic mb-8 font-body leading-relaxed">
                                         {testimonial.quote}
                                     </p>
                                     <div className="flex items-center">
-                                        <div className="w-12 h-12 rounded-full overflow-hidden border border-[var(--accent-gold)]/30">
+                                        <div className="w-14 h-14 rounded-full overflow-hidden border border-[var(--accent-gold)]/40 shadow-lg">
                                             <Image
                                                 src={testimonial.image}
                                                 alt={testimonial.name}
-                                                width={60}
-                                                height={60}
+                                                width={70}
+                                                height={70}
                                                 className="object-cover vintage-filter"
                                             />
                                         </div>
-                                        <div className="ml-3">
-                                            <div className="text-white font-['Refrigerator_Deluxe']">{testimonial.name}</div>
-                                            <div className="text-[var(--accent-gold)] text-sm font-['Museo']">{testimonial.title}</div>
+                                        <div className="ml-4">
+                                            <div className="text-white text-lg font-heading">{testimonial.name}</div>
+                                            <div className="text-[var(--accent-gold)] text-sm font-body">{testimonial.title}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -389,51 +441,111 @@ const HomePage: FC = () => {
                 </div>
             </section>
 
-            {/* Photo Gallery Preview */}
-            <section className="relative py-20 bg-[var(--bg-primary)]">
+            {/* Divider with clay target animation */}
+            <div className="relative h-32 overflow-hidden bg-gradient-to-b from-[var(--accent-darkred)] to-[var(--bg-primary)]">
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                    {/* Clay target particles */}
+                    {Array.from({ length: 5 }).map((_, i) => (
+                        <motion.div
+                            key={`clay-${i}`}
+                            className="absolute w-1 h-1 bg-[var(--accent-primary)] rounded-full"
+                            style={{
+                                left: `${30 + Math.random() * 40}%`,
+                                top: '100%',
+                                opacity: 0.6 + Math.random() * 0.4,
+                                boxShadow: '0 0 8px 2px rgba(242, 135, 5, 0.3)'
+                            }}
+                            animate={{
+                                y: [0, -120 - Math.random() * 40],
+                                x: [0, (Math.random() * 60) - 30],
+                                opacity: [0.8, 0],
+                                scale: [1, 0.5]
+                            }}
+                            transition={{
+                                duration: 2 + Math.random() * 2,
+                                repeat: Infinity,
+                                delay: Math.random() * 3
+                            }}
+                        />
+                    ))}
+                </div>
+            </div>
+
+            {/* Photo Gallery Preview - Modern Immersive Layout */}
+            <section className="relative py-32 bg-[var(--bg-primary)]">
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute inset-0 bg-[url('/images/Grid/Grid (2).jpg')] bg-cover opacity-10 mix-blend-screen retrowave-grid"></div>
+                    {/* Enhanced lighting effects */}
+                    <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[var(--accent-orangered)]/10 to-transparent"></div>
                 </div>
 
-                <div className="container mx-auto px-4 relative z-10">
-                    <div className="text-center mb-16">
-                        <h2 className="font-['Refrigerator_Deluxe'] text-4xl md:text-5xl font-bold tracking-wider mb-4 gradient-text">
-                            PHOTO GALLERY
-                        </h2>
-                        <div className="h-1 w-24 bg-gradient-to-r from-[var(--accent-orangered)] to-[var(--accent-yellow)] mx-auto"></div>
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-24">
+                        <div>
+                            <h2 className="font-heading text-5xl md:text-6xl font-bold tracking-wider mb-6 gradient-text">
+                                PHOTO GALLERY
+                            </h2>
+                            <div className="h-1 w-24 bg-gradient-to-r from-[var(--accent-orangered)] to-[var(--accent-yellow)]"></div>
+                        </div>
+                        <p className="text-[var(--text-secondary)] md:max-w-sm mt-4 md:mt-0 text-lg font-body">
+                            Explore the rich history and vibrant community of the Boise Gun Club
+                        </p>
                     </div>
 
                     <PhotoGallery photos={galleryPhotos} />
 
-                    <div className="text-center mt-12">
-                        <Link href="/gallery" className="inline-block px-8 py-3 bg-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/90 text-white backdrop-blur-sm rounded transition-all duration-300 hover:scale-105">
-                            VIEW FULL GALLERY
+                    <div className="text-center mt-16">
+                        <Link href="/gallery" className="group relative inline-flex items-center gap-2 px-8 py-4 bg-[var(--accent-primary)]/90 hover:bg-[var(--accent-primary)] text-white rounded-lg font-heading transition-all duration-300 overflow-hidden">
+                            <span className="relative z-10">VIEW FULL GALLERY</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 relative z-10 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                            {/* Hover effect */}
+                            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-0 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-primary)]/80 transition-transform duration-500"></div>
                         </Link>
                     </div>
                 </div>
             </section>
 
-            {/* CTA Section */}
-            <section className="relative py-16 bg-gradient-to-r from-[var(--accent-orangered)] to-[var(--accent-primary)]">
-                <div className="container mx-auto px-4 relative z-10">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div className="mb-6 md:mb-0">
-                            <h2 className="font-['Refrigerator_Deluxe'] text-3xl font-bold text-white mb-2">
+            {/* CTA Section - Premium Gradient Design */}
+            <section className="relative py-24 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-orangered)] to-[var(--accent-primary)]">
+                    {/* Animated backdrop pattern */}
+                    <div className="absolute inset-0 opacity-20"
+                        style={{
+                            backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255, 255, 255, 0.1) 20px, rgba(255, 255, 255, 0.1) 40px)`,
+                            backgroundSize: '120px 120px',
+                        }}
+                    ></div>
+                </div>
+
+                {/* Floating orbs */}
+                <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-white/5 blur-3xl"></div>
+                <div className="absolute bottom-1/3 left-1/3 w-96 h-96 rounded-full bg-[var(--accent-yellow)]/10 blur-3xl"></div>
+
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+                        <div className="md:max-w-xl">
+                            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
                                 BECOME A MEMBER TODAY
                             </h2>
-                            <p className="text-white/90 max-w-xl font-['Museo']">
-                                Join our community and enjoy exclusive access to our ranges, events, and training programs.
+                            <p className="text-white/90 text-lg font-body leading-relaxed">
+                                Join our community and enjoy exclusive access to our ranges, events, and training programs. Experience the tradition and excellence that defines the Boise Gun Club.
                             </p>
                         </div>
-                        <div>
-                            <Link href="/membership" className="inline-block px-8 py-3 bg-[var(--accent-gold)] text-[var(--accent-darkred)] hover:bg-[var(--accent-yellow)] rounded font-['Refrigerator_Deluxe'] shadow-lg transition-all duration-300 hover:rotate-1">
-                                JOIN NOW
+                        <div className="flex-shrink-0">
+                            <Link href="/membership" className="group relative inline-block px-10 py-5 bg-[var(--accent-gold)] text-[var(--accent-darkred)] hover:bg-[var(--accent-yellow)] rounded-lg font-heading text-xl shadow-2xl transition-all duration-300 overflow-hidden">
+                                <span className="relative z-10">JOIN NOW</span>
+                                {/* Button glow */}
+                                <div className="absolute inset-0 -translate-y-full group-hover:translate-y-0 bg-white/20 transition-transform duration-300"></div>
+                                {/* External glow */}
+                                <div className="absolute -inset-1 opacity-0 group-hover:opacity-100 scale-105 transition-opacity duration-300 rounded-lg blur-md bg-[var(--accent-gold)]"></div>
                             </Link>
                         </div>
                     </div>
                 </div>
 
-                {/* Retro sun effect */}
+                {/* Bottom grid effect */}
                 <div className="absolute bottom-0 left-0 w-full h-4 bg-[url('/images/Grid/Grid (3).jpg')] bg-repeat-x opacity-30"></div>
             </section>
         </div>

@@ -1,10 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useTime, useTransform, MotionValue } from 'framer-motion';
 
 interface WavyGridBackgroundProps {
     lineColor?: string;
+    lineGlow?: string;
+    lineShadow?: string;
     numLinesX?: number;
     numLinesY?: number;
     waveAmplitude?: number;
@@ -17,30 +19,38 @@ interface WavyGridBackgroundProps {
     gridScale?: number;
     gridWidth?: number;
     gridHeight?: number;
+    isResponsive?: boolean;
+    fadeEdges?: boolean;
 }
 
 interface WavyHorizontalLineProps {
     baseY: number;
     gridWidth: number;
     strokeColor: string;
+    glowColor?: string;
+    shadowColor?: string;
     waveAmplitude: number;
     waveFrequency: number;
     waveSpeed: number;
     time: MotionValue<number>;
     numSegments: number;
     strokeWidth?: number;
+    fadeEdges?: boolean;
 }
 
 const WavyHorizontalLine: React.FC<WavyHorizontalLineProps> = ({
     baseY,
     gridWidth,
     strokeColor,
+    glowColor,
+    shadowColor,
     waveAmplitude,
     waveFrequency,
     waveSpeed,
     time,
     numSegments,
     strokeWidth = 1,
+    fadeEdges = false
 }) => {
     const d = useTransform(time, currentTime => {
         const timeFactor = currentTime / 1000;
@@ -54,17 +64,50 @@ const WavyHorizontalLine: React.FC<WavyHorizontalLineProps> = ({
     });
 
     return (
-        <motion.path
-            d={d}
-            stroke={strokeColor}
-            strokeWidth={strokeWidth}
-            fill="none"
-        />
+        <>
+            {/* Shadow effect */}
+            {shadowColor && (
+                <motion.path
+                    d={d}
+                    stroke={shadowColor}
+                    strokeWidth={strokeWidth * 1.5}
+                    strokeOpacity={0.4}
+                    fill="none"
+                    filter="blur(3px)"
+                />
+            )}
+
+            {/* Main line */}
+            <motion.path
+                d={d}
+                stroke={strokeColor}
+                strokeWidth={strokeWidth}
+                fill="none"
+                style={fadeEdges ? {
+                    maskImage: "linear-gradient(to right, transparent, white 10%, white 90%, transparent)",
+                    WebkitMaskImage: "linear-gradient(to right, transparent, white 10%, white 90%, transparent)",
+                } : undefined}
+            />
+
+            {/* Glow effect */}
+            {glowColor && (
+                <motion.path
+                    d={d}
+                    stroke={glowColor}
+                    strokeWidth={strokeWidth * 2.5}
+                    strokeOpacity={0.2}
+                    fill="none"
+                    filter="blur(4px)"
+                />
+            )}
+        </>
     );
 };
 
 const WavyGridBackground: React.FC<WavyGridBackgroundProps> = ({
-    lineColor = '#FFFFFF',
+    lineColor = 'rgba(242, 135, 5, 0.2)',
+    lineGlow = 'rgba(242, 135, 5, 0.5)',
+    lineShadow = 'rgba(0, 0, 0, 0.5)',
     numLinesX = 50,
     numLinesY = 30,
     waveAmplitude = 3,
@@ -77,13 +120,45 @@ const WavyGridBackground: React.FC<WavyGridBackgroundProps> = ({
     gridScale = 1.5,
     gridWidth = 1200,
     gridHeight = 800,
+    isResponsive = true,
+    fadeEdges = true,
 }) => {
     const time = useTime();
     const numSegments = 50;
     const lineStrokeWidth = 0.5;
 
-    const xSpacing = gridWidth / (numLinesX + 1);
-    const ySpacing = gridHeight / (numLinesY + 1);
+    // For responsive sizing
+    const [dimensions, setDimensions] = useState({
+        width: typeof window !== 'undefined' ? window.innerWidth : 1200,
+        height: typeof window !== 'undefined' ? window.innerHeight : 800
+    });
+
+    useEffect(() => {
+        if (!isResponsive) return;
+
+        const handleResize = () => {
+            setDimensions({
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, [isResponsive]);
+
+    // Adjust grid size for responsive mode
+    const responsiveWidth = isResponsive ? dimensions.width * 1.5 : gridWidth;
+    const responsiveHeight = isResponsive ? dimensions.height * 1.5 : gridHeight;
+
+    // Dynamic grid spacing based on screen size
+    const xSpacing = responsiveWidth / (numLinesX + 1);
+    const ySpacing = responsiveHeight / (numLinesY + 1);
+
+    // Calculate line width based on screen size
+    const dynamicStrokeWidth = isResponsive
+        ? Math.max(0.5, Math.min(1, dimensions.width / 1920))
+        : lineStrokeWidth;
 
     return (
         <div
@@ -102,46 +177,113 @@ const WavyGridBackground: React.FC<WavyGridBackgroundProps> = ({
                 }}
             >
                 <motion.svg
-                    width={gridWidth}
-                    height={gridHeight}
-                    viewBox={`0 0 ${gridWidth} ${gridHeight}`}
+                    width={responsiveWidth}
+                    height={responsiveHeight}
+                    viewBox={`0 0 ${responsiveWidth} ${responsiveHeight}`}
                     style={{
                         transform: `translateZ(${gridTranslateZ}px) rotateX(${gridRotationX}deg) scale(${gridScale})`,
                         overflow: 'visible',
                         transformOrigin: 'center center',
                     }}
                 >
-                    {/* Vertical Lines */}
-                    {Array.from({ length: numLinesX }).map((_, i) => (
-                        <motion.line
-                            key={`v-line-${i}`}
-                            x1={(i + 1) * xSpacing}
-                            y1={0}
-                            x2={(i + 1) * xSpacing}
-                            y2={gridHeight}
-                            stroke={lineColor}
-                            strokeWidth={lineStrokeWidth}
-                        />
-                    ))}
+                    {/* Vertical Lines - with depth effect */}
+                    {Array.from({ length: numLinesX }).map((_, i) => {
+                        // Calculate opacity and width based on position to create depth
+                        const xPos = (i + 1) * xSpacing;
+                        const distanceFromCenter = Math.abs(xPos - (responsiveWidth / 2));
+                        const maxDistance = responsiveWidth / 2;
+                        const opacityFactor = fadeEdges
+                            ? Math.max(0.3, 1 - (distanceFromCenter / maxDistance) * 0.7)
+                            : 1;
+
+                        return (
+                            <React.Fragment key={`v-line-${i}`}>
+                                {/* Shadow */}
+                                <motion.line
+                                    x1={(i + 1) * xSpacing}
+                                    y1={0}
+                                    x2={(i + 1) * xSpacing}
+                                    y2={responsiveHeight}
+                                    stroke={lineShadow}
+                                    strokeWidth={dynamicStrokeWidth * 1.5}
+                                    strokeOpacity={0.3 * opacityFactor}
+                                    filter="blur(2px)"
+                                />
+
+                                {/* Main line */}
+                                <motion.line
+                                    x1={(i + 1) * xSpacing}
+                                    y1={0}
+                                    x2={(i + 1) * xSpacing}
+                                    y2={responsiveHeight}
+                                    stroke={lineColor}
+                                    strokeWidth={dynamicStrokeWidth}
+                                    strokeOpacity={opacityFactor}
+                                />
+
+                                {/* Glow effect */}
+                                <motion.line
+                                    x1={(i + 1) * xSpacing}
+                                    y1={0}
+                                    x2={(i + 1) * xSpacing}
+                                    y2={responsiveHeight}
+                                    stroke={lineGlow}
+                                    strokeWidth={dynamicStrokeWidth * 2}
+                                    strokeOpacity={0.15 * opacityFactor}
+                                    filter="blur(3px)"
+                                />
+                            </React.Fragment>
+                        );
+                    })}
 
                     {/* Horizontal Wavy Lines */}
                     {Array.from({ length: numLinesY }).map((_, i) => {
                         const baseY = (i + 1) * ySpacing;
+
+                        // Calculate opacity based on position to create depth
+                        const distanceFromCenter = Math.abs(baseY - (responsiveHeight / 2));
+                        const maxDistance = responsiveHeight / 2;
+                        const opacityFactor = fadeEdges
+                            ? Math.max(0.3, 1 - (distanceFromCenter / maxDistance) * 0.7)
+                            : 1;
+
                         return (
                             <WavyHorizontalLine
                                 key={`h-line-${i}`}
                                 baseY={baseY}
-                                gridWidth={gridWidth}
+                                gridWidth={responsiveWidth}
                                 strokeColor={lineColor}
-                                waveAmplitude={waveAmplitude}
+                                glowColor={lineGlow}
+                                shadowColor={lineShadow}
+                                waveAmplitude={waveAmplitude * (1 - (i / numLinesY) * 0.3)} // Decrease amplitude slightly for lines further down
                                 waveFrequency={waveFrequency}
-                                waveSpeed={waveSpeed}
+                                waveSpeed={waveSpeed * (1 + (i / numLinesY) * 0.2)} // Increase speed slightly for lines further down
                                 time={time}
                                 numSegments={numSegments}
-                                strokeWidth={lineStrokeWidth}
+                                strokeWidth={dynamicStrokeWidth * opacityFactor}
+                                fadeEdges={fadeEdges}
                             />
                         );
                     })}
+
+                    {/* Subtle vignette overlay for depth */}
+                    {fadeEdges && (
+                        <radialGradient id="vignette" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                            <stop offset="70%" stopColor="rgba(0,0,0,0)" />
+                            <stop offset="100%" stopColor="rgba(0,0,0,0.3)" />
+                        </radialGradient>
+                    )}
+
+                    {fadeEdges && (
+                        <rect
+                            x="0"
+                            y="0"
+                            width={responsiveWidth}
+                            height={responsiveHeight}
+                            fill="url(#vignette)"
+                            opacity="0.5"
+                        />
+                    )}
                 </motion.svg>
             </motion.div>
         </div>
