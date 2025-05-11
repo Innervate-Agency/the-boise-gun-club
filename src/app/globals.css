@@ -7,16 +7,12 @@
 @layer base {
   /* Default text size */
   html {
-    font-size: 16px;
+    font-size: 15px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
-  /* Apply font family to body directly */
-  body {
-    font-family: "museo-sans", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  }
 
   /* Larger text for calendar components */
   .calendar-text {

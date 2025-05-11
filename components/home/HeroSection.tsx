@@ -1,9 +1,8 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
 
 // Smoke wisp component
 const SmokeWisp = ({ index }: { index: number }) => {
@@ -183,11 +182,25 @@ const HeroSection = () => {
     const opacityBg = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
     const gridScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
+    // Ensure the grid background has a TRON-like effect
+    const gridTransform = useTransform(scrollYProgress, [0, 1], ['perspective(1000px) rotateX(20deg)', 'perspective(1000px) rotateX(0deg)']);
+
+    // Add smoke overlay using brand colors
+    const smokeOpacity = useTransform(scrollYProgress, [0, 0.3], [0.8, 0]);
+
     // Smoke particles
     const wisps = Array.from({ length: 8 }, (_, i) => i);
 
     // Trigger clay target animation on scroll
     const [targetBroken, setTargetBroken] = useState(false);
+
+    // Implement clay target particles to react to cursor movement
+    const handleMouseMove = () => {
+        // const { clientX, clientY } = e;
+        // const moveX = clientX - window.innerWidth / 2;
+        // const moveY = clientY - window.innerHeight / 2;
+        // Use moveX and moveY to adjust particle positions
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -204,6 +217,7 @@ const HeroSection = () => {
         <div
             ref={containerRef}
             className="relative overflow-hidden h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]"
+            onMouseMove={handleMouseMove}
         >
             {/* Base layer - Grid background with parallax */}
             <motion.div 
@@ -211,7 +225,8 @@ const HeroSection = () => {
                 style={{ 
                     y: yBg,
                     opacity: opacityBg,
-                    scale: gridScale
+                    scale: gridScale,
+                    transform: gridTransform
                 }}
             >
                 <div className="absolute inset-0 bg-[var(--bg-primary)]"></div>
@@ -225,6 +240,16 @@ const HeroSection = () => {
                 {/* Subtle grain texture */}
                 <div className="absolute inset-0 bg-[url('/textures/grain.png')] opacity-10 mix-blend-multiply"></div>
             </motion.div>
+
+            {/* Smoke overlay */}
+            <motion.div
+                className="absolute inset-0 z-10"
+                style={{
+                    opacity: smokeOpacity,
+                    background: 'linear-gradient(135deg, rgba(82,22,35,0.4) 0%, rgba(242,185,80,0.2) 100%)',
+                    mixBlendMode: 'overlay'
+                }}
+            />
 
             {/* Retro sun effect */}
             <RetroSun />
