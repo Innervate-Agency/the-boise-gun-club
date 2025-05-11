@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useTheme } from '@components/ui/ThemeContext';
+import { useTheme } from '@/components/ui/ThemeContext';
 
 export default function ThemeToggle() {
     const { theme, toggleTheme } = useTheme();

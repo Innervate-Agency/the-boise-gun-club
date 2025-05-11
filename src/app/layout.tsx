@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect } from 'react';
-import { ThemeProvider } from '@components/ui/ThemeContext';
-import { NavigationProvider } from '@components/navigation/NavigationContext';
-import NavBar from '@components/navigation/NavBar';
-import Footer from '@components/Footer/Footer';
+import { ThemeProvider } from '@/components/ui/ThemeContext';
+import { NavigationProvider } from '@/components/navigation/NavigationContext';
+import NavBar from '@/components/navigation/NavBar';
+import Footer from '@/components/common/Footer';
 import './globals.css';
 import './fonts.css';
 

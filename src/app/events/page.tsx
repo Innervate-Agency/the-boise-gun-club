@@ -1,6 +1,6 @@
 'use client';
 
-import Calendar from '@components/events/Calendar';
+import Calendar from '@/components/events/Calendar';
 
 export default function EventsPage() {
     return (

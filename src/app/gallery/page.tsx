@@ -1,6 +1,6 @@
 'use client';
 
-import PhotoGallery from '@components/gallery/PhotoGallery';
+import PhotoGallery from '@/components/gallery/PhotoGallery';
 
 export default function GalleryPage() {
     return (

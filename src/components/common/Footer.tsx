@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useTheme } from '../ui/ThemeContext';
 import { motion } from 'framer-motion';
 
 const socialLinks = [
@@ -13,7 +12,6 @@ const socialLinks = [
 export default function Footer() {
     const [email, setEmail] = useState('');
     const [isValidEmail, setIsValidEmail] = useState(true);
-    const { colorScheme } = useTheme();
 
     const validateEmail = (email: string) => {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

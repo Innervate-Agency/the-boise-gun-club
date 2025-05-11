@@ -1,6 +1,6 @@
 'use client';
 
-import MembershipOptions from '@components/membership/MembershipOptions';
+import MembershipOptions from '@/components/membership/MembershipOptions';
 
 export default function MembershipPage() {
     return (
