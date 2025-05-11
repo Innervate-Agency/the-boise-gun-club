@@ -1,14 +1,12 @@
 'use client';
 
+// Import necessary libraries and components
 import { FC, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import HeroSection from './components/HeroSection';
-import MemberSpotlight from './components/MemberSpotlight';
-import NewsCard from './components/NewsCard';
-import PhotoGallery from './components/PhotoGallery';
-
+import Gallery from './components/gallery/Gallery';
 
 // Sample data - replace with actual data from your API/backend
 const upcomingEvents = [

@@ -29,7 +29,11 @@ const NavItem = ({ label, href, isActive }: {
             <motion.div
                 className="relative flex items-center cursor-pointer px-2 py-1"
                 whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 1 }}
+                transition={{ duration: 0.2 }}
+                style={{
+                    color: isActive ? 'var(--accent-primary)' : 'var(--text-primary)'
+                }}
             >
                 <span className={`font-heading text-sm tracking-wide ${isActive ? 'text-[var(--accent-primary)]' : 'text-[var(--text-primary)]'}`}>
                     {label}
