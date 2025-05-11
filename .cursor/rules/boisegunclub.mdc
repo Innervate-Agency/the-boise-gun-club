@@ -1,0 +1,35 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+**BOISE GUN CLUB - PROJECT GUIDELINES**
+
+**Brand Colors & Variables**
+- Always use CSS custom properties for colors (e.g., var(--accent-primary))
+- Primary colors: leonard-yellow (#F2CB05), lahoma-orange (#F28705), dark-bg (#121212)
+- Ensure minimum 4.5:1 contrast ratio for accessibility
+
+**Typography**
+- Headings: 'Refrigerator_Deluxe' font-family only
+- Body text: 'MuseoSans' font-family only
+- Minimum 18px base font size for older members
+- Always uppercase for headings
+
+**Animation Standards**
+- Use framer-motion for all animations
+- Keep effects at 60fps minimum
+- Add device detection for lower-end devices
+- Include prefers-reduced-motion support
+
+**Component Patterns**
+- Glassmorphism: 15-20% opacity, 10px blur, subtle border highlight
+- Grid backgrounds with perspective transforms for TRON effect
+- Smoke effects should be subtle and performance-optimized
+- Clay target animations use physics-based movements
+
+**Code Style**
+- Always use TypeScript
+- Extract reusable components
+- Optimize images with Next/Image
+- Maintain consistent component structure

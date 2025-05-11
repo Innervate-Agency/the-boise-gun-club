@@ -23,7 +23,7 @@ export default function RootLayout({
   }, []);
 
   return (
-    <html lang="en" className="h-full font-body">
+    <html lang="en" className="h-full font-body" suppressHydrationWarning={true}>
       <head>
         {/* Adobe Fonts script - this is more reliable than CSS link */}
         <script dangerouslySetInnerHTML={{
@@ -53,7 +53,7 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/images/Grid/Grid (3).jpg" />
         <link rel="preload" as="image" href="/images/Smoke/Background_01.jpg" />
       </head>
-      <body className="min-h-full flex flex-col font-body bg-[#121212] text-white">
+      <body className="min-h-full flex flex-col font-body bg-[#121212] text-white" suppressHydrationWarning={true}>
         <ThemeProvider>
           <NavigationProvider>
             <NavBar />

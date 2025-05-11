@@ -1,356 +1,221 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, useAnimation, MotionStyle } from 'framer-motion';
 import Link from 'next/link';
+import { useThrottledCallback } from 'use-debounce';
+// import WavyGridBackground from './effects/WavyGridBackground'; // No longer using WavyGridBackground
+import { ClayTarget } from './effects/ClayTarget';
+import { SmokeCanvas } from './effects/SmokeCanvas'; // Assuming this is your smoke component
+// import { useInView } from 'react-intersection-observer';
 
-// Smoke wisp component
-const SmokeWisp = ({ index }: { index: number }) => {
-    const randomX = Math.random() * 100;
-    const randomDelay = Math.random() * 5;
-    const randomDuration = 20 + Math.random() * 30;
-
-    return (
-        <motion.div
-            className="absolute opacity-[0.08] blur-xl"
-            style={{
-                width: '300px',
-                height: '300px',
-                left: `${randomX}%`,
-                top: '20%',
-                background: 'url("/images/Smoke/Background_0' + ((index % 9) + 1) + '.jpg")',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                borderRadius: '50%',
-            }}
-            initial={{ opacity: 0, scale: 0.5, y: 100 }}
-            animate={{
-                opacity: [0, 0.08, 0],
-                scale: [0.7, 1.2],
-                y: [100, -200],
-                x: [0, Math.random() * 100 - 50]
-            }}
-            transition={{
-                duration: randomDuration,
-                ease: "easeOut",
-                delay: randomDelay,
-                repeat: Infinity,
-                repeatDelay: Math.random() * 5
-            }}
-        />
-    );
-};
-
-// Clay target component
-const ClayTarget = ({ broken = false }: { broken?: boolean }) => {
-    return broken ? (
-        // Broken clay target with fragments
-        <div className="relative">
-            {Array.from({ length: 6 }).map((_, i) => (
-                <motion.div
-                    key={i}
-                    className="absolute bg-[var(--accent-primary)]"
-                    style={{
-                        width: `${8 + Math.random() * 15}px`,
-                        height: `${8 + Math.random() * 15}px`,
-                        borderRadius: '50%',
-                        left: '50%',
-                        top: '50%',
-                    }}
-                    initial={{ x: 0, y: 0, opacity: 1 }}
-                    animate={{
-                        x: Math.random() * 100 - 50,
-                        y: Math.random() * 100 - 50,
-                        opacity: [1, 0],
-                        scale: [1, 0.5]
-                    }}
-                    transition={{
-                        duration: 1.5,
-                        ease: "easeOut",
-                        delay: 0.1 * i
-                    }}
-                />
-            ))}
-        </div>
-    ) : (
-        // Whole clay target
-        <motion.div
-            className="w-12 h-12 rounded-full bg-[var(--accent-primary)] shadow-lg"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5 }}
-        />
-    );
-};
-
-// Typewriter effect
-const TypewriterText = ({ text }: { text: string }) => {
-    const [displayText, setDisplayText] = useState("");
-
-    useEffect(() => {
-        let i = 0;
-        const timer = setInterval(() => {
-            if (i < text.length) {
-                setDisplayText(prev => prev + text.charAt(i));
-                i++;
-            } else {
-                clearInterval(timer);
-            }
-        }, 80);
-
-        return () => clearInterval(timer);
-    }, [text]);
-
-    return (
-        <span className="inline-block relative">
-            {displayText}
-            <span className="absolute -right-[0.5em] top-0 h-full w-[0.3em] bg-[var(--accent-gold)] animate-blink"></span>
-        </span>
-    );
-};
-
-// Retro sun effect
-const RetroSun = () => {
-    return (
-        <div className="absolute bottom-40 left-1/2 -translate-x-1/2 z-0 opacity-50">
-            <div className="relative w-60 h-60">
-                <motion.div
-                    className="absolute inset-0 rounded-full bg-gradient-to-b from-[var(--accent-orangered)] to-[var(--accent-gold)] retrowave-sun"
-                    animate={{
-                        scale: [1, 1.05, 1],
-                        y: [0, -5, 0]
-                    }}
-                    transition={{
-                        duration: 8,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                />
-
-                {/* Sun rays */}
-                {Array.from({ length: 12 }).map((_, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute top-1/2 left-1/2 w-40 h-1 bg-[var(--accent-primary)]/30"
-                        style={{
-                            transformOrigin: 'left center',
-                            rotate: `${i * 30}deg`,
-                        }}
-                        animate={{
-                            opacity: [0.2, 0.4, 0.2],
-                            scaleX: [1, 1.1, 1]
-                        }}
-                        transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: i * 0.2
-                        }}
-                    />
-                ))}
-            </div>
-        </div>
-    );
-};
-
-// Disco ball glimmer effect
-const DiscoGlimmer = () => {
-    return (
-        <motion.div
-            className="absolute top-20 right-20 w-20 h-20 rounded-full disco-effect"
-            animate={{
-                rotate: 360
-            }}
-            transition={{
-                duration: 20,
-                repeat: Infinity,
-                ease: "linear"
-            }}
-        />
-    );
-};
+/**
+ * HeroSection Component
+ * 
+ * This component serves as the main hero section for the homepage. It includes:
+ * - A dynamic background with motion effects using Framer Motion.
+ * - Interactive perspective animations based on mouse movement.
+ * - A welcoming heading and description for the shotgun sports complex.
+ * - Call-to-action buttons for membership and event schedules.
+ * - Visual effects like a clay target animation and a shotgun shell with falling BBs.
+ * - Accessibility features such as reduced motion support.
+ */
 
 const HeroSection = () => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start start", "end start"]
-    });
+    const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+// const [isInView, setIsInView] = useState(false); // Removed as unused
+// const { ref, inView } = useInView({ // Removed as unused
+//     root: null,
+//     rootMargin: '0px',
+//     threshold: 0.1,
+//     triggerOnce: true,
+//     initialInView: true,
+// });
+// useEffect(() => { // Removed as unused
+//     setIsInView(inView);
+// }, [inView]);
 
-    // Use transform values for parallax effects
-    const yBg = useTransform(scrollYProgress, [0, 1], [0, 300]);
-    const opacityBg = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-    const gridScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-
-    // Ensure the grid background has a TRON-like effect
-    const gridTransform = useTransform(scrollYProgress, [0, 1], ['perspective(1000px) rotateX(20deg)', 'perspective(1000px) rotateX(0deg)']);
-
-    // Add smoke overlay using brand colors
-    const smokeOpacity = useTransform(scrollYProgress, [0, 0.3], [0.8, 0]);
-
-    // Smoke particles
-    const wisps = Array.from({ length: 8 }, (_, i) => i);
-
-    // Trigger clay target animation on scroll
-    const [targetBroken, setTargetBroken] = useState(false);
-
-    // Implement clay target particles to react to cursor movement
-    const handleMouseMove = () => {
-        // const { clientX, clientY } = e;
-        // const moveX = clientX - window.innerWidth / 2;
-        // const moveY = clientY - window.innerHeight / 2;
-        // Use moveX and moveY to adjust particle positions
-    };
+    // Mouse-based perspective animations are removed as per the new request for static background
+    // const MAX_ROTATION = 8;
+    // const rotateXSpring = useSpring(0, { stiffness: 180, damping: 25 });
+    // const rotateYSpring = useSpring(0, { stiffness: 180, damping: 25 });
 
     useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 100 && !targetBroken) {
-                setTargetBroken(true);
-            }
+        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const updatePrefersReducedMotion = (matches: boolean) => {
+            setPrefersReducedMotion(matches);
+            // if (matches) { // No spring-based rotations to reset now
+            //     rotateXSpring.set(0, false);
+            //     rotateYSpring.set(0, false);
+            // }
         };
+        updatePrefersReducedMotion(mediaQuery.matches);
+        const handleChange = (e: MediaQueryListEvent) => updatePrefersReducedMotion(e.matches);
+        mediaQuery.addEventListener('change', handleChange);
+        return () => mediaQuery.removeEventListener('change', handleChange);
+    }, []); // Removed spring dependencies
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [targetBroken]);
+    // Mouse move and leave handlers for perspective are no longer needed
+    // const handlePointerMove = useThrottledCallback(...);
+    // const handlePointerLeave = useThrottledCallback(...);
+
+    // backgroundWrapperStyle and variants are no longer needed for WavyGrid
+    // const backgroundWrapperStyle: MotionStyle = { ... };
+    // const backgroundVariants = { ... };
+    // const backgroundAnimation = useAnimation();
+    // useEffect(() => { backgroundAnimation.start('visible'); }, [backgroundAnimation]);
+
+    const { scrollYProgress: shellScrollYProgress } = useScroll();
+    const shellY = useTransform(shellScrollYProgress, [0, 1], [0, -100]);
+    const shellStyle = { y: shellY };
+    const shellAnimation = useAnimation();
+    useEffect(() => { shellAnimation.start('visible'); }, [shellAnimation]);
 
     return (
         <div
             ref={containerRef}
-            className="relative overflow-hidden h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]"
-            onMouseMove={handleMouseMove}
+            className="relative overflow-hidden h-screen bg-[var(--dark-bg)] text-[var(--text-primary)]" // Use dark-bg as fallback
+            // onPointerMove and onPointerLeave removed
+            // style={{ perspective: '1000px' }} // Perspective for dynamic grid removed
         >
-            {/* Base layer - Grid background with parallax */}
-            <motion.div 
-                className="absolute inset-0 w-full h-full z-0"
-                style={{ 
-                    y: yBg,
-                    opacity: opacityBg,
-                    scale: gridScale,
-                    transform: gridTransform
-                }}
-            >
-                <div className="absolute inset-0 bg-[var(--bg-primary)]"></div>
-
-                {/* Perspective grid with retrowave glow */}
-                <div className="absolute inset-0 bg-[url('/images/Grid/Grid (3).jpg')] bg-cover bg-center opacity-40 mix-blend-screen retrowave-grid"></div>
-
-                {/* Colored gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--accent-darkred)]/20 to-[var(--accent-gold)]/10 mix-blend-screen"></div>
-
-                {/* Subtle grain texture */}
-                <div className="absolute inset-0 bg-[url('/textures/grain.png')] opacity-10 mix-blend-multiply"></div>
-            </motion.div>
-
-            {/* Smoke overlay */}
-            <motion.div
-                className="absolute inset-0 z-10"
+            {/* Static Background Image Layer */}
+            <div
+                className="absolute inset-0 z-0" // z-0 to be behind everything
                 style={{
-                    opacity: smokeOpacity,
-                    background: 'linear-gradient(135deg, rgba(82,22,35,0.4) 0%, rgba(242,185,80,0.2) 100%)',
-                    mixBlendMode: 'overlay'
+                    backgroundImage: "url('/images/Grid/Grid (3).jpg')", // Assuming this path
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
                 }}
             />
 
-            {/* Retro sun effect */}
-            <RetroSun />
+            {/* Gradient Overlay */}
+            <div
+                className="absolute inset-0 z-1" // z-1 to be above image, below smoke and content
+                style={{
+                    background: 'linear-gradient(to bottom, rgba(18, 18, 18, 0.6) 0%, rgba(242, 135, 5, 0.4) 70%, rgba(242, 135, 5, 0.7) 100%)', // Dark to Lahoma Orange, transparent
+                }}
+            />
 
-            {/* Disco glimmer */}
-            <DiscoGlimmer />
+            {/* Smoke Effects Layer */}
+            {!prefersReducedMotion && (
+                <div className="absolute inset-0 z-2 pointer-events-none"> {/* z-2 for smoke */}
+                    <SmokeCanvas /> {/* Assuming SmokeCanvas handles its own positioning and animation */}
+                </div>
+            )}
 
-            {/* Light smoke wisps drifting across grid */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none z-1">
-                {wisps.map((_, i) => (
-                    <SmokeWisp key={i} index={i} />
-                ))}
-            </div>
-
-            {/* Content layer */}
-            <div className="relative z-10 container mx-auto h-full flex items-center px-6">
+            {/* Content layer - ensure z-index is highest */}
+            <div className="relative z-10 container mx-auto h-full flex flex-col justify-center px-6"> {/* Main content on z-10 */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                    className="mt-20 md:mt-0 max-w-3xl"
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="max-w-4xl mx-auto text-center"
                 >
-                    {/* Clay target animation positioned to the side */}
-                    <div className="absolute -right-4 top-1/3 md:right-24 opacity-90">
-                        <ClayTarget broken={targetBroken} />
-                    </div>
+                    {/* Main heading */}
+                    <motion.h1
+                        className="text-6xl md:text-8xl font-['Refrigerator_Deluxe'] mb-6 leading-tight"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                    >
+                        WELCOME TO{" "}
+                        <span className="gradient-text">
+                            Idaho&apos;s Premier Shotgun Sports Complex
+                        </span>
+                    </motion.h1>
 
-                    {/* Glassmorphic card */}
-                    <div className="backdrop-blur-md bg-[var(--glass-bg)] border border-[var(--glass-border)] p-8 md:p-10 rounded shadow-xl relative overflow-hidden glass-effect">
-                        {/* Subtle grid pattern within glass panel */}
-                        <div className="absolute inset-0 bg-[url('/images/Grid/Grid (1).jpg')] bg-cover opacity-5 mix-blend-overlay pointer-events-none"></div>
+                    {/* Description */}
+                    <motion.p
+                        className="text-xl font-['Museo_Sans'] md:text-2xl text-[var(--text-secondary)] mb-12 font-body max-w-3xl mx-auto "
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.6 }}
+                    >
+                        Join our community of passionate shooters featuring state-of-the-art ranges and world-class training facilities since 1898.
+                    </motion.p>
 
-                        {/* Logo & Text content */}
+                    {/* CTA Buttons */}
+                    <motion.div
+                        className="flex flex-col sm:flex-row gap-6 justify-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.9 }}
+                    >
                         <motion.div
-                            initial={{ scale: 0.9, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ duration: 0.5, delay: 0.6 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                         >
-                            <h1
-                                className="text-5xl md:text-7xl font-bold mb-4 leading-none"
-                                style={{
-                                    fontFamily: "'Refrigerator_Deluxe', sans-serif",
-                                    letterSpacing: "0.01em",
-                                    textTransform: "uppercase",
-                                    background: "var(--gradient-primary)",
-                                    WebkitBackgroundClip: "text",
-                                    WebkitTextFillColor: "transparent",
-                                    backgroundClip: "text",
-                                }}
+                            <Link
+                                href="/membership"
+                                className="block bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-bold py-4 px-8 rounded-lg text-lg md:text-xl transition-all duration-300 shadow-lg font-heading pulse hover:shadow-[0_0_20px_rgba(242,93,39,0.3)]"
                             >
-                                BOISE GUN CLUB
-                            </h1>
-
-                            <h2 className="text-lg md:text-xl mb-6 text-[var(--accent-primary)] font-['Museo']">
-                                <TypewriterText text="Idaho's Premier Shotgun Sports Facility" />
-                            </h2>
-
-                            <p className="text-[var(--text-primary)] text-base md:text-lg mb-8 max-w-md font-['Museo']">
-                                Join our community of passionate shooters featuring state-of-the-art ranges and world-class training facilities since 1898.
-                            </p>
-
-                            {/* Retro CTA Buttons */}
-                            <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
-                                <motion.div
-                                    className="relative"
-                                    whileHover={{ scale: 1.03, rotate: 1 }}
-                                    whileTap={{ scale: 0.98, rotate: -1 }}
-                                >
-                                    <Link
-                                        href="/membership"
-                                        className="block bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] hover:from-[var(--accent-secondary)] hover:to-[var(--accent-primary)] text-white font-bold py-3 px-8 rounded text-base md:text-lg transition-all duration-300 shadow-lg font-['Refrigerator_Deluxe'] pulse"
-                                    >
-                                        BECOME A MEMBER
-                                    </Link>
-
-                                    {/* Subtle glow effect */}
-                                    <div className="absolute inset-0 -z-10 bg-[var(--accent-primary)] blur-md opacity-30 rounded"></div>
-                                </motion.div>
-
-                                <motion.div
-                                    className="relative"
-                                    whileHover={{ scale: 1.03, rotate: -1 }}
-                                    whileTap={{ scale: 0.98, rotate: 1 }}
-                                >
-                                    <Link 
-                                        href="/events"
-                                        className="block border-2 border-[var(--accent-darkred)] text-[var(--accent-darkred)] hover:bg-[var(--accent-darkred)]/5 py-3 px-8 rounded text-base md:text-lg transition-all duration-300 shadow-lg font-['Refrigerator_Deluxe']"
-                                    >
-                                        VIEW SCHEDULE
-                                    </Link>
-                                </motion.div>
-                            </div>
+                                BECOME A MEMBER
+                            </Link>
                         </motion.div>
-                    </div>
+
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            <Link
+                                href="/events"
+                                className="block border-2 border-[var(--accent-primary)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/5 py-4 px-8 rounded-lg text-lg md:text-xl transition-all duration-300 shadow-lg font-heading"
+                            >
+                                VIEW SCHEDULE
+                            </Link>
+                        </motion.div>
+                    </motion.div>
                 </motion.div>
+
+                {/* Clay target animation */}
+                {!prefersReducedMotion && (
+                    <div className="absolute -right-20 top-1/4 md:right-[-120px] opacity-90">
+                        <ClayTarget
+                            onClick={() => { }}
+                        />
+                    </div>
+                )}
             </div>
 
-            {/* Bottom gradient fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[var(--bg-primary)] to-transparent z-5"></div>
+            {/* Scroll Affordance */}
+            <motion.div
+                className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-10" // Ensure this is above gradient/smoke
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.5 }}
+                style={shellStyle}
+            >
+                {/* ... Shotgun shell ... */}
+                <div className="relative w-8 h-16">
+                    <motion.div
+                        className="absolute top-0 w-8 h-12 bg-gradient-to-b from-[#F2B950] to-[#F27127] rounded-t-lg"
+                        animate={{ y: [0, 4, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                    {Array.from({ length: 3 }).map((_, i) => (
+                        <motion.div
+                            key={i}
+                            className="absolute w-2 h-2 rounded-full bg-[#808080]"
+                            style={{ left: `${(i + 1) * 8}px`, top: "50%" }}
+                            animate={{ y: [0, 30], opacity: [1, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2, ease: "easeIn" }}
+                        />
+                    ))}
+                </div>
+                <motion.span
+                    className="text-[var(--text-secondary)] text-sm uppercase tracking-wider"
+                    animate={{ y: [0, 4, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                    Scroll to Explore
+                </motion.span>
+            </motion.div>
+
+            {/* Optional: Bottom fade for content area, ensure it's above the main background gradient */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--dark-bg)] to-transparent z-5" />
         </div>
     );
 };
 
-export default HeroSection; 
+export default HeroSection;
