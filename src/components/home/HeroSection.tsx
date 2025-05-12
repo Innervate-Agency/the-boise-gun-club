@@ -3,9 +3,20 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import WavyGridBackground from './effects/WavyGridBackground';
+import dynamic from 'next/dynamic';
 
-const HeroSection = () => {
+// Import ClayFragments with dynamic loading for proper client-side rendering
+const ClayFragments = dynamic(() => import('../effects/ClayFragments'), {
+  ssr: false
+});
+
+// Dynamically import WavyGridBackground to prevent hydration issues
+const WavyGridBackground = dynamic(() => import('../effects/WavyGridBackground'), {
+  ssr: false, // Disable server-side rendering
+  loading: () => <div className="absolute inset-0 bg-[var(--bg-primary)]"></div>
+});
+
+function HeroSection() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
@@ -46,8 +57,7 @@ const HeroSection = () => {
                 gridRotationX={65}
                 perspectiveValue={1000}
                 gridScale={2}
-                className="absolute inset-0 z-0"
-            />
+                className="absolute inset-0 z-0" />
 
             {/* Deep gradient overlay */}
             <div className="absolute inset-0 bg-gradient-radial from-transparent via-[rgba(18,18,18,0.6)] to-[rgba(18,18,18,0.9)] z-[1]" />
@@ -58,44 +68,20 @@ const HeroSection = () => {
                 <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-[#F25D27]/10 to-[#F2CB05]/5 rounded-full blur-[140px] transform -translate-x-1/2 -translate-y-1/2"
                     style={{
                         transform: `translate(calc(-50% + ${mousePosition.x * 0.3}px), calc(-50% + ${mousePosition.y * 0.3}px))`
-                    }}
-                />
+                    }} />
 
                 {/* Secondary glow */}
                 <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-gradient-to-tr from-[#521623]/20 to-[#F28705]/5 rounded-full blur-[100px] transform translate-x-1/2 translate-y-1/2"
                     style={{
                         transform: `translate(calc(50% - ${mousePosition.x * 0.5}px), calc(50% - ${mousePosition.y * 0.5}px))`
-                    }}
-                />
+                    }} />
 
-                {/* Clay target fragments */}
-                {Array.from({ length: 5 }).map((_, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute w-1 h-1 bg-[#F28705] rounded-full"
-                        style={{
-                            top: `${Math.random() * 100}%`,
-                            left: `${Math.random() * 100}%`,
-                            opacity: 0.6,
-                            boxShadow: '0 0 10px 2px rgba(242, 135, 5, 0.3)'
-                        }}
-                        animate={{
-                            y: [0, -(50 + Math.random() * 100)],
-                            x: [0, (Math.random() * 60) - 30],
-                            opacity: [0.6, 0],
-                            scale: [1, 0.5]
-                        }}
-                        transition={{
-                            duration: 4 + Math.random() * 4,
-                            repeat: Infinity,
-                            delay: Math.random() * 5
-                        }}
-                    />
-                ))}
+                {/* Clay target fragments - Client-side only rendering */}
+                <ClayFragments count={5} />
             </div>
 
             {/* Main Content with Parallax */}
-            <motion.div 
+            <motion.div
                 className="relative z-10 flex flex-col items-center justify-center h-full px-8 md:px-12"
                 style={{ opacity }}
             >
@@ -234,8 +220,7 @@ const HeroSection = () => {
                                 repeat: Infinity,
                                 delay: i * 0.2,
                                 ease: "easeIn"
-                            }}
-                        />
+                            }} />
                     ))}
                 </div>
 
@@ -243,6 +228,6 @@ const HeroSection = () => {
             </motion.div>
         </section>
     );
-};
+}
 
 export default HeroSection;

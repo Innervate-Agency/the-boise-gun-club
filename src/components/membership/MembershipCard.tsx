@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react'; // Added useMemo
+import useDeterministicRandom from '../../hooks/useDeterministicRandom';
 
 export type MembershipTier = {
     id: string;
@@ -20,14 +21,24 @@ type MembershipCardProps = {
 
 const MembershipCard = ({ tier, onSelect }: MembershipCardProps) => {
     const [isHovered, setIsHovered] = useState(false);
-
-    // Smoke particles for hover effect
-    const smokeParticles = Array.from({ length: 8 }, (_, i) => ({
-        id: i,
-        delay: i * 0.1,
-        x: Math.random() * 40 - 20,
-        y: -(Math.random() * 40 + 20),
-    }));
+    const [isMounted, setIsMounted] = useState(false);
+    
+    // Use deterministic random for consistent rendering
+    const { getRandomValue } = useDeterministicRandom(24, parseInt(tier.id, 36) || 42);
+    
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+    
+    // Smoke particles for hover effect with deterministic positions
+    const smokeParticles = useMemo(() => {
+        return Array.from({ length: 8 }, (_, i) => ({
+            id: i,
+            delay: i * 0.1,
+            x: isMounted ? getRandomValue(i * 2, -20, 20) : 0,
+            y: isMounted ? -getRandomValue(i * 2 + 1, 20, 60) : -30,
+        }));
+    }, [isMounted, getRandomValue]); // Memoize smokeParticles
 
     return (
         <motion.div
@@ -129,4 +140,4 @@ const MembershipCard = ({ tier, onSelect }: MembershipCardProps) => {
     );
 };
 
-export default MembershipCard; 
+export default MembershipCard;

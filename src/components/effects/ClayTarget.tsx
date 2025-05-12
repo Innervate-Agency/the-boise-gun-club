@@ -27,8 +27,23 @@ interface Fragment {
 export const ClayTarget = ({ onClick }: Props) => {
     const [fragments, setFragments] = useState<Fragment[]>([]);
     const [isExploding, setIsExploding] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const controls = useAnimation();
+    
+    // Import deterministic random
+    const [seed] = useState(98765);
+    
+    // Use client-side only detection
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+    
+    // Deterministic random function
+    const seededRandom = (base: number) => {
+        const x = Math.sin(base) * 10000;
+        return x - Math.floor(x);
+    };
 
     const generateFragments = () => {
         if (!containerRef.current) return [];
@@ -44,10 +59,10 @@ export const ClayTarget = ({ onClick }: Props) => {
             rotation: (360 / CLAY_FRAGMENTS.length) * i,
             scale: 1,
             velocity: {
-                x: (Math.random() - 0.5) * 20,
-                y: (Math.random() - 0.5) * 20 - 5
+                x: (seededRandom(seed + i * 0.1) - 0.5) * 20,
+                y: (seededRandom(seed + i * 0.2) - 0.5) * 20 - 5
             },
-            angularVelocity: (Math.random() - 0.5) * 720
+            angularVelocity: (seededRandom(seed + i * 0.3) - 0.5) * 720
         }));
     };
 

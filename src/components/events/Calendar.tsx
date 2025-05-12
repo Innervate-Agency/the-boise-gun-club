@@ -109,6 +109,7 @@ function CalendarHeader() {
 function CalendarContent() {
     const { viewMode, selectedEvent } = useCalendar();
     const [showScanline, setShowScanline] = useState(true);
+    const [scanlinePosition, setScanlinePosition] = useState(0);
     const { colorScheme } = useTheme();
     const theme = colors[colorScheme];
 
@@ -118,6 +119,15 @@ function CalendarContent() {
             setShowScanline(prev => !prev);
         }, 16); // 60fps
 
+        return () => clearInterval(interval);
+    }, []);
+    
+    // Update scanline position for deterministic animation
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setScanlinePosition(prev => (prev + 5) % 100);
+        }, 100);
+        
         return () => clearInterval(interval);
     }, []);
 
@@ -133,7 +143,7 @@ function CalendarContent() {
                 <div
                     className="absolute left-0 right-0 h-[2px] bg-accent/10 pointer-events-none"
                     style={{
-                        top: `${Math.random() * 100}%`,
+                        top: `${scanlinePosition}%`,
                         boxShadow: '0 0 10px rgba(255, 176, 0, 0.2)',
                         transition: 'top 0.1s linear'
                     }}

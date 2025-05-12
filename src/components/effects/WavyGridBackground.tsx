@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion, useTime, useTransform, MotionValue } from 'framer-motion';
+import useWindowSize from '../../hooks/useWindowSize';
 
 interface WavyGridBackgroundProps {
     lineColor?: string;
@@ -126,26 +127,9 @@ const WavyGridBackground: React.FC<WavyGridBackgroundProps> = ({
     const time = useTime();
     const numSegments = 50;
     const lineStrokeWidth = 0.5;
-
-    // For responsive sizing
-    const [dimensions, setDimensions] = useState({
-        width: typeof window !== 'undefined' ? window.innerWidth : 1200,
-        height: typeof window !== 'undefined' ? window.innerHeight : 800
-    });
-
-    useEffect(() => {
-        if (!isResponsive) return;
-
-        const handleResize = () => {
-            setDimensions({
-                width: window.innerWidth,
-                height: window.innerHeight
-            });
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, [isResponsive]);
+    
+    // Get window dimensions safely with our custom hook
+    const dimensions = useWindowSize(gridWidth, gridHeight);
 
     // Adjust grid size for responsive mode
     const responsiveWidth = isResponsive ? dimensions.width * 1.5 : gridWidth;

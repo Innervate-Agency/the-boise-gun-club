@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ThemeProvider } from '@/components/ui/ThemeContext';
 import { NavigationProvider } from '@/components/navigation/NavigationContext';
 import NavBar from '@/components/navigation/NavBar';
@@ -13,8 +13,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
   }) {
-  // Apply theme class based on system preference
+  const [mounted, setMounted] = useState(false);
+  
+  // Apply theme class based on system preference - client-side only
   useEffect(() => {
+    setMounted(true);
+    
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.documentElement.classList.add('dark');
     } else {
@@ -22,8 +26,10 @@ export default function RootLayout({
     }
   }, []);
 
+  // The suppressHydrationWarning is crucial for preventing hydration mismatch errors
+  // Any client-side-only rendering should be conditional on mounted state
   return (
-    <html lang="en" className="h-full font-body" suppressHydrationWarning={true}>
+    <html lang="en" className={`h-full font-body`} suppressHydrationWarning={true}>
       <head>
         {/* Adobe Fonts script - this is more reliable than CSS link */}
         <script dangerouslySetInnerHTML={{

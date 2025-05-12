@@ -1,11 +1,12 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { GalleryProvider, useGallery } from './GalleryContext';
 import PhotoModal from './PhotoModal';
 import FilterControls from './FilterControls';
+import useDeterministicRandom from '../../hooks/useDeterministicRandom';
 import './gallery.css';
 
 // Masonry layout component
@@ -19,6 +20,19 @@ function MasonryGrid({ children }: { children: React.ReactNode }) {
 
 // Smoke effect component
 function SmokeEffect() {
+    // Client-side only indicator
+    const [isMounted, setIsMounted] = useState(false);
+    // Use deterministic random for consistent rendering
+    const { getRandomValue } = useDeterministicRandom(20, 12345);
+    
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+    
+    if (!isMounted) {
+        return null;
+    }
+    
     return (
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
             {Array.from({ length: 5 }).map((_, i) => (
@@ -27,25 +41,25 @@ function SmokeEffect() {
                     className="absolute w-64 h-64 bg-gradient-to-t from-white/5 to-transparent rounded-full blur-3xl"
                     animate={{
                         x: [
-                            Math.random() * 100 - 50,
-                            Math.random() * 100 - 50,
-                            Math.random() * 100 - 50
+                            getRandomValue(i * 3, -50, 50),
+                            getRandomValue(i * 3 + 1, -50, 50),
+                            getRandomValue(i * 3 + 2, -50, 50)
                         ],
                         y: [
-                            Math.random() * 100,
-                            Math.random() * -100,
-                            Math.random() * 100
+                            getRandomValue(i * 5, 0, 100),
+                            getRandomValue(i * 5 + 1, -100, 0),
+                            getRandomValue(i * 5 + 2, 0, 100)
                         ],
                         opacity: [0, 0.2, 0]
                     }}
                     transition={{
-                        duration: 10 + Math.random() * 5,
+                        duration: 10 + getRandomValue(i * 7, 0, 5),
                         repeat: Infinity,
                         ease: "linear"
                     }}
                     style={{
-                        left: `${Math.random() * 100}%`,
-                        top: `${Math.random() * 100}%`
+                        left: `${getRandomValue(i * 11, 0, 100)}%`,
+                        top: `${getRandomValue(i * 13, 0, 100)}%`
                     }}
                 />
             ))}

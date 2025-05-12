@@ -1,39 +1,48 @@
 'use client';
 
 // Import necessary libraries and components
-import { FC, useRef } from 'react';
+import { FC, useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import HeroSection from './components/HeroSection';
-import Gallery from './components/gallery/Gallery';
+import dynamic from 'next/dynamic';
+import HeroSection from '../components/home/HeroSection';
+import UpcomingEvents from '../components/home/UpcomingEvents';
+
+// Dynamic imports for client-side only components
+const ParticleAnimation = dynamic(() => import('../components/effects/ParticleAnimation'), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 pointer-events-none"></div>
+});
+
+const DividerClayParticles = dynamic(() => import('../components/effects/DividerClayParticles'), {
+  ssr: false
+});
+
+// Import SmokeAnimation with dynamic loading
+const SmokeAnimation = dynamic(() => import('../components/effects/SmokeAnimation'), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 pointer-events-none"></div>
+});
+
+// Add Gallery component import
+import GalleryPreview from '../components/home/GalleryPreview';
 
 // Sample data - replace with actual data from your API/backend
 const upcomingEvents = [
     {
-        title: "Annual Trap Shooting Competition",
-        date: "July 15, 2024",
-        time: "9:00 AM",
-        description: "Join us for our biggest event of the year! Compete in various categories and win amazing prizes.",
-        imageUrl: "/images/events/trap-shooting.jpg"
+        id: 1,
+        title: "Annual Championship",
+        date: "2023-11-15",
+        location: "Main Range",
     },
     {
-        title: "Beginner Shotgun Safety Course",
-        date: "July 20, 2024",
-        time: "10:00 AM",
-        category: "training" as const,
-        description: "Comprehensive safety course for new shooters. Covers firearm safety, range rules, and basic shooting techniques. All equipment provided.",
-        imageUrl: "/images/events/safety-course.jpg"
+        id: 2,
+        title: "Winter League",
+        date: "2023-12-01",
+        location: "Clubhouse",
     },
-    {
-        title: "Monthly Club Meeting & Potluck",
-        date: "July 25, 2024",
-        time: "6:00 PM",
-        category: "social" as const,
-        description: "Monthly meeting to discuss club business, upcoming events, and share a meal together. Bring your favorite dish!",
-        imageUrl: "/images/events/club-meeting.jpg"
-    },
-];
+];      
 
 // Gallery
 const galleryItems = [
@@ -97,6 +106,7 @@ const clubStats = [
 ];
 
 // Featured testimonial
+// This is placeholder data. Replace with dynamic content from an API or database if needed.
 const testimonial = {
     quote: "The Boise Gun Club has been my second home for over 30 years. The community here is unmatched and the facilities are world-class.",
     name: "John Winchester",
@@ -104,39 +114,7 @@ const testimonial = {
     image: "/images/members/john-winchester.jpg"
 };
 
-// Subtle smoke animation component
-const SmokeAnimation: FC = () => {
-    return (
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {Array.from({ length: 3 }).map((_, i) => (
-                <motion.div
-                    key={i}
-                    className="absolute opacity-10"
-                    style={{
-                        width: '300px',
-                        height: '300px',
-                        left: `${20 + i * 30}%`,
-                        top: `${30 + i * 20}%`,
-                        background: `url('/images/Smoke/Background_0${i + 1}.jpg')`,
-                        backgroundSize: 'cover',
-                        borderRadius: '50%',
-                        filter: 'blur(20px)'
-                    }}
-                    animate={{
-                        y: [0, -50, 0],
-                        opacity: [0.05, 0.1, 0.05],
-                        scale: [1, 1.1, 1]
-                    }}
-                    transition={{
-                        duration: 10 + i * 5,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                />
-            ))}
-        </div>
-    );
-};
+// Inline SmokeAnimation component removed - using dynamically imported component instead
 
 // Glassmorphic facility highlight card
 const FacilityCard: FC<{
@@ -147,7 +125,7 @@ const FacilityCard: FC<{
     link: string;
 }> = ({ title, icon, description, linkText, link }) => {
     const ref = useRef<HTMLDivElement>(null);
-    const isInView = useInView(ref, { once: false, amount: 0.2 });
+    const isInView = useInView(ref, { once: true, amount: 0.3 });
 
     return (
         <motion.div
@@ -164,7 +142,7 @@ const FacilityCard: FC<{
                 <div className="w-12 h-12 rounded-full overflow-hidden mr-3 flex-shrink-0 border border-[var(--accent-primary)]/30">
                     <Image src={icon} alt={title} width={60} height={60} className="object-cover" />
                 </div>
-                <h3 className="text-xl text-[var(--text-primary)] font-['Refrigerator_Deluxe']">{title}</h3>
+                <h3 className="text-xl text-[var(--text-primary)] font-refrigerator">{title}</h3>
             </div>
 
             <p className="text-[var(--text-secondary)] mb-4 text-sm font-['Museo']">{description}</p>
@@ -206,142 +184,44 @@ const StatCard: FC<{ value: string; label: string }> = ({ value, label }) => {
 };
 
 const HomePage: FC = () => {
+    // Add client-side rendering state
+    const [isMounted, setIsMounted] = useState(false);
+    
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+    
     return (
         <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
             {/* Hero Section */}
             <HeroSection />
+            
+            {/* Upcoming Events Section */}
+            <UpcomingEvents />
 
-            {/* Upcoming Events Section - Modern Glassmorphism */}
-            <section className="relative py-32 overflow-hidden">
-                {/* Background elements */}
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute inset-0 bg-[url('/images/Grid/Grid (2).jpg')] bg-cover opacity-15 mix-blend-screen retrowave-grid"></div>
-                    <SmokeAnimation />
-
-                    {/* Enhanced glow orbs */}
-                    <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-[var(--accent-primary)]/5 to-[var(--accent-secondary)]/10 blur-[120px]"></div>
-                    <div className="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-[var(--accent-darkred)]/5 to-[var(--accent-gold)]/10 blur-[150px]"></div>
-                </div>
-
-                <div className="container mx-auto px-6 relative z-10">
-                    {/* Section header with 3D typography */}
-                    <div className="text-center mb-24">
-                        <div className="inline-block relative">
-                            <h2 className="font-heading text-5xl md:text-6xl font-bold tracking-wider mb-6 uppercase psychedelic-text">
-                                Upcoming Events
-                            </h2>
-                            <div className="absolute -bottom-4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--accent-primary)] to-transparent"></div>
-                        </div>
-                        <p className="text-[var(--text-secondary)] max-w-2xl mx-auto mt-6 font-body text-lg">
-                            Join us for these exciting upcoming events at the Boise Gun Club
-                        </p>
-                    </div>
-
-                    {/* Events - Modern horizontal cards with mica effect */}
-                    <div className="space-y-8">
-                        {upcomingEvents.map((event, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.3 }}
-                                transition={{ duration: 0.7, delay: index * 0.1 }}
-                                className="backdrop-blur-xl bg-[rgba(18,18,18,0.5)] border border-[rgba(255,255,255,0.08)] rounded-2xl overflow-hidden shadow-2xl relative group"
-                                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                            >
-                                {/* Hover glow effect */}
-                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-[var(--accent-primary)]/0 via-[var(--accent-primary)]/5 to-[var(--accent-primary)]/0"></div>
-
-                                {/* Decorative gradient line */}
-                                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--accent-primary)] to-transparent opacity-40"></div>
-
-                                <div className="flex flex-col md:flex-row">
-                                    {/* Date column with enhanced styling */}
-                                    <div className="w-full md:w-52 flex-shrink-0 bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/5 p-6 flex flex-row md:flex-col items-center md:items-start justify-between md:justify-center text-[var(--accent-primary)]">
-                                        <div className="text-center md:text-left">
-                                            <div className="text-2xl md:text-3xl font-bold font-heading mb-1">
-                                                {event.date.split(' ')[1].replace(',', '')}
-                                            </div>
-                                            <div className="text-base md:text-lg font-body opacity-80">
-                                                {event.date.split(' ')[0]} {event.time}
-                                            </div>
-                                        </div>
-                                        <div className="text-xs px-3 py-1.5 rounded-full bg-[var(--accent-primary)]/20 uppercase mt-3 font-heading tracking-wider">
-                                            {event.category}
-                                        </div>
-                                    </div>
-
-                                    {/* Event content */}
-                                    <div className="p-8 flex-grow">
-                                        <h3 className="text-2xl font-bold mb-3 text-[var(--text-primary)] font-heading">
-                                            {event.title}
-                                        </h3>
-                                        <p className="text-[var(--text-secondary)] mb-4 text-base font-body leading-relaxed">
-                                            {event.description}
-                                        </p>
-                                        <Link href="/events" className="group inline-flex items-center font-heading text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] transition-colors duration-300">
-                                            <span>LEARN MORE</span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                            </svg>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* View all events button with modern hover effect */}
-                    <div className="mt-16 text-center">
-                        <Link href="/events" className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white rounded-lg font-heading shadow-lg overflow-hidden">
-                            <span className="relative z-10">VIEW ALL EVENTS</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 relative z-10 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                            {/* Button glow */}
-                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-x-0 group-hover:scale-x-100 bg-white/20 origin-left"></div>
-                            {/* External glow */}
-                            <div className="absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg blur-md bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)]"></div>
-                        </Link>
-                    </div>
-                </div>
-            </section>
+            {/* Gallery Section */}
+            <GalleryPreview galleryItems={galleryItems} />
 
             {/* Divider with clay target animation */}
             <div className="relative h-32 overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-full h-px bg-gradient-to-r from-transparent via-[var(--accent-primary)]/30 to-transparent"></div>
-                    <div className="absolute w-12 h-12 bg-[var(--bg-primary)] rounded-full flex items-center justify-center border border-[var(--accent-primary)]/20">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--accent-primary)]/80 to-[var(--accent-secondary)]/80"></div>
-                    </div>
                 </div>
             </div>
-
-            {/* Facility Highlights Section - Modern Cards with Depth */}
-            <section className="relative py-32 bg-[var(--bg-secondary)]">
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute inset-0 bg-[url('/images/Grid/Grid (4).jpg')] bg-cover opacity-5 mix-blend-screen retrowave-grid"></div>
-                    {/* Enhanced lighting effects */}
-                    <div className="absolute top-0 right-0 left-0 h-[30%] bg-gradient-to-b from-[var(--accent-tertiary)]/5 to-transparent"></div>
-                    <div className="absolute bottom-0 right-0 left-0 h-[30%] bg-gradient-to-t from-[var(--accent-quaternary)]/5 to-transparent"></div>
-                </div>
-
+            
+            {/* Facility Highlights Section */}
+            <section className="relative py-24 overflow-hidden">
                 <div className="container mx-auto px-6 relative z-10">
-                    <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-24">
-                        <div className="md:max-w-2xl">
-                            <h2 className="font-heading text-5xl md:text-6xl font-bold tracking-wider mb-6 gradient-text text-right md:text-left">
-                                FACILITY HIGHLIGHTS
-                            </h2>
-                            <div className="h-1 w-24 bg-gradient-to-r from-[var(--accent-tertiary)] to-[var(--accent-quaternary)] md:ml-0 ml-auto"></div>
-                        </div>
-                        <p className="text-[var(--text-secondary)] md:max-w-md mt-4 md:mt-0 text-lg font-body text-right md:text-right">
-                            Our world-class facilities provide the perfect environment for shooters of all skill levels
+                    <div className="text-center mb-16">
+                        <h2 className="font-heading text-5xl font-bold mb-4">OUR FACILITIES</h2>
+                        <p className="text-[var(--text-secondary)] max-w-2xl mx-auto font-body text-lg">
+                            Experience our state-of-the-art shooting facilities designed for sportsmen of all skill levels
                         </p>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {facilityHighlights.map((item, index) => (
-                            <FacilityCard
+                            <FacilityCard 
                                 key={index}
                                 title={item.title}
                                 icon={item.icon}
@@ -360,12 +240,19 @@ const HomePage: FC = () => {
                     <div className="absolute inset-0 skew-y-2 bg-[var(--accent-darkred)]"></div>
                 </div>
             </div>
-
+            
             {/* Stats & Testimonial Section - Elevated Design */}
             <section className="relative py-32 bg-[var(--accent-darkred)]">
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute inset-0 bg-[url('/images/Grid/Grid (3).jpg')] bg-cover opacity-10 mix-blend-screen"></div>
                     <SmokeAnimation />
+                    <ParticleAnimation 
+                        colors={['#FFD700', '#F5F5DC', '#FFB700', '#FFF8DC']} 
+                        count={10} 
+                        maxDistance={60}
+                        size={3}
+                        speed={2}
+                    />
                     {/* Enhanced dot matrix pattern */}
                     <div className="absolute inset-0 opacity-5"
                         style={{
@@ -432,68 +319,10 @@ const HomePage: FC = () => {
             {/* Divider with clay target animation */}
             <div className="relative h-32 overflow-hidden bg-gradient-to-b from-[var(--accent-darkred)] to-[var(--bg-primary)]">
                 <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                    {/* Clay target particles */}
-                    {Array.from({ length: 5 }).map((_, i) => (
-                        <motion.div
-                            key={`clay-${i}`}
-                            className="absolute w-1 h-1 bg-[var(--accent-primary)] rounded-full"
-                            style={{
-                                left: `${30 + Math.random() * 40}%`,
-                                top: '100%',
-                                opacity: 0.6 + Math.random() * 0.4,
-                                boxShadow: '0 0 8px 2px rgba(242, 135, 5, 0.3)'
-                            }}
-                            animate={{
-                                y: [0, -120 - Math.random() * 40],
-                                x: [0, (Math.random() * 60) - 30],
-                                opacity: [0.8, 0],
-                                scale: [1, 0.5]
-                            }}
-                            transition={{
-                                duration: 2 + Math.random() * 2,
-                                repeat: Infinity,
-                                delay: Math.random() * 3
-                            }}
-                        />
-                    ))}
+                    {/* Clay target particles - client-side only */}
+                    {isMounted && <DividerClayParticles />}
                 </div>
             </div>
-
-            {/* Gallery Preview - Modern Immersive Layout */}
-            <section className="relative py-32 bg-[var(--bg-primary)]">
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute inset-0 bg-[url('/images/Grid/Grid (2).jpg')] bg-cover opacity-10 mix-blend-screen retrowave-grid"></div>
-                    {/* Enhanced lighting effects */}
-                    <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[var(--accent-orangered)]/10 to-transparent"></div>
-                </div>
-
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-24">
-                        <div>
-                            <h2 className="font-heading text-5xl md:text-6xl font-bold tracking-wider mb-6 gradient-text">
-                                PHOTO GALLERY
-                            </h2>
-                            <div className="h-1 w-24 bg-gradient-to-r from-[var(--accent-orangered)] to-[var(--accent-yellow)]"></div>
-                        </div>
-                        <p className="text-[var(--text-secondary)] md:max-w-sm mt-4 md:mt-0 text-lg font-body">
-                            Explore the rich history and vibrant community of the Boise Gun Club
-                        </p>
-                    </div>
-
-                    <Gallery galleryItems={galleryItems} />
-
-                    <div className="text-center mt-16">
-                        <Link href="/gallery" className="group relative inline-flex items-center gap-2 px-8 py-4 bg-[var(--accent-primary)]/90 hover:bg-[var(--accent-primary)] text-white rounded-lg font-heading transition-all duration-300 overflow-hidden">
-                            <span className="relative z-10">VIEW FULL GALLERY</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 relative z-10 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                            {/* Hover effect */}
-                            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-0 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-primary)]/80 transition-transform duration-500"></div>
-                        </Link>
-                    </div>
-                </div>
-            </section>
 
             {/* CTA Section - Premium Gradient Design */}
             <section className="relative py-24 overflow-hidden">
@@ -521,15 +350,9 @@ const HomePage: FC = () => {
                                 Join our community and enjoy exclusive access to our ranges, events, and training programs. Experience the tradition and excellence that defines the Boise Gun Club.
                             </p>
                         </div>
-                        <div className="flex-shrink-0">
-                            <Link href="/membership" className="group relative inline-block px-10 py-5 bg-[var(--accent-gold)] text-[var(--accent-darkred)] hover:bg-[var(--accent-yellow)] rounded-lg font-heading text-xl shadow-2xl transition-all duration-300 overflow-hidden">
-                                <span className="relative z-10">JOIN NOW</span>
-                                {/* Button glow */}
-                                <div className="absolute inset-0 -translate-y-full group-hover:translate-y-0 bg-white/20 transition-transform duration-300"></div>
-                                {/* External glow */}
-                                <div className="absolute -inset-1 opacity-0 group-hover:opacity-100 scale-105 transition-opacity duration-300 rounded-lg blur-md bg-[var(--accent-gold)]"></div>
-                            </Link>
-                        </div>
+                        <Link href="/membership" className="joinNowButton">
+                            <span className="relative z-10">JOIN NOW</span>
+                        </Link>
                     </div>
                 </div>
 
@@ -540,4 +363,4 @@ const HomePage: FC = () => {
     );
 };
 
-export default HomePage; 
+export default HomePage;

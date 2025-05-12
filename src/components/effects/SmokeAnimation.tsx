@@ -1,28 +1,67 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
+import useDeterministicRandom from '../../hooks/useDeterministicRandom';
 
+// Define the particle properties
 interface SmokeParticle {
-    id: number;
-    x: number;
-    y: number;
-    size: number;
-    opacity: number;
-    duration: number;
-    delay: number;
-    image: number;
-    scale: number;
-    rotate: number;
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  opacity: number;
+  duration: number;
+  delay: number;
+  image: number;
+  scale: number;
+  rotate: number;
 }
 
-const SmokeAnimation: React.FC = () => {
-    const [particles, setParticles] = useState<SmokeParticle[]>([]);
-    const [dimensions, setDimensions] = useState({
-        width: typeof window !== 'undefined' ? window.innerWidth : 1200,
-        height: typeof window !== 'undefined' ? window.innerHeight : 800
+interface SmokeParticleProps {
+  count?: number;
+  seed?: number;
+}
+
+const SmokeAnimation: React.FC<SmokeParticleProps> = ({ 
+  count = 2,
+  seed = 789
+}) => {
+  // Client-side only indicator
+  const [isMounted, setIsMounted] = useState(false);
+  // Store generated particles
+  const [particles, setParticles] = useState<SmokeParticle[]>([]);
+  const [dimensions, setDimensions] = useState({
+    width: 1200,
+    height: 800
+  });
+  
+  // Use deterministic random for consistent rendering
+  const { getRandomValue } = useDeterministicRandom(count * 10, seed);
+  
+  // Check for reduced motion preference
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  
+  useEffect(() => {
+    setIsMounted(true);
+    
+    // Update dimensions
+    setDimensions({
+      width: window.innerWidth,
+      height: window.innerHeight
     });
-    const controls = useAnimation();
+    
+    // Check reduced motion preference
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+    
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
     // Update dimensions on window resize
     useEffect(() => {
@@ -39,6 +78,9 @@ const SmokeAnimation: React.FC = () => {
 
     // Generate smoke particles on mount and occasionally refresh them
     useEffect(() => {
+        // Only run if component is mounted
+        if (!isMounted) return;
+
         const generateParticles = () => {
             const particleCount = Math.max(3, Math.floor(dimensions.width / 400));
             const newParticles: SmokeParticle[] = [];
@@ -58,49 +100,38 @@ const SmokeAnimation: React.FC = () => {
         }, 30000); // Every 30 seconds
 
         return () => clearInterval(interval);
-    }, [dimensions]);
+        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [dimensions, isMounted, getRandomValue]); // We need to include getRandomValue
 
-    // Create a single smoke particle with random properties
+    // Create a single smoke particle with deterministic random properties
     const createParticle = (id: number): SmokeParticle => {
-        // Distribute particles across the screen with some randomness
-        const x = Math.random() * dimensions.width;
-        const y = Math.random() * dimensions.height;
+        // Distribute particles across the screen with deterministic randomness
+        const x = getRandomValue(id * 3, 0, dimensions.width);
+        const y = getRandomValue(id * 3 + 1, 0, dimensions.height);
 
         // Size should be proportional to screen size for responsiveness
         const sizeBase = Math.min(dimensions.width, dimensions.height) * 0.3;
-        const size = sizeBase + Math.random() * sizeBase * 0.5;
+        const size = sizeBase + getRandomValue(id * 3 + 2, 0, sizeBase * 0.5);
 
         return {
             id,
             x,
             y,
             size,
-            opacity: 0.03 + Math.random() * 0.04, // Very subtle opacity
-            duration: 15 + Math.random() * 25, // Slower, more gentle movement
-            delay: Math.random() * 10, // Staggered start
-            image: Math.floor(Math.random() * 9) + 1, // 9 smoke images
-            scale: 0.8 + Math.random() * 0.4,
-            rotate: Math.random() * 360, // Random initial rotation
+            opacity: 0.03 + getRandomValue(id * 5, 0, 0.04), // Very subtle opacity
+            duration: 15 + getRandomValue(id * 7, 0, 25), // Slower, more gentle movement
+            delay: getRandomValue(id * 11, 0, 10), // Staggered start
+            image: Math.floor(getRandomValue(id * 13, 0, 8.99)) + 1, // 9 smoke images
+            scale: 0.8 + getRandomValue(id * 17, 0, 0.4),
+            rotate: getRandomValue(id * 19, 0, 360), // Random initial rotation
         };
     };
 
-    // Prefers-reduced-motion media query support
-    const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+    // This section is already handled in the earlier useEffect
 
-    useEffect(() => {
-        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-        setPrefersReducedMotion(mediaQuery.matches);
-
-        const handleChange = (e: MediaQueryListEvent) => {
-            setPrefersReducedMotion(e.matches);
-        };
-
-        mediaQuery.addEventListener('change', handleChange);
-        return () => mediaQuery.removeEventListener('change', handleChange);
-    }, []);
-
-    if (prefersReducedMotion) {
-        return null; // Don't render animation if user prefers reduced motion
+    if (prefersReducedMotion || !isMounted) {
+        return null; // Don't render animation if user prefers reduced motion or if not mounted
     }
 
     return (
@@ -131,16 +162,16 @@ const SmokeAnimation: React.FC = () => {
                     }}
                     animate={{
                         y: [0, -particle.size * 0.7],
-                        x: [0, (Math.random() * 2 - 1) * 50], // Slight horizontal drift
+                        x: [0, getRandomValue(particle.id * 21, -50, 50)], // Slight horizontal drift with deterministic value
                         opacity: [0, particle.opacity, 0],
                         scale: [particle.scale, particle.scale * 1.2, particle.scale * 0.9],
-                        rotate: [particle.rotate, particle.rotate + (Math.random() * 40 - 20)],
+                        rotate: [particle.rotate, particle.rotate + getRandomValue(particle.id * 23, -20, 20)],
                     }}
                     transition={{
                         duration: particle.duration,
                         delay: particle.delay,
                         repeat: Infinity,
-                        repeatDelay: Math.random() * 5,
+                        repeatDelay: getRandomValue(particle.id * 29, 0, 5),
                         ease: "easeInOut",
                     }}
                 />
@@ -152,4 +183,4 @@ const SmokeAnimation: React.FC = () => {
     );
 };
 
-export default SmokeAnimation; 
+export default SmokeAnimation;
