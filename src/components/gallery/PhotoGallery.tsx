@@ -7,7 +7,7 @@ import { GalleryProvider, useGallery } from './GalleryContext';
 import PhotoModal from './PhotoModal';
 import FilterControls from './FilterControls';
 import useDeterministicRandom from '../../hooks/useDeterministicRandom';
-import './gallery.css';
+import './Gallery.css';
 
 // Masonry layout component
 function MasonryGrid({ children }: { children: React.ReactNode }) {
@@ -196,4 +196,4 @@ export default function PhotoGallery() {
             <GalleryContent />
         </GalleryProvider>
     );
-} 
+}

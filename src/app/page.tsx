@@ -184,182 +184,36 @@ const StatCard: FC<{ value: string; label: string }> = ({ value, label }) => {
 };
 
 const HomePage: FC = () => {
-    // Add client-side rendering state
-    const [isMounted, setIsMounted] = useState(false);
-    
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
-    
+    const mainRef = useRef<HTMLDivElement>(null);
+    const [bgColor, setBgColor] = useState('transparent');
+
+    // Refs for section background changes (optional, if needed for complex effects)
+    const heroRef = useRef<HTMLDivElement>(null);
+    const eventsRef = useRef<HTMLDivElement>(null);
+    const galleryRef = useRef<HTMLDivElement>(null); // Ref for GalleryPreview
+    const facilitiesRef = useRef<HTMLDivElement>(null); // Ref for OurFacilities
+
     return (
-        <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
-            {/* Hero Section */}
-            <HeroSection />
+        <main ref={mainRef} className="flex flex-col min-h-screen bg-gradient-to-b from-neutral-900 to-black text-white overflow-x-hidden">
+            <div ref={heroRef}>
+                <HeroSection />
+            </div>
             
-            {/* Upcoming Events Section */}
             <UpcomingEvents />
 
-            {/* Gallery Section */}
-            <GalleryPreview galleryItems={galleryItems} />
-
-            {/* Divider with clay target animation */}
-            <div className="relative h-32 overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-full h-px bg-gradient-to-r from-transparent via-[var(--accent-primary)]/30 to-transparent"></div>
-                </div>
-            </div>
-            
-            {/* Facility Highlights Section */}
-            <section className="relative py-24 overflow-hidden">
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="text-center mb-16">
-                        <h2 className="font-heading text-5xl font-bold mb-4">OUR FACILITIES</h2>
-                        <p className="text-[var(--text-secondary)] max-w-2xl mx-auto font-body text-lg">
-                            Experience our state-of-the-art shooting facilities designed for sportsmen of all skill levels
-                        </p>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {facilityHighlights.map((item, index) => (
-                            <FacilityCard 
-                                key={index}
-                                title={item.title}
-                                icon={item.icon}
-                                description={item.description}
-                                linkText={item.linkText}
-                                link={item.link}
-                            />
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Divider with angled design */}
-            <div className="relative h-32 overflow-hidden">
-                <div className="absolute inset-0">
-                    <div className="absolute inset-0 skew-y-2 bg-[var(--accent-darkred)]"></div>
-                </div>
-            </div>
-            
-            {/* Stats & Testimonial Section - Elevated Design */}
-            <section className="relative py-32 bg-[var(--accent-darkred)]">
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute inset-0 bg-[url('/images/Grid/Grid (3).jpg')] bg-cover opacity-10 mix-blend-screen"></div>
-                    <SmokeAnimation />
-                    <ParticleAnimation 
-                        colors={['#FFD700', '#F5F5DC', '#FFB700', '#FFF8DC']} 
-                        count={10} 
-                        maxDistance={60}
-                        size={3}
-                        speed={2}
-                    />
-                    {/* Enhanced dot matrix pattern */}
-                    <div className="absolute inset-0 opacity-5"
-                        style={{
-                            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)',
-                            backgroundSize: '40px 40px'
-                        }}></div>
-                </div>
-
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
-                        {/* Stats with enhanced visualization */}
-                        <div>
-                            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-12">
-                                CLUB STATISTICS
-                            </h2>
-                            <div className="grid grid-cols-2 gap-x-8 gap-y-12">
-                                {clubStats.map((stat, index) => (
-                                    <StatCard
-                                        key={index}
-                                        value={stat.value}
-                                        label={stat.label}
-                                    />
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Testimonial with premium mica design */}
-                        <div>
-                            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-12">
-                                MEMBER TESTIMONIAL
-                            </h2>
-                            <div className="backdrop-blur-xl bg-[rgba(255,255,255,0.06)] border border-[rgba(255,255,255,0.1)] p-8 rounded-2xl shadow-2xl relative overflow-hidden">
-                                {/* Decorative elements */}
-                                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
-                                <div className="absolute -right-14 -top-14 w-28 h-28 rounded-full bg-gradient-to-br from-[var(--accent-gold)]/20 to-transparent blur-2xl"></div>
-
-                                <div className="relative z-10">
-                                    <div className="text-[var(--accent-gold)] text-6xl leading-none mb-2 font-heading">&ldquo;</div>
-                                    <p className="text-white text-lg italic mb-8 font-body leading-relaxed">
-                                        {testimonial.quote}
-                                    </p>
-                                    <div className="flex items-center">
-                                        <div className="w-14 h-14 rounded-full overflow-hidden border border-[var(--accent-gold)]/40 shadow-lg">
-                                            <Image
-                                                src={testimonial.image}
-                                                alt={testimonial.name}
-                                                width={70}
-                                                height={70}
-                                                className="object-cover vintage-filter"
-                                            />
-                                        </div>
-                                        <div className="ml-4">
-                                            <div className="text-white text-lg font-heading">{testimonial.name}</div>
-                                            <div className="text-[var(--accent-gold)] text-sm font-body">{testimonial.title}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Divider with clay target animation */}
-            <div className="relative h-32 overflow-hidden bg-gradient-to-b from-[var(--accent-darkred)] to-[var(--bg-primary)]">
-                <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                    {/* Clay target particles - client-side only */}
-                    {isMounted && <DividerClayParticles />}
-                </div>
+            {/* Gallery Preview Section */}
+            <div ref={galleryRef}>
+                <GalleryPreview galleryItems={galleryItems} />
             </div>
 
-            {/* CTA Section - Premium Gradient Design */}
-            <section className="relative py-24 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-orangered)] to-[var(--accent-primary)]">
-                    {/* Animated backdrop pattern */}
-                    <div className="absolute inset-0 opacity-20"
-                        style={{
-                            backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255, 255, 255, 0.1) 20px, rgba(255, 255, 255, 0.1) 40px)`,
-                            backgroundSize: '120px 120px',
-                        }}
-                    ></div>
-                </div>
+            {/* Placeholder for Our Facilities Section - to be implemented next */}
+            {/* <div ref={facilitiesRef}>
+                <OurFacilities highlights={facilityHighlights} />
+            </div> */}
 
-                {/* Floating orbs */}
-                <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-white/5 blur-3xl"></div>
-                <div className="absolute bottom-1/3 left-1/3 w-96 h-96 rounded-full bg-[var(--accent-yellow)]/10 blur-3xl"></div>
-
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-                        <div className="md:max-w-xl">
-                            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
-                                BECOME A MEMBER TODAY
-                            </h2>
-                            <p className="text-white/90 text-lg font-body leading-relaxed">
-                                Join our community and enjoy exclusive access to our ranges, events, and training programs. Experience the tradition and excellence that defines the Boise Gun Club.
-                            </p>
-                        </div>
-                        <Link href="/membership" className="joinNowButton">
-                            <span className="relative z-10">JOIN NOW</span>
-                        </Link>
-                    </div>
-                </div>
-
-                {/* Bottom grid effect */}
-                <div className="absolute bottom-0 left-0 w-full h-4 bg-[url('/images/Grid/Grid (3).jpg')] bg-repeat-x opacity-30"></div>
-            </section>
-        </div>
+            {/* Placeholder for CTA Section */}
+            {/* <CTASection /> */}
+        </main>
     );
 };
 

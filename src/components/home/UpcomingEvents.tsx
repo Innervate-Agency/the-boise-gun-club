@@ -82,6 +82,7 @@ const UpcomingEvents = () => {
                     backgroundImage: 'linear-gradient(180deg, var(--accent-primary), var(--accent-secondary), var(--accent-primary-darker))', // Updated gradient
                     backgroundSize: '100% 200%', 
                     y: backgroundGradientY,
+                    
                 }}
             />
 

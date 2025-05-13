@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import { ThemeProvider } from '@/components/ui/ThemeContext';
 import { NavigationProvider } from '@/components/navigation/NavigationContext';
 import NavBar from '@/components/navigation/NavBar';
-import Footer from '@/components/common/Footer';
+import Footer from '@/components/layout/Footer';
+import AccessibilityFAB from '@/components/ui/AccessibilityFAB';
 import './globals.css';
 import './fonts.css';
 
@@ -12,13 +13,12 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-  }) {
-  const [mounted, setMounted] = useState(false);
-  
-  // Apply theme class based on system preference - client-side only
+}) {
+  const [mounted, setMounted] = useState(false); // Correctly declared useState
+
   useEffect(() => {
     setMounted(true);
-    
+    // Apply theme class based on system preference - client-side only
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.documentElement.classList.add('dark');
     } else {
@@ -63,10 +63,11 @@ export default function RootLayout({
         <ThemeProvider>
           <NavigationProvider>
             <NavBar />
-            <main className="flex-grow">
+            <main className="flex-grow pt-80">
               {children}
             </main>
             <Footer />
+            {mounted && <AccessibilityFAB />} {/* FAB rendered conditionally */}
           </NavigationProvider>
         </ThemeProvider>
       </body>

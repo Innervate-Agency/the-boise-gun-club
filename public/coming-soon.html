@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coming Soon - Boise Gun Club</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+        /* Define local fonts */
+        @font-face {
+            font-family: 'refrigerator-deluxe';
+            src: url('./fonts/refrigerator-deluxe-bold.woff2') format('woff2'),
+                /* Adjust filename and format */
+                url('./fonts/refrigerator-deluxe-bold.woff') format('woff');
+            /* Add other formats if available */
+            font-weight: 700;
+            /* Or 'bold' if that's how the font is named/weighted */
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'museo-sans';
+            src: url('./fonts/museo-sans-regular.woff2') format('woff2'),
+                /* Adjust filename and format */
+                url('./fonts/museo-sans-regular.woff') format('woff');
+            /* Add other formats if available */
+            font-weight: 400;
+            /* Or 'normal' */
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Example for a different weight of Museo Sans if you have it */
+        @font-face {
+            font-family: 'museo-sans';
+            src: url('./fonts/museo-sans-700.woff2') format('woff2'),
+                /* Adjust filename */
+                url('./fonts/museo-sans-700.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+
+        body {
+            --bg-primary: #121212;
+            --text-primary: #ffffff;
+            --accent-primary: #F2CB05;
+            --accent-secondary: #F28705;
+            --font-heading: "refrigerator-deluxe", "DM Sans", serif;
+            /* Primary heading font */
+            --font-body: "museo-sans", "DM Sans", sans-serif;
+            /* Primary body font */
+
+            font-family: var(--font-body);
+
+            body {
+                --bg-primary: #121212;
+                --text-primary: #ffffff;
+                --accent-primary: #F2CB05;
+                --accent-secondary: #F28705;
+                --font-heading: "refrigerator-deluxe", "DM Sans", serif;
+                /* Primary heading font */
+                --font-body: "museo-sans", "DM Sans", sans-serif;
+                /* Primary body font */
+
+                font-family: var(--font-body);
+                background-color: var(--bg-primary);
+                color: var(--text-primary);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+                padding: 20px;
+                text-align: center;
+                overflow: hidden;
+                /* Prevents scrollbars from appearing due to animations */
+            }
+
+            .container {
+                max-width: 600px;
+                animation: fadeIn 1.5s ease-out;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            h1 {
+                font-family: var(--font-heading);
+                font-size: 3rem;
+                /* Responsive font size */
+                color: var(--accent-primary);
+                margin-bottom: 0.5em;
+                /* Adjusted margin */
+                letter-spacing: -0.01em;
+                line-height: 1.2;
+            }
+
+            p {
+                font-size: 1.25rem;
+                /* Responsive font size */
+                color: var(--text-primary);
+                line-height: 1.6;
+                margin-bottom: 1em;
+                /* Adjusted margin */
+            }
+
+            .countdown-container {
+                margin-top: 1.5em;
+                margin-bottom: 1.5em;
+            }
+
+            .countdown-timer {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                /* Space between boxes */
+                font-family: var(--font-heading);
+                color: var(--text-primary);
+                margin-bottom: 1em;
+            }
+
+            .countdown-timer div {
+                background-color: rgba(255, 255, 255, 0.05);
+                border: 1px solid var(--accent-secondary);
+                padding: 15px;
+                /* Adjusted padding */
+                border-radius: 8px;
+                min-width: 70px;
+                /* Minimum width for boxes */
+                text-align: center;
+            }
+
+            .countdown-timer span {
+                display: block;
+                font-size: 2rem;
+                /* Larger numbers */
+                color: var(--accent-primary);
+                line-height: 1;
+            }
+
+            .countdown-timer small {
+                display: block;
+                font-size: 0.8rem;
+                /* Smaller labels */
+                color: var(--text-secondary);
+                text-transform: uppercase;
+                margin-top: 5px;
+            }
+
+            .logo-placeholder {
+                width: 150px;
+                /* Adjust as needed */
+                height: auto;
+                margin-bottom: 2em;
+                border: 3px solid var(--accent-secondary);
+                padding: 20px;
+                border-radius: 8px;
+                font-family: var(--font-heading);
+                font-size: 1.5rem;
+                color: var(--accent-secondary);
+                display: inline-block;
+                /* Allows margin auto to center if needed */
+                animation: pulse 2s infinite ease-in-out;
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                    box-shadow: 0 0 0 0 rgba(242, 135, 5, 0.7);
+                }
+
+                70% {
+                    transform: scale(1.02);
+                    box-shadow: 0 0 10px 20px rgba(242, 135, 5, 0);
+                }
+
+                100% {
+                    transform: scale(1);
+                    box-shadow: 0 0 0 0 rgba(242, 135, 5, 0);
+                }
+            }
+
+            #countdown-message {
+                font-size: 1.5rem;
+                color: var(--accent-secondary);
+                font-family: var(--font-heading);
+                margin-top: 1em;
+            }
+
+            .footer-text {
+                margin-top: 3em;
+                font-size: 0.9rem;
+                color: rgba(255, 255, 255, 0.7);
+            }
+
+            /* Attempt to load custom fonts if available, otherwise fallbacks will be used */
+            /* You would typically host these font files or use a service */
+            /* This is a simplified approach for a self-contained page */
+            /* For "refrigerator-deluxe" and "museo-sans", direct web font links or local files are needed for them to render correctly.
+         Since this is a self-contained HTML, and assuming these are not standard web-safe fonts,
+         I'm relying on the Google Fonts' DM Sans as a graceful fallback.
+         If you have .woff2 or .ttf files for refrigerator-deluxe and museo-sans,
+         they could be base64 encoded and embedded in the CSS, but that would make the file very large.
+         For a quick splash page, relying on a widely available fallback like DM Sans is often sufficient.
+      */
+
+            /* Responsive adjustments */
+            @media (min-width: 600px) {
+                h1 {
+                    font-size: 4rem;
+                }
+
+                p {
+                    font-size: 1.5rem;
+                }
+            }
+
+            @media (min-width: 900px) {
+                h1 {
+                    font-size: 5rem;
+                }
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo-placeholder">BGC</div>
+        <h1>Launching Soon!</h1>
+        <p>Our new website experience is just around the corner. Get ready!</p>
+
+        <div class="countdown-container">
+            <div id="countdown" class="countdown-timer">
+                <div><span id="days">00</span><small>Days</small></div>
+                <div><span id="hours">00</span><small>Hours</small></div>
+                <div><span id="minutes">00</span><small>Minutes</small></div>
+                <div><span id="seconds">00</span><small>Seconds</small></div>
+            </div>
+            <div id="countdown-message" style="display: none">We are live!</div>
+        </div>
+
+        <p>
+            We're currently working hard to bring you an updated online experience
+            for the Boise Gun Club. Stay tuned for exciting new features and
+            information!
+        </p>
+        <p class="footer-text">
+            &copy; 2025 Boise Gun Club. All Rights Reserved.
+        </p>
+    </div>
+
+    <script>
+        function startCountdown() {
+            const countdownDate = new Date("June 1, 2025 00:00:00").getTime();
+
+            const countdownFunction = setInterval(function () {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor(
+                    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                );
+                const minutes = Math.floor(
+                    (distance % (1000 * 60 * 60)) / (1000 * 60)
+                );
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText =
+                    days < 10 ? "0" + days : days;
+                document.getElementById("hours").innerText =
+                    hours < 10 ? "0" + hours : hours;
+                document.getElementById("minutes").innerText =
+                    minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById("seconds").innerText =
+                    seconds < 10 ? "0" + seconds : seconds;
+
+                if (distance < 0) {
+                    clearInterval(countdownFunction);
+                    document.getElementById("countdown").style.display = "none";
+                    document.getElementById("countdown-message").style.display =
+                        "block";
+                    document.querySelector("h1").innerText = "We Are Live!";
+                    document.querySelectorAll("p")[0].innerText =
+                        "Our new website is now available. Explore the new features and information.";
+                }
+            }, 1000);
+        }
+
+        // Ensure DOM is loaded before starting countdown
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", startCountdown);
+        } else {
+            startCountdown();
+        }
+    </script>
+</body>
+</html>

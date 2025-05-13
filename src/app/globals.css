@@ -27,3 +27,83 @@
                 0 0 20px rgba(78, 205, 196, 0.2),
                 0 0 30px rgba(78, 205, 196, 0.1);
 }
+
+/* High Contrast Mode Styles */
+.high-contrast {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --accent-primary-hc: #ffff00; /* Yellow for high visibility */
+  --accent-secondary-hc: #00ffff; /* Cyan for high visibility */
+  --border-color-hc: #ffffff;
+
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+.high-contrast body,
+.high-contrast div,
+.high-contrast header,
+.high-contrast main,
+.high-contrast footer,
+.high-contrast section,
+.high-contrast article,
+.high-contrast aside,
+.high-contrast nav {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+.high-contrast h1, .high-contrast h2, .high-contrast h3, .high-contrast h4, .high-contrast h5, .high-contrast h6,
+.high-contrast p, .high-contrast span, .high-contrast li, .high-contrast label {
+  color: var(--text-color) !important;
+  text-shadow: none !important; /* Remove text shadows that might reduce contrast */
+}
+
+.high-contrast a {
+  color: var(--accent-secondary-hc) !important;
+  text-decoration: underline !important;
+}
+.high-contrast a:hover {
+  color: var(--accent-primary-hc) !important;
+}
+
+.high-contrast button,
+.high-contrast input[type="button"],
+.high-contrast input[type="submit"] {
+  background-color: var(--accent-primary-hc) !important;
+  color: #000000 !important; /* Black text on yellow button */
+  border: 2px solid var(--border-color-hc) !important;
+  box-shadow: none !important;
+}
+.high-contrast button:hover,
+.high-contrast input[type="button"]:hover,
+.high-contrast input[type="submit"]:hover {
+  background-color: var(--accent-secondary-hc) !important;
+}
+
+
+.high-contrast input, .high-contrast textarea, .high-contrast select {
+  background-color: #111111 !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--border-color-hc) !important;
+}
+
+.high-contrast img {
+  filter: grayscale(100%) contrast(200%) !important; /* Increase contrast for images */
+}
+
+/* Ensure primary and secondary accent variables are overridden */
+.high-contrast {
+  --accent-primary: var(--accent-primary-hc) !important;
+  --accent-secondary: var(--accent-secondary-hc) !important;
+}
+
+/* Override specific component styles if needed, e.g., cards */
+.high-contrast [class*="bg-neutral-"], 
+.high-contrast [class*="backdrop-blur"] {
+  background-color: var(--bg-color) !important;
+  backdrop-filter: none !important;
+}
+.high-contrast [class*="border-neutral-"] {
+  border-color: var(--border-color-hc) !important;
+}
