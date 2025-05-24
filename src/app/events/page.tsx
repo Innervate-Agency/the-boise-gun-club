@@ -110,7 +110,6 @@ const EventCard: React.FC<{ event: Event, index: number }> = ({ event, index }) 
           {event.category}
         </span>
       </div>
-
       <div className="p-5 md:p-6 flex-grow flex flex-col">
         <h3 className="text-xl md:text-2xl font-bold font-['Heading_Pro_Trial'] text-white mb-2 leading-tight group-hover:text-[var(--accent-primary)] transition-colors duration-300">
           {event.title}
@@ -144,7 +143,7 @@ const EventCard: React.FC<{ event: Event, index: number }> = ({ event, index }) 
             </a>
           </Link>
         ) : (
-          <div className="mt-auto h-[42px]"></div> // Placeholder for consistent card height if no button
+          (<div className="mt-auto h-[42px]"></div>) // Placeholder for consistent card height if no button
         )}
       </div>
     </motion.div>

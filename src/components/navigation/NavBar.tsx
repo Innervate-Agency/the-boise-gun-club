@@ -13,7 +13,8 @@ const navLinks = [
     { label: 'HOME', href: '/' },
     { label: 'ABOUT', href: '/about' },
     { label: 'EVENTS', href: '/events' },
-    { label: 'RANGES', href: '/gallery' },
+    { label: 'RANGES', href: '/ranges' },
+    { label: 'GALLERY', href: '/gallery' },
     { label: 'MEMBERSHIP', href: '/membership' },
     { label: 'CONTACT', href: '/contact' },
 ];
@@ -25,7 +26,7 @@ const NavItem = ({ label, href, isActive }: {
     isActive: boolean;
 }) => {
     return (
-        <Link href={href}>
+        <Link href={href} legacyBehavior>
             <motion.div
                 className="relative flex items-center cursor-pointer px-2 py-1"
                 whileHover={{ y: -2 }}
@@ -106,7 +107,6 @@ export default function NavBar() {
                     </div>
                 </div>
             )}
-
             {/* Main Navigation - Glassmorphic */}
             <nav
                 className={`fixed ${clubAnnouncements.length > 0 ? 'top-8 lg:top-10' : 'top-0'} left-0 w-full z-40 transition-all duration-300`}
@@ -155,7 +155,7 @@ export default function NavBar() {
                                     <Link
                                         href="/membership"
                                         className="relative btn-gradient block px-6 py-2.5 rounded font-bold shadow-lg font-heading tracking-wide"
-                                    >
+                                        legacyBehavior>
                                         MEMBER LOGIN
                                     </Link>
                                 </motion.div>
@@ -191,7 +191,6 @@ export default function NavBar() {
                     )}
                 </AnimatePresence>
             </nav>
-
             {/* Global styles */}
             <style jsx global>{`
                 @keyframes marquee {

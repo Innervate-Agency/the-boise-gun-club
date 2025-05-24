@@ -31,11 +31,10 @@ export default function NavLink({ href, label, children }: NavLinkProps) {
                         : 'text-gray-300 hover:text-white'
                     }
                 `}
-            >
+                legacyBehavior>
                 {label}
                 {children}
             </Link>
-
             {/* Hover effect */}
             <motion.div
                 className="absolute -inset-2 rounded-lg -z-10"
@@ -48,7 +47,6 @@ export default function NavLink({ href, label, children }: NavLinkProps) {
                 }}
                 transition={{ duration: 0.3 }}
             />
-
             {/* Active indicator */}
             {isActive && (
                 <motion.div

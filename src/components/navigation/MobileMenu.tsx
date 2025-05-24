@@ -59,16 +59,13 @@ export default function MobileMenu({ links, onClose }: MobileMenuProps) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
             />
-
             {/* Glassmorphism decorative elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-1/4 left-1/3 w-40 h-40 rounded-full bg-[var(--accent-primary)]/20 blur-xl"></div>
                 <div className="absolute bottom-1/4 right-1/3 w-56 h-56 rounded-full bg-[var(--accent-secondary)]/20 blur-xl"></div>
             </div>
-
             {/* Background grid */}
             <div className="absolute inset-0 grid-bg opacity-5 pointer-events-none"></div>
-
             {/* Menu content */}
             <div className="relative h-full flex flex-col items-center justify-center p-8">
                 <motion.ul className="space-y-6 w-full max-w-xs">
@@ -78,7 +75,7 @@ export default function MobileMenu({ links, onClose }: MobileMenuProps) {
                                 href={link.href}
                                 className={`block text-center text-2xl py-3 font-heading text-[var(--text-primary)] border-b border-[var(--glass-border)] transition-colors ${pathname === link.href ? 'text-[var(--accent-primary)] font-bold' : 'hover:text-[var(--accent-secondary)]'}`}
                                 onClick={onClose}
-                            >
+                                legacyBehavior>
                                 {link.label}
                             </Link>
                         </motion.li>

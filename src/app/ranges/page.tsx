@@ -44,11 +44,9 @@ const rangeTypes = [
 const RangesPage: FC = () => {
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-neutral-900 to-black text-white overflow-x-hidden">
-      
       <div className="absolute inset-0 z-0 pointer-events-none">
         <ParticleAnimation colors={['#F28705', '#E85E27']} count={25} size={1.3} speed={0.1} className="opacity-[0.07]" />
       </div>
-
       <motion.header 
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -68,7 +66,6 @@ const RangesPage: FC = () => {
           Explore our world-class shotgun sports facilities, designed for safety, challenge, and enjoyment for shooters of all skill levels.
         </motion.p>
       </motion.header>
-
       <div className="container mx-auto px-6 relative z-10 space-y-48 md:space-y-64 pb-24">
         {rangeTypes.map((range, index) => (
           <motion.section 
@@ -114,10 +111,10 @@ const RangesPage: FC = () => {
                   </li>
                 ))}
               </ul>
-              <Link 
-                href={range.link} 
+              <Link
+                href={range.link}
                 className="group relative inline-flex items-center justify-center gap-2 px-7 py-3 bg-transparent border-2 border-[var(--accent-primary)] text-[var(--accent-primary)] rounded-lg font-heading tracking-wider text-sm shadow-md hover:bg-[var(--accent-primary)] hover:text-white transition-all duration-300 ease-in-out overflow-hidden transform hover:-translate-y-0.5"
-              >
+                legacyBehavior>
                 <span className="relative z-10">Learn More</span>
                 <svg className="w-4 h-4 relative z-10 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
               </Link>
@@ -139,10 +136,11 @@ const RangesPage: FC = () => {
           <p className="text-white/70 max-w-2xl mx-auto font-body text-lg mb-8">
             The safety of our members and guests is paramount. Please familiarize yourself with our range rules and general firearm safety guidelines before your visit.
           </p>
-          <Link 
-            href="/safety-rules" // Replace with actual link to safety rules page
+          <Link
+            // Replace with actual link to safety rules page
+            href="/safety-rules"
             className="group relative inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white rounded-lg font-heading tracking-wider text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 ease-in-out overflow-hidden"
-          >
+            legacyBehavior>
             <span className="relative z-10">View Range Rules</span>
             <svg className="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
           </Link>

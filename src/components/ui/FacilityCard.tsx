@@ -34,14 +34,11 @@ const FacilityCard: React.FC<FacilityCardProps> = ({
         >
             {/* Mica/Acrylic background blur effect */}
             <div className="absolute inset-0 backdrop-blur-2xl bg-[rgba(18,18,18,0.4)] border border-[rgba(255,255,255,0.08)] shadow-2xl z-0 group-hover:bg-[rgba(18,18,18,0.5)] transition-colors duration-500" />
-
             {/* Top gradient border */}
             <div className="absolute top-0 left-10 right-10 h-[1px] bg-gradient-to-r from-transparent via-[var(--accent-primary)]/40 to-transparent z-[1]" />
-
             {/* Subtle corner gradients */}
             <div className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-[var(--accent-primary)]/20 to-transparent z-[1]" />
             <div className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-[var(--accent-primary)]/10 to-transparent z-[1]" />
-
             {/* Content container */}
             <div className="relative z-10 p-8">
                 {/* Subtle grid pattern */}
@@ -91,7 +88,7 @@ const FacilityCard: React.FC<FacilityCardProps> = ({
                 <Link
                     href={link}
                     className="inline-flex items-center text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] font-heading text-sm tracking-wide transition-colors duration-300 group-hover:translate-x-1"
-                >
+                    legacyBehavior>
                     <span className="relative">
                         {linkText}
                         <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-primary)] group-hover:w-full transition-all duration-300"></span>

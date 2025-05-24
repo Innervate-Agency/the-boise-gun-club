@@ -37,7 +37,6 @@ const GalleryPreview: FC<GalleryPreviewProps> = ({ galleryItems }) => {
         animate={{ '--gradient-angle': '360deg' }}
         transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
       />
-
       {/* Subtle Particle Animation */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
         <ParticleAnimation
@@ -48,7 +47,6 @@ const GalleryPreview: FC<GalleryPreviewProps> = ({ galleryItems }) => {
           className="opacity-5"
         />
       </div>
-
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <motion.h2 
@@ -115,10 +113,10 @@ const GalleryPreview: FC<GalleryPreviewProps> = ({ galleryItems }) => {
         </div>
         
         <div className="mt-16 text-center">
-          <Link 
-            href="/gallery" 
+          <Link
+            href="/gallery"
             className="group relative inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white rounded-lg font-heading tracking-wider text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 ease-in-out overflow-hidden"
-          >
+            legacyBehavior>
             <span className="relative z-10">VIEW FULL GALLERY</span>
             <svg 
               className="w-5 h-5 relative z-10 transform transition-transform duration-300 group-hover:translate-x-1" 

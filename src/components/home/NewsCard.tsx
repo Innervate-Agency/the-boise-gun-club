@@ -62,13 +62,15 @@ const NewsCard: FC<NewsCardProps> = ({
 
                 {/* Glass button */}
                 <div className="p-6 pt-0">
-                    <Link href={`/news/${encodeURIComponent(title)}`}
+                    <Link
+                        href={`/news/${encodeURIComponent(title)}`}
                         className="inline-flex items-center space-x-2 px-4 py-2
                                    bg-white/5 backdrop-blur rounded border border-white/10
                                    font-vt323 text-white/80 text-sm
                                    transition-all duration-300
                                    hover:bg-white/10 hover:text-white
-                                   hover:border-white/20">
+                                   hover:border-white/20"
+                        legacyBehavior>
                         <span>READ MORE</span>
                         <span className="font-mono">{'>>'}</span>
                     </Link>

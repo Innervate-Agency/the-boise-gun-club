@@ -1,0 +1,54 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Winter Shoot Championship",
+      "date": "2025-12-15",
+      "time": "9:00 AM",
+      "location": "Main Range",
+      "description": "Annual winter championship competition"
+    },
+    {
+      "id": 2,
+      "title": "Monthly Club Meeting",
+      "date": "2026-01-03",
+      "time": "7:00 PM",
+      "location": "Clubhouse",
+      "description": "Monthly member meeting and updates"
+    }
+  ],
+  "clubInfo": {
+    "name": "Boise Gun Club",
+    "founded": "1898",
+    "members": "1200+",
+    "acres": "320",
+    "address": "123 Gun Club Road, Boise, ID 83702",
+    "phone": "(208) 555-0123",
+    "email": "info@boisegunclub.com"
+  },
+  "hours": {
+    "weekdays": "Monday - Friday: 9:00 AM - 6:00 PM",
+    "weekends": "Saturday - Sunday: 8:00 AM - 8:00 PM",
+    "holidays": "Closed on major holidays"
+  },
+  "gallery": [
+    {
+      "id": 1,
+      "title": "Championship Winner 1978",
+      "image": "/images/clay1.jpg",
+      "year": "1978"
+    },
+    {
+      "id": 2,
+      "title": "Main Range",
+      "image": "/images/range1.jpg",
+      "year": "2023"
+    },
+    {
+      "id": 3,
+      "title": "Clubhouse",
+      "image": "/images/shotgun1.jpg",
+      "year": "2024"
+    }
+  ]
+}

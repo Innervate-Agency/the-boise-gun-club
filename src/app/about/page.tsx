@@ -36,12 +36,10 @@ const teamMembers = [
 function AboutPage() {
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-neutral-900 to-black text-white overflow-x-hidden">
-
       {/* Subtle Background Effects */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <ParticleAnimation colors={['#F28705', '#E85E27']} count={20} size={1.2} speed={0.15} className="opacity-5" />
       </div>
-
       {/* Page Header */}
       <motion.header
         initial={{ opacity: 0, y: -50 }}
@@ -62,7 +60,6 @@ function AboutPage() {
           Discover the rich history, vibrant community, and unwavering dedication that define the Boise Gun Club, Idaho&apos;s premier shotgun sports facility since 1898.
         </motion.p>
       </motion.header>
-
       {/* Main Content Area */}
       <div className="container mx-auto px-6 relative z-10 space-y-48 md:space-y-64 pb-24">
 
@@ -209,14 +206,14 @@ function AboutPage() {
             <Link
               href="/membership"
               className="group relative inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white rounded-lg font-heading tracking-wider text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 ease-in-out overflow-hidden w-full sm:w-auto"
-            >
+              legacyBehavior>
               <span className="relative z-10">Join The Club</span>
               <svg className="w-5 h-5 relative z-10 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
             </Link>
             <Link
               href="/contact"
               className="group relative inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-transparent border-2 border-[var(--accent-primary)] text-[var(--accent-primary)] rounded-lg font-heading tracking-wider text-base shadow-md hover:bg-[var(--accent-primary)] hover:text-white transition-all duration-300 ease-in-out overflow-hidden w-full sm:w-auto"
-            >
+              legacyBehavior>
               <span className="relative z-10">Contact Us</span>
             </Link>
           </div>
