@@ -138,17 +138,17 @@ const FacilityCard: FC<{
         >
             {/* Subtle grid pattern within glass panel */}
             <div className="absolute inset-0 bg-[url('/images/Grid/Grid (1).jpg')] bg-cover opacity-5 mix-blend-overlay pointer-events-none"></div>
-
             <div className="flex items-center mb-4">
                 <div className="w-12 h-12 rounded-full overflow-hidden mr-3 flex-shrink-0 border border-[var(--accent-primary)]/30">
                     <Image src={icon} alt={title} width={60} height={60} className="object-cover" />
                 </div>
                 <h3 className="text-xl text-[var(--text-primary)] font-refrigerator">{title}</h3>
             </div>
-
             <p className="text-[var(--text-secondary)] mb-4 text-sm font-['Museo']">{description}</p>
-
-            <Link href={link} className="text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] font-['Refrigerator_Deluxe'] text-sm flex items-center">
+            <Link
+                href={link}
+                className="text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] font-['Refrigerator_Deluxe'] text-sm flex items-center"
+                legacyBehavior>
                 {linkText}
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

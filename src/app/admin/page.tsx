@@ -588,7 +588,7 @@ const AdminPage = () => {
 
           <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 mb-6">
             <p className="text-lg font-semibold text-yellow-800">
-              📝 NOTE: To add new images, you'll need to upload them to the /public/images/ folder first, 
+              📝 NOTE: To add new images, you&apos;'ll need to upload them to the /public/images/ folder first, 
               then use the file path like: /images/your-photo.jpg
             </p>
           </div>
@@ -644,11 +644,11 @@ const AdminPage = () => {
                 <div className="mt-4">
                   <p className="text-sm font-semibold text-gray-600 mb-2">Preview:</p>
                   <div className="w-32 h-24 border-2 border-gray-300 rounded-lg overflow-hidden">
-                    <img 
+                    <Image 
                       src={item.image} 
                       alt={item.title}
                       className="w-full h-full object-cover"
-                      onError={(e) => {
+                      onError={(e: { target: HTMLImageElement; }) => {
                         (e.target as HTMLImageElement).src = '/images/clay1.jpg';
                       }}
                     />
