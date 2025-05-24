@@ -152,10 +152,10 @@ const AdminPage = () => {
     }
   };
 
-  const updateEvent = (index: number, field: string, value: string) => {
+  const updateEvent = (index: number, field: keyof ContentData['events'][0], value: string) => {
     if (!content) return;
     const newContent = { ...content };
-    (newContent.events[index] as any)[field] = value;
+    newContent.events[index][field] = value as never;
     setContent(newContent);
   };
 
@@ -186,6 +186,60 @@ const AdminPage = () => {
     }
   };
 
+  const updateClubInfo = (field: string, value: string) => {
+    if (!content) return;
+    setContent({
+      ...content,
+      clubInfo: {
+        ...content.clubInfo,
+        [field]: value
+      }
+    });
+  };
+
+  const updateHours = (field: string, value: string) => {
+    if (!content) return;
+    setContent({
+      ...content,
+      hours: {
+        ...content.hours,
+        [field]: value
+      }
+    });
+  };
+
+  const updateGalleryItem = (index: number, field: keyof ContentData['gallery'][0], value: string) => {
+    if (!content) return;
+    const newContent = { ...content };
+    newContent.gallery[index][field] = value as never;
+    setContent(newContent);
+  };
+
+  const addGalleryItem = () => {
+    if (!content) return;
+    const newItem = {
+      id: Date.now(),
+      title: "New Photo",
+      image: "/images/clay1.jpg",
+      year: "2025"
+    };
+    setContent({
+      ...content,
+      gallery: [...content.gallery, newItem]
+    });
+  };
+
+  const deleteGalleryItem = (index: number) => {
+    if (!content) return;
+    if (confirm('❓ Are you sure you want to delete this photo?')) {
+      const newGallery = content.gallery.filter((_, i) => i !== index);
+      setContent({
+        ...content,
+        gallery: newGallery
+      });
+    }
+  };
+
   // Login Screen
   if (!isLoggedIn) {
     return (
@@ -208,7 +262,7 @@ const AdminPage = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handleLogin()}
+              onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
               className="w-full px-4 py-4 text-xl border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-center"
               placeholder="Password"
             />
@@ -362,6 +416,356 @@ const AdminPage = () => {
               ➕ ADD NEW EVENT
             </button>
             
+            <button
+              onClick={handleSave}
+              disabled={saveStatus === 'saving'}
+              className="bg-blue-600 text-white px-8 py-4 rounded-lg text-xl font-bold hover:bg-blue-700 disabled:opacity-50"
+            >
+              {saveStatus === 'saving' ? '💾 SAVING...' : 
+               saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Contact Info Editor
+  if (currentSection === 'contact' && content) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center justify-between mb-8">
+            <h1 className="text-4xl font-bold text-gray-800">📞 EDIT CONTACT INFO</h1>
+            <button
+              onClick={() => setCurrentSection(null)}
+              className="bg-gray-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-600"
+            >
+              ← BACK
+            </button>
+          </div>
+
+          <div className="space-y-6 mb-8">
+            {/* Club Information Section */}
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">📍 Club Information</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-lg font-semibold mb-2">Club Name:</label>
+                  <input
+                    type="text"
+                    value={content.clubInfo.name}
+                    onChange={(e) => updateClubInfo('name', e.target.value)}
+                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-lg font-semibold mb-2">Founded Year:</label>
+                  <input
+                    type="text"
+                    value={content.clubInfo.founded}
+                    onChange={(e) => updateClubInfo('founded', e.target.value)}
+                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-lg font-semibold mb-2">Number of Members:</label>
+                  <input
+                    type="text"
+                    value={content.clubInfo.members}
+                    onChange={(e) => updateClubInfo('members', e.target.value)}
+                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                    placeholder="1200+"
+                  />
+                </div>
+                <div>
+                  <label className="block text-lg font-semibold mb-2">Property Size (acres):</label>
+                  <input
+                    type="text"
+                    value={content.clubInfo.acres}
+                    onChange={(e) => updateClubInfo('acres', e.target.value)}
+                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                    placeholder="320"
+                  />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-lg font-semibold mb-2">Address:</label>
+                  <input
+                    type="text"
+                    value={content.clubInfo.address}
+                    onChange={(e) => updateClubInfo('address', e.target.value)}
+                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-lg font-semibold mb-2">Phone Number:</label>
+                  <input
+                    type="text"
+                    value={content.clubInfo.phone}
+                    onChange={(e) => updateClubInfo('phone', e.target.value)}
+                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-lg font-semibold mb-2">Email Address:</label>
+                  <input
+                    type="email"
+                    value={content.clubInfo.email}
+                    onChange={(e) => updateClubInfo('email', e.target.value)}
+                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Hours Section */}
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">🕒 Operating Hours</h3>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-lg font-semibold mb-2">Weekdays:</label>
+                  <input
+                    type="text"
+                    value={content.hours.weekdays}
+                    onChange={(e) => updateHours('weekdays', e.target.value)}
+                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                    placeholder="Monday - Friday: 9:00 AM - 6:00 PM"
+                  />
+                </div>
+                <div>
+                  <label className="block text-lg font-semibold mb-2">Weekends:</label>
+                  <input
+                    type="text"
+                    value={content.hours.weekends}
+                    onChange={(e) => updateHours('weekends', e.target.value)}
+                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                    placeholder="Saturday - Sunday: 8:00 AM - 8:00 PM"
+                  />
+                </div>
+                <div>
+                  <label className="block text-lg font-semibold mb-2">Holidays:</label>
+                  <input
+                    type="text"
+                    value={content.hours.holidays}
+                    onChange={(e) => updateHours('holidays', e.target.value)}
+                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                    placeholder="Closed on major holidays"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <button
+              onClick={handleSave}
+              disabled={saveStatus === 'saving'}
+              className="bg-blue-600 text-white px-8 py-4 rounded-lg text-xl font-bold hover:bg-blue-700 disabled:opacity-50"
+            >
+              {saveStatus === 'saving' ? '💾 SAVING...' : 
+               saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Gallery Editor
+  if (currentSection === 'gallery' && content) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 p-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center justify-between mb-8">
+            <h1 className="text-4xl font-bold text-gray-800">📸 EDIT GALLERY</h1>
+            <button
+              onClick={() => setCurrentSection(null)}
+              className="bg-gray-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-600"
+            >
+              ← BACK
+            </button>
+          </div>
+
+          <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 mb-6">
+            <p className="text-lg font-semibold text-yellow-800">
+              📝 NOTE: To add new images, you'll need to upload them to the /public/images/ folder first, 
+              then use the file path like: /images/your-photo.jpg
+            </p>
+          </div>
+
+          <div className="space-y-6 mb-8">
+            {content.gallery.map((item, index) => (
+              <div key={item.id} className="bg-white rounded-xl shadow-lg p-6">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-2xl font-bold text-gray-800">Photo {index + 1}</h3>
+                  <button
+                    onClick={() => deleteGalleryItem(index)}
+                    className="bg-red-500 text-white px-4 py-2 rounded font-bold hover:bg-red-600"
+                  >
+                    🗑️ DELETE
+                  </button>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-lg font-semibold mb-2">Photo Title:</label>
+                    <input
+                      type="text"
+                      value={item.title}
+                      onChange={(e) => updateGalleryItem(index, 'title', e.target.value)}
+                      className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-purple-500 focus:outline-none"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-lg font-semibold mb-2">Year:</label>
+                    <input
+                      type="text"
+                      value={item.year}
+                      onChange={(e) => updateGalleryItem(index, 'year', e.target.value)}
+                      className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-purple-500 focus:outline-none"
+                      placeholder="2025"
+                    />
+                  </div>
+                  
+                  <div className="md:col-span-2">
+                    <label className="block text-lg font-semibold mb-2">Image Path:</label>
+                    <input
+                      type="text"
+                      value={item.image}
+                      onChange={(e) => updateGalleryItem(index, 'image', e.target.value)}
+                      className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-purple-500 focus:outline-none"
+                      placeholder="/images/your-photo.jpg"
+                    />
+                  </div>
+                </div>
+
+                {/* Image Preview */}
+                <div className="mt-4">
+                  <p className="text-sm font-semibold text-gray-600 mb-2">Preview:</p>
+                  <div className="w-32 h-24 border-2 border-gray-300 rounded-lg overflow-hidden">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/images/clay1.jpg';
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex gap-4 justify-center">
+            <button
+              onClick={addGalleryItem}
+              className="bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-bold hover:bg-green-700"
+            >
+              ➕ ADD NEW PHOTO
+            </button>
+            
+            <button
+              onClick={handleSave}
+              disabled={saveStatus === 'saving'}
+              className="bg-blue-600 text-white px-8 py-4 rounded-lg text-xl font-bold hover:bg-blue-700 disabled:opacity-50"
+            >
+              {saveStatus === 'saving' ? '💾 SAVING...' : 
+               saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Club Info Editor
+  if (currentSection === 'info' && content) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center justify-between mb-8">
+            <h1 className="text-4xl font-bold text-gray-800">ℹ️ EDIT CLUB INFO</h1>
+            <button
+              onClick={() => setCurrentSection(null)}
+              className="bg-gray-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-600"
+            >
+              ← BACK
+            </button>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">🏛️ Basic Club Information</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-lg font-semibold mb-2">Club Name:</label>
+                <input
+                  type="text"
+                  value={content.clubInfo.name}
+                  onChange={(e) => updateClubInfo('name', e.target.value)}
+                  className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-green-500 focus:outline-none"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-lg font-semibold mb-2">Founded Year:</label>
+                <input
+                  type="text"
+                  value={content.clubInfo.founded}
+                  onChange={(e) => updateClubInfo('founded', e.target.value)}
+                  className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-green-500 focus:outline-none"
+                  placeholder="1898"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-lg font-semibold mb-2">Number of Members:</label>
+                <input
+                  type="text"
+                  value={content.clubInfo.members}
+                  onChange={(e) => updateClubInfo('members', e.target.value)}
+                  className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-green-500 focus:outline-none"
+                  placeholder="1200+"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-lg font-semibold mb-2">Property Size (acres):</label>
+                <input
+                  type="text"
+                  value={content.clubInfo.acres}
+                  onChange={(e) => updateClubInfo('acres', e.target.value)}
+                  className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-green-500 focus:outline-none"
+                  placeholder="320"
+                />
+              </div>
+            </div>
+            
+            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+              <h4 className="text-lg font-semibold text-blue-800 mb-2">📊 Current Stats Display:</h4>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div className="bg-white p-3 rounded">
+                  <div className="text-2xl font-bold text-blue-600">{content.clubInfo.founded}</div>
+                  <div className="text-sm text-gray-600">Founded</div>
+                </div>
+                <div className="bg-white p-3 rounded">
+                  <div className="text-2xl font-bold text-blue-600">{content.clubInfo.members}</div>
+                  <div className="text-sm text-gray-600">Members</div>
+                </div>
+                <div className="bg-white p-3 rounded">
+                  <div className="text-2xl font-bold text-blue-600">{content.clubInfo.acres}</div>
+                  <div className="text-sm text-gray-600">Acres</div>
+                </div>
+                <div className="bg-white p-3 rounded">
+                  <div className="text-2xl font-bold text-blue-600">Idaho</div>
+                  <div className="text-sm text-gray-600">State</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
             <button
               onClick={handleSave}
               disabled={saveStatus === 'saving'}
