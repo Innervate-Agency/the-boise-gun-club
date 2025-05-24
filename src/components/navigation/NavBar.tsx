@@ -26,7 +26,7 @@ const NavItem = ({ label, href, isActive }: {
     isActive: boolean;
 }) => {
     return (
-        <Link href={href} legacyBehavior>
+        <Link href={href}>
             <motion.div
                 className="relative flex items-center cursor-pointer px-2 py-1"
                 whileHover={{ y: -2 }}
@@ -155,7 +155,7 @@ export default function NavBar() {
                                     <Link
                                         href="/membership"
                                         className="relative btn-gradient block px-6 py-2.5 rounded font-bold shadow-lg font-heading tracking-wide"
-                                        legacyBehavior>
+                                       >
                                         MEMBER LOGIN
                                     </Link>
                                 </motion.div>

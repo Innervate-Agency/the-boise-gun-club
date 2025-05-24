@@ -100,7 +100,6 @@ const Footer: React.FC = () => {
           className="object-cover"
         />
       </div>
-
       <div className="container mx-auto px-6 py-12 md:py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-10 md:mb-12">
           {/* Club Info / Logo */}
@@ -108,16 +107,14 @@ const Footer: React.FC = () => {
             variants={itemVariants}
             className="md:col-span-2 lg:col-span-1"
           >
-            <Link href="/" legacyBehavior>
-              <a className="inline-block mb-4">
-                {/* Replace with actual logo if available, or styled text */}
-                <h2 className="text-3xl font-bold text-white font-['Heading_Pro_Trial']">
-                  Boise{" "}
-                  <span className="text-[var(--accent-primary)]">Gun Club</span>
-                </h2>
-              </a>
+            <Link href="/" className="inline-block mb-4">
+              <h2 className="text-3xl font-bold text-white font-['Heading_Pro_Trial']">
+                Boise{" "}
+                <span className="text-[var(--accent-primary)]">Gun Club</span>
+              </h2>
+              <p className="text-white/70 mb-4 text-sm">Est. 1898</p>
             </Link>
-            <p className="text-sm leading-relaxed font-['Museo']">
+            <p className="text-sm leading-7 font-body">
               Promoting safe and responsible firearm ownership, sportsmanship,
               and community since 1947.
             </p>
@@ -126,24 +123,26 @@ const Footer: React.FC = () => {
           {/* Navigation Sections */}
           {footerSections.map((section, index) => (
             <motion.div variants={itemVariants} key={index}>
-              <h3 className="text-lg font-semibold text-white mb-4 font-['Heading_Pro_Trial'] tracking-wide">
+              <h3 className="text-lg font-semibold text-white mb-4 font-heading tracking-wide">
                 {section.title}
               </h3>
               {section.content ? (
-                <div className="text-sm space-y-1 font-['Museo']">
+                <div className="text-sm space-y-1 font-body">
                   {section.content}
                 </div>
               ) : (
-                <ul className="space-y-2 font-['Museo']">
-                  {section.links?.map((link, linkIndex) => (
+                <ul className="space-y-2 font-body">
+                  {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <Link href={link.href} legacyBehavior>
-                        <a className="text-sm hover:text-[var(--accent-primary)] transition-colors duration-200 flex items-center group">
-                          {link.icon && (
-                            <link.icon className="w-4 h-4 mr-2.5 text-neutral-500 group-hover:text-[var(--accent-primary)] transition-colors duration-200" />
-                          )}
-                          {link.text}
-                        </a>
+                      <Link
+                        href={link.href}
+                        className="text-sm hover:text-[var(--accent-primary)] transition-colors duration-200 flex items-center group">
+
+                        {'icon' in link && link.icon && (
+                          <link.icon className="w-4 h-4 mr-2.5 text-neutral-500 group-hover:text-[var(--accent-primary)] transition-colors duration-200" />
+                        )}
+                        {link.text}
+
                       </Link>
                     </li>
                   ))}
@@ -158,12 +157,12 @@ const Footer: React.FC = () => {
           variants={itemVariants}
           className="border-t border-neutral-700/50 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-sm"
         >
-          <p className="font-['Museo'] mb-4 md:mb-0">
+          <p className="font-body mb-4 md:mb-0">
             &copy; {currentYear} Boise Gun Club. All Rights Reserved.
           </p>
           <button
             onClick={scrollToTop}
-            className="group flex items-center text-neutral-400 hover:text-[var(--accent-primary)] transition-colors duration-200 font-['Museo']"
+            className="group flex items-center text-neutral-400 hover:text-[var(--accent-primary)] transition-colors duration-200 font-body"
             aria-label="Back to top"
           >
             Back to Top

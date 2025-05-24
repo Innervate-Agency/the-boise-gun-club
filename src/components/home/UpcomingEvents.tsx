@@ -211,7 +211,7 @@ const UpcomingEvents = () => {
                             <Link
                                 href={`/events/${selectedEvent.id}`}
                                 className="group relative inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white rounded-lg font-heading shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden w-full text-center"
-                                legacyBehavior>
+                               >
                                 <span className="relative z-10">View Details & Register</span>
                                 <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                             </Link>
@@ -237,7 +237,7 @@ const UpcomingEvents = () => {
                             <Link
                                 href="/events"
                                 className="group relative inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-transparent border border-[var(--accent-primary)] text-[var(--accent-primary)] rounded-md font-heading shadow-md hover:bg-[var(--accent-primary)] hover:text-white transition-all duration-300 overflow-hidden text-sm"
-                                legacyBehavior>
+                               >
                                 <span className="relative z-10">View Full Calendar</span>
                                 <svg className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </Link>

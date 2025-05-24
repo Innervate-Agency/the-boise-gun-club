@@ -70,7 +70,7 @@ const NewsCard: FC<NewsCardProps> = ({
                                    transition-all duration-300
                                    hover:bg-white/10 hover:text-white
                                    hover:border-white/20"
-                        legacyBehavior>
+                       >
                         <span>READ MORE</span>
                         <span className="font-mono">{'>>'}</span>
                     </Link>

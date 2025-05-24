@@ -75,7 +75,7 @@ export default function MobileMenu({ links, onClose }: MobileMenuProps) {
                                 href={link.href}
                                 className={`block text-center text-2xl py-3 font-heading text-[var(--text-primary)] border-b border-[var(--glass-border)] transition-colors ${pathname === link.href ? 'text-[var(--accent-primary)] font-bold' : 'hover:text-[var(--accent-secondary)]'}`}
                                 onClick={onClose}
-                                legacyBehavior>
+                               >
                                 {link.label}
                             </Link>
                         </motion.li>

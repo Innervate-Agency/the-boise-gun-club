@@ -153,7 +153,7 @@ function HeroSection() {
                     <Link
                         href="/membership"
                         className="group relative overflow-hidden"
-                        legacyBehavior>
+                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-[#F28705] to-[#E85E27] blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
                         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#F28705]/20 to-[#E85E27]/20 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110" />
 
@@ -163,7 +163,7 @@ function HeroSection() {
                         </button>
                     </Link>
 
-                    <Link href="/ranges" className="group relative overflow-hidden" legacyBehavior>
+                    <Link href="/ranges" className="group relative overflow-hidden">
                         <div className="absolute inset-0 border-2 border-[#F28705] blur-lg opacity-0 group-hover:opacity-70 transition-all duration-500" />
 
                         <button className="relative border-2 border-[#F28705] text-[#F28705] px-10 py-5 rounded-lg font-heading text-lg tracking-wide transition-all duration-500 backdrop-blur-md bg-[rgba(18,18,18,0.3)] group-hover:bg-[#F28705]/20 group-hover:text-white group-hover:scale-105 group-hover:translate-y-[-2px] group-hover:shadow-[0_0_20px_rgba(242,135,5,0.3)] overflow-hidden">

@@ -137,10 +137,11 @@ const EventCard: React.FC<{ event: Event, index: number }> = ({ event, index }) 
         </p>
 
         {event.detailsLink ? (
-          <Link href={event.detailsLink} legacyBehavior>
-            <a className="mt-auto inline-flex items-center justify-center text-sm font-semibold font-['Heading_Pro_Trial'] text-[var(--accent-primary)] hover:text-white bg-neutral-700/50 hover:bg-[var(--accent-primary)]/80 px-5 py-2.5 rounded-md transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[var(--accent-primary)]/30">
-              View Details <ChevronRightIcon className="w-4 h-4 ml-1.5 transform transition-transform duration-300 group-hover:translate-x-0.5" />
-            </a>
+          <Link 
+            href={event.detailsLink}
+            className="mt-auto inline-flex items-center justify-center text-sm font-semibold font-['Heading_Pro_Trial'] text-[var(--accent-primary)] hover:text-white bg-neutral-700/50 hover:bg-[var(--accent-primary)]/80 px-5 py-2.5 rounded-md transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[var(--accent-primary)]/30"
+          >
+            View Details <ChevronRightIcon className="w-4 h-4 ml-1.5 transform transition-transform duration-300 group-hover:translate-x-0.5" />
           </Link>
         ) : (
           (<div className="mt-auto h-[42px]"></div>) // Placeholder for consistent card height if no button

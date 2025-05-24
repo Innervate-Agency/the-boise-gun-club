@@ -31,7 +31,7 @@ export default function NavLink({ href, label, children }: NavLinkProps) {
                         : 'text-gray-300 hover:text-white'
                     }
                 `}
-                legacyBehavior>
+               >
                 {label}
                 {children}
             </Link>
