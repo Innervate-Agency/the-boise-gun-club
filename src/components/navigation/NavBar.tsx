@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import MobileMenu from './MobileMenu';
 import NavLogo from './NavLogo';
-import ThemeToggle from './ThemeToggle';
 import { useNavigation } from './NavigationContext';
 
 // Navigation items with updated colors based on brand guidelines
@@ -36,7 +35,7 @@ const NavItem = ({ label, href, isActive }: {
                     color: isActive ? 'var(--accent-primary)' : 'var(--text-primary)'
                 }}
             >
-                <span className={`font-heading text-sm tracking-wide ${isActive ? 'text-[var(--accent-primary)]' : 'text-[var(--text-primary)]'}`}>
+                <span className={`font-heading text-xl tracking-wide`}>
                     {label}
                 </span>
 
@@ -143,9 +142,6 @@ export default function NavBar() {
                                     />
                                 ))}
 
-                                {/* Theme Toggle */}
-                                <ThemeToggle />
-
                                 {/* Member Login Button - Modern Gradient */}
                                 <motion.div
                                     whileHover={{ scale: 1.05, y: -2 }}
@@ -163,8 +159,6 @@ export default function NavBar() {
 
                             {/* Mobile Menu Button - Clean design */}
                             <div className="lg:hidden flex items-center space-x-4">
-                                <ThemeToggle />
-
                                 <button
                                     className="relative z-10 p-2 text-[var(--text-primary)]"
                                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -210,4 +204,4 @@ export default function NavBar() {
             `}</style>
         </>
     );
-} 
+}

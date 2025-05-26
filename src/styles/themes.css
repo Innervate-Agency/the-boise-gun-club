@@ -174,100 +174,118 @@
   border-color: var(--accent-primary);
 }
 
-/* Base theme variables with light mode defaults - 70s COLOR PALETTE */
-  :root {
-    /* Base colors */
-    --bg-primary: #121212;
-    --bg-secondary: #1a1a1a;
-    --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.7);
-    
-    /* Accent colors */
-    --accent-primary: #F2CB05;
-    --accent-secondary: #F28705;
-    --accent-gold: #F2B950;
-    --accent-darkred: #521623;
-    
-    /* Glass effect */
-    --glass-bg: rgba(18, 18, 18, 0.3);
-    --glass-border: rgba(242, 93, 39, 0.1);
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #F25D27 0%, #F27127 100%);
-    
-    /* Additional accent colors */
-    --accent-tertiary: #51A696;
-    --accent-quaternary: #2484BF;
-    --accent-olive: #706B28;
-    --accent-yellow: #FFCC52;
-    --accent-orangered: #D54F00;
-    --accent-deepblue: #2467B8;
-    --accent-darkteal: #027368;
-    
-    /* UI elements */
-    --grid-color: rgba(20, 21, 23, 0.1);
-    
-    /* Gradients */
-    --gradient-secondary: linear-gradient(90deg, #51A696, #2484BF);
-    --gradient-retro: linear-gradient(180deg, #D54F00, #F25D27, #FFCC52);
-    --gradient-sunset: linear-gradient(45deg, #D54F00, #F25D27, #F2CF63);
-    
-    /* Special elements */
-    --shadow-color: rgba(20, 21, 23, 0.2);
-    --glow-color: rgba(242, 93, 39, 0.6);
-    
-    /* Transitions */
-    --transition-speed: 0.3s;
-    
-    /* Containers */
-    --terminal-green: #51A696;
-    --terminal-amber: #F2B950;
-    --footer-bg: #141517;
+/* Base theme variables - LIGHT MODE DEFAULTS */
+:root {
+  /* Base colors - Light Theme */
+  --bg-primary: #F0EFEB; /* Off-white, parchment like */
+  --bg-secondary: #FFFFFF; /* Pure white for cards/modals */
+  --text-primary: #3D2B1F; /* Dark brown, like old ink */
+  --text-secondary: #7A5C44; /* Lighter brown, for secondary text */
+  
+  /* Accent colors - Light Theme (Earthy, vintage, but with some pop) */
+  --accent-primary: #D54F00;    /* Burnt Orange - primary call to action */
+  --accent-secondary: #F28705;  /* Lighter Orange - secondary actions, highlights */
+  --accent-gold: #B8860B;       /* Dark Goldenrod - for highlights, borders */
+  --accent-darkred: #8C1818;    /* Deep Red - for warnings or special highlights */
+  
+  /* Glass effect - Light Theme */
+  --glass-bg: rgba(240, 239, 235, 0.6); /* Light, slightly opaque */
+  --glass-border: rgba(213, 79, 0, 0.2); /* Subtle orange border */
+  
+  /* Gradients - Light Theme */
+  --gradient-primary: linear-gradient(135deg, #F28705 0%, #D54F00 100%);
+  
+  /* Additional accent colors - Light Theme */
+  --accent-tertiary: #027368;   /* Dark Teal - for information, tags */
+  --accent-quaternary: #2467B8; /* Steel Blue - for links or less prominent actions */
+  --accent-olive: #556B2F;      /* Dark Olive Green - for natural tones */
+  --accent-yellow: #FFBF00;     /* Amber/Yellow - for attention */
+  --accent-orangered: #FF4500;  /* OrangeRed - vibrant accent */
+  --accent-deepblue: #004E98;   /* Deeper Blue */
+  --accent-darkteal: #004D40;   /* Darker Teal */
+  
+  /* UI elements - Light Theme */
+  --grid-color: rgba(61, 43, 31, 0.1); /* Subtle brown grid lines */
+  
+  /* Gradients - Light Theme */
+  --gradient-secondary: linear-gradient(90deg, #027368, #2467B8);
+  --gradient-retro: linear-gradient(180deg, #D54F00, #F28705, #FFBF00);
+  --gradient-sunset: linear-gradient(45deg, #D54F00, #F28705, #FFD700); /* Gold instead of F2CF63 */
+  
+  /* Special elements - Light Theme */
+  --shadow-color: rgba(61, 43, 31, 0.15); /* Softer brown shadow */
+  --glow-color: rgba(213, 79, 0, 0.4);    /* Orange glow */
+  
+  /* Transitions */
+  --transition-speed: 0.3s;
+  
+  /* Containers - Light Theme */
+  --terminal-green: #027368; /* Teal for "green" elements */
+  --terminal-amber: #FFBF00; /* Amber for "yellow" elements */
+  --footer-bg: #E6E0D9;    /* Lighter footer background */
 
-    /* Other brand colors */
-    --leonard-yellow: #F2CB05;
-    --lahoma-orange: #F28705;
-    --dark-bg: #121212;
-  }
+  /* Other brand colors (can remain consistent or adapt) */
+  --leonard-yellow: #F2CB05; /* This is a specific brand color, might keep it */
+  --lahoma-orange: #F28705;  /* This is a specific brand color, might keep it */
+  --dark-bg: #3D2B1F; /* Dark brown, for contrast elements if needed in light mode */
+}
 
-  /* Dark theme variables */
-  [data-theme='dark'] {
-    --bg-primary: #141517; /* Dark gray background */
-    --bg-secondary: #232323; /* Slightly lighter gray */
-    --text-primary: #F9F9F9; /* Off-white text */
-    --text-secondary: #F2CF63; /* Gold text */
-    
-    /* Accent colors - kept vibrant even in dark mode */
-    --accent-primary: #F25D27; /* Orange */
-    --accent-secondary: #FFB65A; /* Light orange */
-    --accent-tertiary: #51A696; /* Teal */
-    --accent-quaternary: #2484BF; /* Blue */
-    
-    /* Additional accent colors - dark mode */
-    --accent-olive: #706B28; /* Olive green */
-    --accent-yellow: #FFCC52; /* Bright yellow */
-    --accent-orangered: #FF7F20; /* Bright orange */
-    --accent-darkred: #8C2323; /* Dark red */
-    --accent-deepblue: #2467B8; /* Deep blue */
-    --accent-gold: #F2CF63; /* Gold */
-    --accent-darkteal: #027368; /* Dark teal */
-    
-    /* UI elements */
-    --grid-color: rgba(242, 218, 140, 0.1);
-    --glass-bg: rgba(20, 21, 23, 0.7);
-    --glass-border: rgba(242, 93, 39, 0.3);
-    
-    /* Gradients remain vibrant */
-    --gradient-primary: linear-gradient(90deg, #F25D27, #FFB65A);
-    --gradient-secondary: linear-gradient(90deg, #51A696, #2484BF);
-    --gradient-retro: linear-gradient(180deg, #D54F00, #F25D27, #FFCC52);
-    --gradient-sunset: linear-gradient(45deg, #561806, #F25D27, #F2CF63);
-    
-    /* Special elements */
-    --shadow-color: rgba(0, 0, 0, 0.3);
-    --glow-color: rgba(255, 182, 90, 0.5);
-  }
-  /* Gradient text effect */
+/* Dark theme variables */
+[data-theme='dark'] {
+  --bg-primary: #121212; /* Very dark grey, almost black */
+  --bg-secondary: #1E1E1E; /* Slightly lighter dark grey for cards */
+  --text-primary: #EAEAEA; /* Off-white for primary text */
+  --text-secondary: #B0B0B0; /* Lighter grey for secondary text */
+  
+  /* Accent colors - Dark Theme (Vibrant against dark background) */
+  --accent-primary: #F2CB05;    /* Leonard Yellow - primary call to action */
+  --accent-secondary: #F28705;  /* Lahoma Orange - secondary actions */
+  --accent-gold: #F2B950;       /* Lighter Gold - for highlights */
+  --accent-darkred: #D94A64;    /* Brighter Red/Pinkish Red */
+  
+  /* Glass effect - Dark Theme */
+  --glass-bg: rgba(30, 30, 30, 0.7); /* Darker glass */
+  --glass-border: rgba(242, 203, 5, 0.2); /* Subtle yellow border */
+  
+  /* Gradients - Dark Theme */
+  --gradient-primary: linear-gradient(135deg, #F28705 0%, #F2CB05 100%);
+  
+  /* Additional accent colors - Dark Theme */
+  --accent-tertiary: #51A696;   /* Muted Teal */
+  --accent-quaternary: #2484BF; /* Muted Blue */
+  --accent-olive: #706B28;      /* Muted Olive */
+  --accent-yellow: #FFD700;     /* Gold/Yellow */
+  --accent-orangered: #FF6347;  /* Tomato Red - vibrant */
+  --accent-deepblue: #367FBF;   /* Brighter Deep Blue */
+  --accent-darkteal: #2A9D8F;   /* Brighter Dark Teal */
+  
+  /* UI elements - Dark Theme */
+  --grid-color: rgba(242, 203, 5, 0.08); /* Very subtle yellow grid */
+  
+  /* Gradients - Dark Theme */
+  --gradient-secondary: linear-gradient(90deg, #51A696, #2484BF);
+  --gradient-retro: linear-gradient(180deg, #F28705, #F2CB05, #F2B950);
+  --gradient-sunset: linear-gradient(45deg, #F28705, #F2CB05, #F2B950);
+  
+  /* Special elements - Dark Theme */
+  --shadow-color: rgba(0, 0, 0, 0.3); /* Darker shadow */
+  --glow-color: rgba(242, 203, 5, 0.5); /* Yellow glow */
+  
+  /* Transitions */
+  /* --transition-speed: 0.3s; */ /* Already defined in :root, no need to repeat */
+  
+  /* Containers - Dark Theme */
+  --terminal-green: #51A696;
+  --terminal-amber: #F2B950;
+  --footer-bg: #1A1A1A; /* Darker footer */
+
+  /* Other brand colors (can remain consistent or adapt) */
+  /* --leonard-yellow: #F2CB05; */ /* Already used as accent */
+  /* --lahoma-orange: #F28705;  */ /* Already used as accent */
+  --dark-bg: #121212; /* Base dark background */
+}
+
+/* Gradient text effect */
 .gradient-text {
   background: var(--gradient-primary);
   -webkit-background-clip: text;

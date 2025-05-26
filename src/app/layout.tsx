@@ -6,6 +6,7 @@ import { NavigationProvider } from '@/components/navigation/NavigationContext';
 import NavBar from '@/components/navigation/NavBar';
 import Footer from '@/components/layout/Footer';
 import AccessibilityFAB from '@/components/ui/AccessibilityFAB';
+import NewThemeToggle from '@/components/ui/NewThemeToggle';
 import './globals.css';
 import './fonts.css';
 
@@ -14,24 +15,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [mounted, setMounted] = useState(false); // Correctly declared useState
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // Apply theme class based on system preference - client-side only
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
   }, []);
 
-  // The suppressHydrationWarning is crucial for preventing hydration mismatch errors
-  // Any client-side-only rendering should be conditional on mounted state
   return (
     <html lang="en" className={`h-full font-body`} suppressHydrationWarning={true}>
       <head>
-        {/* Adobe Fonts script - this is more reliable than CSS link */}
         <script dangerouslySetInnerHTML={{
           __html: `
             (function(d) {
@@ -44,30 +36,32 @@ export default function RootLayout({
             })(document);
           `
         }} />
-
-        {/* Preconnect to Adobe Fonts domain */}
         <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.adobe.com" crossOrigin="anonymous" />
-
-        {/* Fallback font in case Adobe Fonts fails to load */}
         <link
           href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
           rel="stylesheet"
         />
-
-        {/* Additional preload for critical assets */}
         <link rel="preload" as="image" href="/images/Grid/Grid (3).jpg" />
         <link rel="preload" as="image" href="/images/Smoke/Background_01.jpg" />
       </head>
-      <body className="min-h-full flex flex-col font-body bg-[#121212] text-white" suppressHydrationWarning={true}>
+      <body className="min-h-full flex flex-col font-body bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300 ease-in-out" suppressHydrationWarning={true}>
         <ThemeProvider>
           <NavigationProvider>
             <NavBar />
-            <main className="flex-grow pt-80">
-              {children}
+            <main className="flex-grow w-full">
+              {/* Adjusted padding: removed pb-36 */}
+              <div className="pt-24 md:pt-28 lg:pt-32 px-4 sm:px-6 lg:px-8">
+                {children}
+              </div>
             </main>
             <Footer />
-            {mounted && <AccessibilityFAB />} {/* FAB rendered conditionally */}
+            {mounted && (
+              <>
+                <NewThemeToggle />
+                <AccessibilityFAB />
+              </>
+            )}
           </NavigationProvider>
         </ThemeProvider>
       </body>

@@ -114,6 +114,21 @@
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
 }
 
+/* Gradient text clip */
+.gradient-text-clip {
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-primary),
+    var(--color-accent-secondary),
+    var(--color-accent-tertiary)
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: background-position 0.5s ease;
+}
+
 /* Responsive design utilities */
 @layer utilities {
   .max-w-content {

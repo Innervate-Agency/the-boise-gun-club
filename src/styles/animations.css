@@ -1,50 +1,4 @@
-/* Smoky wisp animation */
-@keyframes smokeWisp {
-  0% {
-    transform: scale(1) translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-  25% {
-    opacity: 0.5;
-  }
-  50% {
-    transform: scale(1.5) translateY(-10px) rotate(15deg);
-    opacity: 0.3;
-  }
-  75% {
-    opacity: 0.15;
-  }
-  100% {
-    transform: scale(2) translateY(-20px) rotate(25deg);
-    opacity: 0;
-  }
-}
-
-/* Smoke animation */
-@keyframes driftSmoke {
-  0% {
-    transform: translateY(0) translateX(0);
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.1;
-  }
-  80% {
-    opacity: 0.05;
-  }
-  100% {
-    transform: translateY(-100px) translateX(50px);
-    opacity: 0;
-  }
-}
-
-.smoke-wisp {
-  animation: driftSmoke 8s ease-out infinite;
-}
-
-.smoke-wisp {
-  animation: smokeWisp 2s ease-out forwards;
-}
+/* No CSS animations here, use Framer Motion instead */
 
 /* Custom font styling to mimic Cooper Black */
 .cooper-style {
@@ -58,66 +12,6 @@
 .freeform-text {
   letter-spacing: 0.03em;
   font-weight: 600;
-  transition: letter-spacing 0.3s ease;
-}
-
-.freeform-text:hover {
-  letter-spacing: 0.05em;
-}
-
-/* 70s Inspired Animations */
-@keyframes bubble-float {
-  0% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-20px) scale(1.1);
-  }
-  100% {
-    transform: translateY(0) scale(1);
-  }
-}
-
-.bubble-float {
-  animation: bubble-float 6s ease-in-out infinite;
-}
-
-@keyframes groovy-rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(3deg);
-  }
-  75% {
-    transform: rotate(-3deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-.groovy-rotation {
-  animation: groovy-rotation 8s ease-in-out infinite;
-}
-
-/* 70s-style gradient animations */
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.gradient-shift {
-  background: linear-gradient(270deg, #F2DA8C, #F25D27, #FFCC52);
-  background-size: 600% 600%;
-  animation: gradient-shift 15s ease infinite;
 }
 
 /* Vintage photo filter */
@@ -148,39 +42,6 @@
   pointer-events: auto;
 }
 
-/* Terminal effects */
-@keyframes scanline {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
-
-/* Blinking cursor animation */
-@keyframes blink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-/* Pulse effect for buttons */
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(242, 93, 39, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(242, 93, 39, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(242, 93, 39, 0);
-  }
-}
-
 /* Retrowave sun effect */
 .retrowave-sun {
   position: relative;
@@ -199,20 +60,7 @@
   z-index: -1;
 }
 
-.pulse {
-  animation: pulse 2s infinite;
-}
-
 /* Disco ball effect */
-@keyframes disco-rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .disco-effect {
   position: relative;
   overflow: hidden;
@@ -232,6 +80,5 @@
     #2484BF 30deg 40deg
   );
   opacity: 0.1;
-  animation: disco-rotate 10s linear infinite;
   pointer-events: none;
 }

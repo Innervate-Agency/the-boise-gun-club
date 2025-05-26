@@ -184,6 +184,24 @@ const StatCard: FC<{ value: string; label: string }> = ({ value, label }) => {
     );
 };
 
+// Section wrapper for consistent spacing
+const Section: FC<{ children: React.ReactNode, className?: string, addMargin?: boolean }> = ({ children, className, addMargin = true }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+    return (
+        <motion.section
+            ref={ref}
+            className={`container mx-auto px-4 ${addMargin ? 'mb-[150px]' : ''} ${className || ''}`}
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+            {children}
+        </motion.section>
+    );
+};
+
 const HomePage: FC = () => {
     const mainRef = useRef<HTMLDivElement>(null);
     const [bgColor, setBgColor] = useState('transparent');
@@ -196,26 +214,23 @@ const HomePage: FC = () => {
 
     return (
         <main ref={mainRef} className="flex flex-col min-h-screen bg-gradient-to-b from-neutral-900 to-black text-white overflow-x-hidden">
-            <div ref={heroRef}>
-                <HeroSection />            </div>
+            <Section addMargin={false}>
+                <HeroSection />
+            </Section>
             
-            <UpcomingEvents />
+            <Section>
+                <UpcomingEvents />
+            </Section>
 
             {/* Gallery Preview Section */}
-            <div ref={galleryRef}>
+            <Section>
                 <GalleryPreview galleryItems={galleryItems} />
-            </div>
+            </Section>
 
             {/* Contact Information Section */}
-            <ContactInfo />
-
-            {/* Placeholder for Our Facilities Section - to be implemented next */}
-            {/* <div ref={facilitiesRef}>
-                <OurFacilities highlights={facilityHighlights} />
-            </div> */}
-
-            {/* Placeholder for CTA Section */}
-            {/* <CTASection /> */}
+            <Section addMargin={false}>
+                <ContactInfo />
+            </Section>
         </main>
     );
 };

@@ -18,7 +18,25 @@
         rgba(0, 0, 0, 0.3) 2px
     );
     background-size: 100% 2px;
-    animation: scanlines 1s steps(60) infinite;
+}
+
+.scanlines-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 98%,
+    rgba(0, 0, 0, 0.3) 99%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background-size: 100% 0.25rem; /* Adjusted from 4px to be more responsive */
+  pointer-events: none;
+  z-index: 100; /* Ensure it's above content but below interactive elements if needed */
 }
 
 /* Glow effect for active filters */
