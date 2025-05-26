@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 // Simple password - change this to whatever you want
 const ADMIN_PASSWORD = 'boise2025';
@@ -647,9 +648,11 @@ const AdminPage = () => {
                     <Image 
                       src={item.image} 
                       alt={item.title}
+                      width={128}
+                      height={96}
                       className="w-full h-full object-cover"
-                      onError={(e: { target: HTMLImageElement; }) => {
-                        (e.target as HTMLImageElement).src = '/images/clay1.jpg';
+                      onError={() => {
+                        // Fallback handled by Next.js Image component
                       }}
                     />
                   </div>

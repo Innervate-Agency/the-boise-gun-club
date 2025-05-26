@@ -5,8 +5,18 @@ import { motion } from 'framer-motion';
 import { useTheme } from '@/components/ui/ThemeContext';
 
 export default function ThemeToggle() {
-    const { theme, toggleTheme } = useTheme();
+    const { themeSetting, effectiveTheme, setTheme } = useTheme();
     const [isMounted, setIsMounted] = useState(false);
+
+    const toggleTheme = () => {
+        if (themeSetting === 'light') {
+            setTheme('dark');
+        } else if (themeSetting === 'dark') {
+            setTheme('system');
+        } else {
+            setTheme('light');
+        }
+    };
 
     // Prevent hydration mismatch
     useEffect(() => {
@@ -19,7 +29,7 @@ export default function ThemeToggle() {
 
     return (
         <motion.button
-            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            aria-label={`Switch to ${effectiveTheme === 'dark' ? 'light' : 'dark'} mode`}
             onClick={toggleTheme}
             className="relative w-12 h-12 flex items-center justify-center rounded-full overflow-hidden focus:outline-none glass-effect"
             whileHover={{ scale: 1.05, rotate: 5 }}
@@ -38,10 +48,10 @@ export default function ThemeToggle() {
                 className="absolute inset-0 flex items-center justify-center text-[var(--accent-gold)]"
                 initial={false}
                 animate={{
-                    opacity: theme === 'dark' ? 1 : 0,
-                    y: theme === 'dark' ? 0 : 20,
-                    rotate: theme === 'dark' ? 0 : 45,
-                    scale: theme === 'dark' ? 1 : 0.8,
+                    opacity: effectiveTheme === 'dark' ? 1 : 0,
+                    y: effectiveTheme === 'dark' ? 0 : 20,
+                    rotate: effectiveTheme === 'dark' ? 0 : 45,
+                    scale: effectiveTheme === 'dark' ? 1 : 0.8,
                 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
             >
@@ -55,10 +65,10 @@ export default function ThemeToggle() {
                 className="absolute inset-0 flex items-center justify-center text-[var(--accent-deepblue)]"
                 initial={false}
                 animate={{
-                    opacity: theme === 'light' ? 1 : 0,
-                    y: theme === 'light' ? 0 : -20,
-                    rotate: theme === 'light' ? 0 : -45,
-                    scale: theme === 'light' ? 1 : 0.8,
+                    opacity: effectiveTheme === 'light' ? 1 : 0,
+                    y: effectiveTheme === 'light' ? 0 : -20,
+                    rotate: effectiveTheme === 'light' ? 0 : -45,
+                    scale: effectiveTheme === 'light' ? 1 : 0.8,
                 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
             >

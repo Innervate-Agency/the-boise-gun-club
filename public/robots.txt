@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /api/
+
+# Allow specific API endpoints that should be crawlable
+Allow: /api/content
+
+# Sitemap location
+Sitemap: https://boisegunclub.com/sitemap.xml 

@@ -38,25 +38,25 @@ function useTypingEffect(text: string, speed: number = 50) {
 
 // Theme toggle component
 function ThemeToggle() {
-    const { theme, setTheme } = useTheme();
+    const { themeSetting, setTheme } = useTheme();
 
     return (
         <div className="flex items-center gap-2 font-['VT323']">
             <button
                 onClick={() => setTheme('light')}
-                className={`px-3 py-1 ${theme === 'light' ? 'text-accent border border-accent' : 'text-textSecondary hover:text-accent'}`}
+                className={`px-3 py-1 ${themeSetting === 'light' ? 'text-accent border border-accent' : 'text-textSecondary hover:text-accent'}`}
             >
                 LIGHT
             </button>
             <button
                 onClick={() => setTheme('system')}
-                className={`px-3 py-1 ${theme === 'system' ? 'text-accent border border-accent' : 'text-textSecondary hover:text-accent'}`}
+                className={`px-3 py-1 ${themeSetting === 'system' ? 'text-accent border border-accent' : 'text-textSecondary hover:text-accent'}`}
             >
                 SYSTEM
             </button>
             <button
                 onClick={() => setTheme('dark')}
-                className={`px-3 py-1 ${theme === 'dark' ? 'text-accent border border-accent' : 'text-textSecondary hover:text-accent'}`}
+                className={`px-3 py-1 ${themeSetting === 'dark' ? 'text-accent border border-accent' : 'text-textSecondary hover:text-accent'}`}
             >
                 DARK
             </button>
@@ -68,8 +68,7 @@ function ThemeToggle() {
 function CalendarHeader() {
     const { viewMode, setViewMode } = useCalendar();
     const { displayedText } = useTypingEffect('BOISE GUN CLUB - EVENT TERMINAL v1.0', 70);
-    const { colorScheme } = useTheme();
-    const theme = colors[colorScheme];
+    const { effectiveTheme } = useTheme();
 
     return (
         <div className="border-b border-border pb-4 mb-6">
@@ -110,8 +109,7 @@ function CalendarContent() {
     const { viewMode, selectedEvent } = useCalendar();
     const [showScanline, setShowScanline] = useState(true);
     const [scanlinePosition, setScanlinePosition] = useState(0);
-    const { colorScheme } = useTheme();
-    const theme = colors[colorScheme];
+    const { effectiveTheme } = useTheme();
 
     // Toggle scanline effect periodically
     useEffect(() => {
@@ -139,7 +137,7 @@ function CalendarContent() {
                 contain: 'content',
             }}>
             {/* Scanline effect - only in dark mode */}
-            {colorScheme === 'dark' && showScanline && (
+            {effectiveTheme === 'dark' && showScanline && (
                 <div
                     className="absolute left-0 right-0 h-[2px] bg-accent/10 pointer-events-none"
                     style={{
@@ -151,7 +149,7 @@ function CalendarContent() {
             )}
 
             {/* CRT screen effect - only in dark mode */}
-            {colorScheme === 'dark' && (
+            {effectiveTheme === 'dark' && (
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute inset-0 bg-background" />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent opacity-50" />
