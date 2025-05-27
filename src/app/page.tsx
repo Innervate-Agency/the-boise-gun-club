@@ -8,6 +8,7 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import HeroSection from '../components/home/HeroSection';
 import UpcomingEvents from '../components/home/UpcomingEvents';
+import { getOptimizedImageUrl, getShootingSportsImage } from '../utils/imageUtils';
 
 // Dynamic imports for client-side only components
 const ParticleAnimation = dynamic(() => import('../components/effects/ParticleAnimation'), {
@@ -29,53 +30,53 @@ const SmokeAnimation = dynamic(() => import('../components/effects/SmokeAnimatio
 import GalleryPreview from '../components/home/GalleryPreview';
 import ContactInfo from '../components/home/ContactInfo';
 
-// Real gallery items with proper vintage feel
+// Real gallery items with Unsplash integration
 const galleryItems = [
     {
         id: 1,
-        src: "https://images.unsplash.com/photo-1566479179817-0ddb5fa87cd9?w=800&q=80",
+        src: getOptimizedImageUrl('/images/events.webp', 'clay target mid flight action shot', { width: 800, height: 600 }),
         alt: "Clay Target Mid-Flight",
         year: "2023"
     },
     {
         id: 2,
-        src: "https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=800&q=80",
+        src: getOptimizedImageUrl('/images/training.webp', 'trap shooting competition athletes', { width: 800, height: 600 }),
         alt: "Trap Shooting Competition",
         year: "2023"
     },
     {
         id: 3,
-        src: "https://images.unsplash.com/photo-1584819399096-8f9c5bdb0e19?w=800&q=80",
+        src: getOptimizedImageUrl('/images/membership.webp', 'sporting clays course outdoor range', { width: 800, height: 600 }),
         alt: "Sporting Clays Course",
         year: "2022"
     },
     {
         id: 4,
-        src: "https://images.unsplash.com/photo-1609205807490-b2f7e577e41c?w=800&q=80",
+        src: getOptimizedImageUrl('/images/hero-bg.webp', 'championship trophy shooting sports', { width: 800, height: 600 }),
         alt: "Championship Trophy Display",
         year: "2023"
     },
 ];
 
-// Facility highlights with real images
+// Facility highlights with Unsplash images
 const facilityHighlights = [
     {
         title: "ELITE RANGES, LEGENDARY SHOTS",
-        icon: "https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=200&q=80",
+        icon: getOptimizedImageUrl('/images/training.webp', 'shooting range trap fields', { width: 200, height: 200 }),
         description: "Ten trap fields, five skeet havens, and a sprawling 15-station sporting clays journey. Precision-lit for twilight dominance. This is where marksmen are made.",
         linkText: "Survey Your Domain",
         link: "/ranges"
     },
     {
         title: "MASTERY UNDER GUIDANCE",
-        icon: "https://images.unsplash.com/photo-1566479179817-0ddb5fa87cd9?w=200&q=80",
+        icon: getOptimizedImageUrl('/images/events.webp', 'shooting instructor training lesson', { width: 200, height: 200 }),
         description: "Our NSCA certified sages don't just teach; they sculpt shooters. From your first clay to Olympic aspirations, we forge skill into art.",
         linkText: "Hone Your Craft",
         link: "/training"
     },
     {
         title: "THE ARENA OF CHAMPIONS",
-        icon: "https://images.unsplash.com/photo-1584819399096-8f9c5bdb0e19?w=200&q=80",
+        icon: getOptimizedImageUrl('/images/membership.webp', 'shooting competition championship', { width: 200, height: 200 }),
         description: "Host to revered state championships and prestigious ATA registered clashes. Test your mettle in weekly leagues or vie for the coveted Governor's Cup.",
         linkText: "Enter the Gauntlet",
         link: "/competitions"
@@ -91,18 +92,17 @@ const clubStats = [
 ];
 
 // Real testimonials with authentic voice
-const testimonials = [
-    {
+const testimonials = [    {
         quote: "Since '73, this ain't just a club, it's a proving ground. Best clays west of the Mississippi, period. These folks are the real deal.",
         name: "Buck 'Hawkeye' Henderson",
         title: "Founding Sharpshooter",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80"
+        image: getOptimizedImageUrl('/images/hero-bg.webp', 'veteran shooter portrait', { width: 200, height: 200 })
     },
     {
         quote: "My old man brought me. I brought my boy. Three generations of Morrisons, dusting clays and makin' memories. This place is in our blood.",
         name: "Earl 'Deadeye' Morrison Jr.",
         title: "Legacy Member, Est. 1981",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80"
+        image: getOptimizedImageUrl('/images/events.webp', 'family shooting tradition', { width: 200, height: 200 })
     }
 ];
 

@@ -18,7 +18,7 @@ const upcomingEvents = [
         details: 'Join us for our annual Winter Turkey Shoot. 50 targets, Lewis Class scoring. Entry includes lunch and a chance at door prizes. Frozen turkeys for class winners!',
         time: '9:00 AM - 3:00 PM',
         location: 'Trap Fields 1-5',
-        image: 'https://images.unsplash.com/photo-1565590424283-b8f17842773f?w=800&q=80',
+        image: '/images/events.webp',
         category: 'Competition'
     },
     {
@@ -31,7 +31,7 @@ const upcomingEvents = [
         details: 'Our famous poker shoot is back! $20 buy-in, re-buys allowed. Shoot five stations, draw a card at each. High hand takes 60% of the pot, second place 30%, third 10%.',
         time: '1:00 PM - 5:00 PM',
         location: 'Skeet Fields',
-        image: 'https://images.unsplash.com/photo-1584819399096-8f9c5bdb0e19?w=800&q=80',
+        image: '/images/training.webp',
         category: 'Fun Shoot'
     },
     {
@@ -44,7 +44,7 @@ const upcomingEvents = [
         details: 'Kick off the new year with our challenging sporting clays course. 100 targets across 15 stations. Hot coffee and donuts provided. Squads start every 30 minutes.',
         time: '8:00 AM - 2:00 PM',
         location: 'Sporting Clays Course',
-        image: 'https://images.unsplash.com/photo-1609205807490-b2f7e577e41c?w=800&q=80',
+        image: '/images/membership.webp',
         category: 'Competition'
     },
     {
@@ -57,7 +57,7 @@ const upcomingEvents = [
         details: 'Perfect for beginners! Learn safety, etiquette, and technique. Includes gun rental, ammunition, and one-on-one instruction. Limited to 25 participants.',
         time: '10:00 AM - 12:00 PM',
         location: 'Training Range',
-        image: 'https://images.unsplash.com/photo-1566479179817-0ddb5fa87cd9?w=800&q=80',
+        image: '/images/hero-bg.webp',
         category: 'Training'
     }
 ];
