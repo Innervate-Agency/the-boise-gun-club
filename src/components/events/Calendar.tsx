@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CalendarProvider, useCalendar } from './CalendarContext';
 import { useTheme } from '../ui/ThemeContext';
-import { colors } from '../ui/theme';
 import MonthView from './MonthView';
 import WeekView from './WeekView';
 import EventList from './EventList';
@@ -68,7 +67,6 @@ function ThemeToggle() {
 function CalendarHeader() {
     const { viewMode, setViewMode } = useCalendar();
     const { displayedText } = useTypingEffect('BOISE GUN CLUB - EVENT TERMINAL v1.0', 70);
-    const { effectiveTheme } = useTheme();
 
     return (
         <div className="border-b border-border pb-4 mb-6">

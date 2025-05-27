@@ -24,26 +24,38 @@ export default function RootLayout({
   return (
     <html lang="en" className={`h-full font-body`} suppressHydrationWarning={true}>
       <head>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            (function(d) {
-              var config = {
-                kitId: 'gly5pnr',
-                scriptTimeout: 3000,
-                async: true
-              },
-              h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-            })(document);
-          `
-        }} />
-        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.adobe.com" crossOrigin="anonymous" />
+        {/* Preload critical local fonts */}
+        <link
+          rel="preload"
+          href="/fonts/Refrigerator Deluxe.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/MuseoSans_500.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/MuseoSans_700.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
+        
+        {/* Preload critical images */}
+        <link rel="preload" as="image" href="/images/Grid/Grid (3).jpg" />
+        <link rel="preload" as="image" href="/images/Smoke/Background_01.jpg" />
+        
+        {/* Fallback font for older browsers */}
         <link
           href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
           rel="stylesheet"
         />
-        <link rel="preload" as="image" href="/images/Grid/Grid (3).jpg" />
-        <link rel="preload" as="image" href="/images/Smoke/Background_01.jpg" />
       </head>
       <body className="min-h-full flex flex-col font-body bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300 ease-in-out" suppressHydrationWarning={true}>
         <ThemeProvider>

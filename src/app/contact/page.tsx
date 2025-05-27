@@ -52,6 +52,7 @@ const ContactPage: FC = () => {
         message: ''
       });
     } catch (error) {
+      console.error('Form submission error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

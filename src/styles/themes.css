@@ -38,12 +38,12 @@
   }
 
   /* Typography defaults with variables */
-  h1 { @apply text-4xl md:text-5xl font-bold; color: var(--text-primary); }
-  h2 { @apply text-3xl md:text-4xl font-bold; color: var(--text-primary); }
-  h3 { @apply text-2xl md:text-3xl font-bold; color: var(--text-primary); }
-  h4 { @apply text-xl md:text-2xl font-bold; color: var(--text-primary); }
-  p { @apply text-lg md:text-xl; color: var(--text-primary); }
-  button { @apply text-lg md:text-xl; }
+  h1 { @apply text-4xl md:text-5xl font-bold; color: var(--text-primary); letter-spacing: -0.025em; }
+  h2 { @apply text-3xl md:text-4xl font-bold; color: var(--text-primary); letter-spacing: -0.02em; }
+  h3 { @apply text-2xl md:text-3xl font-bold; color: var(--text-primary); letter-spacing: -0.015em; }
+  h4 { @apply text-xl md:text-2xl font-bold; color: var(--text-primary); letter-spacing: -0.01em; }
+  p { @apply text-lg md:text-xl; color: var(--text-primary); letter-spacing: 0.01em; line-height: 1.6; }
+  button { @apply text-lg md:text-xl; letter-spacing: 0.02em; }
   input { @apply text-lg md:text-xl; }
 
   /* Calendar-specific text sizes */
@@ -101,12 +101,15 @@
 .font-heading {
   font-family: "refrigerator-deluxe", serif;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 .font-body {
   font-family: "museo-sans", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.65;
 }
 
 /* Custom Utility Classes for Dynamic Theming */
@@ -177,27 +180,28 @@
 /* Base theme variables - LIGHT MODE DEFAULTS */
 :root {
   /* Base colors - Light Theme */
-  --bg-primary: #F0EFEB; /* Off-white, parchment like */
-  --bg-secondary: #FFFFFF; /* Pure white for cards/modals */
-  --text-primary: #3D2B1F; /* Dark brown, like old ink */
+  --bg-primary: #FAF7F0; /* Cream - warm white */
+  --bg-secondary: #FFFFFF; /* Pure white for cards/modals - can remain, or slightly warmed if needed */
+  --text-primary: #3D2B1F; /* Dark brown, like old ink - good contrast with cream */
   --text-secondary: #7A5C44; /* Lighter brown, for secondary text */
   
-  /* Accent colors - Light Theme (Earthy, vintage, but with some pop) */
-  --accent-primary: #D54F00;    /* Burnt Orange - primary call to action */
-  --accent-secondary: #F28705;  /* Lighter Orange - secondary actions, highlights */
+  /* Accent colors - Light Theme (Sophisticated 70s) */
+  --accent-primary: #D2691E;    /* Rich Muted Orange - primary call to action */
+  --accent-secondary: #F28705;  /* Lahoma Orange (from brand guidelines) - secondary actions, highlights. May need to mute this if it clashes. */
   --accent-gold: #B8860B;       /* Dark Goldenrod - for highlights, borders */
   --accent-darkred: #8C1818;    /* Deep Red - for warnings or special highlights */
+  --accent-forest-green: #355E3B; /* Deep Forest Green - for accents */
   
   /* Glass effect - Light Theme */
-  --glass-bg: rgba(240, 239, 235, 0.6); /* Light, slightly opaque */
-  --glass-border: rgba(213, 79, 0, 0.2); /* Subtle orange border */
+  --glass-bg: rgba(250, 247, 240, 0.6); /* Creamy transparent */
+  --glass-border: rgba(210, 105, 30, 0.2); /* Subtle muted orange border */
   
   /* Gradients - Light Theme */
-  --gradient-primary: linear-gradient(135deg, #F28705 0%, #D54F00 100%);
+  --gradient-primary: linear-gradient(135deg, #F28705 0%, #D2691E 100%); /* Orange gradient */
   
   /* Additional accent colors - Light Theme */
-  --accent-tertiary: #027368;   /* Dark Teal - for information, tags */
-  --accent-quaternary: #2467B8; /* Steel Blue - for links or less prominent actions */
+  --accent-tertiary: #355E3B;   /* Deep Forest Green (replaces Dark Teal) - for information, tags */
+  --accent-quaternary: #2F2F2F; /* Charcoal (replaces Steel Blue) - for links or less prominent actions */
   --accent-olive: #556B2F;      /* Dark Olive Green - for natural tones */
   --accent-yellow: #FFBF00;     /* Amber/Yellow - for attention */
   --accent-orangered: #FF4500;  /* OrangeRed - vibrant accent */
@@ -232,32 +236,29 @@
 
 /* Dark theme variables */
 [data-theme='dark'] {
-  --bg-primary: #121212; /* Very dark grey, almost black */
-  --bg-secondary: #1E1E1E; /* Slightly lighter dark grey for cards */
-  --text-primary: #EAEAEA; /* Off-white for primary text */
-  --text-secondary: #B0B0B0; /* Lighter grey for secondary text */
-  
-  /* Accent colors - Dark Theme (Vibrant against dark background) */
-  --accent-primary: #F2CB05;    /* Leonard Yellow - primary call to action */
-  --accent-secondary: #F28705;  /* Lahoma Orange - secondary actions */
-  --accent-gold: #F2B950;       /* Lighter Gold - for highlights */
-  --accent-darkred: #D94A64;    /* Brighter Red/Pinkish Red */
-  
+  /* Base colors - Dark Theme */
+  --bg-primary: #2F2F2F; /* Charcoal - softened black */
+  --bg-secondary: #1E1E1E; /* Slightly darker charcoal for depth, cards/modals */
+  --text-primary: #FAF7F0; /* Cream - for excellent contrast on dark backgrounds */
+  --text-secondary: #A9A9A9; /* Light Grey - for secondary text */
+
+  /* Accent colors - Dark Theme (Sophisticated 70s, ensuring contrast) */
+  --accent-primary: #D2691E;    /* Rich Muted Orange */
+  --accent-secondary: #F28705;  /* Lahoma Orange - may need toning down for dark mode */
+  --accent-gold: #DAA520;       /* Brighter Gold for dark mode pop */
+  --accent-darkred: #B22222;    /* Firebrick red, slightly brighter for dark bg */
+  --accent-forest-green: #558B2F; /* Lighter Forest Green for dark mode */
+
   /* Glass effect - Dark Theme */
-  --glass-bg: rgba(30, 30, 30, 0.7); /* Darker glass */
-  --glass-border: rgba(242, 203, 5, 0.2); /* Subtle yellow border */
-  
+  --glass-bg: rgba(47, 47, 47, 0.5); /* Charcoal transparent */
+  --glass-border: rgba(210, 105, 30, 0.3); /* Muted orange border, slightly more visible on dark */
+
   /* Gradients - Dark Theme */
-  --gradient-primary: linear-gradient(135deg, #F28705 0%, #F2CB05 100%);
-  
+  --gradient-primary: linear-gradient(135deg, #F28705 0%, #D2691E 100%);
+
   /* Additional accent colors - Dark Theme */
-  --accent-tertiary: #51A696;   /* Muted Teal */
-  --accent-quaternary: #2484BF; /* Muted Blue */
-  --accent-olive: #706B28;      /* Muted Olive */
-  --accent-yellow: #FFD700;     /* Gold/Yellow */
-  --accent-orangered: #FF6347;  /* Tomato Red - vibrant */
-  --accent-deepblue: #367FBF;   /* Brighter Deep Blue */
-  --accent-darkteal: #2A9D8F;   /* Brighter Dark Teal */
+  --accent-tertiary: #558B2F;   /* Lighter Forest Green (replaces Dark Teal) */
+  --accent-quaternary: #B0C4DE; /* Lighter Steel Blue for links on dark bg */
   
   /* UI elements - Dark Theme */
   --grid-color: rgba(242, 203, 5, 0.08); /* Very subtle yellow grid */
@@ -270,9 +271,6 @@
   /* Special elements - Dark Theme */
   --shadow-color: rgba(0, 0, 0, 0.3); /* Darker shadow */
   --glow-color: rgba(242, 203, 5, 0.5); /* Yellow glow */
-  
-  /* Transitions */
-  /* --transition-speed: 0.3s; */ /* Already defined in :root, no need to repeat */
   
   /* Containers - Dark Theme */
   --terminal-green: #51A696;

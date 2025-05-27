@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 
 interface Props {
@@ -27,25 +27,19 @@ interface Fragment {
 export const ClayTarget = ({ onClick }: Props) => {
     const [fragments, setFragments] = useState<Fragment[]>([]);
     const [isExploding, setIsExploding] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const controls = useAnimation();
     
     // Import deterministic random
     const [seed] = useState(98765);
     
-    // Use client-side only detection
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
-    
     // Deterministic random function
-    const seededRandom = (base: number) => {
+    const seededRandom = useCallback((base: number) => {
         const x = Math.sin(base) * 10000;
         return x - Math.floor(x);
-    };
+    }, []);
 
-    const generateFragments = () => {
+    const generateFragments = useCallback(() => {
         if (!containerRef.current) return [];
 
         const rect = containerRef.current.getBoundingClientRect();
@@ -64,9 +58,9 @@ export const ClayTarget = ({ onClick }: Props) => {
             },
             angularVelocity: (seededRandom(seed + i * 0.3) - 0.5) * 720
         }));
-    };
+    }, [seed, seededRandom]);
 
-    const triggerExplosion = async () => {
+    const triggerExplosion = useCallback(async () => {
         if (isExploding) return;
 
         setIsExploding(true);
@@ -85,13 +79,13 @@ export const ClayTarget = ({ onClick }: Props) => {
             setFragments([]);
             controls.set({ scale: 1, opacity: 1 });
         }, 2000);
-    };
+    }, [isExploding, controls, generateFragments]);
 
     // Periodic explosion effect
     useEffect(() => {
         const interval = setInterval(triggerExplosion, 8000);
         return () => clearInterval(interval);
-    }, []);
+    }, [triggerExplosion]);
 
     // Fragment animation frame
     useEffect(() => {

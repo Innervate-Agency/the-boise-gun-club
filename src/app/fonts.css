@@ -1,4 +1,51 @@
-/* Font overrides to be included in the layout */
+/* Local font definitions */
+@font-face {
+  font-family: 'refrigerator-deluxe';
+  src: url('/fonts/Refrigerator Deluxe.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'refrigerator-deluxe';
+  src: url('/fonts/Refrigerator Deluxe Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'refrigerator-deluxe';
+  src: url('/fonts/Refrigerator Deluxe Heavy.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'museo-sans';
+  src: url('/fonts/MuseoSans_500.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'museo-sans';
+  src: url('/fonts/MuseoSans_700.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'museo-sans';
+  src: url('/fonts/MuseoSans_900.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* Apply typography globally */
 html, body {

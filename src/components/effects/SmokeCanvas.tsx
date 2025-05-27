@@ -1,5 +1,4 @@
-import { useRef, useEffect } from 'react';
-import { useMotionValue, useSpring } from 'framer-motion';
+import { useRef, useEffect, useCallback } from 'react';
 
 interface SmokeParticle {
     x: number;
@@ -25,7 +24,7 @@ export const SmokeCanvas = ({ mousePosition }: Props) => {
     const animationFrameRef = useRef<number>(0);
 
     // Initialize particles
-    const initParticles = () => {
+    const initParticles = useCallback(() => {
         const particles: SmokeParticle[] = [];
         for (let i = 0; i < PARTICLE_COUNT; i++) {
             particles.push({
@@ -39,10 +38,10 @@ export const SmokeCanvas = ({ mousePosition }: Props) => {
             });
         }
         particlesRef.current = particles;
-    };
+    }, []);
 
     // Draw a single smoke particle
-    const drawParticle = (ctx: CanvasRenderingContext2D, particle: SmokeParticle) => {
+    const drawParticle = useCallback((ctx: CanvasRenderingContext2D, particle: SmokeParticle) => {
         ctx.beginPath();
         const gradient = ctx.createRadialGradient(
             particle.x, particle.y, 0,
@@ -55,10 +54,10 @@ export const SmokeCanvas = ({ mousePosition }: Props) => {
         ctx.fillStyle = gradient;
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fill();
-    };
+    }, []);
 
     // Update particle positions and properties
-    const updateParticle = (particle: SmokeParticle, mouseX: number, mouseY: number) => {
+    const updateParticle = useCallback((particle: SmokeParticle, mouseX: number, mouseY: number) => {
         // Mouse influence
         const dx = mouseX - particle.x;
         const dy = mouseY - particle.y;
@@ -89,27 +88,32 @@ export const SmokeCanvas = ({ mousePosition }: Props) => {
         // Oscillate opacity
         particle.opacity = (0.4 + Math.sin(Date.now() / 1000) * 0.2) *
             (1 - Math.min(1, distance / 800)); // Fade based on distance from mouse
-    };
+    }, []);
 
     // Animation loop
-    const animate = () => {
+    const animate = useCallback(() => {
         const canvas = canvasRef.current;
         const ctx = canvas?.getContext('2d');
         if (!canvas || !ctx) return;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+        // Update and draw all particles
+        particlesRef.current.forEach(particle => {
+            updateParticle(particle, mousePosition.x, mousePosition.y);
+            drawParticle(ctx, particle);
+        });
 
         animationFrameRef.current = requestAnimationFrame(animate);
-    };
+    }, [mousePosition.x, mousePosition.y, updateParticle, drawParticle]);
 
     // Handle resize
-    const handleResize = () => {
+    const handleResize = useCallback(() => {
         if (!canvasRef.current) return;
         canvasRef.current.width = window.innerWidth;
         canvasRef.current.height = window.innerHeight;
         initParticles();
-    };
+    }, [initParticles]);
 
     useEffect(() => {
         handleResize();
@@ -122,7 +126,7 @@ export const SmokeCanvas = ({ mousePosition }: Props) => {
             }
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [animate, handleResize]);
 
     return (
         <canvas

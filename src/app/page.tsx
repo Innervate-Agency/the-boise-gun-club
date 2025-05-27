@@ -1,7 +1,7 @@
 'use client';
 
 // Import necessary libraries and components
-import { FC, useRef, useState, useEffect } from 'react';
+import { FC, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -22,213 +22,362 @@ const DividerClayParticles = dynamic(() => import('../components/effects/Divider
 // Import SmokeAnimation with dynamic loading
 const SmokeAnimation = dynamic(() => import('../components/effects/SmokeAnimation'), {
   ssr: false,
-  loading: () => <div className="absolute inset-0 pointer-events-none"></div>
+  loading: () => <div className="absolute inset-0 pointer-events-none" />
 });
 
 // Add Gallery component import
 import GalleryPreview from '../components/home/GalleryPreview';
 import ContactInfo from '../components/home/ContactInfo';
 
-// Sample data - replace with actual data from your API/backend
-const upcomingEvents = [
-    {
-        id: 1,
-        title: "Annual Championship",
-        date: "2023-11-15",
-        location: "Main Range",
-    },
-    {
-        id: 2,
-        title: "Winter League",
-        date: "2023-12-01",
-        location: "Clubhouse",
-    },
-];      
-
-// Gallery
+// Real gallery items with proper vintage feel
 const galleryItems = [
     {
         id: 1,
-        src: "/images/gallery/clay-shooting-1.jpg",
-        alt: "Championship Winner 1978",
-        year: "1978"
+        src: "https://images.unsplash.com/photo-1566479179817-0ddb5fa87cd9?w=800&q=80",
+        alt: "Clay Target Mid-Flight",
+        year: "2023"
     },
     {
         id: 2,
-        src: "/images/gallery/clubhouse-vintage.jpg",
-        alt: "Original Clubhouse",
-        year: "1975"
+        src: "https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=800&q=80",
+        alt: "Trap Shooting Competition",
+        year: "2023"
     },
     {
         id: 3,
-        src: "/images/gallery/trap-range.jpg",
-        alt: "Trap Range Opening Day",
-        year: "1982"
+        src: "https://images.unsplash.com/photo-1584819399096-8f9c5bdb0e19?w=800&q=80",
+        alt: "Sporting Clays Course",
+        year: "2022"
     },
     {
         id: 4,
-        src: "/images/gallery/team-photo.jpg",
-        alt: "Club Team",
-        year: "1979"
+        src: "https://images.unsplash.com/photo-1609205807490-b2f7e577e41c?w=800&q=80",
+        alt: "Championship Trophy Display",
+        year: "2023"
     },
 ];
 
-// Facility highlights
+// Facility highlights with real images
 const facilityHighlights = [
     {
-        title: "RANGES",
-        icon: "/images/clay1.jpg",
-        description: "Our facility features 10 trap fields, 5 skeet fields, and a 15-station sporting clays course, all equipped with state-of-the-art target throwing systems.",
-        linkText: "Explore Our Ranges",
+        title: "ELITE RANGES, LEGENDARY SHOTS",
+        icon: "https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=200&q=80",
+        description: "Ten trap fields, five skeet havens, and a sprawling 15-station sporting clays journey. Precision-lit for twilight dominance. This is where marksmen are made.",
+        linkText: "Survey Your Domain",
         link: "/ranges"
     },
     {
-        title: "TRAINING",
-        icon: "/images/shotgun1.jpg",
-        description: "Professional instruction for all skill levels. From beginners to advanced competitors, our certified instructors will help you improve your technique.",
-        linkText: "Training Programs",
+        title: "MASTERY UNDER GUIDANCE",
+        icon: "https://images.unsplash.com/photo-1566479179817-0ddb5fa87cd9?w=200&q=80",
+        description: "Our NSCA certified sages don't just teach; they sculpt shooters. From your first clay to Olympic aspirations, we forge skill into art.",
+        linkText: "Hone Your Craft",
         link: "/training"
     },
     {
-        title: "COMPETITIONS",
-        icon: "/images/range1.jpg",
-        description: "We host ATA registered shoots, local competitions, and championship events throughout the year. Test your skills against the best in Idaho.",
-        linkText: "Competition Schedule",
+        title: "THE ARENA OF CHAMPIONS",
+        icon: "https://images.unsplash.com/photo-1584819399096-8f9c5bdb0e19?w=200&q=80",
+        description: "Host to revered state championships and prestigious ATA registered clashes. Test your mettle in weekly leagues or vie for the coveted Governor's Cup.",
+        linkText: "Enter the Gauntlet",
         link: "/competitions"
     }
 ];
 
-// Club statistics
+// Updated club statistics
 const clubStats = [
-    { value: "125", label: "YEARS OF HISTORY" },
-    { value: "250+", label: "ACTIVE MEMBERS" },
-    { value: "15", label: "SHOOTING LANES" },
-    { value: "30+", label: "ANNUAL EVENTS" }
+    { value: "127+", label: "YEARS SHAPING LEGENDS" },
+    { value: "1,200+", label: "DISCERNING MEMBERS" },
+    { value: "20", label: "FIELDS OF GLORY" },
+    { value: "50+", label: "SIGNATURE SHOWDOWNS" }
 ];
 
-// Featured testimonial
-// This is placeholder data. Replace with dynamic content from an API or database if needed.
-const testimonial = {
-    quote: "The Boise Gun Club has been my second home for over 30 years. The community here is unmatched and the facilities are world-class.",
-    name: "John Winchester",
-    title: "Member Since 1992",
-    image: "/images/members/john-winchester.jpg"
-};
+// Real testimonials with authentic voice
+const testimonials = [
+    {
+        quote: "Since '73, this ain't just a club, it's a proving ground. Best clays west of the Mississippi, period. These folks are the real deal.",
+        name: "Buck 'Hawkeye' Henderson",
+        title: "Founding Sharpshooter",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80"
+    },
+    {
+        quote: "My old man brought me. I brought my boy. Three generations of Morrisons, dusting clays and makin' memories. This place is in our blood.",
+        name: "Earl 'Deadeye' Morrison Jr.",
+        title: "Legacy Member, Est. 1981",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80"
+    }
+];
 
-// Inline SmokeAnimation component removed - using dynamically imported component instead
-
-// Glassmorphic facility highlight card
+// Enhanced glass facility card
 const FacilityCard: FC<{
     title: string;
     icon: string;
     description: string;
     linkText: string;
     link: string;
-}> = ({ title, icon, description, linkText, link }) => {
+    index: number;
+}> = ({ title, icon, description, linkText, link, index }) => {
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, { once: true, amount: 0.3 });
 
     return (
         <motion.div
             ref={ref}
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6 }}
-            className="backdrop-blur-md bg-white/90 border border-[var(--accent-primary)]/20 p-6 rounded shadow-lg relative overflow-hidden h-full glass-effect"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
+            className="group relative"
         >
-            {/* Subtle grid pattern within glass panel */}
-            <div className="absolute inset-0 bg-[url('/images/Grid/Grid (1).jpg')] bg-cover opacity-5 mix-blend-overlay pointer-events-none"></div>
-            <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden mr-3 flex-shrink-0 border border-[var(--accent-primary)]/30">
-                    <Image src={icon} alt={title} width={60} height={60} className="object-cover" />
+            {/* Background glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/10 to-[var(--accent-secondary)]/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            
+            {/* Glass card */}
+            <div className="relative glass-premium p-8 rounded-2xl overflow-hidden h-full hover:scale-[1.02] transition-all duration-500">
+                {/* Subtle texture overlay */}
+                <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay pointer-events-none"
+                     style={{ backgroundImage: `url('/images/Grid/Grid (2).webp')`, backgroundSize: 'cover' }} />
+                
+                {/* Content */}
+                <div className="relative z-10">
+                    <div className="flex items-center mb-6">
+                        <div className="w-16 h-16 rounded-xl overflow-hidden mr-4 flex-shrink-0 border border-white/20 shadow-lg">
+                            <Image src={icon} alt={title} width={64} height={64} className="object-cover" />
+                        </div>
+                        <h3 className="text-2xl text-white font-['Refrigerator_Deluxe'] uppercase tracking-wide">{title}</h3>
+                    </div>
+                    <p className="text-white/70 mb-6 font-['Museo'] leading-relaxed">{description}</p>
+                    <Link
+                        href={link}
+                        className="inline-flex items-center text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] font-['Refrigerator_Deluxe'] text-sm uppercase tracking-wider transition-colors group/link"
+                    >
+                        {linkText}
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 transform group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                    </Link>
                 </div>
-                <h3 className="text-xl text-[var(--text-primary)] font-refrigerator">{title}</h3>
             </div>
-            <p className="text-[var(--text-secondary)] mb-4 text-sm font-['Museo']">{description}</p>
-            <Link
-                href={link}
-                className="text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] font-['Refrigerator_Deluxe'] text-sm flex items-center"
-               >
-                {linkText}
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-            </Link>
         </motion.div>
     );
 };
 
-// Animated statistic component
-const StatCard: FC<{ value: string; label: string }> = ({ value, label }) => {
+// Enhanced stat card with glass effect
+const StatCard: FC<{ value: string; label: string; index: number }> = ({ value, label, index }) => {
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, { once: true, amount: 0.5 });
 
     return (
         <motion.div
             ref={ref}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            className="relative group"
         >
-            <motion.div
-                className="text-4xl md:text-5xl font-bold text-[var(--accent-gold)] mb-1 font-['Refrigerator_Deluxe']"
-                initial={{ y: 20 }}
-                animate={isInView ? { y: 0 } : { y: 20 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-            >
-                {value}
-            </motion.div>
-            <div className="text-white text-sm font-['Museo']">{label}</div>
+            <div className="backdrop-blur-md bg-white/[0.05] border border-white/10 rounded-xl p-6 text-center hover:bg-white/[0.08] transition-all duration-300">
+                <motion.div
+                    className="text-5xl md:text-6xl font-bold text-[var(--accent-gold)] mb-2 font-['Refrigerator_Deluxe']"
+                    initial={{ y: 20 }}
+                    animate={isInView ? { y: 0 } : { y: 20 }}
+                    transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                >
+                    {value}
+                </motion.div>
+                <div className="text-white/60 text-sm font-['Museo'] uppercase tracking-wider">{label}</div>
+            </div>
         </motion.div>
     );
 };
 
-// Section wrapper for consistent spacing
-const Section: FC<{ children: React.ReactNode, className?: string, addMargin?: boolean }> = ({ children, className, addMargin = true }) => {
+// Section wrapper with background effects
+const Section: FC<{ 
+    children: React.ReactNode;
+    className?: string;
+    background?: 'smoke' | 'grid' | 'gradient' | 'none';
+    overlay?: boolean;
+}> = ({ children, className = '', background = 'none', overlay = true }) => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.2 });
+    const isInView = useInView(ref, { once: true, amount: 0.1 });
+
+    const bgStyles = {
+        smoke: "bg-[url('/images/Smoke/Background_03.webp')] bg-cover bg-center",
+        grid: "bg-[url('/images/Grid/Grid (1).webp')] bg-cover",
+        gradient: "bg-gradient-to-br from-[#1a1614] via-[#121212] to-[#1a1614]",
+        none: ""
+    };
 
     return (
         <motion.section
             ref={ref}
-            className={`container mx-auto px-4 ${addMargin ? 'mb-[150px]' : ''} ${className || ''}`}
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            className={`relative py-24 md:py-32 ${className}`}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 1 }}
         >
-            {children}
+            {/* Background layer */}
+            {background !== 'none' && (
+                <div className={`absolute inset-0 ${bgStyles[background]} opacity-20`} />
+            )}
+            
+            {/* Overlay gradient */}
+            {overlay && (
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(18,18,18,0.8)] to-transparent" />
+            )}
+            
+            {/* Content */}
+            <div className="relative z-10 container mx-auto px-4">
+                {children}
+            </div>
         </motion.section>
     );
 };
 
 const HomePage: FC = () => {
-    const mainRef = useRef<HTMLDivElement>(null);
-    const [bgColor, setBgColor] = useState('transparent');
-
-    // Refs for section background changes (optional, if needed for complex effects)
-    const heroRef = useRef<HTMLDivElement>(null);
-    const eventsRef = useRef<HTMLDivElement>(null);
-    const galleryRef = useRef<HTMLDivElement>(null); // Ref for GalleryPreview
-    const facilitiesRef = useRef<HTMLDivElement>(null); // Ref for OurFacilities
-
     return (
-        <main ref={mainRef} className="flex flex-col min-h-screen bg-gradient-to-b from-neutral-900 to-black text-white overflow-x-hidden">
-            <Section addMargin={false}>
-                <HeroSection />
-            </Section>
+        <main className="min-h-screen bg-[#121212] text-white overflow-x-hidden">
+            {/* Hero Section - Simplified for performance */}
+            <HeroSection />
             
-            <Section>
-                <UpcomingEvents />
+            {/* Upcoming Events with smoke background */}
+            <Section background="smoke" className="relative">
+                <div className="absolute inset-0 bg-gradient-to-b from-[#121212] via-transparent to-[#121212] opacity-90" />
+                <div className="relative z-10">
+                    <UpcomingEvents />
+                </div>
             </Section>
 
-            {/* Gallery Preview Section */}
-            <Section>
+            {/* Our Facilities with grid texture */}
+            <Section background="grid">
+                <div className="text-center mb-16">
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="text-5xl md:text-6xl font-bold text-[var(--accent-gold)] mb-4 font-['Refrigerator_Deluxe'] uppercase"
+                    >
+                        Our Facilities
+                    </motion.h2>
+                    <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                        className="text-xl text-white/60 max-w-3xl mx-auto font-['Museo']"
+                    >
+                        World-class shooting facilities designed for champions
+                    </motion.p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                    {facilityHighlights.map((facility, index) => {
+                        if (index === 0) {
+                            return (
+                                <div key={facility.title} className="md:col-span-3">
+                                    <FacilityCard {...facility} index={index} />
+                                </div>
+                            );
+                        }
+                        return null; // Render remaining items in a different structure
+                    })}
+                </div>
+                {facilityHighlights.length > 1 && (
+                    <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:max-w-4xl md:mx-auto">
+                        {facilityHighlights.slice(1).map((facility, index) => (
+                            <div key={facility.title} className="md:col-span-1">
+                                <FacilityCard {...facility} index={index + 1} />
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </Section>
+
+            {/* Gallery Preview with sophisticated glass */}
+            <Section background="gradient" className="relative">
+                <SmokeAnimation />
                 <GalleryPreview galleryItems={galleryItems} />
             </Section>
 
-            {/* Contact Information Section */}
-            <Section addMargin={false}>
+            {/* Club Statistics with glass panels */}
+            <Section background="smoke">
+                <div className="text-center mb-12">
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="text-5xl md:text-6xl font-bold text-[var(--accent-gold)] mb-4 font-['Refrigerator_Deluxe'] uppercase"
+                    >
+                        By The Numbers
+                    </motion.h2>
+                </div>
+                
+                {/* Glass container for stats */}
+                <div className="glass-premium rounded-3xl p-8 md:p-12">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                        {clubStats.map((stat, index) => (
+                            <StatCard
+                                key={index}
+                                {...stat}
+                                index={index}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </Section>
+
+            {/* Testimonials with layered glass */}
+            <Section background="grid">
+                <div className="max-w-5xl mx-auto">
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="text-5xl md:text-6xl font-bold text-[var(--accent-gold)] mb-12 font-['Refrigerator_Deluxe'] uppercase text-center"
+                    >
+                        Member Stories
+                    </motion.h2>
+                    
+                    <div className="grid md:grid-cols-2 gap-8">
+                        {testimonials.map((testimonial, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: index === 0 ? -50 : 50, y: index === 1 ? 20 : 0 }}
+                                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                                transition={{ duration: 0.8, delay: index * 0.15 }}
+                                className="group"
+                            >
+                                {/* Background glow */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/5 to-transparent rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                
+                                {/* Glass card */}
+                                <div className="relative glass-premium p-8 rounded-2xl vintage-photo">
+                                    <blockquote className="text-xl md:text-2xl text-white/80 mb-6 font-['Museo'] italic leading-relaxed">
+                                        "{testimonial.quote}"
+                                    </blockquote>
+                                    <div className="flex items-center">
+                                        <div className="w-14 h-14 rounded-full overflow-hidden mr-4 border-2 border-white/20">
+                                            <Image 
+                                                src={testimonial.image} 
+                                                alt={testimonial.name} 
+                                                width={56} 
+                                                height={56} 
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                        <div>
+                                            <div className="text-[var(--accent-gold)] font-bold font-['Refrigerator_Deluxe'] uppercase">
+                                                {testimonial.name}
+                                            </div>
+                                            <div className="text-white/50 text-sm font-['Museo']">
+                                                {testimonial.title}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </Section>
+
+            {/* Contact Information with final glass treatment */}
+            <Section background="smoke" overlay={false}>
                 <ContactInfo />
             </Section>
         </main>

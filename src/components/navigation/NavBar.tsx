@@ -106,20 +106,15 @@ export default function NavBar() {
                     </div>
                 </div>
             )}
-            {/* Main Navigation - Glassmorphic */}
+            {/* Main Navigation - Enhanced Glassmorphic */}
             <nav
-                className={`fixed ${clubAnnouncements.length > 0 ? 'top-8 lg:top-10' : 'top-0'} left-0 w-full z-40 transition-all duration-300`}
+                className={`fixed ${clubAnnouncements.length > 0 ? 'top-8 lg:top-10' : 'top-0'} left-0 w-full z-40 transition-all duration-500`}
             >
                 <div
-                    className={`relative transition-all duration-300 ${isScrolled
-                        ? 'py-3 backdrop-blur-md'
-                        : 'py-4 bg-gradient-to-b from-[var(--bg-primary)]/50 to-transparent'
+                    className={`relative transition-all duration-500 ${isScrolled
+                        ? 'py-3 glass-premium'
+                        : 'py-4 backdrop-blur-sm bg-gradient-to-b from-[#121212]/80 to-transparent'
                         }`}
-                    style={{
-                        backgroundColor: isScrolled ? 'var(--bg-secondary)' : 'transparent',
-                        borderBottom: isScrolled ? '1px solid var(--accent-primary)' : 'none',
-                        boxShadow: isScrolled ? '0 4px 6px var(--shadow-color)' : 'none'
-                    }}
                 >
                     {/* Subtle grid texture beneath glass */}
                     <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">

@@ -1,11 +1,7 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useTime, useTransform } from 'framer-motion';
-import dynamic from 'next/dynamic';
-
-// Dynamically import ParticleAnimation for client-side rendering
-const ParticleAnimation = dynamic(() => import('@/components/effects/ParticleAnimation'), { ssr: false });
+import { motion } from 'framer-motion';
 
 interface GalleryItem {
   id: number;
@@ -19,114 +15,121 @@ interface GalleryPreviewProps {
 }
 
 const GalleryPreview: FC<GalleryPreviewProps> = ({ galleryItems }) => {
-  const time = useTime();
-  const backgroundGradientRotate = useTransform(time, [0, 4000], [0, 360], { clamp: false });
-
   return (
-    <section className="relative py-24 overflow-hidden bg-black">
-      {/* Animated Gradient Background */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: 'conic-gradient(from var(--gradient-angle) at 50% 50%, #1a1a1a 0%, #2c2c2c 15%, #1a1a1a 30%, #111 50%, #1a1a1a 70%, #2c2c2c 85%, #1a1a1a 100%)',
-          backgroundSize: '200% 200%',
-          rotate: backgroundGradientRotate,
-          opacity: 0.6,
-        }}
-        initial={{ '--gradient-angle': '0deg' }}
-        animate={{ '--gradient-angle': '360deg' }}
-        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-      />
-      {/* Subtle Particle Animation */}
-      <div className="absolute inset-0 z-[1] pointer-events-none">
-        <ParticleAnimation
-          colors={['#F28705', '#E85E27']}
-          count={15}
-          size={1}
-          speed={0.1}
-          className="opacity-5"
-        />
-      </div>
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="relative py-24 md:py-32">
+      <div className="container mx-auto px-4">
+        {/* Section Header */}
         <div className="text-center mb-16">
           <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: "circOut" }}
-            className="font-['Clutch_Block'] text-5xl md:text-6xl tracking-wider mb-4 uppercase text-white relative inline-block"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="font-['Refrigerator_Deluxe'] text-5xl md:text-6xl uppercase text-white mb-4"
           >
-            Club <span className="text-[var(--accent-primary)]">Gallery</span>
-            <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-transparent via-[var(--accent-primary)] to-transparent"></span>
+            Club <span className="text-[var(--accent-gold)]">Gallery</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.7, delay: 0.4, ease: "circOut" }}
-            className="text-white/70 max-w-2xl mx-auto mt-6 font-body text-lg"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-white/60 max-w-2xl mx-auto font-['Museo'] text-lg"
           >
-            Explore our rich history through these memorable moments
+            Capturing moments of excellence since 1898
           </motion.p>
         </div>
 
+        {/* Gallery Grid with Glass Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {galleryItems.map((item, index) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: index * 0.1 + 0.3, ease: "circOut" }}
-              className="relative overflow-hidden rounded-xl shadow-2xl group border border-white/10"
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group relative"
             >
-              <div className="aspect-[4/3] relative">
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-110 group-hover:rotate-1"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-100 transition-opacity duration-500 group-hover:from-black/70 group-hover:via-black/40"></div>
-              </div>
-              <div className="absolute bottom-0 left-0 p-5 w-full transition-all duration-500 transform group-hover:bottom-2">
-                <motion.h3 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                  className="text-white text-xl font-['Refrigerator_Deluxe'] leading-tight mb-1 truncate group-hover:text-[var(--accent-primary)] transition-colors duration-300"
-                >
-                  {item.alt}
-                </motion.h3>
-                <motion.p 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-[var(--accent-gold)] text-sm font-body opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                  {item.year}
-                </motion.p>
+              {/* Glass card container */}
+              <div className="relative backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] border border-white/10 rounded-xl overflow-hidden shadow-2xl hover:shadow-[0_20px_50px_rgba(242,135,5,0.15)] transition-all duration-500">
+                {/* Image container with vintage treatment */}
+                <div className="aspect-[4/3] relative overflow-hidden">
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    className="object-cover transition-all duration-700 group-hover:scale-110 filter brightness-95 contrast-110"
+                  />
+                  
+                  {/* Gradient overlay for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                  
+                  {/* Vintage filter overlay */}
+                  <div className="absolute inset-0 mix-blend-multiply bg-gradient-to-br from-[#8B4513]/10 to-transparent opacity-30" />
+                  
+                  {/* Year badge */}
+                  <div className="absolute top-4 right-4 backdrop-blur-md bg-black/30 border border-white/20 rounded-full px-3 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-xs font-['Museo'] text-[var(--accent-gold)]">{item.year}</span>
+                  </div>
+                </div>
+                
+                {/* Content overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-5 transform transition-transform duration-500 group-hover:translate-y-0 translate-y-2">
+                  <h3 className="text-white text-lg font-['Refrigerator_Deluxe'] uppercase tracking-wide mb-1 transition-colors duration-300 group-hover:text-[var(--accent-gold)]">
+                    {item.alt}
+                  </h3>
+                  <div className="flex items-center justify-between">
+                    <p className="text-white/50 text-sm font-['Museo']">
+                      View Details
+                    </p>
+                    <svg 
+                      className="w-4 h-4 text-white/50 transform transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-x-1" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+                
+                {/* Hover glow effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/5 to-transparent" />
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
         
-        <div className="mt-16 text-center">
-          <Link
-            href="/gallery"
-            className="group relative inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white rounded-lg font-heading tracking-wider text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 ease-in-out overflow-hidden"
-           >
-            <span className="relative z-10">VIEW FULL GALLERY</span>
-            <svg 
-              className="w-5 h-5 relative z-10 transform transition-transform duration-300 group-hover:translate-x-1" 
-              fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+        {/* CTA with glass effect */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-16 text-center"
+        >
+          <Link href="/gallery" className="group relative inline-flex items-center">
+            {/* Glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-xl blur-lg opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
+            
+            {/* Button */}
+            <button className="relative backdrop-blur-sm bg-gradient-to-r from-[var(--accent-primary)]/90 to-[var(--accent-secondary)]/90 text-white px-8 py-4 rounded-xl font-['Refrigerator_Deluxe'] uppercase tracking-wider transition-all duration-300 group-hover:scale-105 shadow-xl flex items-center gap-3">
+              <span>Explore Full Gallery</span>
+              <svg 
+                className="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </button>
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
