@@ -16,11 +16,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  
   /* Performance optimizations */
   reactStrictMode: true,
   poweredByHeader: false,
-  
+
   /* Turbopack configuration */
   turbopack: {
     // Configure custom loaders for specific file types
@@ -86,13 +85,32 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
-        headers: [
+        source: '/(.*)',        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob:; connect-src 'self';"
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://use.typekit.net https://fonts.googleapis.com",
+              "style-src 'self' 'unsafe-inline' https://use.typekit.net https://fonts.googleapis.com",
+              "img-src 'self' data: blob: https://images.unsplash.com",
+              "font-src 'self' data: https://use.typekit.net https://fonts.gstatic.com",
+              "connect-src 'self'",
+              "media-src 'self'",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "frame-ancestors 'none'",
+              "upgrade-insecure-requests"
+            ].join('; '),
           },
-
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin'

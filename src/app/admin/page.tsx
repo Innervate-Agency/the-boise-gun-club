@@ -4,8 +4,18 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-// Simple password - change this to whatever you want
-const ADMIN_PASSWORD = 'boise2025';
+// Environment-based password - more secure
+const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'boise2025';
+
+// Rate limiting for login attempts
+const MAX_LOGIN_ATTEMPTS = 5;
+const LOCKOUT_DURATION = 15 * 60 * 1000; // 15 minutes
+const loginAttempts = new Map<string, { count: number; lockoutUntil?: number }>();
+
+const getClientId = () => {
+  // Simple client fingerprinting for rate limiting
+  return `${navigator.userAgent}_${window.screen.width}x${window.screen.height}`;
+};
 
 interface ContentData {
   events: Array<{
@@ -117,13 +127,72 @@ const AdminPage = () => {
     };
     setContent(defaultContent);
   };
+  const [isLockedOut, setIsLockedOut] = useState(false);
+  const [lockoutTimeRemaining, setLockoutTimeRemaining] = useState(0);
 
-  const handleLogin = () => {
-    if (password === ADMIN_PASSWORD) {
-      setIsLoggedIn(true);
-    } else {
-      alert('❌ Wrong password! Call the web developer for help.');
+  // Check for existing lockout on mount
+  useEffect(() => {
+    checkLockoutStatus();
+    const interval = setInterval(() => {
+      if (isLockedOut && lockoutTimeRemaining > 0) {
+        setLockoutTimeRemaining(prev => {
+          if (prev <= 1) {
+            setIsLockedOut(false);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [isLockedOut, lockoutTimeRemaining]);
+
+  const checkLockoutStatus = () => {
+    const clientId = getClientId();
+    const attempts = loginAttempts.get(clientId);
+    if (attempts?.lockoutUntil && Date.now() < attempts.lockoutUntil) {
+      setIsLockedOut(true);
+      setLockoutTimeRemaining(Math.ceil((attempts.lockoutUntil - Date.now()) / 1000));
     }
+  };
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const clientId = getClientId();
+    const attempts = loginAttempts.get(clientId) || { count: 0 };
+    
+    // Check if locked out
+    if (attempts.lockoutUntil && Date.now() < attempts.lockoutUntil) {
+      setIsLockedOut(true);
+      setLockoutTimeRemaining(Math.ceil((attempts.lockoutUntil - Date.now()) / 1000));
+      return;
+    }
+
+    // Sanitize password input
+    const cleanPassword = password.trim();
+    
+    if (cleanPassword === ADMIN_PASSWORD) {
+      setIsLoggedIn(true);
+      // Reset attempts on successful login
+      loginAttempts.delete(clientId);
+    } else {
+      // Increment failed attempts
+      attempts.count++;
+      
+      if (attempts.count >= MAX_LOGIN_ATTEMPTS) {
+        attempts.lockoutUntil = Date.now() + LOCKOUT_DURATION;
+        setIsLockedOut(true);
+        setLockoutTimeRemaining(LOCKOUT_DURATION / 1000);
+        alert(`❌ Too many failed attempts. Account locked for ${LOCKOUT_DURATION / 60000} minutes.`);
+      } else {
+        alert(`❌ Wrong password! ${MAX_LOGIN_ATTEMPTS - attempts.count} attempts remaining.`);
+      }
+      
+      loginAttempts.set(clientId, attempts);
+    }
+    
+    setPassword(''); // Clear password field
   };
 
   const handleSave = async () => {
@@ -254,8 +323,7 @@ const AdminPage = () => {
           <h2 className="text-2xl font-bold text-gray-800 mb-8">
             BOISE GUN CLUB<br />WEBSITE EDITOR
           </h2>
-          
-          <div className="mb-6">
+            <form onSubmit={handleLogin} className="mb-6">
             <label className="block text-lg font-semibold text-gray-700 mb-3">
               Enter Password:
             </label>
@@ -263,17 +331,23 @@ const AdminPage = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
-              className="w-full px-4 py-4 text-xl border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-center"
-              placeholder="Password"
+              disabled={isLockedOut}
+              className="w-full px-4 py-4 text-xl border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-center disabled:bg-gray-100 disabled:cursor-not-allowed"
+              placeholder={isLockedOut ? `Locked out (${lockoutTimeRemaining}s)` : "Password"}
+              required
+              autoComplete="current-password"
             />
-          </div>
+          </form>
           
           <button
-            onClick={handleLogin}
-            className="w-full bg-blue-600 text-white text-xl font-bold py-4 rounded-lg hover:bg-blue-700 transition-colors"
+            onClick={(e) => {
+              e.preventDefault();
+              handleLogin(e);
+            }}
+            disabled={isLockedOut}
+            className="w-full bg-blue-600 text-white text-xl font-bold py-4 rounded-lg hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
-            🔓 LOGIN
+            {isLockedOut ? `🔒 LOCKED (${lockoutTimeRemaining}s)` : '🔓 LOGIN'}
           </button>
           
           <p className="text-sm text-gray-500 mt-6">

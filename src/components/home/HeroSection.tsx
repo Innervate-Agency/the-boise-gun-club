@@ -22,8 +22,7 @@ function HeroSection() {
     return (
         <section ref={containerRef} className="relative min-h-[110vh] overflow-hidden bg-[#2F2F2F]">
             {/* Background layers for depth */}
-            <div className="absolute inset-0">
-                {/* Base smoke texture */}
+            <div className="absolute inset-0">                {/* Base smoke texture - Optimized for LCP */}
                 <motion.div 
                     className="absolute inset-0 opacity-30"
                     style={{ scale: bgScale }}
@@ -33,8 +32,11 @@ function HeroSection() {
                         alt=""
                         fill
                         className="object-cover"
-                        priority
-                        quality={90}
+                        priority={true}
+                        quality={85}
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                        sizes="100vw"
                     />
                 </motion.div>
                 
@@ -96,13 +98,15 @@ function HeroSection() {
             >
                 <div className="relative w-full h-full">
                     {/* Glow effect behind SVG */}
-                    <div className="absolute inset-0 bg-[var(--accent-primary)]/20 blur-3xl animate-pulse-glow" />
-                    <Image
+                    <div className="absolute inset-0 bg-[var(--accent-primary)]/20 blur-3xl animate-pulse-glow" />                    <Image
                         src="/images/bgcv3-shattered-clay.svg"
                         alt=""
                         width={400}
                         height={400}
                         className="w-full h-full relative z-10"
+                        priority={true}
+                        placeholder="blur"
+                        blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzMzMzMzMyIvPjwvc3ZnPg=="
                     />
                 </div>
             </motion.div>
