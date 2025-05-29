@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { useRef } from 'react';
 import Image from 'next/image';
+import { HeroImage } from '../ui/UnsplashImage';
 
 function HeroSection() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -17,14 +18,29 @@ function HeroSection() {
     const subtitleY = useTransform(scrollYProgress, [0, 0.5], [0, -100]);
     const ctaY = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
     const bgScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.15]);
-    const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-
-    return (
+    const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);    return (
         <section ref={containerRef} className="relative min-h-[110vh] overflow-hidden bg-[#2F2F2F]">
             {/* Background layers for depth */}
-            <div className="absolute inset-0">                {/* Base smoke texture - Optimized for LCP */}
+            <div className="absolute inset-0">
+                {/* Hero background image with Unsplash integration */}
                 <motion.div 
-                    className="absolute inset-0 opacity-30"
+                    className="absolute inset-0 opacity-40"
+                    style={{ scale: bgScale }}
+                >
+                    <HeroImage
+                        fill={true}
+                        className="object-cover"
+                        priority={true}
+                        quality={85}
+                        alt="Boise Gun Club - Premier Shooting Sports Facility"
+                        width={1920}
+                        height={1080}
+                    />
+                </motion.div>
+                
+                {/* Base smoke texture overlay */}
+                <motion.div 
+                    className="absolute inset-0 opacity-20"
                     style={{ scale: bgScale }}
                 >
                     <Image
@@ -32,7 +48,6 @@ function HeroSection() {
                         alt=""
                         fill
                         className="object-cover"
-                        priority={true}
                         quality={85}
                         placeholder="blur"
                         blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="

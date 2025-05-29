@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import UnsplashImage from '@/components/ui/UnsplashImage';
+import { getShootingSportsImage } from '@/utils/imageUtils';
 
 // Dynamically import components that are client-side only
 const ParticleAnimation = dynamic(() => import('@/components/effects/ParticleAnimation'), { ssr: false });
@@ -13,28 +15,28 @@ const ParticleAnimation = dynamic(() => import('@/components/effects/ParticleAni
 const rangeTypes = [
   {
     name: 'Trap Fields',
-    image: '/images/gallery/trap-range.jpg', // Replace with actual image
+    image: getShootingSportsImage('ranges', { width: 800, height: 600 }),
     description: 'Our 10 professionally maintained trap fields are perfect for shooters of all levels. Equipped with automated voice release systems and high-quality targets, they provide an exceptional trap shooting experience.',
     features: ['10 Fields Available', 'ATA Standard Layouts', 'Automated Voice Release', 'Regularly Maintained'],
     link: '/ranges/trap' // Example link to a more detailed page or section
   },
   {
     name: 'Skeet Fields',
-    image: '/images/events/steel-challenge.jpg', // Replace with actual image - using placeholder
+    image: getShootingSportsImage('ranges', { width: 800, height: 600 }),
     description: 'Challenge your skills on our 5 regulation skeet fields. Ideal for honing your accuracy and reaction time, our skeet ranges offer a classic shotgun sport experience.',
     features: ['5 Regulation Fields', 'High & Low Houses', 'Consistent Target Flight', 'Practice & Competition'],
     link: '/ranges/skeet'
   },
   {
     name: 'Sporting Clays Course',
-    image: '/images/events/youth-shooting.jpg', // Replace with actual image - using placeholder
+    image: getShootingSportsImage('ranges', { width: 800, height: 600 }),
     description: 'Experience \"golf with a shotgun\" on our scenic 15-station sporting clays course. Designed to simulate various field shooting conditions, it offers a fun and challenging day out.',
     features: ['15 Unique Stations', 'Varied Target Presentations', 'Natural Terrain Course', 'Cart Paths Available'],
     link: '/ranges/sporting-clays'
   },
   {
     name: 'Practice & Patterning Range',
-    image: '/images/range1.jpg', // Replace with actual image
+    image: getShootingSportsImage('equipment', { width: 800, height: 600 }),
     description: 'Fine-tune your shotgun and loads at our dedicated patterning range. Essential for understanding your equipment and improving your performance across all disciplines.',
     features: ['Safe Patterning Boards', 'Multiple Distances', 'Shotgun Check & Tuning', 'Improve Accuracy'],
     link: '/ranges/patterning'

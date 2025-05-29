@@ -7,6 +7,8 @@ import { GalleryProvider, useGallery } from './GalleryContext';
 import PhotoModal from './PhotoModal';
 import FilterControls from './FilterControls';
 import useDeterministicRandom from '../../hooks/useDeterministicRandom';
+import UnsplashImage from '../ui/UnsplashImage';
+import { getShootingSportsImage } from '../../utils/imageUtils';
 import './Gallery.css';
 
 // Masonry layout component

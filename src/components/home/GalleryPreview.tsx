@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import UnsplashImage from '../ui/UnsplashImage';
 
 interface GalleryItem {
   id: number;
@@ -52,15 +53,17 @@ const GalleryPreview: FC<GalleryPreviewProps> = ({ galleryItems }) => {
               className="group relative"
             >
               {/* Glass card container */}
-              <div className="relative backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] border border-white/10 rounded-xl overflow-hidden shadow-2xl hover:shadow-[0_20px_50px_rgba(242,135,5,0.15)] transition-all duration-500">
-                {/* Image container with vintage treatment */}
+              <div className="relative backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] border border-white/10 rounded-xl overflow-hidden shadow-2xl hover:shadow-[0_20px_50px_rgba(242,135,5,0.15)] transition-all duration-500">                {/* Image container with vintage treatment */}
                 <div className="aspect-[4/3] relative overflow-hidden">
-                  <Image
-                    src={item.src}
+                  <UnsplashImage
+                    fallback={item.src}
+                    category="events"
                     alt={item.alt}
-                    fill
+                    fill={true}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     className="object-cover transition-all duration-700 group-hover:scale-110 filter brightness-95 contrast-110"
+                    width={800}
+                    height={600}
                   />
                   
                   {/* Gradient overlay for depth */}

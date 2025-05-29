@@ -6,6 +6,8 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CalendarDaysIcon, ClockIcon, MapPinIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { EventImage, TrainingImage, MembershipImage } from '@/components/ui/UnsplashImage';
+import { getShootingSportsImage } from '@/utils/imageUtils';
 
 const ParticleAnimation = dynamic(() => import('@/components/effects/ParticleAnimation'), { ssr: false });
 
@@ -31,7 +33,7 @@ const placeholderEvents: Event[] = [
     location: "Main Trap Range",
     description: "Join us for our annual Summer Kick-off Trap Tournament! 100 targets, multiple classes, and prizes.",
     category: "Competition",
-    image: '/images/events.jpg', // Placeholder, replace with actual: /images/events/trap-tournament.jpg
+    image: getShootingSportsImage('competition', { width: 800, height: 600 }),
     detailsLink: '/events/summer-trap-2025'
   },
   {
@@ -42,10 +44,9 @@ const placeholderEvents: Event[] = [
     location: "Skeet Field 3",
     description: "New to skeet? This clinic covers the basics, safety, and etiquette. Loaner shotguns available.",
     category: "Training",
-    image: '/images/training.jpg', // Placeholder, replace with actual: /images/events/skeet-clinic.jpg
+    image: getShootingSportsImage('training', { width: 800, height: 600 }),
     detailsLink: '/events/skeet-clinic-july-2025'
-  },
-  {
+  },  {
     id: '3',
     title: "Member Appreciation BBQ & Fun Shoot",
     date: "August 10, 2025",
@@ -53,7 +54,7 @@ const placeholderEvents: Event[] = [
     location: "Clubhouse & Range Complex",
     description: "A day of fun shoots, great food, and camaraderie for our valued members and their families.",
     category: "Social",
-    image: '/images/hero-bg.webp', // Placeholder, replace with actual: /images/events/member-bbq.jpg
+    image: getShootingSportsImage('community', { width: 800, height: 600 }),
   },
   {
     id: '4',
@@ -64,7 +65,7 @@ const placeholderEvents: Event[] = [
     location: "Action Pistol Bays",
     description: "Hone your speed and accuracy at our weekly Steel Challenge practice sessions. All skill levels welcome.",
     category: "Practice",
-    image: '/images/range1.jpg', // Placeholder, replace with actual: /images/events/steel-challenge.jpg
+    image: getShootingSportsImage('equipment', { width: 800, height: 600 }),
   },
   {
     id: '5',
@@ -74,7 +75,7 @@ const placeholderEvents: Event[] = [
     location: "Sporting Clays Course",
     description: "Take your sporting clays game to the next level with this intensive two-day workshop led by a master-class instructor.",
     category: "Training",
-    image: '/images/shotgun1.jpg', // Placeholder, replace with actual: /images/events/sporting-clays-workshop.jpg
+    image: getShootingSportsImage('training', { width: 800, height: 600 }),
     detailsLink: '/events/advanced-sporting-clays-sept-2025'
   },
 ];

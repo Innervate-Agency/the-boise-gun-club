@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import ParticleAnimation from '@/components/effects/ParticleAnimation';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
+import { MembershipImage } from '@/components/ui/UnsplashImage';
 
 const MembershipPage: React.FC = () => {
   const pageTitle = "Become a Member";

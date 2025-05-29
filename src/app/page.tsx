@@ -8,6 +8,7 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import HeroSection from '../components/home/HeroSection';
 import UpcomingEvents from '../components/home/UpcomingEvents';
+import UnsplashImage from '../components/ui/UnsplashImage';
 import { getOptimizedImageUrl, getShootingSportsImage } from '../utils/imageUtils';
 
 // Dynamic imports for client-side only components
@@ -34,25 +35,24 @@ import ContactInfo from '../components/home/ContactInfo';
 const galleryItems = [
     {
         id: 1,
-        src: getOptimizedImageUrl('/images/events.webp', 'clay target mid flight action shot', { width: 800, height: 600 }),
+        src: getShootingSportsImage('events', { width: 800, height: 600 }),
         alt: "Clay Target Mid-Flight",
         year: "2023"
     },
     {
         id: 2,
-        src: getOptimizedImageUrl('/images/training.webp', 'trap shooting competition athletes', { width: 800, height: 600 }),
+        src: getShootingSportsImage('competition', { width: 800, height: 600 }),
         alt: "Trap Shooting Competition",
         year: "2023"
     },
     {
         id: 3,
-        src: getOptimizedImageUrl('/images/membership.webp', 'sporting clays course outdoor range', { width: 800, height: 600 }),
+        src: getShootingSportsImage('ranges', { width: 800, height: 600 }),
         alt: "Sporting Clays Course",
         year: "2022"
-    },
-    {
+    },    {
         id: 4,
-        src: getOptimizedImageUrl('/images/hero-bg.webp', 'championship trophy shooting sports', { width: 800, height: 600 }),
+        src: getShootingSportsImage('competition', { width: 800, height: 600 }),
         alt: "Championship Trophy Display",
         year: "2023"
     },
@@ -62,21 +62,21 @@ const galleryItems = [
 const facilityHighlights = [
     {
         title: "ELITE RANGES, LEGENDARY SHOTS",
-        icon: getOptimizedImageUrl('/images/training.webp', 'shooting range trap fields', { width: 200, height: 200 }),
+        icon: getShootingSportsImage('ranges', { width: 200, height: 200 }),
         description: "Ten trap fields, five skeet havens, and a sprawling 15-station sporting clays journey. Precision-lit for twilight dominance. This is where marksmen are made.",
         linkText: "Survey Your Domain",
         link: "/ranges"
     },
     {
         title: "MASTERY UNDER GUIDANCE",
-        icon: getOptimizedImageUrl('/images/events.webp', 'shooting instructor training lesson', { width: 200, height: 200 }),
+        icon: getShootingSportsImage('training', { width: 200, height: 200 }),
         description: "Our NSCA certified sages don't just teach; they sculpt shooters. From your first clay to Olympic aspirations, we forge skill into art.",
         linkText: "Hone Your Craft",
         link: "/training"
     },
     {
         title: "THE ARENA OF CHAMPIONS",
-        icon: getOptimizedImageUrl('/images/membership.webp', 'shooting competition championship', { width: 200, height: 200 }),
+        icon: getShootingSportsImage('competition', { width: 200, height: 200 }),
         description: "Host to revered state championships and prestigious ATA registered clashes. Test your mettle in weekly leagues or vie for the coveted Governor's Cup.",
         linkText: "Enter the Gauntlet",
         link: "/competitions"
