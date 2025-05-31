@@ -1,4 +1,30 @@
-/* No CSS animations here, use Framer Motion instead */
+/* Essential CSS utilities and effects - Most animations moved to Framer Motion */
+
+/* Retro glow effect for text */
+.retro-glow {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px rgba(242, 203, 5, 0.5);
+}
+
+/* Grid background utility */
+.grid-bg {
+  background-image: linear-gradient(rgba(242, 135, 5, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(242, 135, 5, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Keep the marquee animation - works great with CSS */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
 
 /* Custom font styling to mimic Cooper Black */
 .cooper-style {

@@ -129,6 +129,23 @@
   transition: background-position 0.5s ease;
 }
 
+/* Glass input styling for forms */
+.glass-input {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-color: var(--accent-primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(242, 203, 5, 0.2);
+}
+
 /* Responsive design utilities */
 @layer utilities {
   .max-w-content {

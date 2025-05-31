@@ -313,18 +313,23 @@ const AdminPage = () => {
   // Login Screen
   if (!isLoggedIn) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[var(--bg-primary)] flex items-center justify-center p-4 relative overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/5 to-[var(--accent-secondary)]/5" />
+        <div className="absolute inset-0 bg-[url('/images/Smoke/Background_03.webp')] bg-cover bg-center opacity-10" />
+        
         <motion.div 
-          className="bg-white rounded-2xl shadow-2xl p-12 max-w-md w-full text-center"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          className="glass-premium rounded-3xl p-12 max-w-md w-full text-center relative z-10 border border-white/20"
+          initial={{ scale: 0.9, opacity: 0, y: 20 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl font-bold text-gray-800 mb-8">🎯</h1>
-          <h2 className="text-2xl font-bold text-gray-800 mb-8">
+          <h1 className="text-5xl font-bold text-[var(--accent-gold)] mb-8 font-['Refrigerator_Deluxe']">🎯</h1>
+          <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-8 font-['Refrigerator_Deluxe'] uppercase tracking-wide">
             BOISE GUN CLUB<br />WEBSITE EDITOR
           </h2>
             <form onSubmit={handleLogin} className="mb-6">
-            <label className="block text-lg font-semibold text-gray-700 mb-3">
+            <label className="block text-lg font-semibold text-[var(--text-secondary)] mb-3 font-['Museo']">
               Enter Password:
             </label>
             <input
@@ -332,7 +337,10 @@ const AdminPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               disabled={isLockedOut}
-              className="w-full px-4 py-4 text-xl border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-center disabled:bg-gray-100 disabled:cursor-not-allowed"
+              className="w-full px-4 py-4 text-xl bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg 
+                       focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-transparent 
+                       transition-all duration-200 text-center text-[var(--text-primary)]
+                       disabled:opacity-50 disabled:cursor-not-allowed backdrop-blur-sm"
               placeholder={isLockedOut ? `Locked out (${lockoutTimeRemaining}s)` : "Password"}
               required
               autoComplete="current-password"
@@ -345,12 +353,14 @@ const AdminPage = () => {
               handleLogin(e);
             }}
             disabled={isLockedOut}
-            className="w-full bg-blue-600 text-white text-xl font-bold py-4 rounded-lg hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className="w-full bg-[var(--accent-primary)] text-black text-xl font-bold py-4 rounded-lg 
+                     hover:bg-[var(--accent-hover)] transition-all duration-200 
+                     disabled:opacity-50 disabled:cursor-not-allowed font-['Refrigerator_Deluxe'] uppercase tracking-wide"
           >
             {isLockedOut ? `🔒 LOCKED (${lockoutTimeRemaining}s)` : '🔓 LOGIN'}
           </button>
           
-          <p className="text-sm text-gray-500 mt-6">
+          <p className="text-sm text-[var(--text-tertiary)] mt-6 font-['Museo']">
             Need help? Call the web developer
           </p>
         </motion.div>
@@ -361,15 +371,19 @@ const AdminPage = () => {
   // Main Admin Interface
   if (!currentSection) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-8">
-        <div className="max-w-4xl mx-auto">
+      <div className="min-h-screen bg-[var(--bg-primary)] p-8 relative overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/5 to-[var(--accent-secondary)]/5" />
+        <div className="absolute inset-0 bg-[url('/images/Grid/Grid (1).webp')] bg-cover bg-center opacity-10" />
+        
+        <div className="max-w-4xl mx-auto relative z-10">
           <motion.div 
             className="text-center mb-12"
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
           >
-            <h1 className="text-5xl font-bold text-gray-800 mb-4">🎯 WEBSITE EDITOR</h1>
-            <p className="text-xl text-gray-600">Choose what you want to edit:</p>
+            <h1 className="text-5xl font-bold text-[var(--accent-gold)] mb-4 font-['Refrigerator_Deluxe'] uppercase tracking-wide">🎯 WEBSITE EDITOR</h1>
+            <p className="text-xl text-[var(--text-secondary)] font-['Museo']">Choose what you want to edit:</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -382,16 +396,21 @@ const AdminPage = () => {
               <motion.button
                 key={item.section}
                 onClick={() => setCurrentSection(item.section)}
-                className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-all hover:scale-105"
+                className="glass-premium rounded-2xl p-8 text-center hover:scale-[1.02] transition-all duration-300 border border-white/20 group"
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <div className="text-6xl mb-4">{item.icon}</div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/10 to-[var(--accent-secondary)]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                <div className="relative z-10">
+                  <div className="text-6xl mb-4">{item.icon}</div>
+                  <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2 font-['Refrigerator_Deluxe'] uppercase tracking-wide">{item.title}</h3>
+                  <p className="text-[var(--text-secondary)] font-['Museo']">{item.desc}</p>
+                </div>
               </motion.button>
             ))}
           </div>
@@ -399,7 +418,8 @@ const AdminPage = () => {
           <div className="text-center">
             <button
               onClick={() => setIsLoggedIn(false)}
-              className="bg-red-500 text-white px-8 py-4 rounded-lg text-xl font-bold hover:bg-red-600 transition-colors"
+              className="glass-premium px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition-all duration-200 
+                       border border-red-500/30 text-red-400 hover:bg-red-500/10 font-['Refrigerator_Deluxe'] uppercase tracking-wide"
             >
               🚪 LOGOUT
             </button>

@@ -2,19 +2,43 @@
   "events": [
     {
       "id": 1,
-      "title": "Winter Shoot Championship",
+      "title": "Winter Turkey Shoot Classic",
       "date": "2025-12-15",
-      "time": "9:00 AM",
-      "location": "Main Range",
-      "description": "Annual winter championship competition"
+      "time": "9:00 AM - 3:00 PM",
+      "location": "Trap Fields 1-5",
+      "description": "Join us for our annual Winter Turkey Shoot. Traditional turkey shoot competition with 50 targets and Lewis Class scoring. Entry includes lunch and a chance at door prizes. Frozen turkeys for class winners! Best score takes home the bird.",
+      "category": "Competition",
+      "attendees": 85
     },
     {
       "id": 2,
-      "title": "Monthly Club Meeting",
-      "date": "2026-01-03",
-      "time": "7:00 PM",
-      "location": "Clubhouse",
-      "description": "Monthly member meeting and updates"
+      "title": "Members-Only Poker Shoot",
+      "date": "2025-12-22",
+      "time": "1:00 PM - 5:00 PM",
+      "location": "Skeet Fields",
+      "description": "Our famous poker shoot is back! Five stands, five cards. Best poker hand wins the pot. $20 buy-in, re-buys allowed. Shoot five stations, draw a card at each. High hand takes 60% of the pot, second place 30%, third 10%.",
+      "category": "Fun Shoot",
+      "attendees": 60
+    },
+    {
+      "id": 3,
+      "title": "New Year Sporting Clays",
+      "date": "2026-01-05",
+      "time": "8:00 AM - 2:00 PM",
+      "location": "Sporting Clays Course",
+      "description": "Kick off the new year with our challenging sporting clays course. Start 2026 right with 100 targets across 15 stations. Hot coffee and donuts provided. Squads start every 30 minutes.",
+      "category": "Competition",
+      "attendees": 120
+    },
+    {
+      "id": 4,
+      "title": "Introduction to Trap Clinic",
+      "date": "2026-01-12",
+      "time": "10:00 AM - 12:00 PM",
+      "location": "Training Range",
+      "description": "Perfect for beginners! New to trap shooting? Learn the basics from certified instructors. Learn safety, etiquette, and technique. Includes gun rental, ammunition, and one-on-one instruction. Limited to 25 participants.",
+      "category": "Training",
+      "attendees": 25
     }
   ],
   "clubInfo": {

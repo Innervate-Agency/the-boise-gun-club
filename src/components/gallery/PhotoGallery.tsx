@@ -69,13 +69,19 @@ function SmokeEffect() {
     );
 }
 
-// Retro text effect component
-function RetroText({ children, className = '' }: { children: React.ReactNode, className?: string }) {
+// Glass photo card effect component  
+function GlassPhotoCard({ children, onClick }: { children: React.ReactNode, onClick: () => void }) {
     return (
-        <div className={`relative ${className}`}>
-            <div className="absolute inset-0 blur-sm text-[#FF6B35]">{children}</div>
-            <div className="absolute inset-0 text-[#4ECDC4] opacity-80">{children}</div>
-            <div className="relative text-white">{children}</div>
+        <div
+            className="relative group cursor-pointer glass-premium rounded-2xl overflow-hidden
+                     hover:scale-[1.02] transition-all duration-500"
+            onClick={onClick}
+        >
+            {/* Glassmorphism background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            
+            {children}
         </div>
     );
 }
@@ -113,18 +119,18 @@ function GalleryContent() {
     }, [filteredPhotos]);
 
     return (
-        <div className="min-h-screen bg-[#363636] text-white relative overflow-hidden">
+        <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] relative overflow-hidden">
             {/* Background effects */}
             <SmokeEffect />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B35]/5 to-[#4ECDC4]/5" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[var(--accent-primary)]/5 to-[var(--accent-secondary)]/5" />
 
             <div className="container mx-auto px-4 py-16 relative z-10">
                 {/* Gallery header */}
                 <div className="text-center mb-12">
-                    <RetroText className="text-5xl md:text-6xl font-bold mb-4 tracking-wider">
+                    <h1 className="font-['Refrigerator_Deluxe'] text-5xl md:text-6xl font-bold mb-4 tracking-wider text-[var(--accent-gold)] uppercase">
                         PHOTO ARCHIVES
-                    </RetroText>
-                    <p className="text-xl text-[#4ECDC4]/80 font-space-grotesk">
+                    </h1>
+                    <p className="text-xl text-[var(--text-secondary)] font-['Museo']">
                         A journey through time at Boise Gun Club
                     </p>
                 </div>
@@ -139,45 +145,36 @@ function GalleryContent() {
                             <motion.div
                                 key={photo.id}
                                 layoutId={`photo-${photo.id}`}
-                                className="gallery-image relative group mb-4 opacity-0 transition-opacity duration-500"
+                                className="gallery-image mb-4 opacity-0 transition-opacity duration-500"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                whileHover={{ scale: 1.02 }}
                             >
-                                <div
-                                    className="relative aspect-auto overflow-hidden rounded-lg cursor-pointer
-                                             before:absolute before:inset-0 before:bg-gradient-to-t 
-                                             before:from-black/50 before:to-transparent before:opacity-0
-                                             before:transition-opacity group-hover:before:opacity-100"
-                                    onClick={() => setSelectedPhoto(photo)}
-                                >
-                                    {/* Vintage film effect overlay */}
-                                    <div className="absolute inset-0 z-10 pointer-events-none mix-blend-overlay bg-gradient-to-br from-[#FF6B35]/20 to-[#4ECDC4]/20" />
-                                    <div className="absolute inset-0 z-10 pointer-events-none mix-blend-multiply opacity-40 bg-[url('/grain.png')]" />
-
+                                <GlassPhotoCard onClick={() => setSelectedPhoto(photo)}>
+                                    {/* Glass overlay effect */}
+                                    <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-br from-[var(--accent-primary)]/10 to-[var(--accent-secondary)]/5" />
+                                    
                                     <Image
                                         src={photo.src}
                                         alt={photo.alt}
                                         width={photo.width}
                                         height={photo.height}
-                                        className="w-full h-auto transition-transform duration-300
-                                                 filter brightness-90 contrast-110 saturate-[0.9]"
+                                        className="w-full h-auto transition-transform duration-300 relative z-0"
                                         placeholder="blur"
                                         blurDataURL={photo.blurDataUrl}
                                     />
 
-                                    {/* Photo info overlay */}
-                                    <div className="absolute inset-x-0 bottom-0 p-4 text-white opacity-0 transform 
+                                    {/* Photo info overlay with glassmorphism */}
+                                    <div className="absolute inset-x-0 bottom-0 p-6 text-white opacity-0 transform 
                                                   translate-y-4 transition-all group-hover:opacity-100 
-                                                  group-hover:translate-y-0 z-20">
-                                        <h3 className="text-lg font-bold font-space-grotesk mb-1">
+                                                  group-hover:translate-y-0 z-20 backdrop-blur-sm bg-black/30">
+                                        <h3 className="text-lg font-bold font-['Refrigerator_Deluxe'] mb-1 uppercase tracking-wide">
                                             {photo.alt}
                                         </h3>
-                                        <p className="text-sm opacity-80">
+                                        <p className="text-sm text-[var(--accent-gold)] font-['Museo']">
                                             {photo.photographer} • {photo.year}
                                         </p>
                                     </div>
-                                </div>
+                                </GlassPhotoCard>
                             </motion.div>
                         ))}
                     </MasonryGrid>

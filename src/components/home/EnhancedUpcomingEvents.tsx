@@ -148,7 +148,7 @@ const UpcomingEvents = () => {
                                         </span>
                                     </div>
                                     
-                                    <Link href={selectedEvent.link} className="inline-block px-6 py-3 bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] transition-colors text-white rounded font-['Refrigerator_Deluxe'] text-sm">
+                                    <Link href={`/events/${selectedEvent.id}`} className="inline-block px-6 py-3 bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] transition-colors text-white rounded font-['Refrigerator_Deluxe'] text-sm">
                                         REGISTER NOW
                                     </Link>
                                 </div>
@@ -170,12 +170,15 @@ const UpcomingEvents = () => {
                                             <span className="text-sm font-bold">{new Date(event.date).getDate()}</span>
                                             <span className="text-xs">{new Date(event.date).toLocaleString('default', { month: 'short' })}</span>
                                         </div>
-                                        <div>
+                                        <div className="flex-1">
                                             <h4 className="text-white text-sm font-medium line-clamp-1">
                                                 {event.title}
                                             </h4>
                                             <p className="text-white/50 text-xs">{getRelativeEventTime(event.date)}</p>
                                         </div>
+                                        <Link href={`/events/${event.id}`} className="text-xs text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] transition-colors ml-auto">
+                                            View →
+                                        </Link>
                                     </div>
                                 </motion.div>
                             ))}

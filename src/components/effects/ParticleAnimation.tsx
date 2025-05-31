@@ -103,12 +103,6 @@ const ParticleAnimation: FC<ParticleProps> = ({
       {particles}
     </div>
   );
-
-  return (
-    <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
-      {particles}
-    </div>
-  );
 };
 
 export default ParticleAnimation;

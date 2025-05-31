@@ -137,16 +137,26 @@ const ContactPage: FC = () => {
                   {contactInfo.map((item, index) => (
                     <motion.div
                       key={index}
-                      className="flex items-start space-x-4 p-6 bg-[var(--bg-secondary)] rounded-lg border border-[var(--border)] backdrop-blur-sm"
+                      className="group relative"
                       variants={fadeInUp}
                       transition={{ delay: index * 0.1 }}
                     >
-                      <item.icon className="w-6 h-6 text-[var(--accent-primary)] mt-1 flex-shrink-0" />
-                      <div>
-                        <h3 className="font-heading text-lg font-semibold mb-2">{item.title}</h3>
-                        {item.details.map((detail, detailIndex) => (
-                          <p key={detailIndex} className="text-[var(--text-secondary)]">{detail}</p>
-                        ))}
+                      {/* Background glow */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/10 to-[var(--accent-secondary)]/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                      
+                      {/* Glass card */}
+                      <div className="relative glass-premium p-8 rounded-2xl border border-white/20 hover:scale-[1.02] transition-all duration-300">
+                        <div className="flex items-start space-x-6">
+                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/10 flex items-center justify-center backdrop-blur-sm border border-white/20">
+                            <item.icon className="w-6 h-6 text-[var(--accent-primary)]" />
+                          </div>
+                          <div>
+                            <h3 className="font-['Refrigerator_Deluxe'] text-xl font-bold mb-3 text-[var(--accent-gold)] uppercase tracking-wide">{item.title}</h3>
+                            {item.details.map((detail, detailIndex) => (
+                              <p key={detailIndex} className="text-[var(--text-secondary)] font-['Museo'] mb-1">{detail}</p>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </motion.div>
                   ))}
@@ -166,12 +176,17 @@ const ContactPage: FC = () => {
             </motion.div>
 
             {/* Contact Form */}
-            <motion.div variants={fadeInUp}>
-              <h2 className="font-heading text-3xl font-bold mb-8 text-[var(--accent-primary)]">
-                Send us a Message
-              </h2>
+            <motion.div variants={fadeInUp} className="relative group">
+              {/* Background glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/10 to-[var(--accent-secondary)]/5 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Glass form container */}
+              <div className="relative glass-premium p-10 rounded-3xl border border-white/20">
+                <h2 className="font-['Refrigerator_Deluxe'] text-3xl font-bold mb-8 text-[var(--accent-gold)] uppercase tracking-wide">
+                  Send us a Message
+                </h2>
+                
+                <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -184,7 +199,7 @@ const ContactPage: FC = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 glass-input rounded-xl border border-white/20 focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)]"
                       placeholder="Your full name"
                     />
                   </div>
@@ -200,7 +215,7 @@ const ContactPage: FC = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 glass-input rounded-xl border border-white/20 focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)]"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -217,7 +232,7 @@ const ContactPage: FC = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 glass-input rounded-xl border border-white/20 focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)]"
                       placeholder="(208) 555-0123"
                     />
                   </div>
@@ -232,7 +247,7 @@ const ContactPage: FC = () => {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 glass-input rounded-xl border border-white/20 focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)]"
                     >
                       <option value="">Select a subject</option>
                       <option value="membership">Membership Inquiry</option>
@@ -256,7 +271,7 @@ const ContactPage: FC = () => {
                     onChange={handleInputChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-transparent transition-all duration-200 resize-none"
+                    className="w-full px-4 py-3 glass-input rounded-xl border border-white/20 focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 resize-none text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)]"
                     placeholder="Tell us how we can help you..."
                   />
                 </div>
@@ -292,7 +307,8 @@ const ContactPage: FC = () => {
                     Sorry, there was an error sending your message. Please try again.
                   </motion.div>
                 )}
-              </form>
+                </form>
+              </div>
             </motion.div>
           </div>
         </div>

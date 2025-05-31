@@ -101,10 +101,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
       <NavigationProvider>
         <NavBar />
         <main className="flex-grow w-full">
-          {/* Adjusted padding: removed pb-36 */}
-          <div className="pt-24 md:pt-28 lg:pt-32 px-4 sm:px-6 lg:px-8">
-            {children}
-          </div>
+          {children}
         </main>
         <Footer />
         {mounted && (

@@ -10,6 +10,7 @@ import { getShootingSportsImage } from '@/utils/imageUtils';
 
 // Dynamically import components that are client-side only
 const ParticleAnimation = dynamic(() => import('@/components/effects/ParticleAnimation'), { ssr: false });
+const WavyGridBackground = dynamic(() => import('@/components/effects/WavyGridBackground'), { ssr: false });
 
 // Placeholder data for different ranges - replace with actual content
 const rangeTypes = [
@@ -47,6 +48,15 @@ const RangesPage: FC = () => {
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-neutral-900 to-black text-white overflow-x-hidden">
       <div className="absolute inset-0 z-0 pointer-events-none">
+        <WavyGridBackground 
+          lineColor="rgba(242, 135, 5, 0.15)" 
+          lineGlow="rgba(242, 135, 5, 0.3)"
+          numLinesX={40}
+          numLinesY={25}
+          waveAmplitude={4}
+          waveSpeed={0.08}
+          className="opacity-60"
+        />
         <ParticleAnimation colors={['#F28705', '#E85E27']} count={25} size={1.3} speed={0.1} className="opacity-[0.07]" />
       </div>
       <motion.header 

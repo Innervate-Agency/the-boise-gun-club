@@ -131,13 +131,18 @@ const UpcomingEvents = () => {
                                         <div className="flex-1">
                                             <h4 className="font-['Refrigerator_Deluxe'] text-lg text-white mb-1">{event.title}</h4>
                                             <p className="text-sm text-white/60 font-['Museo'] line-clamp-2">{event.desc}</p>
-                                            <div className="flex items-center gap-3 mt-2">
-                                                <span className="text-xs text-[var(--accent-gold)] font-['Museo']">{event.category}</span>
-                                                <span className="text-xs text-white/40">•</span>
-                                                <span className="text-xs text-white/60 font-['Museo'] flex items-center gap-1">
-                                                    <UsersIcon className="w-3 h-3" />
-                                                    {event.attendees} attending
-                                                </span>
+                                            <div className="flex items-center justify-between mt-2">
+                                                <div className="flex items-center gap-3">
+                                                    <span className="text-xs text-[var(--accent-gold)] font-['Museo']">{event.category}</span>
+                                                    <span className="text-xs text-white/40">•</span>
+                                                    <span className="text-xs text-white/60 font-['Museo'] flex items-center gap-1">
+                                                        <UsersIcon className="w-3 h-3" />
+                                                        {event.attendees} attending
+                                                    </span>
+                                                </div>
+                                                <Link href={`/events/${event.id}`} className="text-xs text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] transition-colors">
+                                                    View →
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>

@@ -5,6 +5,11 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import Image from 'next/image';
 import { HeroImage } from '../ui/UnsplashImage';
+import dynamic from 'next/dynamic';
+
+const ClayFragments = dynamic(() => import('../effects/ClayFragments'), {
+  ssr: false
+});
 
 function HeroSection() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -55,10 +60,46 @@ function HeroSection() {
                     />
                 </motion.div>
                 
-                {/* Animated smoke layers */}
-                <div className="smoke-layer" style={{ animationDelay: '0s' }} />
-                <div className="smoke-layer" style={{ animationDelay: '7s', opacity: 0.2 }} />
-                <div className="smoke-layer" style={{ animationDelay: '14s', opacity: 0.15 }} />
+                {/* Gentle texture layers - Family-friendly */}
+                <motion.div 
+                    className="absolute inset-0 opacity-8 mix-blend-soft-light"
+                    style={{
+                        backgroundImage: "url('/images/Grid/Grid (1).webp')",
+                        backgroundSize: '400px 400px',
+                        backgroundPosition: 'center'
+                    }}
+                    animate={{
+                        x: [0, -5, 3, 4, 0],
+                        y: [0, -3, -5, -2, 0],
+                        scale: [1, 1.01, 1.02, 1.01, 1],
+                        opacity: [0.08, 0.12, 0.15, 0.1, 0.08]
+                    }}
+                    transition={{
+                        duration: 25,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
+                <motion.div 
+                    className="absolute inset-0 opacity-6 mix-blend-multiply"
+                    style={{
+                        backgroundImage: "url('/images/Dust/vintage-bgc-dust.webp')",
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                    }}
+                    animate={{
+                        x: [0, 4, -3, -6, 0],
+                        y: [0, -4, 3, -3, 0],
+                        scale: [1, 1.01, 1.005, 1.02, 1],
+                        opacity: [0.06, 0.08, 0.12, 0.07, 0.06]
+                    }}
+                    transition={{
+                        duration: 30,
+                        delay: 10,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
                 
                 {/* Gradient overlays for atmosphere */}
                 <div className="absolute inset-0 bg-gradient-to-b from-[#2F2F2F]/50 via-transparent to-[#2F2F2F]/80" />
@@ -70,26 +111,56 @@ function HeroSection() {
 
             {/* Floating glass panels for depth - Enhanced */}
             <div className="absolute inset-0 overflow-hidden">
-                {/* Large floating glass panel - left */}
+                {/* Clay fragments animation */}
+                <ClayFragments count={12} />
+                
+                {/* Floating badge panel - left */}
                 <motion.div
-                    className="absolute -left-24 top-16 w-[650px] h-[450px] rounded-3xl animate-float"
-                    initial={{ x: -150, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    className="absolute -left-24 top-16 w-[320px] h-[180px] rounded-2xl glass-premium p-6 flex items-center justify-center"
+                    initial={{ x: -150, opacity: 0, y: 0, rotate: 0 }}
+                    animate={{ 
+                        x: 0, 
+                        opacity: 0.8,
+                        y: [0, -8, -4, -12, 0],
+                        rotate: [0, 0.5, -0.5, 0.3, 0]
+                    }}
+                    transition={{ 
+                        x: { duration: 1.5, ease: "easeOut" },
+                        opacity: { duration: 1.5, ease: "easeOut" },
+                        y: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+                        rotate: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+                    }}
                     style={{ y: titleY }}
                 >
-                    <div className="w-full h-full glass-premium" />
+                    <div className="text-center">
+                        <div className="text-[var(--accent-gold)] font-['Refrigerator_Deluxe'] text-2xl font-bold mb-1">EST. 1898</div>
+                        <div className="text-white/60 font-['Museo'] text-sm">127+ Years of Excellence</div>
+                    </div>
                 </motion.div>
                 
-                {/* Medium floating glass panel - right */}
+                {/* Floating stats panel - right */}
                 <motion.div
-                    className="absolute -right-16 bottom-32 w-[450px] h-[350px] rounded-2xl animate-float"
-                    initial={{ x: 150, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
-                    style={{ y: subtitleY, animationDelay: '2s' }}
+                    className="absolute -right-16 bottom-32 w-[280px] h-[160px] rounded-2xl glass-premium p-4 flex flex-col justify-center"
+                    initial={{ x: 150, opacity: 0, y: 0, rotate: 0 }}
+                    animate={{ 
+                        x: 0, 
+                        opacity: 0.8,
+                        y: [0, -6, -10, -3, 0],
+                        rotate: [0, -0.4, 0.8, -0.2, 0]
+                    }}
+                    transition={{ 
+                        x: { duration: 1.5, delay: 0.2, ease: "easeOut" },
+                        opacity: { duration: 1.5, delay: 0.2, ease: "easeOut" },
+                        y: { duration: 9, delay: 2, repeat: Infinity, ease: "easeInOut" },
+                        rotate: { duration: 9, delay: 2, repeat: Infinity, ease: "easeInOut" }
+                    }}
+                    style={{ y: subtitleY }}
                 >
-                    <div className="w-full h-full glass-premium" />
+                    <div className="text-center space-y-2">
+                        <div className="text-[var(--accent-primary)] font-['Refrigerator_Deluxe'] text-lg font-bold">20 Fields</div>
+                        <div className="text-white/60 font-['Museo'] text-xs">Trap • Skeet • Sporting Clays</div>
+                        <div className="text-[var(--accent-gold)] font-['Refrigerator_Deluxe'] text-lg font-bold">1,200+ Members</div>
+                    </div>
                 </motion.div>
                 
                 {/* Small accent panels */}
@@ -112,8 +183,20 @@ function HeroSection() {
                 style={{ y: titleY }}
             >
                 <div className="relative w-full h-full">
-                    {/* Glow effect behind SVG */}
-                    <div className="absolute inset-0 bg-[var(--accent-primary)]/20 blur-3xl animate-pulse-glow" />                    <Image
+                    {/* Glow effect behind SVG - Framer Motion */}
+                    <motion.div 
+                        className="absolute inset-0 bg-[var(--accent-primary)]/20 blur-3xl"
+                        animate={{
+                            opacity: [0.2, 0.5, 0.2],
+                            scale: [0.95, 1.1, 0.95]
+                        }}
+                        transition={{
+                            duration: 4,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                    />
+                    <Image
                         src="/images/bgcv3-shattered-clay.svg"
                         alt=""
                         width={400}
@@ -140,13 +223,36 @@ function HeroSection() {
                     style={{ y: titleY }}
                 >
                     <div className="relative">
-                        {/* Outer glow ring */}
-                        <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-[var(--accent-primary)]/30 to-[var(--accent-secondary)]/20 blur-2xl animate-pulse-glow" />
+                        {/* Outer glow ring - Framer Motion */}
+                        <motion.div 
+                            className="absolute -inset-4 rounded-full bg-gradient-to-br from-[var(--accent-primary)]/30 to-[var(--accent-secondary)]/20 blur-2xl"
+                            animate={{
+                                opacity: [0.4, 0.8, 0.4],
+                                scale: [1, 1.05, 1]
+                            }}
+                            transition={{
+                                duration: 3,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                        />
                         
                         {/* Glass badge background */}
                         <div className="w-32 h-32 md:w-40 md:h-40 rounded-full glass-premium flex items-center justify-center relative">
-                            {/* Inner glow */}
-                            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[var(--accent-primary)]/20 to-transparent blur-xl" />
+                            {/* Inner glow - Framer Motion */}
+                            <motion.div 
+                                className="absolute inset-0 rounded-full bg-gradient-to-br from-[var(--accent-primary)]/20 to-transparent blur-xl"
+                                animate={{
+                                    opacity: [0.3, 0.6, 0.3],
+                                    scale: [0.9, 1.1, 0.9]
+                                }}
+                                transition={{
+                                    duration: 2.5,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: 0.5
+                                }}
+                            />
                             
                             {/* Badge content */}
                             <div className="relative text-center">
@@ -194,19 +300,50 @@ function HeroSection() {
                     className="flex flex-col sm:flex-row gap-6 md:gap-8"
                     style={{ y: ctaY }}
                 >
-                    {/* Primary CTA - Enhanced */}
+                    {/* Primary CTA - Enhanced with Framer Motion */}
                     <Link href="/membership" className="group relative">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-xl blur-lg opacity-70 group-hover:opacity-100 transition-all duration-500 animate-pulse-glow" />
-                        <button className="relative backdrop-blur-sm bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white px-10 md:px-12 py-5 md:py-6 rounded-xl font-['Refrigerator_Deluxe'] text-lg md:text-xl tracking-wider uppercase transition-all duration-300 group-hover:scale-105 shadow-2xl vintage-hover">
+                        <motion.div 
+                            className="absolute -inset-1 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-xl blur-lg"
+                            animate={{
+                                opacity: [0.7, 1, 0.7],
+                                scale: [1, 1.02, 1]
+                            }}
+                            transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                            whileHover={{
+                                opacity: 1,
+                                scale: 1.05
+                            }}
+                        />
+                        <motion.button 
+                            className="relative backdrop-blur-sm bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white px-10 md:px-12 py-5 md:py-6 rounded-xl font-['Refrigerator_Deluxe'] text-lg md:text-xl tracking-wider uppercase shadow-2xl"
+                            whileHover={{ 
+                                scale: 1.05,
+                                filter: "brightness(1.1) saturate(1.2)"
+                            }}
+                            whileTap={{ scale: 0.98 }}
+                            transition={{ duration: 0.2 }}
+                        >
                             <span className="relative z-10">Join The Club</span>
-                        </button>
+                        </motion.button>
                     </Link>
 
-                    {/* Secondary CTA with glass - Enhanced */}
+                    {/* Secondary CTA with glass - Enhanced with Framer Motion */}
                     <Link href="/ranges" className="group relative">
-                        <button className="relative glass-premium text-white px-10 md:px-12 py-5 md:py-6 rounded-xl font-['Refrigerator_Deluxe'] text-lg md:text-xl tracking-wider uppercase transition-all duration-300 group-hover:scale-105 shadow-xl vintage-hover">
+                        <motion.button 
+                            className="relative glass-premium text-white px-10 md:px-12 py-5 md:py-6 rounded-xl font-['Refrigerator_Deluxe'] text-lg md:text-xl tracking-wider uppercase shadow-xl"
+                            whileHover={{ 
+                                scale: 1.05,
+                                filter: "brightness(1.1) saturate(1.2)"
+                            }}
+                            whileTap={{ scale: 0.98 }}
+                            transition={{ duration: 0.2 }}
+                        >
                             <span className="relative z-10">Visit Ranges</span>
-                        </button>
+                        </motion.button>
                     </Link>
                 </motion.div>
             </motion.div>

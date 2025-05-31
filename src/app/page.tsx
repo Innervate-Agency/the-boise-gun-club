@@ -21,6 +21,10 @@ const DividerClayParticles = dynamic(() => import('../components/effects/Divider
   ssr: false
 });
 
+const ClayFragments = dynamic(() => import('../components/effects/ClayFragments'), {
+  ssr: false
+});
+
 // Import SmokeAnimation with dynamic loading
 const SmokeAnimation = dynamic(() => import('../components/effects/SmokeAnimation'), {
   ssr: false,
@@ -200,7 +204,7 @@ const Section: FC<{
     const bgStyles = {
         smoke: "bg-[url('/images/Smoke/Background_03.webp')] bg-cover bg-center",
         grid: "bg-[url('/images/Grid/Grid (1).webp')] bg-cover",
-        gradient: "bg-gradient-to-br from-[#1a1614] via-[#121212] to-[#1a1614]",
+        gradient: "bg-gradient-to-br from-[var(--bg-secondary)] via-[var(--bg-primary)] to-[var(--bg-secondary)]",
         none: ""
     };
 
@@ -219,7 +223,7 @@ const Section: FC<{
             
             {/* Overlay gradient */}
             {overlay && (
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(18,18,18,0.8)] to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--bg-primary)] to-transparent opacity-80" />
             )}
             
             {/* Content */}
@@ -232,13 +236,13 @@ const Section: FC<{
 
 const HomePage: FC = () => {
     return (
-        <main className="min-h-screen bg-[#121212] text-white overflow-x-hidden">
-            {/* Hero Section - Simplified for performance */}
+        <main className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-x-hidden">
+            {/* Hero Section - Full width */}
             <HeroSection />
             
             {/* Upcoming Events with smoke background */}
             <Section background="smoke" className="relative">
-                <div className="absolute inset-0 bg-gradient-to-b from-[#121212] via-transparent to-[#121212] opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)] opacity-90" />
                 <div className="relative z-10">
                     <UpcomingEvents />
                 </div>
@@ -259,38 +263,23 @@ const HomePage: FC = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-xl text-white/60 max-w-3xl mx-auto font-['Museo']"
+                        className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto font-['Museo']"
                     >
                         World-class shooting facilities designed for champions
                     </motion.p>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-                    {facilityHighlights.map((facility, index) => {
-                        if (index === 0) {
-                            return (
-                                <div key={facility.title} className="md:col-span-3">
-                                    <FacilityCard {...facility} index={index} />
-                                </div>
-                            );
-                        }
-                        return null; // Render remaining items in a different structure
-                    })}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    {facilityHighlights.map((facility, index) => (
+                        <FacilityCard key={facility.title} {...facility} index={index} />
+                    ))}
                 </div>
-                {facilityHighlights.length > 1 && (
-                    <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:max-w-4xl md:mx-auto">
-                        {facilityHighlights.slice(1).map((facility, index) => (
-                            <div key={facility.title} className="md:col-span-1">
-                                <FacilityCard {...facility} index={index + 1} />
-                            </div>
-                        ))}
-                    </div>
-                )}
             </Section>
 
             {/* Gallery Preview with sophisticated glass */}
             <Section background="gradient" className="relative">
                 <SmokeAnimation />
+                <ClayFragments count={8} />
                 <GalleryPreview galleryItems={galleryItems} />
             </Section>
 

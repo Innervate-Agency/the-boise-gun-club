@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  // Only apply to admin routes
-  if (request.nextUrl.pathname.startsWith('/admin')) {
+  // Only apply to admin routes (but not the login page itself)
+  if (request.nextUrl.pathname.startsWith('/admin') && request.nextUrl.pathname !== '/admin') {
     // Check for admin session
     const adminSession = request.cookies.get('admin-session');
     
