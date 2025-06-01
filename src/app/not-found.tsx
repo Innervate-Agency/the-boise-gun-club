@@ -12,7 +12,7 @@ export default function NotFound() {
       {/* Background effects */}
       <div className="absolute inset-0 z-0">
         <ParticleAnimation
-          colors={['#F28705', '#F2CB05']}
+          colors={['var(--accent-primary)', 'var(--accent-secondary)']}
           count={15}
           size={2}
           speed={0.2}

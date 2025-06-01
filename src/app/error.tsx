@@ -26,7 +26,7 @@ export default function Error({
       {/* Background effects */}
       <div className="absolute inset-0 z-0">
         <ParticleAnimation
-          colors={['#F28705', '#F2CB05']}
+          colors={['var(--accent-primary)', 'var(--accent-secondary)']}
           count={10}
           size={1.5}
           speed={0.1}

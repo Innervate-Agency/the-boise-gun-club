@@ -57,7 +57,7 @@ const RangesPage: FC = () => {
           waveSpeed={0.08}
           className="opacity-60"
         />
-        <ParticleAnimation colors={['#F28705', '#E85E27']} count={25} size={1.3} speed={0.1} className="opacity-[0.07]" />
+        <ParticleAnimation colors={['var(--accent-primary)', 'var(--accent-secondary)']} count={25} size={1.3} speed={0.1} className="opacity-[0.07]" />
       </div>
       <motion.header 
         initial={{ opacity: 0, y: -50 }}

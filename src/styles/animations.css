@@ -71,7 +71,7 @@
 /* Retrowave sun effect */
 .retrowave-sun {
   position: relative;
-  background: linear-gradient(0deg, #F25D27, #FFCC52);
+  background: linear-gradient(0deg, var(--accent-primary), var(--accent-tertiary));
   border-radius: 50%;
 }
 
@@ -99,11 +99,10 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: repeating-conic-gradient(
-    #F25D27 0deg 10deg,
-    #FFCC52 10deg 20deg,
-    #51A696 20deg 30deg,
-    #2484BF 30deg 40deg
+  background: repeating-conic-gradient(    var(--accent-primary) 0deg 10deg,
+    var(--accent-tertiary) 10deg 20deg,
+    var(--accent-green) 20deg 30deg,
+    var(--accent-blue) 30deg 40deg
   );
   opacity: 0.1;
   pointer-events: none;

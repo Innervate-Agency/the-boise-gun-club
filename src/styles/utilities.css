@@ -47,7 +47,7 @@
 
 /* Multi-color psychedelic gradient text */
 .psychedelic-text {
-  background: linear-gradient(90deg, #F25D27, #FFCC52, #51A696, #2484BF, #D54F00);
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-tertiary), var(--accent-green), var(--accent-blue), var(--accent-secondary));
   background-size: 400% 100%;
   animation: gradient-shift 8s ease infinite;
   -webkit-background-clip: text;

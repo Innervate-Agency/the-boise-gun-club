@@ -282,63 +282,9 @@
   border-color: var(--accent-primary);
 }
 
-/* Base theme variables - LIGHT MODE DEFAULTS */
-:root {
-  /* Base colors - Light Theme */
-  --bg-primary: #FAF7F0; /* Cream - warm white */
-  --bg-secondary: #FFFFFF; /* Pure white for cards/modals - can remain, or slightly warmed if needed */
-  --bg-tertiary: #F5F5F5; /* Light gray for hover states */
-  --text-primary: #3D2B1F; /* Dark brown, like old ink - good contrast with cream */
-  --text-secondary: #7A5C44; /* Lighter brown, for secondary text */
-  
-  /* Accent colors - Light Theme (Sophisticated 70s) */
-  --accent-primary: #D2691E;    /* Rich Muted Orange - primary call to action */
-  --accent-secondary: #F28705;  /* Lahoma Orange (from brand guidelines) - secondary actions, highlights. May need to mute this if it clashes. */
-  --accent-gold: #B8860B;       /* Dark Goldenrod - for highlights, borders */
-  --accent-darkred: #8C1818;    /* Deep Red - for warnings or special highlights */
-  --accent-forest-green: #355E3B; /* Deep Forest Green - for accents */
-  
-  /* Glass effect - Light Theme */
-  --glass-bg: rgba(250, 247, 240, 0.6); /* Creamy transparent */
-  --glass-border: rgba(210, 105, 30, 0.2); /* Subtle muted orange border */
-  
-  /* Gradients - Light Theme */
-  --gradient-primary: linear-gradient(135deg, #F28705 0%, #D2691E 100%); /* Orange gradient */
-  
-  /* Additional accent colors - Light Theme */
-  --accent-tertiary: #355E3B;   /* Deep Forest Green (replaces Dark Teal) - for information, tags */
-  --accent-quaternary: #2F2F2F; /* Charcoal (replaces Steel Blue) - for links or less prominent actions */
-  --accent-olive: #556B2F;      /* Dark Olive Green - for natural tones */
-  --accent-yellow: #FFBF00;     /* Amber/Yellow - for attention */
-  --accent-orangered: #FF4500;  /* OrangeRed - vibrant accent */
-  --accent-deepblue: #004E98;   /* Deeper Blue */
-  --accent-darkteal: #004D40;   /* Darker Teal */
-  
-  /* UI elements - Light Theme */
-  --grid-color: rgba(61, 43, 31, 0.1); /* Subtle brown grid lines */
-  
-  /* Gradients - Light Theme */
-  --gradient-secondary: linear-gradient(90deg, #027368, #2467B8);
-  --gradient-retro: linear-gradient(180deg, #D54F00, #F28705, #FFBF00);
-  --gradient-sunset: linear-gradient(45deg, #D54F00, #F28705, #FFD700); /* Gold instead of F2CF63 */
-  
-  /* Special elements - Light Theme */
-  --shadow-color: rgba(61, 43, 31, 0.15); /* Softer brown shadow */
-  --glow-color: rgba(213, 79, 0, 0.4);    /* Orange glow */
-  
-  /* Transitions */
-  --transition-speed: 0.3s;
-  
-  /* Containers - Light Theme */
-  --terminal-green: #027368; /* Teal for "green" elements */
-  --terminal-amber: #FFBF00; /* Amber for "yellow" elements */
-  --footer-bg: #E6E0D9;    /* Lighter footer background */
-
-  /* Other brand colors (can remain consistent or adapt) */
-  --leonard-yellow: #F2CB05; /* This is a specific brand color, might keep it */
-  --lahoma-orange: #F28705;  /* This is a specific brand color, might keep it */
-  --dark-bg: #3D2B1F; /* Dark brown, for contrast elements if needed in light mode */
-}
+/* Base theme variables - OFFICIAL BRAND COLORS ONLY */
+/* Light theme colors already defined above in [data-theme="light"] */
+/* Dark theme colors already defined above in [data-theme="dark"] */
 
 /* Dark theme variables */
 [data-theme='dark'] {

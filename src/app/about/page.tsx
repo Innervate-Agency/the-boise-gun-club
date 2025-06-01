@@ -37,7 +37,7 @@ function AboutPage() {
     <div className="relative min-h-screen bg-gradient-to-b from-neutral-900 to-black text-white overflow-x-hidden">
       {/* Subtle Background Effects */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <ParticleAnimation colors={['#F28705', '#E85E27']} count={20} size={1.2} speed={0.15} className="opacity-5" />
+        <ParticleAnimation colors={['var(--accent-primary)', 'var(--accent-secondary)']} count={20} size={1.2} speed={0.15} className="opacity-5" />
       </div>
       {/* Page Header */}
       <motion.header

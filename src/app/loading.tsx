@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function Loading() {
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#121212]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--bg-primary)]">
             {/* Background effects */}
             <div className="absolute inset-0">
                 {/* Smoke texture */}

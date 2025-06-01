@@ -127,10 +127,10 @@ const MembershipPage: React.FC = () => {
             {benefits.map((benefit, index) => (
               <motion.div 
                 key={index} 
-                className="bg-neutral-800/50 backdrop-blur-md p-6 rounded-lg shadow-xl border border-neutral-700 hover:shadow-[#F25D27]/30 hover:border-[#F25D27]/50 transition-all duration-300 transform hover:-translate-y-1"
+                className="bg-neutral-800/50 backdrop-blur-md p-6 rounded-lg shadow-xl border border-neutral-700 hover:shadow-[var(--accent-primary)]/30 hover:border-[var(--accent-primary)]/50 transition-all duration-300 transform hover:-translate-y-1"
                 variants={sectionVariants} custom={index}
               >
-                <h3 className="text-xl font-semibold font-['Heading_Pro_Trial'] text-[#F25D27] mb-3">{benefit.title}</h3>
+                <h3 className="text-xl font-semibold font-['Rajdhani'] text-[var(--accent-primary)] mb-3">{benefit.title}</h3>
                 <p className="text-neutral-300 font-['Museo'] text-sm leading-relaxed">{benefit.description}</p>
               </motion.div>
             ))}
@@ -139,7 +139,7 @@ const MembershipPage: React.FC = () => {
 
         {/* Call to Action Section */}
         <motion.section 
-          className="text-center py-12 bg-gradient-to-r from-[#F25D27]/80 to-[#FF8C00]/80 backdrop-blur-sm rounded-xl shadow-2xl border border-orange-400/50"
+          className="text-center py-12 bg-gradient-to-r from-[var(--accent-primary)]/80 to-[var(--accent-secondary)]/80 backdrop-blur-sm rounded-xl shadow-2xl border border-orange-400/50"
           variants={sectionVariants} custom={4} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold font-['Refrigerator_Deluxe'] text-neutral-900 mb-6">
