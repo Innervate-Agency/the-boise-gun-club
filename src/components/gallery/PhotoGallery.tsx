@@ -20,12 +20,12 @@ function MasonryGrid({ children }: { children: React.ReactNode }) {
     );
 }
 
-// Smoke effect component
-function SmokeEffect() {
+// Subtle mist effect component
+function MistEffect() {
     // Client-side only indicator
     const [isMounted, setIsMounted] = useState(false);
     // Use deterministic random for consistent rendering
-    const { getRandomValue } = useDeterministicRandom(20, 12345);
+    const { getRandomValue } = useDeterministicRandom(15, 12345);
     
     useEffect(() => {
         setIsMounted(true);
@@ -37,27 +37,27 @@ function SmokeEffect() {
     
     return (
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {Array.from({ length: 5 }).map((_, i) => (
+            {Array.from({ length: 3 }).map((_, i) => (
                 <motion.div
                     key={i}
-                    className="absolute w-64 h-64 bg-gradient-to-t from-white/5 to-transparent rounded-full blur-3xl"
+                    className="absolute w-96 h-96 bg-gradient-to-t from-white/2 to-transparent rounded-full blur-3xl"
                     animate={{
                         x: [
-                            getRandomValue(i * 3, -50, 50),
-                            getRandomValue(i * 3 + 1, -50, 50),
-                            getRandomValue(i * 3 + 2, -50, 50)
+                            getRandomValue(i * 3, -30, 30),
+                            getRandomValue(i * 3 + 1, -30, 30),
+                            getRandomValue(i * 3 + 2, -30, 30)
                         ],
                         y: [
-                            getRandomValue(i * 5, 0, 100),
-                            getRandomValue(i * 5 + 1, -100, 0),
-                            getRandomValue(i * 5 + 2, 0, 100)
+                            getRandomValue(i * 5, 0, 80),
+                            getRandomValue(i * 5 + 1, -80, 0),
+                            getRandomValue(i * 5 + 2, 0, 80)
                         ],
-                        opacity: [0, 0.2, 0]
+                        opacity: [0, 0.08, 0]
                     }}
                     transition={{
-                        duration: 10 + getRandomValue(i * 7, 0, 5),
+                        duration: 15 + getRandomValue(i * 7, 0, 8),
                         repeat: Infinity,
-                        ease: "linear"
+                        ease: "easeInOut"
                     }}
                     style={{
                         left: `${getRandomValue(i * 11, 0, 100)}%`,
@@ -121,7 +121,7 @@ function GalleryContent() {
     return (
         <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] relative overflow-hidden">
             {/* Background effects */}
-            <SmokeEffect />
+            <MistEffect />
             <div className="absolute inset-0 bg-gradient-to-b from-[var(--accent-primary)]/5 to-[var(--accent-secondary)]/5" />
 
             <div className="container mx-auto px-4 py-16 relative z-10">

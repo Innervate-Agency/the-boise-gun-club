@@ -41,23 +41,14 @@ function HeroSection() {
                         width={1920}
                         height={1080}
                     />
-                </motion.div>
-                
-                {/* Base smoke texture overlay */}
+                </motion.div>                
+                {/* Subtle mist overlay for hunting theme */}
                 <motion.div 
-                    className="absolute inset-0 opacity-20"
+                    className="absolute inset-0 opacity-10"
                     style={{ scale: bgScale }}
                 >
-                    <Image
-                        src="/images/Smoke/Background_05.webp"
-                        alt=""
-                        fill
-                        className="object-cover"
-                        quality={85}
-                        placeholder="blur"
-                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                        sizes="100vw"
-                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/20 via-transparent to-[var(--accent-primary)]/5" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent" />
                 </motion.div>
                 
                 {/* Gentle texture layers - Family-friendly */}

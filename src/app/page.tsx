@@ -25,8 +25,8 @@ const ClayFragments = dynamic(() => import('../components/effects/ClayFragments'
   ssr: false
 });
 
-// Import SmokeAnimation with dynamic loading
-const SmokeAnimation = dynamic(() => import('../components/effects/SmokeAnimation'), {
+// Import MorningMistAnimation with dynamic loading
+const MorningMistAnimation = dynamic(() => import('../components/effects/MorningMistAnimation'), {
   ssr: false,
   loading: () => <div className="absolute inset-0 pointer-events-none" />
 });
@@ -34,6 +34,8 @@ const SmokeAnimation = dynamic(() => import('../components/effects/SmokeAnimatio
 // Add Gallery component import
 import GalleryPreview from '../components/home/GalleryPreview';
 import ContactInfo from '../components/home/ContactInfo';
+import ClubRulesSection from '../components/home/ClubRulesSection';
+import PricingSection from '../components/home/PricingSection';
 
 // Real gallery items with Unsplash integration
 const galleryItems = [
@@ -195,14 +197,12 @@ const StatCard: FC<{ value: string; label: string; index: number }> = ({ value, 
 const Section: FC<{ 
     children: React.ReactNode;
     className?: string;
-    background?: 'smoke' | 'grid' | 'gradient' | 'none';
+    background?: 'mist' | 'grid' | 'gradient' | 'none';
     overlay?: boolean;
 }> = ({ children, className = '', background = 'none', overlay = true }) => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.1 });
-
-    const bgStyles = {
-        smoke: "bg-[url('/images/Smoke/Background_03.webp')] bg-cover bg-center",
+    const isInView = useInView(ref, { once: true, amount: 0.1 });    const bgStyles = {
+        mist: "bg-gradient-to-br from-[var(--bg-secondary)]/5 via-transparent to-[var(--bg-primary)]/10",
         grid: "bg-[url('/images/Grid/Grid (1).webp')] bg-cover",
         gradient: "bg-gradient-to-br from-[var(--bg-secondary)] via-[var(--bg-primary)] to-[var(--bg-secondary)]",
         none: ""
@@ -239,9 +239,8 @@ const HomePage: FC = () => {
         <main className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-x-hidden">
             {/* Hero Section - Full width */}
             <HeroSection />
-            
-            {/* Upcoming Events with smoke background */}
-            <Section background="smoke" className="relative">
+              {/* Upcoming Events with mist background */}
+            <Section background="mist" className="relative">
                 <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)] opacity-90" />
                 <div className="relative z-10">
                     <UpcomingEvents />
@@ -274,17 +273,21 @@ const HomePage: FC = () => {
                         <FacilityCard key={facility.title} {...facility} index={index} />
                     ))}
                 </div>
-            </Section>
-
-            {/* Gallery Preview with sophisticated glass */}
+            </Section>            {/* Gallery Preview with sophisticated glass */}
             <Section background="gradient" className="relative">
-                <SmokeAnimation />
+                <MorningMistAnimation intensity="subtle" />
                 <ClayFragments count={8} />
                 <GalleryPreview galleryItems={galleryItems} />
             </Section>
 
+            {/* Club Rules Section */}
+            <ClubRulesSection />
+
+            {/* Pricing Section */}
+            <PricingSection />
+
             {/* Club Statistics with glass panels */}
-            <Section background="smoke">
+            <Section background="mist">
                 <div className="text-center mb-12">
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
@@ -366,7 +369,7 @@ const HomePage: FC = () => {
             </Section>
 
             {/* Contact Information with final glass treatment */}
-            <Section background="smoke" overlay={false}>
+            <Section background="mist" overlay={false}>
                 <ContactInfo />
             </Section>
         </main>

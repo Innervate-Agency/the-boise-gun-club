@@ -1,32 +1,32 @@
-# BOISE GUN CLUB - IMMUTABLE THEME REFERENCE
+# BOISE GUN CLUB - OFFICIAL BRANDING REFERENCE
 **⚠️ WARNING: DO NOT ALTER THESE SETTINGS WITHOUT EXPLICIT APPROVAL ⚠️**
 
 ## CORE DESIGN PHILOSOPHY
 **Facility Type:** Welcoming shotgun sports facility (Trap, Skeet, Sporting Clays)  
 **NOT:** Hardcore gun club - we're a family-friendly outdoor sports venue  
-**Aesthetic Goal:** Transition from industrial/hardcore to inviting outdoor recreation
+**Aesthetic Goal:** Professional outdoor recreation with authentic Idaho atmosphere
 
 ---
 
-## THEME CONCEPTS (LOCKED)
+## OFFICIAL THEME CONCEPTS (LOCKED)
 
-### DARK THEME: "Early Fall Morning in Idaho Cascades"
-**Concept:** Misty morning deer hunting in shadowy woods  
-**Color Palette:**
-- **Primary:** Warm browns (#8B4513, #A0522D, #D2691E)
-- **Secondary:** Oranges (#FF8C00, #FF7F50, #FFA500) 
-- **Accent:** Dark/light greens (#228B22, #556B2F, #9ACD32)
-- **Neutrals:** Dark brown/gray (#2F2F2F, #4A4A4A), creamy whites (#FFF8DC, #FFFAF0)
-- **Atmosphere:** Purple-red (#8B008B, #9932CC) for depth
+### DARK THEME: "Misty Fall Morning in the Cascades"
+**Concept:** Early morning hunting atmosphere with subtle mist  
+**Official Brand Colors:**
+- **Backgrounds:** Kent Slate Gray (#2F3135), Ed Charcoal (#4B4B4B), Pigeon Clay Gray (#494657)
+- **Text:** Chester White (#FDFDFD), Don Gray (#EEF1F7)
+- **Primary Accents:** Lahoma Orange (#F28705), Leonard Yellow (#F2CB05), Jerry Orange (#F25C05)
+- **Secondary Accents:** Club House Roof Blue (#4982A6), Club House Lawn Green (#3F6331)
+- **Supporting:** Club House Walk Gray (#C9D2EF), Owyhee Field Green (#6f7822), Scoring Bench Red (#8C394B)
 
-### LIGHT THEME: "Spring Mountain Morning"  
-**Concept:** Fresh, bright mountain dawn with crisp air  
-**Color Palette:**
-- **Primary:** Clean whites (#FFFFFF, #F8F9FA, #F5F5F5)
-- **Secondary:** Sky blues (#87CEEB, #4682B4, #1E90FF)
-- **Accent:** Fresh greens (#32CD32, #90EE90, #98FB98)
-- **Highlights:** Bright pink/purple (#FF69B4, #DA70D6, #BA55D3)
-- **Depth:** Light grays (#E5E5E5, #D3D3D3)
+### LIGHT THEME: "Spring Day Along The East Fork of The Owyhee River"  
+**Concept:** Fresh Idaho spring morning with clear skies  
+**Official Brand Colors:**
+- **Backgrounds:** Cloudy Day White (#f8f6f1), Overcast (#ede7de), Sand Dune Brown (#c08051)
+- **Text:** Craters of The Moon (#372103), Desert Cliff Brown (#693e21)
+- **Primary Accents:** Clay Pidgeon Orange (#F23005), Gunclub Orange (#f07b1d), Wildeye Susan Yellow (#E3C03C)
+- **Secondary Accents:** Idaho Sky Blue (#5198cd), Snakeriver Blue (#3c81c0), Owyhee Field Green (#6f7822)
+- **Supporting:** Boise Yard Green (#909233), Scoring Bench Red (#8C394B)
 
 ---
 
@@ -52,9 +52,17 @@
 - **Card Layouts:** Stripe.com card styles and animations
 - **Dividers:** Clean section separation (Stripe-style)
 
+---
+
+## OFFICIAL TYPOGRAPHY (LOCKED)
+
+### Branding Typeface from Official Guide
+- **Headers/Titles (H1-H6) & Logo Font:** Rajdhani
+- **Body & Copy Text:** Noto Sans & Noto Serif
+
 ### Typography Hierarchy
-- **Headers:** Refrigerator Deluxe (Display font)
-- **Body:** Museo Sans (Readable, professional)
+- **Headers:** Rajdhani (Professional, readable headers)
+- **Body:** Noto Sans/Serif (Clean, accessible body text)
 - **Structure:** H2 → H3 → Paragraph → Internal links (SEO optimized)
 
 ### Content Structure (EVERY SECTION)

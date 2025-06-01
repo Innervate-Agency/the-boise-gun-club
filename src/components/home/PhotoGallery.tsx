@@ -51,16 +51,16 @@ const GlassPhotoFrame: React.FC<{ photo: Photo, onClick: () => void }> = ({ phot
     );
 };
 
-// Subtle smoke transition effect
-const SmokeTransition: React.FC = () => {
+// Subtle mist transition effect
+const MistTransition: React.FC = () => {
     return (
         <motion.div
             className="fixed inset-0 z-[60] pointer-events-none"
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.5, 0] }}
-            transition={{ duration: 1 }}
+            animate={{ opacity: [0, 0.3, 0] }}
+            transition={{ duration: 1.5 }}
         >
-            <div className="absolute inset-0 bg-[url('/images/Smoke/Background_01.jpg')] bg-cover opacity-30 mix-blend-overlay"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-white/2 via-transparent to-[var(--bg-primary)]/5 mix-blend-screen"></div>
         </motion.div>
     );
 };

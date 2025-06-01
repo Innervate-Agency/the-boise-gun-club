@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import MobileMenu from './MobileMenu';
 import NavLogo from './NavLogo';
+import MegaMenu from './MegaMenu';
+import { Bars3Icon } from '@heroicons/react/24/outline';
 import { useNavigation } from './NavigationContext';
 
 // Navigation items with museum added
@@ -57,6 +59,7 @@ export default function NavBar() {
     const { isScrolled, isMobileMenuOpen, setIsMobileMenuOpen, clubAnnouncements } = useNavigation();
     const announcementRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
+    const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
 
     // Intersection observer for announcements section
     useEffect(() => {
@@ -122,10 +125,9 @@ export default function NavBar() {
                     <div className="container mx-auto px-4 relative z-10">
                         <div className="flex items-center justify-between">
                             {/* Logo */}
-                            <NavLogo />
-
-                            {/* Desktop Navigation - Clean Modern */}
-                            <div className="hidden lg:flex items-center space-x-8">                                {navLinks.map((link) => (
+                            <NavLogo />                            {/* Desktop Navigation - Clean Modern */}
+                            <div className="hidden lg:flex items-center space-x-8">
+                                {navLinks.map((link) => (
                                     <NavItem
                                         key={link.href}
                                         href={link.href}
@@ -133,6 +135,17 @@ export default function NavBar() {
                                         isActive={pathname === link.href}
                                     />
                                 ))}
+
+                                {/* Mega Menu Button */}
+                                <motion.button
+                                    onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
+                                    className="flex items-center space-x-1 px-3 py-2 rounded-lg hover:bg-[var(--accent-primary)]/10 transition-colors"
+                                    whileHover={{ y: -2 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    <Bars3Icon className="w-5 h-5 text-[var(--text-primary)]" />
+                                    <span className="font-heading text-xl tracking-wide text-[var(--text-primary)]">MENU</span>
+                                </motion.button>
 
                                 {/* Member Login Button - Modern Gradient */}
                                 <motion.div
@@ -165,9 +178,7 @@ export default function NavBar() {
                             </div>
                         </div>
                     </div>
-                </div>
-
-                {/* Mobile Menu */}
+                </div>                {/* Mobile Menu */}
                 <AnimatePresence>
                     {isMobileMenuOpen && (
                         <MobileMenu
@@ -176,6 +187,12 @@ export default function NavBar() {
                         />
                     )}
                 </AnimatePresence>
+
+                {/* Mega Menu */}
+                <MegaMenu 
+                    isOpen={isMegaMenuOpen} 
+                    onClose={() => setIsMegaMenuOpen(false)} 
+                />
             </nav>
             {/* Global styles */}
             <style jsx global>{`

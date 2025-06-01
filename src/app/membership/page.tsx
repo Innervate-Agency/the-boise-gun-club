@@ -98,7 +98,7 @@ const MembershipPage: React.FC = () => {
           className="bg-neutral-800/50 backdrop-blur-md p-8 md:p-12 rounded-xl shadow-2xl border border-neutral-700"
           variants={sectionVariants} custom={2} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
         >
-          <h2 className="text-3xl md:text-4xl font-semibold font-['Heading_Pro_Trial'] text-[#F25D27] mb-6">
+          <h2 className="text-3xl md:text-4xl font-semibold font-['Rajdhani'] text-[var(--accent-primary)] mb-6">
             Membership At a Glance
           </h2>
           <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -110,7 +110,7 @@ const MembershipPage: React.FC = () => {
             </div>
             <div className="bg-neutral-700/70 p-6 rounded-lg text-center">
               <p className="text-lg font-['Museo'] text-neutral-300">Non-Member Price: <span className="font-bold text-white">${standardRoundPrice}/round</span></p>
-              <p className="text-2xl font-bold font-['Museo'] text-[#F25D27] my-2">Member Price: <span className="text-white">${memberRoundPrice}/round</span></p>
+              <p className="text-2xl font-bold font-['Noto Sans'] text-[var(--accent-primary)] my-2">Member Price: <span className="text-white">${memberRoundPrice}/round</span></p>
               <p className="text-sm font-['Museo'] text-neutral-400">(Skeet/Trap - 25 shots)</p>
             </div>
           </div>
@@ -120,7 +120,7 @@ const MembershipPage: React.FC = () => {
         <motion.section
           variants={sectionVariants} custom={3} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}
         >
-          <h2 className="text-3xl md:text-4xl font-semibold font-['Heading_Pro_Trial'] text-center text-[#F25D27] mb-12">
+          <h2 className="text-3xl md:text-4xl font-semibold font-['Rajdhani'] text-center text-[var(--accent-primary)] mb-12">
             More Than Just Savings: Unlock Exclusive Perks
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

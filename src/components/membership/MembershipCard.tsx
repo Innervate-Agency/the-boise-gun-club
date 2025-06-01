@@ -29,16 +29,15 @@ const MembershipCard = ({ tier, onSelect }: MembershipCardProps) => {
     useEffect(() => {
         setIsMounted(true);
     }, []);
-    
-    // Smoke particles for hover effect with deterministic positions
-    const smokeParticles = useMemo(() => {
-        return Array.from({ length: 8 }, (_, i) => ({
+      // Mist particles for hover effect with deterministic positions
+    const mistParticles = useMemo(() => {
+        return Array.from({ length: 6 }, (_, i) => ({
             id: i,
-            delay: i * 0.1,
-            x: isMounted ? getRandomValue(i * 2, -20, 20) : 0,
-            y: isMounted ? -getRandomValue(i * 2 + 1, 20, 60) : -30,
+            delay: i * 0.15,
+            x: isMounted ? getRandomValue(i * 2, -15, 15) : 0,
+            y: isMounted ? -getRandomValue(i * 2 + 1, 15, 40) : -20,
         }));
-    }, [isMounted, getRandomValue]); // Memoize smokeParticles
+    }, [isMounted, getRandomValue]); // Memoize mistParticles
 
     return (
         <motion.div
@@ -63,19 +62,17 @@ const MembershipCard = ({ tier, onSelect }: MembershipCardProps) => {
                 <div className="absolute inset-0" style={{
                     backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, #FFBF00 10px, #FFBF00 11px)',
                 }} />
-            </div>
-
-            {/* Smoke effect particles */}
-            {isHovered && smokeParticles.map(particle => (
+            </div>            {/* Subtle mist effect particles */}
+            {isHovered && mistParticles.map(particle => (
                 <motion.div
                     key={particle.id}
-                    className="absolute w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm"
-                    initial={{ opacity: 0, x: 0, y: 0, scale: 0.5 }}
+                    className="absolute w-6 h-6 rounded-full bg-white/5 backdrop-blur-md"
+                    initial={{ opacity: 0, x: 0, y: 0, scale: 0.3 }}
                     animate={{
-                        opacity: [0, 0.4, 0],
+                        opacity: [0, 0.2, 0],
                         x: particle.x,
                         y: particle.y,
-                        scale: 1.5,
+                        scale: 1.2,
                     }}
                     transition={{
                         duration: 1.5,

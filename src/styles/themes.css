@@ -1,11 +1,11 @@
 @layer base {
-  /* Default text size */
+  /* Default text size with official Boise Gun Club fonts */
   html {
     font-size: 15px;
     line-height: 1.5;
     letter-spacing: -0.02em;
     font-weight: 400;
-    font-family: "museo-sans", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Noto Sans", "Noto Serif", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--text-primary);
     background-color: var(--bg-primary);
     -webkit-font-smoothing: antialiased;
@@ -36,15 +36,16 @@
                 border-color 0.3s ease,
                 box-shadow 0.3s ease;
   }
-
-  /* Typography defaults with variables */
-  h1 { @apply text-4xl md:text-5xl font-bold; color: var(--text-primary); letter-spacing: -0.025em; }
-  h2 { @apply text-3xl md:text-4xl font-bold; color: var(--text-primary); letter-spacing: -0.02em; }
-  h3 { @apply text-2xl md:text-3xl font-bold; color: var(--text-primary); letter-spacing: -0.015em; }
-  h4 { @apply text-xl md:text-2xl font-bold; color: var(--text-primary); letter-spacing: -0.01em; }
-  p { @apply text-lg md:text-xl; color: var(--text-primary); letter-spacing: 0.01em; line-height: 1.6; }
-  button { @apply text-lg md:text-xl; letter-spacing: 0.02em; }
-  input { @apply text-lg md:text-xl; }
+  /* Typography defaults with Boise Gun Club brand fonts */
+  h1 { @apply text-4xl md:text-5xl font-bold; color: var(--text-primary); letter-spacing: -0.025em; font-family: "Rajdhani", sans-serif; }
+  h2 { @apply text-3xl md:text-4xl font-bold; color: var(--text-primary); letter-spacing: -0.02em; font-family: "Rajdhani", sans-serif; }
+  h3 { @apply text-2xl md:text-3xl font-bold; color: var(--text-primary); letter-spacing: -0.015em; font-family: "Rajdhani", sans-serif; }
+  h4 { @apply text-xl md:text-2xl font-bold; color: var(--text-primary); letter-spacing: -0.01em; font-family: "Rajdhani", sans-serif; }
+  h5 { @apply text-lg md:text-xl font-bold; color: var(--text-primary); letter-spacing: -0.005em; font-family: "Rajdhani", sans-serif; }
+  h6 { @apply text-base md:text-lg font-bold; color: var(--text-primary); letter-spacing: 0; font-family: "Rajdhani", sans-serif; }
+  p { @apply text-lg md:text-xl; color: var(--text-primary); letter-spacing: 0.01em; line-height: 1.6; font-family: "Noto Sans", sans-serif; }
+  button { @apply text-lg md:text-xl; letter-spacing: 0.02em; font-family: "Noto Sans", sans-serif; }
+  input { @apply text-lg md:text-xl; font-family: "Noto Sans", sans-serif; }
 
   /* Calendar-specific text sizes */
   .calendar h1 { @apply text-4xl md:text-5xl font-bold; }
@@ -55,61 +56,58 @@
   .calendar input { @apply text-lg md:text-xl; }
 }
 
-/* LOCKED THEME COLORS - SPRING MOUNTAIN MORNING (LIGHT) */
+/* BOISE GUN CLUB OFFICIAL BRAND COLORS */
+/* Light Theme: Spring Day Along The East Fork of The Owyhee River */
 :root {
-  /* Light theme - "Spring Mountain Morning" */
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F8F9FA;
-  --bg-tertiary: #F5F5F5;
-  --text-primary: #2F2F2F;
-  --text-secondary: #4A4A4A;
+  /* Primary Brand Colors from Branding Guide */
+  --bg-primary: #f8f6f1;          /* Cloudy Day White */
+  --bg-secondary: #ede7de;         /* Overcast */
+  --bg-tertiary: #c08051;          /* Sand Dune Brown */
+  --text-primary: #372103;         /* Craters of The Moon */
+  --text-secondary: #693e21;       /* Desert Cliff Brown */
   
-  /* Spring Mountain Colors */
-  --accent-primary: #1E90FF;      /* Sky blue primary */
-  --accent-secondary: #4682B4;    /* Steel blue secondary */
-  --accent-tertiary: #87CEEB;     /* Light sky blue */
-  --accent-green: #32CD32;        /* Fresh lime green */
-  --accent-green-light: #90EE90;  /* Light green */
-  --accent-green-fresh: #98FB98;  /* Pale green */
-  --accent-pink: #FF69B4;         /* Hot pink highlight */
-  --accent-purple: #DA70D6;       /* Orchid purple */
-  --accent-purple-bright: #BA55D3; /* Medium orchid */
+  /* Brand Accent Colors */
+  --accent-primary: #F23005;       /* Clay Pidgeon Orange */
+  --accent-secondary: #f07b1d;     /* Gunclub Orange */
+  --accent-tertiary: #E3C03C;      /* Wildeye Susan Yellow */
+  --accent-blue: #5198cd;          /* Idaho Sky Blue */
+  --accent-blue-dark: #3c81c0;     /* Snakeriver Blue */
+  --accent-green: #6f7822;         /* Owyhee Field Green */
+  --accent-green-light: #909233;   /* Boise Yard Green */
+  --accent-red: #8C394B;           /* Scoring Bench Red */
   
   /* Glass effects - Light */
-  --glass-bg: rgba(255, 255, 255, 0.15);
-  --glass-border: rgba(30, 144, 255, 0.2);
+  --glass-bg: rgba(248, 246, 241, 0.15);
+  --glass-border: rgba(81, 152, 205, 0.2);
   
   /* Utilities */
   --glass-noise: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIGluPSJwIi8+PC9maWx0ZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=");
-  --shadow-light: rgba(47, 47, 47, 0.1);
+  --shadow-light: rgba(55, 33, 3, 0.1);
 }
 
-/* LOCKED THEME COLORS - FALL MORNING IN CASCADES (DARK) */
+/* Dark Theme: Misty Fall Morning in the Cascades */
 :root.dark, 
 :root[data-theme="dark"] {
-  /* Dark theme - "Early Fall Morning in Idaho Cascades" */
-  --bg-primary: #2F2F2F;
-  --bg-secondary: #1A1A1A;
-  --bg-tertiary: #4A4A4A;
-  --text-primary: #FFF8DC;
-  --text-secondary: #FFFAF0;
+  /* Dark Brand Colors from Branding Guide */
+  --bg-primary: #2F3135;           /* Kent Slate Gray */
+  --bg-secondary: #4B4B4B;         /* Ed Charcoal */
+  --bg-tertiary: #494657;          /* Pigeon Clay Gray */
+  --text-primary: #FDFDFD;         /* Chester White */
+  --text-secondary: #EEF1F7;       /* Don Gray */
   
-  /* Fall Cascade Colors */
-  --accent-primary: #D2691E;      /* Warm brown primary */
-  --accent-secondary: #A0522D;    /* Sienna brown */
-  --accent-tertiary: #8B4513;     /* Saddle brown */
-  --accent-orange: #FF8C00;       /* Dark orange */
-  --accent-orange-light: #FF7F50; /* Coral */
-  --accent-orange-bright: #FFA500; /* Orange */
-  --accent-green: #228B22;        /* Forest green */
-  --accent-green-dark: #556B2F;   /* Dark olive green */
-  --accent-green-light: #9ACD32;  /* Yellow green */
-  --accent-purple: #8B008B;       /* Dark magenta depth */
-  --accent-purple-bright: #9932CC; /* Dark orchid */
+  /* Brand Accent Colors - Dark Theme */
+  --accent-primary: #F28705;       /* Lahoma Orange */
+  --accent-secondary: #F2CB05;     /* Leonard Yellow */
+  --accent-tertiary: #F25C05;      /* Jerry Orange */
+  --accent-blue: #4982A6;          /* Club House Roof Blue */
+  --accent-blue-dark: #C9D2EF;     /* Club House Walk Gray */
+  --accent-green: #3F6331;         /* Club House Lawn Green */
+  --accent-green-light: #6f7822;   /* Owyhee Field Green */
+  --accent-red: #8C394B;           /* Scoring Bench Red */
   
   /* Glass effects - Dark */
-  --glass-bg: rgba(47, 47, 47, 0.2);
-  --glass-border: rgba(210, 105, 30, 0.3);
+  --glass-bg: rgba(47, 49, 53, 0.2);
+  --glass-border: rgba(242, 135, 5, 0.3);
   
   /* Utilities */
   --glass-noise: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIGluPSJwIi8+PC9maWx0ZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDgiLz48L3N2Zz4=");

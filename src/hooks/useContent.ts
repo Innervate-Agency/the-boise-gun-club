@@ -48,8 +48,7 @@ export const useContent = () => {
         } else {
           throw new Error('Failed to fetch content');
         }
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error');
+      } catch (err) {        setError(err instanceof Error ? err.message : 'Unknown error');
         // Fallback to default content
         setContent({
           events: [
@@ -59,7 +58,8 @@ export const useContent = () => {
               date: "2025-11-15",
               time: "9:00 AM",
               location: "Main Range",
-              description: "Annual championship competition"
+              description: "Annual championship competition",
+              category: "competition"
             },
             {
               id: 2,
@@ -67,7 +67,8 @@ export const useContent = () => {
               date: "2025-12-01", 
               time: "7:00 PM",
               location: "Clubhouse",
-              description: "Winter league meeting"
+              description: "Winter league meeting",
+              category: "meeting"
             }
           ],
           clubInfo: {
