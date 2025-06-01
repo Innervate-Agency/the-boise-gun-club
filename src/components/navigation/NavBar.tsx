@@ -3,14 +3,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import MobileMenu from './MobileMenu';
 import NavLogo from './NavLogo';
 import { useNavigation } from './NavigationContext';
 
-// Navigation items with updated colors based on brand guidelines
+// Navigation items with museum added
 const navLinks = [
     { label: 'HOME', href: '/' },
     { label: 'ABOUT', href: '/about' },
+    { label: 'MUSEUM', href: '/museum' },
     { label: 'EVENTS', href: '/events' },
     { label: 'RANGES', href: '/ranges' },
     { label: 'GALLERY', href: '/gallery' },
@@ -54,21 +56,17 @@ const NavItem = ({ label, href, isActive }: {
 export default function NavBar() {
     const { isScrolled, isMobileMenuOpen, setIsMobileMenuOpen, clubAnnouncements } = useNavigation();
     const announcementRef = useRef<HTMLDivElement>(null);
-    const [currentPath, setCurrentPath] = useState('/');
-
-    // Set current path on component mount
-    useEffect(() => {
-        setCurrentPath(window.location.pathname);
-    }, []);
+    const pathname = usePathname();
 
     // Intersection observer for announcements section
     useEffect(() => {
-        if (!announcementRef.current) return;
+        const currentRef = announcementRef.current;
+        if (!currentRef) return;
 
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.target === announcementRef.current) {
+                    if (entry.target === currentRef) {
                         entry.target.classList.toggle('announcement-visible', entry.isIntersecting);
                     }
                 });
@@ -76,11 +74,11 @@ export default function NavBar() {
             { threshold: 0.1 }
         );
 
-        observer.observe(announcementRef.current);
+        observer.observe(currentRef);
 
         return () => {
-            if (announcementRef.current) {
-                observer.unobserve(announcementRef.current);
+            if (currentRef) {
+                observer.unobserve(currentRef);
             }
         };
     }, []);
@@ -127,13 +125,12 @@ export default function NavBar() {
                             <NavLogo />
 
                             {/* Desktop Navigation - Clean Modern */}
-                            <div className="hidden lg:flex items-center space-x-8">
-                                {navLinks.map((link) => (
+                            <div className="hidden lg:flex items-center space-x-8">                                {navLinks.map((link) => (
                                     <NavItem
                                         key={link.href}
                                         href={link.href}
                                         label={link.label}
-                                        isActive={currentPath === link.href}
+                                        isActive={pathname === link.href}
                                     />
                                 ))}
 

@@ -8,6 +8,8 @@ interface ContentData {
     time: string;
     location: string;
     description: string;
+    category: string;
+    attendees?: number;
   }>;
   clubInfo: {
     name: string;

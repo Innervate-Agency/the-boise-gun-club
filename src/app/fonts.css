@@ -1,4 +1,12 @@
-/* Local font definitions */
+/* Local font definitions with complete weight coverage */
+@font-face {
+  font-family: 'refrigerator-deluxe';
+  src: url('/fonts/Refrigerator Deluxe Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 @font-face {
   font-family: 'refrigerator-deluxe';
   src: url('/fonts/Refrigerator Deluxe.otf') format('opentype');
@@ -17,9 +25,49 @@
 
 @font-face {
   font-family: 'refrigerator-deluxe';
+  src: url('/fonts/Refrigerator Deluxe Extrabold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'refrigerator-deluxe';
   src: url('/fonts/Refrigerator Deluxe Heavy.otf') format('opentype');
   font-weight: 900;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'museo-sans';
+  src: url('/fonts/MuseoSans-100.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'museo-sans';
+  src: url('/fonts/MuseoSans-100Italic.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'museo-sans';
+  src: url('/fonts/MuseoSans-300.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'museo-sans';
+  src: url('/fonts/MuseoSans-300Italic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -33,9 +81,25 @@
 
 @font-face {
   font-family: 'museo-sans';
+  src: url('/fonts/MuseoSans_500_Italic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'museo-sans';
   src: url('/fonts/MuseoSans_700.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'museo-sans';
+  src: url('/fonts/MuseoSans-700Italic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -47,22 +111,68 @@
   font-display: swap;
 }
 
-/* Apply typography globally */
-html, body {
-  font-family: "museo-sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+@font-face {
+  font-family: 'museo-sans';
+  src: url('/fonts/MuseoSans-900Italic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
 }
 
-/* Headings specific styles */
+/* Apply typography globally with improved hierarchy */
+html, body {
+  font-family: "museo-sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+/* Headings specific styles with consistent font loading */
 h1, h2, h3, h4, h5, h6, .heading, .font-heading, [class*="heading"] {
+  font-family: "refrigerator-deluxe", "DM Sans", serif !important;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Body text with improved readability */
+p, span, div, a, button, input, textarea, select, li {
+  font-family: inherit;
+  line-height: inherit;
+}
+
+/* Specific font utility classes */
+.font-refrigerator {
   font-family: "refrigerator-deluxe", "DM Sans", serif !important;
 }
 
-/* Body text */
-p, span, div, a, button, input, textarea, select, li {
-  font-family: inherit;
+.font-museo {
+  font-family: "museo-sans", "DM Sans", sans-serif !important;
+}
+
+/* Navigation specific font fixes */
+.nav-text {
+  font-family: "refrigerator-deluxe", "DM Sans", serif !important;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Footer specific font fixes */
+.footer-text {
+  font-family: "museo-sans", "DM Sans", sans-serif !important;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.footer-heading {
+  font-family: "refrigerator-deluxe", "DM Sans", serif !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* Override any Times New Roman fallbacks */
 * {
   font-family: inherit;
-} 
+}

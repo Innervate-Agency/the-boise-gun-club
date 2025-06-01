@@ -55,32 +55,65 @@
   .calendar input { @apply text-lg md:text-xl; }
 }
 
-/* Root theme variables */
+/* LOCKED THEME COLORS - SPRING MOUNTAIN MORNING (LIGHT) */
 :root {
-  /* Light theme (default) */
-  --bg-primary: #fafafa;
-  --bg-secondary: #ffffff;
-  --text-primary: #0a0a0a;
-  --text-secondary: #6b7280;
-  --accent-primary: #F28705;
-  --accent-secondary: #F25D27;
-  --accent-gold: #F2CB05;
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.2);
+  /* Light theme - "Spring Mountain Morning" */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --bg-tertiary: #F5F5F5;
+  --text-primary: #2F2F2F;
+  --text-secondary: #4A4A4A;
+  
+  /* Spring Mountain Colors */
+  --accent-primary: #1E90FF;      /* Sky blue primary */
+  --accent-secondary: #4682B4;    /* Steel blue secondary */
+  --accent-tertiary: #87CEEB;     /* Light sky blue */
+  --accent-green: #32CD32;        /* Fresh lime green */
+  --accent-green-light: #90EE90;  /* Light green */
+  --accent-green-fresh: #98FB98;  /* Pale green */
+  --accent-pink: #FF69B4;         /* Hot pink highlight */
+  --accent-purple: #DA70D6;       /* Orchid purple */
+  --accent-purple-bright: #BA55D3; /* Medium orchid */
+  
+  /* Glass effects - Light */
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(30, 144, 255, 0.2);
+  
+  /* Utilities */
+  --glass-noise: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIGluPSJwIi8+PC9maWx0ZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=");
+  --shadow-light: rgba(47, 47, 47, 0.1);
 }
 
-/* Dark theme */
+/* LOCKED THEME COLORS - FALL MORNING IN CASCADES (DARK) */
 :root.dark, 
 :root[data-theme="dark"] {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #1a1a1a;
-  --text-primary: #fafafa;
-  --text-secondary: #a1a1aa;
-  --accent-primary: #F28705;
-  --accent-secondary: #F25D27;
-  --accent-gold: #F2CB05;
-  --glass-bg: rgba(0, 0, 0, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  /* Dark theme - "Early Fall Morning in Idaho Cascades" */
+  --bg-primary: #2F2F2F;
+  --bg-secondary: #1A1A1A;
+  --bg-tertiary: #4A4A4A;
+  --text-primary: #FFF8DC;
+  --text-secondary: #FFFAF0;
+  
+  /* Fall Cascade Colors */
+  --accent-primary: #D2691E;      /* Warm brown primary */
+  --accent-secondary: #A0522D;    /* Sienna brown */
+  --accent-tertiary: #8B4513;     /* Saddle brown */
+  --accent-orange: #FF8C00;       /* Dark orange */
+  --accent-orange-light: #FF7F50; /* Coral */
+  --accent-orange-bright: #FFA500; /* Orange */
+  --accent-green: #228B22;        /* Forest green */
+  --accent-green-dark: #556B2F;   /* Dark olive green */
+  --accent-green-light: #9ACD32;  /* Yellow green */
+  --accent-purple: #8B008B;       /* Dark magenta depth */
+  --accent-purple-bright: #9932CC; /* Dark orchid */
+  
+  /* Glass effects - Dark */
+  --glass-bg: rgba(47, 47, 47, 0.2);
+  --glass-border: rgba(210, 105, 30, 0.3);
+  
+  /* Utilities */
+  --glass-noise: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIGluPSJwIi8+PC9maWx0ZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDgiLz48L3N2Zz4=");
+  --shadow-dark: rgba(0, 0, 0, 0.4);
 }
 
 @theme inline {
@@ -90,11 +123,57 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Glass effect for navigation */
+/* ENHANCED GLASS EFFECTS - WINDOWS 11 MICA STYLE */
 .glass-nav {
-  background: rgba(86, 24, 6, 0.7);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  position: relative;
+}
+
+.glass-nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--glass-noise);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-card {
+  background: var(--glass-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--glass-noise);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-section {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
 }
 
 /* Footer social icons - always maintain proper sizing */
@@ -320,5 +399,136 @@
   background-clip: text;
   color: transparent;
   display: inline-block;
+}
+
+/* STRIPE-INSPIRED LAYOUT SYSTEM */
+.section-spacing {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.section-spacing-sm {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.section-spacing-lg {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.stripe-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.stripe-grid {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .stripe-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .stripe-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.stripe-card {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px var(--shadow-light);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stripe-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--shadow-light);
+}
+
+[data-theme="dark"] .stripe-card {
+  box-shadow: 0 4px 6px var(--shadow-dark);
+}
+
+[data-theme="dark"] .stripe-card:hover {
+  box-shadow: 0 8px 25px var(--shadow-dark);
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--accent-primary) 20%,
+    var(--accent-primary) 80%,
+    transparent 100%
+  );
+  margin: 6rem 0;
+}
+
+/* PRICING DISPLAY COMPONENTS */
+.pricing-card {
+  background: var(--bg-secondary);
+  border: 2px solid var(--accent-primary);
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+}
+
+.pricing-amount {
+  font-size: 3rem;
+  font-family: "refrigerator-deluxe", serif;
+  color: var(--accent-primary);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.pricing-unit {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+.pricing-feature {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.pricing-feature:last-child {
+  border-bottom: none;
+}
+
+.pricing-feature-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 1rem;
+  color: var(--accent-green);
 }
 

@@ -6,8 +6,8 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CalendarDaysIcon, ClockIcon, MapPinIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { EventImage, TrainingImage, MembershipImage } from '@/components/ui/UnsplashImage';
 import { getShootingSportsImage } from '@/utils/imageUtils';
+import { useContent } from '@/hooks/useContent';
 
 const ParticleAnimation = dynamic(() => import('@/components/effects/ParticleAnimation'), { ssr: false });
 
@@ -23,62 +23,6 @@ interface Event {
   image: string;
   detailsLink?: string;
 }
-
-const placeholderEvents: Event[] = [
-  {
-    id: '1',
-    title: "Summer Kick-off Trap Tournament",
-    date: "June 15, 2025",
-    time: "9:00 AM - 4:00 PM",
-    location: "Main Trap Range",
-    description: "Join us for our annual Summer Kick-off Trap Tournament! 100 targets, multiple classes, and prizes.",
-    category: "Competition",
-    image: getShootingSportsImage('competition', { width: 800, height: 600 }),
-    detailsLink: '/events/summer-trap-2025'
-  },
-  {
-    id: '2',
-    title: "Introduction to Skeet Shooting Clinic",
-    date: "July 6, 2025",
-    time: "10:00 AM - 12:00 PM",
-    location: "Skeet Field 3",
-    description: "New to skeet? This clinic covers the basics, safety, and etiquette. Loaner shotguns available.",
-    category: "Training",
-    image: getShootingSportsImage('training', { width: 800, height: 600 }),
-    detailsLink: '/events/skeet-clinic-july-2025'
-  },  {
-    id: '3',
-    title: "Member Appreciation BBQ & Fun Shoot",
-    date: "August 10, 2025",
-    time: "12:00 PM - 5:00 PM",
-    location: "Clubhouse & Range Complex",
-    description: "A day of fun shoots, great food, and camaraderie for our valued members and their families.",
-    category: "Social",
-    image: getShootingSportsImage('community', { width: 800, height: 600 }),
-  },
-  {
-    id: '4',
-    title: "Steel Challenge Practice Night",
-    date: "Upcoming Wednesdays",
-    repeats: "Every Wednesday",
-    time: "6:00 PM - 9:00 PM",
-    location: "Action Pistol Bays",
-    description: "Hone your speed and accuracy at our weekly Steel Challenge practice sessions. All skill levels welcome.",
-    category: "Practice",
-    image: getShootingSportsImage('equipment', { width: 800, height: 600 }),
-  },
-  {
-    id: '5',
-    title: "Advanced Sporting Clays Workshop",
-    date: "September 21-22, 2025",
-    time: "9:00 AM - 5:00 PM (Both Days)",
-    location: "Sporting Clays Course",
-    description: "Take your sporting clays game to the next level with this intensive two-day workshop led by a master-class instructor.",
-    category: "Training",
-    image: getShootingSportsImage('training', { width: 800, height: 600 }),
-    detailsLink: '/events/advanced-sporting-clays-sept-2025'
-  },
-];
 
 const EventCard: React.FC<{ event: Event, index: number }> = ({ event, index }) => {
   const cardVariants = {
@@ -153,6 +97,7 @@ const EventCard: React.FC<{ event: Event, index: number }> = ({ event, index }) 
 };
 
 const EventsPage: React.FC = () => {
+  const { content, loading, error } = useContent();
   const pageTitle = "Upcoming Events";
 
   const headerVariants = {
@@ -172,6 +117,66 @@ const EventsPage: React.FC = () => {
       transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
     }),
   };
+  // Convert content events to the format expected by EventCard
+  const events = content?.events?.map(event => {
+    // Map category to valid image types for getShootingSportsImage
+    let imageType: 'events' | 'training' | 'membership' | 'ranges' | 'competition' | 'hero' | 'equipment' | 'community' = 'events';
+    
+    switch (event.category?.toLowerCase()) {
+      case 'competition':
+        imageType = 'competition';
+        break;
+      case 'training':
+        imageType = 'training';
+        break;
+      case 'fun shoot':
+      case 'social':
+        imageType = 'community';
+        break;
+      case 'equipment':
+        imageType = 'equipment';
+        break;
+      default:
+        imageType = 'events';
+    }
+
+    return {
+      id: event.id.toString(),
+      title: event.title,
+      date: new Date(event.date).toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      }),
+      time: event.time,
+      location: event.location,
+      description: event.description,
+      category: event.category || 'Event',
+      image: getShootingSportsImage(imageType, { width: 800, height: 600 }),
+      detailsLink: `/events/${event.id}`
+    };
+  }) || [];
+
+  if (loading) {
+    return (
+      <div className="relative min-h-screen bg-gradient-to-b from-neutral-900 to-neutral-800 text-white overflow-hidden flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[var(--accent-primary)] mx-auto mb-4"></div>
+          <p className="text-xl font-['Museo']">Loading events...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="relative min-h-screen bg-gradient-to-b from-neutral-900 to-neutral-800 text-white overflow-hidden flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-xl font-['Museo'] text-red-400">Error loading events: {error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-neutral-900 to-neutral-800 text-white overflow-hidden">
@@ -199,17 +204,15 @@ const EventsPage: React.FC = () => {
             Stay up-to-date with all the competitions, training sessions, and social gatherings at Boise Gun Club.
           </motion.p>
         </div>
-      </motion.header>
-
-      <main className="relative z-10 container mx-auto px-4 py-16 md:py-24">
+      </motion.header>      <main className="relative z-10 container mx-auto px-4 py-16 md:py-24">
         {/* Add filtering/sorting options here in the future */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-          {placeholderEvents.map((event, index) => (
+          {events.map((event, index) => (
             <EventCard key={event.id} event={event} index={index} />
           ))}
         </div>
 
-        {placeholderEvents.length === 0 && (
+        {events.length === 0 && (
           <motion.div 
             initial={{opacity: 0, y: 20}} animate={{opacity:1, y: 0}} transition={{duration: 0.5}}
             className="text-center py-12 text-neutral-400 font-['Museo'] text-lg"

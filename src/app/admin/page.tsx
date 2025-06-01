@@ -428,30 +428,30 @@ const AdminPage = () => {
       </div>
     );
   }
-
   // Events Editor
   if (currentSection === 'events' && content) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-yellow-100 p-8">
-        <div className="max-w-4xl mx-auto">
+      <div className="min-h-screen bg-[var(--bg-primary)] p-8 relative overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/5 to-[var(--accent-secondary)]/5" />
+        <div className="absolute inset-0 bg-[url('/images/Grid/Grid (1).webp')] bg-cover bg-center opacity-10" />
+        
+        <div className="max-w-4xl mx-auto relative z-10">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="text-4xl font-bold text-gray-800">📅 EDIT EVENTS</h1>
+            <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-['Refrigerator_Deluxe'] uppercase tracking-wide">📅 EDIT EVENTS</h1>
             <button
               onClick={() => setCurrentSection(null)}
-              className="bg-gray-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-600"
+              className="glass-premium px-6 py-3 rounded-lg font-bold hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)] font-['Refrigerator_Deluxe'] uppercase tracking-wide"
             >
               ← BACK
             </button>
-          </div>
-
-          <div className="space-y-6 mb-8">
-            {content.events.map((event, index) => (
-              <div key={event.id} className="bg-white rounded-xl shadow-lg p-6">
+          </div>          <div className="space-y-6 mb-8">
+            {content.events.map((event, index) => (              <div key={event.id} className="glass-premium rounded-xl p-6 border border-white/20">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-2xl font-bold text-gray-800">Event {index + 1}</h3>
+                  <h3 className="text-2xl font-bold text-[var(--accent-gold)] font-['Refrigerator_Deluxe'] uppercase tracking-wide">{event.title || `Event ${index + 1}`}</h3>
                   <button
                     onClick={() => deleteEvent(index)}
-                    className="bg-red-500 text-white px-4 py-2 rounded font-bold hover:bg-red-600"
+                    className="bg-red-500/20 text-red-400 px-4 py-2 rounded font-bold hover:bg-red-500/30 transition-all duration-200 border border-red-500/30 font-['Refrigerator_Deluxe'] uppercase"
                   >
                     🗑️ DELETE
                   </button>
@@ -459,45 +459,56 @@ const AdminPage = () => {
                 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-lg font-semibold mb-2">Event Name:</label>
+                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Event Name:</label>
                     <input
                       type="text"
                       value={event.title}
                       onChange={(e) => updateEvent(index, 'title', e.target.value)}
-                      className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-yellow-500 focus:outline-none"
+                      className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-lg font-semibold mb-2">Date:</label>
+                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Date:</label>
                     <input
                       type="date"
                       value={event.date}
                       onChange={(e) => updateEvent(index, 'date', e.target.value)}
-                      className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-yellow-500 focus:outline-none"
+                      className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-lg font-semibold mb-2">Time:</label>
+                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Time:</label>
                     <input
                       type="text"
                       value={event.time}
                       onChange={(e) => updateEvent(index, 'time', e.target.value)}
-                      className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-yellow-500 focus:outline-none"
+                      className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                       placeholder="9:00 AM"
                     />
                   </div>
-                  
-                  <div>
-                    <label className="block text-lg font-semibold mb-2">Location:</label>
+                    <div>
+                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Location:</label>
                     <input
                       type="text"
                       value={event.location}
                       onChange={(e) => updateEvent(index, 'location', e.target.value)}
-                      className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-yellow-500 focus:outline-none"
+                      className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
+                      placeholder="Trap Fields 1-5"
                     />
                   </div>
+                </div>
+                
+                <div className="col-span-2">
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Description:</label>
+                  <textarea
+                    value={event.description}
+                    onChange={(e) => updateEvent(index, 'description', e.target.value)}
+                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20 resize-none"
+                    rows={3}
+                    placeholder="Event description..."
+                  />
                 </div>
               </div>
             ))}
@@ -506,7 +517,7 @@ const AdminPage = () => {
           <div className="flex gap-4 justify-center">
             <button
               onClick={addEvent}
-              className="bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-bold hover:bg-green-700"
+              className="glass-premium px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition-all duration-200 border border-green-500/30 text-green-400 hover:bg-green-500/10 font-['Refrigerator_Deluxe'] uppercase tracking-wide"
             >
               ➕ ADD NEW EVENT
             </button>
@@ -514,7 +525,7 @@ const AdminPage = () => {
             <button
               onClick={handleSave}
               disabled={saveStatus === 'saving'}
-              className="bg-blue-600 text-white px-8 py-4 rounded-lg text-xl font-bold hover:bg-blue-700 disabled:opacity-50"
+              className="glass-premium px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition-all duration-200 border border-blue-500/30 text-blue-400 hover:bg-blue-500/10 disabled:opacity-50 font-['Refrigerator_Deluxe'] uppercase tracking-wide"
             >
               {saveStatus === 'saving' ? '💾 SAVING...' : 
                saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
@@ -528,13 +539,17 @@ const AdminPage = () => {
   // Contact Info Editor
   if (currentSection === 'contact' && content) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-8">
-        <div className="max-w-4xl mx-auto">
+      <div className="min-h-screen bg-[var(--bg-primary)] p-8 relative overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/5 to-[var(--accent-secondary)]/5" />
+        <div className="absolute inset-0 bg-[url('/images/Grid/Grid (1).webp')] bg-cover bg-center opacity-10" />
+        
+        <div className="max-w-4xl mx-auto relative z-10">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="text-4xl font-bold text-gray-800">📞 EDIT CONTACT INFO</h1>
+            <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-['Refrigerator_Deluxe'] uppercase tracking-wide">📞 EDIT CONTACT INFO</h1>
             <button
               onClick={() => setCurrentSection(null)}
-              className="bg-gray-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-600"
+              className="glass-premium px-6 py-3 rounded-lg font-bold hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)] font-['Refrigerator_Deluxe'] uppercase tracking-wide"
             >
               ← BACK
             </button>
@@ -542,44 +557,43 @@ const AdminPage = () => {
 
           <div className="space-y-6 mb-8">
             {/* Club Information Section */}
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">📍 Club Information</h3>
+            <div className="glass-premium rounded-xl p-6 border border-white/20">
+              <h3 className="text-2xl font-bold text-[var(--accent-gold)] mb-4 font-['Refrigerator_Deluxe'] uppercase tracking-wide">📍 Club Information</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-lg font-semibold mb-2">Club Name:</label>
-                  <input
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Club Name:</label>                  <input
                     type="text"
                     value={content.clubInfo.name}
                     onChange={(e) => updateClubInfo('name', e.target.value)}
-                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                   />
                 </div>
                 <div>
-                  <label className="block text-lg font-semibold mb-2">Founded Year:</label>
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Founded Year:</label>
                   <input
                     type="text"
                     value={content.clubInfo.founded}
                     onChange={(e) => updateClubInfo('founded', e.target.value)}
-                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                   />
                 </div>
                 <div>
-                  <label className="block text-lg font-semibold mb-2">Number of Members:</label>
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Number of Members:</label>
                   <input
                     type="text"
                     value={content.clubInfo.members}
                     onChange={(e) => updateClubInfo('members', e.target.value)}
-                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     placeholder="1200+"
                   />
                 </div>
                 <div>
-                  <label className="block text-lg font-semibold mb-2">Property Size (acres):</label>
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Property Size (acres):</label>
                   <input
                     type="text"
                     value={content.clubInfo.acres}
                     onChange={(e) => updateClubInfo('acres', e.target.value)}
-                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     placeholder="320"
                   />
                 </div>
@@ -611,42 +625,39 @@ const AdminPage = () => {
                   />
                 </div>
               </div>
-            </div>
-
-            {/* Hours Section */}
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">🕒 Operating Hours</h3>
+            </div>            {/* Hours Section */}
+            <div className="glass-premium rounded-xl p-6 border border-white/20">
+              <h3 className="text-2xl font-bold text-[var(--accent-gold)] mb-4 font-['Refrigerator_Deluxe'] uppercase tracking-wide">🕒 Operating Hours</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-lg font-semibold mb-2">Weekdays:</label>
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Weekdays:</label>
                   <input
                     type="text"
                     value={content.hours.weekdays}
                     onChange={(e) => updateHours('weekdays', e.target.value)}
-                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     placeholder="Monday - Friday: 9:00 AM - 6:00 PM"
                   />
                 </div>
                 <div>
-                  <label className="block text-lg font-semibold mb-2">Weekends:</label>
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Weekends:</label>
                   <input
                     type="text"
                     value={content.hours.weekends}
                     onChange={(e) => updateHours('weekends', e.target.value)}
-                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     placeholder="Saturday - Sunday: 8:00 AM - 8:00 PM"
                   />
                 </div>
                 <div>
-                  <label className="block text-lg font-semibold mb-2">Holidays:</label>
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Holidays:</label>
                   <input
                     type="text"
                     value={content.hours.holidays}
                     onChange={(e) => updateHours('holidays', e.target.value)}
-                    className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-blue-500 focus:outline-none"
+                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     placeholder="Closed on major holidays"
-                  />
-                </div>
+                  />                </div>
               </div>
             </div>
           </div>
@@ -655,7 +666,7 @@ const AdminPage = () => {
             <button
               onClick={handleSave}
               disabled={saveStatus === 'saving'}
-              className="bg-blue-600 text-white px-8 py-4 rounded-lg text-xl font-bold hover:bg-blue-700 disabled:opacity-50"
+              className="glass-premium px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition-all duration-200 disabled:opacity-50 border border-white/20 text-[var(--text-primary)] font-['Refrigerator_Deluxe'] uppercase tracking-wide"
             >
               {saveStatus === 'saving' ? '💾 SAVING...' : 
                saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
@@ -665,37 +676,40 @@ const AdminPage = () => {
       </div>
     );
   }
-
   // Gallery Editor
   if (currentSection === 'gallery' && content) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 p-8">
-        <div className="max-w-4xl mx-auto">
+      <div className="min-h-screen bg-[var(--bg-primary)] p-8 relative overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/5 to-[var(--accent-secondary)]/5" />
+        <div className="absolute inset-0 bg-[url('/images/Smoke/Background_03.webp')] bg-cover bg-center opacity-10" />
+        
+        <div className="max-w-4xl mx-auto relative z-10">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="text-4xl font-bold text-gray-800">📸 EDIT GALLERY</h1>
+            <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-['Refrigerator_Deluxe'] uppercase tracking-wide">📸 EDIT GALLERY</h1>
             <button
               onClick={() => setCurrentSection(null)}
-              className="bg-gray-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-600"
+              className="glass-premium px-6 py-3 rounded-lg font-bold hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)] font-['Refrigerator_Deluxe'] uppercase tracking-wide"
             >
               ← BACK
             </button>
           </div>
 
-          <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 mb-6">
-            <p className="text-lg font-semibold text-yellow-800">
-              📝 NOTE: To add new images, you&apos;'ll need to upload them to the /public/images/ folder first, 
+          <div className="glass-premium rounded-xl p-4 mb-6 border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10">
+            <p className="text-lg font-semibold text-[var(--accent-primary)] font-['Museo']">
+              📝 NOTE: To add new images, you&apos;ll need to upload them to the /public/images/ folder first, 
               then use the file path like: /images/your-photo.jpg
             </p>
           </div>
 
           <div className="space-y-6 mb-8">
             {content.gallery.map((item, index) => (
-              <div key={item.id} className="bg-white rounded-xl shadow-lg p-6">
+              <div key={item.id} className="glass-premium rounded-xl p-6 border border-white/20">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-2xl font-bold text-gray-800">Photo {index + 1}</h3>
+                  <h3 className="text-2xl font-bold text-[var(--accent-gold)] font-['Refrigerator_Deluxe'] uppercase tracking-wide">{item.title || `Photo ${index + 1}`}</h3>
                   <button
                     onClick={() => deleteGalleryItem(index)}
-                    className="bg-red-500 text-white px-4 py-2 rounded font-bold hover:bg-red-600"
+                    className="bg-red-500/20 text-red-400 px-4 py-2 rounded font-bold hover:bg-red-500/30 transition-all duration-200 border border-red-500/30 font-['Refrigerator_Deluxe'] uppercase"
                   >
                     🗑️ DELETE
                   </button>
@@ -703,33 +717,32 @@ const AdminPage = () => {
                 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-lg font-semibold mb-2">Photo Title:</label>
+                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Photo Title:</label>
                     <input
                       type="text"
-                      value={item.title}
-                      onChange={(e) => updateGalleryItem(index, 'title', e.target.value)}
-                      className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-purple-500 focus:outline-none"
+                      value={item.title}                      onChange={(e) => updateGalleryItem(index, 'title', e.target.value)}
+                      className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-lg font-semibold mb-2">Year:</label>
+                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Year:</label>
                     <input
                       type="text"
                       value={item.year}
                       onChange={(e) => updateGalleryItem(index, 'year', e.target.value)}
-                      className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-purple-500 focus:outline-none"
+                      className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                       placeholder="2025"
                     />
                   </div>
                   
                   <div className="md:col-span-2">
-                    <label className="block text-lg font-semibold mb-2">Image Path:</label>
+                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Image Path:</label>
                     <input
                       type="text"
                       value={item.image}
                       onChange={(e) => updateGalleryItem(index, 'image', e.target.value)}
-                      className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-purple-500 focus:outline-none"
+                      className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                       placeholder="/images/your-photo.jpg"
                     />
                   </div>
@@ -737,8 +750,8 @@ const AdminPage = () => {
 
                 {/* Image Preview */}
                 <div className="mt-4">
-                  <p className="text-sm font-semibold text-gray-600 mb-2">Preview:</p>
-                  <div className="w-32 h-24 border-2 border-gray-300 rounded-lg overflow-hidden">
+                  <p className="text-sm font-semibold text-[var(--text-secondary)] mb-2 font-['Museo']">Preview:</p>
+                  <div className="w-32 h-24 border-2 border-white/20 rounded-lg overflow-hidden glass-premium">
                     <Image 
                       src={item.image} 
                       alt={item.title}
@@ -753,12 +766,10 @@ const AdminPage = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="flex gap-4 justify-center">
+          </div>          <div className="flex gap-4 justify-center">
             <button
               onClick={addGalleryItem}
-              className="bg-green-600 text-white px-8 py-4 rounded-lg text-xl font-bold hover:bg-green-700"
+              className="glass-premium px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)] font-['Refrigerator_Deluxe'] uppercase tracking-wide"
             >
               ➕ ADD NEW PHOTO
             </button>
@@ -766,7 +777,7 @@ const AdminPage = () => {
             <button
               onClick={handleSave}
               disabled={saveStatus === 'saving'}
-              className="bg-blue-600 text-white px-8 py-4 rounded-lg text-xl font-bold hover:bg-blue-700 disabled:opacity-50"
+              className="glass-premium px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition-all duration-200 disabled:opacity-50 border border-white/20 text-[var(--text-primary)] font-['Refrigerator_Deluxe'] uppercase tracking-wide"
             >
               {saveStatus === 'saving' ? '💾 SAVING...' : 
                saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
@@ -776,87 +787,88 @@ const AdminPage = () => {
       </div>
     );
   }
-
   // Club Info Editor
   if (currentSection === 'info' && content) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-8">
-        <div className="max-w-4xl mx-auto">
+      <div className="min-h-screen bg-[var(--bg-primary)] p-8 relative overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/5 to-[var(--accent-secondary)]/5" />
+        <div className="absolute inset-0 bg-[url('/images/Smoke/Background_03.webp')] bg-cover bg-center opacity-10" />
+        
+        <div className="max-w-4xl mx-auto relative z-10">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="text-4xl font-bold text-gray-800">ℹ️ EDIT CLUB INFO</h1>
+            <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-['Refrigerator_Deluxe'] uppercase tracking-wide">ℹ️ EDIT CLUB INFO</h1>
             <button
               onClick={() => setCurrentSection(null)}
-              className="bg-gray-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-600"
+              className="glass-premium px-6 py-3 rounded-lg font-bold hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)] font-['Refrigerator_Deluxe'] uppercase tracking-wide"
             >
               ← BACK
             </button>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">🏛️ Basic Club Information</h3>
+          <div className="glass-premium rounded-xl p-6 mb-8 border border-white/20">
+            <h3 className="text-2xl font-bold text-[var(--accent-gold)] mb-6 font-['Refrigerator_Deluxe'] uppercase tracking-wide">🏛️ Basic Club Information</h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-lg font-semibold mb-2">Club Name:</label>
+                <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Club Name:</label>
                 <input
                   type="text"
                   value={content.clubInfo.name}
                   onChange={(e) => updateClubInfo('name', e.target.value)}
-                  className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-green-500 focus:outline-none"
+                  className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                 />
               </div>
               
               <div>
-                <label className="block text-lg font-semibold mb-2">Founded Year:</label>
-                <input
+                <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Founded Year:</label>                <input
                   type="text"
                   value={content.clubInfo.founded}
                   onChange={(e) => updateClubInfo('founded', e.target.value)}
-                  className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-green-500 focus:outline-none"
+                  className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                   placeholder="1898"
                 />
               </div>
               
               <div>
-                <label className="block text-lg font-semibold mb-2">Number of Members:</label>
+                <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Number of Members:</label>
                 <input
                   type="text"
                   value={content.clubInfo.members}
                   onChange={(e) => updateClubInfo('members', e.target.value)}
-                  className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-green-500 focus:outline-none"
+                  className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                   placeholder="1200+"
                 />
               </div>
               
               <div>
-                <label className="block text-lg font-semibold mb-2">Property Size (acres):</label>
+                <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Museo']">Property Size (acres):</label>
                 <input
                   type="text"
                   value={content.clubInfo.acres}
                   onChange={(e) => updateClubInfo('acres', e.target.value)}
-                  className="w-full px-4 py-3 text-lg border-2 rounded-lg focus:border-green-500 focus:outline-none"
+                  className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                   placeholder="320"
                 />
               </div>
             </div>
             
-            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-              <h4 className="text-lg font-semibold text-blue-800 mb-2">📊 Current Stats Display:</h4>
+            <div className="mt-6 p-4 glass-premium rounded-lg border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10">
+              <h4 className="text-lg font-semibold text-[var(--accent-primary)] mb-2 font-['Museo']">📊 Current Stats Display:</h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div className="bg-white p-3 rounded">
-                  <div className="text-2xl font-bold text-blue-600">{content.clubInfo.founded}</div>
-                  <div className="text-sm text-gray-600">Founded</div>
+                <div className="glass-premium p-3 rounded border border-white/20">
+                  <div className="text-2xl font-bold text-[var(--accent-gold)] font-['Refrigerator_Deluxe']">{content.clubInfo.founded}</div>
+                  <div className="text-sm text-[var(--text-secondary)] font-['Museo']">Founded</div>
                 </div>
-                <div className="bg-white p-3 rounded">
-                  <div className="text-2xl font-bold text-blue-600">{content.clubInfo.members}</div>
-                  <div className="text-sm text-gray-600">Members</div>
+                <div className="glass-premium p-3 rounded border border-white/20">
+                  <div className="text-2xl font-bold text-[var(--accent-gold)] font-['Refrigerator_Deluxe']">{content.clubInfo.members}</div>
+                  <div className="text-sm text-[var(--text-secondary)] font-['Museo']">Members</div>
                 </div>
-                <div className="bg-white p-3 rounded">
-                  <div className="text-2xl font-bold text-blue-600">{content.clubInfo.acres}</div>
-                  <div className="text-sm text-gray-600">Acres</div>
-                </div>
-                <div className="bg-white p-3 rounded">
-                  <div className="text-2xl font-bold text-blue-600">Idaho</div>
-                  <div className="text-sm text-gray-600">State</div>
+                <div className="glass-premium p-3 rounded border border-white/20">
+                  <div className="text-2xl font-bold text-[var(--accent-gold)] font-['Refrigerator_Deluxe']">{content.clubInfo.acres}</div>
+                  <div className="text-sm text-[var(--text-secondary)] font-['Museo']">Acres</div>
+                </div>                <div className="glass-premium p-3 rounded border border-white/20">
+                  <div className="text-2xl font-bold text-[var(--accent-gold)] font-['Refrigerator_Deluxe']">Idaho</div>
+                  <div className="text-sm text-[var(--text-secondary)] font-['Museo']">State</div>
                 </div>
               </div>
             </div>
@@ -866,7 +878,7 @@ const AdminPage = () => {
             <button
               onClick={handleSave}
               disabled={saveStatus === 'saving'}
-              className="bg-blue-600 text-white px-8 py-4 rounded-lg text-xl font-bold hover:bg-blue-700 disabled:opacity-50"
+              className="glass-premium px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition-all duration-200 disabled:opacity-50 border border-white/20 text-[var(--text-primary)] font-['Refrigerator_Deluxe'] uppercase tracking-wide"
             >
               {saveStatus === 'saving' ? '💾 SAVING...' : 
                saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
