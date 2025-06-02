@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { ThemeProvider } from '@/components/ui/ThemeContext';
-import { NavigationProvider } from '@/components/navigation/NavigationContext';
+import { NavigationProvider, useNavigation } from '@/components/navigation/NavigationContext';
 import NavBar from '@/components/navigation/NavBar';
 import Footer from '@/components/layout/Footer';
 import AccessibilityFAB from '@/components/ui/AccessibilityFAB';
@@ -11,6 +11,20 @@ import NewThemeToggle from '@/components/ui/NewThemeToggle';
 interface ClientLayoutProps {
   children: React.ReactNode;
 }
+
+// New wrapper component to access navigation context for padding
+const MainContentWrapper = ({ children }: { children: React.ReactNode }) => {
+  const { totalNavHeight } = useNavigation();
+
+  return (
+    <main 
+      className="flex-grow w-full"
+      style={{ paddingTop: `${totalNavHeight}px` }} // Apply dynamic padding
+    >
+      {children}
+    </main>
+  );
+};
 
 export default function ClientLayout({ children }: ClientLayoutProps) {
   const [mounted, setMounted] = useState(false);
@@ -101,9 +115,9 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
     <ThemeProvider>
       <NavigationProvider>
         <NavBar />
-        <main className="flex-grow w-full">
+        <MainContentWrapper>
           {children}
-        </main>
+        </MainContentWrapper>
         <Footer />
         {mounted && (
           <>

@@ -101,8 +101,8 @@ export default function ClubInfoPage() {
         <section id="facilities" className="py-20 bg-black/20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeader
-              title="Our Facilities"
-              subtitle="World-class ranges and training facilities"
+              title="Clay Target Facilities"
+              subtitle="Premier shotgun sports facilities for trap, skeet, and sporting clays"
             />
             
             <motion.div
@@ -118,34 +118,16 @@ export default function ClubInfoPage() {
                     <div className="w-12 h-12 bg-accent-primary rounded-lg flex items-center justify-center mb-4">
                       <span className="text-2xl">🎯</span>
                     </div>
-                    <h3 className="font-heading text-xl font-bold text-[var(--text-primary)] mb-2">Trap Range</h3>
+                    <h3 className="font-heading text-xl font-bold text-[var(--text-primary)] mb-2">Trap Fields</h3>
                   </div>
                   <p className="text-[var(--text-secondary)] mb-4">
-                    Professional trap shooting facility with automated clay target systems and covered shooting positions.
+                    Ten professional trap fields with Winchester Super-X machines. Host to ATA registered shoots and the prestigious Governor's Cup championship.
                   </p>
                   <ul className="text-[var(--text-secondary)] text-sm space-y-1">
-                    <li>• 5 shooting stations</li>
-                    <li>• Automated clay throwers</li>
-                    <li>• Weather protection</li>
-                  </ul>
-                </Card>
-              </motion.div>
-
-              <motion.div variants={fadeInUp}>
-                <Card className="p-6 h-full">
-                  <div className="mb-4">
-                    <div className="w-12 h-12 bg-accent-primary rounded-lg flex items-center justify-center mb-4">
-                      <span className="text-2xl">🔫</span>
-                    </div>
-                    <h3 className="font-heading text-xl font-bold text-[var(--text-primary)] mb-2">Rifle Range</h3>
-                  </div>
-                  <p className="text-[var(--text-secondary)] mb-4">
-                    Precision rifle range with distances from 50 to 300 yards, perfect for hunting preparation and competition.
-                  </p>
-                  <ul className="text-[var(--text-secondary)] text-sm space-y-1">
-                    <li>• 50-300 yard distances</li>
-                    <li>• Bench rest shooting</li>
-                    <li>• Target retrieval system</li>
+                    <li>• 10 trap fields</li>
+                    <li>• Winchester Super-X machines</li>
+                    <li>• ATA registered shoots</li>
+                    <li>• Governor's Cup venue</li>
                   </ul>
                 </Card>
               </motion.div>
@@ -156,15 +138,36 @@ export default function ClubInfoPage() {
                     <div className="w-12 h-12 bg-accent-primary rounded-lg flex items-center justify-center mb-4">
                       <span className="text-2xl">🎪</span>
                     </div>
-                    <h3 className="font-heading text-xl font-bold text-[var(--text-primary)] mb-2">Skeet Field</h3>
+                    <h3 className="font-heading text-xl font-bold text-[var(--text-primary)] mb-2">Skeet Fields</h3>
                   </div>
                   <p className="text-[var(--text-secondary)] mb-4">
-                    Championship skeet field with high and low houses for American skeet shooting competition and practice.
+                    Five championship skeet fields with regulation high and low houses. NSSA certified for American skeet competition and weekly league play.
                   </p>
                   <ul className="text-[var(--text-secondary)] text-sm space-y-1">
-                    <li>• 8 shooting stations</li>
-                    <li>• High & low houses</li>
-                    <li>• Competition standard</li>
+                    <li>• 5 skeet fields</li>
+                    <li>• Regulation high & low houses</li>
+                    <li>• NSSA certified</li>
+                    <li>• Weekly league play</li>
+                  </ul>
+                </Card>
+              </motion.div>
+
+              <motion.div variants={fadeInUp}>
+                <Card className="p-6 h-full">
+                  <div className="mb-4">
+                    <div className="w-12 h-12 bg-accent-primary rounded-lg flex items-center justify-center mb-4">
+                      <span className="text-2xl">🌲</span>
+                    </div>
+                    <h3 className="font-heading text-xl font-bold text-[var(--text-primary)] mb-2">Sporting Clays Course</h3>
+                  </div>
+                  <p className="text-[var(--text-secondary)] mb-4">
+                    15-station sporting clays course with varied terrain and challenging target presentations through natural wooded areas.
+                  </p>
+                  <ul className="text-[var(--text-secondary)] text-sm space-y-1">
+                    <li>• 15-station course</li>
+                    <li>• Varied clay presentations</li>
+                    <li>• Natural wooded terrain</li>
+                    <li>• Hunting simulation targets</li>
                   </ul>
                 </Card>
               </motion.div>

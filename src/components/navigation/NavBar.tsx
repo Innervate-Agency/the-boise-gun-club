@@ -53,14 +53,23 @@ const NavItem = ({ label, href, isActive }: {
 };
 
 export default function NavBar() {
-    const { isScrolled, isMobileMenuOpen, setIsMobileMenuOpen, clubAnnouncements } = useNavigation();
-    const announcementRef = useRef<HTMLDivElement>(null);
+    const { 
+        isScrolled, 
+        isMobileMenuOpen, 
+        setIsMobileMenuOpen, 
+        clubAnnouncements,
+        setTotalNavHeight
+    } = useNavigation();
+    
+    const announcementBarRef = useRef<HTMLDivElement>(null);
+    const mainNavBarRef = useRef<HTMLElement>(null);
     const pathname = usePathname();
     const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+    const [announcementBarActualHeight, setAnnouncementBarActualHeight] = useState(0);
 
     // Intersection observer for announcements section
     useEffect(() => {
-        const currentRef = announcementRef.current;
+        const currentRef = announcementBarRef.current;
         if (!currentRef) return;
 
         const observer = new IntersectionObserver(
@@ -83,12 +92,47 @@ export default function NavBar() {
         };
     }, []);
 
+    // Calculate and set total navigation height and announcement bar height
+    useEffect(() => {
+        const calculateHeights = () => {
+            let currentTotalNavHeight = 0;
+            let currentAnnBarHeight = 0;
+            const typicalRemBase = 18;
+
+            if (clubAnnouncements.length > 0 && announcementBarRef.current) {
+                const isAnnBarDisplayed = window.getComputedStyle(announcementBarRef.current).display !== 'none';
+                if (isAnnBarDisplayed) {
+                    const annOffsetHeight = announcementBarRef.current.offsetHeight;
+                    currentAnnBarHeight = annOffsetHeight;
+                    currentTotalNavHeight += (annOffsetHeight || (2.25 * typicalRemBase));
+                }
+            }
+
+            if (mainNavBarRef.current) {
+                currentTotalNavHeight += (mainNavBarRef.current.offsetHeight || (isScrolled ? (4.25 * typicalRemBase) : (5 * typicalRemBase)));
+            }
+            
+            setTotalNavHeight(currentTotalNavHeight);
+            setAnnouncementBarActualHeight(currentAnnBarHeight);
+        };
+
+        calculateHeights();
+        window.addEventListener('resize', calculateHeights);
+        const timeoutId = setTimeout(calculateHeights, 100);
+
+        return () => {
+            window.removeEventListener('resize', calculateHeights);
+            clearTimeout(timeoutId);
+        };
+
+    }, [clubAnnouncements, isScrolled, pathname, setTotalNavHeight]);
+
     return (
         <>
             {/* Announcements bar */}
             {clubAnnouncements.length > 0 && (
                 <div
-                    ref={announcementRef}
+                    ref={announcementBarRef}
                     className="hidden lg:block bg-[var(--accent-primary)] text-white py-2 px-4 text-center text-sm fixed top-0 w-full z-50 shadow-md"
                 >
                     <div className="container mx-auto overflow-hidden relative">
@@ -104,14 +148,16 @@ export default function NavBar() {
                     </div>
                 </div>
             )}
-            {/* Main Navigation - Enhanced Glassmorphic */}
+            {/* Main Navigation - Now positioned dynamically below announcement bar via inline style */}
             <nav
-                className={`fixed ${clubAnnouncements.length > 0 ? 'top-8 lg:top-10' : 'top-0'} left-0 w-full z-40 transition-all duration-500`}
+                ref={mainNavBarRef}
+                className={`fixed left-0 w-full z-40 transition-all duration-500`}
+                style={{ top: `${announcementBarActualHeight}px` }}
             >
                 <div
                     className={`relative transition-all duration-500 ${isScrolled
                         ? 'py-3 glass-premium'
-                        : 'py-4 backdrop-blur-sm bg-gradient-to-b from-[var(--bg-primary)]/80 to-transparent'
+                        : 'py-4 backdrop-blur-[10px] bg-gradient-to-b from-[var(--bg-primary)]/80 to-transparent'
                         }`}
                 >
                     {/* Subtle grid texture beneath glass */}

@@ -9,6 +9,8 @@ type NavigationContextType = {
     setIsMobileMenuOpen: (isOpen: boolean) => void;
     isUserAuthenticated: boolean;
     clubAnnouncements: string[];
+    totalNavHeight: number;
+    setTotalNavHeight: (height: number) => void;
 };
 
 // Create context with default values
@@ -18,6 +20,8 @@ const NavigationContext = createContext<NavigationContextType>({
     setIsMobileMenuOpen: () => { },
     isUserAuthenticated: false,
     clubAnnouncements: [],
+    totalNavHeight: 0,
+    setTotalNavHeight: () => { },
 });
 
 // Custom hook to use the navigation context
@@ -27,6 +31,7 @@ export const useNavigation = () => useContext(NavigationContext);
 export function NavigationProvider({ children }: { children: ReactNode }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [totalNavHeight, setTotalNavHeight] = useState(0);
 
     // This would be connected to your authentication system
     const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
@@ -74,6 +79,8 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
                 setIsMobileMenuOpen,
                 isUserAuthenticated,
                 clubAnnouncements,
+                totalNavHeight,
+                setTotalNavHeight,
             }}
         >
             {children}

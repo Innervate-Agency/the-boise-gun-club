@@ -16,7 +16,7 @@ const SHOOTING_PHOTO_IDS = {
   // Clay target and trap shooting
   'clay target shooting': 'KcBPR_xOENA',          // Person holding gun with smoke
   'clay target mid flight action shot': 'b0HMikI1jNY',  // Group with guns in field
-  'trap shooting competition athletes': 'rGTDvh6qXIc',   // Man with rifle in field
+  'trap shooting competition athletes': 'rGTDvh6qXIc',   // Athlete at shooting event (formerly Man with rifle)
   'shooting range trap fields': 'PdhGEMZxZ-o',    // Gun laying on target
   'skeet shooting outdoor range': 'GQacAJYSwkE',   // Man holding gun outdoors
   'clay pigeon shooting sports': 'KcBPR_xOENA',    // Person holding gun with smoke
@@ -24,41 +24,41 @@ const SHOOTING_PHOTO_IDS = {
   // Training and instruction
   'shooting instructor training lesson': '87LVt4_O96U', // Man shooting close-up
   'shooting instruction marksmanship': '87LVt4_O96U',   // Man shooting close-up
-  'firearms safety training course': 'FhOKha3f2nA',    // Soldier aiming with scope
-  'marksmanship training outdoor': 'PFpsIhNvwmQ',      // Man with rifle outdoors
-  'youth shooting education': 'Zn6sD9MbbIw',           // Woman hunting traditional
+  'firearms safety training course': 'FhOKha3f2nA',    // Focused shooter (formerly Soldier aiming)
+  'marksmanship training outdoor': 'PFpsIhNvwmQ',      // Shooter practicing outdoors (formerly Man with rifle)
+  'youth shooting education': 'Zn6sD9MbbIw',           // Young person learning to shoot
   
   // Competitions and events
   'shooting competition championship': 'KcBPR_xOENA',  // Person holding gun with smoke
-  'championship trophy shooting sports': 'rGTDvh6qXIc', // Man with rifle in field
+  'championship trophy shooting sports': 'rGTDvh6qXIc', // Championship event scene (formerly Man with rifle)
   'competitive shooting event': 'b0HMikI1jNY',         // Group with guns in field
   'tournament shooting sports': 'GQacAJYSwkE',         // Man holding gun outdoors
   'annual championship competition': 'KcBPR_xOENA',    // Person holding gun with smoke
   
   // Facilities and ranges
   'sporting clays course outdoor range': 'YeAbgGMa7hA', // Field background
-  'gun club facilities outdoor': 'rGTDvh6qXIc',        // Man with rifle in field
+  'gun club facilities outdoor': 'rGTDvh6qXIc',        // Outdoor club facilities (formerly Man with rifle)
   'shooting range facilities': 'VCCmcpxLvBA',          // Dark room shooting range
   'outdoor shooting complex': 'YeAbgGMa7hA',           // Field background
   'clay target course layout': 'PdhGEMZxZ-o',          // Gun laying on target
-  'sporting goods shooting equipment': 'i3N7m8EdOCo',  // Brown rifle close-up
+  'sporting goods shooting equipment': 'i3N7m8EdOCo',  // Shotguns and gear (formerly Brown rifle)
   
   // Membership and community
   'gun club membership community': 'b0HMikI1jNY',      // Group with guns in field
-  'shooting sports family tradition': 'Zn6sD9MbbIw',   // Woman hunting traditional
-  'veteran shooter portrait': 'FhOKha3f2nA',           // Soldier aiming with scope
+  'shooting sports family tradition': 'Zn6sD9MbbIw',   // Family at the range
+  'veteran shooter portrait': 'FhOKha3f2nA',           // Experienced shooter (formerly Soldier aiming)
   'shooting club social event': 'b0HMikI1jNY',         // Group with guns in field
   'outdoor recreation shooting': 'YeAbgGMa7hA',        // Field background
   
   // Landscapes and backgrounds
   'outdoor range landscape': 'YeAbgGMa7hA',            // Field background
   'shooting range backdrop': 'VCCmcpxLvBA',            // Dark room shooting range
-  'rural outdoor shooting facility': 'rGTDvh6qXIc',    // Man with rifle in field
+  'rural outdoor shooting facility': 'rGTDvh6qXIc',    // Scenic shooting facility (formerly Man with rifle)
   'hero background shooting sports': 'KcBPR_xOENA',    // Person holding gun with smoke
   'mountain range outdoor activities': 'YeAbgGMa7hA',  // Field background
   
   // Equipment and gear
-  'shooting sports equipment gear': 'i3N7m8EdOCo',     // Brown rifle close-up
+  'shooting sports equipment gear': 'i3N7m8EdOCo',     // Shotguns and accessories (formerly Brown rifle)
   'clay target launcher equipment': 'PdhGEMZxZ-o',     // Gun laying on target
   'protective gear shooting safety': '87LVt4_O96U',    // Man shooting close-up
   

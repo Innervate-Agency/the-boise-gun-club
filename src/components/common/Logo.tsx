@@ -17,11 +17,10 @@ const Logo: FC<LogoProps> = ({ className = "" }) => {
             {/* Outer Circle */}
             <circle cx="60" cy="60" r="58" stroke="currentColor" strokeWidth="2" />
 
-            {/* Inner Design - Crossed Rifles */}
-            <g transform="rotate(45 60 60)">
-                <rect x="30" y="58" width="60" height="4" rx="2" fill="currentColor" />
-                <rect x="58" y="30" width="4" height="60" rx="2" fill="currentColor" />
-            </g>
+            {/* Inner Design - Clay Target Silhouette */}
+            <circle cx="60" cy="60" r="30" fill="var(--accent-primary, #F28705)" /> {/* Main clay body - using accent */}
+            <circle cx="60" cy="60" r="25" fill="var(--bg-primary, #2F3135)" /> {/* Inner cutout - using bg to show contrast */}
+            <circle cx="60" cy="60" r="10" fill="var(--accent-primary, #F28705)" /> {/* Center dot - using accent */}
 
             {/* Target Points */}
             <circle cx="60" cy="60" r="20" stroke="currentColor" strokeWidth="2" />
