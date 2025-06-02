@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import ClientLayout from './ClientLayout'; 
 import './globals.css';
-import './fonts.css';
+// import './fonts.css'; // This file was deleted
 
 export const metadata: Metadata = {
   title: 'Boise Gun Club - Premier Shooting Sports Facility',
@@ -16,7 +16,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (    <html lang="en" className="h-full font-body" suppressHydrationWarning={true}>
+  return (    <html lang="en" className="h-full" suppressHydrationWarning={true}>
       <head>
         {/* Google Fonts for official Boise Gun Club branding */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,28 +26,7 @@ export default function RootLayout({
           rel="stylesheet" 
         />
         
-        {/* Critical font preloading */}
-        <link
-          rel="preload"
-          href="/fonts/Refrigerator Deluxe.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/MuseoSans_500.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/MuseoSans_700.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin="anonymous"
-        />
+        {/* Critical font preloading - REMOVED OLD FONTS */}
         
         {/* Optimized critical images */}
         <link rel="preload" as="image" href="/images/hero-bg.webp" />
@@ -59,7 +38,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col font-body bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300 ease-in-out" suppressHydrationWarning={true}>
+      <body className="min-h-full flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300 ease-in-out" suppressHydrationWarning={true}>
         <ClientLayout>
           {children}
         </ClientLayout>

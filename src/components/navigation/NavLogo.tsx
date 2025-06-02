@@ -16,14 +16,14 @@ export default function NavLogo() {
 
                     {/* Logo text with proper font heading class */}
                     <div>
-                        <p className="text-[8px] md:text-[10px] text-white/70 uppercase tracking-wider font-body">
+                        <p className="text-[8px] md:text-[10px] text-white/70 uppercase tracking-wider">
                             Est. 1898
                         </p>
-                        <h1 className="text-lg md:text-2xl text-white font-heading tracking-wide">
+                        <h1 className="text-lg md:text-2xl text-white tracking-wide">
                             <span className="font-[900]">BOISE</span>
                             <span className="font-[100]">GUNCLUB</span>
                         </h1>
-                        <p className="text-[7px] md:text-[9px] text-white/70 uppercase tracking-wider font-body">
+                        <p className="text-[7px] md:text-[9px] text-white/70 uppercase tracking-wider">
                             Idaho&apos;s Premier Shotgun Sports Facility
                         </p>
                     </div>

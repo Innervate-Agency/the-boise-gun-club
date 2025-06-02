@@ -77,10 +77,10 @@ const UpcomingEvents = () => {
                     transition={{ duration: 0.6 }}
                     className="max-w-3xl"
                 >
-                    <h2 className="font-['Refrigerator_Deluxe'] text-5xl md:text-6xl uppercase text-white mb-4">
+                    <h2 className="font-['Rajdhani'] text-5xl md:text-6xl uppercase text-white mb-4">
                         Upcoming <span className="text-[var(--accent-gold)]">Events</span>
                     </h2>
-                    <p className="text-white/60 text-lg font-['Museo']">
+                    <p className="text-white/60 text-lg font-['Noto Sans']">
                         From competitive shoots to casual fun days, there's always action at the club.
                     </p>
                 </motion.div>
@@ -123,19 +123,19 @@ const UpcomingEvents = () => {
                                                 ? 'bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/10'
                                                 : 'bg-white/[0.05] group-hover:bg-white/[0.08]'
                                         }`}>
-                                            <span className="font-['Refrigerator_Deluxe'] text-2xl text-white">{event.date}</span>
+                                            <span className="font-['Rajdhani'] text-2xl text-white">{event.date}</span>
                                             <span className="text-xs text-white/60 uppercase">{event.month}</span>
                                         </div>
                                         
                                         {/* Event info */}
                                         <div className="flex-1">
-                                            <h4 className="font-['Refrigerator_Deluxe'] text-lg text-white mb-1">{event.title}</h4>
-                                            <p className="text-sm text-white/60 font-['Museo'] line-clamp-2">{event.desc}</p>
+                                            <h4 className="font-['Rajdhani'] text-lg text-white mb-1">{event.title}</h4>
+                                            <p className="text-sm text-white/60 font-['Noto Sans'] line-clamp-2">{event.desc}</p>
                                             <div className="flex items-center justify-between mt-2">
                                                 <div className="flex items-center gap-3">
-                                                    <span className="text-xs text-[var(--accent-gold)] font-['Museo']">{event.category}</span>
+                                                    <span className="text-xs text-[var(--accent-gold)] font-['Noto Sans']">{event.category}</span>
                                                     <span className="text-xs text-white/40">•</span>
-                                                    <span className="text-xs text-white/60 font-['Museo'] flex items-center gap-1">
+                                                    <span className="text-xs text-white/60 font-['Noto Sans'] flex items-center gap-1">
                                                         <UsersIcon className="w-3 h-3" />
                                                         {event.attendees} attending
                                                     </span>
@@ -160,7 +160,7 @@ const UpcomingEvents = () => {
                         >
                             <Link
                                 href="/events"
-                                className="group inline-flex items-center gap-2 text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] font-['Refrigerator_Deluxe'] text-sm uppercase tracking-wider transition-colors"
+                                className="group inline-flex items-center gap-2 text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] font-['Rajdhani'] text-sm uppercase tracking-wider transition-colors"
                             >
                                 View Full Calendar
                                 <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -196,13 +196,13 @@ const UpcomingEvents = () => {
                                         {/* Category badge */}
                                         <div className="absolute top-4 right-4">
                                             <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-full px-4 py-1">
-                                                <span className="text-sm font-['Museo'] text-white/90">{selectedEvent.category}</span>
+                                                <span className="text-sm font-['Noto Sans'] text-white/90">{selectedEvent.category}</span>
                                             </div>
                                         </div>
                                         
                                         {/* Title overlay */}
                                         <div className="absolute bottom-0 left-0 right-0 p-8">
-                                            <h3 className="font-['Refrigerator_Deluxe'] text-3xl md:text-4xl text-white uppercase mb-2">
+                                            <h3 className="font-['Rajdhani'] text-3xl md:text-4xl text-white uppercase mb-2">
                                                 {selectedEvent.title}
                                             </h3>
                                         </div>
@@ -215,28 +215,28 @@ const UpcomingEvents = () => {
                                             <div className="flex items-center gap-3">
                                                 <CalendarDaysIcon className="w-5 h-5 text-[var(--accent-gold)]" />
                                                 <div>
-                                                    <p className="text-xs text-white/40 font-['Museo']">Date</p>
-                                                    <p className="text-white font-['Museo']">{selectedEvent.date} {selectedEvent.month}</p>
+                                                    <p className="text-xs text-white/40 font-['Noto Sans']">Date</p>
+                                                    <p className="text-white font-['Noto Sans']">{selectedEvent.date} {selectedEvent.month}</p>
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-3">
                                                 <ClockIcon className="w-5 h-5 text-[var(--accent-gold)]" />
                                                 <div>
-                                                    <p className="text-xs text-white/40 font-['Museo']">Time</p>
-                                                    <p className="text-white font-['Museo']">{selectedEvent.time}</p>
+                                                    <p className="text-xs text-white/40 font-['Noto Sans']">Time</p>
+                                                    <p className="text-white font-['Noto Sans']">{selectedEvent.time}</p>
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-3">
                                                 <MapPinIcon className="w-5 h-5 text-[var(--accent-gold)]" />
                                                 <div>
-                                                    <p className="text-xs text-white/40 font-['Museo']">Location</p>
-                                                    <p className="text-white font-['Museo']">{selectedEvent.location}</p>
+                                                    <p className="text-xs text-white/40 font-['Noto Sans']">Location</p>
+                                                    <p className="text-white font-['Noto Sans']">{selectedEvent.location}</p>
                                                 </div>
                                             </div>
                                         </div>
                                         
                                         {/* Description */}
-                                        <p className="text-white/70 font-['Museo'] leading-relaxed mb-8">
+                                        <p className="text-white/70 font-['Noto Sans'] leading-relaxed mb-8">
                                             {selectedEvent.details}
                                         </p>
                                         
@@ -246,7 +246,7 @@ const UpcomingEvents = () => {
                                             className="group relative inline-flex items-center justify-center w-full"
                                         >
                                             <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-xl blur-lg opacity-50 group-hover:opacity-80 transition-opacity" />
-                                            <button className="relative w-full backdrop-blur-sm bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white px-8 py-4 rounded-xl font-['Refrigerator_Deluxe'] uppercase tracking-wider transition-all duration-300 group-hover:scale-[1.02] shadow-xl">
+                                            <button className="relative w-full backdrop-blur-sm bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white px-8 py-4 rounded-xl font-['Rajdhani'] uppercase tracking-wider transition-all duration-300 group-hover:scale-[1.02] shadow-xl">
                                                 Register for Event
                                             </button>
                                         </Link>

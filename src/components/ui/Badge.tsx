@@ -38,11 +38,11 @@ const Badge: FC<BadgeProps> = ({
   const variantClasses = {
     primary: "bg-[var(--accent-primary)] text-white",
     secondary: "bg-[var(--accent-secondary)] text-white",
-    success: "bg-emerald-500 text-white",
+    success: "bg-[var(--accent-green)] text-white",
     danger: "bg-[var(--accent-darkred)] text-white",
-    warning: "bg-amber-500 text-black",
-    info: "bg-blue-500 text-white",
-    gold: "bg-[var(--accent-gold)] text-black",
+    warning: "bg-[var(--accent-secondary)] text-[var(--bg-primary)]",
+    info: "bg-[var(--accent-blue)] text-white",
+    gold: "bg-[var(--accent-secondary)] text-[var(--bg-primary)]",
   };
   
   // Combine classes

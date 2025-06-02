@@ -77,31 +77,11 @@ export function getUnsplashUrl(
     fit = 'crop',
   } = options;
 
-  const accessKey = process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY;
+  // Use curated Unsplash photo IDs for shooting sports content
+  const photoId = SHOOTING_PHOTO_IDS[query as keyof typeof SHOOTING_PHOTO_IDS] || SHOOTING_PHOTO_IDS.default;
   
-  if (!accessKey) {
-    console.warn('Unsplash access key not found, using fallback image');
-    return `/images/hero-bg.webp`;
-  }
-
-  // Use a fallback approach with local images since Unsplash photo IDs are challenging to maintain
-  // For production, we'll use actual curated images or a proper Unsplash API integration
-  const fallbackImages = {
-    'clay target shooting': '/images/events.webp',
-    'trap shooting competition athletes': '/images/events.webp',
-    'shooting instruction marksmanship': '/images/training.webp',
-    'firearms safety training course': '/images/training.webp',
-    'shooting competition championship': '/images/events.webp',
-    'competitive shooting event': '/images/events.webp',
-    'gun club facilities outdoor': '/images/hero-bg.webp',
-    'shooting range facilities': '/images/hero-bg.webp',
-    'gun club membership community': '/images/membership.webp',
-    'shooting sports family tradition': '/images/membership.webp',
-    'hero background shooting sports': '/images/hero-bg.webp',
-    'default': '/images/hero-bg.webp'
-  };
-  
-  return fallbackImages[query as keyof typeof fallbackImages] || fallbackImages.default;
+  // Generate direct Unsplash URL for specific photo
+  return `https://images.unsplash.com/photo-1${photoId}?w=${width}&h=${height}&fit=${fit}&crop=entropy&auto=format&q=${quality}`;
 }
 
 export function getShootingSportsImage(

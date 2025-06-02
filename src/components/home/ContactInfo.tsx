@@ -25,7 +25,7 @@ const ContactInfo = () => {
             title: "Call Us",
             content: (
                 <div className="space-y-2">
-                    <a href={`tel:${clubInfo.phone}`} className="text-xl font-['Museo'] text-white hover:text-[var(--accent-gold)] transition-colors">
+                    <a href={`tel:${clubInfo.phone}`} className="text-xl font-['Noto Sans'] text-white hover:text-[var(--accent-gold)] transition-colors">
                         {clubInfo.phone}
                     </a>
                     <p className="text-sm text-white/50">Tue-Sun, Business Hours</p>
@@ -37,7 +37,7 @@ const ContactInfo = () => {
             title: "Visit Us",
             content: (
                 <div className="space-y-2">
-                    <p className="text-lg font-['Museo'] text-white/90 leading-relaxed">
+                    <p className="text-lg font-['Noto Sans'] text-white/90 leading-relaxed">
                         {clubInfo.address}
                     </p>
                     <a 
@@ -59,10 +59,10 @@ const ContactInfo = () => {
             title: "Range Hours",
             content: (
                 <div className="space-y-1.5">
-                    <p className="text-sm font-['Museo'] text-white/80">{hours.weekdays}</p>
-                    <p className="text-sm font-['Museo'] text-white/80">{hours.saturday}</p>
-                    <p className="text-sm font-['Museo'] text-white/80">{hours.sunday}</p>
-                    <p className="text-sm font-['Museo'] text-[var(--accent-gold)] mt-2">{hours.closed}</p>
+                    <p className="text-sm font-['Noto Sans'] text-white/80">{hours.weekdays}</p>
+                    <p className="text-sm font-['Noto Sans'] text-white/80">{hours.saturday}</p>
+                    <p className="text-sm font-['Noto Sans'] text-white/80">{hours.sunday}</p>
+                    <p className="text-sm font-['Noto Sans'] text-[var(--accent-gold)] mt-2">{hours.closed}</p>
                 </div>
             )
         }
@@ -82,10 +82,10 @@ const ContactInfo = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="font-['Refrigerator_Deluxe'] text-5xl md:text-6xl uppercase text-white mb-4">
+                    <h2 className="font-['Rajdhani'] text-5xl md:text-6xl uppercase text-white mb-4">
                         Get In <span className="text-[var(--accent-gold)]">Touch</span>
                     </h2>
-                    <p className="text-white/60 text-lg font-['Museo'] max-w-2xl mx-auto">
+                    <p className="text-white/60 text-lg font-['Noto Sans'] max-w-2xl mx-auto">
                         Ready to join Idaho's premier shooting sports facility? We're here to help.
                     </p>
                 </motion.div>
@@ -111,7 +111,7 @@ const ContactInfo = () => {
                                 </div>
                                 
                                 {/* Content */}
-                                <h3 className="font-['Refrigerator_Deluxe'] text-2xl text-white uppercase mb-4">{card.title}</h3>
+                                <h3 className="font-['Rajdhani'] text-2xl text-white uppercase mb-4">{card.title}</h3>
                                 {card.content}
                                 
                                 {/* Hover glow */}
@@ -154,19 +154,19 @@ const ContactInfo = () => {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="text-center mt-16"
                 >
-                    <p className="text-white/60 font-['Museo'] text-lg mb-6">
+                    <p className="text-white/60 font-['Noto Sans'] text-lg mb-6">
                         Have questions about membership or our facilities?
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link href="/contact" className="group relative inline-flex items-center">
                             <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-xl blur-lg opacity-50 group-hover:opacity-80 transition-opacity" />
-                            <button className="relative backdrop-blur-sm bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white px-8 py-4 rounded-xl font-['Refrigerator_Deluxe'] uppercase tracking-wider transition-all duration-300 group-hover:scale-105 shadow-xl">
+                            <button className="relative backdrop-blur-sm bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white px-8 py-4 rounded-xl font-['Rajdhani'] uppercase tracking-wider transition-all duration-300 group-hover:scale-105 shadow-xl">
                                 Contact Us
                             </button>
                         </Link>
                         
                         <Link href="/membership" className="group relative inline-flex items-center">
-                            <button className="relative backdrop-blur-md bg-white/[0.08] border border-white/20 text-white px-8 py-4 rounded-xl font-['Refrigerator_Deluxe'] uppercase tracking-wider transition-all duration-300 group-hover:bg-white/[0.12] group-hover:scale-105 group-hover:border-white/30 shadow-xl">
+                            <button className="relative backdrop-blur-md bg-white/[0.08] border border-white/20 text-white px-8 py-4 rounded-xl font-['Rajdhani'] uppercase tracking-wider transition-all duration-300 group-hover:bg-white/[0.12] group-hover:scale-105 group-hover:border-white/30 shadow-xl">
                                 Join Now
                             </button>
                         </Link>

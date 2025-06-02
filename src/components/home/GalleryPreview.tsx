@@ -26,7 +26,7 @@ const GalleryPreview: FC<GalleryPreviewProps> = ({ galleryItems }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-['Refrigerator_Deluxe'] text-5xl md:text-6xl uppercase text-white mb-4"
+            className="font-['Rajdhani'] text-5xl md:text-6xl uppercase text-white mb-4"
           >
             Club <span className="text-[var(--accent-gold)]">Gallery</span>
           </motion.h2>
@@ -35,7 +35,7 @@ const GalleryPreview: FC<GalleryPreviewProps> = ({ galleryItems }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-white/60 max-w-2xl mx-auto font-['Museo'] text-lg"
+            className="text-white/60 max-w-2xl mx-auto font-['Noto Sans'] text-lg"
           >
             Capturing moments of excellence since 1898
           </motion.p>
@@ -74,17 +74,17 @@ const GalleryPreview: FC<GalleryPreviewProps> = ({ galleryItems }) => {
                   
                   {/* Year badge */}
                   <div className="absolute top-4 right-4 backdrop-blur-md bg-black/30 border border-white/20 rounded-full px-3 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-xs font-['Museo'] text-[var(--accent-gold)]">{item.year}</span>
+                    <span className="text-xs font-['Noto Sans'] text-[var(--accent-gold)]">{item.year}</span>
                   </div>
                 </div>
                 
                 {/* Content overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-5 transform transition-transform duration-500 group-hover:translate-y-0 translate-y-2">
-                  <h3 className="text-white text-lg font-['Refrigerator_Deluxe'] uppercase tracking-wide mb-1 transition-colors duration-300 group-hover:text-[var(--accent-gold)]">
+                  <h3 className="text-white text-lg font-['Rajdhani'] uppercase tracking-wide mb-1 transition-colors duration-300 group-hover:text-[var(--accent-gold)]">
                     {item.alt}
                   </h3>
                   <div className="flex items-center justify-between">
-                    <p className="text-white/50 text-sm font-['Museo']">
+                    <p className="text-white/50 text-sm font-['Noto Sans']">
                       View Details
                     </p>
                     <svg 
@@ -120,7 +120,7 @@ const GalleryPreview: FC<GalleryPreviewProps> = ({ galleryItems }) => {
             <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-xl blur-lg opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
             
             {/* Button */}
-            <button className="relative backdrop-blur-sm bg-gradient-to-r from-[var(--accent-primary)]/90 to-[var(--accent-secondary)]/90 text-white px-8 py-4 rounded-xl font-['Refrigerator_Deluxe'] uppercase tracking-wider transition-all duration-300 group-hover:scale-105 shadow-xl flex items-center gap-3">
+            <button className="relative backdrop-blur-sm bg-gradient-to-r from-[var(--accent-primary)]/90 to-[var(--accent-secondary)]/90 text-white px-8 py-4 rounded-xl font-['Rajdhani'] uppercase tracking-wider transition-all duration-300 group-hover:scale-105 shadow-xl flex items-center gap-3">
               <span>Explore Full Gallery</span>
               <svg 
                 className="w-5 h-5 transform transition-transform duration-300 group-hover:translate-x-1" 

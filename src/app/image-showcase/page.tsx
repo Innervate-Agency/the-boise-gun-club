@@ -18,7 +18,7 @@ const ImageShowcasePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-neutral-900 to-black text-white">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
       <div className="container mx-auto px-4 py-16">
         {/* Header */}
         <motion.div
@@ -26,10 +26,10 @@ const ImageShowcasePage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="font-['Refrigerator_Deluxe'] text-6xl md:text-8xl uppercase text-white mb-4">
+          <h1 className="font-['Rajdhani'] text-6xl md:text-8xl uppercase text-[var(--text-primary)] mb-4">
             Image <span className="text-[var(--accent-gold)]">Showcase</span>
           </h1>
-          <p className="text-white/60 max-w-2xl mx-auto font-['Museo'] text-lg">
+          <p className="text-[var(--text-secondary)] max-w-2xl mx-auto font-['Noto Sans'] text-lg">
             High-quality shooting sports photography powered by Unsplash API integration
           </p>
         </motion.div>
@@ -41,7 +41,7 @@ const ImageShowcasePage = () => {
           transition={{ delay: 0.2 }}
           className="mb-20"
         >
-          <h2 className="font-['Refrigerator_Deluxe'] text-4xl text-center mb-8 text-[var(--accent-gold)]">
+          <h2 className="font-['Rajdhani'] text-4xl text-center mb-8 text-[var(--accent-gold)]">
             HERO IMAGE INTEGRATION
           </h2>
           <div className="relative h-96 rounded-2xl overflow-hidden">
@@ -55,10 +55,10 @@ const ImageShowcasePage = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
               <div className="px-8">
-                <h3 className="font-['Refrigerator_Deluxe'] text-4xl uppercase text-white mb-2">
+                <h3 className="font-['Rajdhani'] text-4xl uppercase text-[var(--text-primary)] mb-2">
                   Dynamic Hero Backgrounds
                 </h3>
-                <p className="text-white/80 font-['Museo'] text-lg">
+                <p className="text-[var(--text-secondary)] font-['Noto Sans'] text-lg">
                   Automatically sourced from curated shooting sports photography
                 </p>
               </div>
@@ -72,7 +72,7 @@ const ImageShowcasePage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <h2 className="font-['Refrigerator_Deluxe'] text-4xl text-center mb-12 text-[var(--accent-gold)]">
+          <h2 className="font-['Rajdhani'] text-4xl text-center mb-12 text-[var(--accent-gold)]">
             CATEGORY EXAMPLES
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -101,10 +101,10 @@ const ImageShowcasePage = () => {
 
                   {/* Content */}
                   <div className="p-6">
-                    <h3 className="font-['Refrigerator_Deluxe'] text-xl uppercase text-white mb-2">
+                    <h3 className="font-['Rajdhani'] text-xl uppercase text-[var(--text-primary)] mb-2">
                       {cat.name}
                     </h3>
-                    <p className="text-white/60 text-sm font-['Museo']">
+                    <p className="text-[var(--text-secondary)] text-sm font-['Noto Sans']">
                       {cat.description}
                     </p>
                   </div>
@@ -121,7 +121,7 @@ const ImageShowcasePage = () => {
           transition={{ delay: 1.0 }}
           className="mt-20"
         >
-          <h2 className="font-['Refrigerator_Deluxe'] text-4xl text-center mb-12 text-[var(--accent-gold)]">
+          <h2 className="font-['Rajdhani'] text-4xl text-center mb-12 text-[var(--accent-gold)]">
             CONVENIENCE COMPONENTS
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -136,14 +136,14 @@ const ImageShowcasePage = () => {
                   alt="Event Photography"
                 />
                 <div className="absolute bottom-4 left-4">
-                  <span className="bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-['Museo'] text-white">
+                  <span className="bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-['Noto Sans'] text-[var(--text-primary)]">
                     &lt;EventImage /&gt;
                   </span>
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="font-['Refrigerator_Deluxe'] text-lg text-white">Event Component</h3>
-                <p className="text-white/60 text-sm">Pre-configured for event imagery</p>
+                <h3 className="font-['Rajdhani'] text-lg text-[var(--text-primary)]">Event Component</h3>
+                <p className="text-[var(--text-secondary)] text-sm">Pre-configured for event imagery</p>
               </div>
             </div>
 
@@ -158,14 +158,14 @@ const ImageShowcasePage = () => {
                   alt="Training Photography"
                 />
                 <div className="absolute bottom-4 left-4">
-                  <span className="bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-['Museo'] text-white">
+                  <span className="bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-['Noto Sans'] text-[var(--text-primary)]">
                     &lt;TrainingImage /&gt;
                   </span>
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="font-['Refrigerator_Deluxe'] text-lg text-white">Training Component</h3>
-                <p className="text-white/60 text-sm">Pre-configured for training imagery</p>
+                <h3 className="font-['Rajdhani'] text-lg text-[var(--text-primary)]">Training Component</h3>
+                <p className="text-[var(--text-secondary)] text-sm">Pre-configured for training imagery</p>
               </div>
             </div>
 
@@ -180,14 +180,14 @@ const ImageShowcasePage = () => {
                   alt="Membership Photography"
                 />
                 <div className="absolute bottom-4 left-4">
-                  <span className="bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-['Museo'] text-white">
+                  <span className="bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-['Noto Sans'] text-[var(--text-primary)]">
                     &lt;MembershipImage /&gt;
                   </span>
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="font-['Refrigerator_Deluxe'] text-lg text-white">Membership Component</h3>
-                <p className="text-white/60 text-sm">Pre-configured for membership imagery</p>
+                <h3 className="font-['Rajdhani'] text-lg text-[var(--text-primary)]">Membership Component</h3>
+                <p className="text-[var(--text-secondary)] text-sm">Pre-configured for membership imagery</p>
               </div>
             </div>
           </div>
@@ -200,7 +200,7 @@ const ImageShowcasePage = () => {
           transition={{ delay: 1.2 }}
           className="mt-20 mb-16"
         >
-          <h2 className="font-['Refrigerator_Deluxe'] text-4xl text-center mb-12 text-[var(--accent-gold)]">
+          <h2 className="font-['Rajdhani'] text-4xl text-center mb-12 text-[var(--accent-gold)]">
             TECHNICAL FEATURES
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -228,8 +228,8 @@ const ImageShowcasePage = () => {
             ].map((feature, index) => (
               <div key={index} className="backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] border border-white/10 rounded-xl p-6 text-center">
                 <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="font-['Refrigerator_Deluxe'] text-lg text-white mb-2">{feature.title}</h3>
-                <p className="text-white/60 text-sm font-['Museo']">{feature.description}</p>
+                <h3 className="font-['Rajdhani'] text-lg text-[var(--text-primary)] mb-2">{feature.title}</h3>
+                <p className="text-[var(--text-secondary)] text-sm font-['Noto Sans']">{feature.description}</p>
               </div>
             ))}
           </div>

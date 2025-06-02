@@ -63,7 +63,7 @@ const MembershipPage: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-neutral-900 to-neutral-800 text-white overflow-hidden">
+    <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden">
       <ParticleAnimation />
       
       {/* Header Section */}
@@ -77,13 +77,13 @@ const MembershipPage: React.FC = () => {
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
         <div className="relative z-10 container mx-auto px-4">
           <motion.h1 
-            className="text-5xl md:text-7xl font-bold font-['Refrigerator_Deluxe'] tracking-tight text-shadow-lg"
+            className="text-5xl md:text-7xl font-bold font-['Rajdhani'] tracking-tight text-shadow-lg"
             variants={sectionVariants} custom={0}
           >
             {pageTitle}
           </motion.h1>
           <motion.p 
-            className="mt-6 text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto font-['Museo']"
+            className="mt-6 text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto font-['Noto Sans']"
             variants={sectionVariants} custom={1}
           >
             Join the Boise Gun Club family and unlock a world of benefits, savings, and community. While our ranges are open to the public, membership offers the best value and experience.
@@ -95,7 +95,7 @@ const MembershipPage: React.FC = () => {
       <div className="relative z-10 container mx-auto px-4 py-16 md:py-24 space-y-48 md:space-y-64">
         {/* Core Offer Section */}
         <motion.section 
-          className="bg-neutral-800/50 backdrop-blur-md p-8 md:p-12 rounded-xl shadow-2xl border border-neutral-700"
+          className="glass-premium p-8 md:p-12 rounded-xl shadow-2xl border border-white/20"
           variants={sectionVariants} custom={2} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
         >
           <h2 className="text-3xl md:text-4xl font-semibold font-['Rajdhani'] text-[var(--accent-primary)] mb-6">
@@ -103,15 +103,15 @@ const MembershipPage: React.FC = () => {
           </h2>
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <p className="text-5xl font-bold text-white">${annualFee}<span className="text-xl font-normal text-neutral-400">/year</span></p>
-              <p className="mt-2 text-neutral-300 font-['Museo']">
+              <p className="text-5xl font-bold text-[var(--text-primary)]">${annualFee}<span className="text-xl font-normal text-[var(--text-secondary)]">/year</span></p>
+              <p className="mt-2 text-[var(--text-secondary)] font-['Noto Sans']">
                 Enjoy significant savings on every visit. Members pay just ${memberRoundPrice} per round of Skeet or Trap (25 shots), compared to the standard ${standardRoundPrice} – that's a ${savingsPerRound} saving per round!
               </p>
             </div>
-            <div className="bg-neutral-700/70 p-6 rounded-lg text-center">
-              <p className="text-lg font-['Museo'] text-neutral-300">Non-Member Price: <span className="font-bold text-white">${standardRoundPrice}/round</span></p>
-              <p className="text-2xl font-bold font-['Noto Sans'] text-[var(--accent-primary)] my-2">Member Price: <span className="text-white">${memberRoundPrice}/round</span></p>
-              <p className="text-sm font-['Museo'] text-neutral-400">(Skeet/Trap - 25 shots)</p>
+            <div className="glass-premium p-6 rounded-lg text-center border border-white/10">
+              <p className="text-lg font-['Noto Sans'] text-[var(--text-secondary)]">Non-Member Price: <span className="font-bold text-[var(--text-primary)]">${standardRoundPrice}/round</span></p>
+              <p className="text-2xl font-bold font-['Noto Sans'] text-[var(--accent-primary)] my-2">Member Price: <span className="text-[var(--text-primary)]">${memberRoundPrice}/round</span></p>
+              <p className="text-sm font-['Noto Sans'] text-[var(--text-secondary)]">(Skeet/Trap - 25 shots)</p>
             </div>
           </div>
         </motion.section>
@@ -127,11 +127,11 @@ const MembershipPage: React.FC = () => {
             {benefits.map((benefit, index) => (
               <motion.div 
                 key={index} 
-                className="bg-neutral-800/50 backdrop-blur-md p-6 rounded-lg shadow-xl border border-neutral-700 hover:shadow-[var(--accent-primary)]/30 hover:border-[var(--accent-primary)]/50 transition-all duration-300 transform hover:-translate-y-1"
+                className="glass-premium p-6 rounded-lg shadow-xl border border-white/20 hover:shadow-[var(--accent-primary)]/30 hover:border-[var(--accent-primary)]/50 transition-all duration-300 transform hover:-translate-y-1"
                 variants={sectionVariants} custom={index}
               >
                 <h3 className="text-xl font-semibold font-['Rajdhani'] text-[var(--accent-primary)] mb-3">{benefit.title}</h3>
-                <p className="text-neutral-300 font-['Museo'] text-sm leading-relaxed">{benefit.description}</p>
+                <p className="text-[var(--text-secondary)] font-['Noto Sans'] text-sm leading-relaxed">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
@@ -142,22 +142,22 @@ const MembershipPage: React.FC = () => {
           className="text-center py-12 bg-gradient-to-r from-[var(--accent-primary)]/80 to-[var(--accent-secondary)]/80 backdrop-blur-sm rounded-xl shadow-2xl border border-orange-400/50"
           variants={sectionVariants} custom={4} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold font-['Refrigerator_Deluxe'] text-neutral-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold font-['Rajdhani'] text-black mb-6">
             Ready to Join?
           </h2>
-          <p className="text-neutral-800 font-['Museo'] text-lg max-w-xl mx-auto mb-8">
+          <p className="text-black font-['Noto Sans'] text-lg max-w-xl mx-auto mb-8">
             Become a part of the Boise Gun Club legacy today. Experience the best of shooting sports with unparalleled benefits and a welcoming community.
           </p>
           <motion.button 
-            className="bg-neutral-900 text-white font-semibold font-['Heading_Pro_Trial'] py-3 px-8 rounded-lg shadow-md hover:bg-neutral-800 transition-colors duration-300 text-lg flex items-center justify-center mx-auto group"
+            className="bg-black text-white font-semibold font-['Heading_Pro_Trial'] py-3 px-8 rounded-lg shadow-md hover:bg-gray-800 transition-colors duration-300 text-lg flex items-center justify-center mx-auto group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Sign Up for Membership 
             <ChevronRightIcon className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
           </motion.button>
-          <p className="mt-6 text-sm text-neutral-800/80 font-['Museo']">
-            Have questions? Feel free to <a href="/contact" className="underline hover:text-neutral-900">contact us</a> for more information.
+          <p className="mt-6 text-sm text-black/80 font-['Noto Sans']">
+            Have questions? Feel free to <a href="/contact" className="underline hover:text-black">contact us</a> for more information.
           </p>
         </motion.section>
       </div>

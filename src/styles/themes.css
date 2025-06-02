@@ -185,39 +185,7 @@
   font-size: 16px !important;
 }
 
-/* Add font fallback definitions in case Adobe Fonts fails to load */
-@font-face {
-  font-family: 'refrigerator-deluxe';
-  src: local('DM Sans Bold');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'museo-sans';
-  src: local('DM Sans');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* Font utility classes */
-.font-heading {
-  font-family: "refrigerator-deluxe", serif;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-}
-
-.font-body {
-  font-family: "museo-sans", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  line-height: 1.65;
-}
-
-/* Custom Utility Classes for Dynamic Theming */
 .bg-primary {
   background-color: var(--bg-primary);
 }
@@ -282,59 +250,9 @@
   border-color: var(--accent-primary);
 }
 
-/* Base theme variables - OFFICIAL BRAND COLORS ONLY */
-/* Light theme colors already defined above in [data-theme="light"] */
-/* Dark theme colors already defined above in [data-theme="dark"] */
-
-/* Dark theme variables */
-[data-theme='dark'] {
-  /* Base colors - Dark Theme */
-  --bg-primary: #2F2F2F; /* Charcoal - softened black */
-  --bg-secondary: #1E1E1E; /* Slightly darker charcoal for depth, cards/modals */
-  --bg-tertiary: #3A3A3A; /* Slightly lighter charcoal for hover states */
-  --text-primary: #FAF7F0; /* Cream - for excellent contrast on dark backgrounds */
-  --text-secondary: #A9A9A9; /* Light Grey - for secondary text */
-
-  /* Accent colors - Dark Theme (Sophisticated 70s, ensuring contrast) */
-  --accent-primary: #D2691E;    /* Rich Muted Orange */
-  --accent-secondary: #F28705;  /* Lahoma Orange - may need toning down for dark mode */
-  --accent-gold: #DAA520;       /* Brighter Gold for dark mode pop */
-  --accent-darkred: #B22222;    /* Firebrick red, slightly brighter for dark bg */
-  --accent-forest-green: #558B2F; /* Lighter Forest Green for dark mode */
-
-  /* Glass effect - Dark Theme */
-  --glass-bg: rgba(47, 47, 47, 0.5); /* Charcoal transparent */
-  --glass-border: rgba(210, 105, 30, 0.3); /* Muted orange border, slightly more visible on dark */
-
-  /* Gradients - Dark Theme */
-  --gradient-primary: linear-gradient(135deg, #F28705 0%, #D2691E 100%);
-
-  /* Additional accent colors - Dark Theme */
-  --accent-tertiary: #558B2F;   /* Lighter Forest Green (replaces Dark Teal) */
-  --accent-quaternary: #B0C4DE; /* Lighter Steel Blue for links on dark bg */
-  
-  /* UI elements - Dark Theme */
-  --grid-color: rgba(242, 203, 5, 0.08); /* Very subtle yellow grid */
-  
-  /* Gradients - Dark Theme */
-  --gradient-secondary: linear-gradient(90deg, #51A696, #2484BF);
-  --gradient-retro: linear-gradient(180deg, #F28705, #F2CB05, #F2B950);
-  --gradient-sunset: linear-gradient(45deg, #F28705, #F2CB05, #F2B950);
-  
-  /* Special elements - Dark Theme */
-  --shadow-color: rgba(0, 0, 0, 0.3); /* Darker shadow */
-  --glow-color: rgba(242, 203, 5, 0.5); /* Yellow glow */
-  
-  /* Containers - Dark Theme */
-  --terminal-green: #51A696;
-  --terminal-amber: #F2B950;
-  --footer-bg: #1A1A1A; /* Darker footer */
-
-  /* Other brand colors (can remain consistent or adapt) */
-  /* --leonard-yellow: #F2CB05; */ /* Already used as accent */
-  /* --lahoma-orange: #F28705;  */ /* Already used as accent */
-  --dark-bg: #121212; /* Base dark background */
-}
+/* OFFICIAL BRAND COLORS APPLIED - No duplicate theme definitions needed */
+/* Light theme: Spring Day Along The East Fork of The Owyhee River */
+/* Dark theme: Misty Fall Morning in the Cascades */
 
 /* Gradient text effect */
 .gradient-text {

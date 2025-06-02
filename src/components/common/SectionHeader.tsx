@@ -127,7 +127,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 
                 {/* Main title */}
                 <TitleElement
-                    className={`font-heading font-bold tracking-wider uppercase ${titleSizeClasses[titleSize]}`}
+                    className={`font-bold tracking-wider uppercase ${titleSizeClasses[titleSize]}`}
                     style={gradientColors.length > 1 ? {
                         backgroundImage: `linear-gradient(to right, ${gradientColors.join(', ')})`,
                         WebkitBackgroundClip: 'text',
@@ -152,7 +152,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
             {/* Optional subtitle */}
             {subtitle && (
                 <SubtitleElement
-                    className={`text-[var(--text-secondary)] max-w-2xl text-lg mt-6 font-body leading-relaxed ${alignment === 'center' ? 'mx-auto' : alignment === 'right' ? 'ml-auto' : ''}`}
+                    className={`text-[var(--text-secondary)] max-w-2xl text-lg mt-6 leading-relaxed ${alignment === 'center' ? 'mx-auto' : alignment === 'right' ? 'ml-auto' : ''}`}
                     variants={subtitleVariants}
                 >
                     {subtitle}

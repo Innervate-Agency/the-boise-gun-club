@@ -127,10 +127,10 @@ function GalleryContent() {
             <div className="container mx-auto px-4 py-16 relative z-10">
                 {/* Gallery header */}
                 <div className="text-center mb-12">
-                    <h1 className="font-['Refrigerator_Deluxe'] text-5xl md:text-6xl font-bold mb-4 tracking-wider text-[var(--accent-gold)] uppercase">
+                    <h1 className="font-['Rajdhani'] text-5xl md:text-6xl font-bold mb-4 tracking-wider text-[var(--accent-gold)] uppercase">
                         PHOTO ARCHIVES
                     </h1>
-                    <p className="text-xl text-[var(--text-secondary)] font-['Museo']">
+                    <p className="text-xl text-[var(--text-secondary)] font-['Noto Sans']">
                         A journey through time at Boise Gun Club
                     </p>
                 </div>
@@ -167,10 +167,10 @@ function GalleryContent() {
                                     <div className="absolute inset-x-0 bottom-0 p-6 text-white opacity-0 transform 
                                                   translate-y-4 transition-all group-hover:opacity-100 
                                                   group-hover:translate-y-0 z-20 backdrop-blur-sm bg-black/30">
-                                        <h3 className="text-lg font-bold font-['Refrigerator_Deluxe'] mb-1 uppercase tracking-wide">
+                                        <h3 className="text-lg font-bold font-['Rajdhani'] mb-1 uppercase tracking-wide">
                                             {photo.alt}
                                         </h3>
-                                        <p className="text-sm text-[var(--accent-gold)] font-['Museo']">
+                                        <p className="text-sm text-[var(--accent-gold)] font-['Noto Sans']">
                                             {photo.photographer} • {photo.year}
                                         </p>
                                     </div>

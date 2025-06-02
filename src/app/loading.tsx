@@ -62,7 +62,7 @@ export default function Loading() {
                     transition={{ delay: 0.5 }}
                     className="glass-premium rounded-2xl px-8 py-4"
                 >
-                    <h2 className="font-['Refrigerator_Deluxe'] text-2xl text-white uppercase tracking-wider mb-2">
+                    <h2 className="font-['Rajdhani'] text-2xl text-[var(--text-primary)] uppercase tracking-wider mb-2">
                         Loading
                     </h2>
                     <div className="flex items-center justify-center gap-1">

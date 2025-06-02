@@ -43,8 +43,8 @@ const GlassPhotoFrame: React.FC<{ photo: Photo, onClick: () => void }> = ({ phot
 
                 {/* Hover overlay with info */}
                 <div className="absolute bottom-0 left-0 right-0 bg-[#121212]/70 backdrop-blur-sm p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-30">
-                    <p className="text-white font-bold font-['Refrigerator_Deluxe']">{photo.alt}</p>
-                    <p className="text-[#F25D27] text-sm font-['Museo']">{photo.year}</p>
+                    <p className="text-white font-bold font-['Rajdhani']">{photo.alt}</p>
+                    <p className="text-[#F25D27] text-sm font-['Noto Sans']">{photo.year}</p>
                 </div>
             </div>
         </motion.div>

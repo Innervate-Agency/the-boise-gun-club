@@ -51,7 +51,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
       {/* Loading text */}
       {text && (
         <motion.p
-          className={`font-body text-[var(--text-secondary)] ${textSizeClasses[size]}`}
+          className={`text-[var(--text-secondary)] ${textSizeClasses[size]}`}
           animate={{ opacity: [0.5, 1, 0.5] }}
           transition={{
             duration: 1.5,

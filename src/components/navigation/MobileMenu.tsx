@@ -73,7 +73,7 @@ export default function MobileMenu({ links, onClose }: MobileMenuProps) {
                         <motion.li key={link.href} variants={itemVariants}>
                             <Link
                                 href={link.href}
-                                className={`block text-center text-2xl py-3 font-heading text-[var(--text-primary)] border-b border-[var(--glass-border)] transition-colors ${pathname === link.href ? 'text-[var(--accent-primary)] font-bold' : 'hover:text-[var(--accent-secondary)]'}`}
+                                className={`block text-center text-2xl py-3 text-[var(--text-primary)] border-b border-[var(--glass-border)] transition-colors ${pathname === link.href ? 'text-[var(--accent-primary)] font-bold' : 'hover:text-[var(--accent-secondary)]'}`}
                                 onClick={onClose}
                                >
                                 {link.label}
@@ -83,7 +83,7 @@ export default function MobileMenu({ links, onClose }: MobileMenuProps) {
                     <motion.li variants={itemVariants}>
                         <Link
                             href="/membership"
-                            className="block text-center mt-8 py-3 rounded-lg btn-gradient font-heading font-bold text-white text-2xl"
+                            className="block text-center mt-8 py-3 rounded-lg btn-gradient font-bold text-white text-2xl"
                             onClick={onClose}
                         >
                             MEMBER LOGIN

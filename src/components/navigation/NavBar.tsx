@@ -10,16 +10,13 @@ import MegaMenu from './MegaMenu';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { useNavigation } from './NavigationContext';
 
-// Navigation items with museum added
+// Navigation items with consolidated club info
 const navLinks = [
     { label: 'HOME', href: '/' },
-    { label: 'ABOUT', href: '/about' },
+    { label: 'CLUB INFO', href: '/club-info' },
     { label: 'MUSEUM', href: '/museum' },
     { label: 'EVENTS', href: '/events' },
-    { label: 'RANGES', href: '/ranges' },
-    { label: 'GALLERY', href: '/gallery' },
     { label: 'MEMBERSHIP', href: '/membership' },
-    { label: 'CONTACT', href: '/contact' },
 ];
 
 // Clean modern navigation item component
@@ -39,7 +36,7 @@ const NavItem = ({ label, href, isActive }: {
                     color: isActive ? 'var(--accent-primary)' : 'var(--text-primary)'
                 }}
             >
-                <span className={`font-heading text-xl tracking-wide`}>
+                <span className={`text-xl tracking-wide`}>
                     {label}
                 </span>
 
@@ -97,11 +94,11 @@ export default function NavBar() {
                     <div className="container mx-auto overflow-hidden relative">
                         <div className="flex space-x-8 animate-marquee whitespace-nowrap">
                             {clubAnnouncements.map((announcement, index) => (
-                                <span key={index} className="mx-4 font-medium font-body">• {announcement}</span>
+                                <span key={index} className="mx-4 font-medium">• {announcement}</span>
                             ))}
                             {/* Duplicate announcements to create seamless loop */}
                             {clubAnnouncements.map((announcement, index) => (
-                                <span key={`dup-${index}`} className="mx-4 font-medium font-body">• {announcement}</span>
+                                <span key={`dup-${index}`} className="mx-4 font-medium">• {announcement}</span>
                             ))}
                         </div>
                     </div>
@@ -114,7 +111,7 @@ export default function NavBar() {
                 <div
                     className={`relative transition-all duration-500 ${isScrolled
                         ? 'py-3 glass-premium'
-                        : 'py-4 backdrop-blur-sm bg-gradient-to-b from-[#121212]/80 to-transparent'
+                        : 'py-4 backdrop-blur-sm bg-gradient-to-b from-[var(--bg-primary)]/80 to-transparent'
                         }`}
                 >
                     {/* Subtle grid texture beneath glass */}
@@ -144,7 +141,7 @@ export default function NavBar() {
                                     whileTap={{ scale: 0.95 }}
                                 >
                                     <Bars3Icon className="w-5 h-5 text-[var(--text-primary)]" />
-                                    <span className="font-heading text-xl tracking-wide text-[var(--text-primary)]">MENU</span>
+                                    <span className="text-xl tracking-wide text-[var(--text-primary)]">MENU</span>
                                 </motion.button>
 
                                 {/* Member Login Button - Modern Gradient */}
@@ -155,7 +152,7 @@ export default function NavBar() {
                                 >
                                     <Link
                                         href="/membership"
-                                        className="relative btn-gradient block px-6 py-2.5 rounded font-bold shadow-lg font-heading tracking-wide"
+                                        className="relative btn-gradient block px-6 py-2.5 rounded font-bold shadow-lg tracking-wide"
                                        >
                                         MEMBER LOGIN
                                     </Link>

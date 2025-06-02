@@ -18,9 +18,9 @@ export default function Button({
     };
 
     const variantStyles = {
-        primary: "bg-lahoma-orange text-kent-slate-gray hover:bg-leonard-yellow",
-        secondary: "bg-transparent border border-leonard-yellow text-leonard-yellow hover:bg-leonard-yellow/10",
-        tertiary: "bg-transparent text-leonard-yellow hover:bg-leonard-yellow/5"
+        primary: "bg-[var(--accent-primary)] text-[var(--text-primary)] hover:bg-[var(--accent-secondary)]",
+        secondary: "bg-transparent border border-[var(--accent-secondary)] text-[var(--accent-secondary)] hover:bg-[rgba(242,203,5,0.1)]",
+        tertiary: "bg-transparent text-[var(--accent-secondary)] hover:bg-[rgba(242,203,5,0.05)]"
     };
 
     const baseStyles = "rounded font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed";

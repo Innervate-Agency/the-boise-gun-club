@@ -20,12 +20,12 @@ const Footer: React.FC = () => {
     {
       title: "Explore",
       links: [
-        { href: "/about", text: "About Us" },
-        { href: "/ranges", text: "Our Ranges" },
+        { href: "/club-info#about", text: "About Us" },
+        { href: "/club-info#facilities", text: "Our Ranges" },
         { href: "/membership", text: "Membership" },
         { href: "/events", text: "Events Calendar" },
         { href: "/gallery", text: "Club Gallery" },
-        { href: "/contact", text: "Contact & Directions" },
+        { href: "/club-info#contact", text: "Contact & Directions" },
       ],
     },
     {
@@ -112,11 +112,11 @@ const Footer: React.FC = () => {
                 Boise{" "}
                 <span className="text-[var(--accent-primary)]">Gun Club</span>
               </h2>
-              <p className="text-white/70 mb-4 text-sm">Est. 1898</p>
+              <p className="text-white/70 mb-4 text-sm">Est. 1965</p>
             </Link>
             <p className="text-sm leading-7 font-body">
               Promoting safe and responsible firearm ownership, sportsmanship,
-              and community since 1947.
+              and community since 1965.
             </p>
           </motion.div>
 

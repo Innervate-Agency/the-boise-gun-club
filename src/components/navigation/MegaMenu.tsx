@@ -86,7 +86,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, onClose }) => {
                   <div key={index} className="space-y-4">
                     <div className="flex items-center space-x-2 mb-4">
                       <section.icon className="w-5 h-5 text-[var(--accent-primary)]" />
-                      <h3 className="font-heading text-lg text-[var(--text-primary)] font-semibold">
+                      <h3 className="text-lg text-[var(--text-primary)] font-semibold">
                         {section.title}
                       </h3>
                     </div>
@@ -121,7 +121,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, onClose }) => {
               
               {/* Admin Section */}
               <div className="border-t border-[var(--accent-primary)]/20 pt-6">
-                <h3 className="font-heading text-lg text-[var(--text-primary)] font-semibold mb-4">
+                <h3 className="text-lg text-[var(--text-primary)] font-semibold mb-4">
                   Administrative Access
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -156,21 +156,21 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, onClose }) => {
               <div className="border-t border-[var(--accent-primary)]/20 pt-6 mt-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                   <div>
-                    <div className="font-heading text-[var(--accent-primary)] font-semibold">Range Hours</div>
+                    <div className="text-[var(--accent-primary)] font-semibold">Range Hours</div>
                     <div className="text-sm text-[var(--text-secondary)] mt-1">
                       Mon-Fri: 9AM-6PM<br />
                       Sat-Sun: 8AM-8PM
                     </div>
                   </div>
                   <div>
-                    <div className="font-heading text-[var(--accent-primary)] font-semibold">Contact</div>
+                    <div className="text-[var(--accent-primary)] font-semibold">Contact</div>
                     <div className="text-sm text-[var(--text-secondary)] mt-1">
                       (208) 555-0123<br />
                       info@boisegunclub.com
                     </div>
                   </div>
                   <div>
-                    <div className="font-heading text-[var(--accent-primary)] font-semibold">Location</div>
+                    <div className="text-[var(--accent-primary)] font-semibold">Location</div>
                     <div className="text-sm text-[var(--text-secondary)] mt-1">
                       123 Gun Club Road<br />
                       Boise, ID 83702

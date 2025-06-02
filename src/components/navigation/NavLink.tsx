@@ -28,7 +28,7 @@ export default function NavLink({ href, label, children }: NavLinkProps) {
                     relative z-10 text-base font-medium tracking-wide transition-all duration-300
                     ${isActive
                         ? 'text-white'
-                        : 'text-gray-300 hover:text-white'
+                        : 'text-[var(--text-secondary)] hover:text-white'
                     }
                 `}
                >
@@ -41,7 +41,7 @@ export default function NavLink({ href, label, children }: NavLinkProps) {
                 initial={false}
                 animate={{
                     background: isHovering
-                        ? 'linear-gradient(to right, rgba(230, 126, 34, 0.1), rgba(245, 232, 199, 0.1))'
+                        ? 'linear-gradient(to right, rgba(242, 135, 5, 0.1), rgba(242, 203, 5, 0.1))'
                         : 'none',
                     opacity: isHovering ? 1 : 0,
                 }}
@@ -51,7 +51,7 @@ export default function NavLink({ href, label, children }: NavLinkProps) {
             {isActive && (
                 <motion.div
                     layoutId="activeNavLink"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#E67E22] to-[#F5A623]"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)]"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}

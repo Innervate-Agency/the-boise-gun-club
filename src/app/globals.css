@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Official Boise Gun Club Typography */
+.font-heading {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.font-body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
 /* Import custom styles */
 @import "../styles/themes.css";
 @import "../styles/animations.css";
@@ -79,7 +88,7 @@
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(circle at center, transparent 40%, rgba(47, 47, 47, 0.4) 100%);
+    background: radial-gradient(circle at center, transparent 40%, rgba(47, 49, 53, 0.4) 100%);
     z-index: 9998;
   }
 

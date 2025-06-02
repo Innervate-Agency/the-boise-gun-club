@@ -31,23 +31,23 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-[#212529] text-white py-8">
+        <footer className="bg-[var(--bg-primary)] text-[var(--text-secondary)] py-8">
             <div className="max-w-content mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6">
                 {/* Left Column - Contact & Navigation */}
                 <div className="space-y-6">
                     <div>
-                        <h3 className="text-xl font-space-grotesk mb-3">Contact Us</h3>
-                        <address className="not-italic text-base space-y-1 text-gray-300">
+                        <h3 className="text-xl mb-3">Contact Us</h3>
+                        <address className="not-italic text-base space-y-1 text-[var(--text-secondary)]">
                             <p>Boise Gun Club</p>
                             <p>1234 Range Road</p>
                             <p>Boise, ID 83702</p>
                             <p>
-                                <a href="tel:+12083451234" className="hover:text-accent transition-colors">
+                                <a href="tel:+12083451234" className="hover:text-[var(--accent-primary)] transition-colors">
                                     (208) 345-1234
                                 </a>
                             </p>
                             <p>
-                                <a href="mailto:info@boisegungclub.com" className="hover:text-accent transition-colors">
+                                <a href="mailto:info@boisegungclub.com" className="hover:text-[var(--accent-primary)] transition-colors">
                                     info@boisegungclub.com
                                 </a>
                             </p>
@@ -60,7 +60,7 @@ export default function Footer() {
                             <motion.a
                                 key={social.name}
                                 href={social.url}
-                                className="text-gray-400 hover:text-accent transition-colors"
+                                className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors"
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
                                 aria-label={social.name}
@@ -90,8 +90,8 @@ export default function Footer() {
                 {/* Right Column - Newsletter */}
                 <div className="space-y-6">
                     <div>
-                        <h3 className="text-xl font-space-grotesk mb-3">Stay Updated</h3>
-                        <p className="text-gray-300 mb-4 text-base">
+                        <h3 className="text-xl mb-3">Stay Updated</h3>
+                        <p className="text-[var(--text-secondary)] mb-4 text-base">
                             Subscribe to our newsletter for the latest events, matches, and club news.
                         </p>
                         <form onSubmit={handleSubmit} className="space-y-3">
@@ -104,8 +104,8 @@ export default function Footer() {
                                         setIsValidEmail(true);
                                     }}
                                     placeholder="Enter your email"
-                                    className={`w-full px-3 py-2 bg-gray-800 border text-base ${isValidEmail ? 'border-gray-700' : 'border-red-500'
-                                        } rounded-lg focus:outline-none focus:border-accent transition-colors`}
+                                    className={`w-full px-3 py-2 bg-[var(--bg-tertiary)] border text-base ${isValidEmail ? 'border-[var(--glass-border)]' : 'border-red-500'
+                                        } rounded-lg focus:outline-none focus:border-[var(--accent-primary)] transition-colors text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]`}
                                 />
                                 {!isValidEmail && (
                                     <p className="mt-1 text-red-500 text-sm">Please enter a valid email address</p>
@@ -113,7 +113,7 @@ export default function Footer() {
                             </div>
                             <button
                                 type="submit"
-                                className="w-full px-4 py-2 bg-accent hover:bg-accentHover text-white rounded-lg transition-colors text-base"
+                                className="w-full px-4 py-2 bg-[var(--accent-primary)] hover:brightness-90 text-white rounded-lg transition-colors text-base"
                             >
                                 Subscribe
                             </button>
@@ -122,9 +122,9 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="col-span-1 md:col-span-2 pt-6 mt-6 border-t border-gray-800">
+                <div className="col-span-1 md:col-span-2 pt-6 mt-6 border-t border-[var(--glass-border)]">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-3">
-                        <p className="text-gray-400 text-sm">
+                        <p className="text-[var(--text-secondary)] text-sm">
                             © {new Date().getFullYear()} Boise Gun Club. All rights reserved.
                         </p>
                         <nav>
@@ -133,7 +133,7 @@ export default function Footer() {
                                     <li key={item}>
                                         <a
                                             href="#"
-                                            className="text-gray-400 hover:text-accent transition-colors text-sm"
+                                            className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors text-sm"
                                         >
                                             {item}
                                         </a>

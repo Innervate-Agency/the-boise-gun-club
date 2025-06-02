@@ -110,13 +110,13 @@ const ImageGallery = ({
         >
             {/* 70s-style pattern overlay */}
             <div className="absolute inset-0 opacity-20 pointer-events-none z-10">
-                <div className="absolute inset-0 bg-[#FFC300]/10 mix-blend-overlay" />
+                <div className="absolute inset-0 bg-[var(--accent-secondary)]/10 mix-blend-overlay" />
                 <svg className="w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <pattern id="seventies-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                            <circle cx="20" cy="20" r="15" fill="none" stroke="#FFC300" strokeWidth="2" />
-                            <circle cx="0" cy="0" r="10" fill="#FFC300" opacity="0.3" />
-                            <circle cx="40" cy="40" r="10" fill="#FFC300" opacity="0.3" />
+                            <circle cx="20" cy="20" r="15" fill="none" stroke="var(--accent-secondary)" strokeWidth="2" />
+                            <circle cx="0" cy="0" r="10" fill="var(--accent-secondary)" opacity="0.3" />
+                            <circle cx="40" cy="40" r="10" fill="var(--accent-secondary)" opacity="0.3" />
                         </pattern>
                     </defs>
                     <rect x="0" y="0" width="100%" height="100%" fill="url(#seventies-pattern)" />
@@ -136,7 +136,7 @@ const ImageGallery = ({
                             transition: 'transform 0.1s ease-out'
                         }}
                     >
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#1E352F]/70 to-[#36454F]/70 mix-blend-multiply z-10" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/50 to-[var(--bg-secondary)]/50 mix-blend-multiply z-10" />
 
                         {/* Vintage filter overlay */}
                         {withVintageEffect && (

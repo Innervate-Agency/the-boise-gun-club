@@ -9,7 +9,7 @@ export default function Card({
 }) {
     return (
         <div
-            className={`bg-kent-slate-gray border border-don-gray/10 rounded-lg p-6 ${className}`}
+            className={`bg-[var(--bg-secondary)] border border-[var(--glass-border)] rounded-lg p-6 ${className}`}
             {...props}
         >
             {children}

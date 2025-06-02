@@ -28,11 +28,11 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
         
         await Promise.race([fontReady, fontTimeout]);
         
-        // Check if our custom fonts loaded successfully
-        const refrigeratorFont = document.fonts.check('1em "Refrigerator Deluxe", "DM Sans", sans-serif');
-        const museoFont = document.fonts.check('1em "Museo Sans", "DM Sans", sans-serif');
+        // Check if our primary brand fonts loaded successfully (optional, document.fonts.ready is often sufficient for Google Fonts)
+        const rajdhaniLoaded = document.fonts.check('1em "Rajdhani", sans-serif');
+        const notoLoaded = document.fonts.check('1em "Noto Sans", sans-serif');
         
-        if (refrigeratorFont && museoFont) {
+        if (rajdhaniLoaded && notoLoaded) {
           setFontsLoaded(true);
           document.documentElement.classList.add('fonts-loaded');
           document.documentElement.classList.remove('fonts-loading');
@@ -64,18 +64,19 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
       const style = document.createElement('style');
       style.textContent = `
         .fonts-loading {
-          opacity: 0.95;
+          opacity: 0.95; /* Slightly visible to indicate loading */
           transition: opacity 0.3s ease-in-out;
         }
         .fonts-loaded {
           opacity: 1;
           transition: opacity 0.3s ease-in-out;
         }
-        .fonts-fallback .font-heading {
-          font-family: "Inter", "DM Sans", sans-serif !important;
+        /* Fallback for if primary Google Fonts fail - use system UI fonts */
+        .fonts-fallback body {
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
         }
-        .fonts-fallback .font-body {
-          font-family: "DM Sans", "Inter", sans-serif !important;
+        .fonts-fallback h1, .fonts-fallback h2, .fonts-fallback h3, .fonts-fallback h4, .fonts-fallback h5, .fonts-fallback h6 {
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important; /* More generic heading fallback */
         }
       `;
       document.head.appendChild(style);

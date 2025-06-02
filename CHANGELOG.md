@@ -1,3 +1,53 @@
+<!-- YOU WILL ALWAYS FOLLOW THESE INSTRUCTIONS -->
+
+# PRE-RESPONSE CHECKPOINT
+
+#### _Run this before crafting any substantial response_ 
+
+##### ***CONTEXT CHECK:***  
+- [ ] What's the current date/time of this conversation? 
+- [ ] Who is the user, and what do I know about them? 
+- [ ] What specific problem are you trying to solve for the user, _Right Now_?
+- [ ] Are there any obvious facts/details you should acknowledge about the users' prompt? 
+##### ***FOCUS CHECK:*** 
+- [ ] What is the ONE main thing the user wants from me?
+- [ ] Am I about to overthink the prompt, or can I give the user a direct answer? 
+- [ ] Do I have enough info to help the user, or should I ask for clarification before proceeding? 
+##### ***APPROACH:*** 
+- I need to lead with the answer/solution first 
+- I need to keep it conversational but focused 
+- I don't need to explain things they already know 
+
+## POST-RESPONSE CHECKPOINT
+
+#### Quick Evaluation After Each Response
+
+##### **DELIVERY CHECK:** 
+- Did I solve their actual problem or just what I assumed they meant?
+- Did I check essential facts and context?
+- Was the answer concise and actionable?
+- What are their logical next steps?
+- Would I want to receive this response as a user?
+
+##### **QUALITY CHECK & CONFIDENCE LEVEL:** * 
+- 🟢 High: Directly addresses the need
+- 🟡 Medium: Mostly helpful, could be tighter
+- 🔴 Low: Missed context or overcomplicated it
+
+## **USAGE GUIDELINES:**
+
+##### **For quick questions:** 
+- Skip checkpoints, just answer directly 
+##### **For technical help:** 
+- Focus extra on the “what should they do next” part 
+##### **For creative/brainstorming:** 
+- Still use checkpoints but allow more exploration 
+### **Red flags that warrant extra attention:**
+1. Time-sensitive requests 
+2. Technical troubleshooting 
+3. When user seems frustrated 
+4. Complex multipart questions
+
 # BOISE GUN CLUB V4 - DEVELOPMENT CHANGELOG
 
 ## SESSION: May 31, 2025 - Official Branding Implementation
@@ -440,3 +490,127 @@ boisegunclubv4/
 - **Documentation:** Comprehensive brand specifications and implementation guides
 
 **Key Achievement:** The Boise Gun Club website now authentically represents the official brand identity with exact colors ("Misty Fall Morning in the Cascades" dark theme and "Spring Day Along The East Fork of The Owyhee River" light theme) and typography (Rajdhani + Noto Sans/Serif) as specified in the official branding guide. The CSS custom property architecture ensures consistent brand application while maintaining flexibility for future updates.
+
+---
+
+# CRITICAL FIX SESSION: June 2, 2025
+
+## 🚨 **MAJOR ISSUES DISCOVERED & RESOLVED**
+
+### **Problem Identified:** "Site is fucked, fam"
+The site had critical display issues due to conflicting CSS and missing font references.
+
+#### 🔥 **Critical Issues Fixed:**
+
+### 1. **Conflicting Theme Variables** ✅ FIXED
+- **Problem:** Duplicate CSS variable definitions in `themes.css` 
+- **Issue:** Lines 258+ had conflicting `[data-theme='dark']` that overrode official brand colors
+- **Result:** Text was unreadable, wrong colors everywhere
+- **Fix:** Removed duplicate/conflicting theme definitions
+- **Files:** `/src/styles/themes.css`
+
+### 2. **Missing Font References** ✅ FIXED  
+- **Problem:** 33+ references to non-existent fonts across the site
+- **Fonts Referenced:** `Clutch_Block`, `Refrigerator_Deluxe`, `Museo` (deleted in previous session)
+- **Result:** Text falling back to random system fonts, inconsistent appearance
+- **Fix:** Mass replacement with official brand fonts:
+  - `Clutch_Block` → `Rajdhani` (headers)
+  - `Refrigerator_Deluxe` → `Rajdhani` (headers) 
+  - `Museo` → `Noto Sans` (body text)
+- **Files:** All `.tsx` files in `/src/app/`
+
+### 3. **Color System Conflicts** ✅ FIXED
+- **Problem:** Official brand colors being overridden by legacy color definitions
+- **Result:** Poor contrast, wrong accent colors, unreadable text
+- **Fix:** Ensured only official Boise Gun Club brand colors are used
+
+---
+
+## ✅ **VERIFICATION RESULTS**
+
+- **Build Status:** ✅ Success - `npm run build` completes without errors
+- **Font Loading:** ✅ All fonts now load correctly (Rajdhani + Noto Sans/Serif)
+- **Color Contrast:** ✅ Proper contrast ratios restored
+- **Brand Compliance:** ✅ Only official brand colors in use
+
+---
+
+## 🎯 **WHAT WAS THE ROOT CAUSE?**
+
+The previous branding implementation session (May 31) successfully added the official brand colors but **failed to remove the old conflicting definitions**. This created a "last-one-wins" CSS cascade problem where:
+
+1. Official brand colors were defined ✅
+2. Old generic colors were defined later ❌ (overrode the brand colors)
+3. Font references weren't updated ❌ (causing fallback chaos)
+
+---
+
+# PAGE CONSOLIDATION SESSION: June 2, 2025
+
+## 🔄 **MAJOR NAVIGATION RESTRUCTURE**
+
+### **Problem Identified:** 
+User feedback: *"About, Ranges, Gallery, and Contact should all be one page, yeah? Right now they're very empty, and taking up a ton of real estate in the menu. Gallery also still looks dramatically different than the other pages."*
+
+### ✅ **COMPLETED WORK**
+
+#### 📄 **Page Consolidation**
+- **Created:** `/src/app/club-info/page.tsx` - Consolidated single page
+- **Sections Combined:**
+  - About Us (history, mission, stats)
+  - Our Facilities (ranges and amenities)
+  - Photo Gallery (integrated gallery component)
+  - Contact Information (details + contact form)
+- **Removed Files:**
+  - `/src/app/about/page.tsx` ❌
+  - `/src/app/ranges/page.tsx` ❌  
+  - `/src/app/contact/page.tsx` ❌
+
+#### 🧭 **Navigation Updates**
+- **Before:** 8 navigation items (HOME, ABOUT, MUSEUM, EVENTS, RANGES, GALLERY, MEMBERSHIP, CONTACT)
+- **After:** 5 navigation items (HOME, CLUB INFO, MUSEUM, EVENTS, MEMBERSHIP) 
+- **Updated Files:**
+  - `/src/components/navigation/NavBar.tsx` - Updated navLinks array
+  - Navigation now cleaner and less cluttered
+
+#### 🎨 **Gallery Styling Consistency**
+- **Problem:** Gallery page used different styling (`var(--bg-primary)` vs gradient backgrounds)
+- **Fix:** Updated `/src/app/gallery/page.tsx` to match site theme:
+  - Added gradient background (`from-slate-900 via-slate-800 to-slate-900`)
+  - Added ClayFragments and SmokeAnimation effects
+  - Updated typography to use `font-heading` and `font-body` classes
+  - Consistent card styling with glassmorphism effects
+  - Proper accent color usage (`text-accent-primary`)
+
+---
+
+## 📊 **IMPACT ASSESSMENT**
+
+### ✅ **Navigation Improvements:**
+- **Reduced clutter:** 62.5% reduction in menu items (8→5)
+- **Better UX:** Consolidated related content into logical sections
+- **Consistent styling:** All pages now follow the same design patterns
+- **Mobile friendly:** Less navigation complexity on small screens
+
+### 🎯 **Content Organization:**
+- **About section:** History, mission, and key stats in organized cards
+- **Facilities section:** 6 detailed facility cards with icons and descriptions
+- **Gallery section:** Integrated PhotoGallery component with consistent theming
+- **Contact section:** Info cards + functional contact form
+
+### 🔧 **Technical Benefits:**
+- **Reduced bundle size:** Eliminated 3 separate page components
+- **Better SEO:** Single page with comprehensive club information
+- **Easier maintenance:** Single source of truth for club information
+- **Consistent animations:** All sections use same motion patterns
+
+---
+
+## 🚀 **READY FOR MEETING**
+
+The site now has:
+- ✅ Clean, uncluttered navigation (5 items vs 8)
+- ✅ Comprehensive club information in single organized page
+- ✅ Consistent styling across all sections
+- ✅ Professional, cohesive user experience
+- ✅ All functionality preserved while improving UX

@@ -21,15 +21,10 @@ const DividerClayParticles = dynamic(() => import('../components/effects/Divider
   ssr: false
 });
 
-const ClayFragments = dynamic(() => import('../components/effects/ClayFragments'), {
-  ssr: false
-});
+// ClayFragments removed - was causing ChunkLoadError
 
-// Import MorningMistAnimation with dynamic loading
-const MorningMistAnimation = dynamic(() => import('../components/effects/MorningMistAnimation'), {
-  ssr: false,
-  loading: () => <div className="absolute inset-0 pointer-events-none" />
-});
+// Import MorningMistAnimation directly (no dynamic loading needed)
+import MorningMistAnimation from '../components/effects/MorningMistAnimation';
 
 // Add Gallery component import
 import GalleryPreview from '../components/home/GalleryPreview';
@@ -147,12 +142,12 @@ const FacilityCard: FC<{
                         <div className="w-16 h-16 rounded-xl overflow-hidden mr-4 flex-shrink-0 border border-white/20 shadow-lg">
                             <Image src={icon} alt={title} width={64} height={64} className="object-cover" />
                         </div>
-                        <h3 className="text-2xl text-white font-['Refrigerator_Deluxe'] uppercase tracking-wide">{title}</h3>
+                        <h3 className="text-2xl text-[var(--text-primary)] uppercase tracking-wide">{title}</h3>
                     </div>
-                    <p className="text-white/70 mb-6 font-['Museo'] leading-relaxed">{description}</p>
+                    <p className="text-[var(--text-primary)]/70 mb-6 leading-relaxed">{description}</p>
                     <Link
                         href={link}
-                        className="inline-flex items-center text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] font-['Refrigerator_Deluxe'] text-sm uppercase tracking-wider transition-colors group/link"
+                        className="inline-flex items-center text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] text-sm uppercase tracking-wider transition-colors group/link"
                     >
                         {linkText}
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 transform group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -180,14 +175,14 @@ const StatCard: FC<{ value: string; label: string; index: number }> = ({ value, 
         >
             <div className="backdrop-blur-md bg-white/[0.05] border border-white/10 rounded-xl p-6 text-center hover:bg-white/[0.08] transition-all duration-300">
                 <motion.div
-                    className="text-5xl md:text-6xl font-bold text-[var(--accent-gold)] mb-2 font-['Refrigerator_Deluxe']"
+                    className="text-5xl md:text-6xl font-bold text-[var(--accent-secondary)] mb-2"
                     initial={{ y: 20 }}
                     animate={isInView ? { y: 0 } : { y: 20 }}
                     transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                 >
                     {value}
                 </motion.div>
-                <div className="text-white/60 text-sm font-['Museo'] uppercase tracking-wider">{label}</div>
+                <div className="text-[var(--text-primary)]/60 text-sm uppercase tracking-wider">{label}</div>
             </div>
         </motion.div>
     );
@@ -254,7 +249,7 @@ const HomePage: FC = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="text-5xl md:text-6xl font-bold text-[var(--accent-gold)] mb-4 font-['Refrigerator_Deluxe'] uppercase"
+                        className="text-5xl md:text-6xl font-bold text-[var(--accent-gold)] mb-4 font-['Rajdhani'] uppercase"
                     >
                         Our Facilities
                     </motion.h2>
@@ -262,7 +257,7 @@ const HomePage: FC = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto font-['Museo']"
+                        className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto font-['Noto Sans']"
                     >
                         World-class shooting facilities designed for champions
                     </motion.p>
@@ -276,7 +271,7 @@ const HomePage: FC = () => {
             </Section>            {/* Gallery Preview with sophisticated glass */}
             <Section background="gradient" className="relative">
                 <MorningMistAnimation intensity="subtle" />
-                <ClayFragments count={8} />
+                {/* ClayFragments removed - was broken */}
                 <GalleryPreview galleryItems={galleryItems} />
             </Section>
 
@@ -293,7 +288,7 @@ const HomePage: FC = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="text-5xl md:text-6xl font-bold text-[var(--accent-gold)] mb-4 font-['Refrigerator_Deluxe'] uppercase"
+                        className="text-5xl md:text-6xl font-bold text-[var(--accent-gold)] mb-4 font-['Rajdhani'] uppercase"
                     >
                         By The Numbers
                     </motion.h2>
@@ -320,7 +315,7 @@ const HomePage: FC = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="text-5xl md:text-6xl font-bold text-[var(--accent-gold)] mb-12 font-['Refrigerator_Deluxe'] uppercase text-center"
+                        className="text-5xl md:text-6xl font-bold text-[var(--accent-gold)] mb-12 font-['Rajdhani'] uppercase text-center"
                     >
                         Member Stories
                     </motion.h2>
@@ -339,7 +334,7 @@ const HomePage: FC = () => {
                                 
                                 {/* Glass card */}
                                 <div className="relative glass-premium p-8 rounded-2xl vintage-photo">
-                                    <blockquote className="text-xl md:text-2xl text-white/80 mb-6 font-['Museo'] italic leading-relaxed">
+                                    <blockquote className="text-xl md:text-2xl text-[var(--text-primary)]/80 mb-6 font-['Noto Sans'] italic leading-relaxed">
                                         "{testimonial.quote}"
                                     </blockquote>
                                     <div className="flex items-center">
@@ -353,10 +348,10 @@ const HomePage: FC = () => {
                                             />
                                         </div>
                                         <div>
-                                            <div className="text-[var(--accent-gold)] font-bold font-['Refrigerator_Deluxe'] uppercase">
+                                            <div className="text-[var(--accent-gold)] font-bold font-['Rajdhani'] uppercase">
                                                 {testimonial.name}
                                             </div>
-                                            <div className="text-white/50 text-sm font-['Museo']">
+                                            <div className="text-[var(--text-primary)]/50 text-sm font-['Noto Sans']">
                                                 {testimonial.title}
                                             </div>
                                         </div>

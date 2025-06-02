@@ -69,7 +69,7 @@ export default function EventDetailPage({ params }: EventPageProps) {
 
           {/* Event Header */}
           <div className="bg-[var(--bg-secondary)] rounded-lg p-8 mb-8 border border-[var(--glass-border)]">
-            <h1 className="text-4xl md:text-5xl font-bold font-[\'Refrigerator_Deluxe\'] uppercase mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold uppercase mb-4">
               {event.title}
             </h1>
             
@@ -100,7 +100,7 @@ export default function EventDetailPage({ params }: EventPageProps) {
 
           {/* Event Description */}
           <div className="bg-[var(--bg-secondary)] rounded-lg p-8 mb-8 border border-[var(--glass-border)]">
-            <h2 className="text-2xl font-bold font-[\'Refrigerator_Deluxe\'] uppercase mb-4">
+            <h2 className="text-2xl font-bold uppercase mb-4">
               Event Details
             </h2>
             <p className="text-lg leading-relaxed text-[var(--text-secondary)]">

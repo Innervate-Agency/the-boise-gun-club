@@ -40,7 +40,7 @@ const EventCard: React.FC<{ event: Event, index: number }> = ({ event, index }) 
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="bg-neutral-800/60 backdrop-blur-lg rounded-xl shadow-2xl overflow-hidden border border-neutral-700/80 flex flex-col group hover:border-[var(--accent-primary)]/70 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[var(--accent-primary)]/20"
+      className="glass-premium rounded-xl shadow-2xl overflow-hidden border border-white/20 flex flex-col group hover:border-[var(--accent-primary)]/70 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[var(--accent-primary)]/20"
     >
       <div className="relative h-48 md:h-56 w-full overflow-hidden">
         <Image 
@@ -51,19 +51,19 @@ const EventCard: React.FC<{ event: Event, index: number }> = ({ event, index }) 
           className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-        <span className="absolute top-3 right-3 bg-[var(--accent-primary)]/90 text-white text-xs font-semibold px-3 py-1 rounded-full font-['Museo'] tracking-wide">
+        <span className="absolute top-3 right-3 bg-[var(--accent-primary)]/90 text-white text-xs font-semibold px-3 py-1 rounded-full tracking-wide">
           {event.category}
         </span>
       </div>
       <div className="p-5 md:p-6 flex-grow flex flex-col">
-        <h3 className="text-xl md:text-2xl font-bold font-['Heading_Pro_Trial'] text-white mb-2 leading-tight group-hover:text-[var(--accent-primary)] transition-colors duration-300">
+        <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-2 leading-tight group-hover:text-[var(--accent-primary)] transition-colors duration-300">
           {event.title}
         </h3>
         
-        <div className="space-y-2 text-sm text-neutral-300 font-['Museo'] mb-4">
+        <div className="space-y-2 text-sm text-[var(--text-secondary)] mb-4">
           <div className="flex items-center">
             <CalendarDaysIcon className="w-4 h-4 mr-2 text-[var(--accent-secondary)]" />
-            <span>{event.date}{event.repeats ? <span className="text-neutral-400"> ({event.repeats})</span> : ''}</span>
+            <span>{event.date}{event.repeats ? <span className="text-[var(--text-secondary)]"> ({event.repeats})</span> : ''}</span>
           </div>
           {event.time && (
             <div className="flex items-center">
@@ -77,14 +77,14 @@ const EventCard: React.FC<{ event: Event, index: number }> = ({ event, index }) 
           </div>
         </div>
 
-        <p className="text-neutral-400 font-['Museo'] text-sm leading-relaxed mb-5 flex-grow">
+        <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-5 flex-grow">
           {event.description}
         </p>
 
         {event.detailsLink ? (
           <Link 
             href={event.detailsLink}
-            className="mt-auto inline-flex items-center justify-center text-sm font-semibold font-['Heading_Pro_Trial'] text-[var(--accent-primary)] hover:text-white bg-neutral-700/50 hover:bg-[var(--accent-primary)]/80 px-5 py-2.5 rounded-md transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[var(--accent-primary)]/30"
+            className="mt-auto inline-flex items-center justify-center text-sm font-semibold text-[var(--accent-primary)] hover:text-white bg-[var(--bg-secondary)]/50 hover:bg-[var(--accent-primary)]/80 px-5 py-2.5 rounded-md transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[var(--accent-primary)]/30"
           >
             View Details <ChevronRightIcon className="w-4 h-4 ml-1.5 transform transition-transform duration-300 group-hover:translate-x-0.5" />
           </Link>
@@ -159,10 +159,10 @@ const EventsPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="relative min-h-screen bg-gradient-to-b from-neutral-900 to-neutral-800 text-white overflow-hidden flex items-center justify-center">
+      <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[var(--accent-primary)] mx-auto mb-4"></div>
-          <p className="text-xl font-['Museo']">Loading events...</p>
+          <p className="text-xl">Loading events...</p>
         </div>
       </div>
     );
@@ -170,16 +170,16 @@ const EventsPage: React.FC = () => {
 
   if (error) {
     return (
-      <div className="relative min-h-screen bg-gradient-to-b from-neutral-900 to-neutral-800 text-white overflow-hidden flex items-center justify-center">
+      <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden flex items-center justify-center">
         <div className="text-center">
-          <p className="text-xl font-['Museo'] text-red-400">Error loading events: {error}</p>
+          <p className="text-xl text-red-400">Error loading events: {error}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-neutral-900 to-neutral-800 text-white overflow-hidden">
+    <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden">
       <ParticleAnimation />
       
       <motion.header 
@@ -192,13 +192,13 @@ const EventsPage: React.FC = () => {
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
         <div className="relative z-10 container mx-auto px-4">
           <motion.h1 
-            className="text-5xl md:text-7xl font-bold font-['Refrigerator_Deluxe'] tracking-tight text-shadow-lg"
+            className="text-5xl md:text-7xl font-bold tracking-tight text-shadow-lg"
             variants={sectionVariants} custom={0}
           >
             {pageTitle}
           </motion.h1>
           <motion.p 
-            className="mt-6 text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto font-['Museo']"
+            className="mt-6 text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto"
             variants={sectionVariants} custom={1}
           >
             Stay up-to-date with all the competitions, training sessions, and social gatherings at Boise Gun Club.
@@ -215,7 +215,7 @@ const EventsPage: React.FC = () => {
         {events.length === 0 && (
           <motion.div 
             initial={{opacity: 0, y: 20}} animate={{opacity:1, y: 0}} transition={{duration: 0.5}}
-            className="text-center py-12 text-neutral-400 font-['Museo'] text-lg"
+            className="text-center py-12 text-[var(--text-secondary)] text-lg"
           >
             <p>No upcoming events at the moment. Please check back soon!</p>
           </motion.div>

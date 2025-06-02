@@ -33,7 +33,7 @@ const FacilityCard: React.FC<FacilityCardProps> = ({
             className="group relative rounded-2xl overflow-hidden h-full"
         >
             {/* Mica/Acrylic background blur effect */}
-            <div className="absolute inset-0 backdrop-blur-2xl bg-[rgba(18,18,18,0.4)] border border-[rgba(255,255,255,0.08)] shadow-2xl z-0 group-hover:bg-[rgba(18,18,18,0.5)] transition-colors duration-500" />
+            <div className="absolute inset-0 backdrop-blur-2xl bg-[rgba(75,75,75,0.4)] border border-[rgba(255,255,255,0.08)] shadow-2xl z-0 group-hover:bg-[rgba(75,75,75,0.5)] transition-colors duration-500" />
             {/* Top gradient border */}
             <div className="absolute top-0 left-10 right-10 h-[1px] bg-gradient-to-r from-transparent via-[var(--accent-primary)]/40 to-transparent z-[1]" />
             {/* Subtle corner gradients */}
@@ -74,20 +74,20 @@ const FacilityCard: React.FC<FacilityCardProps> = ({
                     </div>
 
                     {/* Title with animated gradient on hover */}
-                    <h3 className="text-2xl ml-5 font-heading tracking-wide group-hover:bg-gradient-to-r group-hover:from-[var(--accent-primary)] group-hover:to-[var(--accent-primary)]/70 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500">
+                    <h3 className="text-2xl ml-5 tracking-wide group-hover:bg-gradient-to-r group-hover:from-[var(--accent-primary)] group-hover:to-[var(--accent-primary)]/70 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500">
                         {title}
                     </h3>
                 </div>
 
                 {/* Description with improved typography */}
-                <p className="text-[var(--text-secondary)] mb-6 text-base font-body leading-relaxed">
+                <p className="text-[var(--text-secondary)] mb-6 text-base leading-relaxed">
                     {description}
                 </p>
 
                 {/* Animated link */}
                 <Link
                     href={link}
-                    className="inline-flex items-center text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] font-heading text-sm tracking-wide transition-colors duration-300 group-hover:translate-x-1"
+                    className="inline-flex items-center text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] text-sm tracking-wide transition-colors duration-300 group-hover:translate-x-1"
                    >
                     <span className="relative">
                         {linkText}
