@@ -1,20 +1,18 @@
-# Boise Gun Club Website
+Boise Gun Club Website
 
-## Font Requirements
+**Fonts:**
 
-The site uses the following premium fonts through Adobe Fonts (Typekit):
+This site uses "refrigerator-deluxe" for headings and titles, and "museo-sans" for body text and UI elements, both served via Adobe Fonts. DM Sans is included as a fallback.
 
-- "refrigerator-deluxe" for headings and titles
-- "museo-sans" for body text and UI elements
+Adobe Fonts integration is configured in `src/app/layout.tsx` using this CSS link:
 
-The Adobe Fonts integration has been set up in `src/app/layout.tsx` using the direct CSS link method:
 ```html
 <link rel="stylesheet" href="https://use.typekit.net/gly5pnr.css">
 ```
 
-### Font Usage
+**Font Usage:**
 
-For consistency, use these utility classes across components:
+For consistent styling, use these utility classes:
 
 ```jsx
 // For headings and titles
@@ -24,46 +22,27 @@ For consistency, use these utility classes across components:
 <p className="font-body">Body content</p>
 ```
 
-Or reference the fonts directly in Tailwind classes:
+Alternatively, directly reference the fonts in Tailwind classes:
 
 ```jsx
 <h1 className="font-['refrigerator-deluxe']">Heading Text</h1>
 <p className="font-['museo-sans']">Body content</p>
 ```
 
-"DM Sans" is included as a fallback if Adobe Fonts fails to load.
+**Getting Started:**
 
-## Getting Started
+1. Run the development server: `npm run dev`, `yarn dev`, `pnpm dev`, or `bun dev`.
+2. Open [http://localhost:3000](http://localhost:3000) in your browser.
+3. Edit `app/page.tsx` to modify the page.
 
-First, run the development server:
+This project leverages [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) for automatic optimization and loading of [Geist](https://vercel.com/font).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Learn More:**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+*   [Next.js Documentation](https://nextjs.org/docs)
+*   [Learn Next.js](https://nextjs.org/learn)
+*   [Next.js GitHub Repository](https://github.com/vercel/next.js)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Deploy on Vercel:**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The easiest way to deploy is with the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme). See the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for details.
