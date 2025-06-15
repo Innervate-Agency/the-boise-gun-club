@@ -39,7 +39,7 @@
 ##### **For quick questions:** 
 - Skip checkpoints, just answer directly 
 ##### **For technical help:** 
-- Focus extra on the “what should they do next” part 
+- Focus extra on the "what should they do next" part 
 ##### **For creative/brainstorming:** 
 - Still use checkpoints but allow more exploration 
 ### **Red flags that warrant extra attention:**
@@ -49,6 +49,60 @@
 4. Complex multipart questions
 
 # BOISE GUN CLUB V4 - DEVELOPMENT CHANGELOG
+
+## SESSION: June 1, 2024 - New Page Scaffolding & Design Correction
+
+### 🎯 **ORIGINAL TASK**
+
+**User Request:** *"Add all the missing pages to the application's mega menu... [and later]... THE FONT IS NOT REFRIDGERATOR DELUX AND MUSEOSANS... the zig-zag layout is implemented incorrectly... the overall look is still not meeting expectations... Fonts are still broken, and all the pages content is still very plain jane"*
+
+This session focused on scaffolding 15 new pages and then correcting significant design regressions and visual inconsistencies based on user feedback.
+
+---
+
+### ✅ **COMPLETED WORK**
+
+### 🏗️ **New Page Creation & Content Scaffolding**
+
+**Status:** ✅ FULLY IMPLEMENTED
+
+-   **15 New Pages:** Created the complete file structure and placeholder pages for all missing menu items across Schedule, Ranges, Members, and Forum sections.
+-   **Content Population:** Populated all new pages with detailed, relevant placeholder text and images specific to a gun club.
+-   **Component-Based Approach:** Refactored page content into a structured, component-based format within each page file for easier updates.
+
+### 🎨 **Visual & Typographical System Correction**
+
+**Status:** ✅ FULLY IMPLEMENTED
+
+-   **Typography Fix:**
+    -   Corrected `tailwind.config.js` to use `Rajdhani` and `Noto Sans`.
+    -   Added Google Fonts import to `globals.css` for `Rajdhani` and `Noto Sans`.
+    -   Set the body font weight to 300 (light) to match design requirements.
+    -   Removed all incorrect legacy font references.
+-   **Layout Fix:**
+    -   Corrected the zig-zag layout on all 15 new pages to ensure text is always left-aligned.
+-   **Visual Richness:**
+    -   Extracted the homepage's `Section` component into a reusable layout component (`src/components/layout/Section.tsx`).
+    -   Refactored all 15 new pages to use this `Section` component, adding the 'grid' and 'mist' background textures for a richer, more consistent look and feel.
+-   **Image Configuration:**
+    -   Updated `next.config.js` to add `images.unsplash.com` to the list of permitted image hostnames, fixing errors on the homepage.
+
+### 🔧 **Technical Implementation Details**
+
+#### Files Created
+
+1.  **`/src/components/layout/Section.tsx`**: Reusable component for consistent page section styling.
+2.  **15 Page Files**: Including `src/app/schedule/weekly/page.tsx`, `src/app/members/portal/page.tsx`, etc.
+
+#### Key Files Modified
+
+1.  **`/src/app/globals.css`**: Added correct Google Font imports and set default body font-weight.
+2.  **`tailwind.config.js`**: Corrected `fontFamily` definitions.
+3.  **`next.config.js`**: Added new image hostname.
+4.  **`src/app/page.tsx`**: Refactored to use the new `Section` component.
+5.  All 15 new `page.tsx` files were refactored to use the `<Section>` component and correct layout/styling.
+
+---
 
 ## SESSION: May 31, 2025 - Official Branding Implementation
 

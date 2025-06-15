@@ -45,10 +45,12 @@ module.exports = {
         terminalAmber: 'var(--terminal-amber)',
       },
       fontFamily: {
-        'heading': ['refrigerator-deluxe', 'DM Sans', 'sans-serif'],
-        'body': ['museo-sans', 'DM Sans', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        'heading': ['Rajdhani', 'sans-serif'],
+        'body': ['Noto Sans', 'sans-serif'],
         'vt323': ['VT323', 'monospace'],
         'space-grotesk': ['Space Grotesk', 'sans-serif'],
+        'rajdhani': ['Rajdhani', 'sans-serif'],
+        'noto-sans': ['Noto Sans', 'sans-serif'],
       },
       fontSize: {
         // Minimum 18px base for accessibility
