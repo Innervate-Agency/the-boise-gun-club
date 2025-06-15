@@ -1,198 +1,98 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { GalleryProvider, useGallery } from './GalleryContext';
-import PhotoModal from './PhotoModal';
-import FilterControls from './FilterControls';
-import useDeterministicRandom from '../../hooks/useDeterministicRandom';
-import UnsplashImage from '../ui/UnsplashImage';
 import { getShootingSportsImage } from '../../utils/imageUtils';
-import './Gallery.css';
+import { XMarkIcon } from '@heroicons/react/24/solid';
 
-// Masonry layout component
-function MasonryGrid({ children }: { children: React.ReactNode }) {
-    return (
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-            {children}
-        </div>
-    );
-}
+const galleryItems = [
+    { id: 'events', category: 'Events', alt: "Clay Target Mid-Flight" },
+    { id: 'competition', category: 'Competition', alt: "Trap Shooting Competition" },
+    { id: 'ranges', category: 'Ranges', alt: "Sporting Clays Course" },
+    { id: 'training', category: 'Training', alt: "Shooting Instruction" },
+    { id: 'community', category: 'Community', alt: "Members Socializing" },
+];
 
-// Subtle mist effect component
-function MistEffect() {
-    // Client-side only indicator
-    const [isMounted, setIsMounted] = useState(false);
-    // Use deterministic random for consistent rendering
-    const { getRandomValue } = useDeterministicRandom(15, 12345);
-    
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
-    
-    if (!isMounted) {
-        return null;
-    }
-    
-    return (
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {Array.from({ length: 3 }).map((_, i) => (
-                <motion.div
-                    key={i}
-                    className="absolute w-96 h-96 bg-gradient-to-t from-white/2 to-transparent rounded-full blur-3xl"
-                    animate={{
-                        x: [
-                            getRandomValue(i * 3, -30, 30),
-                            getRandomValue(i * 3 + 1, -30, 30),
-                            getRandomValue(i * 3 + 2, -30, 30)
-                        ],
-                        y: [
-                            getRandomValue(i * 5, 0, 80),
-                            getRandomValue(i * 5 + 1, -80, 0),
-                            getRandomValue(i * 5 + 2, 0, 80)
-                        ],
-                        opacity: [0, 0.08, 0]
-                    }}
-                    transition={{
-                        duration: 15 + getRandomValue(i * 7, 0, 8),
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                    style={{
-                        left: `${getRandomValue(i * 11, 0, 100)}%`,
-                        top: `${getRandomValue(i * 13, 0, 100)}%`
-                    }}
-                />
-            ))}
-        </div>
-    );
-}
+export default function PhotoGallery() {
+    const [featuredImage, setFeaturedImage] = useState(galleryItems[0]);
+    const [modalImage, setModalImage] = useState<typeof galleryItems[0] | null>(null);
 
-// Glass photo card effect component  
-function GlassPhotoCard({ children, onClick }: { children: React.ReactNode, onClick: () => void }) {
-    return (
-        <div
-            className="relative group cursor-pointer glass-premium rounded-2xl overflow-hidden
-                     hover:scale-[1.02] transition-all duration-500"
-            onClick={onClick}
-        >
-            {/* Glassmorphism background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            
-            {children}
-        </div>
-    );
-}
-
-function GalleryContent() {
-    const { photos, selectedPhoto, setSelectedPhoto, filter } = useGallery();
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    // Filter photos based on selected category
-    const filteredPhotos = photos.filter(photo =>
-        filter === 'all' ? true : photo.category === filter
-    );
-
-    // Intersection Observer for lazy loading
-    useEffect(() => {
-        const options = {
-            root: null,
-            rootMargin: '100px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, options);
-
-        const images = containerRef.current?.querySelectorAll('.gallery-image');
-        images?.forEach(img => observer.observe(img));
-
-        return () => observer.disconnect();
-    }, [filteredPhotos]);
+    const thumbnails = galleryItems.filter(item => item.id !== featuredImage.id);
 
     return (
-        <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] relative overflow-hidden">
-            {/* Background effects */}
-            <MistEffect />
-            <div className="absolute inset-0 bg-gradient-to-b from-[var(--accent-primary)]/5 to-[var(--accent-secondary)]/5" />
+        <>
+            <div className="w-full">
+                {/* Main Featured Image */}
+                <motion.div 
+                    layoutId={`gallery-item-${featuredImage.id}`} 
+                    className="relative w-full h-96 md:h-[500px] rounded-xl overflow-hidden cursor-pointer group mb-4"
+                    onClick={() => setModalImage(featuredImage)}
+                >
+                    <Image
+                        src={getShootingSportsImage(featuredImage.id as any, { width: 1200, height: 800 })}
+                        alt={featuredImage.alt}
+                        layout="fill"
+                        objectFit="cover"
+                        className="transform group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-0 left-0 p-6">
+                        <h3 className="text-2xl font-bold uppercase text-white">{featuredImage.category}</h3>
+                        <p className="text-lg text-gray-300">{featuredImage.alt}</p>
+                    </div>
+                </motion.div>
 
-            <div className="container mx-auto px-4 py-16 relative z-10">
-                {/* Gallery header */}
-                <div className="text-center mb-12">
-                    <h1 className="font-['Rajdhani'] text-5xl md:text-6xl font-bold mb-4 tracking-wider text-[var(--accent-gold)] uppercase">
-                        PHOTO ARCHIVES
-                    </h1>
-                    <p className="text-xl text-[var(--text-secondary)] font-['Noto Sans']">
-                        A journey through time at Boise Gun Club
-                    </p>
-                </div>
-
-                {/* Filter controls */}
-                <FilterControls />
-
-                {/* Photo grid */}
-                <div ref={containerRef} className="mt-8">
-                    <MasonryGrid>
-                        {filteredPhotos.map((photo) => (
-                            <motion.div
-                                key={photo.id}
-                                layoutId={`photo-${photo.id}`}
-                                className="gallery-image mb-4 opacity-0 transition-opacity duration-500"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                            >
-                                <GlassPhotoCard onClick={() => setSelectedPhoto(photo)}>
-                                    {/* Glass overlay effect */}
-                                    <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-br from-[var(--accent-primary)]/10 to-[var(--accent-secondary)]/5" />
-                                    
-                                    <Image
-                                        src={photo.src}
-                                        alt={photo.alt}
-                                        width={photo.width}
-                                        height={photo.height}
-                                        className="w-full h-auto transition-transform duration-300 relative z-0"
-                                        placeholder="blur"
-                                        blurDataURL={photo.blurDataUrl}
-                                    />
-
-                                    {/* Photo info overlay with glassmorphism */}
-                                    <div className="absolute inset-x-0 bottom-0 p-6 text-white opacity-0 transform 
-                                                  translate-y-4 transition-all group-hover:opacity-100 
-                                                  group-hover:translate-y-0 z-20 backdrop-blur-sm bg-black/30">
-                                        <h3 className="text-lg font-bold font-['Rajdhani'] mb-1 uppercase tracking-wide">
-                                            {photo.alt}
-                                        </h3>
-                                        <p className="text-sm text-[var(--accent-gold)] font-['Noto Sans']">
-                                            {photo.photographer} • {photo.year}
-                                        </p>
-                                    </div>
-                                </GlassPhotoCard>
-                            </motion.div>
-                        ))}
-                    </MasonryGrid>
+                {/* Thumbnail Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {thumbnails.map(item => (
+                        <motion.div
+                            key={item.id}
+                            layoutId={`gallery-item-${item.id}`}
+                            className="relative h-32 md:h-48 rounded-lg overflow-hidden cursor-pointer group"
+                            onClick={() => setFeaturedImage(item)}
+                        >
+                            <Image
+                                src={getShootingSportsImage(item.id as any, { width: 400, height: 400 })}
+                                alt={item.alt}
+                                layout="fill"
+                                objectFit="cover"
+                                className="transform group-hover:scale-110 transition-transform duration-300"
+                            />
+                            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
+                            <p className="absolute bottom-2 left-2 text-white font-bold uppercase text-sm">{item.category}</p>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
 
-            {/* Photo modal */}
+            {/* Full-screen Modal */}
             <AnimatePresence>
-                {selectedPhoto && <PhotoModal />}
+                {modalImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center"
+                        onClick={() => setModalImage(null)}
+                    >
+                        <motion.div className="relative w-full h-full max-w-5xl max-h-[90vh]">
+                            <Image
+                                src={getShootingSportsImage(modalImage.id as any, { width: 1920, height: 1080, quality: 95 })}
+                                alt={modalImage.alt}
+                                layout="fill"
+                                objectFit="contain"
+                            />
+                        </motion.div>
+                        <motion.button 
+                            className="absolute top-4 right-4 text-white bg-white/10 p-2 rounded-full hover:bg-white/20"
+                            onClick={() => setModalImage(null)}
+                        >
+                            <XMarkIcon className="h-6 w-6" />
+                        </motion.button>
+                    </motion.div>
+                )}
             </AnimatePresence>
-        </div>
-    );
-}
-
-export default function PhotoGallery() {
-    return (
-        <GalleryProvider>
-            <GalleryContent />
-        </GalleryProvider>
+        </>
     );
 }

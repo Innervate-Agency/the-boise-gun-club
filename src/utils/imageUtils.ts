@@ -81,7 +81,7 @@ export function getUnsplashUrl(
   const photoId = SHOOTING_PHOTO_IDS[query as keyof typeof SHOOTING_PHOTO_IDS] || SHOOTING_PHOTO_IDS.default;
   
   // Generate direct Unsplash URL for specific photo
-  return `https://images.unsplash.com/photo-1${photoId}?w=${width}&h=${height}&fit=${fit}&crop=entropy&auto=format&q=${quality}`;
+  return `https://images.unsplash.com/photo-1-${photoId}?w=${width}&h=${height}&fit=${fit}&crop=entropy&auto=format&q=${quality}`;
 }
 
 export function getShootingSportsImage(
