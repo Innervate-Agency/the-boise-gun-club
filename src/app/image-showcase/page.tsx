@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import UnsplashImage, { HeroImage, EventImage, TrainingImage, MembershipImage } from '@/components/ui/UnsplashImage';
-import { getShootingSportsImage, getUnsplashUrl } from '@/utils/imageUtils';
 
 const ImageShowcasePage = () => {
   const categories = [

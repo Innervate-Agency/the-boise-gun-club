@@ -4,9 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Official Boise Gun Club Typography */
+/* UNIFIED TYPOGRAPHY SYSTEM - Official Boise Gun Club Fonts */
+:root {
+  --font-heading: 'Rajdhani', system-ui, sans-serif;
+  --font-body: 'Noto Sans', system-ui, sans-serif;
+}
+
 .font-heading {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: var(--font-heading);
   text-transform: uppercase;
 }
 
@@ -55,11 +60,7 @@
     }
   }
 
-  /* Global warm filter for that 1970s vibe */
-  html {
-    /* Subtle warm filter on entire page */
-    filter: brightness(1.05) contrast(1.02) saturate(1.05) sepia(0.03);
-  }
+  /* REMOVED: Global filter effects for better performance */
 
   /* Enhanced selection colors */
   ::selection {
@@ -256,53 +257,7 @@
       0 0 100px rgba(var(--lahoma-orange-rgb), 0.1);
   }
 
-  /* Vintage photo effect */
-  .vintage-photo {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .vintage-photo::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(45deg, 
-      transparent 30%, 
-      rgba(var(--sand-dune-brown-rgb), 0.1) 50%, 
-      transparent 70%);
-    mix-blend-mode: multiply;
-    pointer-events: none;
-  }
-
-  .vintage-photo img {
-    filter: contrast(1.1) brightness(0.95) saturate(0.85) sepia(0.08);
-  }
-
-  /* Retro glow text */
-  .retro-glow {
-    text-shadow: 
-      0 0 10px rgba(var(--accent-secondary-rgb), 0.5),
-      0 0 20px rgba(var(--accent-primary-rgb), 0.3),
-      0 0 30px rgba(var(--accent-primary-rgb), 0.2);
-  }
-  /* Subtle morning mist animation */
-  @keyframes mist-drift {
-    0% { transform: translateX(0) translateY(0) scale(1); opacity: 0.1; }
-    25% { transform: translateX(10px) translateY(-10px) scale(1.05); opacity: 0.08; }
-    50% { transform: translateX(-5px) translateY(-20px) scale(1.1); opacity: 0.06; }
-    75% { transform: translateX(8px) translateY(-30px) scale(1.15); opacity: 0.04; }
-    100% { transform: translateX(0) translateY(-40px) scale(1.2); opacity: 0; }
-  }
-
-  .mist-layer {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 70%, 
-      rgba(var(--white-rgb), 0.03) 0%, 
-      rgba(var(--white-rgb), 0.02) 40%,
-      transparent 70%);
-    animation: mist-drift 30s ease-in-out infinite;
-  }
+  /* REMOVED: All competing visual effects for cleaner, performance-focused design */
 
   /* Loading animations */
   @keyframes shimmer {

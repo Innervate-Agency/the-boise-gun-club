@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CalendarDaysIcon, ClockIcon, MapPinIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { getShootingSportsImage } from '@/utils/imageUtils';
+// import { getShootingSportsImage } from '@/utils/imageUtils';
 import { useContent } from '@/hooks/useContent';
 
 const ParticleAnimation = dynamic(() => import('@/components/effects/ParticleAnimation'), { ssr: false });
@@ -120,25 +120,25 @@ const EventsPage: React.FC = () => {
   // Convert content events to the format expected by EventCard
   const events = content?.events?.map(event => {
     // Map category to valid image types for getShootingSportsImage
-    let imageType: 'events' | 'training' | 'membership' | 'ranges' | 'competition' | 'hero' | 'equipment' | 'community' = 'events';
+    // let imageType: 'events' | 'training' | 'membership' | 'ranges' | 'competition' | 'hero' | 'equipment' | 'community' = 'events';
     
-    switch (event.category?.toLowerCase()) {
-      case 'competition':
-        imageType = 'competition';
-        break;
-      case 'training':
-        imageType = 'training';
-        break;
-      case 'fun shoot':
-      case 'social':
-        imageType = 'community';
-        break;
-      case 'equipment':
-        imageType = 'equipment';
-        break;
-      default:
-        imageType = 'events';
-    }
+    // switch (event.category?.toLowerCase()) {
+    //   case 'competition':
+    //     imageType = 'competition';
+    //     break;
+    //   case 'training':
+    //     imageType = 'training';
+    //     break;
+    //   case 'fun shoot':
+    //   case 'social':
+    //     imageType = 'community';
+    //     break;
+    //   case 'equipment':
+    //     imageType = 'equipment';
+    //     break;
+    //   default:
+    //     imageType = 'events';
+    // }
 
     return {
       id: event.id.toString(),
@@ -152,7 +152,7 @@ const EventsPage: React.FC = () => {
       location: event.location,
       description: event.description,
       category: event.category || 'Event',
-      image: getShootingSportsImage(imageType, { width: 800, height: 600 }),
+      image: '/images/events.webp',
       detailsLink: `/events/${event.id}`
     };
   }) || [];

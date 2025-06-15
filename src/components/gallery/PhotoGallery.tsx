@@ -3,15 +3,14 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { getShootingSportsImage } from '../../utils/imageUtils';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
 const galleryItems = [
-    { id: 'events', category: 'Events', alt: "Clay Target Mid-Flight" },
-    { id: 'competition', category: 'Competition', alt: "Trap Shooting Competition" },
-    { id: 'ranges', category: 'Ranges', alt: "Sporting Clays Course" },
-    { id: 'training', category: 'Training', alt: "Shooting Instruction" },
-    { id: 'community', category: 'Community', alt: "Members Socializing" },
+    { id: 'events', category: 'Events', alt: "Members at a club event", src: '/images/events.webp' },
+    { id: 'training', category: 'Training', alt: "Shooter receiving instruction", src: '/images/training.webp' },
+    { id: 'membership', category: 'Membership', alt: "Family enjoying the range", src: '/images/membership.webp' },
+    { id: 'community', category: 'Community', alt: "Abstract smoke background", src: '/images/Smoke/Background_01.webp' },
+    { id: 'ranges', category: 'Ranges', alt: "Another abstract smoke background", src: '/images/Smoke/Background_02.webp' },
 ];
 
 export default function PhotoGallery() {
@@ -30,7 +29,7 @@ export default function PhotoGallery() {
                     onClick={() => setModalImage(featuredImage)}
                 >
                     <Image
-                        src={getShootingSportsImage(featuredImage.id as any, { width: 1200, height: 800 })}
+                        src={featuredImage.src}
                         alt={featuredImage.alt}
                         layout="fill"
                         objectFit="cover"
@@ -53,7 +52,7 @@ export default function PhotoGallery() {
                             onClick={() => setFeaturedImage(item)}
                         >
                             <Image
-                                src={getShootingSportsImage(item.id as any, { width: 400, height: 400 })}
+                                src={item.src}
                                 alt={item.alt}
                                 layout="fill"
                                 objectFit="cover"
@@ -78,7 +77,7 @@ export default function PhotoGallery() {
                     >
                         <motion.div className="relative w-full h-full max-w-5xl max-h-[90vh]">
                             <Image
-                                src={getShootingSportsImage(modalImage.id as any, { width: 1920, height: 1080, quality: 95 })}
+                                src={modalImage.src}
                                 alt={modalImage.alt}
                                 layout="fill"
                                 objectFit="contain"

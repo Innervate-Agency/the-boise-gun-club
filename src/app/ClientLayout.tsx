@@ -46,17 +46,15 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
         const rajdhaniLoaded = document.fonts.check('1em "Rajdhani", sans-serif');
         const notoLoaded = document.fonts.check('1em "Noto Sans", sans-serif');
         
+        // Always consider fonts loaded to avoid fallback override
+        setFontsLoaded(true);
+        document.documentElement.classList.add('fonts-loaded');
+        document.documentElement.classList.remove('fonts-loading');
+        
         if (rajdhaniLoaded && notoLoaded) {
-          setFontsLoaded(true);
-          document.documentElement.classList.add('fonts-loaded');
-          document.documentElement.classList.remove('fonts-loading');
+          console.log('Custom fonts loaded successfully');
         } else {
-          console.warn('Custom fonts failed to load, using fallbacks');
-          // Add fallback font class to body
-          document.body.classList.add('fonts-fallback');
-          setFontsLoaded(true);
-          document.documentElement.classList.add('fonts-loaded');
-          document.documentElement.classList.remove('fonts-loading');
+          console.warn('Custom fonts detection failed, but using CSS fallback system instead');
         }
       } catch (error) {
         console.warn('Font checking not supported in this browser');

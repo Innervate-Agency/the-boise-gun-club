@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { getOptimizedImageUrl, getShootingSportsImage } from '@/utils/imageUtils';
+// import { getOptimizedImageUrl, getShootingSportsImage } from '@/utils/imageUtils';
 
 interface UnsplashImageProps {
   category?: 'events' | 'training' | 'membership' | 'ranges' | 'competition' | 'hero' | 'equipment' | 'community';
@@ -42,13 +42,13 @@ export default function UnsplashImage({
       return fallback;
     }
     
-    if (category) {
-      return getShootingSportsImage(category, { width, height, quality });
-    }
+    // if (category) {
+    //   return getShootingSportsImage(category, { width, height, quality });
+    // }
     
-    if (query) {
-      return getOptimizedImageUrl(fallback, query, { width, height, quality });
-    }
+    // if (query) {
+    //   return getOptimizedImageUrl(fallback, query, { width, height, quality });
+    // }
     
     return fallback;
   };

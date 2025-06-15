@@ -36,16 +36,16 @@
                 border-color 0.3s ease,
                 box-shadow 0.3s ease;
   }
-  /* Typography defaults with Boise Gun Club brand fonts */
-  h1 { @apply text-4xl md:text-5xl font-bold; color: var(--text-primary); letter-spacing: -0.025em; font-family: "Rajdhani", sans-serif; }
-  h2 { @apply text-3xl md:text-4xl font-bold; color: var(--text-primary); letter-spacing: -0.02em; font-family: "Rajdhani", sans-serif; }
-  h3 { @apply text-2xl md:text-3xl font-bold; color: var(--text-primary); letter-spacing: -0.015em; font-family: "Rajdhani", sans-serif; }
-  h4 { @apply text-xl md:text-2xl font-bold; color: var(--text-primary); letter-spacing: -0.01em; font-family: "Rajdhani", sans-serif; }
-  h5 { @apply text-lg md:text-xl font-bold; color: var(--text-primary); letter-spacing: -0.005em; font-family: "Rajdhani", sans-serif; }
-  h6 { @apply text-base md:text-lg font-bold; color: var(--text-primary); letter-spacing: 0; font-family: "Rajdhani", sans-serif; }
-  p { @apply text-lg md:text-xl; color: var(--text-primary); letter-spacing: 0.01em; line-height: 1.6; font-family: "Noto Sans", sans-serif; }
-  button { @apply text-lg md:text-xl; letter-spacing: 0.02em; font-family: "Noto Sans", sans-serif; }
-  input { @apply text-lg md:text-xl; font-family: "Noto Sans", sans-serif; }
+  /* UNIFIED TYPOGRAPHY SYSTEM - Official Boise Gun Club brand fonts */
+  h1 { @apply text-4xl md:text-5xl font-bold; color: var(--text-primary); letter-spacing: -0.025em; font-family: var(--font-heading); text-transform: uppercase; }
+  h2 { @apply text-3xl md:text-4xl font-bold; color: var(--text-primary); letter-spacing: -0.02em; font-family: var(--font-heading); text-transform: uppercase; }
+  h3 { @apply text-2xl md:text-3xl font-bold; color: var(--text-primary); letter-spacing: -0.015em; font-family: var(--font-heading); text-transform: uppercase; }
+  h4 { @apply text-xl md:text-2xl font-bold; color: var(--text-primary); letter-spacing: -0.01em; font-family: var(--font-heading); text-transform: uppercase; }
+  h5 { @apply text-lg md:text-xl font-bold; color: var(--text-primary); letter-spacing: -0.005em; font-family: var(--font-heading); text-transform: uppercase; }
+  h6 { @apply text-base md:text-lg font-bold; color: var(--text-primary); letter-spacing: 0; font-family: var(--font-heading); text-transform: uppercase; }
+  p { @apply text-lg md:text-xl; color: var(--text-primary); letter-spacing: 0.01em; line-height: 1.6; font-family: var(--font-body); }
+  button { @apply text-lg md:text-xl; letter-spacing: 0.02em; font-family: var(--font-body); }
+  input { @apply text-lg md:text-xl; font-family: var(--font-body); }
 
   /* Calendar-specific text sizes */
   .calendar h1 { @apply text-4xl md:text-5xl font-bold; }
@@ -59,6 +59,10 @@
 /* BOISE GUN CLUB OFFICIAL BRAND COLORS */
 /* Light Theme: Spring Day Along The East Fork of The Owyhee River */
 :root {
+  /* TYPOGRAPHY SYSTEM - Font Variables */
+  --font-heading: 'Rajdhani', system-ui, sans-serif;
+  --font-body: 'Noto Sans', system-ui, sans-serif;
+  
   /* Primary Brand Colors from Branding Guide */
   --bg-primary: #f8f6f1;          /* Cloudy Day White */
   --bg-primary-light-theme: #f8f6f1; /* Explicit light theme bg */
@@ -101,6 +105,25 @@
   /* Light Theme RGB Accents */
   --accent-primary-rgb: 242, 48, 5;       /* Clay Pidgeon Orange #F23005 */
   --accent-secondary-rgb: 240, 123, 29;    /* Gunclub Orange #f07b1d */
+  
+  /* GRADIENT SYSTEM COLORS */
+  --gradient-primary-start: #FF6B35;      /* Vibrant Orange */
+  --gradient-primary-mid: #F7931E;        /* Golden Orange */
+  --gradient-primary-end: #FFD23F;        /* Sunny Yellow */
+  
+  --gradient-secondary-start: #FF4E50;    /* Coral Red */
+  --gradient-secondary-mid: #FF6B35;      /* Vibrant Orange */
+  --gradient-secondary-end: #F7931E;      /* Golden Orange */
+  
+  --gradient-accent-start: #FFD23F;       /* Sunny Yellow */
+  --gradient-accent-mid: #FFAB00;         /* Amber */
+  --gradient-accent-end: #FF6F00;         /* Deep Orange */
+  
+  /* Glass Effect Colors */
+  --glass-bg-light: rgba(255, 255, 255, 0.25);
+  --glass-bg-secondary: rgba(255, 255, 255, 0.1);
+  --glass-border-light: rgba(255, 255, 255, 0.2);
+  --glass-shadow-light: rgba(255, 107, 53, 0.1);
 }
 
 /* Dark Theme: Misty Fall Morning in the Cascades */
@@ -132,6 +155,25 @@
   /* Glass effects - Dark */
   --glass-bg: rgba(47, 49, 53, 0.2);
   --glass-border: rgba(242, 135, 5, 0.3);
+  
+  /* DARK THEME GRADIENT COLORS */
+  --gradient-primary-start: #FF8C42;      /* Lighter Orange for contrast */
+  --gradient-primary-mid: #FFB347;        /* Peach Orange */
+  --gradient-primary-end: #FFDC5E;        /* Softer Yellow */
+  
+  --gradient-secondary-start: #FF6B5B;    /* Lighter Coral */
+  --gradient-secondary-mid: #FF8C42;      /* Lighter Orange */
+  --gradient-secondary-end: #FFB347;      /* Peach Orange */
+  
+  --gradient-accent-start: #FFDC5E;       /* Softer Yellow */
+  --gradient-accent-mid: #FFC107;         /* Brighter Amber */
+  --gradient-accent-end: #FF8F00;         /* Bright Orange */
+  
+  /* Dark Glass Effect Colors */
+  --glass-bg-light: rgba(47, 49, 53, 0.8);
+  --glass-bg-secondary: rgba(75, 75, 75, 0.6);
+  --glass-border-light: rgba(255, 140, 66, 0.2);
+  --glass-shadow-light: rgba(255, 140, 66, 0.15);
   
   /* Utilities */
   --glass-noise: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIGluPSJwIi8+PC9maWx0ZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDgiLz48L3N2Zz4=");
@@ -198,17 +240,6 @@
   border-bottom: 1px solid var(--glass-border);
 }
 
-/* Footer social icons - always maintain proper sizing */
-.footer-socials svg {
-  width: 24px !important;
-  height: 24px !important;
-  min-width: 24px !important;
-  min-height: 24px !important;
-  max-width: 24px !important;
-  max-height: 24px !important;
-  font-size: 16px !important;
-}
-
 /* Font utility classes */
 .bg-primary {
   background-color: var(--bg-primary);
@@ -238,52 +269,144 @@
   color: var(--accent-tertiary);
 }
 
-.accent-quaternary {
-  color: var(--accent-quaternary);
-}
-
-.accent-olive {
-  color: var(--accent-olive);
-}
-
-.accent-yellow {
-  color: var(--accent-yellow);
-}
-
-.accent-orangered {
-  color: var(--accent-orangered);
-}
-
-.accent-darkred {
-  color: var(--accent-darkred);
-}
-
-.accent-deepblue {
-  color: var(--accent-deepblue);
-}
-
-.accent-gold {
-  color: var(--accent-gold);
-}
-
-.accent-darkteal {
-  color: var(--accent-darkteal);
-}
-
 .border-accent {
   border-color: var(--accent-primary);
 }
 
-/* OFFICIAL BRAND COLORS APPLIED - No duplicate theme definitions needed */
-/* Light theme: Spring Day Along The East Fork of The Owyhee River */
-/* Dark theme: Misty Fall Morning in the Cascades */
+/* ========================================
+   CLICKUP-INSPIRED GRADIENT SYSTEM
+   Theme-Aware Orange/Yellow/Red Palette
+======================================== */
 
-/* Gradient text effect */
-.gradient-text {
-  background: var(--gradient-primary);
+/* BACKGROUND GRADIENTS */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, 
+    var(--gradient-primary-start) 0%, 
+    var(--gradient-primary-mid) 50%, 
+    var(--gradient-primary-end) 100%);
+}
+
+.bg-gradient-secondary {
+  background: linear-gradient(135deg, 
+    var(--gradient-secondary-start) 0%, 
+    var(--gradient-secondary-mid) 50%, 
+    var(--gradient-secondary-end) 100%);
+}
+
+.bg-gradient-hero {
+  background: 
+    radial-gradient(circle at 20% 80%, 
+      color-mix(in srgb, var(--gradient-primary-end) 8%, transparent) 0%,
+      transparent 50%),
+    radial-gradient(circle at 80% 20%, 
+      color-mix(in srgb, var(--gradient-secondary-start) 6%, transparent) 0%,
+      transparent 50%),
+    var(--bg-primary);
+}
+
+/* CLICKUP GLASS MORPHISM */
+.clickup-glass {
+  background: linear-gradient(135deg,
+    var(--glass-bg-light) 0%,
+    var(--glass-bg-secondary) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: 
+    0 8px 32px var(--glass-shadow-light),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.clickup-glass-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clickup-glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--gradient-primary-start) 3%, transparent) 0%,
+    color-mix(in srgb, var(--gradient-primary-end) 2%, transparent) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.clickup-glass-card:hover::before {
+  opacity: 1;
+}
+
+.clickup-glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 10px 15px -3px var(--glass-shadow-light),
+    0 4px 6px -4px var(--glass-shadow-light);
+  border-color: color-mix(in srgb, var(--gradient-primary-start) 40%, var(--glass-border-light));
+}
+
+/* BUTTON GRADIENT SYSTEM */
+.btn-gradient-primary {
+  background: linear-gradient(135deg, 
+    var(--gradient-primary-start) 0%, 
+    var(--gradient-primary-end) 100%);
+  border: none;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px color-mix(in srgb, var(--gradient-primary-start) 30%, transparent);
+}
+
+.btn-gradient-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px color-mix(in srgb, var(--gradient-primary-start) 40%, transparent);
+}
+
+.btn-gradient-secondary {
+  background: transparent;
+  border: 2px solid;
+  border-image: linear-gradient(135deg, 
+    var(--gradient-primary-start) 0%, 
+    var(--gradient-primary-end) 100%) 1;
+  color: var(--gradient-primary-start);
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-gradient-secondary:hover {
+  background: linear-gradient(135deg, 
+    var(--gradient-primary-start) 0%, 
+    var(--gradient-primary-end) 100%);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px color-mix(in srgb, var(--gradient-primary-start) 30%, transparent);
+}
+
+/* ACCENT GRADIENT TEXT */
+.accent-gradient-text {
+  background: linear-gradient(90deg, 
+    var(--gradient-accent-start) 0%, 
+    var(--gradient-accent-mid) 50%, 
+    var(--gradient-accent-end) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  font-weight: 700;
   display: inline-block;
 }
 
@@ -359,62 +482,4 @@
     transparent 100%
   );
   margin: 6rem 0;
-}
-
-/* PRICING DISPLAY COMPONENTS */
-.pricing-card {
-  background: var(--bg-secondary);
-  border: 2px solid var(--accent-primary);
-  border-radius: 16px;
-  padding: 2.5rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.pricing-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(
-    90deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
-}
-
-.pricing-amount {
-  font-size: 3rem;
-  font-family: "refrigerator-deluxe", serif;
-  color: var(--accent-primary);
-  font-weight: 700;
-  line-height: 1;
-}
-
-.pricing-unit {
-  font-size: 1.2rem;
-  color: var(--text-secondary);
-  margin-top: 0.5rem;
-}
-
-.pricing-feature {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--glass-border);
-}
-
-.pricing-feature:last-child {
-  border-bottom: none;
-}
-
-.pricing-feature-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 1rem;
-  color: var(--accent-green);
-}
-
+} 

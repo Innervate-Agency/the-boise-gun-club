@@ -8,8 +8,6 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import HeroSection from '../components/home/HeroSection';
 import UpcomingEvents from '../components/home/UpcomingEvents';
-import UnsplashImage from '../components/ui/UnsplashImage';
-import { getOptimizedImageUrl, getShootingSportsImage } from '../utils/imageUtils';
 import Section from '../components/layout/Section';
 
 // Dynamic imports for client-side only components
@@ -33,52 +31,52 @@ import ContactInfo from '../components/home/ContactInfo';
 import ClubRulesSection from '../components/home/ClubRulesSection';
 import PricingSection from '../components/home/PricingSection';
 
-// Real gallery items with Unsplash integration
+// Real gallery items with local images
 const galleryItems = [
     {
         id: 1,
-        src: getShootingSportsImage('events', { width: 800, height: 600 }),
+        src: '/images/events.webp',
         alt: "Clay Target Mid-Flight",
         year: "2023"
     },
     {
         id: 2,
-        src: getShootingSportsImage('competition', { width: 800, height: 600 }),
+        src: '/images/training.webp',
         alt: "Trap Shooting Competition",
         year: "2023"
     },
     {
         id: 3,
-        src: getShootingSportsImage('ranges', { width: 800, height: 600 }),
+        src: '/images/membership.webp',
         alt: "Sporting Clays Course",
         year: "2022"
     },    {
         id: 4,
-        src: getShootingSportsImage('competition', { width: 800, height: 600 }),
+        src: '/images/Smoke/Background_03.webp',
         alt: "Championship Trophy Display",
         year: "2023"
     },
 ];
 
-// Facility highlights with Unsplash images
+// Facility highlights with local images
 const facilityHighlights = [
     {
         title: "ELITE RANGES, LEGENDARY SHOTS",
-        icon: getShootingSportsImage('ranges', { width: 200, height: 200 }),
+        icon: '/images/events.webp',
         description: "Ten trap fields, five skeet havens, and a sprawling 15-station sporting clays journey. Precision-lit for twilight dominance. This is where marksmen are made.",
         linkText: "Survey Your Domain",
         link: "/ranges"
     },
     {
         title: "MASTERY UNDER GUIDANCE",
-        icon: getShootingSportsImage('training', { width: 200, height: 200 }),
+        icon: '/images/training.webp',
         description: "Our NSCA certified sages don't just teach; they sculpt shooters. From your first clay to Olympic aspirations, we forge skill into art.",
         linkText: "Hone Your Craft",
         link: "/training"
     },
     {
         title: "THE ARENA OF CHAMPIONS",
-        icon: getShootingSportsImage('competition', { width: 200, height: 200 }),
+        icon: '/images/membership.webp',
         description: "Host to revered state championships and prestigious ATA registered clashes. Test your mettle in weekly leagues or vie for the coveted Governor's Cup.",
         linkText: "Enter the Gauntlet",
         link: "/competitions"
@@ -98,13 +96,13 @@ const testimonials = [    {
         quote: "Since '73, this ain't just a club, it's a proving ground. Best clays west of the Mississippi, period. These folks are the real deal.",
         name: "Buck 'Hawkeye' Henderson",
         title: "Founding Sharpshooter",
-        image: getOptimizedImageUrl('/images/hero-bg.webp', 'veteran shooter portrait', { width: 200, height: 200 })
+        image: '/images/hero-bg.webp'
     },
     {
         quote: "My old man brought me. I brought my boy. Three generations of Morrisons, dusting clays and makin' memories. This place is in our blood.",
         name: "Earl 'Deadeye' Morrison Jr.",
         title: "Legacy Member, Est. 1981",
-        image: getOptimizedImageUrl('/images/events.webp', 'family shooting tradition', { width: 200, height: 200 })
+        image: '/images/events.webp'
     }
 ];
 
@@ -217,7 +215,7 @@ const HomePage: FC = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto font-['Noto Sans']"
+                        className="text-xl text-gray-300 max-w-3xl mx-auto"
                     >
                         World-class shooting facilities designed for champions
                     </motion.p>

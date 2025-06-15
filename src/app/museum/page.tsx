@@ -4,7 +4,6 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getOptimizedImageUrl } from '../../utils/imageUtils';
 
 const museumArtifacts = [
     {
