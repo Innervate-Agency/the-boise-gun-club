@@ -180,8 +180,8 @@ const UpcomingEvents = () => {
                                 transition={{ duration: 0.3 }}
                                 className="sticky top-24"
                             >
-                                {/* Main glass card */}
-                                <div className="backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] border border-white/10 rounded-2xl shadow-2xl overflow-hidden">                                    {/* Event image */}
+                                {/* Main glass card */}                                <div className="backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+                                    {/* Event image */}
                                     <div className="relative h-64 md:h-80">
                                         <EventImage
                                             alt={selectedEvent.title}

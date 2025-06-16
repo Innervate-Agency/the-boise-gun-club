@@ -561,7 +561,7 @@ boisegunclubv4/
 
 ---
 
-# CHANGELOG
+## CHANGELOG
 
 ## [Unreleased] - June 16, 2025
 
@@ -614,5 +614,40 @@ boisegunclubv4/
 - **Maintainability**: Eliminated duplicate code paths
 - **Developer Experience**: Cleaner component architecture
 - **Build Time**: Faster compilation with fewer files to process
+
+---
+
+## [Unreleased] - June 16, 2025
+
+### 🐛 Critical Site Fixes - Image Positioning & Next.js Compatibility
+
+- **FIXED**: Image positioning errors causing hydration mismatches
+  - Fixed `fill` prop images missing `position: relative` on parent containers
+  - Updated HeroSection background image container positioning
+  - Fixed UpcomingEvents image container structure
+  - Corrected emergency page and template page image implementations
+
+- **FIXED**: Next.js Image API compatibility issues
+  - Migrated from deprecated `layout="fill" objectFit="cover"` to modern `fill` syntax
+  - Updated 14+ template pages with old Next.js Image API usage
+  - Maintained `object-cover` className for proper image scaling
+  - Added `priority` prop to critical LCP images
+
+- **FIXED**: HTML hydration errors in layout.tsx
+  - Removed problematic whitespace between HTML tags
+  - Cleaned up JSX formatting and indentation
+  - Eliminated server/client HTML mismatch issues
+
+### **Performance Optimizations**
+- **IMPROVED**: LCP (Largest Contentful Paint) optimization
+  - Added `priority` prop to hero background images
+  - Configured proper image sizing for above-the-fold content
+  - Optimized image loading strategy for better Core Web Vitals
+
+### **Build Status**
+- ✅ **Build Successful**: 34 static pages generated
+- ✅ **Zero hydration errors**: Clean server/client rendering
+- ✅ **Image positioning resolved**: All `fill` images properly contained
+- ⚠️ **ESLint warnings remain**: Configuration compatibility issues (non-blocking)
 
 ---

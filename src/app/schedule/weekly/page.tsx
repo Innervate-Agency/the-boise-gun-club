@@ -50,7 +50,7 @@ export default function Page() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Image src={section.imageUrl} alt={section.title} layout="fill" objectFit="cover" className="transform hover:scale-105 transition-transform duration-500" />
+                  <Image src={section.imageUrl} alt={section.title} fill className="object-cover transform hover:scale-105 transition-transform duration-500" />
                 </motion.div>
                 <motion.div 
                   className="text-left"

@@ -20,10 +20,9 @@ function HeroSection() {
     const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
 
     return (
-        <section ref={containerRef} className="relative min-h-screen overflow-hidden bg-[var(--bg-primary)]">
-            {/* Background Image */}
+        <section ref={containerRef} className="relative min-h-screen overflow-hidden bg-[var(--bg-primary)]">            {/* Background Image */}
             <motion.div 
-                className="absolute inset-0"
+                className="absolute inset-0 relative"
                 style={{ scale: bgScale }}
             >
                 <Image

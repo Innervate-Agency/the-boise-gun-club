@@ -16,7 +16,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (    <html lang="en" className="h-full" suppressHydrationWarning={true}>
+  return (
+    <html lang="en" className="h-full" suppressHydrationWarning={true}>
       <head>
         {/* Google Fonts for official Boise Gun Club branding */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,8 +26,6 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" 
           rel="stylesheet" 
         />
-        
-        {/* Critical font preloading - REMOVED OLD FONTS */}
         
         {/* Optimized critical images */}
         <link rel="preload" as="image" href="/images/hero-bg.webp" />
@@ -37,7 +36,8 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
           rel="stylesheet"
         />
-      </head>      <body className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300 ease-in-out" suppressHydrationWarning={true}>
+      </head>
+      <body className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300 ease-in-out" suppressHydrationWarning={true}>
         <ClientLayout>
           {children}
         </ClientLayout>

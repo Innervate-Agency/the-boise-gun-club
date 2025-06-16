@@ -51,7 +51,7 @@ export default function Page() {
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
                   <div className={`relative h-64 md:h-80 w-full rounded-lg overflow-hidden ${contentOrder}`}>
-                    <Image src={section.imageUrl} alt={section.title} layout="fill" objectFit="cover" className="transform hover:scale-105 transition-transform duration-500" />
+                    <Image src={section.imageUrl} alt={section.title} fill className="object-cover transform hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="text-left">
                     <h2 className="text-3xl font-bold uppercase text-leonard-yellow mb-2">{section.title}</h2>
