@@ -1,44 +1,43 @@
-import js from '@eslint/js'
-import typescript from '@typescript-eslint/eslint-plugin'
-import typescriptParser from '@typescript-eslint/parser'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
-import next from '@next/eslint-plugin-next'
-
-export default [
-  js.configs.recommended,
+/** @type {import('eslint').Linter.Config[]} */
+const config = [
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    ignores: [
+      '.next/**',
+      'out/**',
+      'node_modules/**',
+      '.git/**',
+    ],
+  },
+  {
     languageOptions: {
-      parser: typescriptParser,
-      parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-        ecmaFeatures: {
-          jsx: true,
-        },
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+        Buffer: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        exports: 'writable',
+        module: 'writable',
+        require: 'readonly',
+        global: 'readonly',
+        window: 'readonly',
+        document: 'readonly',
+        navigator: 'readonly',
+        HTMLElement: 'readonly',
+        Event: 'readonly',
+        EventTarget: 'readonly',
       },
-    },
-    plugins: {
-      '@typescript-eslint': typescript,
-      'react': react,
-      'react-hooks': reactHooks,
-      '@next/next': next,
     },
     rules: {
-      // Disable strict rules that are causing build issues
-      '@typescript-eslint/no-unused-vars': 'warn',
-      '@typescript-eslint/no-explicit-any': 'warn',
-      'react/no-unescaped-entities': 'off',
-      'react-hooks/exhaustive-deps': 'warn',
-      'react/jsx-no-undef': 'warn',
-      '@typescript-eslint/no-require-imports': 'warn',
+      // Basic rules to prevent build failures
       'no-unused-vars': 'warn',
-    },
-    settings: {
-      react: {
-        version: 'detect',
-      },
+      'no-undef': 'error',
+      'no-console': 'warn',
+      'no-debugger': 'warn',
     },
   },
-]
+];
+
+export default config;

@@ -128,7 +128,7 @@ export default function NavBar() {
     }, [clubAnnouncements, isScrolled, pathname, setTotalNavHeight]);
 
     return (
-        <>
+        <div className="w-full">
             {/* Announcements bar */}
             {clubAnnouncements.length > 0 && (
                 <div
@@ -136,23 +136,22 @@ export default function NavBar() {
                     className="hidden lg:block bg-[var(--accent-primary)] text-white py-2 px-4 text-center text-sm fixed top-0 w-full z-50 shadow-md"
                 >
                     <div className="container mx-auto overflow-hidden relative">
-                        <div className="flex space-x-8 animate-marquee whitespace-nowrap">
+                        <div className="animate-marquee whitespace-nowrap">
                             {clubAnnouncements.map((announcement, index) => (
-                                <span key={index} className="mx-4 font-medium">• {announcement}</span>
-                            ))}
-                            {/* Duplicate announcements to create seamless loop */}
-                            {clubAnnouncements.map((announcement, index) => (
-                                <span key={`dup-${index}`} className="mx-4 font-medium">• {announcement}</span>
+                                <span key={index} className="mx-8 font-medium">• {announcement}</span>
                             ))}
                         </div>
                     </div>
                 </div>
             )}
-            {/* Main Navigation - Now positioned dynamically below announcement bar via inline style */}
-            <nav
+            
+            {/* Main Navigation */}
+            <header
                 ref={mainNavBarRef}
-                className={`fixed left-0 w-full z-40 transition-all duration-500`}
-                style={{ top: `${announcementBarActualHeight}px` }}
+                className="fixed top-0 left-0 w-full z-40 transition-all duration-500"
+                style={{ 
+                    top: `${announcementBarActualHeight}px`
+                }}
             >
                 <div
                     className={`relative transition-all duration-500 ${isScrolled
@@ -165,11 +164,15 @@ export default function NavBar() {
                         <div className="absolute inset-0 grid-bg opacity-10" />
                     </div>
 
-                    <div className="container mx-auto px-4 relative z-10">
-                        <div className="flex items-center justify-between">
+                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="flex items-center justify-between h-16 md:h-20">
                             {/* Logo */}
-                            <NavLogo />                            {/* Desktop Navigation - Clean Modern */}
-                            <div className="hidden lg:flex items-center space-x-8">
+                            <div className="flex-shrink-0">
+                                <NavLogo />
+                            </div>
+
+                            {/* Desktop Navigation */}
+                            <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
                                 {navLinks.map((link) => (
                                     <NavItem
                                         key={link.href}
@@ -187,26 +190,26 @@ export default function NavBar() {
                                     whileTap={{ scale: 0.95 }}
                                 >
                                     <Bars3Icon className="w-5 h-5 text-[var(--text-primary)]" />
-                                    <span className="text-xl tracking-wide text-[var(--text-primary)]">MENU</span>
+                                    <span className="text-lg xl:text-xl tracking-wide text-[var(--text-primary)]">MENU</span>
                                 </motion.button>
 
-                                {/* Member Login Button - Modern Gradient */}
+                                {/* Member Login Button */}
                                 <motion.div
                                     whileHover={{ scale: 1.05, y: -2 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="relative"
+                                    className="relative flex-shrink-0"
                                 >
                                     <Link
                                         href="/membership"
-                                        className="relative btn-gradient block px-6 py-2.5 rounded font-bold shadow-lg tracking-wide"
-                                       >
+                                        className="relative btn-gradient block px-4 lg:px-6 py-2.5 rounded font-bold shadow-lg tracking-wide text-sm lg:text-base"
+                                    >
                                         MEMBER LOGIN
                                     </Link>
                                 </motion.div>
-                            </div>
+                            </nav>
 
-                            {/* Mobile Menu Button - Clean design */}
-                            <div className="lg:hidden flex items-center space-x-4">
+                            {/* Mobile Menu Button */}
+                            <div className="lg:hidden flex items-center">
                                 <button
                                     className="relative z-10 p-2 text-[var(--text-primary)]"
                                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -221,7 +224,9 @@ export default function NavBar() {
                             </div>
                         </div>
                     </div>
-                </div>                {/* Mobile Menu */}
+                </div>
+                
+                {/* Mobile Menu */}
                 <AnimatePresence>
                     {isMobileMenuOpen && (
                         <MobileMenu
@@ -236,16 +241,18 @@ export default function NavBar() {
                     isOpen={isMegaMenuOpen} 
                     onClose={() => setIsMegaMenuOpen(false)} 
                 />
-            </nav>
+            </header>
+            
             {/* Global styles */}
             <style jsx global>{`
                 @keyframes marquee {
-                    0% { transform: translateX(0); }
-                    100% { transform: translateX(-50%); }
+                    0% { transform: translateX(100%); }
+                    100% { transform: translateX(-100%); }
                 }
                 
                 .animate-marquee {
-                    animation: marquee 30s linear infinite;
+                    animation: marquee 20s linear infinite;
+                    display: inline-block;
                 }
                 
                 .announcement-visible {
@@ -254,6 +261,6 @@ export default function NavBar() {
                     transition: opacity 0.5s ease, transform 0.5s ease;
                 }
             `}</style>
-        </>
+        </div>
     );
 }

@@ -48,11 +48,10 @@ module.exports = {
         'heading': ['Rajdhani', 'sans-serif'],
         'body': ['Noto Sans', 'sans-serif'],
         'vt323': ['VT323', 'monospace'],
-        'space-grotesk': ['Space Grotesk', 'sans-serif'],
+        'space-grotesk': ['Space Grotesk', 'sans-serif'], 
         'rajdhani': ['Rajdhani', 'sans-serif'],
         'noto-sans': ['Noto Sans', 'sans-serif'],
-      },
-      fontSize: {
+      },      fontSize: {
         // Minimum 18px base for accessibility
         'base': ['18px', '1.5'],
         'lg': ['20px', '1.5'],
@@ -61,6 +60,9 @@ module.exports = {
         '3xl': ['40px', '1.2'],
         '4xl': ['48px', '1.1'],
         '5xl': ['64px', '1.1'],
+      },
+      lineHeight: {
+        'relaxed': '1.625',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

@@ -1,6 +1,6 @@
 'use client';
 
-import TemplatePage from '@/app/template/page';
+import TemplatePage from '@/components/layout/TemplatePage';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';

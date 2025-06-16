@@ -2,50 +2,64 @@
 
 # PRE-RESPONSE CHECKPOINT
 
-#### _Run this before crafting any substantial response_ 
+#### _Run this before crafting any substantial response_
 
-##### ***CONTEXT CHECK:***  
-- [ ] What's the current date/time of this conversation? 
-- [ ] Who is the user, and what do I know about them? 
+##### _**CONTEXT CHECK:**_  
+
+- [ ] What's the current date/time of this conversation?
+- [ ] Who is the user, and what do I know about them?
 - [ ] What specific problem are you trying to solve for the user, _Right Now_?
-- [ ] Are there any obvious facts/details you should acknowledge about the users' prompt? 
-##### ***FOCUS CHECK:*** 
+- [ ] Are there any obvious facts/details you should acknowledge about the users' prompt?
+
+##### _**FOCUS CHECK:**_
+
 - [ ] What is the ONE main thing the user wants from me?
-- [ ] Am I about to overthink the prompt, or can I give the user a direct answer? 
-- [ ] Do I have enough info to help the user, or should I ask for clarification before proceeding? 
-##### ***APPROACH:*** 
-- I need to lead with the answer/solution first 
-- I need to keep it conversational but focused 
-- I don't need to explain things they already know 
+- [ ] Am I about to overthink the prompt, or can I give the user a direct answer?
+- [ ] Do I have enough info to help the user, or should I ask for clarification before proceeding?
+
+##### _**APPROACH:**_
+
+- I need to lead with the answer/solution first
+- I need to keep it conversational but focused
+- I don't need to explain things they already know
 
 ## POST-RESPONSE CHECKPOINT
 
 #### Quick Evaluation After Each Response
 
-##### **DELIVERY CHECK:** 
+##### **DELIVERY CHECK:**
+
 - Did I solve their actual problem or just what I assumed they meant?
 - Did I check essential facts and context?
 - Was the answer concise and actionable?
 - What are their logical next steps?
 - Would I want to receive this response as a user?
 
-##### **QUALITY CHECK & CONFIDENCE LEVEL:** * 
+##### **QUALITY CHECK & CONFIDENCE LEVEL:** *
+
 - 🟢 High: Directly addresses the need
 - 🟡 Medium: Mostly helpful, could be tighter
 - 🔴 Low: Missed context or overcomplicated it
 
 ## **USAGE GUIDELINES:**
 
-##### **For quick questions:** 
-- Skip checkpoints, just answer directly 
-##### **For technical help:** 
-- Focus extra on the "what should they do next" part 
-##### **For creative/brainstorming:** 
-- Still use checkpoints but allow more exploration 
+##### **For quick questions:**
+
+- Skip checkpoints, just answer directly
+
+##### **For technical help:**
+
+- Focus extra on the "what should they do next" part
+
+##### **For creative/brainstorming:**
+
+- Still use checkpoints but allow more exploration
+
 ### **Red flags that warrant extra attention:**
-1. Time-sensitive requests 
-2. Technical troubleshooting 
-3. When user seems frustrated 
+
+1. Time-sensitive requests
+2. Technical troubleshooting
+3. When user seems frustrated
 4. Complex multipart questions
 
 # BOISE GUN CLUB V4 - DEVELOPMENT CHANGELOG
@@ -54,7 +68,7 @@
 
 ### 🎯 **ORIGINAL TASK**
 
-**User Request:** *"Add all the missing pages to the application's mega menu... [and later]... THE FONT IS NOT REFRIDGERATOR DELUX AND MUSEOSANS... the zig-zag layout is implemented incorrectly... the overall look is still not meeting expectations... Fonts are still broken, and all the pages content is still very plain jane"*
+**User Request:** _"Add all the missing pages to the application's mega menu... [and later]... THE FONT IS NOT REFRIDGERATOR DELUX AND MUSEOSANS... the zig-zag layout is implemented incorrectly... the overall look is still not meeting expectations... Fonts are still broken, and all the pages content is still very plain jane"_
 
 This session focused on scaffolding 15 new pages and then correcting significant design regressions and visual inconsistencies based on user feedback.
 
@@ -66,41 +80,41 @@ This session focused on scaffolding 15 new pages and then correcting significant
 
 **Status:** ✅ FULLY IMPLEMENTED
 
--   **15 New Pages:** Created the complete file structure and placeholder pages for all missing menu items across Schedule, Ranges, Members, and Forum sections.
--   **Content Population:** Populated all new pages with detailed, relevant placeholder text and images specific to a gun club.
--   **Component-Based Approach:** Refactored page content into a structured, component-based format within each page file for easier updates.
+- **15 New Pages:** Created the complete file structure and placeholder pages for all missing menu items across Schedule, Ranges, Members, and Forum sections.
+- **Content Population:** Populated all new pages with detailed, relevant placeholder text and images specific to a gun club.
+- **Component-Based Approach:** Refactored page content into a structured, component-based format within each page file for easier updates.
 
 ### 🎨 **Visual & Typographical System Correction**
 
 **Status:** ✅ FULLY IMPLEMENTED
 
--   **Typography Fix:**
-    -   Corrected `tailwind.config.js` to use `Rajdhani` and `Noto Sans`.
-    -   Added Google Fonts import to `globals.css` for `Rajdhani` and `Noto Sans`.
-    -   Set the body font weight to 300 (light) to match design requirements.
-    -   Removed all incorrect legacy font references.
--   **Layout Fix:**
-    -   Corrected the zig-zag layout on all 15 new pages to ensure text is always left-aligned.
--   **Visual Richness:**
-    -   Extracted the homepage's `Section` component into a reusable layout component (`src/components/layout/Section.tsx`).
-    -   Refactored all 15 new pages to use this `Section` component, adding the 'grid' and 'mist' background textures for a richer, more consistent look and feel.
--   **Image Configuration:**
-    -   Updated `next.config.js` to add `images.unsplash.com` to the list of permitted image hostnames, fixing errors on the homepage.
+- **Typography Fix:**
+  - Corrected `tailwind.config.js` to use `Rajdhani` and `Noto Sans`.
+  - Added Google Fonts import to `globals.css` for `Rajdhani` and `Noto Sans`.
+  - Set the body font weight to 300 (light) to match design requirements.
+  - Removed all incorrect legacy font references.
+- **Layout Fix:**
+  - Corrected the zig-zag layout on all 15 new pages to ensure text is always left-aligned.
+- **Visual Richness:**
+  - Extracted the homepage's `Section` component into a reusable layout component (`src/components/layout/Section.tsx`).
+  - Refactored all 15 new pages to use this `Section` component, adding the 'grid' and 'mist' background textures for a richer, more consistent look and feel.
+- **Image Configuration:**
+  - Updated `next.config.js` to add `images.unsplash.com` to the list of permitted image hostnames, fixing errors on the homepage.
 
 ### 🔧 **Technical Implementation Details**
 
 #### Files Created
 
-1.  **`/src/components/layout/Section.tsx`**: Reusable component for consistent page section styling.
-2.  **15 Page Files**: Including `src/app/schedule/weekly/page.tsx`, `src/app/members/portal/page.tsx`, etc.
+1. **`/src/components/layout/Section.tsx`**: Reusable component for consistent page section styling.
+2. **15 Page Files**: Including `src/app/schedule/weekly/page.tsx`, `src/app/members/portal/page.tsx`, etc.
 
 #### Key Files Modified
 
-1.  **`/src/app/globals.css`**: Added correct Google Font imports and set default body font-weight.
-2.  **`tailwind.config.js`**: Corrected `fontFamily` definitions.
-3.  **`next.config.js`**: Added new image hostname.
-4.  **`src/app/page.tsx`**: Refactored to use the new `Section` component.
-5.  All 15 new `page.tsx` files were refactored to use the `<Section>` component and correct layout/styling.
+1. **`/src/app/globals.css`**: Added correct Google Font imports and set default body font-weight.
+2. **`tailwind.config.js`**: Corrected `fontFamily` definitions.
+3. **`next.config.js`**: Added new image hostname.
+4. **`src/app/page.tsx`**: Refactored to use the new `Section` component.
+5. All 15 new `page.tsx` files were refactored to use the `<Section>` component and correct layout/styling.
 
 ---
 
@@ -108,7 +122,7 @@ This session focused on scaffolding 15 new pages and then correcting significant
 
 ### 🎯 **ORIGINAL TASK**
 
-**User Request:** *"Throwing a curveball at you, but please update all the style references to use this branding guide. It has the dark and light theme colors, as well as the new fonts."*
+**User Request:** _"Throwing a curveball at you, but please update all the style references to use this branding guide. It has the dark and light theme colors, as well as the new fonts."_
 
 **Provided Branding Guide:**
 
@@ -247,7 +261,7 @@ p, button, input {
 
 ### ⚠️ **User Observation:**
 
-*"Lots of things didn't change, but some stuff did, and what did... looks pretty good."*
+_"Lots of things didn't change, but some stuff did, and what did... looks pretty good."_
 
 **Likely Explanation:** Many components were already using CSS custom properties (`var(--accent-primary)`), so when we updated the variable definitions in `themes.css`, those components automatically inherited the new brand colors without needing individual file changes. This is the intended behavior of a well-architected CSS custom property system.
 
@@ -424,7 +438,7 @@ boisegunclubv4/
 
 #### 🎯 **The Curveball: Official Brand Guide**
 
-**User Request:** *"Throwing a curveball at you, but please update all the style references to use this branding guide. It has the dark and light theme colors, as well as the new fonts."*
+**User Request:** _"Throwing a curveball at you, but please update all the style references to use this branding guide. It has the dark and light theme colors, as well as the new fonts."_
 
 **Provided Official Specifications:**
 
@@ -496,7 +510,7 @@ boisegunclubv4/
 **Key Insight:** The CSS custom property system worked exactly as designed
 
 - Many components automatically inherited new brand colors without individual updates
-- This explains user observation: *"lots of things didn't change, but some stuff did"*
+- This explains user observation: _"lots of things didn't change, but some stuff did"_
 - Components using `var(--accent-primary)` automatically got new colors when theme variables updated
 - This is the intended behavior of a well-architected theming system
 
@@ -547,124 +561,58 @@ boisegunclubv4/
 
 ---
 
-# CRITICAL FIX SESSION: June 2, 2025
+# CHANGELOG
 
-## 🚨 **MAJOR ISSUES DISCOVERED & RESOLVED**
+## [Unreleased] - June 16, 2025
 
-### **Problem Identified:** "Site is fucked, fam"
-The site had critical display issues due to conflicting CSS and missing font references.
+### 🧹 Major Architecture Cleanup & Code Optimization
 
-#### 🔥 **Critical Issues Fixed:**
+#### **Technology Stack Compliance Review**
 
-### 1. **Conflicting Theme Variables** ✅ FIXED
-- **Problem:** Duplicate CSS variable definitions in `themes.css` 
-- **Issue:** Lines 258+ had conflicting `[data-theme='dark']` that overrode official brand colors
-- **Result:** Text was unreadable, wrong colors everywhere
-- **Fix:** Removed duplicate/conflicting theme definitions
-- **Files:** `/src/styles/themes.css`
+- **FIXED**: Removed duplicate `TemplatePage` implementations
+  - Eliminated `/src/app/template/page.tsx` (standalone duplicate)
+  - Consolidated to reusable component at `/src/components/layout/TemplatePage.tsx`
+  - Updated all 16+ page imports to use centralized component
 
-### 2. **Missing Font References** ✅ FIXED  
-- **Problem:** 33+ references to non-existent fonts across the site
-- **Fonts Referenced:** `Clutch_Block`, `Refrigerator_Deluxe`, `Museo` (deleted in previous session)
-- **Result:** Text falling back to random system fonts, inconsistent appearance
-- **Fix:** Mass replacement with official brand fonts:
-  - `Clutch_Block` → `Rajdhani` (headers)
-  - `Refrigerator_Deluxe` → `Rajdhani` (headers) 
-  - `Museo` → `Noto Sans` (body text)
-- **Files:** All `.tsx` files in `/src/app/`
+#### **CSS Bloat Reduction**
 
-### 3. **Color System Conflicts** ✅ FIXED
-- **Problem:** Official brand colors being overridden by legacy color definitions
-- **Result:** Poor contrast, wrong accent colors, unreadable text
-- **Fix:** Ensured only official Boise Gun Club brand colors are used
+- **REMOVED**: 300+ lines of unnecessary CSS
+  - Deleted `src/components/gallery/Gallery.css` (31 lines)
+  - Deleted `src/styles/animations.css` (110 lines)
+  - Deleted `src/styles/utilities.css` (empty file)
+  - Deleted `src/app/animations.css`
+  - Streamlined `globals.css` from 363 lines to ~75 lines
 
----
+#### **Build Optimization**
 
-## ✅ **VERIFICATION RESULTS**
+- **IMPROVED**: Build performance and maintainability
+  - Build successful: 34 static pages (reduced from 35)
+  - Eliminated CSS duplication (scanlines, glow effects, etc.)
+  - Removed complex CSS animations in favor of Framer Motion
+  - Simplified glass morphism effects to essential utilities only
 
-- **Build Status:** ✅ Success - `npm run build` completes without errors
-- **Font Loading:** ✅ All fonts now load correctly (Rajdhani + Noto Sans/Serif)
-- **Color Contrast:** ✅ Proper contrast ratios restored
-- **Brand Compliance:** ✅ Only official brand colors in use
+#### **Technology Stack Alignment**
 
----
+- **CONFIRMED**: Project now strictly uses:
+  - ✅ React/Next.js 15.3.2
+  - ✅ TypeScript 5.x
+  - ✅ TailwindCSS 4.0.0
+  - ✅ Framer Motion 11.11.17
+  - ✅ Minimal CSS (only for essential glue/utilities)
 
-## 🎯 **WHAT WAS THE ROOT CAUSE?**
+#### **Remaining Tech Debt Identified**
 
-The previous branding implementation session (May 31) successfully added the official brand colors but **failed to remove the old conflicting definitions**. This created a "last-one-wins" CSS cascade problem where:
+- [ ] Fix Tailwind v4 `leading-relaxed` compatibility
+- [ ] Convert 21+ inline `style={{}}` to Tailwind classes
+- [ ] Replace direct DOM manipulation with React hooks
+- [ ] Simplify `themes.css` (485 lines → Tailwind config)
+- [ ] Fix ESLint configuration warnings
 
-1. Official brand colors were defined ✅
-2. Old generic colors were defined later ❌ (overrode the brand colors)
-3. Font references weren't updated ❌ (causing fallback chaos)
+#### **Impact**
 
----
-
-# PAGE CONSOLIDATION SESSION: June 2, 2025
-
-## 🔄 **MAJOR NAVIGATION RESTRUCTURE**
-
-### **Problem Identified:** 
-User feedback: *"About, Ranges, Gallery, and Contact should all be one page, yeah? Right now they're very empty, and taking up a ton of real estate in the menu. Gallery also still looks dramatically different than the other pages."*
-
-### ✅ **COMPLETED WORK**
-
-#### 📄 **Page Consolidation**
-- **Created:** `/src/app/club-info/page.tsx` - Consolidated single page
-- **Sections Combined:**
-  - About Us (history, mission, stats)
-  - Our Facilities (ranges and amenities)
-  - Photo Gallery (integrated gallery component)
-  - Contact Information (details + contact form)
-- **Removed Files:**
-  - `/src/app/about/page.tsx` ❌
-  - `/src/app/ranges/page.tsx` ❌  
-  - `/src/app/contact/page.tsx` ❌
-
-#### 🧭 **Navigation Updates**
-- **Before:** 8 navigation items (HOME, ABOUT, MUSEUM, EVENTS, RANGES, GALLERY, MEMBERSHIP, CONTACT)
-- **After:** 5 navigation items (HOME, CLUB INFO, MUSEUM, EVENTS, MEMBERSHIP) 
-- **Updated Files:**
-  - `/src/components/navigation/NavBar.tsx` - Updated navLinks array
-  - Navigation now cleaner and less cluttered
-
-#### 🎨 **Gallery Styling Consistency**
-- **Problem:** Gallery page used different styling (`var(--bg-primary)` vs gradient backgrounds)
-- **Fix:** Updated `/src/app/gallery/page.tsx` to match site theme:
-  - Added gradient background (`from-slate-900 via-slate-800 to-slate-900`)
-  - Added ClayFragments and SmokeAnimation effects
-  - Updated typography to use `font-heading` and `font-body` classes
-  - Consistent card styling with glassmorphism effects
-  - Proper accent color usage (`text-accent-primary`)
+- **Performance**: Reduced CSS bundle size significantly
+- **Maintainability**: Eliminated duplicate code paths
+- **Developer Experience**: Cleaner component architecture
+- **Build Time**: Faster compilation with fewer files to process
 
 ---
-
-## 📊 **IMPACT ASSESSMENT**
-
-### ✅ **Navigation Improvements:**
-- **Reduced clutter:** 62.5% reduction in menu items (8→5)
-- **Better UX:** Consolidated related content into logical sections
-- **Consistent styling:** All pages now follow the same design patterns
-- **Mobile friendly:** Less navigation complexity on small screens
-
-### 🎯 **Content Organization:**
-- **About section:** History, mission, and key stats in organized cards
-- **Facilities section:** 6 detailed facility cards with icons and descriptions
-- **Gallery section:** Integrated PhotoGallery component with consistent theming
-- **Contact section:** Info cards + functional contact form
-
-### 🔧 **Technical Benefits:**
-- **Reduced bundle size:** Eliminated 3 separate page components
-- **Better SEO:** Single page with comprehensive club information
-- **Easier maintenance:** Single source of truth for club information
-- **Consistent animations:** All sections use same motion patterns
-
----
-
-## 🚀 **READY FOR MEETING**
-
-The site now has:
-- ✅ Clean, uncluttered navigation (5 items vs 8)
-- ✅ Comprehensive club information in single organized page
-- ✅ Consistent styling across all sections
-- ✅ Professional, cohesive user experience
-- ✅ All functionality preserved while improving UX

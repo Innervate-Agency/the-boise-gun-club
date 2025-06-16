@@ -18,8 +18,8 @@ const MainContentWrapper = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <main 
-      className="flex-grow w-full"
-      style={{ paddingTop: `${totalNavHeight}px` }} // Apply dynamic padding
+      className="flex-1 w-full min-h-screen"
+      style={{ paddingTop: `${totalNavHeight}px` }}
     >
       {children}
     </main>
