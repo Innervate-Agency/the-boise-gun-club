@@ -1,6 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import NavBar from '../components/navigation/NavBar';
+import Footer from '../components/layout/Footer';
+import NewThemeToggle from '../components/ui/NewThemeToggle';
 
 interface ClientLayoutProps {
   children: React.ReactNode;
@@ -25,17 +28,13 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
 
   return (
     <>
-      {/* <NavBar /> Temporarily Removed */}
+      <NavBar />
       <main className="flex-1 w-full min-h-screen">
         {children}
       </main>
-      {/* <Footer /> Temporarily Removed */}
-      {/* {mounted && (
-        <>
-          <NewThemeToggle />
-          <AccessibilityFAB />
-        </>
-      )} Temporarily Removed */}
+      <Footer />
+      <NewThemeToggle />
+      {/* Theme and accessibility controls will be added here */}
     </>
   );
 }

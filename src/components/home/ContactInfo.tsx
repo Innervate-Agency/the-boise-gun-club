@@ -25,10 +25,10 @@ const ContactInfo = () => {
             title: "Call Us",
             content: (
                 <div className="space-y-2">
-                    <a href={`tel:${clubInfo.phone}`} className="text-xl font-['Noto Sans'] text-white hover:text-[var(--accent-gold)] transition-colors">
+                    <a href={`tel:${clubInfo.phone}`} className="text-xl font-['Noto Sans'] text-[var(--text-primary)] hover:text-[var(--accent-gold)] transition-colors">
                         {clubInfo.phone}
                     </a>
-                    <p className="text-sm text-white/50">Tue-Sun, Business Hours</p>
+                    <p className="text-sm text-[var(--text-secondary)]">Tue-Sun, Business Hours</p>
                 </div>
             )
         },
@@ -37,7 +37,7 @@ const ContactInfo = () => {
             title: "Visit Us",
             content: (
                 <div className="space-y-2">
-                    <p className="text-lg font-['Noto Sans'] text-white/90 leading-relaxed">
+                    <p className="text-lg font-['Noto Sans'] text-[var(--text-primary)] leading-relaxed">
                         {clubInfo.address}
                     </p>
                     <a 
@@ -59,9 +59,9 @@ const ContactInfo = () => {
             title: "Range Hours",
             content: (
                 <div className="space-y-1.5">
-                    <p className="text-sm font-['Noto Sans'] text-white/80">{hours.weekdays}</p>
-                    <p className="text-sm font-['Noto Sans'] text-white/80">{hours.saturday}</p>
-                    <p className="text-sm font-['Noto Sans'] text-white/80">{hours.sunday}</p>
+                    <p className="text-sm font-['Noto Sans'] text-[var(--text-primary)]">{hours.weekdays}</p>
+                    <p className="text-sm font-['Noto Sans'] text-[var(--text-primary)]">{hours.saturday}</p>
+                    <p className="text-sm font-['Noto Sans'] text-[var(--text-primary)]">{hours.sunday}</p>
                     <p className="text-sm font-['Noto Sans'] text-[var(--accent-gold)] mt-2">{hours.closed}</p>
                 </div>
             )
@@ -69,29 +69,26 @@ const ContactInfo = () => {
     ];
 
     return (
-        <section className="relative py-24 md:py-32 overflow-hidden">
-            {/* Background with subtle texture */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1a1614]/50 to-[#121212]" />
-            
-            <div className="container mx-auto px-4 relative z-10">
+        <section className="relative py-16 sm:py-24 md:py-32 bg-[var(--bg-primary)]">
+            <div className="container mx-auto px-4">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    className="text-center mb-12 sm:mb-16"
                 >
-                    <h2 className="font-['Rajdhani'] text-5xl md:text-6xl uppercase text-white mb-4">
+                    <h2 className="font-['Rajdhani'] text-4xl sm:text-5xl md:text-6xl uppercase text-[var(--text-primary)] mb-4">
                         Get In <span className="text-[var(--accent-gold)]">Touch</span>
                     </h2>
-                    <p className="text-white/60 text-lg font-['Noto Sans'] max-w-2xl mx-auto">
+                    <p className="text-[var(--text-secondary)] text-base sm:text-lg font-['Noto Sans'] max-w-2xl mx-auto">
                         Ready to join Idaho's premier shooting sports facility? We're here to help.
                     </p>
                 </motion.div>
 
                 {/* Contact Cards Grid */}
-                <div className="grid md:grid-cols-3 gap-8 mb-16">
+                <div className="grid md:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
                     {contactCards.map((card, index) => (
                         <motion.div
                             key={card.title}
@@ -101,21 +98,18 @@ const ContactInfo = () => {
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                             className="group"
                         >
-                            {/* Glass card */}
-                            <div className="relative backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] border border-white/10 rounded-2xl p-8 h-full hover:border-white/20 transition-all duration-300">
+                            {/* Card */}
+                            <div className="relative bg-[var(--bg-secondary)] rounded-2xl p-6 sm:p-8 h-full hover:shadow-lg transition-all duration-300">
                                 {/* Icon */}
                                 <div className="mb-6">
-                                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/10 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                        <card.icon className="w-7 h-7 text-[var(--accent-gold)]" />
+                                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-[var(--accent-primary)]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                        <card.icon className="w-6 h-6 sm:w-7 sm:h-7 text-[var(--accent-gold)]" />
                                     </div>
                                 </div>
                                 
                                 {/* Content */}
-                                <h3 className="font-['Rajdhani'] text-2xl text-white uppercase mb-4">{card.title}</h3>
+                                <h3 className="font-['Rajdhani'] text-xl sm:text-2xl text-[var(--text-primary)] uppercase mb-4">{card.title}</h3>
                                 {card.content}
-                                
-                                {/* Hover glow */}
-                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--accent-primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                             </div>
                         </motion.div>
                     ))}
@@ -127,10 +121,10 @@ const ContactInfo = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="relative"
+                    className="relative mb-12 sm:mb-16"
                 >
-                    {/* Glass container for map */}
-                    <div className="backdrop-blur-xl bg-gradient-to-br from-white/[0.06] to-white/[0.02] border border-white/10 rounded-2xl p-2 shadow-2xl">
+                    {/* Map container */}
+                    <div className="bg-[var(--bg-secondary)] rounded-2xl p-2 shadow-lg">
                         <div className="aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2891.7974851234567!2d-116.123456!3d43.567890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDM0JzA0LjQiTiAxMTbCsDA3JzI0LjQiVw!5e0!3m2!1sen!2sus!4v1234567890"
@@ -152,23 +146,28 @@ const ContactInfo = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-center mt-16"
+                    className="text-center"
                 >
-                    <p className="text-white/60 font-['Noto Sans'] text-lg mb-6">
+                    <p className="text-[var(--text-secondary)] font-['Noto Sans'] text-base sm:text-lg mb-6">
                         Have questions about membership or our facilities?
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/contact" className="group relative inline-flex items-center">
-                            <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-xl blur-lg opacity-50 group-hover:opacity-80 transition-opacity" />
-                            <button className="relative backdrop-blur-sm bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white px-8 py-4 rounded-xl font-['Rajdhani'] uppercase tracking-wider transition-all duration-300 group-hover:scale-105 shadow-xl">
-                                Contact Us
-                            </button>
+                        <Link 
+                            href="/contact" 
+                            className="inline-flex items-center justify-center px-6 py-3 bg-[var(--accent-primary)] text-[var(--text-primary)] 
+                                     rounded-lg hover:bg-[var(--accent-secondary)] transition-all duration-300 
+                                     font-['Rajdhani'] uppercase tracking-wide"
+                        >
+                            Contact Us
                         </Link>
                         
-                        <Link href="/membership" className="group relative inline-flex items-center">
-                            <button className="relative backdrop-blur-md bg-white/[0.08] border border-white/20 text-white px-8 py-4 rounded-xl font-['Rajdhani'] uppercase tracking-wider transition-all duration-300 group-hover:bg-white/[0.12] group-hover:scale-105 group-hover:border-white/30 shadow-xl">
-                                Join Now
-                            </button>
+                        <Link 
+                            href="/membership" 
+                            className="inline-flex items-center justify-center px-6 py-3 border-2 border-[var(--accent-primary)] text-[var(--accent-primary)] 
+                                     rounded-lg hover:bg-[var(--accent-primary)] hover:text-[var(--text-primary)] 
+                                     transition-all duration-300 font-['Rajdhani'] uppercase tracking-wide"
+                        >
+                            Join Now
                         </Link>
                     </div>
                 </motion.div>

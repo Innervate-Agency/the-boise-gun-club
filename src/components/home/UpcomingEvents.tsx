@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CalendarDaysIcon, ClockIcon, MapPinIcon, UsersIcon } from '@heroicons/react/24/outline';
-import { EventImage, TrainingImage, MembershipImage } from '../ui/UnsplashImage';
 
 // Real events with authentic content
 const upcomingEvents = [
@@ -67,7 +66,7 @@ const UpcomingEvents = () => {
     const [selectedEvent, setSelectedEvent] = useState(upcomingEvents[0]);
 
     return (
-        <section className="relative py-24 md:py-32">
+        <section className="relative py-16 sm:py-24 md:py-32 bg-[var(--bg-primary)]">
             {/* Section Header */}
             <div className="container mx-auto px-4 mb-12">
                 <motion.div
@@ -77,10 +76,10 @@ const UpcomingEvents = () => {
                     transition={{ duration: 0.6 }}
                     className="max-w-3xl"
                 >
-                    <h2 className="font-['Rajdhani'] text-5xl md:text-6xl uppercase text-white mb-4">
+                    <h2 className="font-['Rajdhani'] text-4xl sm:text-5xl md:text-6xl uppercase text-[var(--text-primary)] mb-4">
                         Upcoming <span className="text-[var(--accent-gold)]">Events</span>
                     </h2>
-                    <p className="text-white/60 text-lg font-['Noto Sans']">
+                    <p className="text-[var(--text-secondary)] text-base sm:text-lg font-['Noto Sans']">
                         From competitive shoots to casual fun days, there's always action at the club.
                     </p>
                 </motion.div>
@@ -88,7 +87,7 @@ const UpcomingEvents = () => {
 
             {/* Events Grid */}
             <div className="container mx-auto px-4">
-                <div className="grid lg:grid-cols-3 gap-8">
+                <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
                     {/* Event List - Left Side */}
                     <div className="lg:col-span-1 space-y-4">
                         {upcomingEvents.map((event, index) => (
@@ -105,11 +104,10 @@ const UpcomingEvents = () => {
                                         : 'hover:scale-[1.01]'
                                 }`}
                             >
-                                {/* Glass card */}
-                                <div className={`relative backdrop-blur-xl border rounded-xl p-5 transition-all duration-300 ${
+                                <div className={`relative rounded-xl p-4 sm:p-5 transition-all duration-300 ${
                                     selectedEvent?.id === event.id
-                                        ? 'bg-gradient-to-br from-white/[0.12] to-white/[0.06] border-[var(--accent-primary)]/30 shadow-2xl'
-                                        : 'bg-white/[0.05] border-white/10 hover:bg-white/[0.08] hover:border-white/20'
+                                        ? 'bg-[var(--bg-secondary)] border border-[var(--accent-primary)]/30 shadow-lg'
+                                        : 'bg-[var(--bg-secondary)]/50 hover:bg-[var(--bg-secondary)] border border-[var(--text-primary)]/10'
                                 }`}>
                                     {/* Active indicator */}
                                     {selectedEvent?.id === event.id && (
@@ -118,24 +116,24 @@ const UpcomingEvents = () => {
                                     
                                     <div className="flex items-start gap-4">
                                         {/* Date block */}
-                                        <div className={`flex flex-col items-center justify-center rounded-lg w-16 h-16 transition-all duration-300 ${
+                                        <div className={`flex flex-col items-center justify-center rounded-lg w-14 h-14 sm:w-16 sm:h-16 transition-all duration-300 ${
                                             selectedEvent?.id === event.id
-                                                ? 'bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/10'
-                                                : 'bg-white/[0.05] group-hover:bg-white/[0.08]'
+                                                ? 'bg-[var(--accent-primary)]/20'
+                                                : 'bg-[var(--bg-primary)] group-hover:bg-[var(--accent-primary)]/10'
                                         }`}>
-                                            <span className="font-['Rajdhani'] text-2xl text-white">{event.date}</span>
-                                            <span className="text-xs text-white/60 uppercase">{event.month}</span>
+                                            <span className="font-['Rajdhani'] text-xl sm:text-2xl text-[var(--text-primary)]">{event.date}</span>
+                                            <span className="text-xs text-[var(--text-secondary)] uppercase">{event.month}</span>
                                         </div>
                                         
                                         {/* Event info */}
                                         <div className="flex-1">
-                                            <h4 className="font-['Rajdhani'] text-lg text-white mb-1">{event.title}</h4>
-                                            <p className="text-sm text-white/60 font-['Noto Sans'] line-clamp-2">{event.desc}</p>
+                                            <h4 className="font-['Rajdhani'] text-base sm:text-lg text-[var(--text-primary)] mb-1">{event.title}</h4>
+                                            <p className="text-sm text-[var(--text-secondary)] font-['Noto Sans'] line-clamp-2">{event.desc}</p>
                                             <div className="flex items-center justify-between mt-2">
                                                 <div className="flex items-center gap-3">
                                                     <span className="text-xs text-[var(--accent-gold)] font-['Noto Sans']">{event.category}</span>
-                                                    <span className="text-xs text-white/40">•</span>
-                                                    <span className="text-xs text-white/60 font-['Noto Sans'] flex items-center gap-1">
+                                                    <span className="text-xs text-[var(--text-secondary)]">•</span>
+                                                    <span className="text-xs text-[var(--text-secondary)] font-['Noto Sans'] flex items-center gap-1">
                                                         <UsersIcon className="w-3 h-3" />
                                                         {event.attendees} attending
                                                     </span>
@@ -180,75 +178,74 @@ const UpcomingEvents = () => {
                                 transition={{ duration: 0.3 }}
                                 className="sticky top-24"
                             >
-                                {/* Main glass card */}                                <div className="backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+                                <div className="bg-[var(--bg-secondary)] rounded-2xl shadow-lg overflow-hidden">
                                     {/* Event image */}
-                                    <div className="relative h-64 md:h-80">
-                                        <EventImage
+                                    <div className="relative h-64 sm:h-80">
+                                        <Image
+                                            src={selectedEvent.image}
                                             alt={selectedEvent.title}
-                                            fill={true}
+                                            fill
                                             className="object-cover"
                                             sizes="(max-width: 768px) 100vw, 66vw"
-                                            width={800}
-                                            height={600}
+                                            priority={selectedEvent.id === upcomingEvents[0].id}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                                         
                                         {/* Category badge */}
                                         <div className="absolute top-4 right-4">
-                                            <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-full px-4 py-1">
-                                                <span className="text-sm font-['Noto Sans'] text-white/90">{selectedEvent.category}</span>
+                                            <div className="bg-[var(--bg-primary)]/80 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1">
+                                                <span className="text-sm font-['Noto Sans'] text-[var(--text-primary)]">{selectedEvent.category}</span>
                                             </div>
                                         </div>
                                         
                                         {/* Title overlay */}
-                                        <div className="absolute bottom-0 left-0 right-0 p-8">
-                                            <h3 className="font-['Rajdhani'] text-3xl md:text-4xl text-white uppercase mb-2">
+                                        <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+                                            <h3 className="font-['Rajdhani'] text-2xl sm:text-3xl md:text-4xl text-white uppercase mb-2">
                                                 {selectedEvent.title}
                                             </h3>
                                         </div>
                                     </div>
                                     
                                     {/* Event details */}
-                                    <div className="p-8">
+                                    <div className="p-6 sm:p-8">
                                         {/* Meta info */}
-                                        <div className="grid md:grid-cols-3 gap-4 mb-6">
+                                        <div className="grid sm:grid-cols-3 gap-4 mb-6">
                                             <div className="flex items-center gap-3">
                                                 <CalendarDaysIcon className="w-5 h-5 text-[var(--accent-gold)]" />
                                                 <div>
-                                                    <p className="text-xs text-white/40 font-['Noto Sans']">Date</p>
-                                                    <p className="text-white font-['Noto Sans']">{selectedEvent.date} {selectedEvent.month}</p>
+                                                    <p className="text-xs text-[var(--text-secondary)] font-['Noto Sans']">Date</p>
+                                                    <p className="text-[var(--text-primary)] font-['Noto Sans']">{selectedEvent.date} {selectedEvent.month}</p>
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-3">
                                                 <ClockIcon className="w-5 h-5 text-[var(--accent-gold)]" />
                                                 <div>
-                                                    <p className="text-xs text-white/40 font-['Noto Sans']">Time</p>
-                                                    <p className="text-white font-['Noto Sans']">{selectedEvent.time}</p>
+                                                    <p className="text-xs text-[var(--text-secondary)] font-['Noto Sans']">Time</p>
+                                                    <p className="text-[var(--text-primary)] font-['Noto Sans']">{selectedEvent.time}</p>
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-3">
                                                 <MapPinIcon className="w-5 h-5 text-[var(--accent-gold)]" />
                                                 <div>
-                                                    <p className="text-xs text-white/40 font-['Noto Sans']">Location</p>
-                                                    <p className="text-white font-['Noto Sans']">{selectedEvent.location}</p>
+                                                    <p className="text-xs text-[var(--text-secondary)] font-['Noto Sans']">Location</p>
+                                                    <p className="text-[var(--text-primary)] font-['Noto Sans']">{selectedEvent.location}</p>
                                                 </div>
                                             </div>
                                         </div>
                                         
                                         {/* Description */}
-                                        <p className="text-white/70 font-['Noto Sans'] leading-relaxed mb-8">
+                                        <p className="text-[var(--text-secondary)] font-['Noto Sans'] leading-relaxed mb-8">
                                             {selectedEvent.details}
                                         </p>
                                         
                                         {/* CTA Button */}
                                         <Link
                                             href={`/events/${selectedEvent.id}`}
-                                            className="group relative inline-flex items-center justify-center w-full"
+                                            className="inline-flex items-center justify-center w-full bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] 
+                                                     text-[var(--text-primary)] font-bold py-3 px-6 rounded-lg text-base transition-all duration-300 
+                                                     transform hover:scale-105 shadow-lg hover:shadow-xl font-['Rajdhani']"
                                         >
-                                            <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-xl blur-lg opacity-50 group-hover:opacity-80 transition-opacity" />
-                                            <button className="relative w-full backdrop-blur-sm bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white px-8 py-4 rounded-xl font-['Rajdhani'] uppercase tracking-wider transition-all duration-300 group-hover:scale-[1.02] shadow-xl">
-                                                Register for Event
-                                            </button>
+                                            Register for Event
                                         </Link>
                                     </div>
                                 </div>

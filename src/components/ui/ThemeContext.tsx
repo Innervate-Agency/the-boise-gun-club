@@ -24,8 +24,14 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
             currentTheme = setting;
         }
         setEffectiveTheme(currentTheme);
-        document.documentElement.classList.toggle('dark', currentTheme === 'dark');
-        document.documentElement.setAttribute('data-theme', currentTheme);
+        // Always set BOTH class and data-theme for compatibility
+        const html = document.documentElement;
+        html.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
         localStorage.setItem('theme', setting);
     }, []);
 

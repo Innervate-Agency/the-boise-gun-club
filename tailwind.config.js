@@ -51,8 +51,10 @@ module.exports = {
         'space-grotesk': ['Space Grotesk', 'sans-serif'], 
         'rajdhani': ['Rajdhani', 'sans-serif'],
         'noto-sans': ['Noto Sans', 'sans-serif'],
-      },      fontSize: {
-        // Minimum 18px base for accessibility
+      },
+      fontSize: {
+        'xs': ['14px', '1.5'],
+        'sm': ['16px', '1.5'],
         'base': ['18px', '1.5'],
         'lg': ['20px', '1.5'],
         'xl': ['24px', '1.4'],
@@ -60,9 +62,23 @@ module.exports = {
         '3xl': ['40px', '1.2'],
         '4xl': ['48px', '1.1'],
         '5xl': ['64px', '1.1'],
+        '6xl': ['72px', '1'],
+        '7xl': ['96px', '1'],
       },
       lineHeight: {
+        'none': '1',
+        'tight': '1.25',
+        'snug': '1.375',
+        'normal': '1.5',
         'relaxed': '1.625',
+        'loose': '2',
+      },
+      screens: {
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

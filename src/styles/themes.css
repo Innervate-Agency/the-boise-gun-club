@@ -16,17 +16,17 @@
   /* Larger text for calendar components */
   .calendar-text {
     font-size: 20px;
-    @apply leading-relaxed;
+    line-height: 1.625;
   }
 
   .calendar-text-xl {
     font-size: 24px;
-    @apply leading-relaxed;
+    line-height: 1.625;
   }
 
   .calendar-text-2xl {
     font-size: 32px;
-    @apply leading-relaxed;
+    line-height: 1.625;
   }
 
   /* Apply transitions for theme switching */

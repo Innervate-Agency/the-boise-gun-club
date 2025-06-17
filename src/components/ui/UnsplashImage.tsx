@@ -58,9 +58,7 @@ export default function LocalImage({
         quality={quality}
         sizes={sizes}
         loading={priority ? 'eager' : loading}
-        className={`transition-opacity duration-300 ${
-          isLoading ? 'opacity-0' : 'opacity-100'
-        } ${fill ? 'object-cover' : ''}`}
+        className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'} ${fill ? 'object-cover' : ''} ${className}`}
         onLoad={handleImageLoad}
         onError={handleImageError}
       />
