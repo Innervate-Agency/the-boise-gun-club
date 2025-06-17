@@ -64,6 +64,57 @@
 
 # BOISE GUN CLUB V4 - DEVELOPMENT CHANGELOG
 
+## SESSION: June 16, 2025 - External Image API Removal & Local Image Optimization
+
+### 🎯 **ORIGINAL TASK**
+
+**User Request:** _"Remove all images that are being called via API or link, if they're not inside public/images they get the boot"_
+
+This session focused on completely removing all external image dependencies, API calls, and remote image references to ensure the application only uses local images from `/public/images`.
+
+---
+
+### ✅ **COMPLETED WORK**
+
+### 🧹 **External Image API Cleanup**
+
+**Removed all external image dependencies:**
+- ❌ Removed `picsum.photos` from Next.js remote patterns in both `next.config.js` and `next.config.ts`
+- ❌ Removed `images.unsplash.com` from Next.js remote patterns and CSP headers
+- ❌ Cleaned up UnsplashImage component to remove unused `category` and `query` properties
+- ❌ Removed all external API references from component props and usage
+- ✅ Renamed interface from `UnsplashImageProps` to `LocalImageProps` for clarity
+- ✅ Converted UnsplashImage component to LocalImage (keeping filename for import compatibility)
+- ✅ Updated image showcase page description to remove Unsplash API references
+
+**Component Updates:**
+- 🎯 `UnsplashImage.tsx` → Simplified to pure local image wrapper component
+- 🎯 `image-showcase/page.tsx` → Removed `category` props from LocalImage usage  
+- 🎯 `GalleryPreview.tsx` → Updated to use fallback images only
+- 🎯 All convenience components (HeroImage, EventImage, etc.) → Now reference local images exclusively
+
+**Configuration Changes:**
+- 🔧 `next.config.js` → Removed remote patterns, kept local optimization settings
+- 🔧 `next.config.ts` → Removed Unsplash domains from remote patterns and CSP
+- 🔧 All image references now point to `/public/images` directory only
+
+### 🎯 **ARCHITECTURE STATUS**
+
+**✅ 100% Local Image Compliance:**
+- All images served from `/public/images` only
+- No external API calls or remote image fetching
+- No dynamic image generation from external sources
+- Clean, optimized local image pipeline with WebP conversion
+- Removed all external domain permissions from Next.js config
+
+**✅ Build Success:**
+- Project builds successfully without external image dependencies
+- All TypeScript interfaces updated and consistent
+- ESLint compliance maintained
+- No remaining external image references
+
+---
+
 ## SESSION: June 1, 2024 - New Page Scaffolding & Design Correction
 
 ### 🎯 **ORIGINAL TASK**

@@ -58,7 +58,7 @@
 
 /* BOISE GUN CLUB OFFICIAL BRAND COLORS */
 /* Light Theme: Spring Day Along The East Fork of The Owyhee River */
-:root {
+:root, [data-theme="light"] {
   /* TYPOGRAPHY SYSTEM - Font Variables */
   --font-heading: 'Rajdhani', system-ui, sans-serif;
   --font-body: 'Noto Sans', system-ui, sans-serif;
@@ -76,59 +76,21 @@
   --accent-primary: #F23005;       /* Clay Pidgeon Orange */
   --accent-secondary: #f07b1d;     /* Gunclub Orange */
   --accent-tertiary: #E3C03C;      /* Wildeye Susan Yellow */
-  --accent-blue: #5198cd;          /* Idaho Sky Blue */
-  --accent-blue-dark: #3c81c0;     /* Snakeriver Blue */
-  --accent-green: #6f7822;         /* Owyhee Field Green */
-  --accent-green-light: #909233;   /* Boise Yard Green */
-  --accent-red: #8C394B;           /* Scoring Bench Red */
+  --brand-blue: #5198cd;          /* Idaho Sky Blue */
+  --brand-blue-dark: #3c81c0;     /* Snakeriver Blue */
+  --brand-green: #6f7822;         /* Owyhee Field Green */
+  --brand-green-light: #909233;   /* Boise Yard Green */
+  --brand-red-action: #8C394B;    /* Scoring Bench Red */
   
-  /* Glass effects - Light */
-  --glass-bg: rgba(248, 246, 241, 0.15);
-  --glass-border: rgba(81, 152, 205, 0.2);
-  
-  /* Utilities */
-  --glass-noise: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIGluPSJwIi8+PC9maWx0ZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=");
-  --shadow-light: rgba(55, 33, 3, 0.1);
-
-  /* High Contrast variables */
-  --hc-background: rgba(255, 255, 255, 0.9);
-  --hc-background-solid: #fff;
-  --hc-border: currentColor;
-  --hc-text: #000;
-
-  /* RGB versions for rgba() */
-  --black-rgb: 0, 0, 0;
-  --white-rgb: 255, 255, 255;
-  --lahoma-orange-rgb: 242, 135, 5;      /* Lahoma Orange #F28705 */
-  --sand-dune-brown-rgb: 192, 128, 81;   /* Sand Dune Brown #c08051 */
-
-  /* Light Theme RGB Accents */
-  --accent-primary-rgb: 242, 48, 5;       /* Clay Pidgeon Orange #F23005 */
-  --accent-secondary-rgb: 240, 123, 29;    /* Gunclub Orange #f07b1d */
-  
-  /* GRADIENT SYSTEM COLORS */
-  --gradient-primary-start: #FF6B35;      /* Vibrant Orange */
-  --gradient-primary-mid: #F7931E;        /* Golden Orange */
-  --gradient-primary-end: #FFD23F;        /* Sunny Yellow */
-  
-  --gradient-secondary-start: #FF4E50;    /* Coral Red */
-  --gradient-secondary-mid: #FF6B35;      /* Vibrant Orange */
-  --gradient-secondary-end: #F7931E;      /* Golden Orange */
-  
-  --gradient-accent-start: #FFD23F;       /* Sunny Yellow */
-  --gradient-accent-mid: #FFAB00;         /* Amber */
-  --gradient-accent-end: #FF6F00;         /* Deep Orange */
-  
-  /* Glass Effect Colors */
-  --glass-bg-light: rgba(255, 255, 255, 0.25);
-  --glass-bg-secondary: rgba(255, 255, 255, 0.1);
-  --glass-border-light: rgba(255, 255, 255, 0.2);
-  --glass-shadow-light: rgba(255, 107, 53, 0.1);
+  /* Gradients & Effects (Light Theme) */
+  --gradient-hero-light: linear-gradient(135deg, var(--brand-blue), var(--brand-green-light));
+  --gradient-card-light: linear-gradient(to right, #f8f6f1e0, #ede7dee0); /* Subtle gradient for cards */
+  --shadow-light: 0 10px 20px rgba(55, 33, 3, 0.1), 0 6px 6px rgba(55, 33, 3, 0.08);
+  --text-primary-dark-theme: #FDFDFD; /* For ::selection, assuming dark text on light accent */
 }
 
 /* Dark Theme: Misty Fall Morning in the Cascades */
-:root.dark, 
-:root[data-theme="dark"] {
+:root.dark, [data-theme="dark"] {
   /* Dark Brand Colors from Branding Guide */
   --bg-primary: #2F3135;           /* Kent Slate Gray */
   --bg-primary-dark-raw: 47, 49, 53; /* Kent Slate Gray raw RGB */
@@ -142,344 +104,205 @@
   --accent-primary: #F28705;       /* Lahoma Orange */
   --accent-secondary: #F2CB05;     /* Leonard Yellow */
   --accent-tertiary: #F25C05;      /* Jerry Orange */
-  --accent-blue: #4982A6;          /* Club House Roof Blue */
-  --accent-blue-dark: #C9D2EF;     /* Club House Walk Gray */
-  --accent-green: #3F6331;         /* Club House Lawn Green */
-  --accent-green-light: #6f7822;   /* Owyhee Field Green */
-  --accent-red: #8C394B;           /* Scoring Bench Red */
-  
-  /* Dark Theme RGB Accents (overriding light theme ones) */
-  --accent-primary-rgb: 242, 135, 5;     /* Lahoma Orange #F28705 */
-  --accent-secondary-rgb: 242, 203, 5;    /* Leonard Yellow #F2CB05 */
+  --brand-blue: #4982A6;          /* Club House Roof Blue */
+  --brand-blue-dark: #C9D2EF;     /* Club House Walk Gray (using as a lighter blue accent in dark) */
+  --brand-green: #3F6331;         /* Club House Lawn Green */
+  --brand-red-action: #F23005;    /* Abe Red (more vibrant for dark theme actions) */
+  --brand-red-subtle: #8C394B;    /* Scoring Bench Red (for less prominent red accents) */
 
-  /* Glass effects - Dark */
-  --glass-bg: rgba(47, 49, 53, 0.2);
-  --glass-border: rgba(242, 135, 5, 0.3);
-  
-  /* DARK THEME GRADIENT COLORS */
-  --gradient-primary-start: #FF8C42;      /* Lighter Orange for contrast */
-  --gradient-primary-mid: #FFB347;        /* Peach Orange */
-  --gradient-primary-end: #FFDC5E;        /* Softer Yellow */
-  
-  --gradient-secondary-start: #FF6B5B;    /* Lighter Coral */
-  --gradient-secondary-mid: #FF8C42;      /* Lighter Orange */
-  --gradient-secondary-end: #FFB347;      /* Peach Orange */
-  
-  --gradient-accent-start: #FFDC5E;       /* Softer Yellow */
-  --gradient-accent-mid: #FFC107;         /* Brighter Amber */
-  --gradient-accent-end: #FF8F00;         /* Bright Orange */
-  
-  /* Dark Glass Effect Colors */
-  --glass-bg-light: rgba(47, 49, 53, 0.8);
-  --glass-bg-secondary: rgba(75, 75, 75, 0.6);
-  --glass-border-light: rgba(255, 140, 66, 0.2);
-  --glass-shadow-light: rgba(255, 140, 66, 0.15);
-  
-  /* Utilities */
-  --glass-noise: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIGluPSJwIi8+PC9maWx0ZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDgiLz48L3N2Zz4=");
-  --shadow-dark: rgba(0, 0, 0, 0.4);
+  /* Gradients & Effects (Dark Theme) */
+  --gradient-hero-dark: linear-gradient(135deg, var(--brand-blue), var(--accent-primary));
+  --gradient-card-dark: linear-gradient(to right, #2F3135e0, #4B4B4Be0); /* Subtle gradient for cards */
+  --shadow-dark: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.25);
+  --text-primary-dark-theme: #FDFDFD; /* For ::selection */
 }
 
-@theme inline {
-  --color-background: var(--bg-primary);
-  --color-foreground: var(--text-primary);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-/* ENHANCED GLASS EFFECTS - WINDOWS 11 MICA STYLE */
+/* 
+The following sections are commented out to isolate issues.
+These styles should be refactored into Tailwind utility classes in components
+or as proper Tailwind plugin components if necessary.
+*/
+
+/*
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading uppercase;
+  }
+  h1 { @apply text-5xl md:text-7xl font-bold text-text-primary; }
+  h2 { @apply text-4xl md:text-5xl font-semibold text-text-primary; }
+  h3 { @apply text-3xl md:text-4xl font-semibold text-text-primary; }
+  h4 { @apply text-2xl md:text-3xl font-medium text-text-primary; }
+  h5 { @apply text-xl md:text-2xl font-medium text-text-primary; }
+  h6 { @apply text-lg md:text-xl font-medium text-text-primary; }
+
+  p, li, span, div:not([class*=\"icon\"]) {
+    @apply font-body text-text-secondary;
+  }
+  
+  a {
+    @apply text-accent-primary hover:text-accent-secondary transition-colors duration-300;
+  }
+
+  button, .btn {
+    @apply font-body;
+  }
+}
+*/
+
+/* Utility Classes - These should be replaced by Tailwind classes in components */
+/*
+.bg-primary { background-color: var(--bg-primary); }
+.bg-secondary { background-color: var(--bg-secondary); }
+.bg-tertiary { background-color: var(--bg-tertiary); }
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.accent-primary { color: var(--accent-primary); }
+.accent-secondary { color: var(--accent-secondary); }
+*/
+
+/* Component-Specific Styles - These should be refactored */
+
+/* Glassmorphism Effects */
+/*
 .glass-nav {
-  background: var(--glass-bg);
+  background: linear-gradient(to right bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  position: relative;
+  -webkit-backdrop-filter: blur(10px); 
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.1);
 }
 
-.glass-nav::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: var(--glass-noise);
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-}
-
-.glass-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: var(--glass-noise);
-  mix-blend-mode: soft-light;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.glass-section {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-top: 1px solid var(--glass-border);
-  border-bottom: 1px solid var(--glass-border);
-}
-
-/* Font utility classes */
-.bg-primary {
-  background-color: var(--bg-primary);
-}
-
-.bg-secondary {
-  background-color: var(--bg-secondary);
-}
-
-.text-primary {
-  color: var(--text-primary);
-}
-
-.text-secondary {
-  color: var(--text-secondary);
-}
-
-.accent-primary {
-  color: var(--accent-primary);
-}
-
-.accent-secondary {
-  color: var(--accent-secondary);
-}
-
-.accent-tertiary {
-  color: var(--accent-tertiary);
-}
-
-.border-accent {
-  border-color: var(--accent-primary);
-}
-
-/* ========================================
-   CLICKUP-INSPIRED GRADIENT SYSTEM
-   Theme-Aware Orange/Yellow/Red Palette
-======================================== */
-
-/* BACKGROUND GRADIENTS */
-.bg-gradient-primary {
-  background: linear-gradient(135deg, 
-    var(--gradient-primary-start) 0%, 
-    var(--gradient-primary-mid) 50%, 
-    var(--gradient-primary-end) 100%);
-}
-
-.bg-gradient-secondary {
-  background: linear-gradient(135deg, 
-    var(--gradient-secondary-start) 0%, 
-    var(--gradient-secondary-mid) 50%, 
-    var(--gradient-secondary-end) 100%);
-}
-
-.bg-gradient-hero {
-  background: 
-    radial-gradient(circle at 20% 80%, 
-      color-mix(in srgb, var(--gradient-primary-end) 8%, transparent) 0%,
-      transparent 50%),
-    radial-gradient(circle at 80% 20%, 
-      color-mix(in srgb, var(--gradient-secondary-start) 6%, transparent) 0%,
-      transparent 50%),
-    var(--bg-primary);
-}
-
-/* CLICKUP GLASS MORPHISM */
-.clickup-glass {
-  background: linear-gradient(135deg,
-    var(--glass-bg-light) 0%,
-    var(--glass-bg-secondary) 100%);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid var(--glass-border-light);
-  box-shadow: 
-    0 8px 32px var(--glass-shadow-light),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+[data-theme=\"dark\"] .glass-nav {
+  background: linear-gradient(to right bottom, rgba(47,49,53,0.3), rgba(47,49,53,0.1));
+  border: 1px solid rgba(253,253,253,0.1);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.2);
 }
 
 .clickup-glass-card {
-  background: var(--bg-primary);
-  border: 1px solid var(--glass-border-light);
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.07);
 }
 
-.clickup-glass-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg,
-    color-mix(in srgb, var(--gradient-primary-start) 3%, transparent) 0%,
-    color-mix(in srgb, var(--gradient-primary-end) 2%, transparent) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+[data-theme=\"dark\"] .clickup-glass-card {
+  background: linear-gradient(135deg, rgba(40, 42, 46, 0.3) 0%, rgba(30, 32, 35, 0.2) 100%);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+*/
+
+/* Gradient Text & Buttons */
+/*
+.text-gradient-primary {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-primary to-accent-secondary;
 }
 
-.clickup-glass-card:hover::before {
-  opacity: 1;
-}
-
-.clickup-glass-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 10px 15px -3px var(--glass-shadow-light),
-    0 4px 6px -4px var(--glass-shadow-light);
-  border-color: color-mix(in srgb, var(--gradient-primary-start) 40%, var(--glass-border-light));
-}
-
-/* BUTTON GRADIENT SYSTEM */
 .btn-gradient-primary {
-  background: linear-gradient(135deg, 
-    var(--gradient-primary-start) 0%, 
-    var(--gradient-primary-end) 100%);
-  border: none;
-  color: white;
-  position: relative;
-  overflow: hidden;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 6px color-mix(in srgb, var(--gradient-primary-start) 30%, transparent);
+  @apply px-6 py-3 text-white font-semibold rounded-lg shadow-md;
+  background-image: linear-gradient(to right, var(--accent-primary) 0%, var(--accent-secondary) 50%, var(--accent-primary) 100%);
+  background-size: 200% auto;
+  transition: background-position 0.5s ease;
 }
-
 .btn-gradient-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 12px color-mix(in srgb, var(--gradient-primary-start) 40%, transparent);
+  background-position: right center;
 }
+*/
 
-.btn-gradient-secondary {
-  background: transparent;
-  border: 2px solid;
-  border-image: linear-gradient(135deg, 
-    var(--gradient-primary-start) 0%, 
-    var(--gradient-primary-end) 100%) 1;
-  color: var(--gradient-primary-start);
-  position: relative;
-  overflow: hidden;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Card Styles */
+/*
+.content-card {
+  @apply bg-bg-secondary p-6 rounded-xl shadow-lg transition-all duration-300 ease-out;
 }
-
-.btn-gradient-secondary:hover {
-  background: linear-gradient(135deg, 
-    var(--gradient-primary-start) 0%, 
-    var(--gradient-primary-end) 100%);
-  color: white;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px color-mix(in srgb, var(--gradient-primary-start) 30%, transparent);
-}
-
-/* ACCENT GRADIENT TEXT */
-.accent-gradient-text {
-  background: linear-gradient(90deg, 
-    var(--gradient-accent-start) 0%, 
-    var(--gradient-accent-mid) 50%, 
-    var(--gradient-accent-end) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: 700;
-  display: inline-block;
-}
-
-/* STRIPE-INSPIRED LAYOUT SYSTEM */
-.section-spacing {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
-
-.section-spacing-sm {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
-.section-spacing-lg {
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-}
-
-.stripe-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-.stripe-grid {
-  display: grid;
-  gap: 3rem;
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 768px) {
-  .stripe-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (min-width: 1024px) {
-  .stripe-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.content-card:hover {
+  @apply shadow-xl transform -translate-y-1;
 }
 
 .stripe-card {
   background: var(--bg-secondary);
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 6px var(--shadow-light);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05), 
+              0 10px 20px rgba(0,0,0,0.05),
+              inset 0 -2px 0px rgba(0,0,0,0.05), 
+              inset 0 1px 0px rgba(255,255,255,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .stripe-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px var(--shadow-light);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.07), 
+              0 20px 40px rgba(0,0,0,0.07),
+              inset 0 -2px 0px rgba(0,0,0,0.05), 
+              inset 0 1px 0px rgba(255,255,255,0.1);
+}
+*/
+
+/* Scrollbar Styles */
+/*
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 10px;
+  border: 2px solid var(--bg-secondary); 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary);
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+*/
+
+/* Animations & Effects - Consider Framer Motion for complex animations */
+/*
+.subtle-glow {
+  animation: subtleGlowAnim 3s infinite alternate ease-in-out;
+}
+@keyframes subtleGlowAnim {
+  0% { box-shadow: 0 0 5px -2px var(--accent-primary); }
+  100% { box-shadow: 0 0 15px 0px var(--accent-primary); }
 }
 
-[data-theme="dark"] .stripe-card {
-  box-shadow: 0 4px 6px var(--shadow-dark);
+.pulsate-opacity {
+  animation: pulsateOpacityAnim 2s infinite alternate ease-in-out;
 }
-
-[data-theme="dark"] .stripe-card:hover {
-  box-shadow: 0 8px 25px var(--shadow-dark);
+@keyframes pulsateOpacityAnim {
+  0% { opacity: 0.8; }
+  100% { opacity: 1; }
 }
+*/
 
-.section-divider {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--accent-primary) 20%,
-    var(--accent-primary) 80%,
-    transparent 100%
-  );
-  margin: 6rem 0;
-} 
+/* Specific Component Overrides - Avoid if possible */
+/*
+#main-navigation a.active-link {
+  @apply text-accent-secondary font-semibold border-b-2 border-accent-secondary;
+}
+*/
+
+/* Print Styles */
+/*
+@media print {
+  body {
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  a {
+    text-decoration: underline !important;
+    color: #000 !important;
+  }
+}
+*/

@@ -17,7 +17,7 @@ export default function Page() {
         description: `Here is the up-to-the-minute weather forecast for the club's location. We operate in most conditions, including rain and snow, but understanding the wind and temperature can help you prepare for a more comfortable and successful day of shooting.`,
         link: '#',
         linkText: 'View Detailed Radar',
-        imageUrl: 'https://picsum.photos/seed/weather-forecast/800/600'
+        imageUrl: '/images/events.webp'
       },
       {
         title: 'Inclement Weather Policy',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `The safety of our shooters and staff is our absolute priority. We will immediately suspend all shooting activities in the event of lightning in the area or sustained high winds that make conditions unsafe. <br/><br/>Updates on weather-related closures will always be posted on the <a href="/ranges/status" class="text-leonard-yellow hover:underline">Range Status</a> page.`,
         link: '/ranges/status',
         linkText: 'Check Live Range Status',
-        imageUrl: 'https://picsum.photos/seed/weather-safety/800/600'
+        imageUrl: '/images/events.webp'
       }
     ]
   };

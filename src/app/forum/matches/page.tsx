@@ -17,7 +17,7 @@ export default function Page() {
         description: `Don't have a full squad for the upcoming tournament? Post here to find other members to team up with. This is the best place to coordinate and ensure you have a group to shoot with.`,
         link: '#',
         linkText: 'View the Squadding Board',
-        imageUrl: 'https://picsum.photos/seed/match-squadding/800/600'
+        imageUrl: '/images/events.webp'
       },
       {
         title: 'Post-Match Banter & Results',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `Just finished a competition? Come here to congratulate the winners, discuss the target presentations, and share your triumphs and tribulations from the course. This is where the community comes together to celebrate the sport.`,
         link: '#',
         linkText: 'Join the Post-Match Discussion',
-        imageUrl: 'https://picsum.photos/seed/match-results/800/600'
+        imageUrl: '/images/events.webp'
       }
     ]
   };

@@ -17,7 +17,7 @@ export default function Page() {
         description: `This is a private service for active members. All transactions are strictly between the buyer and seller; the club assumes no liability. All firearm sales must fully comply with all federal, state, and local laws, including transfers through a licensed FFL dealer where required. <br/><br/>Please read the full rules before posting.`,
         link: '#',
         linkText: 'Read Full Marketplace Rules',
-        imageUrl: 'https://picsum.photos/seed/marketplace-rules/800/600'
+        imageUrl: '/images/events.webp'
       },
       {
         title: 'Browse the Listings',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `Explore listings organized into clear categories: Sporting Shotguns, Trap & Skeet Guns, Reloading Presses & Components, Shooting Vests & Gear, and Wanted to Buy. <br/><br/>You might just find that piece of equipment you've been looking for.`,
         link: '#',
         linkText: 'Go to the Marketplace',
-        imageUrl: 'https://picsum.photos/seed/marketplace-listings/800/600'
+        imageUrl: '/images/membership.webp'
       }
     ]
   };

@@ -17,7 +17,7 @@ export default function Page() {
         description: `Keep your membership active by renewing online. Our secure payment portal accepts all major credit cards. You can choose from Individual, Family, and Corporate membership tiers. <br/><br/>Consider opting into auto-renewal so you never miss a day of shooting.`,
         link: '#',
         linkText: 'Go to Secure Payment Portal',
-        imageUrl: 'https://picsum.photos/seed/billing-renew/800/600'
+        imageUrl: '/images/events.webp'
       },
       {
         title: 'Payment & Transaction History',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `Need a receipt for your records? This section allows you to view and download invoices for all your club transactions, including membership dues, locker fees, and event registrations.`,
         link: '/members/portal',
         linkText: 'Access Your Member Profile',
-        imageUrl: 'https://picsum.photos/seed/billing-history/800/600'
+        imageUrl: '/images/events.webp'
       }
     ]
   };

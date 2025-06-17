@@ -17,7 +17,7 @@ export default function Page() {
         description: `These rules are absolute and strictly enforced. 1. Always keep your firearm pointed in a safe direction. 2. Keep your action open and unloaded until you are on the shooting station and it is your turn to shoot. 3. Keep your finger off the trigger until ready to fire. 4. Approved eye and ear protection are mandatory for everyone on the grounds.`,
         link: '/emergency',
         linkText: 'View Emergency Procedures',
-        imageUrl: 'https://picsum.photos/seed/safety-rules/800/600'
+        imageUrl: '/images/events.webp'
       },
       {
         title: 'Ammunition & Equipment',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `This is a shotgun-only facility. The use of rifles, pistols, or any ammunition other than lead or steel shot is strictly prohibited. Maximum shot size is 7.5 for lead and 6 for steel. Slugs and buckshot are not allowed under any circumstances. <br/><br/>Our Range Safety Officers are happy to inspect your equipment if you have any questions.`,
         link: '/contact',
         linkText: 'Contact a Range Officer',
-        imageUrl: 'https://picsum.photos/seed/ammo-rules/800/600'
+        imageUrl: '/images/events.webp'
       }
     ]
   };

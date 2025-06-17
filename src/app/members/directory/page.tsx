@@ -17,7 +17,7 @@ export default function Page() {
         description: `Looking to connect with other members? Our directory is a great way to find fellow shooters. To protect our members' privacy, the directory is only visible to logged-in members and only displays information that individuals have consented to share.`,
         link: '#',
         linkText: 'Search the Directory',
-        imageUrl: 'https://picsum.photos/seed/directory-search/800/600'
+        imageUrl: '/images/events.webp'
       },
       {
         title: 'Manage Your Directory Profile',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `You are in complete control of your information. By default, you are not listed. If you wish to be included, you can opt-in via your member profile and select exactly which details (e.g., name, city, disciplines shot) you want to make visible to other members.`,
         link: '/members/portal',
         linkText: 'Update Your Privacy Settings',
-        imageUrl: 'https://picsum.photos/seed/directory-profile/800/600'
+        imageUrl: '/images/events.webp'
       }
     ]
   };

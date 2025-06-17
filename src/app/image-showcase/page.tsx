@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import UnsplashImage, { HeroImage, EventImage, TrainingImage, MembershipImage } from '@/components/ui/UnsplashImage';
+import LocalImage, { HeroImage, EventImage, TrainingImage, MembershipImage } from '@/components/ui/UnsplashImage';
 
 const ImageShowcasePage = () => {
   const categories = [
@@ -29,7 +29,7 @@ const ImageShowcasePage = () => {
             Image <span className="text-[var(--accent-gold)]">Showcase</span>
           </h1>
           <p className="text-[var(--text-secondary)] max-w-2xl mx-auto font-['Noto Sans'] text-lg">
-            High-quality shooting sports photography powered by Unsplash API integration
+            High-quality shooting sports photography from our local image gallery
           </p>
         </motion.div>
 
@@ -86,8 +86,7 @@ const ImageShowcasePage = () => {
                 <div className="backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] border border-white/10 rounded-xl overflow-hidden shadow-2xl hover:shadow-[0_20px_50px_rgba(242,135,5,0.15)] transition-all duration-500">
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden">
-                    <UnsplashImage
-                      category={cat.category}
+                    <LocalImage
                       fallback="/images/hero-bg.webp"
                       alt={cat.name}
                       fill={true}

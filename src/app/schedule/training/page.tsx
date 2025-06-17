@@ -17,7 +17,7 @@ export default function Page() {
         description: `Our "First Shots" program is the perfect introduction to the world of shotgun sports. In a private, one-on-one setting, a certified instructor will guide you through firearm safety, range etiquette, and the core mechanics of breaking clays in trap, skeet, and sporting. <br/><br/>We provide everything you need, including a shotgun, ammunition, and safety gear.`,
         link: '/contact',
         linkText: 'Book Your First Lesson',
-        imageUrl: 'https://picsum.photos/seed/new-shooter/800/600'
+        imageUrl: '/images/events.webp'
       },
       {
         title: 'Advanced Competitive Coaching',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `For the experienced shooter, our advanced coaching sessions focus on taking your performance to the next level. Our instructors, many of whom are master-class competitors themselves, can help diagnose issues, refine your technique, and develop a stronger mental game for competition. <br/><br/>Video analysis and personalized drills are available.`,
         link: '/contact',
         linkText: 'Meet Our Instructors',
-        imageUrl: 'https://picsum.photos/seed/advanced-coaching/800/600'
+        imageUrl: '/images/events.webp'
       }
     ]
   };

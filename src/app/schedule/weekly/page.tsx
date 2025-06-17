@@ -17,7 +17,7 @@ export default function Page() {
         description: `Our club offers extensive shooting hours throughout the week to accommodate our members and guests. All 12 of our combination trap and skeet fields, as well as our two world-class sporting clays courses, are open during these times. <br/><br/>Please note that the last squad goes out one hour before closing time. We recommend checking the <a href="/ranges/status" class="text-leonard-yellow hover:underline">live range status</a> page before your visit for any last-minute updates on closures due to weather or private events.`,
         link: '/schedule/reservations',
         linkText: 'Reserve a Time Slot',
-        imageUrl: 'https://picsum.photos/seed/weekly-hours/800/600'
+        imageUrl: '/images/events.webp'
       },
       {
         title: 'Weekly Leagues',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `Looking to test your skills in a friendly but competitive environment? Our weekly leagues are the perfect opportunity. We offer leagues for Trap, Skeet, and Sporting Clays that run in 8-week seasons throughout the year. <br/><br/>It's a fantastic way to sharpen your abilities, enjoy the camaraderie of fellow shooters, and vie for bragging rights. Shooters of all skill levels are encouraged to join, with handicap systems in place to ensure a level playing field.`,
         link: '/schedule/competitions',
         linkText: 'View League Standings',
-        imageUrl: 'https://picsum.photos/seed/weekly-leagues/800/600'
+        imageUrl: '/images/events.webp'
       }
     ]
   };

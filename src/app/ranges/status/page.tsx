@@ -17,7 +17,7 @@ export default function Page() {
         description: `This section provides live updates from the clubhouse. Check here for information on weather-related delays or closures, any ongoing maintenance projects, or fields reserved for private events. <br/><br/>We strive to keep this updated in real-time to ensure you have a smooth experience upon arrival.`,
         link: '/weather',
         linkText: 'View Local Forecast',
-        imageUrl: 'https://picsum.photos/seed/range-conditions/800/600'
+        imageUrl: '/images/events.webp'
       },
       {
         title: 'Upcoming Maintenance & Events',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `To maintain our world-class facilities, we occasionally need to close specific fields or courses for maintenance. We also host major tournaments that may reserve large portions of the club. <br/><br/>This calendar provides a forward-looking view of these events so you can plan your shooting schedule accordingly.`,
         link: '/schedule/competitions',
         linkText: 'See Full Competition Schedule',
-        imageUrl: 'https://picsum.photos/seed/range-maintenance/800/600'
+        imageUrl: '/images/events.webp'
       }
     ]
   };

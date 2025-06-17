@@ -17,7 +17,7 @@ export default function Page() {
         description: `In any life-threatening emergency, the first and most important step is to **call 911**. After contacting emergency services, immediately notify the nearest Range Safety Officer or clubhouse staff member. <br/><br/>AEDs (Automated External Defibrillators) and comprehensive first-aid kits are located in the clubhouse and at the sporting clays halfway house.`,
         link: '#',
         linkText: 'View Clubhouse Map',
-        imageUrl: 'https://picsum.photos/seed/emergency-plan/800/600'
+        imageUrl: '/images/training.webp'
       },
       {
         title: 'Location & Contact Information',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `Our physical address is **123 Gun Club Road, Boise, ID 83709**. Providing this precise address to 911 dispatchers is essential. The direct line to the clubhouse is **(208) 555-1212**. <br/><br/>Please program this number into your phone before visiting.`,
         link: '/contact',
         linkText: 'See All Club Contacts',
-        imageUrl: 'https://picsum.photos/seed/emergency-contact/800/600'
+        imageUrl: '/images/events.webp'
       }
     ]
   };

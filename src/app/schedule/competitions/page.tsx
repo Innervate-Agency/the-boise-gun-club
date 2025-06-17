@@ -17,7 +17,7 @@ export default function Page() {
         description: `As a premier shotgun facility, we are proud to host a full calendar of registered shoots. These events draw competitors from across the region and offer a chance to test your skills against the best. <br/><br/>All scores are submitted to the respective governing bodies. Pre-registration is highly encouraged as these events often fill up quickly.`,
         link: '/forum/matches',
         linkText: 'Register for an Event',
-        imageUrl: 'https://picsum.photos/seed/registered-shoots/800/600'
+        imageUrl: '/images/events.webp'
       },
       {
         title: 'Fun Shoots & Club Events',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `Join us for our popular fun shoots! These events are designed for shooters of all abilities and focus on having a great time. Events include our annual Turkey Shoot, charity fundraisers, and unique themed competitions like "zombie apocalypse" sporting clays. <br/><br/>It's a great way to enjoy the sport in a relaxed and social atmosphere.`,
         link: '/gallery',
         linkText: 'See Past Event Photos',
-        imageUrl: 'https://picsum.photos/seed/fun-shoots/800/600'
+        imageUrl: '/images/events.webp'
       }
     ]
   };

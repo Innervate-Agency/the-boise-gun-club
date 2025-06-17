@@ -17,7 +17,7 @@ export default function Page() {
         description: `Welcome to your member dashboard. Here you can update your contact information, view your current membership level and expiration date, check your logged volunteer hours, and manage your communication preferences.`,
         link: '#',
         linkText: 'Access Your Profile',
-        imageUrl: 'https://picsum.photos/seed/member-profile/800/600'
+        imageUrl: '/images/events.webp'
       },
       {
         title: 'Club Documents & Reports',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `As a member-owned club, transparency is important. This section provides secure access to important documents, including our club bylaws, recent board meeting minutes, and annual financial reports.`,
         link: '#',
         linkText: 'View Document Library',
-        imageUrl: 'https://picsum.photos/seed/member-documents/800/600'
+        imageUrl: '/images/events.webp'
       }
     ]
   };

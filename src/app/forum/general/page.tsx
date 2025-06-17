@@ -17,7 +17,7 @@ export default function Page() {
         description: `This is the place to talk about the tools of our trade. Discuss the merits of different shotgun brands, the nuances of gun fit, cleaning and maintenance best practices, and the latest innovations in shotgun technology.`,
         link: '#',
         linkText: 'Go to Gunsmith\'s Corner',
-        imageUrl: 'https://picsum.photos/seed/forum-guns/800/600'
+        imageUrl: '/images/events.webp'
       },
       {
         title: 'The Reloading Bench',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `For the dedicated reloaders, this forum is for you. Share and discuss load data, ask questions about presses and components, and explore the science and art of crafting the perfect, consistent shotshell for your discipline. <br/><br/>**Disclaimer:** Always consult published load data. Use any information shared here at your own risk.`,
         link: '#',
         linkText: 'Go to the Reloading Bench',
-        imageUrl: 'https://picsum.photos/seed/forum-reloading/800/600'
+        imageUrl: '/images/events.webp'
       }
     ]
   };

@@ -17,7 +17,7 @@ export default function Page() {
         description: `While walk-ins are welcome, we highly recommend making a reservation, especially for groups or during peak weekend hours. Our online portal allows members to book a specific time on any of our fields or courses up to two weeks in advance. <br/><br/>This is the best way to ensure your preferred time is available.`,
         link: '#',
         linkText: 'Access Booking Portal',
-        imageUrl: 'https://picsum.photos/seed/booking-portal/800/600'
+        imageUrl: '/images/events.webp'
       },
       {
         title: 'Corporate & Group Events',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `Host a memorable event at our club. We specialize in corporate team-building events, client entertainment, and private parties. Our packages include all necessary equipment, safety instruction, and a catered meal option. <br/><br/>It's a safe, exciting, and unique experience that your group will talk about for years to come.`,
         link: '/contact',
         linkText: 'Inquire About Group Rates',
-        imageUrl: 'https://picsum.photos/seed/corporate-events/800/600'
+        imageUrl: '/images/events.webp'
       }
     ]
   };

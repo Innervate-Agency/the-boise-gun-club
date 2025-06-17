@@ -17,7 +17,7 @@ export default function Page() {
         description: `As a 100% volunteer-run organization, your contributions are what allow us to maintain pristine facilities, run successful events, and keep membership dues affordable. We require each member to contribute 10 volunteer hours per year or pay a $200 work fee in lieu of service.`,
         link: '#',
         linkText: 'Log Your Volunteer Hours',
-        imageUrl: 'https://picsum.photos/seed/volunteer-why/800/600'
+        imageUrl: '/images/events.webp'
       },
       {
         title: 'Find Your Role',
@@ -25,7 +25,7 @@ export default function Page() {
         description: `There are countless ways to help, regardless of your skills or physical abilities. We need assistance with range maintenance, target setting, event registration, groundskeeping, and special projects. <br/><br/>Check our volunteer board or contact our coordinator to find an opportunity that's right for you.`,
         link: '/contact',
         linkText: 'Contact the Volunteer Coordinator',
-        imageUrl: 'https://picsum.photos/seed/volunteer-roles/800/600'
+        imageUrl: '/images/events.webp'
       }
     ]
   };

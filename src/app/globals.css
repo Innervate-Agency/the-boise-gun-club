@@ -1,3 +1,7 @@
+/* Import theme variables first */
+@import "../styles/themes.css";
+
+/* Then Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,20 +12,21 @@
   --font-body: 'Noto Sans', system-ui, sans-serif;
 }
 
-/* Import only essential theme variables */
-@import "../styles/themes.css";
-
 /* Performance optimizations */
 @layer base {
   body {
     font-family: var(--font-body);
     font-weight: 300;
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-weight: 700;
     text-transform: uppercase;
+    color: var(--text-primary);
   }
 
   /* Improve font rendering */
