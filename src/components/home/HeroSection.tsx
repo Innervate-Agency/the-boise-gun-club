@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { useRef } from 'react';
 import Image from 'next/image';
+import Section from '@/components/layout/Section';
 
 function HeroSection() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -20,29 +21,29 @@ function HeroSection() {
     const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
 
     return (
-        <section ref={containerRef} className="relative min-h-screen overflow-hidden bg-[var(--bg-primary)]">            
-            {/* Background Image */}
-            <motion.div 
-                className="absolute inset-0 w-full h-full"
-                style={{ scale: bgScale }}
-            >
-                <div className="relative w-full h-full">
-                    <Image
-                        src="/images/hero-bg.webp"
-                        fill
-                        className="object-cover"
-                        priority
-                        quality={85}
-                        alt="Boise Gun Club - Premier Shooting Sports Facility"
-                        sizes="100vw"
-                    />
-                    {/* Dark overlay for text readability */}
-                    <div className="absolute inset-0 bg-black/40" />
-                </div>
-            </motion.div>
+        <Section isHero background="grid" overlay={false}>
+            <div ref={containerRef} className="relative min-h-screen overflow-hidden">            
+                {/* Background Image */}
+                <motion.div 
+                    className="absolute inset-0 w-full h-full"
+                    style={{ scale: bgScale }}
+                >
+                    <div className="relative w-full h-full">
+                        <Image
+                            src="/images/hero-bg.webp"
+                            fill
+                            className="object-cover"
+                            priority
+                            quality={85}
+                            alt="Boise Gun Club - Premier Shooting Sports Facility"
+                            sizes="100vw"
+                        />
+                        {/* Dark overlay for text readability */}
+                        <div className="absolute inset-0 bg-black/40" />
+                    </div>
+                </motion.div>
 
-            {/* Content */}
-            <div className="relative z-10 flex min-h-screen items-center justify-center">
+                {/* Content */}
                 <div className="container mx-auto px-4 sm:px-6 text-center">
                     <motion.div style={{ opacity, y: titleY }}>
                         {/* Logo Container */}
@@ -92,29 +93,29 @@ function HeroSection() {
                         </Link>
                     </motion.div>
                 </div>
-            </div>
 
-            {/* Scroll indicator */}
-            <motion.div 
-                className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-                style={{ opacity }}
-            >
-                <div className="flex flex-col items-center text-[var(--text-secondary)]">
-                    <span className="text-sm mb-2 font-['Noto Sans']">Scroll to explore</span>
-                    <motion.div
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="w-6 h-10 border-2 border-[var(--text-secondary)] rounded-full flex justify-center"
-                    >
+                {/* Scroll indicator */}
+                <motion.div
+                    className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+                    style={{ opacity }}
+                >
+                    <div className="flex flex-col items-center text-[var(--text-secondary)]">
+                        <span className="text-sm mb-2 font-['Noto Sans']">Scroll to explore</span>
                         <motion.div
-                            animate={{ y: [0, 12, 0] }}
+                            animate={{ y: [0, 10, 0] }}
                             transition={{ duration: 2, repeat: Infinity }}
-                            className="w-1 h-3 bg-[var(--text-secondary)] rounded-full mt-2"
-                        />
-                    </motion.div>
-                </div>
-            </motion.div>
-        </section>
+                            className="w-6 h-10 border-2 border-[var(--text-secondary)] rounded-full flex justify-center"
+                        >
+                            <motion.div
+                                animate={{ y: [0, 12, 0] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                                className="w-1 h-3 bg-[var(--text-secondary)] rounded-full mt-2"
+                            />
+                        </motion.div>
+                    </div>
+                </motion.div>
+            </div>
+        </Section>
     );
 }
 

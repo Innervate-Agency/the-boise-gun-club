@@ -53,7 +53,7 @@ export default function MobileMenu({ links, onClose }: MobileMenuProps) {
         >
             {/* Backdrop */}
             <motion.div
-                className="absolute inset-0 bg-[var(--bg-primary)]/90 backdrop-blur-md"
+                className="absolute inset-0 glass-mica"
                 onClick={onClose}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -67,15 +67,15 @@ export default function MobileMenu({ links, onClose }: MobileMenuProps) {
             {/* Background grid */}
             <div className="absolute inset-0 grid-bg opacity-5 pointer-events-none"></div>
             {/* Menu content */}
-            <div className="relative h-full flex flex-col items-center justify-center p-8">
+            <div className="relative z-10 flex items-center justify-center min-h-screen">
                 <motion.ul className="space-y-6 w-full max-w-xs">
                     {links.map((link) => (
                         <motion.li key={link.href} variants={itemVariants}>
                             <Link
                                 href={link.href}
-                                className={`block text-center text-2xl py-3 text-[var(--text-primary)] border-b border-[var(--glass-border)] transition-colors ${pathname === link.href ? 'text-[var(--accent-primary)] font-bold' : 'hover:text-[var(--accent-secondary)]'}`}
+                                className={`block text-center text-2xl py-3 glass-mica-hover rounded-lg ${pathname === link.href ? 'text-[var(--accent-primary)] font-bold' : 'text-[var(--text-primary)] hover:text-[var(--accent-secondary)]'}`}
                                 onClick={onClose}
-                               >
+                            >
                                 {link.label}
                             </Link>
                         </motion.li>
@@ -83,7 +83,7 @@ export default function MobileMenu({ links, onClose }: MobileMenuProps) {
                     <motion.li variants={itemVariants}>
                         <Link
                             href="/membership"
-                            className="block text-center mt-8 py-3 rounded-lg btn-gradient font-bold text-white text-2xl"
+                            className="block text-center mt-8 py-3 rounded-lg glass-mica-hover font-bold text-[var(--text-primary)] text-2xl"
                             onClick={onClose}
                         >
                             MEMBER LOGIN

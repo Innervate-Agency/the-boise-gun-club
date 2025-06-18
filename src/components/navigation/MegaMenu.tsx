@@ -73,7 +73,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, onClose }) => {
           
           {/* Mega Menu Content */}
           <motion.div
-            className="absolute top-full left-0 right-0 bg-[var(--bg-primary)]/95 backdrop-blur-md border-t border-[var(--accent-primary)]/20 shadow-2xl z-50"
+            className="absolute top-full left-0 right-0 glass-mica border-t border-[var(--accent-primary)]/20 shadow-2xl z-50"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -100,7 +100,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, onClose }) => {
                             onClick={onClose}
                           >
                             <motion.div
-                              className="p-3 rounded-lg hover:bg-[var(--accent-primary)]/10 transition-colors"
+                              className="p-3 rounded-lg glass-mica-hover"
                               whileHover={{ x: 4 }}
                               transition={{ duration: 0.2 }}
                             >
@@ -133,7 +133,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, onClose }) => {
                       onClick={onClose}
                     >
                       <motion.div
-                        className="flex items-center space-x-3 p-4 rounded-lg bg-[var(--bg-secondary)]/30 hover:bg-[var(--accent-primary)]/10 transition-colors"
+                        className="flex items-center space-x-3 p-4 rounded-lg glass-mica-hover"
                         whileHover={{ scale: 1.02 }}
                         transition={{ duration: 0.2 }}
                       >

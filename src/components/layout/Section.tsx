@@ -2,15 +2,18 @@
 
 import { FC, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useNavigation } from '@/components/navigation/NavigationContext';
 
 const Section: FC<{ 
     children: React.ReactNode;
     className?: string;
     background?: 'mist' | 'grid' | 'gradient' | 'none';
     overlay?: boolean;
-}> = ({ children, className = '', background = 'none', overlay = true }) => {
+    isHero?: boolean;
+}> = ({ children, className = '', background = 'none', overlay = true, isHero = false }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.1 });
+    const { totalNavHeight } = useNavigation();
     
     const bgStyles = {
         mist: "bg-gradient-to-br from-[var(--bg-secondary)]/5 via-transparent to-[var(--bg-primary)]/10",
@@ -22,7 +25,8 @@ const Section: FC<{
     return (
         <motion.section
             ref={ref}
-            className={`relative py-16 md:py-24 ${className}`}
+            className={`relative ${isHero ? 'min-h-screen' : 'py-24 md:py-32'} ${className}`}
+            style={isHero ? { paddingTop: `${totalNavHeight}px` } : undefined}
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 1 }}
