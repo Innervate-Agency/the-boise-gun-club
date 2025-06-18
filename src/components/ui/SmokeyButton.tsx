@@ -21,7 +21,7 @@ export default function SmokyButton({
         hover:border-chester-white/20
         transition-all duration-300
         shadow-lg
-        py-2 px-4 rounded font-medium ${className}
+        py-2 px-4 rounded font-heading uppercase tracking-wide font-bold ${className}
       `}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}

@@ -3,6 +3,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import Button from '../ui/Button';
 
 interface Photo {
     id: number;
@@ -212,9 +213,11 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos }) => {
                             transition={{ type: "spring", damping: 25, stiffness: 300 }}
                         >
                             {/* Close button */}
-                            <button
+                            <Button
+                                variant="tertiary"
                                 className="absolute -top-12 right-0 text-white hover:text-[var(--accent-primary)] transition-colors"
                                 onClick={() => setSelectedPhoto(null)}
+                                aria-label="Close photo modal"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -228,7 +231,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos }) => {
                                         clipRule="evenodd"
                                     />
                                 </svg>
-                            </button>
+                            </Button>
 
                             {/* Image container */}
                             <div className="relative flex-1 overflow-hidden rounded-lg border border-white/10">

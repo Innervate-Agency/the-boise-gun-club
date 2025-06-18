@@ -418,8 +418,7 @@ const AdminPage = () => {
           <div className="text-center">
             <button
               onClick={() => setIsLoggedIn(false)}
-              className="glass-premium px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition-all duration-200 
-                       border border-red-500/30 text-red-400 hover:bg-red-500/10 font-['Rajdhani'] uppercase tracking-wide"
+              className="glass-premium px-8 py-4 rounded-lg text-xl font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-red-500/30 text-red-400 hover:bg-red-500/10"
             >
               🚪 LOGOUT
             </button>
@@ -441,7 +440,7 @@ const AdminPage = () => {
             <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-['Rajdhani'] uppercase tracking-wide">📅 EDIT EVENTS</h1>
             <button
               onClick={() => setCurrentSection(null)}
-              className="glass-premium px-6 py-3 rounded-lg font-bold hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-wide"
+              className="glass-premium px-6 py-3 rounded-lg font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)]"
             >
               ← BACK
             </button>
@@ -517,7 +516,7 @@ const AdminPage = () => {
           <div className="flex gap-4 justify-center">
             <button
               onClick={addEvent}
-              className="glass-premium px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition-all duration-200 border border-green-500/30 text-green-400 hover:bg-green-500/10 font-['Rajdhani'] uppercase tracking-wide"
+              className="glass-premium px-8 py-4 rounded-lg text-xl font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-green-500/30 text-green-400 hover:bg-green-500/10"
             >
               ➕ ADD NEW EVENT
             </button>
@@ -525,7 +524,7 @@ const AdminPage = () => {
             <button
               onClick={handleSave}
               disabled={saveStatus === 'saving'}
-              className="glass-premium px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition-all duration-200 border border-blue-500/30 text-blue-400 hover:bg-blue-500/10 disabled:opacity-50 font-['Rajdhani'] uppercase tracking-wide"
+              className="glass-premium px-8 py-4 rounded-lg text-xl font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 disabled:opacity-50 border border-white/20 text-[var(--text-primary)]"
             >
               {saveStatus === 'saving' ? '💾 SAVING...' : 
                saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
@@ -549,7 +548,7 @@ const AdminPage = () => {
             <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-['Rajdhani'] uppercase tracking-wide">📞 EDIT CONTACT INFO</h1>
             <button
               onClick={() => setCurrentSection(null)}
-              className="glass-premium px-6 py-3 rounded-lg font-bold hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-wide"
+              className="glass-premium px-6 py-3 rounded-lg font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)]"
             >
               ← BACK
             </button>
@@ -666,7 +665,7 @@ const AdminPage = () => {
             <button
               onClick={handleSave}
               disabled={saveStatus === 'saving'}
-              className="glass-premium px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition-all duration-200 disabled:opacity-50 border border-white/20 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-wide"
+              className="glass-premium px-8 py-4 rounded-lg text-xl font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 disabled:opacity-50 border border-white/20 text-[var(--text-primary)]"
             >
               {saveStatus === 'saving' ? '💾 SAVING...' : 
                saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
@@ -689,7 +688,7 @@ const AdminPage = () => {
             <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-['Rajdhani'] uppercase tracking-wide">📸 EDIT GALLERY</h1>
             <button
               onClick={() => setCurrentSection(null)}
-              className="glass-premium px-6 py-3 rounded-lg font-bold hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-wide"
+              className="glass-premium px-6 py-3 rounded-lg font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)]"
             >
               ← BACK
             </button>
@@ -769,7 +768,7 @@ const AdminPage = () => {
           </div>          <div className="flex gap-4 justify-center">
             <button
               onClick={addGalleryItem}
-              className="glass-premium px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-wide"
+              className="glass-premium px-8 py-4 rounded-lg text-xl font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)]"
             >
               ➕ ADD NEW PHOTO
             </button>
@@ -777,7 +776,7 @@ const AdminPage = () => {
             <button
               onClick={handleSave}
               disabled={saveStatus === 'saving'}
-              className="glass-premium px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition-all duration-200 disabled:opacity-50 border border-white/20 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-wide"
+              className="glass-premium px-8 py-4 rounded-lg text-xl font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 disabled:opacity-50 border border-white/20 text-[var(--text-primary)]"
             >
               {saveStatus === 'saving' ? '💾 SAVING...' : 
                saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
@@ -800,7 +799,7 @@ const AdminPage = () => {
             <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-['Rajdhani'] uppercase tracking-wide">ℹ️ EDIT CLUB INFO</h1>
             <button
               onClick={() => setCurrentSection(null)}
-              className="glass-premium px-6 py-3 rounded-lg font-bold hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-wide"
+              className="glass-premium px-6 py-3 rounded-lg font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)]"
             >
               ← BACK
             </button>
@@ -878,7 +877,7 @@ const AdminPage = () => {
             <button
               onClick={handleSave}
               disabled={saveStatus === 'saving'}
-              className="glass-premium px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition-all duration-200 disabled:opacity-50 border border-white/20 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-wide"
+              className="glass-premium px-8 py-4 rounded-lg text-xl font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 disabled:opacity-50 border border-white/20 text-[var(--text-primary)]"
             >
               {saveStatus === 'saving' ? '💾 SAVING...' : 
                saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
@@ -896,7 +895,7 @@ const AdminPage = () => {
         <p className="text-xl text-[var(--text-secondary)] mb-8 font-['Noto Sans']">This section is being built!</p>
         <button
           onClick={() => setCurrentSection(null)}
-          className="glass-premium px-6 py-3 rounded-lg font-bold hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-wide"
+          className="glass-premium px-6 py-3 rounded-lg font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)]"
         >
           ← BACK TO MAIN MENU
         </button>

@@ -124,9 +124,7 @@ const MembershipCard = ({ tier, onSelect }: MembershipCardProps) => {
                 {/* CTA Button */}
                 <motion.button
                     onClick={() => onSelect(tier.id)}
-                    className="w-full py-4 px-8 rounded-lg bg-[#FFBF00] text-[#5D4037] font-bold text-lg 
-                             hover:bg-[#FFD700] transform transition-all duration-300
-                             hover:shadow-[0_0_20px_rgba(255,191,0,0.3)]"
+                    className="w-full py-4 px-8 rounded-lg bg-[#FFBF00] text-[#5D4037] font-heading uppercase tracking-wide font-bold text-lg hover:bg-[#FFD700] transform transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,191,0,0.3)]"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 >

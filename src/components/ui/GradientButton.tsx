@@ -24,7 +24,7 @@ export default function GradientButton({
   
   return (
     <button 
-      className={`${baseClass} ${sizes[size]} rounded-lg ${className}`}
+      className={`${baseClass} ${sizes[size]} rounded-lg font-heading uppercase tracking-wide font-bold ${className}`}
       {...props}
     >
       {children}

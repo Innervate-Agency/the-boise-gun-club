@@ -36,7 +36,7 @@ const NavItem = ({ label, href, isActive }: {
                     color: isActive ? 'var(--accent-primary)' : 'var(--text-primary)'
                 }}
             >
-                <span className={`text-xl tracking-wide`}>
+                <span className={`text-base font-heading uppercase tracking-wide`}>
                     {label}
                 </span>
 
@@ -190,7 +190,7 @@ export default function NavBar() {
                                     whileTap={{ scale: 0.95 }}
                                 >
                                     <Bars3Icon className="w-5 h-5 text-[var(--text-primary)]" />
-                                    <span className="text-lg xl:text-xl tracking-wide text-[var(--text-primary)]">MENU</span>
+                                    <span className="text-base font-heading uppercase tracking-wide text-[var(--text-primary)]">MENU</span>
                                 </motion.button>
 
                                 {/* Member Login Button */}
@@ -201,7 +201,7 @@ export default function NavBar() {
                                 >
                                     <Link
                                         href="/membership"
-                                        className="relative btn-gradient block px-4 lg:px-6 py-2.5 rounded font-bold shadow-lg tracking-wide text-sm lg:text-base"
+                                        className="relative btn-gradient block px-4 lg:px-6 py-2.5 rounded font-heading font-bold shadow-lg tracking-wide text-base uppercase"
                                     >
                                         MEMBER LOGIN
                                     </Link>
