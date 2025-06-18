@@ -13,7 +13,6 @@ const Section: FC<{
 }> = ({ children, className = '', background = 'none', overlay = true, isHero = false }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.1 });
-    const { totalNavHeight } = useNavigation();
     
     const bgStyles = {
         mist: "bg-gradient-to-br from-[var(--bg-secondary)]/5 via-transparent to-[var(--bg-primary)]/10",
@@ -25,8 +24,7 @@ const Section: FC<{
     return (
         <motion.section
             ref={ref}
-            className={`relative ${isHero ? 'min-h-screen' : 'py-24 md:py-32'} ${className}`}
-            style={isHero ? { paddingTop: `${totalNavHeight}px` } : undefined}
+            className={`relative ${isHero ? 'min-h-[calc(100vh-120px)] md:min-h-[calc(100vh-150px)]' : 'py-16 md:py-24'} ${className}`}
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 1 }}

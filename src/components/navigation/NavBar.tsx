@@ -50,44 +50,46 @@ export default function NavBar() {
                 transition-all duration-300
                 ${isScrolled ? 'glass-mica' : 'bg-transparent'}
                 z-50
-                py-3 md:py-4
+                h-[120px] md:h-[150px] flex items-center
             `}
-            style={{ 
-                height: totalNavHeight
-            }}
         >
             {/* Subtle grid texture beneath the glass effect */}
             <div className="absolute inset-0 grid-bg opacity-5 pointer-events-none" />
             
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-                <div className="flex items-center justify-between h-full">
-                    {/* Logo */}
-                    <Link href="/" className="relative z-10 flex items-center group focus:outline-none" aria-label="Boise Gun Club Home">
-                        <div className="flex items-center gap-3">
-                            {/* Clay SVG accent */}
-                            <Image
-                                src="/images/bgcv3-shattered-clay.svg"
-                                alt="Clay Target Logo"
-                                width={40}
-                                height={40}
-                                className="h-10 w-10 object-contain drop-shadow-md transition-transform group-hover:scale-110"
-                                priority
-                            />
-                            <div className="flex flex-col items-center justify-center leading-tight">
-                                <span className="text-xs tracking-widest uppercase text-[var(--accent-primary)] font-semibold mb-1 font-heading">established 1898</span>
-                                <span className="flex flex-row items-baseline gap-1">
-                                    <span className="text-2xl md:text-3xl font-extrabold uppercase font-heading">BOISE</span>
-                                    <span className="text-2xl md:text-3xl font-light uppercase font-heading">GUNCLUB</span>
-                                </span>
-                                <span className="text-xs md:text-sm font-light text-[var(--text-secondary)] mt-1 font-heading text-center">
-                                    Idaho's Premier Shotgun Sports Complex
-                                </span>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex items-center">
+                <div className="flex items-center justify-between w-full h-full">
+                    {/* Logo (left-aligned) */}
+                    <div className="flex-shrink-0 max-w-[400px] w-full flex items-center justify-start">
+                        <Link href="/" className="relative z-10 flex items-center group focus:outline-none w-full" aria-label="Boise Gun Club Home">
+                            <div className="flex items-center gap-6 w-full">
+                                {/* Clay SVG accent - responsive size */}
+                                <Image
+                                    src="/images/bgcv3-shattered-clay.svg"
+                                    alt="Clay Target Logo"
+                                    width={120}
+                                    height={120}
+                                    className="h-[80px] w-[80px] md:h-[100px] md:w-[100px] lg:h-[120px] lg:w-[120px] object-contain drop-shadow-md transition-transform group-hover:scale-105"
+                                    priority
+                                />
+                                <div className="flex flex-col items-center justify-center leading-tight w-full">
+                                    {/* Established */}
+                                    <span className="text-base md:text-lg tracking-widest uppercase text-[var(--accent-primary)] font-bold mb-2 font-heading" style={{ fontFamily: 'Rajdhani, sans-serif' }}>established 1898</span>
+                                    {/* BOISEGUNCLUB */}
+                                    <span className="flex flex-row items-baseline gap-0 w-full justify-center">
+                                        <span className="text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase font-heading" style={{ fontFamily: 'Rajdhani, sans-serif', letterSpacing: '0.04em' }}>BOISE</span>
+                                        <span className="text-3xl md:text-4xl lg:text-5xl font-light uppercase font-heading" style={{ fontFamily: 'Rajdhani, sans-serif', letterSpacing: '0.04em' }}>GUNCLUB</span>
+                                    </span>
+                                    {/* Tagline */}
+                                    <span className="block w-full text-center text-xs md:text-base lg:text-lg font-medium text-[var(--text-secondary)] mt-2 font-heading" style={{ fontFamily: 'Rajdhani, sans-serif', letterSpacing: '0.03em' }}>
+                                        Idaho's Premier Shotgun Sports Complex
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                    </Link>
+                        </Link>
+                    </div>
 
-                    {/* Desktop Navigation */}
-                    <nav className="hidden md:flex items-center space-x-8">
+                    {/* Menu (fills remaining space, left of logo) */}
+                    <nav className="hidden md:flex items-center space-x-8 flex-grow justify-start">
                         {links.map((link) => (
                             <Link
                                 key={link.href}

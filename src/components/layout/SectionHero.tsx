@@ -19,8 +19,7 @@ export default function SectionHero({
 
   return (
     <section
-      className={`relative w-full min-h-[200px] flex flex-col justify-center items-center px-4 py-8 md:py-12 ${className}`}
-      style={{ zIndex: 1 }}
+      className={`relative w-full min-h-[200px] flex flex-col justify-center items-center px-4 py-12 md:py-16 ${className}`}
     >
       {/* Accent background */}
       {accentType === 'fractal' && (
@@ -50,11 +49,11 @@ export default function SectionHero({
         />
       )}
       <div className="relative z-10 text-center max-w-3xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-heading font-bold mb-2 uppercase tracking-wide">
+        <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4 uppercase tracking-wide">
           {title}
         </h1>
         {subtitle && (
-          <p className="text-lg md:text-xl text-[var(--text-secondary)] font-normal mt-2">
+          <p className="text-lg md:text-xl text-[var(--text-secondary)] font-normal mt-4">
             {subtitle}
           </p>
         )}

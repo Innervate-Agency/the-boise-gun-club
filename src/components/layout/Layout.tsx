@@ -10,10 +10,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="min-h-screen flex flex-col">
             <NavBar />
             <main
-                className={`flex-grow ${clubAnnouncements.length > 0
-                    ? 'pt-32 md:pt-36' // Extra padding when announcements are showing
-                    : 'pt-24 md:pt-28' // Normal padding
-                    }`}
+                className={`flex-grow ${
+                    clubAnnouncements.length > 0
+                        ? 'mt-[120px] md:mt-[150px]' // Extra padding when announcements are showing
+                        : 'mt-[120px] md:mt-[150px]' // Normal padding
+                }`}
             >
                 {children}
             </main>
