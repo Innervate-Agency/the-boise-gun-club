@@ -1,0 +1,213 @@
+{
+  "news": [
+    {
+      "id": "facility-expansion-2024",
+      "title": "Major Facility Expansion Completed",
+      "date": "2024-12-01",
+      "category": "Facility Updates",
+      "priority": "high",
+      "excerpt": "Our $2.8M facility expansion project is complete, featuring new climate-controlled clubhouse, expanded pro shop, and enhanced parking.",
+      "content": "We're excited to announce the completion of our major facility expansion project. The new 5,000 sq ft climate-controlled clubhouse features modern meeting rooms, expanded dining facilities, and panoramic views of our ranges. The pro shop has tripled in size with expanded inventory of guns, ammunition, and accessories. New parking accommodates 200+ vehicles with improved accessibility features. The project also includes upgraded electrical systems, enhanced lighting for evening events, and improved WiFi throughout the facility.",
+      "author": "Club Board of Directors",
+      "tags": ["facility", "expansion", "clubhouse", "pro shop"],
+      "image": "/images/news/facility-expansion.webp",
+      "featured": true
+    },
+    {
+      "id": "sarah-mitchell-state-champion",
+      "title": "Sarah Mitchell Wins Idaho State Trap Championship",
+      "date": "2024-11-15",
+      "category": "Member Achievements",
+      "priority": "high",
+      "excerpt": "Longtime member Sarah Mitchell captured the Idaho State Trap Championship with a perfect 200/200 performance.",
+      "content": "Congratulations to Sarah Mitchell for her outstanding performance at the Idaho State Trap Championship held in Nampa. Sarah shot a flawless 200/200 to claim the state title, her first major championship victory. She broke the previous record by 4 targets and becomes the third woman in Idaho history to win the overall state championship. Sarah has been a member since 2019 and credits our coaching staff and supportive community for her success. She will represent Idaho at the ATA Grand American Championship in August 2025.",
+      "author": "Competition Committee",
+      "tags": ["championship", "trap", "state record", "member achievement"],
+      "image": "/images/news/sarah-champion.webp",
+      "featured": true
+    },
+    {
+      "id": "youth-scholarship-program-2024",
+      "title": "Record Year for Youth Scholarship Program",
+      "date": "2024-11-01",
+      "category": "Youth Programs",
+      "priority": "medium",
+      "excerpt": "Our youth scholarship program awarded $67,500 to 15 graduating seniors pursuing higher education.",
+      "content": "This year marked a record-breaking year for our youth scholarship program, with $67,500 awarded to 15 exceptional graduating seniors. Recipients demonstrated excellence in shooting sports, academics, and community service. Notable recipients include Alex Thompson (University of Idaho - Engineering, $10,000), Emma Rodriguez (Boise State - Education, $8,500), and Jake Wilson (Idaho State - Business, $7,000). The scholarships are funded through our annual fundraising events, member donations, and proceeds from our scholarship tournament. Since the program's inception in 2010, we've awarded over $400,000 to deserving young people.",
+      "author": "Youth Development Committee",
+      "tags": ["youth", "scholarships", "education", "community"],
+      "image": "/images/news/youth-scholarships.webp",
+      "featured": false
+    },
+    {
+      "id": "new-sporting-clays-course",
+      "title": "New Sporting Clays Course Opens",
+      "date": "2024-10-15",
+      "category": "Facility Updates",
+      "priority": "medium",
+      "excerpt": "Our completely redesigned 15-station sporting clays course offers challenging presentations for all skill levels.",
+      "content": "After six months of design and construction, our new sporting clays course is now open. The 15-station course features innovative target presentations designed by professional course designer Tony Martinez. Highlights include a 60-foot tower for high birds, water hazards, and varying terrain that challenges shooters of all levels. The course is NSCA certified and will host our first registered tournament in spring 2025. Member feedback has been overwhelmingly positive, with many noting the increased difficulty and variety. Course scorecards and maps are available at the pro shop.",
+      "author": "Range Development Committee",
+      "tags": ["sporting clays", "course design", "NSCA", "challenge"],
+      "image": "/images/news/new-sporting-course.webp",
+      "featured": false
+    },
+    {
+      "id": "winter-hours-schedule",
+      "title": "Winter Hours and Weather Policy",
+      "date": "2024-10-01",
+      "category": "Operating Schedule",
+      "priority": "medium",
+      "excerpt": "Effective November 1, winter operating hours begin. Review our cold weather and snow policies.",
+      "content": "Beginning November 1, we transition to winter operating hours: Monday-Friday 9 AM to 5 PM, Saturday-Sunday 8 AM to 6 PM. During inclement weather, range closures will be announced by 7 AM via our website, email alerts, and social media. Safety is our top priority - ranges close when temperatures drop below 10°F or during ice storms. Members are encouraged to dress appropriately for conditions and check weather updates before traveling. Hot coffee and soup are available in the clubhouse during winter months. Indoor classroom training continues year-round.",
+      "author": "Range Operations",
+      "tags": ["winter hours", "weather policy", "safety", "operations"],
+      "image": "/images/news/winter-operations.webp",
+      "featured": false
+    },
+    {
+      "id": "ladies-program-growth",
+      "title": "Ladies Program Sees 60% Growth",
+      "date": "2024-09-15",
+      "category": "Program Growth",
+      "priority": "medium",
+      "excerpt": "Our ladies shooting programs have grown by 60% this year, with new events and instruction driving participation.",
+      "content": "We're thrilled to report that our ladies shooting programs have experienced tremendous growth, with female participation up 60% compared to last year. The success is attributed to our monthly Ladies Day events, women-only instruction clinics, and the formation of competitive ladies teams. New programs include 'Women & Wine Wednesday' evening sessions and specialized sporting clays instruction. The ladies auxiliary has also been instrumental in organizing social events and mentoring newcomers. Interest in competitive shooting among women has particularly surged, with several members qualifying for state and regional championships.",
+      "author": "Ladies Program Committee",
+      "tags": ["ladies program", "growth", "participation", "community"],
+      "image": "/images/news/ladies-program.webp",
+      "featured": false
+    },
+    {
+      "id": "coaching-staff-expansion",
+      "title": "Coaching Staff Adds Three Certified Instructors",
+      "date": "2024-09-01",
+      "category": "Staff Updates",
+      "priority": "low",
+      "excerpt": "We welcome three new NRA certified instructors to expand our coaching capacity for growing membership.",
+      "content": "To support our growing membership and increased demand for instruction, we're pleased to welcome three new certified instructors to our coaching staff. Janet Williams brings 15 years of competitive shooting experience and specializes in youth development. Mark Stevens is a former military instructor with expertise in precision shooting and safety protocols. Lisa Chang focuses on adaptive shooting techniques and works with shooters with disabilities. All three instructors are NRA certified and have undergone our comprehensive training program. This expansion allows us to offer more private lessons, group clinics, and specialized programs.",
+      "author": "Training Department",
+      "tags": ["coaching", "instructors", "NRA certified", "training"],
+      "image": "/images/news/new-instructors.webp",
+      "featured": false
+    },
+    {
+      "id": "membership-milestone-1200",
+      "title": "Membership Reaches Historic 1,200 Mark",
+      "date": "2024-08-15",
+      "category": "Membership",
+      "priority": "high",
+      "excerpt": "Club membership has reached an all-time high of 1,200 active members, reflecting our community's growth and appeal.",
+      "content": "We're proud to announce that club membership has reached a historic milestone of 1,200 active members. This represents a 15% increase over last year and the highest membership level in our 126-year history. The growth reflects our expanded programs, improved facilities, and strong community reputation. New member demographics show increasing diversity in age, background, and experience levels. To accommodate growth, we've expanded staff, increased range hours, and implemented an online reservation system. Despite growth, we remain committed to maintaining our family-friendly atmosphere and personalized service.",
+      "author": "Membership Committee",
+      "tags": ["membership", "milestone", "growth", "community"],
+      "image": "/images/news/membership-milestone.webp",
+      "featured": true
+    },
+    {
+      "id": "environmental-initiatives",
+      "title": "Green Initiatives Reduce Environmental Impact",
+      "date": "2024-08-01",
+      "category": "Environmental",
+      "priority": "medium",
+      "excerpt": "New environmental programs include lead reclamation, solar panels, and habitat restoration projects.",
+      "content": "Our commitment to environmental stewardship continues with several new green initiatives. The lead reclamation program, launched in partnership with local recycling companies, has already recovered over 2,000 pounds of lead from our ranges. Solar panels installed on the clubhouse roof now provide 40% of our electricity needs. Our habitat restoration project has planted 500 native trees and created wildlife corridors. Additionally, we've implemented a biodegradable clay target program and upgraded to electric carts for range maintenance. These efforts demonstrate our responsibility to preserve Idaho's natural beauty for future generations.",
+      "author": "Environmental Committee",
+      "tags": ["environment", "sustainability", "lead reclamation", "solar"],
+      "image": "/images/news/environmental-initiatives.webp",
+      "featured": false
+    },
+    {
+      "id": "technology-upgrades-2024",
+      "title": "Technology Upgrades Enhance Member Experience",
+      "date": "2024-07-15",
+      "category": "Technology",
+      "priority": "medium",
+      "excerpt": "New scoring systems, online reservations, and mobile app improve convenience and accuracy for all members.",
+      "content": "Significant technology upgrades are improving the member experience across all areas of the club. Electronic scoring systems on all trap and skeet fields provide instant, accurate results with automatic handicap calculations. The new online reservation system allows members to book ranges, instructors, and equipment rentals 24/7. Our mobile app, launching in October, will feature live range status, scoring history, and event registration. WiFi coverage now extends to all ranges, and digital displays throughout the facility provide real-time information. These improvements reflect our commitment to combining tradition with modern convenience.",
+      "author": "Technology Committee",
+      "tags": ["technology", "scoring systems", "mobile app", "reservations"],
+      "image": "/images/news/technology-upgrades.webp",
+      "featured": false
+    },
+    {
+      "id": "charity-tournament-success",
+      "title": "Charity Tournament Raises $25,000 for Local Food Bank",
+      "date": "2024-07-01",
+      "category": "Community Service",
+      "priority": "medium",
+      "excerpt": "Our annual charity tournament exceeded goals, raising $25,000 for the Boise Community Food Bank.",
+      "content": "The 2024 Charity Tournament was a tremendous success, raising $25,000 for the Boise Community Food Bank. Over 150 participants competed in various disciplines while supporting a great cause. The event featured a silent auction with donated prizes, including guns, sporting goods, and vacation packages. Local businesses contributed significantly, with major sponsors including Cabela's, Sportsman's Warehouse, and several local gun shops. Tournament winners included overall champion Dave Rodriguez (97/100) and high lady Jennifer Martinez (94/100). All proceeds directly support families in need throughout the Treasure Valley.",
+      "author": "Charity Committee",
+      "tags": ["charity", "fundraising", "community service", "food bank"],
+      "image": "/images/news/charity-tournament.webp",
+      "featured": false
+    },
+    {
+      "id": "safety-record-achievement",
+      "title": "Club Achieves 500 Days Without Incident",
+      "date": "2024-06-15",
+      "category": "Safety",
+      "priority": "high",
+      "excerpt": "Milestone safety achievement reflects our commitment to proper training, equipment, and range protocols.",
+      "content": "We're proud to announce that our club has achieved 500 consecutive days without a safety incident, a testament to our rigorous safety protocols and member compliance. This milestone reflects the effectiveness of our mandatory safety training, certified range officers, and comprehensive safety rules. Key factors include our enhanced orientation program for new members, regular safety refresher courses, and the installation of additional safety barriers. Our safety committee continues to review and improve protocols, recently adding enhanced first aid stations and improving emergency communication systems. Safety remains our top priority in all activities.",
+      "author": "Safety Committee",
+      "tags": ["safety", "milestone", "training", "protocols"],
+      "image": "/images/news/safety-achievement.webp",
+      "featured": true
+    }
+  ],
+  "announcements": [
+    {
+      "id": "holiday-schedule-2024",
+      "title": "Holiday Schedule and Winter Break",
+      "date": "2024-12-10",
+      "category": "Schedule",
+      "priority": "high",
+      "content": "The club will be closed December 24-26 and January 1 for holidays. Limited hours December 27-31. Normal operations resume January 2.",
+      "expires": "2025-01-03"
+    },
+    {
+      "id": "range-maintenance-dec",
+      "title": "Range 3 Temporary Closure for Maintenance",
+      "date": "2024-12-05",
+      "category": "Maintenance",
+      "priority": "medium",
+      "content": "Trap Field 3 will be closed December 16-20 for target machine upgrades and field improvements. Other ranges remain open.",
+      "expires": "2024-12-21"
+    },
+    {
+      "id": "parking-expansion",
+      "title": "New Parking Area Opens",
+      "date": "2024-11-20",
+      "category": "Facility",
+      "priority": "low",
+      "content": "Additional parking for 75 vehicles now available in the north lot. Improved lighting and security cameras included.",
+      "expires": "2024-12-20"
+    },
+    {
+      "id": "membership-drive-2025",
+      "title": "2025 Membership Drive Begins",
+      "date": "2024-11-01",
+      "category": "Membership",
+      "priority": "medium",
+      "content": "Renew early and save! 2025 memberships now available with early bird discount through December 31.",
+      "expires": "2025-01-01"
+    }
+  ],
+  "categories": [
+    "Facility Updates",
+    "Member Achievements",
+    "Youth Programs",
+    "Operating Schedule",
+    "Program Growth",
+    "Staff Updates",
+    "Membership",
+    "Environmental",
+    "Technology",
+    "Community Service",
+    "Safety",
+    "Schedule",
+    "Maintenance"
+  ]
+}

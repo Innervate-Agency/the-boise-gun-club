@@ -16,8 +16,8 @@ import {
   MapPin,
   Zap
 } from 'lucide-react';
-import Badge from '@/components/ui/Badge';
-import Button from '@/components/ui/Button';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { 
   ClipboardIcon,
   ClipboardDocumentCheckIcon,
@@ -428,7 +428,7 @@ export default function BadgesPlayground() {
             <div className="grid md:grid-cols-2 gap-6">
               <CodeSnippet
                 title="Basic Badge"
-                code={`import Badge from '@/components/ui/Badge';
+                code={`import { Badge } from '@/components/ui/badge';
 
 <Badge variant="primary">
   Member

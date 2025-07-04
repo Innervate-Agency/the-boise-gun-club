@@ -7,9 +7,9 @@ import ClayTarget from '@/components/effects/ClayTarget';
 import ClayFragments from '@/components/effects/ClayFragments';
 import WavyGridBackground from '@/components/effects/WavyGridBackground';
 import FractalBackground from '@/components/effects/FractalBackground';
-import Badge from '@/components/ui/Badge';
-import Button from '@/components/ui/Button';
-import Card from '@/components/ui/Card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { 
   ClipboardIcon,
   ClipboardDocumentCheckIcon,
@@ -170,7 +170,7 @@ export default function EffectsPlayground() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-white text-center">
                     <h3 className="text-2xl font-bold mb-2">Effect Preview</h3>
-                    <Badge variant="gold" size="md">{selectedEffect.charAt(0).toUpperCase() + selectedEffect.slice(1)}</Badge>
+                    <Badge variant="secondary">{selectedEffect.charAt(0).toUpperCase() + selectedEffect.slice(1)}</Badge>
                   </div>
                 </div>
               </div>
@@ -205,8 +205,6 @@ export default function EffectsPlayground() {
                 )}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Button
-                    variant="primary"
-                    size="lg"
                     onClick={triggerClayAnimation}
                     disabled={showClayAnimation}
                     className="flex items-center gap-2"
@@ -253,8 +251,8 @@ export default function EffectsPlayground() {
                     </div>
                   </div>
                   <div className="mt-2">
-                    <Badge variant="primary" size="sm">High Performance</Badge>
-                    <Badge variant="info" size="sm" className="ml-2">60 FPS</Badge>
+                    <Badge variant="default">High Performance</Badge>
+                    <Badge variant="secondary" className="ml-2">60 FPS</Badge>
                   </div>
                 </div>
 
@@ -268,8 +266,8 @@ export default function EffectsPlayground() {
                     </div>
                   </div>
                   <div className="mt-2">
-                    <Badge variant="success" size="sm">Subtle</Badge>
-                    <Badge variant="secondary" size="sm" className="ml-2">CSS-based</Badge>
+                    <Badge variant="outline">Subtle</Badge>
+                    <Badge variant="secondary" className="ml-2">CSS-based</Badge>
                   </div>
                 </div>
 
@@ -283,8 +281,8 @@ export default function EffectsPlayground() {
                     </div>
                   </div>
                   <div className="mt-2">
-                    <Badge variant="warning" size="sm">Retro</Badge>
-                    <Badge variant="gold" size="sm" className="ml-2">Eye-catching</Badge>
+                    <Badge variant="outline">Retro</Badge>
+                    <Badge variant="default" className="ml-2">Eye-catching</Badge>
                   </div>
                 </div>
 
@@ -298,8 +296,8 @@ export default function EffectsPlayground() {
                     </div>
                   </div>
                   <div className="mt-2">
-                    <Badge variant="danger" size="sm">Heavy</Badge>
-                    <Badge variant="info" size="sm" className="ml-2">Artistic</Badge>
+                    <Badge variant="destructive">Heavy</Badge>
+                    <Badge variant="secondary" className="ml-2">Artistic</Badge>
                   </div>
                 </div>
               </div>
@@ -322,7 +320,7 @@ export default function EffectsPlayground() {
                       <div className="text-center text-white">
                         <h4 className="text-3xl font-bold mb-2">Welcome to Boise Gun Club</h4>
                         <p className="text-lg opacity-90">Premier shooting sports facility</p>
-                        <Button variant="primary" size="lg" className="mt-4">Join Today</Button>
+                        <Button className="mt-4">Join Today</Button>
                       </div>
                     </div>
                   </div>
@@ -361,7 +359,7 @@ export default function EffectsPlayground() {
                           <p className="text-gray-600 mb-4">Access to all facilities and exclusive events</p>
                           <div className="flex items-center justify-between">
                             <span className="text-2xl font-bold text-gray-900">$99/month</span>
-                            <Button variant="primary" size="sm">Join Now</Button>
+                            <Button>Join Now</Button>
                           </div>
                         </div>
                       </Card>
@@ -377,7 +375,7 @@ export default function EffectsPlayground() {
                           <p className="text-gray-100 mb-4">Exclusive access and personal training</p>
                           <div className="flex items-center justify-between">
                             <span className="text-2xl font-bold text-white">$199/month</span>
-                            <Button variant="secondary" size="sm">Learn More</Button>
+                            <Button variant="secondary">Learn More</Button>
                           </div>
                         </div>
                       </Card>
@@ -410,8 +408,6 @@ export default function EffectsPlayground() {
                       <div className="text-center">
                         <h4 className="text-2xl font-bold text-gray-900 mb-4">Monthly Competition</h4>
                         <Button
-                          variant="primary"
-                          size="lg"
                           onClick={triggerClayAnimation}
                           disabled={showClayAnimation}
                         >
@@ -460,15 +456,15 @@ export default function EffectsPlayground() {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Components</span>
-                  <Badge variant="primary">8 Effects</Badge>
+                  <Badge variant="default">8 Effects</Badge>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Performance</span>
-                  <Badge variant="success">Optimized</Badge>
+                  <Badge variant="outline">Optimized</Badge>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Framework</span>
-                  <Badge variant="info">Framer Motion</Badge>
+                  <Badge variant="secondary">Framer Motion</Badge>
                 </div>
               </div>
             </div>
@@ -530,11 +526,11 @@ export default function EffectsPlayground() {
               <div className="space-y-2 text-sm">
                 <div className="flex items-center justify-between">
                   <span className="text-gray-900">ParticleAnimation</span>
-                  <Badge variant="warning" size="sm">Dynamic</Badge>
+                  <Badge variant="outline">Dynamic</Badge>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-900">MorningMistAnimation</span>
-                  <Badge variant="success" size="sm">Subtle</Badge>
+                  <Badge variant="outline">Subtle</Badge>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-900">ClayTarget</span>

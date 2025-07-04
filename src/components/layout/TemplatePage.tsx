@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { useContent } from '@/hooks/useContent';
-import ParticleAnimation from '@/components/effects/ParticleAnimation';
 import Link from 'next/link';
 
 interface TemplatePageProps {
@@ -55,7 +54,6 @@ const TemplatePage: React.FC<TemplatePageProps> = ({ title, description, childre
 
   return (
     <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden">
-      <ParticleAnimation count={150} />
       
       <main className="relative z-10">
         <div className="container mx-auto px-6 py-24">

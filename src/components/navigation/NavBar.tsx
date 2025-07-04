@@ -9,14 +9,12 @@ import Image from 'next/image';
 import MegaMenu from './MegaMenu';
 import MobileMenu from './MobileMenu';
 
-// Navigation items with consolidated club info
+// Clean navigation structure from GOLD_EXTRACTED.md
 const links = [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/ranges', label: 'Ranges' },
-    { href: '/schedule', label: 'Schedule' },
-    { href: '/members', label: 'Members' },
-    { href: '/forum', label: 'Forum' }
+    { href: '/club-info', label: 'Club Info' },
+    { href: '/membership', label: 'Membership' },
+    { href: '/forum', label: 'Forums' }
 ];
 
 export default function NavBar() {
@@ -50,7 +48,7 @@ export default function NavBar() {
                 transition-all duration-300
                 ${isScrolled ? 'glass-mica' : 'bg-transparent'}
                 z-50
-                h-[120px] md:h-[150px] flex items-center
+                h-[80px] md:h-[90px] flex items-center
             `}
         >
             {/* Subtle grid texture beneath the glass effect */}
@@ -59,28 +57,28 @@ export default function NavBar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex items-center">
                 <div className="flex items-center justify-between w-full h-full">
                     {/* Logo (left-aligned) */}
-                    <div className="flex-shrink-0 max-w-[400px] w-full flex items-center justify-start">
-                        <Link href="/" className="relative z-10 flex items-center group focus:outline-none w-full" aria-label="Boise Gun Club Home">
-                            <div className="flex items-center gap-6 w-full">
-                                {/* Clay SVG accent - responsive size */}
+                    <div className="flex-shrink-0 flex items-center">
+                        <Link href="/" className="relative z-10 flex items-center group focus:outline-none" aria-label="Boise Gun Club Home">
+                            <div className="flex items-center gap-3">
+                                {/* Clay SVG accent - much smaller */}
                                 <Image
                                     src="/images/bgcv3-shattered-clay.svg"
                                     alt="Clay Target Logo"
-                                    width={120}
-                                    height={120}
-                                    className="h-[80px] w-[80px] md:h-[100px] md:w-[100px] lg:h-[120px] lg:w-[120px] object-contain drop-shadow-md transition-transform group-hover:scale-105"
+                                    width={40}
+                                    height={40}
+                                    className="h-[40px] w-[40px] md:h-[50px] md:w-[50px] object-contain drop-shadow-md transition-transform group-hover:scale-105"
                                     priority
                                 />
-                                <div className="flex flex-col items-center justify-center leading-tight w-full">
+                                <div className="flex flex-col leading-tight">
                                     {/* Established */}
-                                    <span className="text-base md:text-lg tracking-widest uppercase text-[var(--accent-primary)] font-bold mb-2 font-heading" style={{ fontFamily: 'Rajdhani, sans-serif' }}>established 1898</span>
+                                    <span className="text-xs tracking-wider uppercase text-[var(--accent-primary)] font-medium font-heading" style={{ fontFamily: 'Rajdhani, sans-serif' }}>established 1898</span>
                                     {/* BOISEGUNCLUB */}
-                                    <span className="flex flex-row items-baseline gap-0 w-full justify-center">
-                                        <span className="text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase font-heading" style={{ fontFamily: 'Rajdhani, sans-serif', letterSpacing: '0.04em' }}>BOISE</span>
-                                        <span className="text-3xl md:text-4xl lg:text-5xl font-light uppercase font-heading" style={{ fontFamily: 'Rajdhani, sans-serif', letterSpacing: '0.04em' }}>GUNCLUB</span>
+                                    <span className="flex items-baseline gap-0">
+                                        <span className="text-lg md:text-xl font-bold uppercase font-heading" style={{ fontFamily: 'Rajdhani, sans-serif', letterSpacing: '0.02em' }}>BOISE</span>
+                                        <span className="text-lg md:text-xl font-light uppercase font-heading" style={{ fontFamily: 'Rajdhani, sans-serif', letterSpacing: '0.02em' }}>GUNCLUB</span>
                                     </span>
                                     {/* Tagline */}
-                                    <span className="block w-full text-center text-xs md:text-base lg:text-lg font-medium text-[var(--text-secondary)] mt-2 font-heading" style={{ fontFamily: 'Rajdhani, sans-serif', letterSpacing: '0.03em' }}>
+                                    <span className="text-xs font-medium text-[var(--text-secondary)] font-heading" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
                                         Idaho's Premier Shotgun Sports Complex
                                     </span>
                                 </div>
@@ -88,8 +86,8 @@ export default function NavBar() {
                         </Link>
                     </div>
 
-                    {/* Menu (fills remaining space, left of logo) */}
-                    <nav className="hidden md:flex items-center space-x-8 flex-grow justify-start">
+                    {/* Menu (center) */}
+                    <nav className="hidden md:flex items-center space-x-8 flex-grow justify-center">
                         {links.map((link) => (
                             <Link
                                 key={link.href}
@@ -125,18 +123,18 @@ export default function NavBar() {
                             <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
                         </button>
 
-                        {/* Member Login Button */}
+                        {/* Sign Up Button */}
                         <Link
-                            href="/membership"
+                            href="/auth/signup"
                             className={`
                                 hidden md:flex items-center
                                 px-4 py-2 rounded-lg
-                                glass-mica-hover
-                                text-sm font-medium tracking-wide
+                                bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)]
+                                text-white font-medium tracking-wide
                                 transition-all duration-200
                             `}
                         >
-                            Member Login
+                            Sign Up
                         </Link>
 
                         {/* Mobile Menu Button */}

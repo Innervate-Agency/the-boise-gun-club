@@ -15,7 +15,7 @@ import {
   Zap,
   Loader2
 } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 // Code snippet component
 function CodeSnippet({ title, code }: { title: string; code: string }) {
@@ -344,7 +344,7 @@ export default function ButtonsPlayground() {
             <div className="grid md:grid-cols-2 gap-6">
               <CodeSnippet
                 title="Basic Button"
-                code={`import Button from '@/components/ui/Button';
+                code={`import { Button } from '@/components/ui/button';
 
 <Button variant="primary" size="md">
   Click Me

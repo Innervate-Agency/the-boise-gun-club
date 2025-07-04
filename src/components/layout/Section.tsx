@@ -1,49 +1,111 @@
 'use client';
 
-import { FC, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { useNavigation } from '@/components/navigation/NavigationContext';
 
-const Section: FC<{ 
+interface SectionProps {
     children: React.ReactNode;
     className?: string;
-    background?: 'mist' | 'grid' | 'gradient' | 'none';
+  background?: 'none' | 'grid' | 'gradient' | 'dots';
     overlay?: boolean;
     isHero?: boolean;
-}> = ({ children, className = '', background = 'none', overlay = true, isHero = false }) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.1 });
-    
-    const bgStyles = {
-        mist: "bg-gradient-to-br from-[var(--bg-secondary)]/5 via-transparent to-[var(--bg-primary)]/10",
-        grid: "bg-[url('/images/Grid/Grid (1).webp')] bg-cover",
-        gradient: "bg-gradient-to-br from-[var(--bg-secondary)] via-[var(--bg-primary)] to-[var(--bg-secondary)]",
-        none: ""
-    };
+  spacing?: 'none' | 'sm' | 'md' | 'lg';
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  withAnimation?: boolean;
+  id?: string;
+}
+
+const Section: React.FC<SectionProps> = ({
+  children,
+  className = '',
+  background = 'none',
+  overlay = true,
+  isHero = false,
+  spacing = 'lg',
+  maxWidth = 'xl',
+  withAnimation = false,
+  id
+}) => {
+  const { totalNavHeight } = useNavigation();
+
+  // Background patterns
+  const backgrounds = {
+    none: '',
+    grid: 'bg-[linear-gradient(rgba(var(--accent-primary-rgb),0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--accent-primary-rgb),0.03)_1px,transparent_1px)] bg-[size:20px_20px]',
+    gradient: 'bg-gradient-to-br from-[var(--bg-primary)] via-[var(--bg-secondary)] to-[var(--bg-tertiary)]',
+    dots: 'bg-[radial-gradient(rgba(var(--accent-primary-rgb),0.1)_1px,transparent_1px)] bg-[size:16px_16px]'
+  };
+
+  // Spacing classes - more reasonable for sections
+  const spacingClasses = {
+    none: '',
+    sm: 'py-8',       // 2rem
+    md: 'py-12',      // 3rem  
+    lg: 'py-16'       // 4rem
+  };
+
+  // Max width classes
+  const maxWidthClasses = {
+    sm: 'max-w-3xl',
+    md: 'max-w-5xl',
+    lg: 'max-w-6xl',
+    xl: 'max-w-7xl',
+    full: 'max-w-none'
+  };
+
+  // Hero-specific styling
+  const heroClasses = isHero 
+    ? `min-h-screen flex items-center justify-center`
+    : '';
+
+  // Navigation offset for non-hero sections
+  const navOffset = !isHero && totalNavHeight > 0 
+    ? { paddingTop: `${totalNavHeight}px` }
+    : {};
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const SectionComponent = withAnimation ? motion.section : 'section';
 
     return (
-        <motion.section
-            ref={ref}
-            className={`relative ${isHero ? 'min-h-[calc(100vh-120px)] md:min-h-[calc(100vh-150px)]' : 'py-16 md:py-24'} ${className}`}
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 1 }}
+    <SectionComponent
+      id={id}
+      className={`
+        relative w-full
+        ${backgrounds[background]}
+        ${spacingClasses[spacing]}
+        ${heroClasses}
+        ${className}
+      `}
+      style={navOffset}
+      {...(withAnimation && {
+        variants: sectionVariants,
+        initial: "hidden",
+        whileInView: "visible",
+        viewport: { once: true, margin: "-100px" }
+      })}
         >
-            {/* Background layer */}
-            {background !== 'none' && (
-                <div className={`absolute inset-0 ${bgStyles[background]} opacity-20`} />
+      {/* Background overlay for better text readability */}
+      {overlay && background !== 'none' && (
+        <div className="absolute inset-0 bg-[var(--bg-primary)] opacity-50" />
             )}
             
-            {/* Overlay gradient */}
-            {overlay && (
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--bg-primary)] to-transparent opacity-80" />
-            )}
-            
-            {/* Content */}
-            <div className="relative z-10 container mx-auto px-4">
+      {/* Content container */}
+      <div className={`
+        relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8
+        ${maxWidthClasses[maxWidth]}
+      `}>
                 {children}
             </div>
-        </motion.section>
+    </SectionComponent>
     );
 };
 

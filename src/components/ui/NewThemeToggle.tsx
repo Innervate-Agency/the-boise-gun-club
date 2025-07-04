@@ -39,7 +39,7 @@ const NewThemeToggle = () => {
     <motion.button
       onClick={cycleTheme}
       title={title} // Add title for accessibility
-      className="fixed bottom-6 left-6 z-50 p-4 bg-slate-800 text-white rounded-full shadow-xl hover:bg-slate-700 transition-all duration-200 border-2 border-[#F23005]/20 hover:border-[#F23005]/40"
+      className="fixed bottom-6 left-24 z-50 p-4 bg-slate-800 text-white rounded-full shadow-xl hover:bg-slate-700 transition-all duration-200 border-2 border-[#F23005]/20 hover:border-[#F23005]/40"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       aria-label={title} // More descriptive aria-label

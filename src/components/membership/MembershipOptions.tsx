@@ -62,7 +62,7 @@ const MembershipOptions = () => {
 
     const handleMembershipSelect = (tierId: string) => {
         // Handle membership selection (e.g., redirect to signup page)
-        console.log(`Selected membership: ${tierId}`);
+        // TODO: Implement membership selection logic
     };
 
     const containerVariants = {

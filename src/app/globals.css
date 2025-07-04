@@ -1,12 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Noto+Sans:wght@400;700&display=swap');
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Noto+Sans:wght@400;700&display=swap');
 @import "../styles/themes.css";
-
-/* UNIFIED TYPOGRAPHY SYSTEM - Official Boise Gun Club Fonts */
-:root {
-  --font-heading: 'Rajdhani', system-ui, sans-serif;
-  --font-body: 'Noto Sans', system-ui, sans-serif;
-}
 
 /* Performance optimizations */
 body {

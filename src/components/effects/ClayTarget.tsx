@@ -182,4 +182,6 @@ export const ClayTarget = ({ onClick }: Props) => {
             ))}
         </div>
     );
-}; 
+};
+
+export default ClayTarget; 

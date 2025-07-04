@@ -1,0 +1,426 @@
+{
+  "leaderboards": {
+    "2024_trap_overall": {
+      "title": "2024 Trap Overall Leaderboard",
+      "category": "Trap",
+      "period": "2024 Season",
+      "lastUpdated": "2024-12-01",
+      "leaders": [
+        {
+          "rank": 1,
+          "name": "Sarah Mitchell",
+          "memberSince": "2019",
+          "average": 97.8,
+          "totalTargets": 2450,
+          "totalHits": 2395,
+          "perfectRounds": 28,
+          "bestScore": "100/100",
+          "achievements": ["State Champion", "Club Champion", "ATA All-American"]
+        },
+        {
+          "rank": 2,
+          "name": "Mike Peterson",
+          "memberSince": "2015",
+          "average": 96.4,
+          "totalTargets": 3200,
+          "totalHits": 3085,
+          "perfectRounds": 22,
+          "bestScore": "100/100",
+          "achievements": ["Regional Qualifier", "Club Champion 2023"]
+        },
+        {
+          "rank": 3,
+          "name": "Dave Rodriguez",
+          "memberSince": "2012",
+          "average": 95.9,
+          "totalTargets": 2800,
+          "totalHits": 2685,
+          "perfectRounds": 19,
+          "bestScore": "99/100",
+          "achievements": ["20+ Year Veteran", "Charity Tournament Champion"]
+        },
+        {
+          "rank": 4,
+          "name": "Jennifer Martinez",
+          "memberSince": "2020",
+          "average": 95.2,
+          "totalTargets": 1950,
+          "totalHits": 1856,
+          "perfectRounds": 15,
+          "bestScore": "100/100",
+          "achievements": ["Ladies Champion", "Rising Star Award"]
+        },
+        {
+          "rank": 5,
+          "name": "Tom Anderson",
+          "memberSince": "2018",
+          "average": 94.7,
+          "totalTargets": 2100,
+          "totalHits": 1989,
+          "perfectRounds": 12,
+          "bestScore": "98/100",
+          "achievements": ["Handicap Champion", "Veteran Division Winner"]
+        }
+      ]
+    },
+    "2024_skeet_overall": {
+      "title": "2024 Skeet Overall Leaderboard",
+      "category": "Skeet",
+      "period": "2024 Season",
+      "lastUpdated": "2024-12-01",
+      "leaders": [
+        {
+          "rank": 1,
+          "name": "Carlos Johnson",
+          "memberSince": "2017",
+          "average": 96.8,
+          "totalTargets": 2000,
+          "totalHits": 1936,
+          "perfectRounds": 24,
+          "bestScore": "100/100",
+          "achievements": ["NSSA Certified", "Club Record Holder"]
+        },
+        {
+          "rank": 2,
+          "name": "Lisa Chang",
+          "memberSince": "2019",
+          "average": 95.6,
+          "totalTargets": 1800,
+          "totalHits": 1721,
+          "perfectRounds": 18,
+          "bestScore": "100/100",
+          "achievements": ["Ladies Division Champion", "Perfect Score Club"]
+        },
+        {
+          "rank": 3,
+          "name": "Robert Chen",
+          "memberSince": "2020",
+          "average": 94.9,
+          "totalTargets": 1650,
+          "totalHits": 1566,
+          "perfectRounds": 14,
+          "bestScore": "99/100",
+          "achievements": ["Executive League Champion", "Rapid Improvement Award"]
+        }
+      ]
+    },
+    "2024_sporting_clays": {
+      "title": "2024 Sporting Clays Overall Leaderboard",
+      "category": "Sporting Clays",
+      "period": "2024 Season",
+      "lastUpdated": "2024-12-01",
+      "leaders": [
+        {
+          "rank": 1,
+          "name": "Tony Rodriguez",
+          "memberSince": "2014",
+          "average": 89.4,
+          "totalTargets": 4500,
+          "totalHits": 4023,
+          "perfectRounds": 8,
+          "bestScore": "98/100",
+          "achievements": ["NSCA Master Class", "Course Designer"]
+        },
+        {
+          "rank": 2,
+          "name": "Amanda Wilson",
+          "memberSince": "2016",
+          "average": 87.8,
+          "totalTargets": 3800,
+          "totalHits": 3336,
+          "perfectRounds": 5,
+          "bestScore": "96/100",
+          "achievements": ["Ladies Champion", "NSCA Certified Instructor"]
+        },
+        {
+          "rank": 3,
+          "name": "Steve Thompson",
+          "memberSince": "2013",
+          "average": 86.9,
+          "totalTargets": 4200,
+          "totalHits": 3651,
+          "perfectRounds": 4,
+          "bestScore": "95/100",
+          "achievements": ["Super Veteran Champion", "30+ Year Member"]
+        }
+      ]
+    },
+    "youth_champions": {
+      "title": "2024 Youth Champions",
+      "category": "Youth",
+      "period": "2024 Season",
+      "lastUpdated": "2024-12-01",
+      "leaders": [
+        {
+          "rank": 1,
+          "name": "Alex Thompson",
+          "age": 17,
+          "discipline": "Trap",
+          "average": 94.2,
+          "totalTargets": 1500,
+          "totalHits": 1413,
+          "perfectRounds": 8,
+          "bestScore": "100/100",
+          "achievements": ["National High School Champion", "Scholarship Recipient"]
+        },
+        {
+          "rank": 2,
+          "name": "Emma Rodriguez",
+          "age": 16,
+          "discipline": "Skeet",
+          "average": 91.7,
+          "totalTargets": 1200,
+          "totalHits": 1100,
+          "perfectRounds": 5,
+          "bestScore": "100/100",
+          "achievements": ["State Youth Champion", "4-H Champion"]
+        },
+        {
+          "rank": 3,
+          "name": "Jake Wilson",
+          "age": 15,
+          "discipline": "Sporting Clays",
+          "average": 78.4,
+          "totalTargets": 900,
+          "totalHits": 706,
+          "perfectRounds": 1,
+          "bestScore": "89/100",
+          "achievements": ["Most Improved", "Sportsmanship Award"]
+        }
+      ]
+    }
+  },
+  "recentTournaments": [
+    {
+      "id": "winter-championship-2024",
+      "name": "2024 Winter Championship",
+      "date": "2024-11-15",
+      "discipline": "Trap",
+      "type": "Club Championship",
+      "participants": 89,
+      "weather": "Clear, 45°F, Light Wind",
+      "results": {
+        "overall_champion": {
+          "name": "Sarah Mitchell",
+          "score": "200/200",
+          "prize": "$500 + Trophy"
+        },
+        "class_winners": [
+          {
+            "class": "AA",
+            "winner": "Sarah Mitchell",
+            "score": "200/200",
+            "runners_up": ["Mike Peterson - 198/200", "Dave Rodriguez - 197/200"]
+          },
+          {
+            "class": "A",
+            "winner": "Jennifer Martinez",
+            "score": "194/200",
+            "runners_up": ["Tom Anderson - 192/200", "Jim Wilson - 191/200"]
+          },
+          {
+            "class": "B",
+            "winner": "Mark Stevens",
+            "score": "186/200",
+            "runners_up": ["Lisa Johnson - 184/200", "Bob Miller - 183/200"]
+          },
+          {
+            "class": "C",
+            "winner": "rookie_champion",
+            "score": "175/200",
+            "runners_up": ["New Member Joe - 172/200", "Learning Larry - 170/200"]
+          }
+        ],
+        "special_awards": [
+          {
+            "award": "High Lady",
+            "winner": "Sarah Mitchell",
+            "score": "200/200"
+          },
+          {
+            "award": "High Youth",
+            "winner": "Alex Thompson",
+            "score": "189/200"
+          },
+          {
+            "award": "High Veteran (65+)",
+            "winner": "Frank Roberts",
+            "score": "188/200"
+          }
+        ]
+      }
+    },
+    {
+      "id": "thanksgiving-turkey-2024",
+      "name": "Thanksgiving Turkey Shoot",
+      "date": "2024-11-23",
+      "discipline": "Multi",
+      "type": "Fun Shoot",
+      "participants": 127,
+      "weather": "Partly Cloudy, 38°F, Calm",
+      "results": {
+        "turkey_winners": [
+          "Dave Rodriguez - High Overall",
+          "Jennifer Martinez - Ladies Champion", 
+          "Frank Roberts - Senior Champion",
+          "Alex Thompson - Youth Champion"
+        ],
+        "prize_distribution": "18 Turkeys, 36 Hams, 54 Gift Cards"
+      }
+    },
+    {
+      "id": "sporting-clays-classic-2024",
+      "name": "Fall Sporting Clays Classic",
+      "date": "2024-10-12",
+      "discipline": "Sporting Clays",
+      "type": "NSCA Registered",
+      "participants": 156,
+      "weather": "Sunny, 62°F, Light Breeze",
+      "results": {
+        "overall_champion": {
+          "name": "Tony Rodriguez",
+          "score": "96/100",
+          "prize": "$750 + Trophy"
+        },
+        "class_winners": [
+          {
+            "class": "Master",
+            "winner": "Tony Rodriguez",
+            "score": "96/100"
+          },
+          {
+            "class": "A",
+            "winner": "Amanda Wilson",
+            "score": "89/100"
+          },
+          {
+            "class": "B",
+            "winner": "Steve Thompson",
+            "score": "84/100"
+          },
+          {
+            "class": "C",
+            "winner": "Mark Johnson",
+            "score": "77/100"
+          }
+        ]
+      }
+    }
+  ],
+  "weeklyResults": [
+    {
+      "week": "December 2-8, 2024",
+      "trapLeague": {
+        "highGun": "Mike Peterson - 24/25",
+        "teamStandings": [
+          "Team Alpha - 118/125",
+          "Trap Masters - 116/125", 
+          "Clay Crushers - 114/125"
+        ]
+      },
+      "skeetLeague": {
+        "highGun": "Carlos Johnson - 25/25",
+        "teamStandings": [
+          "Skeet Elite - 119/125",
+          "Station 8 Shooters - 117/125",
+          "High House Heroes - 115/125"
+        ]
+      }
+    },
+    {
+      "week": "November 25 - December 1, 2024",
+      "trapLeague": {
+        "highGun": "Sarah Mitchell - 25/25",
+        "teamStandings": [
+          "Trap Masters - 121/125",
+          "Team Alpha - 119/125",
+          "Clay Crushers - 117/125"
+        ]
+      },
+      "skeetLeague": {
+        "highGun": "Lisa Chang - 24/25",
+        "teamStandings": [
+          "Skeet Elite - 122/125",
+          "Station 8 Shooters - 120/125",
+          "High House Heroes - 118/125"
+        ]
+      }
+    }
+  ],
+  "recordHolders": {
+    "clubRecords": [
+      {
+        "record": "Trap - 16 Yard Singles",
+        "holder": "Sarah Mitchell",
+        "score": "100 straight (x3)",
+        "date": "2024-08-15"
+      },
+      {
+        "record": "Trap - Handicap (27 yards)",
+        "holder": "Mike Peterson", 
+        "score": "99/100",
+        "date": "2024-07-22"
+      },
+      {
+        "record": "Skeet - American Skeet",
+        "holder": "Carlos Johnson",
+        "score": "100 straight (x2)",
+        "date": "2024-09-10"
+      },
+      {
+        "record": "Sporting Clays - 100 Target",
+        "holder": "Tony Rodriguez",
+        "score": "98/100",
+        "date": "2024-06-18"
+      },
+      {
+        "record": "Youth Trap (Under 18)",
+        "holder": "Alex Thompson",
+        "score": "100/100",
+        "date": "2024-10-03"
+      }
+    ],
+    "longestStreaks": [
+      {
+        "record": "Consecutive Targets",
+        "holder": "Sarah Mitchell",
+        "count": 247,
+        "discipline": "Trap"
+      },
+      {
+        "record": "Perfect Rounds in Season",
+        "holder": "Carlos Johnson",
+        "count": 24,
+        "discipline": "Skeet"
+      }
+    ]
+  },
+  "seasonalStats": {
+    "2024Summary": {
+      "totalRoundsShot": 15647,
+      "totalTargetsThrown": 391175,
+      "totalTargetsHit": 341342,
+      "overallAverage": 87.3,
+      "perfectRounds": 312,
+      "tournaments": 28,
+      "participants": 1247
+    },
+    "improvements": [
+      {
+        "category": "Participation",
+        "change": "+18%",
+        "note": "Highest participation in club history"
+      },
+      {
+        "category": "Perfect Rounds",
+        "change": "+23%", 
+        "note": "Record number of perfect scores"
+      },
+      {
+        "category": "Youth Participation",
+        "change": "+35%",
+        "note": "Growing youth program success"
+      }
+    ]
+  }
+}

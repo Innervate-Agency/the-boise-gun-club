@@ -2,22 +2,12 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import dynamic from 'next/dynamic';
-
-const ParticleAnimation = dynamic(() => import('@/components/effects/ParticleAnimation'), { ssr: false });
 
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] flex items-center justify-center relative overflow-hidden">
       {/* Background effects */}
-      <div className="absolute inset-0 z-0">
-        <ParticleAnimation
-          colors={['var(--accent-primary)', 'var(--accent-secondary)']}
-          count={15}
-          size={2}
-          speed={0.2}
-          className="opacity-20"
-        />
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-secondary)] opacity-50">
       </div>
       
       {/* Grid background */}

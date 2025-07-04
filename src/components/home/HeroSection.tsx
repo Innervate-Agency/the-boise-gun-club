@@ -44,8 +44,9 @@ function HeroSection() {
                 </motion.div>
 
                 {/* Content */}
-                <div className="container mx-auto px-4 sm:px-6 text-center">
-                    <motion.div style={{ opacity, y: titleY }}>
+                <div className="container mx-auto px-4 sm:px-6 text-center flex items-center justify-center min-h-screen pt-[80px] md:pt-[90px]">
+                    <div className="w-full max-w-4xl">
+                        <motion.div style={{ opacity, y: titleY }}>
                         {/* Logo Container */}
                         <div className="mb-8 flex justify-center">
                             <div className="relative w-[200px] h-[200px]">
@@ -65,15 +66,15 @@ function HeroSection() {
                         </h1>
                     </motion.div>
 
-                    <motion.div style={{ opacity, y: subtitleY }}>
+                        <motion.div style={{ opacity, y: subtitleY }}>
                         <p className="mb-8 text-lg sm:text-xl md:text-2xl text-[var(--text-secondary)] max-w-3xl mx-auto font-['Noto Sans']">
                             Idaho's premier shooting sports facility since 1898. 
                             Experience world-class trap, skeet, and sporting clays ranges 
                             in the heart of the Treasure Valley.
                         </p>
-                    </motion.div>
+                        </motion.div>
 
-                    <motion.div style={{ opacity, y: ctaY }} className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <motion.div style={{ opacity, y: ctaY }} className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link 
                             href="/membership"
                             className="inline-block bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] 
@@ -91,7 +92,8 @@ function HeroSection() {
                         >
                             EXPLORE RANGES
                         </Link>
-                    </motion.div>
+                        </motion.div>
+                    </div>
                 </div>
 
                 {/* Scroll indicator */}

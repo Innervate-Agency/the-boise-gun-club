@@ -22,7 +22,7 @@ export default function Footer() {
         e.preventDefault();
         if (validateEmail(email)) {
             // Handle newsletter signup
-            console.log('Newsletter signup:', email);
+            // TODO: Implement newsletter signup logic
             setEmail('');
             setIsValidEmail(true);
         } else {

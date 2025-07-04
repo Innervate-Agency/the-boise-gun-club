@@ -5,247 +5,252 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CalendarDaysIcon, ClockIcon, MapPinIcon, UsersIcon } from '@heroicons/react/24/outline';
+import CMSContent from '@/components/cms/CMSContent';
+import eventsData from '@/data/events-calendar.json';
 
-// Real events with authentic content
-const upcomingEvents = [
-    {
-        id: 1,
-        date: '15',
-        month: 'DEC',
-        title: 'Winter Turkey Shoot Classic',
-        desc: 'Traditional turkey shoot competition. Best score takes home the bird.',
-        attendees: '85',
-        details: 'Join us for our annual Winter Turkey Shoot. 50 targets, Lewis Class scoring. Entry includes lunch and a chance at door prizes. Frozen turkeys for class winners!',
-        time: '9:00 AM - 3:00 PM',
-        location: 'Trap Fields 1-5',
-        image: '/images/events.webp',
-        category: 'Competition'
-    },
-    {
-        id: 2,
-        date: '22',
-        month: 'DEC',
-        title: 'Members-Only Poker Shoot',
-        desc: 'Five stands, five cards. Best poker hand wins the pot.',
-        attendees: '60',
-        details: 'Our famous poker shoot is back! $20 buy-in, re-buys allowed. Shoot five stations, draw a card at each. High hand takes 60% of the pot, second place 30%, third 10%.',
-        time: '1:00 PM - 5:00 PM',
-        location: 'Skeet Fields',
-        image: '/images/training.webp',
-        category: 'Fun Shoot'
-    },
-    {
-        id: 3,
-        date: '05',
-        month: 'JAN',
-        title: 'New Year Sporting Clays',
-        desc: 'Start 2024 right with 100 targets on our sporting clays course.',
-        attendees: '120',
-        details: 'Kick off the new year with our challenging sporting clays course. 100 targets across 15 stations. Hot coffee and donuts provided. Squads start every 30 minutes.',
-        time: '8:00 AM - 2:00 PM',
-        location: 'Sporting Clays Course',
-        image: '/images/membership.webp',
-        category: 'Competition'
-    },
-    {
-        id: 4,
-        date: '12',
-        month: 'JAN',
-        title: 'Introduction to Trap Clinic',
-        desc: 'New to trap shooting? Learn the basics from certified instructors.',
-        attendees: '25',
-        details: 'Perfect for beginners! Learn safety, etiquette, and technique. Includes gun rental, ammunition, and one-on-one instruction. Limited to 25 participants.',
-        time: '10:00 AM - 12:00 PM',
-        location: 'Training Range',
-        image: '/images/hero-bg.webp',
-        category: 'Training'
-    }
-];
+// Enhanced events with proper formatting for display
+const formatEventForDisplay = (event: any) => {
+    const eventDate = new Date(event.date);
+    return {
+        ...event,
+        date: eventDate.getDate().toString(),
+        month: eventDate.toLocaleString('default', { month: 'short' }).toUpperCase(),
+        attendees: event.currentRegistrations?.toString() || '0',
+        desc: event.description,
+        details: event.details,
+        time: event.time,
+        location: event.location,
+        image: event.image || '/images/events.webp'
+    };
+};
+
+// Get the next 4 upcoming events
+const upcomingEvents = eventsData.events
+    .filter(event => new Date(event.date) >= new Date())
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    .slice(0, 4)
+    .map(formatEventForDisplay);
 
 const UpcomingEvents = () => {
     const [selectedEvent, setSelectedEvent] = useState(upcomingEvents[0]);
 
+    const cardVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { duration: 0.5, ease: "easeOut" }
+        }
+    };
+
+    const staggerContainer = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
     return (
-        <section className="relative py-16 sm:py-24 md:py-32 bg-[var(--bg-primary)]">
-            {/* Section Header */}
-            <div className="container mx-auto px-4 mb-12">
+        <div className="relative">
+                {/* Enhanced Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="max-w-3xl"
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="text-center mb-16"
                 >
-                    <h2 className="font-['Rajdhani'] text-4xl sm:text-5xl md:text-6xl uppercase text-[var(--text-primary)] mb-4">
-                        Upcoming <span className="text-[var(--accent-gold)]">Events</span>
+                    <h2 className="font-['Rajdhani'] text-5xl sm:text-6xl md:text-7xl lg:text-8xl uppercase text-[var(--text-primary)] mb-8 leading-none">
+                        Upcoming <span className="text-[var(--accent-primary)] retro-glow">Events</span>
                     </h2>
-                    <p className="text-[var(--text-secondary)] text-base sm:text-lg font-['Noto Sans']">
+                    <p className="text-[var(--text-secondary)] text-lg sm:text-xl md:text-2xl font-['Noto Sans'] max-w-3xl mx-auto leading-relaxed">
                         From competitive shoots to casual fun days, there's always action at the club.
                     </p>
                 </motion.div>
-            </div>
 
-            {/* Events Grid */}
-            <div className="container mx-auto px-4">
-                <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
-                    {/* Event List - Left Side */}
-                    <div className="lg:col-span-1 space-y-4">
-                        {upcomingEvents.map((event, index) => (
-                            <motion.div
-                                key={event.id}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                onClick={() => setSelectedEvent(event)}
-                                className={`group cursor-pointer transition-all duration-300 ${
-                                    selectedEvent?.id === event.id 
-                                        ? 'scale-[1.02]' 
-                                        : 'hover:scale-[1.01]'
-                                }`}
-                            >
-                                <div className={`relative rounded-xl p-4 sm:p-5 transition-all duration-300 ${
-                                    selectedEvent?.id === event.id
-                                        ? 'bg-[var(--bg-secondary)] border border-[var(--accent-primary)]/30 shadow-lg'
-                                        : 'bg-[var(--bg-secondary)]/50 hover:bg-[var(--bg-secondary)] border border-[var(--text-primary)]/10'
-                                }`}>
-                                    {/* Active indicator */}
-                                    {selectedEvent?.id === event.id && (
-                                        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-12 bg-gradient-to-b from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-r-full" />
-                                    )}
-                                    
-                                    <div className="flex items-start gap-4">
-                                        {/* Date block */}
-                                        <div className={`flex flex-col items-center justify-center rounded-lg w-14 h-14 sm:w-16 sm:h-16 transition-all duration-300 ${
-                                            selectedEvent?.id === event.id
-                                                ? 'bg-[var(--accent-primary)]/20'
-                                                : 'bg-[var(--bg-primary)] group-hover:bg-[var(--accent-primary)]/10'
-                                        }`}>
-                                            <span className="font-['Rajdhani'] text-xl sm:text-2xl text-[var(--text-primary)]">{event.date}</span>
-                                            <span className="text-xs text-[var(--text-secondary)] uppercase">{event.month}</span>
-                                        </div>
+                {/* Modern Events Grid Layout */}
+                <div className="grid lg:grid-cols-5 gap-8">
+                    {/* Event Cards List - Left Side */}
+                    <div className="lg:col-span-2 space-y-6">
+                        {/* Try to load CMS content first, fall back to static */}
+                        <div className="cms-content-wrapper">
+                            <CMSContent type="featured-events" limit={4} />
+                        </div>
+                        
+                        {/* Static content as backup (hidden when CMS loads) */}
+                        <div className="static-content-backup">
+                        <motion.div
+                            variants={staggerContainer}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            className="space-y-4"
+                        >
+                            {upcomingEvents.map((event, index) => (
+                                <motion.div
+                                    key={event.id}
+                                    variants={cardVariants}
+                                    onClick={() => setSelectedEvent(event)}
+                                    className={`group cursor-pointer transition-all duration-300 ${
+                                        selectedEvent?.id === event.id 
+                                            ? 'scale-[1.02]' 
+                                            : 'hover:scale-[1.01]'
+                                    }`}
+                                >
+                                    <div className={`bg-[var(--bg-secondary)] rounded-xl border relative overflow-hidden ${
+                                        selectedEvent?.id === event.id
+                                            ? 'border-[var(--accent-primary)]/30 glow-subtle'
+                                            : 'border-[var(--text-primary)]/5 hover:border-[var(--accent-primary)]/20'
+                                    }`}>
+                                        {/* Active Indicator */}
+                                        {selectedEvent?.id === event.id && (
+                                            <motion.div 
+                                                className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[var(--accent-primary)] to-[var(--accent-secondary)]"
+                                                layoutId="activeIndicator"
+                                            />
+                                        )}
                                         
-                                        {/* Event info */}
-                                        <div className="flex-1">
-                                            <h4 className="font-['Rajdhani'] text-base sm:text-lg text-[var(--text-primary)] mb-1">{event.title}</h4>
-                                            <p className="text-sm text-[var(--text-secondary)] font-['Noto Sans'] line-clamp-2">{event.desc}</p>
-                                            <div className="flex items-center justify-between mt-2">
-                                                <div className="flex items-center gap-3">
-                                                    <span className="text-xs text-[var(--accent-gold)] font-['Noto Sans']">{event.category}</span>
-                                                    <span className="text-xs text-[var(--text-secondary)]">•</span>
-                                                    <span className="text-xs text-[var(--text-secondary)] font-['Noto Sans'] flex items-center gap-1">
-                                                        <UsersIcon className="w-3 h-3" />
-                                                        {event.attendees} attending
-                                                    </span>
+                                        <div className="p-6">
+                                            <div className="flex items-start gap-4">
+                                                {/* Enhanced Date Block */}
+                                                <div className={`flex flex-col items-center justify-center rounded-xl w-16 h-16 transition-all duration-300 ${
+                                                    selectedEvent?.id === event.id
+                                                        ? 'bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/20 border border-[var(--accent-primary)]/30'
+                                                        : 'bg-[var(--bg-primary)] border border-[var(--text-primary)]/10 group-hover:border-[var(--accent-primary)]/20'
+                                                }`}>
+                                                    <span className="font-['Rajdhani'] text-xl font-bold text-[var(--text-primary)]">{event.date}</span>
+                                                    <span className="text-xs text-[var(--text-secondary)] uppercase font-['Noto Sans']">{event.month}</span>
                                                 </div>
-                                                <Link href={`/events/${event.id}`} className="text-xs text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] transition-colors">
-                                                    View →
-                                                </Link>
+                                                
+                                                {/* Enhanced Event Info */}
+                                                <div className="flex-1 min-w-0">
+                                                    <div className="flex items-start justify-between mb-2">
+                                                        <h4 className="font-['Rajdhani'] text-lg font-bold text-[var(--text-primary)] uppercase">{event.title}</h4>
+                                                        <span className={`px-2 py-1 rounded-full text-xs font-['Noto Sans'] whitespace-nowrap ml-2 ${
+                                                            event.category === 'Competition' ? 'bg-red-500/10 text-red-400 border border-red-500/20' :
+                                                            event.category === 'Fun Shoot' ? 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20' :
+                                                            'bg-blue-500/10 text-blue-400 border border-blue-500/20'
+                                                        }`}>
+                                                            {event.category}
+                                                        </span>
+                                                    </div>
+                                                    
+                                                    <p className="text-sm text-[var(--text-secondary)] font-['Noto Sans'] line-clamp-2 leading-relaxed mb-4">
+                                                        {event.desc}
+                                                    </p>
+                                                    
+                                                    <div className="flex items-center justify-between">
+                                                        <div className="flex items-center gap-2">
+                                                            <UsersIcon className="w-4 h-4 text-[var(--accent-primary)]" />
+                                                            <span className="text-xs text-[var(--text-secondary)] font-['Noto Sans']">
+                                                                {event.attendees} attending
+                                                            </span>
+                                                        </div>
+                                                        <motion.div
+                                                            className="text-xs text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] transition-colors font-['Rajdhani'] uppercase tracking-wider"
+                                                            whileHover={{ x: 4 }}
+                                                        >
+                                                            View Details →
+                                                        </motion.div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                        </div>
                         
-                        {/* View all events link */}
+                        {/* Enhanced View All Link */}
                         <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.4 }}
-                            className="pt-4"
+                            className="pt-6"
                         >
                             <Link
                                 href="/events"
-                                className="group inline-flex items-center gap-2 text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] font-['Rajdhani'] text-sm uppercase tracking-wider transition-colors"
+                                className="bg-[var(--bg-secondary)] hover:bg-[var(--accent-primary)] text-[var(--text-primary)] py-3 px-6 rounded-lg transition-all duration-300 w-full text-center"
                             >
                                 View Full Calendar
-                                <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
                             </Link>
                         </motion.div>
                     </div>
 
-                    {/* Selected Event Details - Right Side */}
-                    <div className="lg:col-span-2">
+                    {/* Enhanced Selected Event Details - Right Side */}
+                    <div className="lg:col-span-3">
                         {selectedEvent && (
                             <motion.div
                                 key={selectedEvent.id}
-                                initial={{ opacity: 0, scale: 0.98 }}
+                                initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.3 }}
+                                transition={{ duration: 0.5, ease: "easeOut" }}
                                 className="sticky top-24"
                             >
-                                <div className="bg-[var(--bg-secondary)] rounded-2xl shadow-lg overflow-hidden">
-                                    {/* Event image */}
-                                    <div className="relative h-64 sm:h-80">
+                                <div className="bg-[var(--bg-secondary)] rounded-xl overflow-hidden shadow-lg">
+                                    {/* Enhanced Event Image */}
+                                    <div className="relative h-72 sm:h-96">
                                         <Image
                                             src={selectedEvent.image}
                                             alt={selectedEvent.title}
                                             fill
                                             className="object-cover"
-                                            sizes="(max-width: 768px) 100vw, 66vw"
+                                            sizes="(max-width: 768px) 100vw, 60vw"
                                             priority={selectedEvent.id === upcomingEvents[0].id}
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                                         
-                                        {/* Category badge */}
-                                        <div className="absolute top-4 right-4">
-                                            <div className="bg-[var(--bg-primary)]/80 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1">
-                                                <span className="text-sm font-['Noto Sans'] text-[var(--text-primary)]">{selectedEvent.category}</span>
-                                            </div>
-                                        </div>
-                                        
-                                        {/* Title overlay */}
-                                        <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-                                            <h3 className="font-['Rajdhani'] text-2xl sm:text-3xl md:text-4xl text-white uppercase mb-2">
+                                        {/* Enhanced Title Overlay */}
+                                        <div className="absolute bottom-0 left-0 right-0 p-8">
+                                            <h3 className="font-['Rajdhani'] text-3xl sm:text-4xl md:text-5xl text-white uppercase mb-2 leading-none">
                                                 {selectedEvent.title}
                                             </h3>
+                                            <p className="text-gray-300 font-['Noto Sans'] text-lg">
+                                                {selectedEvent.desc}
+                                            </p>
                                         </div>
                                     </div>
                                     
-                                    {/* Event details */}
-                                    <div className="p-6 sm:p-8">
-                                        {/* Meta info */}
-                                        <div className="grid sm:grid-cols-3 gap-4 mb-6">
-                                            <div className="flex items-center gap-3">
-                                                <CalendarDaysIcon className="w-5 h-5 text-[var(--accent-gold)]" />
-                                                <div>
-                                                    <p className="text-xs text-[var(--text-secondary)] font-['Noto Sans']">Date</p>
-                                                    <p className="text-[var(--text-primary)] font-['Noto Sans']">{selectedEvent.date} {selectedEvent.month}</p>
-                                                </div>
+                                    {/* Enhanced Event Details */}
+                                    <div className="p-8">
+                                        {/* Modern Meta Info Cards */}
+                                        <div className="grid sm:grid-cols-3 gap-6 mb-8">
+                                            <div className="bg-[var(--bg-primary)] rounded-lg p-6 text-center">
+                                                <CalendarDaysIcon className="w-8 h-8 text-[var(--accent-primary)] mx-auto mb-2" />
+                                                <p className="text-xs text-[var(--text-secondary)] font-['Noto Sans'] uppercase tracking-wider mb-1">Date</p>
+                                                <p className="text-[var(--text-primary)] font-['Rajdhani'] text-lg font-bold">{selectedEvent.date} {selectedEvent.month}</p>
                                             </div>
-                                            <div className="flex items-center gap-3">
-                                                <ClockIcon className="w-5 h-5 text-[var(--accent-gold)]" />
-                                                <div>
-                                                    <p className="text-xs text-[var(--text-secondary)] font-['Noto Sans']">Time</p>
-                                                    <p className="text-[var(--text-primary)] font-['Noto Sans']">{selectedEvent.time}</p>
-                                                </div>
+                                            <div className="bg-[var(--bg-primary)] rounded-lg p-6 text-center">
+                                                <ClockIcon className="w-8 h-8 text-[var(--accent-primary)] mx-auto mb-2" />
+                                                <p className="text-xs text-[var(--text-secondary)] font-['Noto Sans'] uppercase tracking-wider mb-1">Time</p>
+                                                <p className="text-[var(--text-primary)] font-['Rajdhani'] text-lg font-bold">{selectedEvent.time}</p>
                                             </div>
-                                            <div className="flex items-center gap-3">
-                                                <MapPinIcon className="w-5 h-5 text-[var(--accent-gold)]" />
-                                                <div>
-                                                    <p className="text-xs text-[var(--text-secondary)] font-['Noto Sans']">Location</p>
-                                                    <p className="text-[var(--text-primary)] font-['Noto Sans']">{selectedEvent.location}</p>
-                                                </div>
+                                            <div className="bg-[var(--bg-primary)] rounded-lg p-6 text-center">
+                                                <MapPinIcon className="w-8 h-8 text-[var(--accent-primary)] mx-auto mb-2" />
+                                                <p className="text-xs text-[var(--text-secondary)] font-['Noto Sans'] uppercase tracking-wider mb-1">Location</p>
+                                                <p className="text-[var(--text-primary)] font-['Rajdhani'] text-lg font-bold">{selectedEvent.location}</p>
                                             </div>
                                         </div>
                                         
-                                        {/* Description */}
-                                        <p className="text-[var(--text-secondary)] font-['Noto Sans'] leading-relaxed mb-8">
-                                            {selectedEvent.details}
-                                        </p>
+                                        {/* Enhanced Description */}
+                                        <div className="mb-8">
+                                            <h4 className="font-['Rajdhani'] text-xl font-bold text-[var(--text-primary)] uppercase mb-4">Event Details</h4>
+                                            <p className="text-[var(--text-secondary)] font-['Noto Sans'] leading-relaxed text-lg">
+                                                {selectedEvent.details}
+                                            </p>
+                                        </div>
                                         
-                                        {/* CTA Button */}
+                                        {/* Modern CTA Button */}
                                         <Link
                                             href={`/events/${selectedEvent.id}`}
-                                            className="inline-flex items-center justify-center w-full bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] 
-                                                     text-[var(--text-primary)] font-bold py-3 px-6 rounded-lg text-base transition-all duration-300 
-                                                     transform hover:scale-105 shadow-lg hover:shadow-xl font-['Rajdhani']"
+                                            className="bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 w-full text-center"
                                         >
-                                            Register for Event
+                                            <span className="relative z-10">Register for Event</span>
                                         </Link>
                                     </div>
                                 </div>
@@ -253,8 +258,7 @@ const UpcomingEvents = () => {
                         )}
                     </div>
                 </div>
-            </div>
-        </section>
+        </div>
     );
 };
 

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Card from '@/components/ui/Card';
-import Badge from '@/components/ui/Badge';
-import Button from '@/components/ui/Button';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { 
   ClipboardIcon,
   ClipboardDocumentCheckIcon,
@@ -575,7 +575,7 @@ export default function CardPlayground() {
                 </div>
                 <div>
                   <div className="font-mono text-sm text-blue-600 mb-1">onClick</div>
-                  <div className="text-sm text-gray-600 mb-1">() => void</div>
+                  <div className="text-sm text-gray-600 mb-1">() =&gt; void</div>
                   <div className="text-xs text-gray-500">Make card clickable</div>
                 </div>
               </div>
@@ -609,7 +609,7 @@ export default function CardPlayground() {
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Import</h3>
               <CodeSnippet
                 title="Import Statement"
-                code={`import Card from '@/components/ui/Card';`}
+                code={`import { Card } from '@/components/ui/card';`}
               />
             </div>
           </div>

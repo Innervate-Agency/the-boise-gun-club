@@ -2,14 +2,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CalendarDaysIcon, ClockIcon, MapPinIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-// import { getShootingSportsImage } from '@/utils/imageUtils';
 import { useContent } from '@/hooks/useContent';
-
-const ParticleAnimation = dynamic(() => import('@/components/effects/ParticleAnimation'), { ssr: false });
 
 interface Event {
   id: string;
@@ -180,7 +176,6 @@ const EventsPage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden">
-      <ParticleAnimation />
       
       <motion.header 
         className="relative py-24 md:py-32 text-center bg-cover bg-center bg-no-repeat"

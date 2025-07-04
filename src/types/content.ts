@@ -148,13 +148,6 @@ export interface AnimatedCardProps extends CardProps {
 
 // Theme types
 export type ThemeSetting = 'light' | 'dark' | 'system';
-export type EffectiveTheme = 'light' | 'dark';
-
-export interface ThemeContextType {
-  themeSetting: ThemeSetting;
-  effectiveTheme: EffectiveTheme;
-  setTheme: (theme: ThemeSetting) => void;
-}
 
 // Navigation types
 export interface NavigationItem {

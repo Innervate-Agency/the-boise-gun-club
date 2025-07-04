@@ -2,10 +2,7 @@
 
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import dynamic from 'next/dynamic';
 import Link from 'next/link';
-
-const ParticleAnimation = dynamic(() => import('@/components/effects/ParticleAnimation'), { ssr: false });
 
 export default function Error({
   error,
@@ -24,14 +21,7 @@ export default function Error({
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] flex items-center justify-center relative overflow-hidden">
       {/* Background effects */}
-      <div className="absolute inset-0 z-0">
-        <ParticleAnimation
-          colors={['var(--accent-primary)', 'var(--accent-secondary)']}
-          count={10}
-          size={1.5}
-          speed={0.1}
-          className="opacity-15"
-        />
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-secondary)] opacity-50">
       </div>
       
       {/* Grid background */}
