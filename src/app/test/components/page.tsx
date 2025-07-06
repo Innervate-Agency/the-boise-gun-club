@@ -19,9 +19,16 @@ import {
   Target,
   Crosshair,
   Zap,
-  TrendingUp
+  TrendingUp,
+  Search,
+  Code,
+  Palette
 } from 'lucide-react';
-import FractalBackground from '@/components/effects/FractalBackground';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface ComponentCategory {
   title: string;
@@ -31,134 +38,77 @@ interface ComponentCategory {
   color: string;
   status: 'stable' | 'beta' | 'experimental' | 'new';
   features: string[];
+  componentCount: number;
 }
 
 const categories: ComponentCategory[] = [
   {
-    title: 'Interactive Buttons',
-    description: 'Advanced button components with micro-interactions, haptic feedback, and dynamic states',
-    href: '/test/components/buttons',
-    icon: MousePointer,
-    color: 'brand-primary',
-    status: 'stable',
-    features: ['Haptic Feedback', 'Loading States', 'Gesture Support', 'Voice Commands']
-  },
-  {
-    title: 'Smart Badges',
-    description: 'Intelligent status indicators with real-time updates and notification systems',
-    href: '/test/components/badges',
-    icon: Shield,
-    color: 'brand-green',
-    status: 'stable',
-    features: ['Real-time Updates', 'Achievement System', 'Pulse Animations', 'Smart Grouping']
-  },
-  {
-    title: 'Dynamic Cards',
-    description: 'Next-gen card layouts with 3D transforms, parallax effects, and interactive content',
-    href: '/test/components/cards',
+    title: 'Core Components',
+    description: 'Essential UI building blocks with Stripe-inspired design and accessibility',
+    href: '/test/components/core',
     icon: Layers,
-    color: 'brand-blue',
+    color: 'from-[#F28705] to-[#F25C05]',
     status: 'stable',
-    features: ['3D Transforms', 'Parallax Effects', 'Gesture Controls', 'Smart Layouts']
+    features: ['Buttons', 'Cards', 'Badges', 'Inputs'],
+    componentCount: 12
   },
   {
-    title: 'Advanced Loading',
-    description: 'Sophisticated loading states with progress tracking and skeleton animations',
-    href: '/test/components/loading',
-    icon: Activity,
-    color: 'brand-secondary',
-    status: 'stable',
-    features: ['Skeleton UI', 'Progress Tracking', 'Smart Preloading', 'Error Recovery']
-  },
-  {
-    title: 'Motion Effects',
-    description: 'Cutting-edge animations with physics-based motion and gesture interactions',
-    href: '/test/components/effects',
-    icon: Sparkles,
-    color: 'brand-primary',
-    status: 'stable',
-    features: ['Physics Engine', 'Gesture Recognition', 'Particle Systems', 'GPU Acceleration']
-  },
-  {
-    title: 'Smart Forms',
-    description: 'Intelligent form components with real-time validation and auto-completion',
+    title: 'Form Components',
+    description: 'Complete form system with validation, auto-completion and smart interactions',
     href: '/test/components/forms',
     icon: FileText,
-    color: 'brand-blue',
+    color: 'from-[#5198cd] to-[#4982A6]',
     status: 'stable',
-    features: ['Real-time Validation', 'Auto-completion', 'Voice Input', 'Smart Suggestions']
+    features: ['Validation', 'Auto-complete', 'Multi-step', 'File Upload'],
+    componentCount: 8
   },
   {
-    title: 'Data Visualization',
-    description: 'Interactive charts and graphs with real-time data streaming and 3D rendering',
-    href: '/test/components/charts',
+    title: 'Data Display',
+    description: 'Tables, charts, and data visualization with real-time updates',
+    href: '/test/components/data',
     icon: BarChart3,
-    color: 'brand-secondary',
-    status: 'new',
-    features: ['Real-time Streaming', '3D Rendering', 'Interactive Legends', 'Export Tools']
+    color: 'from-[#6f7822] to-[#3F6331]',
+    status: 'stable',
+    features: ['Tables', 'Charts', 'Progress', 'Statistics'],
+    componentCount: 6
   },
   {
-    title: 'Navigation Systems',
-    description: 'Advanced navigation with breadcrumbs, mega menus, and spatial awareness',
+    title: 'Navigation',
+    description: 'Advanced navigation patterns with mega menus and breadcrumbs',
     href: '/test/components/navigation',
     icon: Radar,
-    color: 'brand-green',
-    status: 'new',
-    features: ['Spatial Navigation', 'Mega Menus', 'Breadcrumb AI', 'Voice Navigation']
+    color: 'from-[#F2CB05] to-[#F28705]',
+    status: 'stable',
+    features: ['Mega Menu', 'Breadcrumbs', 'Tabs', 'Dropdown'],
+    componentCount: 7
+  },
+  {
+    title: 'Feedback',
+    description: 'Loading states, alerts, and user feedback components',
+    href: '/test/components/feedback',
+    icon: Activity,
+    color: 'from-[#F23005] to-[#8C394B]',
+    status: 'stable',
+    features: ['Loading', 'Alerts', 'Toasts', 'Modals'],
+    componentCount: 9
   },
   {
     title: 'Gaming Elements',
-    description: 'Gamification components with leaderboards, achievements, and interactive scoring',
+    description: 'Gamification components for shotgun sports achievements and scoring',
     href: '/test/components/gaming',
     icon: Trophy,
-    color: 'brand-secondary',
-    status: 'beta',
-    features: ['Leaderboards', 'Achievement System', 'Score Tracking', 'Competition UI']
-  },
-  {
-    title: 'Media Players',
-    description: 'Advanced media components with 360° support, live streaming, and AR overlays',
-    href: '/test/components/media',
-    icon: Camera,
-    color: 'brand-primary',
-    status: 'beta',
-    features: ['360° Support', 'Live Streaming', 'AR Overlays', 'Interactive Controls']
-  },
-  {
-    title: 'Gesture Controls',
-    description: 'Touch, swipe, and gesture recognition with haptic feedback and voice commands',
-    href: '/test/components/gestures',
-    icon: Gamepad2,
-    color: 'brand-blue',
-    status: 'experimental',
-    features: ['Multi-touch', 'Voice Commands', 'Haptic Feedback', 'Eye Tracking']
-  },
-  {
-    title: 'AR/VR Components',
-    description: 'Augmented and virtual reality interfaces with 3D models and spatial computing',
-    href: '/test/components/arvr',
-    icon: Globe,
-    color: 'brand-primary',
-    status: 'experimental',
-    features: ['3D Models', 'Spatial Computing', 'Hand Tracking', 'Mixed Reality']
+    color: 'from-[#F25C05] to-[#F23005]',
+    status: 'new',
+    features: ['Leaderboards', 'Achievements', 'Scoring', 'Competitions'],
+    componentCount: 5
   }
 ];
 
-const statusColors = {
-  stable: 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900/20 dark:text-green-300 dark:border-green-800',
-  beta: 'bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800',
-  experimental: 'bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900/20 dark:text-yellow-300 dark:border-yellow-800',
-  new: 'bg-orange-100 text-orange-800 border-orange-200 dark:bg-orange-900/20 dark:text-orange-300 dark:border-orange-800'
-};
-
-const getBrandColorClasses = (colorKey: string) => {
-  const colorMap = {
-    'brand-primary': 'bg-gradient-to-r from-[#F23005] to-[#F23005]/80',
-    'brand-secondary': 'bg-gradient-to-r from-[#F2CB05] to-[#F28705]',
-    'brand-blue': 'bg-gradient-to-r from-[#5198cd] to-[#4982A6]',
-    'brand-green': 'bg-gradient-to-r from-[#6f7822] to-[#3F6331]'
-  };
-  return colorMap[colorKey as keyof typeof colorMap] || 'bg-gradient-to-r from-slate-500 to-slate-600';
+const statusStyles = {
+  stable: 'bg-white/20 text-white border border-white/30',
+  beta: 'bg-white/20 text-white border border-white/30', 
+  experimental: 'bg-white/20 text-white border border-white/30',
+  new: 'bg-white/20 text-white border border-white/30'
 };
 
 const containerVariants = {
@@ -190,179 +140,241 @@ const cardVariants = {
 };
 
 export default function ComponentsOverview() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedTab, setSelectedTab] = useState('all');
+
+  const filteredCategories = categories.filter(category =>
+    category.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    category.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    category.features.some(feature => feature.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-[url('/images/Grid/Grid(1).webp')] opacity-10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <div className="flex justify-center mb-6">
+    <div className="min-h-screen bg-[var(--cloudy-day-white)] dark:bg-[var(--kent-slate-gray)]">
+      {/* Compact Hero Section with Search */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-[var(--lahoma-orange)] to-[var(--abe-red)]" style={{ height: '300px' }}>
+        <div className="absolute inset-0 bg-black/10" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 h-full flex flex-col justify-center">
+          
+          {/* Title and Icon */}
+          <div className="flex items-center gap-6 mb-6">
+            <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+              <Target className="h-8 w-8 text-white" />
+            </div>
+            <div className="flex-1">
+              <h1 className="text-4xl md:text-5xl font-heading font-black text-white mb-2">
+                Component
+                <span className="text-[var(--leonard-yellow)]"> Arsenal</span>
+              </h1>
+              <p className="text-xl text-white/90 font-body font-light">
+                Production-ready components built with shadcn/ui, styled like Stripe, enhanced with ClickUp gradients
+              </p>
+            </div>
+            
+            {/* Search Bar */}
+            <div className="w-80 hidden lg:block">
               <div className="relative">
-                <Target className="h-16 w-16 text-[#F23005] animate-pulse" />
-                <Crosshair className="h-8 w-8 text-[#F28705] absolute top-4 left-4 animate-spin" style={{ animationDuration: '3s' }} />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white/60" />
+                <Input
+                  placeholder="Search components..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60"
+                />
               </div>
             </div>
-            <h1 className="text-5xl md:text-6xl font-heading font-bold text-white mb-6">
-              COMPONENT <span className="text-[#F23005]">ARSENAL</span>
-            </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-              The most advanced, interactive, and badass component library for building the coolest gun club website in the country. 
-              Featuring bleeding-edge animations, AI-powered interactions, and next-gen UX patterns.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-400">
+          </div>
+          
+          {/* Stats and Mobile Search */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-6 text-sm text-white/90">
               <span className="flex items-center gap-2">
-                <Zap className="h-4 w-4 text-[#F2CB05]" />
-                Lightning Fast
+                <Code className="h-4 w-4 text-[var(--leonard-yellow)]" />
+                47+ Components
               </span>
               <span className="flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-[#F23005]" />
-                AI-Enhanced
+                <Palette className="h-4 w-4 text-white" />
+                Stripe Design
               </span>
               <span className="flex items-center gap-2">
-                <Target className="h-4 w-4 text-[#6f7822]" />
-                Precision Built
-              </span>
-              <span className="flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-[#5198cd]" />
-                Future Ready
+                <Zap className="h-4 w-4 text-white" />
+                ClickUp Gradients
               </span>
             </div>
-          </motion.div>
+            
+            {/* Mobile Search */}
+            <div className="w-64 lg:hidden">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white/60" />
+                <Input
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 text-sm"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Components Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Category Tabs */}
+        <div className="mb-12">
+          <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full">
+            <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 gap-1">
+              <TabsTrigger value="all">All</TabsTrigger>
+              <TabsTrigger value="core">Core</TabsTrigger>
+              <TabsTrigger value="forms">Forms</TabsTrigger>
+              <TabsTrigger value="data">Data</TabsTrigger>
+              <TabsTrigger value="navigation">Nav</TabsTrigger>
+              <TabsTrigger value="feedback">Feedback</TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
+
+        {/* Component Cards Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {categories.map((category) => {
+          {filteredCategories.map((category) => {
             const IconComponent = category.icon;
             return (
               <motion.div
                 key={category.href}
                 variants={cardVariants}
-                whileHover={{ 
-                  scale: 1.05,
-                  rotateY: 5,
-                  z: 50
-                }}
-                whileTap={{ scale: 0.98 }}
                 className="group"
               >
                 <Link href={category.href}>
-                  <div className="relative h-full bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden transition-all duration-300 hover:shadow-2xl">
-                    {/* Gradient Header */}
-                    <div className={`h-24 ${getBrandColorClasses(category.color)} relative overflow-hidden`}>
-                      <div className="absolute inset-0 bg-black/10"></div>
+                  <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden bg-white dark:bg-[var(--ed-charcoal)] group-hover:scale-[1.02]">
+                    {/* Stripe-style gradient header */}
+                    <div className={`h-32 bg-gradient-to-r ${category.color} relative overflow-hidden`}>
+                      <div className="absolute inset-0 bg-black/5" />
+                      
+                      {/* Status badge */}
                       <div className="absolute top-4 right-4">
-                        <span className={`px-2 py-1 text-xs font-medium rounded-full border ${statusColors[category.status]}`}>
+                        <Badge className={statusStyles[category.status]}>
                           {category.status}
-                        </span>
+                        </Badge>
                       </div>
-                      <div className="absolute bottom-4 left-4">
-                        <IconComponent className="h-8 w-8 text-white drop-shadow-lg" />
+                      
+                      {/* Icon */}
+                      <div className="absolute bottom-4 left-6">
+                        <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                          <IconComponent className="h-6 w-6 text-white" />
+                        </div>
                       </div>
-                      {/* Animated background pattern */}
-                      <div className="absolute inset-0 opacity-20">
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
+                      
+                      {/* Component count */}
+                      <div className="absolute bottom-4 right-6">
+                        <div className="text-right">
+                          <div className="text-2xl font-bold text-white">{category.componentCount}</div>
+                          <div className="text-xs text-white/80">components</div>
+                        </div>
                       </div>
+                      
+                      {/* Subtle pattern overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
                     </div>
 
-                    {/* Content */}
-                    <div className="p-6">
-                      <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white mb-2 group-hover:text-[#F23005] transition-colors">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-xl font-['Rajdhani'] font-bold text-slate-800 dark:text-white group-hover:text-[var(--lahoma-orange)] transition-colors">
                         {category.title}
-                      </h3>
-                      <p className="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed">
+                      </CardTitle>
+                      <CardDescription className="text-slate-600 dark:text-[var(--don-gray)] font-['Noto Sans'] font-light leading-relaxed">
                         {category.description}
-                      </p>
+                      </CardDescription>
+                    </CardHeader>
 
+                    <CardContent className="pt-0">
                       {/* Features */}
-                      <div className="space-y-2">
-                        <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                      <div className="space-y-3 mb-6">
+                        <h4 className="text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider font-heading">
                           Key Features
                         </h4>
-                        <div className="flex flex-wrap gap-1">
+                        <div className="flex flex-wrap gap-2">
                           {category.features.map((feature, index) => (
-                            <span
+                            <Badge
                               key={index}
-                              className="px-2 py-1 text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-md"
+                              variant="outline"
+                              className="text-xs"
                             >
                               {feature}
-                            </span>
+                            </Badge>
                           ))}
                         </div>
                       </div>
 
-                      {/* Action Button */}
-                      <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-700">
-                        <div className="flex items-center justify-between text-sm font-medium text-[#F23005] group-hover:text-[#F28705] transition-colors">
-                          <span>Explore Components</span>
-                          <motion.div
-                            animate={{ x: [0, 4, 0] }}
-                            transition={{ 
-                              repeat: Infinity, 
-                              duration: 2,
-                              ease: "easeInOut" 
-                            }}
-                          >
-                            →
-                          </motion.div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Hover Effect Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#F23005]/5 to-[#F28705]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                  </div>
+                      {/* Action */}
+                      <Button 
+                        variant="ghost" 
+                        className="w-full group-hover:bg-accent-primary/10 group-hover:text-accent-primary transition-colors font-heading font-semibold"
+                      >
+                        Explore Components
+                        <motion.div
+                          className="ml-2"
+                          animate={{ x: [0, 4, 0] }}
+                          transition={{ 
+                            repeat: Infinity, 
+                            duration: 2,
+                            ease: "easeInOut" 
+                          }}
+                        >
+                          →
+                        </motion.div>
+                      </Button>
+                    </CardContent>
+                  </Card>
                 </Link>
               </motion.div>
             );
           })}
         </motion.div>
 
-        {/* Stats Section */}
+        {/* Statistics Section with Stripe-style cards */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="mt-20 text-center"
+          className="mt-20"
         >
-          <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-3xl p-8 shadow-2xl">
-            <h2 className="text-3xl font-heading font-bold text-white mb-8">
-              Component Arsenal Statistics
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-['Rajdhani'] font-bold text-[var(--craters-moon)] dark:text-white mb-4">
+              Component Statistics
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-[#F23005] mb-2">150+</div>
-                <div className="text-slate-300 text-sm">Interactive Components</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-[#F2CB05] mb-2">50+</div>
-                <div className="text-slate-300 text-sm">Animation Patterns</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-[#6f7822] mb-2">12</div>
-                <div className="text-slate-300 text-sm">Component Categories</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-[#5198cd] mb-2">∞</div>
-                <div className="text-slate-300 text-sm">Customization Options</div>
-              </div>
-            </div>
+            <p className="text-[var(--desert-cliff-brown)] dark:text-[var(--don-gray)] font-['Noto Sans'] font-light">
+              Everything you need to build a world-class gun club website
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { label: 'Total Components', value: '47+', color: 'from-[var(--lahoma-orange)] to-[var(--abe-red)]' },
+              { label: 'Component Categories', value: '6', color: 'from-[var(--leonard-yellow)] to-[var(--lahoma-orange)]' },
+              { label: 'Design Patterns', value: '25+', color: 'from-[var(--club-house-roof-blue)] to-[var(--club-house-walk-gray)]' },
+              { label: 'Lines of Code', value: '10k+', color: 'from-[var(--club-house-lawn-green)] to-[var(--owyhee-green)]' }
+            ].map((stat, index) => (
+              <Card key={index} className="border-0 shadow-lg bg-white dark:bg-[var(--ed-charcoal)] overflow-hidden">
+                <CardContent className="p-6 text-center">
+                  <div className={`w-12 h-12 bg-gradient-to-r ${stat.color} rounded-lg mx-auto mb-3 flex items-center justify-center`}>
+                    <TrendingUp className="h-6 w-6 text-white" />
+                  </div>
+                  <div className="text-2xl font-bold text-[var(--craters-moon)] dark:text-white mb-1 font-['Rajdhani']">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-[var(--desert-cliff-brown)] dark:text-[var(--don-gray)] font-['Noto Sans']">
+                    {stat.label}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </motion.div>
       </div>
     </div>
   );
-} 
+}

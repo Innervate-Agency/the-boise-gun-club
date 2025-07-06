@@ -10,6 +10,11 @@
   --color-brand-blue: #5198cd;
   --color-brand-green: #6f7822;
   
+  --color-component-button: linear-gradient(to right, #F28705, #F25C05);
+  --color-component-card: linear-gradient(to right, #5198cd, #4982A6);
+  --color-component-badge: linear-gradient(to right, #6f7822, #3F6331);
+  --color-component-input: linear-gradient(to right, #F2CB05, #F28705);
+  
   --max-width-8xl: 1600px;
   
   --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -49,7 +54,50 @@
     0%, 100% { transform: translateY(0px) scale(1); }
     50% { transform: translateY(-5px) scale(1.02); }
   }
+  
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 }
+
+/* Premium Button Effects */
+.btn-lift {
+  transition: all 0.2s ease;
+}
+.btn-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 25px rgba(242, 135, 5, 0.5);
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.7s;
+}
+.btn-shimmer:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-pulse {
+  animation: pulse 2s infinite;
+}
+.btn-pulse:hover {
+  animation: none;
+}
+
 
 @layer base {
   /* Default text size with official Boise Gun Club fonts */

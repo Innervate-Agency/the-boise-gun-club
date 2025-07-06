@@ -56,3 +56,6 @@ npm-debug.log*
 
 # Environment
 .env*.local
+
+*storybook.log
+storybook-static
