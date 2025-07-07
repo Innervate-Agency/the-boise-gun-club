@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Target, Trophy, Users, Calendar } from 'lucide-react';
 
 const meta: Meta<typeof Card> = {
-  title: 'Boise Gun Club/Card',
+  title: 'Components/UI/Card',
   component: Card,
   parameters: {
     layout: 'centered',

@@ -5,7 +5,7 @@ import { FloatingBackground } from '@/components/ui/floating-background';
 import { Trophy, Target, Star, Zap, ArrowRight } from 'lucide-react';
 
 const meta: Meta = {
-  title: 'Fusion Components/Premium Suite',
+  title: 'Components/Fusion/Premium Suite',
   parameters: {
     layout: 'padded',
     docs: {

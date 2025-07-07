@@ -37,19 +37,21 @@ export function PremiumButton({
         // Base Stripe-style button
         'relative font-medium rounded-lg border-0 overflow-hidden',
         'transition-all duration-200 ease-out',
-        'focus:ring-2 focus:ring-blue-500/20 focus:ring-offset-2',
+        'focus:ring-2 focus:ring-[#F28705]/20 focus:ring-offset-2',
         
         // Size variants (Stripe-style)
         size === 'sm' && 'px-3 py-1.5 text-sm',
         size === 'default' && 'px-4 py-2.5 text-sm',
         size === 'lg' && 'px-6 py-3 text-base',
         
-        // Premium variant with ClickUp gradients
+        // Premium variant with brand colors (subtle approach)
         variant === 'premium' && [
-          'bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700',
-          'hover:from-blue-700 hover:via-purple-700 hover:to-blue-800',
-          'text-white shadow-lg hover:shadow-xl',
-          'transform hover:scale-[1.02] active:scale-[0.98]'
+          'bg-[#F2CB05]',
+          'hover:bg-[#F28705]',
+          'text-black shadow-lg hover:shadow-xl',
+          'transform hover:scale-[1.02] active:scale-[0.98]',
+          'relative overflow-hidden',
+          'before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#F28705]/20 before:to-transparent before:opacity-0 before:hover:opacity-100 before:transition-opacity before:duration-300'
         ],
         
         // Outline variant (Stripe-style)
@@ -61,9 +63,9 @@ export function PremiumButton({
         
         // Effects
         effect === 'lift' && 'hover:-translate-y-0.5 transition-transform duration-200',
-        effect === 'glow' && 'hover:shadow-2xl hover:shadow-blue-500/25',
+        effect === 'glow' && 'hover:shadow-2xl hover:shadow-[#F28705]/25',
         effect === 'pulse' && 'hover:animate-pulse',
-        effect === 'shimmer' && 'relative bg-gradient-to-r from-blue-600 via-blue-700 to-purple-600 bg-[length:200%_100%] hover:bg-[position:100%_0] transition-all duration-500',
+        effect === 'shimmer' && 'relative bg-gradient-to-r from-[#F2CB05] via-[#F28705] to-[#F2CB05] bg-[length:200%_100%] hover:bg-[position:100%_0] transition-all duration-500',
         
         isDisabled && 'opacity-50 cursor-not-allowed transform-none hover:transform-none',
         className

@@ -3,7 +3,7 @@ import { PremiumButton } from '@/components/ui/premium-button';
 import { Target, Zap, Star } from 'lucide-react';
 
 const meta: Meta<typeof PremiumButton> = {
-  title: 'Fusion Components/Premium Button',
+  title: 'Components/UI/Premium Button',
   component: PremiumButton,
   parameters: {
     layout: 'centered',

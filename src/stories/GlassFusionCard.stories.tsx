@@ -4,7 +4,7 @@ import { PremiumButton } from '@/components/ui/premium-button';
 import { Target, Star } from 'lucide-react';
 
 const meta: Meta<typeof GlassFusionCard> = {
-  title: 'Fusion Components/Glass Fusion Card',
+  title: 'Components/UI/Glass Fusion Card',
   component: GlassFusionCard,
   parameters: {
     layout: 'centered',

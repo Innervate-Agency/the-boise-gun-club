@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 const meta: Meta = {
-  title: 'Extracted Components/Component Cards',
+  title: 'Components/Showcases/Component Cards',
   parameters: {
     layout: 'padded',
     docs: {
