@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useCalendar } from './CalendarContext';
+import { Button } from '@/components/ui/button';
 
 function getWeekDays(date: Date): Date[] {
     const start = new Date(date);
@@ -43,43 +44,45 @@ const WeekView = () => {
 
     if (isLoading) {
         return (
-            <div className="font-['VT323'] text-[#FFB000] animate-pulse">
+            <div className="font-mono text-[var(--lahoma-orange)] animate-pulse">
                 LOADING WEEK DATA...
             </div>
         );
     }
 
     return (
-        <div className="font-['VT323']">
+        <div className="font-mono text-[var(--lahoma-orange)]">
             {/* Week navigation */}
             <div className="flex justify-between items-center mb-6">
-                <button
+                <Button
+                    variant="ghost"
                     onClick={() => navigateWeek('prev')}
-                    className="text-[#FFB000] hover:text-[#FFB000]/80 transition-colors"
+                    className="text-[var(--lahoma-orange)] hover:text-[var(--lahoma-orange)]/80 transition-colors"
                 >
                     {'<< PREV WEEK'}
-                </button>
+                </Button>
                 <h3 className="text-xl">
                     {`WEEK OF ${weekDays[0].toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${weekDays[6].toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`}
                 </h3>
-                <button
+                <Button
+                    variant="ghost"
                     onClick={() => navigateWeek('next')}
-                    className="text-[#FFB000] hover:text-[#FFB000]/80 transition-colors"
+                    className="text-[var(--lahoma-orange)] hover:text-[var(--lahoma-orange)]/80 transition-colors"
                 >
                     {'NEXT WEEK >>'}
-                </button>
+                </Button>
             </div>
 
             {/* Week grid */}
             <div className="relative overflow-x-auto">
                 <div className="grid grid-cols-8 min-w-[800px]">
                     {/* Time column */}
-                    <div className="border-r border-[#FFB000]/30">
+                    <div className="border-r border-[var(--lahoma-orange)]/30">
                         <div className="h-12" /> {/* Empty corner cell */}
                         {timeSlots.map(time => (
                             <div
                                 key={time}
-                                className="h-16 border-t border-[#FFB000]/30 pr-2 text-right text-[#FFB000]/70"
+                                className="h-16 border-t border-[var(--lahoma-orange)]/30 pr-2 text-right text-[var(--lahoma-orange)]/70"
                             >
                                 {time}
                             </div>
@@ -91,10 +94,10 @@ const WeekView = () => {
                         <div key={day.toISOString()} className="relative">
                             {/* Day header */}
                             <div
-                                className={`h-12 border-b border-[#FFB000]/30 text-center py-2
+                                className={`h-12 border-b border-[var(--lahoma-orange)]/30 text-center py-2
                                     ${day.toDateString() === new Date().toDateString()
-                                        ? 'text-[#FFB000] bg-[#FFB000]/10'
-                                        : 'text-[#FFB000]/70'
+                                        ? 'text-[var(--lahoma-orange)] bg-[var(--lahoma-orange)]/10'
+                                        : 'text-[var(--lahoma-orange)]/70'
                                     }`}
                             >
                                 <div>{day.toLocaleDateString('en-US', { weekday: 'short' })}</div>
@@ -112,13 +115,13 @@ const WeekView = () => {
                                 return (
                                     <div
                                         key={`${dayIndex}-${timeIndex}`}
-                                        className="h-16 border-t border-[#FFB000]/30 relative"
+                                        className="h-16 border-t border-[var(--lahoma-orange)]/30 relative"
                                     >
                                         {currentEvents.map(event => (
                                             <motion.div
                                                 key={event.id}
-                                                className="absolute inset-x-1 bg-[#FFB000]/20 border border-[#FFB000]/30
-                                                         cursor-pointer hover:bg-[#FFB000]/30 transition-colors p-1"
+                                                className="absolute inset-x-1 bg-[var(--lahoma-orange)]/20 border border-[var(--lahoma-orange)]/30
+                                                         cursor-pointer hover:bg-[var(--lahoma-orange)]/30 transition-colors p-1"
                                                 style={{
                                                     top: '0',
                                                     height: `${(event.end.getHours() - event.start.getHours()) * 64}px`
@@ -127,7 +130,7 @@ const WeekView = () => {
                                                 animate={{ opacity: 1, scale: 1 }}
                                                 onClick={() => setSelectedEvent(event)}
                                             >
-                                                <div className="text-xs text-[#FFB000] truncate">
+                                                <div className="text-xs text-[var(--lahoma-orange)] truncate">
                                                     {event.title}
                                                 </div>
                                             </motion.div>
@@ -141,7 +144,7 @@ const WeekView = () => {
             </div>
 
             {/* Terminal decoration */}
-            <div className="mt-8 text-xs text-[#FFB000]/50">
+            <div className="mt-8 text-xs text-[var(--lahoma-orange)]/50">
                 {'> '}Displaying week schedule... Type 'help' for commands_
             </div>
         </div>

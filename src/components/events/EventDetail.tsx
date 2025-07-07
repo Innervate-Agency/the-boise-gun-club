@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { useCalendar } from './CalendarContext';
+import { Button } from '@/components/ui/button';
+import { X } from 'lucide-react';
 
 const EventDetail = () => {
     const { selectedEvent, setSelectedEvent } = useCalendar();
@@ -20,24 +22,26 @@ const EventDetail = () => {
 
     return (
         <motion.div
-            className="font-['VT323'] border border-[#FFB000]/30 p-6 bg-[#0A3200] relative"
+            className="font-mono border border-[var(--lahoma-orange)]/30 p-6 bg-[var(--owyhee-green-dark)] relative text-[var(--lahoma-orange)]"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
         >
             {/* Close button */}
-            <button
+            <Button
+                variant="ghost"
+                size="icon"
                 onClick={() => setSelectedEvent(null)}
-                className="absolute top-4 right-4 text-[#FFB000] hover:text-[#FFB000]/80 transition-colors"
+                className="absolute top-4 right-4 text-[var(--lahoma-orange)] hover:text-[var(--lahoma-orange)]/80 transition-colors"
             >
-                [X]
-            </button>
+                <X className="h-6 w-6" />
+            </Button>
 
             {/* Event header */}
             <div className="mb-6">
-                <div className="text-xs text-[#FFB000]/70 mb-2">EVENT DETAILS:</div>
-                <h3 className="text-2xl text-[#FFB000] mb-2">{selectedEvent.title}</h3>
-                <div className="flex items-center text-[#FFB000]/80 text-sm">
+                <div className="text-xs text-[var(--lahoma-orange)]/70 mb-2">EVENT DETAILS:</div>
+                <h3 className="text-2xl text-[var(--lahoma-orange)] mb-2">{selectedEvent.title}</h3>
+                <div className="flex items-center text-[var(--lahoma-orange)]/80 text-sm">
                     <span className="mr-2">[STATUS]</span>
                     <span className={`
                         ${selectedEvent.registrationStatus === 'open' ? 'text-green-500' :
@@ -53,34 +57,34 @@ const EventDetail = () => {
             {/* Event details in terminal style */}
             <div className="space-y-4">
                 <div>
-                    <div className="text-[#FFB000]/70">START:</div>
+                    <div className="text-[var(--lahoma-orange)]/70">START:</div>
                     <div>{formatDate(selectedEvent.start)}</div>
                 </div>
 
                 <div>
-                    <div className="text-[#FFB000]/70">END:</div>
+                    <div className="text-[var(--lahoma-orange)]/70">END:</div>
                     <div>{formatDate(selectedEvent.end)}</div>
                 </div>
 
                 <div>
-                    <div className="text-[#FFB000]/70">LOCATION:</div>
+                    <div className="text-[var(--lahoma-orange)]/70">LOCATION:</div>
                     <div>{selectedEvent.location}</div>
                 </div>
 
                 <div>
-                    <div className="text-[#FFB000]/70">CATEGORY:</div>
-                    <div className="inline-block px-2 py-1 bg-[#FFB000]/20 text-[#FFB000]">
+                    <div className="text-[var(--lahoma-orange)]/70">CATEGORY:</div>
+                    <div className="inline-block px-2 py-1 bg-[var(--lahoma-orange)]/20 text-[var(--lahoma-orange)]">
                         {selectedEvent.category.toUpperCase()}
                     </div>
                 </div>
 
                 {selectedEvent.maxParticipants && (
                     <div>
-                        <div className="text-[#FFB000]/70">CAPACITY:</div>
+                        <div className="text-[var(--lahoma-orange)]/70">CAPACITY:</div>
                         <div className="flex items-center space-x-2">
-                            <div className="flex-1 h-2 bg-[#FFB000]/20 rounded-full overflow-hidden">
+                            <div className="flex-1 h-2 bg-[var(--lahoma-orange)]/20 rounded-full overflow-hidden">
                                 <motion.div
-                                    className="h-full bg-[#FFB000]"
+                                    className="h-full bg-[var(--lahoma-orange)]"
                                     initial={{ width: 0 }}
                                     animate={{
                                         width: `${(selectedEvent.currentParticipants! / selectedEvent.maxParticipants) * 100}%`
@@ -96,29 +100,26 @@ const EventDetail = () => {
                 )}
 
                 <div>
-                    <div className="text-[#FFB000]/70">DESCRIPTION:</div>
-                    <div className="mt-2 text-[#FFB000]/90 leading-relaxed">
+                    <div className="text-[var(--lahoma-orange)]/70">DESCRIPTION:</div>
+                    <div className="mt-2 text-[var(--lahoma-orange)]/90 leading-relaxed">
                         {selectedEvent.description}
                     </div>
                 </div>
 
                 {/* Register button */}
                 {selectedEvent.registrationStatus !== 'closed' && (
-                    <motion.button
-                        className="w-full mt-6 py-3 px-6 bg-[#FFB000] text-[#0A3200] font-bold
-                                 hover:bg-[#FFB000]/90 transition-colors"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                    <Button
+                        className="w-full mt-6 py-3 px-6 bg-[var(--lahoma-orange)] text-[var(--owyhee-green-dark)] font-bold hover:bg-[var(--lahoma-orange)]/90 transition-colors"
                     >
                         {selectedEvent.registrationStatus === 'waitlist'
                             ? 'JOIN WAITLIST'
                             : 'REGISTER NOW'}
-                    </motion.button>
+                    </Button>
                 )}
             </div>
 
             {/* Terminal decoration */}
-            <div className="mt-8 text-xs text-[#FFB000]/50">
+            <div className="mt-8 text-xs text-[var(--lahoma-orange)]/50">
                 {'> '}System ready for registration...
             </div>
         </motion.div>

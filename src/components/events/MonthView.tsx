@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useCalendar } from './CalendarContext';
+import { Button } from '@/components/ui/button';
 
 function getDaysInMonth(date: Date): Date[] {
     const year = date.getFullYear();
@@ -52,40 +53,42 @@ const MonthView = () => {
 
     if (isLoading) {
         return (
-            <div className="font-['VT323'] text-[#FFB000] animate-pulse">
+            <div className="font-mono text-[var(--lahoma-orange)] animate-pulse">
                 LOADING CALENDAR DATA...
             </div>
         );
     }
 
     return (
-        <div className="font-['VT323']">
+        <div className="font-mono text-[var(--lahoma-orange)]">
             {/* Month navigation */}
             <div className="flex justify-between items-center mb-6">
-                <button
+                <Button
+                    variant="ghost"
                     onClick={() => navigateMonth('prev')}
-                    className="text-[#FFB000] hover:text-[#FFB000]/80 transition-colors"
+                    className="text-[var(--lahoma-orange)] hover:text-[var(--lahoma-orange)]/80 transition-colors"
                 >
                     {'<< PREV'}
-                </button>
+                </Button>
                 <h3 className="text-xl">
                     {selectedDate.toLocaleString('default', { month: 'long', year: 'numeric' })}
                 </h3>
-                <button
+                <Button
+                    variant="ghost"
                     onClick={() => navigateMonth('next')}
-                    className="text-[#FFB000] hover:text-[#FFB000]/80 transition-colors"
+                    className="text-[var(--lahoma-orange)] hover:text-[var(--lahoma-orange)]/80 transition-colors"
                 >
                     {'NEXT >>'}
-                </button>
+                </Button>
             </div>
 
             {/* Calendar grid */}
-            <div className="grid grid-cols-7 gap-px bg-[#FFB000]/20">
+            <div className="grid grid-cols-7 gap-px bg-[var(--lahoma-orange)]/20">
                 {/* Weekday headers */}
                 {['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'].map(day => (
                     <div
                         key={day}
-                        className="p-2 text-center text-[#FFB000] border-b border-[#FFB000]/30"
+                        className="p-2 text-center text-[var(--lahoma-orange)] border-b border-[var(--lahoma-orange)]/30"
                     >
                         {day}
                     </div>
@@ -102,9 +105,9 @@ const MonthView = () => {
                         <motion.div
                             key={date.toISOString()}
                             className={`
-                                min-h-[100px] p-2 border border-[#FFB000]/30
-                                ${isCurrentMonth ? 'bg-[#0A3200]' : 'bg-[#0A3200]/50'}
-                                hover:bg-[#FFB000]/10 transition-colors cursor-pointer
+                                min-h-[100px] p-2 border border-[var(--lahoma-orange)]/30
+                                ${isCurrentMonth ? 'bg-[var(--owyhee-green-dark)]' : 'bg-[var(--owyhee-green-dark)]/50'}
+                                hover:bg-[var(--lahoma-orange)]/10 transition-colors cursor-pointer
                             `}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -112,15 +115,15 @@ const MonthView = () => {
                             onClick={() => dayEvents[0] && setSelectedEvent(dayEvents[0])}
                         >
                             <div className="text-right mb-2">
-                                <span className={isCurrentMonth ? 'text-[#FFB000]' : 'text-[#FFB000]/50'}>
+                                <span className={isCurrentMonth ? 'text-[var(--lahoma-orange)]' : 'text-[var(--lahoma-orange)]/50'}>
                                     {date.getDate()}
                                 </span>
                             </div>
                             {dayEvents.map(event => (
                                 <div
                                     key={event.id}
-                                    className="text-xs mb-1 p-1 bg-[#FFB000]/20 hover:bg-[#FFB000]/30
-                                             border border-[#FFB000]/30 cursor-pointer transition-colors"
+                                    className="text-xs mb-1 p-1 bg-[var(--lahoma-orange)]/20 hover:bg-[var(--lahoma-orange)]/30
+                                             border border-[var(--lahoma-orange)]/30 cursor-pointer transition-colors"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         setSelectedEvent(event);

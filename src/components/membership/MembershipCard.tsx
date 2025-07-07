@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect, useMemo } from 'react'; // Added useMemo
 import useDeterministicRandom from '../../hooks/useDeterministicRandom';
+import { Button } from '@/components/ui/button';
+import { Check } from 'lucide-react';
 
 export type MembershipTier = {
     id: string;
@@ -54,14 +56,12 @@ const MembershipCard = ({ tier, onSelect }: MembershipCardProps) => {
             }}
         >
             {/* Background layers */}
-            <div className="absolute inset-0 bg-[#5D4037]/20 backdrop-blur-md" />
+            <div className="absolute inset-0 bg-[var(--craters-moon)]/20 backdrop-blur-md" />
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10" />
 
             {/* Parallel lines background pattern */}
             <div className="absolute inset-0 overflow-hidden opacity-20">
-                <div className="absolute inset-0" style={{
-                    backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, #FFBF00 10px, #FFBF00 11px)',
-                }} />
+                <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,var(--leonard-yellow)_10px,var(--leonard-yellow)_11px)]" />
             </div>            {/* Subtle mist effect particles */}
             {isHovered && mistParticles.map(particle => (
                 <motion.div
@@ -86,50 +86,42 @@ const MembershipCard = ({ tier, onSelect }: MembershipCardProps) => {
             <div className="relative p-8 transform-gpu transition-transform duration-500 hover:scale-[1.02]">
                 {/* Featured badge */}
                 {tier.featured && (
-                    <div className="absolute -top-1 -right-1 bg-[#FFBF00] text-[#5D4037] px-4 py-1 rounded-bl-lg rounded-tr-lg font-bold text-sm transform rotate-3">
+                    <div className="absolute -top-1 -right-1 bg-[var(--leonard-yellow)] text-[var(--craters-moon)] px-4 py-1 rounded-bl-lg rounded-tr-lg font-bold text-sm transform rotate-3">
                         MOST POPULAR
                     </div>
                 )}
 
                 {/* Tier name with Art Deco styling */}
-                <h3 className="text-3xl font-bold mb-4 text-[#FFBF00]" style={{
-                    fontFamily: 'var(--font-space-grotesk)',
-                    letterSpacing: '0.1em',
-                    textShadow: '2px 2px 0px rgba(93, 64, 55, 0.5)',
-                }}>
+                <h3 className="text-3xl font-bold mb-4 text-[var(--leonard-yellow)] font-heading tracking-wider text-shadow shadow-black/50">
                     {tier.name.toUpperCase()}
                 </h3>
 
                 {/* Price */}
                 <div className="mb-6">
-                    <span className="text-4xl font-bold text-white">${tier.price}</span>
-                    <span className="text-white/70">/{tier.period}</span>
+                    <span className="text-4xl font-bold text-white dark:text-white">${tier.price}</span>
+                    <span className="text-white/70 dark:text-white/70">/{tier.period}</span>
                 </div>
 
                 {/* Description */}
-                <p className="text-white/80 mb-6">{tier.description}</p>
+                <p className="text-white/80 dark:text-white/80 mb-6">{tier.description}</p>
 
                 {/* Benefits list */}
                 <ul className="space-y-3 mb-8">
                     {tier.benefits.map((benefit, index) => (
-                        <li key={index} className="flex items-center text-white/90">
-                            <svg className="w-5 h-5 mr-3 text-[#FFBF00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
+                        <li key={index} className="flex items-center text-white/90 dark:text-white/90">
+                            <Check className="w-5 h-5 mr-3 text-[var(--leonard-yellow)]" />
                             {benefit}
                         </li>
                     ))}
                 </ul>
 
                 {/* CTA Button */}
-                <motion.button
+                <Button
                     onClick={() => onSelect(tier.id)}
-                    className="w-full py-4 px-8 rounded-lg bg-[#FFBF00] text-[#5D4037] font-heading uppercase tracking-wide font-bold text-lg hover:bg-[#FFD700] transform transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,191,0,0.3)]"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="w-full py-4 px-8 rounded-lg bg-[var(--leonard-yellow)] text-[var(--craters-moon)] font-heading uppercase tracking-wide font-bold text-lg hover:brightness-95 transform transition-all duration-300 hover:shadow-xl"
                 >
                     Select {tier.name}
-                </motion.button>
+                </Button>
             </div>
         </motion.div>
     );
