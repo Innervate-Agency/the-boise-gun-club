@@ -199,7 +199,7 @@ const UpcomingEvents = () => {
                                             id="name"
                                             name="name"
                                             type="text"
-                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#F28705]/50 focus:border-transparent"
+                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-lahoma-orange/50 focus:border-transparent"
                                             value={formData.name}
                                             onChange={handleChange}
                                             required
@@ -212,7 +212,7 @@ const UpcomingEvents = () => {
                                             id="email"
                                             name="email"
                                             type="email"
-                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#F28705]/50 focus:border-transparent"
+                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-lahoma-orange/50 focus:border-transparent"
                                             value={formData.email}
                                             onChange={handleChange}
                                             required
@@ -225,7 +225,7 @@ const UpcomingEvents = () => {
                                             id="phone"
                                             name="phone"
                                             type="tel"
-                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#F28705]/50 focus:border-transparent"
+                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-lahoma-orange/50 focus:border-transparent"
                                             value={formData.phone}
                                             onChange={handleChange}
                                         />
@@ -236,7 +236,7 @@ const UpcomingEvents = () => {
                                         <select
                                             id="event"
                                             name="event"
-                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#F28705]/50 focus:border-transparent"
+                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-lahoma-orange/50 focus:border-transparent"
                                             value={formData.event}
                                             onChange={handleChange}
                                             required
@@ -252,7 +252,7 @@ const UpcomingEvents = () => {
                                     
                                     <button
                                         type="submit"
-                                        className="w-full bg-gradient-to-r from-[#F28705] to-[#E85E27] text-white font-bold py-3 px-4 rounded hover:from-[#E85E27] hover:to-[#F28705] transition-all duration-300"
+                                        className="w-full bg-gradient-to-r from-lahoma-orange to-accent-primary text-white font-bold py-3 px-4 rounded hover:from-accent-primary hover:to-lahoma-orange transition-all duration-300"
                                     >
                                         REGISTER NOW
                                     </button>
