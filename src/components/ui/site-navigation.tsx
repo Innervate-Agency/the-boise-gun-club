@@ -180,8 +180,8 @@ export function SiteNavigation({
         scrollClasses = isScrolled ? 'shadow-lg' : '';
         break;
       default:
-        variantClasses = 'bg-card/95 backdrop-blur-sm border-border/40';
-        scrollClasses = isScrolled ? 'bg-card shadow-lg border-border' : '';
+        variantClasses = 'bg-card/80 dark:bg-card/80 backdrop-blur-sm border-border/40';
+        scrollClasses = isScrolled ? 'bg-card/95 shadow-lg border-border' : '';
         break;
     }
 

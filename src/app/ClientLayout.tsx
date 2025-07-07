@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { ThemeProvider } from '@/components/ui/ThemeContext';
 import NavBar from '../components/navigation/NavBar';
 import Footer from '../components/layout/Footer';
 import NewThemeToggle from '../components/ui/NewThemeToggle';
@@ -28,7 +28,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
   }, []);
 
   return (
-    <>
+    <ThemeProvider>
       <NavBar />
       <main className="flex-1 w-full min-h-screen">
         {children}
@@ -36,6 +36,6 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
       <Footer />
       <NewThemeToggle />
       <AccessibilityFAB />
-    </>
+    </ThemeProvider>
   );
 }

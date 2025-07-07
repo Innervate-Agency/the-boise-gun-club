@@ -37,12 +37,10 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/images/hero-bg.webp" />
         <link rel="preload" as="image" href="/images/events.webp" />
       </head>
-      <body className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300 ease-in-out font-body" suppressHydrationWarning={true}>
-        <ThemeProvider>
-          <ClientLayout>
-            {children}
-          </ClientLayout>
-        </ThemeProvider>
+      <body className="min-h-screen bg-bg-primary text-text-primary transition-colors duration-300 ease-in-out font-body" suppressHydrationWarning={true}>
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );
