@@ -87,6 +87,12 @@ module.exports = {
         'gradient-secondary': 'var(--gradient-secondary)',
         'gradient-retro': 'var(--gradient-retro)',
         'gradient-sunset': 'var(--gradient-sunset)',
+        'gradient-orange': 'linear-gradient(to right, var(--lahoma-orange), #F25C05)',
+        'gradient-blue': 'linear-gradient(to right, #5198cd, #4982A6)',
+        'gradient-green': 'linear-gradient(to right, #6f7822, #3F6331)',
+        'gradient-brand': 'linear-gradient(to right, var(--leonard-yellow), var(--lahoma-orange))',
+        'gradient-red': 'linear-gradient(to right, #F23005, #8C394B)',
+        'gradient-orange-red': 'linear-gradient(to right, #F25C05, #F23005)',
       },
       animation: {
         'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',

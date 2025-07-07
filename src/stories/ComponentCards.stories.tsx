@@ -67,7 +67,7 @@ function ComponentCard({
     >
       <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden bg-white dark:bg-[var(--ed-charcoal)]">
         {/* Stripe-style gradient header - The actual sexy part! */}
-        <div className={`h-32 bg-gradient-to-r ${color} relative overflow-hidden`}>
+        <div className={`h-32 ${color} relative overflow-hidden`}>
           <div className="absolute inset-0 bg-black/5" />
           
           {/* Status badge */}
@@ -155,7 +155,7 @@ const sampleCategories = [
     description: 'Essential UI building blocks with Stripe-inspired design and accessibility',
     href: '/test/components/core',
     icon: Layers,
-    color: 'from-[#F28705] to-[#F25C05]',
+    color: 'bg-gradient-orange',
     status: 'stable' as const,
     features: ['Buttons', 'Cards', 'Badges', 'Inputs'],
     componentCount: 12
@@ -165,7 +165,7 @@ const sampleCategories = [
     description: 'Complete form system with validation, auto-completion and smart interactions',
     href: '/test/components/forms',
     icon: FileText,
-    color: 'from-[#5198cd] to-[#4982A6]',
+    color: 'bg-gradient-blue',
     status: 'stable' as const,
     features: ['Validation', 'Auto-complete', 'Multi-step', 'File Upload'],
     componentCount: 8
@@ -175,7 +175,7 @@ const sampleCategories = [
     description: 'Tables, charts, and data visualization with real-time updates',
     href: '/test/components/data',
     icon: BarChart3,
-    color: 'from-[#6f7822] to-[#3F6331]',
+    color: 'bg-gradient-green',
     status: 'stable' as const,
     features: ['Tables', 'Charts', 'Progress', 'Statistics'],
     componentCount: 6
@@ -185,7 +185,7 @@ const sampleCategories = [
     description: 'Advanced navigation patterns with mega menus and breadcrumbs',
     href: '/test/components/navigation',
     icon: Radar,
-    color: 'from-[#F2CB05] to-[#F28705]',
+    color: 'bg-gradient-brand',
     status: 'stable' as const,
     features: ['Mega Menu', 'Breadcrumbs', 'Tabs', 'Dropdown'],
     componentCount: 7
@@ -195,7 +195,7 @@ const sampleCategories = [
     description: 'Loading states, alerts, and user feedback components',
     href: '/test/components/feedback',
     icon: Activity,
-    color: 'from-[#F23005] to-[#8C394B]',
+    color: 'bg-gradient-red',
     status: 'stable' as const,
     features: ['Loading', 'Alerts', 'Toasts', 'Modals'],
     componentCount: 9
@@ -205,7 +205,7 @@ const sampleCategories = [
     description: 'Gamification components for shotgun sports achievements and scoring',
     href: '/test/components/gaming',
     icon: Trophy,
-    color: 'from-[#F25C05] to-[#F23005]',
+    color: 'bg-gradient-orange-red',
     status: 'new' as const,
     features: ['Leaderboards', 'Achievements', 'Scoring', 'Competitions'],
     componentCount: 5

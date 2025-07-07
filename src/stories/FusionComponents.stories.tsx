@@ -202,7 +202,7 @@ export const CompleteShowcase: StoryObj = {
             splashColor="var(--accent-tertiary)"
           >
             <div className="space-y-4">
-              <p className="text-[var(--text-secondary)] font-body">
+              <p className="text-gray-700 dark:text-gray-300 font-body">
                 Unlimited range access, priority booking, and exclusive events.
               </p>
               <PremiumButton effect="lift" className="w-full">
@@ -220,7 +220,7 @@ export const CompleteShowcase: StoryObj = {
             splashColor="var(--brand-blue)"
           >
             <div className="space-y-4">
-              <p className="text-[var(--text-secondary)] font-body">
+              <p className="text-gray-700 dark:text-gray-300 font-body">
                 Professional coaching, equipment rental, and scoring systems.
               </p>
               <PremiumButton effect="glow" variant="outline" className="w-full">
@@ -237,7 +237,7 @@ export const CompleteShowcase: StoryObj = {
             splashColor="var(--brand-green)"
           >
             <div className="space-y-4">
-              <p className="text-[var(--text-secondary)] font-body">
+              <p className="text-gray-700 dark:text-gray-300 font-body">
                 Casual shooting, safety training, and community events.
               </p>
               <PremiumButton effect="pulse" variant="secondary" className="w-full">

@@ -58,7 +58,7 @@ export function GlassFusionCard({
     >
       {/* ClickUp-style gradient header with floating splashes */}
       {(title || badge) && (
-        <div className={cn('h-24 bg-gradient-to-r relative overflow-hidden', headerGradient)}>
+        <div className={cn('h-24 bg-gradient-to-r relative overflow-hidden rounded-t-lg', headerGradient)}>
           {/* Floating color splash */}
           <div 
             className="absolute top-0 right-0 w-20 h-20 rounded-full blur-2xl opacity-30"

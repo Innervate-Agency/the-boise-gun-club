@@ -37,7 +37,7 @@ export function PremiumButton({
         // Base Stripe-style button
         'relative font-medium rounded-lg border-0 overflow-hidden',
         'transition-all duration-200 ease-out',
-        'focus:ring-2 focus:ring-[#F28705]/20 focus:ring-offset-2',
+        'focus:ring-2 focus:ring-lahoma-orange/20 focus:ring-offset-2',
         
         // Size variants (Stripe-style)
         size === 'sm' && 'px-3 py-1.5 text-sm',
@@ -46,12 +46,12 @@ export function PremiumButton({
         
         // Premium variant with brand colors (subtle approach)
         variant === 'premium' && [
-          'bg-[#F2CB05]',
-          'hover:bg-[#F28705]',
+          'bg-leonard-yellow',
+          'hover:bg-lahoma-orange',
           'text-black shadow-lg hover:shadow-xl',
           'transform hover:scale-[1.02] active:scale-[0.98]',
           'relative overflow-hidden',
-          'before:absolute before:inset-0 before:bg-gradient-to-br before:from-[#F28705]/20 before:to-transparent before:opacity-0 before:hover:opacity-100 before:transition-opacity before:duration-300'
+          'before:absolute before:inset-0 before:bg-gradient-to-br before:from-lahoma-orange/20 before:to-transparent before:opacity-0 before:hover:opacity-100 before:transition-opacity before:duration-300'
         ],
         
         // Outline variant (Stripe-style)
