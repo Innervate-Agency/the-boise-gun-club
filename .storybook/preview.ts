@@ -95,6 +95,10 @@ const preview: Preview = {
           document.documentElement.classList.remove('dark');
         }
         document.documentElement.setAttribute('data-theme', theme);
+        
+        // Force CSS variable update
+        const root = document.documentElement;
+        root.style.setProperty('--force-update', Math.random().toString());
       }
       
       return Story();

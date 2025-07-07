@@ -66,17 +66,17 @@ export const MembershipCard: Story = {
       </div>
       
       <CardHeader>
-        <CardTitle className="text-xl font-['Rajdhani'] font-bold">
+        <CardTitle className="text-xl font-heading font-bold text-card-foreground">
           Elite Membership
         </CardTitle>
-        <CardDescription className="font-['Noto Sans']">
+        <CardDescription className="font-body text-muted-foreground">
           Full access to all facilities with member pricing
         </CardDescription>
       </CardHeader>
       
       <CardContent>
         <div className="space-y-2">
-          <div className="flex justify-between">
+          <div className="flex justify-between text-card-foreground">
             <span>Shooting Fee</span>
             <span className="font-semibold">$6/round</span>
           </div>
