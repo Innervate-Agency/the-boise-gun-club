@@ -150,9 +150,9 @@ export default function ComponentsOverview() {
   );
 
   return (
-    <div className="min-h-screen bg-[var(--cloudy-day-white)] dark:bg-[var(--kent-slate-gray)]">
+    <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
       {/* Compact Hero Section with Search */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[var(--lahoma-orange)] to-[var(--abe-red)]" style={{ height: '300px' }}>
+      <div className="relative overflow-hidden bg-gradient-to-r from-lahoma-orange to-abe-red h-[300px]">
         <div className="absolute inset-0 bg-black/10" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 h-full flex flex-col justify-center">
           
@@ -164,7 +164,7 @@ export default function ComponentsOverview() {
             <div className="flex-1">
               <h1 className="text-4xl md:text-5xl font-heading font-black text-white mb-2">
                 Component
-                <span className="text-[var(--leonard-yellow)]"> Arsenal</span>
+                <span className="text-leonard-yellow"> Arsenal</span>
               </h1>
               <p className="text-xl text-white/90 font-body font-light">
                 Production-ready components built with shadcn/ui, styled like Stripe, enhanced with ClickUp gradients
@@ -189,7 +189,7 @@ export default function ComponentsOverview() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6 text-sm text-white/90">
               <span className="flex items-center gap-2">
-                <Code className="h-4 w-4 text-[var(--leonard-yellow)]" />
+                <Code className="h-4 w-4 text-leonard-yellow" />
                 47+ Components
               </span>
               <span className="flex items-center gap-2">
@@ -250,7 +250,7 @@ export default function ComponentsOverview() {
                 className="group"
               >
                 <Link href={category.href}>
-                  <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden bg-white dark:bg-[var(--ed-charcoal)] group-hover:scale-[1.02]">
+                  <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden bg-card group-hover:scale-[1.02]">
                     {/* Stripe-style gradient header */}
                     <div className={`h-32 bg-gradient-to-r ${category.color} relative overflow-hidden`}>
                       <div className="absolute inset-0 bg-black/5" />
@@ -282,10 +282,10 @@ export default function ComponentsOverview() {
                     </div>
 
                     <CardHeader className="pb-3">
-                      <CardTitle className="text-xl font-['Rajdhani'] font-bold text-slate-800 dark:text-white group-hover:text-[var(--lahoma-orange)] transition-colors">
+                      <CardTitle className="text-xl font-heading font-bold text-card-foreground group-hover:text-lahoma-orange transition-colors">
                         {category.title}
                       </CardTitle>
-                      <CardDescription className="text-slate-600 dark:text-[var(--don-gray)] font-['Noto Sans'] font-light leading-relaxed">
+                      <CardDescription className="text-muted-foreground font-body font-light leading-relaxed">
                         {category.description}
                       </CardDescription>
                     </CardHeader>
@@ -293,7 +293,7 @@ export default function ComponentsOverview() {
                     <CardContent className="pt-0">
                       {/* Features */}
                       <div className="space-y-3 mb-6">
-                        <h4 className="text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider font-heading">
+                        <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider font-heading">
                           Key Features
                         </h4>
                         <div className="flex flex-wrap gap-2">
@@ -343,30 +343,30 @@ export default function ComponentsOverview() {
           className="mt-20"
         >
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-['Rajdhani'] font-bold text-[var(--craters-moon)] dark:text-white mb-4">
+            <h2 className="text-3xl font-heading font-bold text-text-primary mb-4">
               Component Statistics
             </h2>
-            <p className="text-[var(--desert-cliff-brown)] dark:text-[var(--don-gray)] font-['Noto Sans'] font-light">
+            <p className="text-text-secondary font-body font-light">
               Everything you need to build a world-class gun club website
             </p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { label: 'Total Components', value: '47+', color: 'from-[var(--lahoma-orange)] to-[var(--abe-red)]' },
-              { label: 'Component Categories', value: '6', color: 'from-[var(--leonard-yellow)] to-[var(--lahoma-orange)]' },
-              { label: 'Design Patterns', value: '25+', color: 'from-[var(--club-house-roof-blue)] to-[var(--club-house-walk-gray)]' },
-              { label: 'Lines of Code', value: '10k+', color: 'from-[var(--club-house-lawn-green)] to-[var(--owyhee-green)]' }
+              { label: 'Total Components', value: '47+', color: 'from-lahoma-orange to-abe-red' },
+              { label: 'Component Categories', value: '6', color: 'from-leonard-yellow to-lahoma-orange' },
+              { label: 'Design Patterns', value: '25+', color: 'from-club-house-roof-blue to-club-house-walk-gray' },
+              { label: 'Lines of Code', value: '10k+', color: 'from-club-house-lawn-green to-owyhee-green' }
             ].map((stat, index) => (
-              <Card key={index} className="border-0 shadow-lg bg-white dark:bg-[var(--ed-charcoal)] overflow-hidden">
+              <Card key={index} className="border-0 shadow-lg bg-card overflow-hidden">
                 <CardContent className="p-6 text-center">
                   <div className={`w-12 h-12 bg-gradient-to-r ${stat.color} rounded-lg mx-auto mb-3 flex items-center justify-center`}>
                     <TrendingUp className="h-6 w-6 text-white" />
                   </div>
-                  <div className="text-2xl font-bold text-[var(--craters-moon)] dark:text-white mb-1 font-['Rajdhani']">
+                  <div className="text-2xl font-bold text-text-primary mb-1 font-heading">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-[var(--desert-cliff-brown)] dark:text-[var(--don-gray)] font-['Noto Sans']">
+                  <div className="text-sm text-text-secondary font-body">
                     {stat.label}
                   </div>
                 </CardContent>
