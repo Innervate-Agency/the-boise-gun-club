@@ -23,6 +23,11 @@ module.exports = {
         'leonard-yellow': 'var(--leonard-yellow)',
         'lahoma-orange': 'var(--lahoma-orange)',
         'dark-bg': 'var(--dark-bg)',
+        'brand-blue': 'var(--brand-blue)',
+        'brand-blue-dark': 'var(--brand-blue-dark)',
+        'brand-green': 'var(--brand-green)',
+        'brand-green-light': 'var(--brand-green-light)',
+        'brand-red-action': 'var(--brand-red-action)',
         
         // Accent colors
         accent: {
@@ -43,6 +48,12 @@ module.exports = {
         border: 'var(--border-accent)',
         terminalGreen: 'var(--terminal-green)',
         terminalAmber: 'var(--terminal-amber)',
+        
+        // Card and muted colors
+        card: 'var(--card)',
+        'card-foreground': 'var(--card-foreground)',
+        muted: 'var(--muted)',
+        'muted-foreground': 'var(--muted-foreground)',
       },
       fontFamily: {
         'heading': ['var(--font-heading)', 'Rajdhani', 'sans-serif'],

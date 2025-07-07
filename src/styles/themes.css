@@ -76,6 +76,14 @@
   --accent-primary: #F23005;       /* Clay Pidgeon Orange */
   --accent-secondary: #f07b1d;     /* Gunclub Orange */
   --accent-tertiary: #E3C03C;      /* Wildeye Susan Yellow */
+  --leonard-yellow: #F2CB05;       /* Leonard Yellow */
+  --lahoma-orange: #F28705;        /* Lahoma Orange */
+  
+  /* UI Component Colors */
+  --card: #ffffff;                 /* Card background */
+  --card-foreground: #372103;      /* Card text color */
+  --muted: #ede7de;               /* Muted background */
+  --muted-foreground: #693e21;    /* Muted text color */
   --brand-blue: #5198cd;          /* Idaho Sky Blue */
   --brand-blue-dark: #3c81c0;     /* Snakeriver Blue */
   --brand-green: #6f7822;         /* Owyhee Field Green */
@@ -104,6 +112,14 @@
   --accent-primary: #F28705;       /* Lahoma Orange */
   --accent-secondary: #F2CB05;     /* Leonard Yellow */
   --accent-tertiary: #F25C05;      /* Jerry Orange */
+  --leonard-yellow: #F2CB05;       /* Leonard Yellow */
+  --lahoma-orange: #F28705;        /* Lahoma Orange */
+  
+  /* UI Component Colors - Dark Theme */
+  --card: #2F3135;                 /* Card background - Kent Slate Gray */
+  --card-foreground: #FDFDFD;      /* Card text color - Chester White */
+  --muted: #4B4B4B;               /* Muted background - Ed Charcoal */
+  --muted-foreground: #EEF1F7;    /* Muted text color - Don Gray */
   --brand-blue: #4982A6;          /* Club House Roof Blue */
   --brand-blue-dark: #C9D2EF;     /* Club House Walk Gray (using as a lighter blue accent in dark) */
   --brand-green: #3F6331;         /* Club House Lawn Green */
@@ -129,15 +145,15 @@ or as proper Tailwind plugin components if necessary.
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading uppercase;
   }
-  h1 { @apply text-5xl md:text-7xl font-bold text-text-primary; }
-  h2 { @apply text-4xl md:text-5xl font-semibold text-text-primary; }
-  h3 { @apply text-3xl md:text-4xl font-semibold text-text-primary; }
-  h4 { @apply text-2xl md:text-3xl font-medium text-text-primary; }
-  h5 { @apply text-xl md:text-2xl font-medium text-text-primary; }
-  h6 { @apply text-lg md:text-xl font-medium text-text-primary; }
+  h1 { @apply text-5xl md:text-7xl font-bold; }
+  h2 { @apply text-4xl md:text-5xl font-semibold; }
+  h3 { @apply text-3xl md:text-4xl font-semibold; }
+  h4 { @apply text-2xl md:text-3xl font-medium; }
+  h5 { @apply text-xl md:text-2xl font-medium; }
+  h6 { @apply text-lg md:text-xl font-medium; }
 
-  p, li, span, div:not([class*=\"icon\"]) {
-    @apply font-body text-text-secondary;
+  p, li, span {
+    @apply font-body;
   }
   
   a {
