@@ -85,7 +85,7 @@ export default function ButtonsPlayground() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--cloudy-day-white)] dark:bg-[var(--kent-slate-gray)]">
+    <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
       {/* Header with Breadcrumbs */}
       <BreadcrumbHero
         breadcrumbs={[
@@ -95,7 +95,7 @@ export default function ButtonsPlayground() {
         title="Button Arsenal"
         description="Interactive button components with micro-interactions, loading states, and advanced animations"
         icon={MousePointer}
-        gradient="bg-gradient-to-r from-[var(--lahoma-orange)] to-[var(--abe-red)]"
+        gradient="bg-gradient-to-r from-lahoma-orange to-abe-red"
         badges={['8 Variants', 'Interactive Demo', 'Production Ready']}
         backLink={{
           href: '/test/components/core',
@@ -169,13 +169,7 @@ export default function ButtonsPlayground() {
             {/* Code Output */}
             <CodeSnippet
               title="Generated Code"
-              code={`<Button 
-  variant="${variant}"
-  size="${size}"${disabled ? '\n  disabled' : ''}${loading ? '\n  loading' : ''}
-  onClick={() => handleClick()}
->
-  ${loading ? 'Processing...' : 'Click Me!'}
-</Button>`}
+              code={`<Button \n  variant="${variant}"\n  size="${size}"${disabled ? '\n  disabled' : ''}${loading ? '\n  loading' : ''}\n  onClick={() => handleClick()}\n>\n  ${loading ? 'Processing...' : 'Click Me!'}\n</Button>`}
             />
           </div>
 
@@ -188,29 +182,29 @@ export default function ButtonsPlayground() {
               </h3>
               <div className="space-y-4">
                 <div className="flex flex-wrap gap-3">
-                  <Button variant="default" size="sm" className="bg-[var(--lahoma-orange)] hover:bg-[var(--abe-red)] text-white">
+                  <Button variant="default" size="sm" className="bg-lahoma-orange hover:bg-abe-red text-white">
                     <Play className="w-4 h-4 mr-2" />
                     Primary Small
                   </Button>
-                  <Button variant="default" size="default" className="bg-[var(--lahoma-orange)] hover:bg-[var(--abe-red)] text-white">
+                  <Button variant="default" size="default" className="bg-lahoma-orange hover:bg-abe-red text-white">
                     <Download className="w-4 h-4 mr-2" />
                     Primary Medium
                   </Button>
-                  <Button variant="default" size="lg" className="bg-[var(--lahoma-orange)] hover:bg-[var(--abe-red)] text-white">
+                  <Button variant="default" size="lg" className="bg-lahoma-orange hover:bg-abe-red text-white">
                     <Target className="w-5 h-5 mr-2" />
                     Primary Large
                   </Button>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <Button variant="outline" size="sm" className="border-[var(--lahoma-orange)] text-[var(--lahoma-orange)] hover:bg-[var(--lahoma-orange)] hover:text-white">
+                  <Button variant="outline" size="sm" className="border-lahoma-orange text-lahoma-orange hover:bg-lahoma-orange hover:text-white">
                     <Heart className="w-4 h-4 mr-2" />
                     Secondary Small
                   </Button>
-                  <Button variant="outline" size="default" className="border-[var(--lahoma-orange)] text-[var(--lahoma-orange)] hover:bg-[var(--lahoma-orange)] hover:text-white">
+                  <Button variant="outline" size="default" className="border-lahoma-orange text-lahoma-orange hover:bg-lahoma-orange hover:text-white">
                     <Share className="w-4 h-4 mr-2" />
                     Secondary Medium
                   </Button>
-                  <Button variant="outline" size="lg" className="border-[var(--lahoma-orange)] text-[var(--lahoma-orange)] hover:bg-[var(--lahoma-orange)] hover:text-white">
+                  <Button variant="outline" size="lg" className="border-lahoma-orange text-lahoma-orange hover:bg-lahoma-orange hover:text-white">
                     <Settings className="w-5 h-5 mr-2" />
                     Secondary Large
                   </Button>
@@ -225,19 +219,19 @@ export default function ButtonsPlayground() {
               </h3>
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <Button onClick={() => alert('Registering for event...')} className="bg-[var(--lahoma-orange)] hover:bg-[var(--abe-red)] text-white">
+                  <Button onClick={() => alert('Registering for event...')} className="bg-lahoma-orange hover:bg-abe-red text-white">
                     <Plus className="w-4 h-4 mr-2" />
                     Register for Event
                   </Button>
-                  <Button variant="outline" onClick={() => alert('Booking range time...')} className="border-[var(--lahoma-orange)] text-[var(--lahoma-orange)] hover:bg-[var(--lahoma-orange)] hover:text-white">
+                  <Button variant="outline" onClick={() => alert('Booking range time...')} className="border-lahoma-orange text-lahoma-orange hover:bg-lahoma-orange hover:text-white">
                     <Target className="w-4 h-4 mr-2" />
                     Book Range Time
                   </Button>
-                  <Button onClick={() => alert('Joining membership...')} className="bg-[var(--lahoma-orange)] hover:bg-[var(--abe-red)] text-white">
+                  <Button onClick={() => alert('Joining membership...')} className="bg-lahoma-orange hover:bg-abe-red text-white">
                     <Zap className="w-4 h-4 mr-2" />
                     Join Membership
                   </Button>
-                  <Button variant="outline" onClick={() => alert('Viewing scores...')} className="border-[var(--lahoma-orange)] text-[var(--lahoma-orange)] hover:bg-[var(--lahoma-orange)] hover:text-white">
+                  <Button variant="outline" onClick={() => alert('Viewing scores...')} className="border-lahoma-orange text-lahoma-orange hover:bg-lahoma-orange hover:text-white">
                     <Download className="w-4 h-4 mr-2" />
                     Download Scores
                   </Button>
@@ -254,7 +248,7 @@ export default function ButtonsPlayground() {
                 <Button 
                   onClick={handleAsyncAction}
                   disabled={loading}
-                  className="w-full bg-[var(--lahoma-orange)] hover:bg-[var(--abe-red)] text-white"
+                  className="w-full bg-lahoma-orange hover:bg-abe-red text-white"
                 >
                   {loading ? (
                     <>
@@ -268,7 +262,7 @@ export default function ButtonsPlayground() {
                     </>
                   )}
                 </Button>
-                <p className="text-sm text-gray-600 dark:text-gray-300 font-body">
+                <p className="text-sm text-muted-foreground font-body">
                   This button demonstrates async loading states with proper feedback.
                 </p>
               </div>
@@ -281,7 +275,7 @@ export default function ButtonsPlayground() {
               </h3>
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <Button className="bg-[var(--lahoma-orange)] hover:bg-[var(--abe-red)] text-white">
+                  <Button className="bg-lahoma-orange hover:bg-abe-red text-white">
                     <Edit className="w-4 h-4 mr-2" />
                     Normal State
                   </Button>
@@ -290,9 +284,9 @@ export default function ButtonsPlayground() {
                     Disabled State
                   </Button>
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-300 font-body">
+                <div className="text-sm text-muted-foreground font-body">
                   Hover over buttons to see interaction states and animations.
-                </div>
+                }
               </div>
             </div>
           </div>
@@ -307,7 +301,7 @@ export default function ButtonsPlayground() {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-lg font-semibold mb-4">Best Practices</h3>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+                <ul className="space-y-2 text-muted-foreground">
                   <li>• Use primary buttons for main actions</li>
                   <li>• Use secondary buttons for alternative actions</li>
                   <li>• Include loading states for async operations</li>
@@ -317,7 +311,7 @@ export default function ButtonsPlayground() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">Gun Club Context</h3>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+                <ul className="space-y-2 text-muted-foreground">
                   <li>• "Register for Event" - Event participation</li>
                   <li>• "Book Range Time" - Range reservations</li>
                   <li>• "Join Membership" - Membership signup</li>
@@ -338,43 +332,19 @@ export default function ButtonsPlayground() {
             <div className="grid md:grid-cols-2 gap-6">
               <CodeSnippet
                 title="Basic Button"
-                code={`import { Button } from '@/components/ui/button';
-
-<Button variant="primary" size="default">
-  Click Me
-</Button>`}
+                code={`import { Button } from '@/components/ui/button';\n\n<Button variant="primary" size="default">\n  Click Me\n</Button>`}
               />
               <CodeSnippet
                 title="Button with Icon"
-                code={`import { Target } from 'lucide-react';
-
-<Button variant="primary">
-  <Target className="w-4 h-4 mr-2" />
-  Book Range
-</Button>`}
+                code={`import { Target } from 'lucide-react';\n\n<Button variant="primary">\n  <Target className="w-4 h-4 mr-2" />\n  Book Range\n</Button>`}
               />
               <CodeSnippet
                 title="Async Button"
-                code={`const [loading, setLoading] = useState(false);
-
-<Button 
-  variant="primary"
-  disabled={loading}
-  onClick={handleSubmit}
->
-  {loading ? 'Processing...' : 'Submit'}
-</Button>`}
+                code={`const [loading, setLoading] = useState(false);\n\n<Button \n  variant="primary"\n  disabled={loading}\n  onClick={handleSubmit}\n>\n  {loading ? 'Processing...' : 'Submit'}\n</Button>`}
               />
               <CodeSnippet
                 title="Event Registration"
-                code={`<Button 
-  variant="primary" 
-  size="lg"
-  onClick={() => registerForEvent(eventId)}
->
-  <Plus className="w-5 h-5 mr-2" />
-  Register for Competition
-</Button>`}
+                code={`<Button \n  variant="primary" \n  size="lg"\n  onClick={() => registerForEvent(eventId)}\n>\n  <Plus className="w-5 h-5 mr-2" />\n  Register for Competition\n</Button>`}
               />
             </div>
           </div>
@@ -382,4 +352,4 @@ export default function ButtonsPlayground() {
       </div>
     </div>
   );
-} 
+}
