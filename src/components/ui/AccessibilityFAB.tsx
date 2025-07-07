@@ -77,7 +77,7 @@ const AccessibilityFAB: React.FC = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed bottom-24 left-6 z-[999] w-72 bg-[var(--bg-secondary)] border border-[var(--glass-border)] rounded-lg shadow-2xl p-6 text-[var(--text-primary)]"
+            className="fixed bottom-24 left-6 z-[999] w-72 bg-[var(--bg-secondary)] border border-white/10 rounded-lg shadow-2xl p-6 text-[var(--text-primary)]"
           >
             <h3 className="text-xl font-semibold mb-5 text-center">Accessibility Options</h3>
             

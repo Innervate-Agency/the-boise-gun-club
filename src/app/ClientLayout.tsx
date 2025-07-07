@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import NavBar from '../components/navigation/NavBar';
 import Footer from '../components/layout/Footer';
 import NewThemeToggle from '../components/ui/NewThemeToggle';
+import AccessibilityFAB from '../components/ui/AccessibilityFAB';
 
 interface ClientLayoutProps {
   children: React.ReactNode;
@@ -34,7 +35,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
       </main>
       <Footer />
       <NewThemeToggle />
-      {/* Theme and accessibility controls will be added here */}
+      <AccessibilityFAB />
     </>
   );
 }
