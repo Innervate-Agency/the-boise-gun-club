@@ -25,7 +25,7 @@ export const MembershipCard: Story = {
   render: () => (
     <Card className="w-80 border-0 shadow-lg bg-white dark:bg-[var(--ed-charcoal)] overflow-hidden">
       {/* Stripe-style gradient header */}
-      <div className="h-24 bg-gradient-to-r from-lahoma-orange to-[var(--abe-red)] relative">
+      <div className="h-24 bg-gradient-to-r from-[var(--lahoma-orange)] to-[var(--abe-red)] relative">
         <div className="absolute top-4 right-4">
           <Badge className="bg-white/20 text-white border-white/30">
             Most Popular
@@ -77,7 +77,7 @@ export const TournamentCard: Story = {
   render: () => (
     <Card className="w-80 border-0 shadow-lg bg-white dark:bg-[var(--ed-charcoal)] overflow-hidden">
       {/* Tournament gradient header */}
-      <div className="h-24 bg-gradient-to-r from-leonard-yellow to-lahoma-orange relative">
+      <div className="h-24 bg-gradient-to-r from-[var(--leonard-yellow)] to-[var(--lahoma-orange)] relative">
         <div className="absolute top-4 right-4">
           <Badge className="bg-white/20 text-white border-white/30">
             Championship
@@ -106,22 +106,22 @@ export const TournamentCard: Story = {
       <CardContent>
         <div className="space-y-3">
           <div className="flex items-center gap-2 text-sm text-[var(--text-primary)]">
-            <Calendar className="h-4 w-4 text-leonard-yellow" />
+            <Calendar className="h-4 w-4 text-[var(--leonard-yellow)]" />
             <span>December 15th at 8:00 AM</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-[var(--text-primary)]">
-            <Users className="h-4 w-4 text-leonard-yellow" />
+            <Users className="h-4 w-4 text-[var(--leonard-yellow)]" />
             <span>48/64 registered participants</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-[var(--text-primary)]">
-            <Trophy className="h-4 w-4 text-leonard-yellow" />
+            <Trophy className="h-4 w-4 text-[var(--leonard-yellow)]" />
             <span>Prize pool: $5,000</span>
           </div>
         </div>
       </CardContent>
       
       <CardFooter>
-        <Button className="w-full bg-gradient-to-r from-leonard-yellow to-lahoma-orange text-black font-semibold">
+        <Button className="w-full bg-gradient-to-r from-[var(--leonard-yellow)] to-[var(--lahoma-orange)] text-black font-semibold">
           🎯 Register Now
         </Button>
       </CardFooter>
@@ -319,7 +319,7 @@ export const GlassCard: Story = {
 export const CompactCard: Story = {
   render: () => (
     <Card className="w-64 border-0 shadow-lg bg-white dark:bg-[var(--ed-charcoal)] overflow-hidden">
-      <div className="h-16 bg-gradient-to-r from-leonard-yellow to-lahoma-orange relative">
+      <div className="h-16 bg-gradient-to-r from-[var(--leonard-yellow)] to-[var(--lahoma-orange)] relative">
         <div className="absolute bottom-3 left-4">
           <div className="w-6 h-6 bg-white/20 backdrop-blur-sm rounded-md flex items-center justify-center">
             <Target className="h-3 w-3 text-white" />

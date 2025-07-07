@@ -18,7 +18,7 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 ### ✅ **ALWAYS DO THIS:**
 - `className="font-heading"` - Use established font classes
-- `className="text-lahoma-orange"` - Use Tailwind color names (defined in config)
+- `className="text-[var(--lahoma-orange)]"` - Use CSS variables
 - `<Button variant="default">` - Use design system components
 - `className="text-gray-900 dark:text-white"` - Proper contrast
 - `className="text-white dark:text-white"` - For colored backgrounds
@@ -63,12 +63,11 @@ import { Meta } from "@storybook/addon-docs/blocks";
 ```
 
 ### Color Usage Rules
-- ✅ Always use Tailwind color names: `bg-lahoma-orange` (defined in tailwind.config.js)
+- ✅ Always use CSS variables: `bg-[var(--lahoma-orange)]`
 - ❌ NEVER use hardcoded Tailwind colors: `bg-orange-500`
-- ❌ NEVER use CSS variable syntax: `bg-[var(--lahoma-orange)]`
-- ✅ Primary accent: `lahoma-orange` (#F28705)
-- ✅ Secondary accent: `leonard-yellow` (#F2CB05)
-- ✅ Success: `brand-green` (#6f7822)
+- ✅ Primary accent: `--lahoma-orange` (#F28705)
+- ✅ Action/CTA: `--abe-red` (#F23005)
+- ✅ Success: `--owyhee-green` (#6f7822)
 
 ---
 

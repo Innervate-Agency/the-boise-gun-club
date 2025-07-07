@@ -44,7 +44,7 @@ export function NavigationFusion({
             'flex items-center gap-2 px-4 py-2 rounded-lg font-body text-sm transition-all duration-200',
             'hover:bg-white/20 hover:backdrop-blur-sm',
             item.active 
-              ? 'bg-lahoma-orange text-white shadow-lg' 
+              ? 'bg-[var(--lahoma-orange)] text-white shadow-lg' 
               : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
           )}
         >

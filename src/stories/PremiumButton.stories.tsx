@@ -48,7 +48,7 @@ export const Loading: Story = {
 export const CustomGradient: Story = {
   args: {
     children: 'Premium Action',
-    gradient: 'from-leonard-yellow to-lahoma-orange',
+    gradient: 'from-[var(--leonard-yellow)] to-[var(--lahoma-orange)]',
     effect: 'glow',
     icon: <Zap className="h-4 w-4" />,
   },

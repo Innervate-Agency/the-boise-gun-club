@@ -148,7 +148,7 @@ function AlertDescription({
     <div
       data-slot="alert-description"
       className={cn(
-        "font-body text-sm leading-relaxed",
+        "font-body text-sm leading-relaxed opacity-90",
         className
       )}
       {...props}

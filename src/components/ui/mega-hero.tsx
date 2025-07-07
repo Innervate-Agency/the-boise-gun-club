@@ -46,7 +46,7 @@ export function MegaHero({
   badges = [],
   backgroundPreset = 'gunclub',
   height = 'lg',
-  gradient = 'from-lahoma-orange to-[var(--abe-red)]',
+  gradient = 'from-[var(--lahoma-orange)] to-[var(--abe-red)]',
   centerContent = true,
   icon,
   className
@@ -95,7 +95,7 @@ export function MegaHero({
         {subtitle && (
           <h2 className={cn(
             'text-2xl md:text-3xl lg:text-4xl font-heading font-bold mb-6',
-            'bg-gradient-to-r from-leonard-yellow via-white to-leonard-yellow bg-clip-text text-transparent',
+            'bg-gradient-to-r from-[var(--leonard-yellow)] via-white to-[var(--leonard-yellow)] bg-clip-text text-transparent',
             centerContent ? 'text-center' : 'text-left'
           )}>
             {subtitle}
@@ -127,7 +127,7 @@ export function MegaHero({
                 intensity="premium"
                 gradient="from-white to-white/90"
                 hoverGradient="from-white/90 to-white"
-                className="text-lahoma-orange font-bold shadow-2xl hover:shadow-white/20"
+                className="text-[var(--lahoma-orange)] font-bold shadow-2xl hover:shadow-white/20"
                 icon={primaryCTA.icon}
               >
                 {primaryCTA.text}

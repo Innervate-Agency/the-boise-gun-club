@@ -12,9 +12,9 @@ const tabsListVariants = cva(
     variants: {
       variant: {
         default: "bg-muted text-muted-foreground rounded-lg h-9",
-        premium: "bg-gradient-to-r from-leonard-yellow/10 to-lahoma-orange/10 backdrop-blur-sm border border-leonard-yellow/20 rounded-xl h-10 shadow-lg",
+        premium: "bg-gradient-to-r from-[var(--leonard-yellow)]/10 to-[var(--lahoma-orange)]/10 backdrop-blur-sm border border-[var(--leonard-yellow)]/20 rounded-xl h-10 shadow-lg",
         glass: "bg-white/5 backdrop-blur-md border border-white/10 rounded-xl h-10 shadow-xl",
-        tournament: "bg-gradient-to-r from-slate-900/90 to-slate-800/90 backdrop-blur-sm border border-leonard-yellow/30 rounded-xl h-12 shadow-2xl",
+        tournament: "bg-gradient-to-r from-slate-900/90 to-slate-800/90 backdrop-blur-sm border border-[var(--leonard-yellow)]/30 rounded-xl h-12 shadow-2xl",
         minimal: "bg-transparent border-b border-border h-auto p-0",
       },
       size: {
@@ -37,10 +37,10 @@ const tabsTriggerVariants = cva(
     variants: {
       variant: {
         default: "data-[state=active]:bg-background dark:data-[state=active]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 text-foreground dark:text-muted-foreground h-[calc(100%-1px)] flex-1 gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm focus-visible:ring-[3px] focus-visible:outline-1 data-[state=active]:shadow-sm [&_svg:not([class*='size-'])]:size-4",
-        premium: "data-[state=active]:bg-gradient-to-r data-[state=active]:from-leonard-yellow data-[state=active]:to-lahoma-orange data-[state=active]:text-black data-[state=active]:shadow-lg hover:bg-white/10 flex-1 gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-300 data-[state=active]:transform data-[state=active]:scale-105 [&_svg:not([class*='size-'])]:size-4",
+        premium: "data-[state=active]:bg-gradient-to-r data-[state=active]:from-[var(--leonard-yellow)] data-[state=active]:to-[var(--lahoma-orange)] data-[state=active]:text-black data-[state=active]:shadow-lg hover:bg-white/10 flex-1 gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-300 data-[state=active]:transform data-[state=active]:scale-105 [&_svg:not([class*='size-'])]:size-4",
         glass: "data-[state=active]:bg-white/20 data-[state=active]:backdrop-blur-sm data-[state=active]:border-white/30 data-[state=active]:shadow-lg hover:bg-white/10 flex-1 gap-2 rounded-lg border border-transparent px-4 py-2 text-sm font-medium transition-all duration-300 [&_svg:not([class*='size-'])]:size-4",
-        tournament: "data-[state=active]:bg-gradient-to-r data-[state=active]:from-leonard-yellow data-[state=active]:to-lahoma-orange data-[state=active]:text-black data-[state=active]:shadow-xl hover:bg-white/5 flex-1 gap-2 rounded-lg px-6 py-3 text-sm font-bold transition-all duration-300 data-[state=active]:transform data-[state=active]:scale-105 [&_svg:not([class*='size-'])]:size-5",
-        minimal: "data-[state=active]:text-leonard-yellow data-[state=active]:border-b-2 data-[state=active]:border-leonard-yellow hover:text-lahoma-orange px-4 py-2 text-sm font-medium transition-all duration-300 rounded-none border-b-2 border-transparent [&_svg:not([class*='size-'])]:size-4",
+        tournament: "data-[state=active]:bg-gradient-to-r data-[state=active]:from-[var(--leonard-yellow)] data-[state=active]:to-[var(--lahoma-orange)] data-[state=active]:text-black data-[state=active]:shadow-xl hover:bg-white/5 flex-1 gap-2 rounded-lg px-6 py-3 text-sm font-bold transition-all duration-300 data-[state=active]:transform data-[state=active]:scale-105 [&_svg:not([class*='size-'])]:size-5",
+        minimal: "data-[state=active]:text-[var(--leonard-yellow)] data-[state=active]:border-b-2 data-[state=active]:border-[var(--leonard-yellow)] hover:text-[var(--lahoma-orange)] px-4 py-2 text-sm font-medium transition-all duration-300 rounded-none border-b-2 border-transparent [&_svg:not([class*='size-'])]:size-4",
       },
       size: {
         sm: "h-7 px-2 text-xs [&_svg:not([class*='size-'])]:size-3",

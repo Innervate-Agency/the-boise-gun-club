@@ -43,12 +43,12 @@ export function StatsFusion({ stats, className, variant = 'cards' }: StatsFusion
         <GlassFusionCard
           key={index}
           className="text-center"
-          headerGradient={stat.gradient || 'from-lahoma-orange to-[var(--abe-red)]'}
+          headerGradient={stat.gradient || 'from-[var(--lahoma-orange)] to-[var(--abe-red)]'}
           intensity="medium"
         >
           <div className="p-6">
             {stat.icon && (
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-lahoma-orange to-[var(--abe-red)] rounded-xl mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-[var(--lahoma-orange)] to-[var(--abe-red)] rounded-xl mb-4">
                 {React.cloneElement(stat.icon as React.ReactElement, {
                   className: "h-6 w-6 text-white"
                 })}

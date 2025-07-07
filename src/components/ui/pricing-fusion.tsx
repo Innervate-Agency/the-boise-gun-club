@@ -39,7 +39,7 @@ export function PricingFusion({ tiers, className }: PricingFusionProps) {
         <GlassFusionCard
           key={tier.name}
           className={cn(tier.popular && 'scale-105 z-10')}
-          headerGradient={tier.gradient || 'from-lahoma-orange to-[var(--abe-red)]'}
+          headerGradient={tier.gradient || 'from-[var(--lahoma-orange)] to-[var(--abe-red)]'}
           badge={tier.popular ? 'Most Popular' : tier.premium ? 'Premium' : undefined}
         >
           <div className="text-center p-6">
