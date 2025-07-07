@@ -25,7 +25,7 @@ const GalleryPreview: FC<GalleryPreviewProps> = ({ galleryItems }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-['Rajdhani'] text-4xl sm:text-5xl md:text-6xl uppercase text-[var(--text-primary)] mb-4"
+            className="font-heading text-4xl sm:text-5xl md:text-6xl uppercase text-[var(--text-primary)] mb-4"
           >
             Club <span className="text-[var(--accent-gold)]">Gallery</span>
           </motion.h2>
@@ -34,7 +34,7 @@ const GalleryPreview: FC<GalleryPreviewProps> = ({ galleryItems }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[var(--text-secondary)] max-w-2xl mx-auto font-['Noto Sans'] text-base sm:text-lg"
+            className="text-[var(--text-secondary)] max-w-2xl mx-auto font-body text-base sm:text-lg"
           >
             Capturing moments of excellence since 1898
           </motion.p>
@@ -66,16 +66,16 @@ const GalleryPreview: FC<GalleryPreviewProps> = ({ galleryItems }) => {
                 
                 {/* Year badge */}
                 <div className="absolute top-4 right-4 backdrop-blur-md bg-black/30 border border-white/20 rounded-full px-3 py-1">
-                  <span className="text-xs font-['Noto Sans'] text-[var(--accent-gold)]">{item.year}</span>
+                  <span className="text-xs font-body text-[var(--accent-gold)]">{item.year}</span>
                 </div>
                 
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-                  <h3 className="text-[var(--text-primary)] text-base sm:text-lg font-['Rajdhani'] uppercase tracking-wide mb-1">
+                  <h3 className="text-[var(--text-primary)] text-base sm:text-lg font-heading uppercase tracking-wide mb-1">
                     {item.alt}
                   </h3>
                   <div className="flex items-center justify-between">
-                    <p className="text-[var(--text-secondary)] text-sm font-['Noto Sans']">
+                    <p className="text-[var(--text-secondary)] text-sm font-body">
                       View Details
                     </p>
                     <svg 
@@ -105,7 +105,7 @@ const GalleryPreview: FC<GalleryPreviewProps> = ({ galleryItems }) => {
             href="/gallery" 
             className="inline-flex items-center gap-2 bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] 
                      text-[var(--text-primary)] font-bold py-3 px-6 rounded-lg text-base transition-all duration-300 
-                     transform hover:scale-105 shadow-lg hover:shadow-xl font-['Rajdhani']"
+                     transform hover:scale-105 shadow-lg hover:shadow-xl font-heading"
           >
             <span>Explore Full Gallery</span>
             <svg 

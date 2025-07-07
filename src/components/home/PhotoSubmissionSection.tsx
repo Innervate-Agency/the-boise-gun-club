@@ -14,11 +14,11 @@ export default function PhotoSubmissionSection() {
             
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-tight">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--text-primary)] font-heading uppercase tracking-tight">
                         Share Your Shot,<br />
                         <span className="text-[var(--accent-primary)]">Become Our Hero!</span>
                     </h2>
-                    <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto font-['Noto Sans'] font-light">
+                    <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto font-body font-light">
                         Submit your best shooting photos and we'll feature them as the hero image on our homepage! 
                         Every month, we showcase a different member's photo as the first thing visitors see.
                     </p>
@@ -31,8 +31,8 @@ export default function PhotoSubmissionSection() {
                                 <Camera className="w-12 h-12 text-[var(--accent-primary)] mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
                                 <div className="absolute inset-0 bg-[var(--accent-primary)]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             </div>
-                            <h3 className="text-xl font-bold mb-3 font-['Rajdhani'] uppercase tracking-wide">Hero Homepage Feature</h3>
-                            <p className="text-[var(--text-secondary)] font-['Noto Sans'] font-light leading-relaxed">Monthly rotation of member photos as our main hero image</p>
+                            <h3 className="text-xl font-bold mb-3 font-heading uppercase tracking-wide">Hero Homepage Feature</h3>
+                            <p className="text-[var(--text-secondary)] font-body font-light leading-relaxed">Monthly rotation of member photos as our main hero image</p>
                         </CardContent>
                     </Card>
                     <Card className="text-center group hover:scale-105 transition-all duration-300 bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-secondary)] border-0 shadow-xl hover:shadow-2xl">
@@ -41,8 +41,8 @@ export default function PhotoSubmissionSection() {
                                 <Trophy className="w-12 h-12 text-[var(--accent-primary)] mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
                                 <div className="absolute inset-0 bg-[var(--accent-primary)]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             </div>
-                            <h3 className="text-xl font-bold mb-3 font-['Rajdhani'] uppercase">Photo Contest Prizes</h3>
-                            <p className="text-[var(--text-secondary)] font-['Noto Sans']">Quarterly competitions with range time and gear prizes</p>
+                            <h3 className="text-xl font-bold mb-3 font-heading uppercase">Photo Contest Prizes</h3>
+                            <p className="text-[var(--text-secondary)] font-body">Quarterly competitions with range time and gear prizes</p>
                         </CardContent>
                     </Card>
                     <Card className="text-center group hover:scale-105 transition-all duration-300 bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-secondary)] border-0 shadow-xl hover:shadow-2xl">
@@ -51,8 +51,8 @@ export default function PhotoSubmissionSection() {
                                 <Users className="w-12 h-12 text-[var(--accent-primary)] mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
                                 <div className="absolute inset-0 bg-[var(--accent-primary)]/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             </div>
-                            <h3 className="text-xl font-bold mb-3 font-['Rajdhani'] uppercase">Member Spotlight</h3>
-                            <p className="text-[var(--text-secondary)] font-['Noto Sans']">Photo + story featured in newsletter and social media</p>
+                            <h3 className="text-xl font-bold mb-3 font-heading uppercase">Member Spotlight</h3>
+                            <p className="text-[var(--text-secondary)] font-body">Photo + story featured in newsletter and social media</p>
                         </CardContent>
                     </Card>
                 </div>

@@ -52,45 +52,25 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--bg-primary)] via-[var(--bg-secondary)] to-[var(--bg-tertiary)]" />
         
         {/* 45-degree geometric overlay */}
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            background: `linear-gradient(45deg, 
-              rgba(242, 135, 5, 0.1) 0%, 
-              transparent 25%, 
-              rgba(242, 203, 5, 0.05) 50%, 
-              transparent 75%, 
-              rgba(73, 130, 166, 0.08) 100%)`
-          }}
-        />
+        <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-[#f28705]/10 via-transparent via-[#f2cb05]/5 to-[#4982a6]/8" />
         
         {/* Angled grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-3"
-          style={{
-            backgroundImage: `url('/images/Grid/Grid (1).webp')`,
-            backgroundSize: '400px 400px',
-            transform: 'rotate(45deg) scale(1.5)',
-            backgroundRepeat: 'repeat'
-          }}
-        />
+        <div className="absolute inset-0 opacity-3 bg-[url('/images/Grid/Grid_(1).webp')] bg-[length:400px_400px] bg-repeat rotate-45 scale-150" />
       </div>
 
       {/* Blurred Fractal Glows - ClickUp Style */}
       {brightFractals.slice(0, 6).map((fractalNum, i) => (
         <motion.div
           key={`fractal-${fractalNum}`}
-          className="absolute rounded-full blur-3xl opacity-20"
-          style={{
-            width: `${300 + i * 50}px`,
-            height: `${300 + i * 50}px`,
-            left: `${10 + i * 15}%`,
-            top: `${10 + i * 12}%`,
-            backgroundImage: `url('/images/Fractal/${fractalNum}.webp')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'blur(60px) saturate(1.5)',
-          }}
+          className={`absolute rounded-full blur-3xl opacity-20 
+            bg-[url('/images/Fractal/${fractalNum}.webp')] bg-cover bg-center
+            ${i === 0 ? 'w-[300px] h-[300px] left-[10%] top-[10%]' : ''}
+            ${i === 1 ? 'w-[350px] h-[350px] left-[25%] top-[22%]' : ''}
+            ${i === 2 ? 'w-[400px] h-[400px] left-[40%] top-[34%]' : ''}
+            ${i === 3 ? 'w-[450px] h-[450px] left-[55%] top-[46%]' : ''}
+            ${i === 4 ? 'w-[500px] h-[500px] left-[70%] top-[58%]' : ''}
+            ${i === 5 ? 'w-[550px] h-[550px] left-[85%] top-[70%]' : ''}
+            blur-[60px] saturate-150`}
           animate={{
             scale: [0.8, 1.2, 0.8],
             rotate: [0, 180, 360],
@@ -109,29 +89,24 @@ export default function HeroSection() {
       {dustTextures.map((dustNum, i) => (
         <div
           key={`dust-${dustNum}`}
-          className="absolute inset-0 opacity-10 mix-blend-soft-light"
-          style={{
-            backgroundImage: `url('/images/Dust/VintageDust (${dustNum}).webp')`,
-            backgroundSize: '800px 800px',
-            backgroundRepeat: 'repeat',
-            transform: `rotate(${i * 15}deg) scale(${1 + i * 0.1})`,
-          }}
+          className={`absolute inset-0 opacity-10 mix-blend-soft-light 
+            bg-[url('/images/Dust/VintageDust_(${dustNum}).webp')] bg-[length:800px_800px] bg-repeat
+            ${i === 0 ? 'rotate-0 scale-100' : ''}
+            ${i === 1 ? 'rotate-[15deg] scale-110' : ''}
+            ${i === 2 ? 'rotate-[30deg] scale-[1.2]' : ''}
+            ${i === 3 ? 'rotate-[45deg] scale-[1.3]' : ''}
+            ${i === 4 ? 'rotate-[60deg] scale-[1.4]' : ''}`}
         />
       ))}
 
       {/* Interactive Mouse Cursor Glow */}
       <motion.div
-        className="absolute pointer-events-none rounded-full"
+        className="absolute pointer-events-none rounded-full w-[400px] h-[400px] 
+          bg-[radial-gradient(circle,rgba(242,135,5,0.15)_0%,rgba(242,203,5,0.08)_30%,transparent_70%)]
+          -translate-x-1/2 -translate-y-1/2"
         style={{
-          width: '400px',
-          height: '400px',
           left: `${mousePosition.x}%`,
           top: `${mousePosition.y}%`,
-          transform: 'translate(-50%, -50%)',
-          background: `radial-gradient(circle, 
-            rgba(242, 135, 5, 0.15) 0%, 
-            rgba(242, 203, 5, 0.08) 30%, 
-            transparent 70%)`
         }}
         animate={{
           scale: [0.8, 1.2, 0.8],
@@ -145,19 +120,13 @@ export default function HeroSection() {
 
       {/* Subtle Static Particles */}
       <div className="absolute inset-0">
-        {[...Array(8)].map((_, i) => (
+        {[...Array(8)].map((_, i) => {
+          const colors = ['bg-[#F2CB05]', 'bg-[#F28705]', 'bg-[#F25C05]', 'bg-[#F23005]', 'bg-[#4982A6]', 'bg-[#3F6331]', 'bg-[#C9D2EF]'];
+          const positions = ['left-[25%] top-[30%]', 'left-[60%] top-[20%]', 'left-[80%] top-[40%]', 'left-[30%] top-[70%]', 'left-[70%] top-[60%]', 'left-[40%] top-[80%]', 'left-[85%] top-[25%]', 'left-[15%] top-[50%]'];
+          return (
           <motion.div
             key={`particle-${i}`}
-            className="absolute w-1 h-1 rounded-full"
-            style={{
-              backgroundColor: [
-                '#F2CB05', '#F28705', '#F25C05', '#F23005', 
-                '#4982A6', '#3F6331', '#C9D2EF'
-              ][i % 7],
-              left: `${20 + Math.random() * 60}%`,
-              top: `${20 + Math.random() * 60}%`,
-              opacity: 0.3,
-            }}
+            className={`absolute w-1 h-1 rounded-full opacity-30 ${colors[i % 7]} ${positions[i]}`}
             animate={{
               y: [0, -20, 0],
               opacity: [0.3, 0.6, 0.3],
@@ -170,7 +139,7 @@ export default function HeroSection() {
               ease: "easeInOut",
             }}
           />
-        ))}
+        )})}
       </div>
 
       {/* Hero Content */}
@@ -188,7 +157,7 @@ export default function HeroSection() {
           >
             {/* Welcome Text */}
             <motion.p 
-              className="text-xl md:text-2xl text-[var(--text-primary)] mb-6 font-['Rajdhani'] uppercase tracking-wider font-medium"
+              className="text-xl md:text-2xl text-[var(--text-primary)] mb-6 font-heading uppercase tracking-wider font-medium"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.1 }}
@@ -218,7 +187,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, delay: 0.4 }}
               >
-                <h1 className="text-6xl md:text-7xl lg:text-8xl font-['Rajdhani'] uppercase tracking-tight leading-none">
+                <h1 className="text-6xl md:text-7xl lg:text-8xl font-heading uppercase tracking-tight leading-none">
                   <span className="block text-[var(--text-primary)] font-extrabold">BOISE</span>
                   <span className="block text-[var(--text-primary)] font-light">GUN CLUB</span>
                 </h1>
@@ -227,7 +196,7 @@ export default function HeroSection() {
 
             {/* Description */}
             <motion.p 
-              className="text-lg md:text-xl lg:text-2xl text-[var(--text-secondary)] mb-16 max-w-4xl mx-auto font-['Noto Sans'] font-light leading-relaxed"
+              className="text-lg md:text-xl lg:text-2xl text-[var(--text-secondary)] mb-16 max-w-4xl mx-auto font-body font-light leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
@@ -248,10 +217,7 @@ export default function HeroSection() {
               <Button 
                 asChild
                 size="lg" 
-                className="relative overflow-hidden bg-gradient-to-r from-[#F28705] via-[#F25C05] to-[#F23005] hover:from-[#F23005] hover:to-[#F28705] text-white px-12 py-6 text-xl font-bold rounded-2xl transition-all duration-500 border-0"
-                style={{
-                  boxShadow: '0 0 40px rgba(242,135,5,0.4), 0 20px 40px rgba(0,0,0,0.2)',
-                }}
+                className="relative overflow-hidden bg-gradient-to-r from-[#F28705] via-[#F25C05] to-[#F23005] hover:from-[#F23005] hover:to-[#F28705] text-white px-12 py-6 text-xl font-bold rounded-2xl transition-all duration-500 border-0 shadow-[0_0_40px_rgba(242,135,5,0.4),0_20px_40px_rgba(0,0,0,0.2)]"
               >
                 <Link href="/membership" className="flex items-center relative z-10">
                   <Trophy className="mr-3 h-6 w-6" />
@@ -266,10 +232,7 @@ export default function HeroSection() {
                 asChild
                 variant="outline" 
                 size="lg"
-                className="relative backdrop-blur-xl bg-white/5 border-2 border-white/15 hover:bg-white/8 text-[var(--text-primary)] px-12 py-6 text-xl font-bold rounded-2xl transition-all duration-500"
-                style={{
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15)',
-                }}
+                className="relative backdrop-blur-xl bg-white/5 border-2 border-white/15 hover:bg-white/8 text-[var(--text-primary)] px-12 py-6 text-xl font-bold rounded-2xl transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.15)]"
               >
                 <Link href="/club-info" className="flex items-center relative z-10">
                   <Play className="mr-3 h-6 w-6" />
@@ -298,51 +261,29 @@ export default function HeroSection() {
               >
                 <Card className="relative overflow-hidden backdrop-blur-xl bg-transparent border border-white/8 group cursor-pointer h-full">
                   {/* Blurred fractal background */}
-                  <div 
-                    className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500"
-                    style={{
-                      backgroundImage: `url('/images/Fractal/${feature.fractal}.webp')`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      filter: 'blur(40px) saturate(1.5)',
-                    }}
-                  />
+                  <div className={`absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500 
+                    bg-[url('/images/Fractal/${feature.fractal}.webp')] bg-cover bg-center blur-[40px] saturate-150`} />
                   
                   {/* Mica dust texture */}
-                  <div 
-                    className="absolute inset-0 opacity-25 mix-blend-soft-light"
-                    style={{
-                      backgroundImage: `url('/images/Dust/VintageDust (${(i % 3) + 2}).webp')`,
-                      backgroundSize: '300px 300px',
-                    }}
-                  />
+                  <div className={`absolute inset-0 opacity-25 mix-blend-soft-light 
+                    bg-[url('/images/Dust/VintageDust_(${(i % 3) + 2}).webp')] bg-[length:300px_300px]`} />
                   
                   {/* Glass effect */}
-                  <div 
-                    className="absolute inset-0"
-                    style={{
-                      background: `linear-gradient(135deg, 
-                        rgba(255, 255, 255, 0.08), 
-                        rgba(255, 255, 255, 0.04))`,
-                      boxShadow: `0 8px 32px rgba(0, 0, 0, 0.15), 
-                                 inset 0 1px 0 rgba(255, 255, 255, 0.1)`
-                    }}
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/8 to-white/4 
+                    shadow-[0_8px_32px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.1)]" />
 
                   <CardContent className="p-10 text-center relative z-10">
-                    <div 
-                      className="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500"
-                      style={{
-                        background: `linear-gradient(135deg, ${feature.color}, ${feature.color}88)`,
-                        boxShadow: `0 0 30px ${feature.color}40`
-                      }}
+                    <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500
+                      ${feature.color === '#F28705' ? 'bg-gradient-to-br from-[#F28705] to-[#F28705]/50 shadow-[0_0_30px_#F28705]/25' : ''}
+                      ${feature.color === '#F2CB05' ? 'bg-gradient-to-br from-[#F2CB05] to-[#F2CB05]/50 shadow-[0_0_30px_#F2CB05]/25' : ''}
+                      ${feature.color === '#4982A6' ? 'bg-gradient-to-br from-[#4982A6] to-[#4982A6]/50 shadow-[0_0_30px_#4982A6]/25' : ''}`}
                     >
                       <feature.icon className="h-10 w-10 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3 font-['Rajdhani'] uppercase">
+                    <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3 font-heading uppercase">
                       {feature.title}
                     </h3>
-                    <p className="text-[var(--text-secondary)] font-['Noto Sans']">
+                    <p className="text-[var(--text-secondary)] font-body">
                       {feature.desc}
                     </p>
                   </CardContent>
@@ -361,7 +302,7 @@ export default function HeroSection() {
         transition={{ duration: 2, repeat: Infinity }}
       >
         <div className="flex flex-col items-center text-[var(--text-secondary)]">
-          <span className="text-sm mb-2 font-['Noto Sans']">Scroll to explore</span>
+          <span className="text-sm mb-2 font-body">Scroll to explore</span>
           <div className="w-6 h-10 border-2 border-[var(--text-secondary)] rounded-full flex justify-center">
             <motion.div
               animate={{ y: [0, 12, 0] }}

@@ -82,7 +82,7 @@ const UpcomingEvents = () => {
         <section className="py-32 bg-black relative overflow-hidden">
             {/* Section Header - Centered */}
             <div className="text-center mb-20">
-                <h2 className="font-['Rajdhani'] text-5xl text-white mb-4">
+                <h2 className="font-heading text-5xl text-white mb-4">
                     UPCOMING EVENTS
                 </h2>
                 <p className="text-white/60 text-lg max-w-2xl mx-auto px-6">
@@ -127,7 +127,7 @@ const UpcomingEvents = () => {
                                         )}
                                     </div>
                                     
-                                    <h3 className="font-['Rajdhani'] text-2xl text-white mb-2">
+                                    <h3 className="font-heading text-2xl text-white mb-2">
                                         {selectedEvent.title}
                                     </h3>
                                     <p className="text-white/70 mb-4">{selectedEvent.desc}</p>
@@ -148,7 +148,7 @@ const UpcomingEvents = () => {
                                         </span>
                                     </div>
                                     
-                                    <Link href={`/events/${selectedEvent.id}`} className="inline-block px-6 py-3 bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] transition-colors text-white rounded font-['Rajdhani'] text-sm">
+                                    <Link href={`/events/${selectedEvent.id}`} className="inline-block px-6 py-3 bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] transition-colors text-white rounded font-heading text-sm">
                                         REGISTER NOW
                                     </Link>
                                 </div>
@@ -188,7 +188,7 @@ const UpcomingEvents = () => {
                     {/* Right Column - 40% - Registration Form */}
                     <div className="lg:col-span-2">
                         <div className="backdrop-blur-lg bg-white/5 border border-white/10 p-6 rounded-lg shadow-xl">
-                            <h3 className="font-['Rajdhani'] text-xl text-white mb-4">
+                            <h3 className="font-heading text-xl text-white mb-4">
                                 Register for an Event
                             </h3>
                             <form onSubmit={handleSubmit}>

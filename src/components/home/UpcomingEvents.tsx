@@ -76,10 +76,10 @@ const UpcomingEvents = () => {
                     transition={{ duration: 0.6 }}
                     className="max-w-3xl"
                 >
-                    <h2 className="font-['Rajdhani'] text-4xl sm:text-5xl md:text-6xl uppercase text-[var(--text-primary)] mb-4">
-                        Upcoming <span className="text-[var(--accent-gold)]">Events</span>
+                    <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl uppercase text-[var(--text-primary)] mb-4">
+                        Upcoming <span className="text-[var(--accent-tertiary)]">Events</span>
                     </h2>
-                    <p className="text-[var(--text-secondary)] text-base sm:text-lg font-['Noto Sans']">
+                    <p className="text-[var(--text-secondary)] text-base sm:text-lg font-body">
                         From competitive shoots to casual fun days, there's always action at the club.
                     </p>
                 </motion.div>
@@ -121,19 +121,19 @@ const UpcomingEvents = () => {
                                                 ? 'bg-[var(--accent-primary)]/20'
                                                 : 'bg-[var(--bg-primary)] group-hover:bg-[var(--accent-primary)]/10'
                                         }`}>
-                                            <span className="font-['Rajdhani'] text-xl sm:text-2xl text-[var(--text-primary)]">{event.date}</span>
+                                            <span className="font-heading text-xl sm:text-2xl text-[var(--text-primary)]">{event.date}</span>
                                             <span className="text-xs text-[var(--text-secondary)] uppercase">{event.month}</span>
                                         </div>
                                         
                                         {/* Event info */}
                                         <div className="flex-1">
-                                            <h4 className="font-['Rajdhani'] text-base sm:text-lg text-[var(--text-primary)] mb-1">{event.title}</h4>
-                                            <p className="text-sm text-[var(--text-secondary)] font-['Noto Sans'] line-clamp-2">{event.desc}</p>
+                                            <h4 className="font-heading text-base sm:text-lg text-[var(--text-primary)] mb-1">{event.title}</h4>
+                                            <p className="text-sm text-[var(--text-secondary)] font-body line-clamp-2">{event.desc}</p>
                                             <div className="flex items-center justify-between mt-2">
                                                 <div className="flex items-center gap-3">
-                                                    <span className="text-xs text-[var(--accent-gold)] font-['Noto Sans']">{event.category}</span>
+                                                    <span className="text-xs text-[var(--accent-tertiary)] font-body">{event.category}</span>
                                                     <span className="text-xs text-[var(--text-secondary)]">•</span>
-                                                    <span className="text-xs text-[var(--text-secondary)] font-['Noto Sans'] flex items-center gap-1">
+                                                    <span className="text-xs text-[var(--text-secondary)] font-body flex items-center gap-1">
                                                         <UsersIcon className="w-3 h-3" />
                                                         {event.attendees} attending
                                                     </span>
@@ -158,7 +158,7 @@ const UpcomingEvents = () => {
                         >
                             <Link
                                 href="/events"
-                                className="group inline-flex items-center gap-2 text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] font-['Rajdhani'] text-sm uppercase tracking-wider transition-colors"
+                                className="group inline-flex items-center gap-2 text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] font-heading text-sm uppercase tracking-wider transition-colors"
                             >
                                 View Full Calendar
                                 <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -194,13 +194,13 @@ const UpcomingEvents = () => {
                                         {/* Category badge */}
                                         <div className="absolute top-4 right-4">
                                             <div className="bg-[var(--bg-primary)]/80 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1">
-                                                <span className="text-sm font-['Noto Sans'] text-[var(--text-primary)]">{selectedEvent.category}</span>
+                                                <span className="text-sm font-body text-[var(--text-primary)]">{selectedEvent.category}</span>
                                             </div>
                                         </div>
                                         
                                         {/* Title overlay */}
                                         <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-                                            <h3 className="font-['Rajdhani'] text-2xl sm:text-3xl md:text-4xl text-white uppercase mb-2">
+                                            <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl text-white uppercase mb-2">
                                                 {selectedEvent.title}
                                             </h3>
                                         </div>
@@ -211,30 +211,30 @@ const UpcomingEvents = () => {
                                         {/* Meta info */}
                                         <div className="grid sm:grid-cols-3 gap-4 mb-6">
                                             <div className="flex items-center gap-3">
-                                                <CalendarDaysIcon className="w-5 h-5 text-[var(--accent-gold)]" />
+                                                <CalendarDaysIcon className="w-5 h-5 text-[var(--accent-tertiary)]" />
                                                 <div>
-                                                    <p className="text-xs text-[var(--text-secondary)] font-['Noto Sans']">Date</p>
-                                                    <p className="text-[var(--text-primary)] font-['Noto Sans']">{selectedEvent.date} {selectedEvent.month}</p>
+                                                    <p className="text-xs text-[var(--text-secondary)] font-body">Date</p>
+                                                    <p className="text-[var(--text-primary)] font-body">{selectedEvent.date} {selectedEvent.month}</p>
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-3">
-                                                <ClockIcon className="w-5 h-5 text-[var(--accent-gold)]" />
+                                                <ClockIcon className="w-5 h-5 text-[var(--accent-tertiary)]" />
                                                 <div>
-                                                    <p className="text-xs text-[var(--text-secondary)] font-['Noto Sans']">Time</p>
-                                                    <p className="text-[var(--text-primary)] font-['Noto Sans']">{selectedEvent.time}</p>
+                                                    <p className="text-xs text-[var(--text-secondary)] font-body">Time</p>
+                                                    <p className="text-[var(--text-primary)] font-body">{selectedEvent.time}</p>
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-3">
-                                                <MapPinIcon className="w-5 h-5 text-[var(--accent-gold)]" />
+                                                <MapPinIcon className="w-5 h-5 text-[var(--accent-tertiary)]" />
                                                 <div>
-                                                    <p className="text-xs text-[var(--text-secondary)] font-['Noto Sans']">Location</p>
-                                                    <p className="text-[var(--text-primary)] font-['Noto Sans']">{selectedEvent.location}</p>
+                                                    <p className="text-xs text-[var(--text-secondary)] font-body">Location</p>
+                                                    <p className="text-[var(--text-primary)] font-body">{selectedEvent.location}</p>
                                                 </div>
                                             </div>
                                         </div>
                                         
                                         {/* Description */}
-                                        <p className="text-[var(--text-secondary)] font-['Noto Sans'] leading-relaxed mb-8">
+                                        <p className="text-[var(--text-secondary)] font-body leading-relaxed mb-8">
                                             {selectedEvent.details}
                                         </p>
                                         
@@ -243,7 +243,7 @@ const UpcomingEvents = () => {
                                             href={`/events/${selectedEvent.id}`}
                                             className="inline-flex items-center justify-center w-full bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] 
                                                      text-[var(--text-primary)] font-bold py-3 px-6 rounded-lg text-base transition-all duration-300 
-                                                     transform hover:scale-105 shadow-lg hover:shadow-xl font-['Rajdhani']"
+                                                     transform hover:scale-105 shadow-lg hover:shadow-xl font-heading"
                                         >
                                             Register for Event
                                         </Link>

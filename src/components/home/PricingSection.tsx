@@ -56,10 +56,10 @@ export default function PricingSection() {
             <section className="py-24">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-tight">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--text-primary)] font-heading uppercase tracking-tight">
                             Shooting <span className="text-[var(--accent-primary)]">Rates</span>
                         </h2>
-                        <p className="text-xl text-[var(--text-secondary)] font-['Noto Sans'] font-light">
+                        <p className="text-xl text-[var(--text-secondary)] font-body font-light">
                             Fair pricing for world-class facilities and instruction.
                         </p>
                     </div>
@@ -67,7 +67,7 @@ export default function PricingSection() {
                     <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
                         <Card className="relative">
                             <CardContent className="p-8 text-center">
-                                <h3 className="text-2xl font-bold mb-4 font-['Rajdhani'] uppercase">Daily Rate</h3>
+                                <h3 className="text-2xl font-bold mb-4 font-heading uppercase">Daily Rate</h3>
                                 <div className="text-5xl font-bold text-[var(--accent-primary)] mb-4">$8</div>
                                 <p className="text-[var(--text-secondary)] mb-6">per round</p>
                                 <ul className="space-y-3 text-left">
@@ -90,7 +90,7 @@ export default function PricingSection() {
                         <Card className="relative border-2 border-[var(--accent-primary)]">
                             <CardContent className="p-8 text-center">
                                 <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[var(--accent-primary)] text-white">Popular</Badge>
-                                <h3 className="text-2xl font-bold mb-4 font-['Rajdhani'] uppercase">Member Rate</h3>
+                                <h3 className="text-2xl font-bold mb-4 font-heading uppercase">Member Rate</h3>
                                 <div className="text-5xl font-bold text-[var(--accent-primary)] mb-4">$6</div>
                                 <p className="text-[var(--text-secondary)] mb-6">per round + $75 annual fee</p>
                                 <ul className="space-y-3 text-left">

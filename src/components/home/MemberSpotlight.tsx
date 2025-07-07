@@ -16,7 +16,7 @@ export default function MemberSpotlight({ name, quote, imageUrl, yearJoined, ach
     return (
         <section className="py-24 bg-[var(--bg-secondary)]">
             <div className="max-w-4xl mx-auto px-6 text-center">
-                <h2 className="text-4xl md:text-5xl font-bold mb-16 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-tight">
+                <h2 className="text-4xl md:text-5xl font-bold mb-16 text-[var(--text-primary)] font-heading uppercase tracking-tight">
                     Member <span className="text-[var(--accent-primary)]">Spotlight</span>
                 </h2>
                 
@@ -31,12 +31,12 @@ export default function MemberSpotlight({ name, quote, imageUrl, yearJoined, ach
                                 alt={name}
                             />
                             <div className="text-left">
-                                <blockquote className="text-2xl font-light italic text-[var(--text-primary)] mb-6 font-['Noto Sans']">
+                                <blockquote className="text-2xl font-light italic text-[var(--text-primary)] mb-6 font-body">
                                     "{quote}"
                                 </blockquote>
                                 <div>
-                                    <p className="font-bold text-lg font-['Rajdhani'] uppercase">{name}</p>
-                                    <p className="text-[var(--text-secondary)] font-['Noto Sans']">Member since {yearJoined}</p>
+                                    <p className="font-bold text-lg font-heading uppercase">{name}</p>
+                                    <p className="text-[var(--text-secondary)] font-body">Member since {yearJoined}</p>
                                     <div className="flex gap-2 mt-2">
                                         {achievements.map((achievement, index) => (
                                             <Badge key={index}>{achievement}</Badge>

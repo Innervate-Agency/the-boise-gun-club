@@ -45,12 +45,12 @@ module.exports = {
         terminalAmber: 'var(--terminal-amber)',
       },
       fontFamily: {
-        'heading': ['Rajdhani', 'sans-serif'],
-        'body': ['Noto Sans', 'sans-serif'],
+        'heading': ['var(--font-heading)', 'Rajdhani', 'sans-serif'],
+        'body': ['var(--font-body)', 'Noto Sans', 'sans-serif'],
         'vt323': ['VT323', 'monospace'],
         'space-grotesk': ['Space Grotesk', 'sans-serif'], 
-        'rajdhani': ['Rajdhani', 'sans-serif'],
-        'noto-sans': ['Noto Sans', 'sans-serif'],
+        'rajdhani': ['var(--font-heading)', 'Rajdhani', 'sans-serif'],
+        'noto-sans': ['var(--font-body)', 'Noto Sans', 'sans-serif'],
       },
       fontSize: {
         'xs': ['14px', '1.5'],

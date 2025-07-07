@@ -10,10 +10,10 @@ export default function ClubRulesSection() {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 className="text-4xl md:text-5xl font-bold mb-6 font-['Rajdhani'] uppercase tracking-tight">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading uppercase tracking-tight">
                             Safety <span className="text-[var(--accent-primary)]">First</span>
                         </h2>
-                        <p className="text-xl text-[var(--text-secondary)] mb-8 font-['Noto Sans'] font-light">
+                        <p className="text-xl text-[var(--text-secondary)] mb-8 font-body font-light">
                             Our comprehensive safety rules ensure everyone has a safe, enjoyable experience. We maintain the highest standards for shotgun sports.
                         </p>
                         
@@ -21,22 +21,22 @@ export default function ClubRulesSection() {
                             <div className="flex items-start gap-3">
                                 <div className="w-6 h-6 rounded-full bg-[var(--accent-primary)] flex items-center justify-center text-white text-sm font-bold mt-1">1</div>
                                 <div>
-                                    <h4 className="font-bold font-['Rajdhani'] uppercase">Eye & Ear Protection Required</h4>
-                                    <p className="text-[var(--text-secondary)] font-['Noto Sans']">Safety glasses and hearing protection mandatory at all times</p>
+                                    <h4 className="font-bold font-heading uppercase">Eye & Ear Protection Required</h4>
+                                    <p className="text-[var(--text-secondary)] font-body">Safety glasses and hearing protection mandatory at all times</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3">
                                 <div className="w-6 h-6 rounded-full bg-[var(--accent-primary)] flex items-center justify-center text-white text-sm font-bold mt-1">2</div>
                                 <div>
-                                    <h4 className="font-bold font-['Rajdhani'] uppercase">Shotgun Ammunition Only</h4>
-                                    <p className="text-[var(--text-secondary)] font-['Noto Sans']">This is a shotgun-only facility - no rifle or pistol ammunition</p>
+                                    <h4 className="font-bold font-heading uppercase">Shotgun Ammunition Only</h4>
+                                    <p className="text-[var(--text-secondary)] font-body">This is a shotgun-only facility - no rifle or pistol ammunition</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3">
                                 <div className="w-6 h-6 rounded-full bg-[var(--accent-primary)] flex items-center justify-center text-white text-sm font-bold mt-1">3</div>
                                 <div>
-                                    <h4 className="font-bold font-['Rajdhani'] uppercase">Range Officer Authority</h4>
-                                    <p className="text-[var(--text-secondary)] font-['Noto Sans']">Follow all range officer commands immediately</p>
+                                    <h4 className="font-bold font-heading uppercase">Range Officer Authority</h4>
+                                    <p className="text-[var(--text-secondary)] font-body">Follow all range officer commands immediately</p>
                                 </div>
                             </div>
                         </div>

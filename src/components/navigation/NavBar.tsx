@@ -46,13 +46,15 @@ export default function NavBar() {
             className={`
                 fixed top-0 left-0 right-0
                 transition-all duration-300
-                ${isScrolled ? 'glass-mica' : 'bg-transparent'}
+                ${isScrolled 
+                    ? 'bg-white/10 backdrop-blur-lg border-b border-white/10 shadow-lg' 
+                    : 'bg-transparent'}
                 z-50
                 h-[80px] md:h-[90px] flex items-center
             `}
         >
             {/* Subtle grid texture beneath the glass effect */}
-            <div className="absolute inset-0 grid-bg opacity-5 pointer-events-none" />
+            <div className="absolute inset-0 opacity-5 pointer-events-none bg-[url('/images/Grid/Grid_(1).webp')] bg-[length:400px_400px] bg-repeat" />
             
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex items-center">
                 <div className="flex items-center justify-between w-full h-full">
@@ -71,14 +73,14 @@ export default function NavBar() {
                                 />
                                 <div className="flex flex-col leading-tight">
                                     {/* Established */}
-                                    <span className="text-xs tracking-wider uppercase text-[var(--accent-primary)] font-medium font-heading" style={{ fontFamily: 'Rajdhani, sans-serif' }}>established 1898</span>
+                                    <span className="text-xs tracking-wider uppercase text-[var(--accent-primary)] font-medium font-heading">established 1898</span>
                                     {/* BOISEGUNCLUB */}
                                     <span className="flex items-baseline gap-0">
-                                        <span className="text-lg md:text-xl font-bold uppercase font-heading" style={{ fontFamily: 'Rajdhani, sans-serif', letterSpacing: '0.02em' }}>BOISE</span>
-                                        <span className="text-lg md:text-xl font-light uppercase font-heading" style={{ fontFamily: 'Rajdhani, sans-serif', letterSpacing: '0.02em' }}>GUNCLUB</span>
+                                        <span className="text-lg md:text-xl font-bold uppercase font-heading tracking-wide">BOISE</span>
+                                        <span className="text-lg md:text-xl font-light uppercase font-heading tracking-wide">GUNCLUB</span>
                                     </span>
                                     {/* Tagline */}
-                                    <span className="text-xs font-medium text-[var(--text-secondary)] font-heading" style={{ fontFamily: 'Rajdhani, sans-serif' }}>
+                                    <span className="text-xs font-medium text-[var(--text-secondary)] font-heading">
                                         Idaho's Premier Shotgun Sports Complex
                                     </span>
                                 </div>
@@ -114,7 +116,8 @@ export default function NavBar() {
                             className={`
                                 hidden md:flex items-center space-x-2
                                 px-4 py-2 rounded-lg
-                                glass-mica-hover
+                                bg-white/5 hover:bg-white/10 backdrop-blur-sm
+                                border border-white/10 hover:border-white/20
                                 text-sm font-medium tracking-wide
                                 transition-all duration-200
                             `}
@@ -140,7 +143,7 @@ export default function NavBar() {
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="md:hidden p-2 rounded-lg glass-mica-hover"
+                            className="md:hidden p-2 rounded-lg bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-200"
                         >
                             <Bars3Icon className="w-6 h-6" />
                         </button>
