@@ -57,7 +57,7 @@ function PropControl({ label, value, onChange, options }: {
 }) {
   return (
     <div className="flex flex-col gap-1">
-      <label className="text-xs font-medium text-slate-600 dark:text-slate-400">{label}</label>
+      <label className="text-xs font-medium text-muted-foreground">{label}</label>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
