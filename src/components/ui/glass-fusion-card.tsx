@@ -33,8 +33,8 @@ const variantStyles = {
 export function GlassFusionCard({
   children,
   className,
-  headerGradient = 'from-[var(--lahoma-orange)] to-[var(--abe-red)]',
-  splashColor = 'var(--leonard-yellow)',
+  headerGradient = 'from-[var(--accent-primary)] to-[var(--accent-secondary)]',
+  splashColor = 'var(--accent-tertiary)',
   title,
   description,
   badge,
