@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from '@/components/ui/ThemeContext';
 import NavBar from '../components/navigation/NavBar';
 import Footer from '../components/layout/Footer';
@@ -30,7 +31,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
   return (
     <ThemeProvider>
       <NavBar />
-      <main className="flex-1 w-full min-h-screen">
+      <main className="flex-1 w-full min-h-screen pt-[80px] md:pt-[90px]">
         {children}
       </main>
       <Footer />

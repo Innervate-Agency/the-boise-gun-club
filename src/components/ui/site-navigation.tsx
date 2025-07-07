@@ -18,7 +18,6 @@ import {
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
@@ -26,7 +25,6 @@ import {
 } from '@/components/ui/navigation-menu';
 import { 
   Menu, 
-  X, 
   Target, 
   Trophy, 
   Users, 
@@ -38,7 +36,8 @@ import {
   Star,
   Shield,
   Camera,
-  MapPin
+  MapPin,
+  Newspaper
 } from 'lucide-react';
 
 interface NavigationItem {
@@ -52,89 +51,45 @@ interface NavigationItem {
 }
 
 const navigationData: NavigationItem[] = [
-  {
-    title: 'About',
-    children: [
-      {
-        title: 'Club Information',
-        href: '/club-info',
-        description: 'Learn about our history, facilities, and mission',
-        icon: Target
-      },
-      {
-        title: 'Facilities',
-        href: '/facilities',
-        description: 'Tour our world-class shooting ranges and amenities',
-        icon: MapPin
-      },
-      {
-        title: 'Safety Rules',
-        href: '/rules',
-        description: 'Essential safety guidelines for all members',
-        icon: Shield
-      },
-      {
-        title: 'Gallery',
-        href: '/gallery',
-        description: 'Photos from events and club activities',
-        icon: Camera
-      }
-    ]
-  },
-  {
-    title: 'Membership',
-    children: [
-      {
-        title: 'Join Today',
-        href: '/membership',
-        description: 'Become a member and enjoy exclusive benefits',
-        icon: Users,
-        badge: 'Popular'
-      },
-      {
-        title: 'Member Portal',
-        href: '/portal',
-        description: 'Access your account and member resources',
-        icon: Star,
-        external: true
-      },
-      {
-        title: 'Benefits',
-        href: '/membership/benefits',
-        description: 'Explore all member perks and privileges',
-        icon: Trophy
-      }
-    ]
-  },
-  {
-    title: 'Events',
-    children: [
-      {
-        title: 'Event Calendar',
-        href: '/events',
-        description: 'Upcoming competitions and club activities',
-        icon: Calendar
-      },
-      {
-        title: 'Weekly Schedule',
-        href: '/schedule',
-        description: 'Regular shooting schedules and league info',
-        icon: BookOpen
-      },
-      {
-        title: 'Tournaments',
-        href: '/tournaments',
-        description: 'Competitive events and championships',
-        icon: Trophy,
-        badge: 'New'
-      }
-    ]
-  },
-  {
-    title: 'Contact',
-    href: '/contact',
-    icon: Phone
-  }
+  { title: 'Home', href: '/' },
+  { title: 'Club Info', href: '/club-info' },
+  { title: 'Membership', href: '/membership' },
+  { title: 'Events', href: '/events' },
+  { title: 'News', href: '/news' },
+  { title: 'Forums', href: 'https://forum.boisegunclub.com', external: true },
+];
+
+const megaMenuItems: NavigationItem[] = [
+    {
+      title: 'Club Schedule',
+      icon: Calendar,
+      children: [
+        { label: 'Weekly Shoot Schedule', href: '/schedule/weekly', description: 'Regular shooting hours and events' },
+        { label: 'Competition Calendar', href: '/schedule/competitions', description: 'Upcoming tournaments and matches' },
+        { label: 'Training Sessions', href: '/schedule/training', description: 'Instructor-led courses' },
+        { label: 'Range Reservations', href: '/schedule/reservations', description: 'Book your shooting time' }
+      ]
+    },
+    {
+      title: 'Member Services',
+      icon: Users,
+      children: [
+        { label: 'Member Portal', href: '/members/portal', description: 'Access your account' },
+        { label: 'Payment Center', href: '/members/billing', description: 'Dues and fee payments' },
+        { label: 'Member Directory', href: '/members/directory', description: 'Connect with fellow members' },
+        { label: 'Volunteer Opportunities', href: '/members/volunteer', description: 'Help support the club' }
+      ]
+    },
+    {
+      title: 'Safety & Operations',
+      icon: Shield,
+      children: [
+        { label: 'Rules & Safety', href: '/rules', description: 'Safety and facility guidelines' },
+        { label: 'Emergency Info', href: '/emergency', description: 'Important contact numbers' },
+        { label: 'Weather Conditions', href: '/weather', description: 'Current shooting conditions' },
+        { label: 'Range Status', href: '/ranges/status', description: 'Real-time availability' }
+      ]
+    }
 ];
 
 interface SiteNavigationProps {
@@ -224,63 +179,48 @@ export function SiteNavigation({
               <NavigationMenuList className="gap-6">
                 {navigationData.map((item, index) => (
                   <NavigationMenuItem key={index}>
-                    {item.children ? (
-                      <>
-                        <NavigationMenuTrigger className="font-heading font-medium text-card-foreground hover:text-accent-primary data-[state=open]:text-accent-primary">
-                          {item.title}
-                        </NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                          <div className="grid w-[600px] gap-3 p-6">
-                            <div className="grid grid-cols-2 gap-4">
-                              {item.children.map((child, childIndex) => (
-                                <Link
-                                  key={childIndex}
-                                  href={child.href!}
-                                  className={cn(
-                                    'group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted hover:text-accent-primary focus:bg-muted focus:text-accent-primary',
-                                    isActive(child.href!) && 'bg-muted text-accent-primary'
-                                  )}
-                                  target={child.external ? '_blank' : undefined}
-                                  rel={child.external ? 'noopener noreferrer' : undefined}
-                                >
-                                  <div className="flex items-center gap-2 mb-1">
-                                    {child.icon && (
-                                      <child.icon className="w-4 h-4 text-accent-primary" />
-                                    )}
-                                    <div className="text-sm font-medium leading-none font-heading">
-                                      {child.title}
-                                    </div>
-                                    {child.badge && (
-                                      <Badge variant="secondary" className="text-xs">
-                                        {child.badge}
-                                      </Badge>
-                                    )}
-                                    {child.external && (
-                                      <ExternalLink className="w-3 h-3 text-muted-foreground" />
-                                    )}
-                                  </div>
-                                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground font-body">
-                                    {child.description}
-                                  </p>
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        </NavigationMenuContent>
-                      </>
-                    ) : (
-                      <Link
-                        href={item.href!}
-                        className={cn(
-                          'font-heading font-medium text-card-foreground hover:text-accent-primary transition-colors px-3 py-2 rounded-md',
-                          isActive(item.href!) && 'text-accent-primary bg-muted'
-                        )}
-                      >
-                        {item.title}
-                      </Link>
-                    )}
+                    <Link
+                      href={item.href!}
+                      className={cn(
+                        'font-heading font-medium text-card-foreground hover:text-accent-primary transition-colors px-3 py-2 rounded-md',
+                        isActive(item.href!) && 'text-accent-primary bg-muted'
+                      )}
+                      target={item.external ? '_blank' : undefined}
+                      rel={item.external ? 'noopener noreferrer' : undefined}
+                    >
+                      {item.title}
+                    </Link>
                   </NavigationMenuItem>
                 ))}
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="font-heading font-medium text-card-foreground hover:text-accent-primary data-[state=open]:text-accent-primary">
+                    Club Services
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="grid w-[600px] gap-3 p-6 grid-cols-3">
+                      {megaMenuItems.map((section, sectionIndex) => (
+                        <div key={sectionIndex}>
+                          <h3 className="font-heading font-semibold text-card-foreground mb-3 flex items-center gap-2">
+                            <section.icon className="w-4 h-4 text-accent-primary" />
+                            {section.title}
+                          </h3>
+                          <div className="space-y-1">
+                            {section.children?.map((child, childIndex) => (
+                              <Link
+                                key={childIndex}
+                                href={child.href!}
+                                className="block p-2 rounded-md hover:bg-muted"
+                              >
+                                <div className="text-sm font-medium text-card-foreground">{child.label}</div>
+                                <p className="text-xs text-muted-foreground">{child.description}</p>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
 
@@ -312,66 +252,41 @@ export function SiteNavigation({
                 <SheetTitle className="text-left font-heading">
                   Navigation
                 </SheetTitle>
-                <SheetDescription className="text-left font-body">
-                  Explore the Boise Gun Club
-                </SheetDescription>
               </SheetHeader>
               
               <div className="mt-6 space-y-4">
                 {navigationData.map((item, index) => (
-                  <div key={index}>
-                    {item.children ? (
-                      <div className="space-y-2">
-                        <div className="font-heading font-semibold text-card-foreground px-3 py-2">
-                          {item.title}
-                        </div>
-                        <div className="space-y-1 ml-4">
-                          {item.children.map((child, childIndex) => (
-                            <Link
-                              key={childIndex}
-                              href={child.href!}
-                              className={cn(
-                                'flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors hover:bg-muted hover:text-accent-primary font-body',
-                                isActive(child.href!) && 'bg-muted text-accent-primary'
-                              )}
-                              onClick={() => setIsMobileMenuOpen(false)}
-                              target={child.external ? '_blank' : undefined}
-                              rel={child.external ? 'noopener noreferrer' : undefined}
-                            >
-                              {child.icon && (
-                                <child.icon className="w-4 h-4 text-accent-primary" />
-                              )}
-                              <span className="flex-1">{child.title}</span>
-                              {child.badge && (
-                                <Badge variant="secondary" className="text-xs">
-                                  {child.badge}
-                                </Badge>
-                              )}
-                              {child.external && (
-                                <ExternalLink className="w-3 h-3 text-muted-foreground" />
-                              )}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    ) : (
-                      <Link
-                        href={item.href!}
-                        className={cn(
-                          'flex items-center gap-3 px-3 py-2 rounded-md transition-colors hover:bg-muted hover:text-accent-primary font-heading font-medium',
-                          isActive(item.href!) && 'bg-muted text-accent-primary'
-                        )}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {item.icon && (
-                          <item.icon className="w-4 h-4 text-accent-primary" />
-                        )}
-                        {item.title}
-                      </Link>
+                  <Link
+                    key={index}
+                    href={item.href!}
+                    className={cn(
+                      'block px-3 py-2 rounded-md text-lg font-medium',
+                      isActive(item.href!) ? 'bg-muted text-accent-primary' : 'text-card-foreground hover:bg-muted'
                     )}
-                  </div>
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    target={item.external ? '_blank' : undefined}
+                    rel={item.external ? 'noopener noreferrer' : undefined}
+                  >
+                    {item.title}
+                  </Link>
                 ))}
-                
+                <div className="pt-4 border-t">
+                  <h3 className="px-3 py-2 font-heading font-semibold">Club Services</h3>
+                  {megaMenuItems.map((section) => (
+                    <div key={section.title} className="ml-4 mt-2 space-y-1">
+                      {section.children?.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href!}
+                          className="block p-2 rounded-md hover:bg-muted text-sm"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  ))}
+                </div>
                 <div className="pt-4 mt-6 border-t">
                   <Button 
                     asChild
