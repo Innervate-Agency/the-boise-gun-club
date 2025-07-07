@@ -47,7 +47,7 @@ const categories: ComponentCategory[] = [
     description: 'Essential UI building blocks with Stripe-inspired design and accessibility',
     href: '/test/components/core',
     icon: Layers,
-    color: 'from-[#F28705] to-[#F25C05]',
+    color: 'from-lahoma-orange to-abe-red',
     status: 'stable',
     features: ['Buttons', 'Cards', 'Badges', 'Inputs'],
     componentCount: 12
@@ -57,7 +57,7 @@ const categories: ComponentCategory[] = [
     description: 'Complete form system with validation, auto-completion and smart interactions',
     href: '/test/components/forms',
     icon: FileText,
-    color: 'from-[#5198cd] to-[#4982A6]',
+    color: 'from-idaho-sky-blue to-snakeriver-blue',
     status: 'stable',
     features: ['Validation', 'Auto-complete', 'Multi-step', 'File Upload'],
     componentCount: 8
@@ -67,7 +67,7 @@ const categories: ComponentCategory[] = [
     description: 'Tables, charts, and data visualization with real-time updates',
     href: '/test/components/data',
     icon: BarChart3,
-    color: 'from-[#6f7822] to-[#3F6331]',
+    color: 'from-owyhee-green to-club-house-lawn-green',
     status: 'stable',
     features: ['Tables', 'Charts', 'Progress', 'Statistics'],
     componentCount: 6
@@ -77,7 +77,7 @@ const categories: ComponentCategory[] = [
     description: 'Advanced navigation patterns with mega menus and breadcrumbs',
     href: '/test/components/navigation',
     icon: Radar,
-    color: 'from-[#F2CB05] to-[#F28705]',
+    color: 'from-leonard-yellow to-lahoma-orange',
     status: 'stable',
     features: ['Mega Menu', 'Breadcrumbs', 'Tabs', 'Dropdown'],
     componentCount: 7
@@ -87,7 +87,7 @@ const categories: ComponentCategory[] = [
     description: 'Loading states, alerts, and user feedback components',
     href: '/test/components/feedback',
     icon: Activity,
-    color: 'from-[#F23005] to-[#8C394B]',
+    color: 'from-abe-red to-scoring-bench-red',
     status: 'stable',
     features: ['Loading', 'Alerts', 'Toasts', 'Modals'],
     componentCount: 9
@@ -97,7 +97,7 @@ const categories: ComponentCategory[] = [
     description: 'Gamification components for shotgun sports achievements and scoring',
     href: '/test/components/gaming',
     icon: Trophy,
-    color: 'from-[#F25C05] to-[#F23005]',
+    color: 'from-jerry-orange to-abe-red',
     status: 'new',
     features: ['Leaderboards', 'Achievements', 'Scoring', 'Competitions'],
     componentCount: 5
