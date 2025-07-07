@@ -286,7 +286,7 @@ export default function ButtonsPlayground() {
                 </div>
                 <div className="text-sm text-muted-foreground font-body">
                   Hover over buttons to see interaction states and animations.
-                }
+                </div>
               </div>
             </div>
           </div>
@@ -340,7 +340,7 @@ export default function ButtonsPlayground() {
               />
               <CodeSnippet
                 title="Async Button"
-                code={`const [loading, setLoading] = useState(false);\n\n<Button \n  variant="primary"\n  disabled={loading}\n  onClick={handleSubmit}\n>\n  {loading ? 'Processing...' : 'Submit'}\n</Button>`}
+                code={`const [loading, setLoading] = useState(false);\n\n<Button \n  variant="primary"\n  disabled={loading}\n  onClick={handleSubmit}\n>\n  ${loading ? 'Processing...' : 'Submit'}\n</Button>`}
               />
               <CodeSnippet
                 title="Event Registration"
