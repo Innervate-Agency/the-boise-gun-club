@@ -1,28 +1,45 @@
 import React from 'react';
-import HeroSection from '../components/home/HeroSection';
-import UpcomingEvents from '../components/home/UpcomingEvents';
-import MemberSpotlight from '../components/home/MemberSpotlight';
-import PricingSection from '../components/home/PricingSection';
-import ClubRulesSection from '../components/home/ClubRulesSection';
-import PhotoSubmissionSection from '../components/home/PhotoSubmissionSection';
-import ContactInfo from '../components/home/ContactInfo';
+import HeroSection from '@/components/home/HeroSection';
+import UpcomingEvents from '@/components/home/UpcomingEvents';
+import MemberSpotlight from '@/components/home/MemberSpotlight';
+import PricingSection from '@/components/home/PricingSection';
+import ClubRulesSection from '@/components/home/ClubRulesSection';
+import PhotoSubmissionSection from '@/components/home/PhotoSubmissionSection';
+import ContactInfo from '@/components/home/ContactInfo';
+import GalleryPreview from '@/components/home/GalleryPreview';
+import { client } from '@/lib/strapi'; // Assuming a Strapi client library
+import { Testimonial } from '@/types/content'; // Assuming a Testimonial type
 
-const memberSpotlight = {
-  name: 'Jane Doe',
-  quote: 'The Boise Gun Club is my second family. I have grown so much as a shooter and a person here. The welcoming community and excellent facilities make this the best place to enjoy shotgun sports.',
-  imageUrl: '/images/membership.webp',
-  yearJoined: 2015,
-  achievements: ['State Champion 2022', 'Club Volunteer', '100 Straight Patch']
-};
+async function getHomePageData() {
+  // In a real app, you would fetch this from your Strapi instance
+  // For now, we'll use mock data that matches the Strapi structure.
+  const testimonials: Testimonial[] = await client.find('testimonials', {
+    filters: { featured: { $eq: true } },
+    pagination: { limit: 1 },
+  });
+  
+  const galleryItems = await client.find('gallery-items', {
+    sort: 'year:desc',
+    pagination: { limit: 4 },
+  });
 
-export default function HomePage() {
+  return {
+    memberSpotlight: testimonials[0] || null,
+    galleryItems: galleryItems.results || [],
+  };
+}
+
+export default async function HomePage() {
+  const { memberSpotlight, galleryItems } = await getHomePageData();
+
   return (
-    <main className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
+    <main className="min-h-screen bg-bg-primary text-text-primary">
       <HeroSection />
       <UpcomingEvents />
-      <MemberSpotlight {...memberSpotlight} />
+      {memberSpotlight && <MemberSpotlight {...memberSpotlight} />}
       <PricingSection />
       <ClubRulesSection />
+      {galleryItems.length > 0 && <GalleryPreview galleryItems={galleryItems} />}
       <PhotoSubmissionSection />
       <ContactInfo />
     </main>

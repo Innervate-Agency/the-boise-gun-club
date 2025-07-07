@@ -97,6 +97,20 @@ export interface Hours {
   holidays: string;
 }
 
+export interface Testimonial {
+  id: number;
+  name: string;
+  title: string;
+  memberSince: string;
+  quote: string;
+  story?: string;
+  image?: {
+    url: string;
+    alternativeText?: string;
+  };
+  featured?: boolean;
+}
+
 // Main ContentData type for the entire site
 export interface ContentData {
   hero: HeroContent;
@@ -110,6 +124,7 @@ export interface ContentData {
   clubInfo: ClubInfo;
   hours: Hours;
   lastUpdated: string;
+  testimonials: Testimonial[];
 }
 
 // API Response types
