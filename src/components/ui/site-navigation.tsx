@@ -10,7 +10,6 @@ import { Badge } from '@/components/ui/badge';
 import { 
   Sheet, 
   SheetContent, 
-  SheetDescription, 
   SheetHeader, 
   SheetTitle, 
   SheetTrigger 
@@ -56,7 +55,7 @@ const navigationData: NavigationItem[] = [
   { title: 'Membership', href: '/membership' },
   { title: 'Events', href: '/events' },
   { title: 'News', href: '/news' },
-  { title: 'Forums', href: 'https://forum.boisegunclub.com', external: true },
+  { title: 'Forums', href: 'https://forums.boisegunclub.com', external: true },
 ];
 
 const megaMenuItems: NavigationItem[] = [
@@ -74,7 +73,7 @@ const megaMenuItems: NavigationItem[] = [
       title: 'Member Services',
       icon: Users,
       children: [
-        { label: 'Member Portal', href: '/members/portal', description: 'Access your account' },
+        { label: 'Member Portal', href: '/admin', description: 'Access your account' },
         { label: 'Payment Center', href: '/members/billing', description: 'Dues and fee payments' },
         { label: 'Member Directory', href: '/members/directory', description: 'Connect with fellow members' },
         { label: 'Volunteer Opportunities', href: '/members/volunteer', description: 'Help support the club' }

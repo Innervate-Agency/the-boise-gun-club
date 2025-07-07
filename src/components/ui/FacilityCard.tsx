@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -21,7 +21,33 @@ const FacilityCard: React.FC<FacilityCardProps> = ({
     link
 }) => {
     const ref = useRef<HTMLDivElement>(null);
-    const isInView = useInView(ref, { once: false, amount: 0.2 });
+    const [isInView, setIsInView] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsInView(true);
+                } else {
+                    setIsInView(false);
+                }
+            },
+            {
+                rootMargin: '0px',
+                threshold: 0.2,
+            }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (ref.current) {
+                observer.unobserve(ref.current);
+            }
+        };
+    }, []);
 
     return (
         <motion.div

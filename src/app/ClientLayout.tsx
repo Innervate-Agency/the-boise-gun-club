@@ -31,7 +31,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
   return (
     <ThemeProvider>
       <NavBar />
-      <main className="flex-1 w-full min-h-screen pt-[80px] md:pt-[90px]">
+      <main className="flex-1 w-full min-h-screen pt-24">
         {children}
       </main>
       <Footer />

@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -82,9 +82,47 @@ export default function MuseumPage() {
     const timelineRef = useRef<HTMLDivElement>(null);
     const artifactsRef = useRef<HTMLDivElement>(null);
     
-    const heroInView = useInView(heroRef, { once: true, amount: 0.3 });
-    const timelineInView = useInView(timelineRef, { once: true, amount: 0.2 });
-    const artifactsInView = useInView(artifactsRef, { once: true, amount: 0.2 });
+    const [heroInView, setHeroInView] = useState(false);
+    const [timelineInView, setTimelineInView] = useState(false);
+    const [artifactsInView, setArtifactsInView] = useState(false);
+
+    useEffect(() => {
+        const observerOptions = {
+            rootMargin: '0px',
+            threshold: 0.2,
+        };
+
+        const heroObserver = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setHeroInView(true);
+                heroObserver.unobserve(entry.target);
+            }
+        }, observerOptions);
+
+        const timelineObserver = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setTimelineInView(true);
+                timelineObserver.unobserve(entry.target);
+            }
+        }, observerOptions);
+
+        const artifactsObserver = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setArtifactsInView(true);
+                artifactsObserver.unobserve(entry.target);
+            }
+        }, observerOptions);
+
+        if (heroRef.current) heroObserver.observe(heroRef.current);
+        if (timelineRef.current) timelineObserver.observe(timelineRef.current);
+        if (artifactsRef.current) artifactsObserver.observe(artifactsRef.current);
+
+        return () => {
+            if (heroRef.current) heroObserver.unobserve(heroRef.current);
+            if (timelineRef.current) timelineObserver.unobserve(timelineRef.current);
+            if (artifactsRef.current) artifactsObserver.unobserve(artifactsRef.current);
+        };
+    }, []);
 
     return (
         <main className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pt-20">

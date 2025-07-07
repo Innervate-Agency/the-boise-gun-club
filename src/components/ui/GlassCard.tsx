@@ -1,6 +1,6 @@
 'use client';
-import { animate, motion, useInView } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
 
 export default function GlassCard({
     children,
@@ -14,7 +14,32 @@ export default function GlassCard({
     [key: string]: any;
 }) {
     const ref = useRef(null);
-    const inView = useInView(ref, { once: true });
+    const [inView, setInView] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setInView(true);
+                    observer.unobserve(entry.target);
+                }
+            },
+            {
+                rootMargin: '0px',
+                threshold: 0.1,
+            }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (ref.current) {
+                observer.unobserve(ref.current);
+            }
+        };
+    }, []);
 
     const cardVariants = {
         hidden: { opacity: 0, y: 20 },
@@ -32,7 +57,7 @@ export default function GlassCard({
         <motion.div
             ref={ref}
             variants={cardVariants}
-            initial={inView ? 'visible' : 'hidden'}
+            initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
             transition={{ duration: 0.6 }}
             className={`

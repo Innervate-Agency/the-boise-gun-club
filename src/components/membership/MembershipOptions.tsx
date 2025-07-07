@@ -1,6 +1,6 @@
 'use client';
 
-import { useInView } from 'react-intersection-observer';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import MembershipCard, { MembershipTier } from './MembershipCard';
 
@@ -55,10 +55,33 @@ const membershipTiers: MembershipTier[] = [
 ];
 
 const MembershipOptions = () => {
-    const { ref, inView } = useInView({
-        triggerOnce: true,
-        threshold: 0.1
-    });
+    const ref = useRef<HTMLDivElement>(null);
+    const [inView, setInView] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setInView(true);
+                    observer.unobserve(entry.target);
+                }
+            },
+            {
+                rootMargin: '0px',
+                threshold: 0.1,
+            }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (ref.current) {
+                observer.unobserve(ref.current);
+            }
+        };
+    }, []);
 
     const handleMembershipSelect = (tierId: string) => {
         // Handle membership selection (e.g., redirect to signup page)

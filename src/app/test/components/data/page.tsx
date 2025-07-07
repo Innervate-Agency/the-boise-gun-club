@@ -7,6 +7,7 @@ import { ArrowLeft, BarChart3, TrendingUp } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { BreadcrumbHero } from '@/components/ui/breadcrumb-hero';
 
 const dataComponents = [
   {
@@ -56,45 +57,21 @@ const dataComponents = [
 export default function DataDisplayPage() {
   return (
     <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
-      {/* Header */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-owyhee-green to-club-house-lawn-green">
-        <div className="absolute inset-0 bg-black/10" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="flex items-center gap-4 mb-6">
-            <Button asChild variant="ghost" className="text-white hover:bg-white/10">
-              <Link href="/test/components" className="flex items-center gap-2">
-                <ArrowLeft className="h-4 w-4" />
-                Back to Components
-              </Link>
-            </Button>
-          </div>
-          
-          <div className="flex items-center gap-6 mb-6">
-            <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
-              <BarChart3 className="h-8 w-8 text-white" />
-            </div>
-            <div>
-              <h1 className="text-4xl md:text-5xl font-heading font-black text-white mb-2">
-                Data Display
-              </h1>
-              <p className="text-xl text-white/90 font-body font-light">
-                Tables, charts, and data visualization with real-time updates
-              </p>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <Badge className="bg-white/20 text-white border border-white/30">
-              6 Components
-            </Badge>
-            <Badge className="bg-white/20 text-white border border-white/30">
-              Real-time Ready
-            </Badge>
-          </div>
-        </div>
-      </div>
+      <BreadcrumbHero
+        breadcrumbs={[
+          { label: 'Components', href: '/test/components' }
+        ]}
+        title="Data Display"
+        description="Tables, charts, and data visualization with real-time updates"
+        icon={BarChart3}
+        gradient="bg-gradient-to-r from-owyhee-green to-club-house-lawn-green"
+        badges={['6 Components', 'Real-time Ready']}
+        backLink={{
+          href: '/test/components',
+          label: 'Back to Components'
+        }}
+      />
 
-      {/* Components Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {dataComponents.map((component, index) => (
@@ -113,9 +90,7 @@ export default function DataDisplayPage() {
                     <Badge className={
                       component.status === 'stable' 
                         ? 'bg-owyhee-green/10 text-owyhee-green border border-owyhee-green/20'
-                        : component.status === 'new'
-                        ? 'bg-abe-red/10 text-abe-red border border-abe-red/20'
-                        : 'bg-idaho-sky-blue/10 text-idaho-sky-blue border border-idaho-sky-blue/20'
+                        : 'bg-abe-red/10 text-abe-red border border-abe-red/20'
                     }>
                       {component.status}
                     </Badge>
@@ -126,7 +101,6 @@ export default function DataDisplayPage() {
                 </CardHeader>
                 
                 <CardContent>
-                  {/* Variants */}
                   <div className="mb-6">
                     <h4 className="text-sm font-semibold text-muted-foreground mb-3 font-heading uppercase">
                       Variants
@@ -140,7 +114,6 @@ export default function DataDisplayPage() {
                     </div>
                   </div>
                   
-                  {/* Features */}
                   <div className="mb-6">
                     <h4 className="text-sm font-semibold text-muted-foreground mb-3 font-heading uppercase">
                       Features
@@ -164,7 +137,6 @@ export default function DataDisplayPage() {
           ))}
         </div>
         
-        {/* Action Section */}
         <div className="mt-16 text-center">
           <Card className="p-8 bg-gradient-to-r from-owyhee-green/5 to-club-house-lawn-green/5 border-0">
             <div className="max-w-2xl mx-auto">

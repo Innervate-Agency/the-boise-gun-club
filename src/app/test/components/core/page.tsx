@@ -59,7 +59,6 @@ const coreComponents = [
 export default function CoreComponentsPage() {
   return (
     <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
-      {/* Header with Breadcrumbs */}
       <BreadcrumbHero
         breadcrumbs={[
           { label: 'Components', href: '/test/components' }
@@ -75,7 +74,6 @@ export default function CoreComponentsPage() {
         }}
       />
 
-      {/* Components Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {coreComponents.map((component, index) => {
@@ -91,25 +89,21 @@ export default function CoreComponentsPage() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden rounded-xl">
-                  {/* Stripe-style gradient header with component preview */}
                   <div className={`h-32 bg-gradient-to-r ${component.color} relative overflow-hidden rounded-t-xl`}>
                     <div className="absolute inset-0 bg-black/10" />
                     
-                    {/* Status badge */}
                     <div className="absolute top-4 right-4">
-                      <Badge className="bg-white/20 text-white border border-white/30">
+                      <Badge className="bg-white/20 text-white border-white/30">
                         {component.status}
                       </Badge>
                     </div>
                     
-                    {/* Icon */}
                     <div className="absolute top-4 left-4">
                       <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
                         <IconComponent className="h-4 w-4 text-white" />
                       </div>
                     </div>
                     
-                    {/* Component Preview */}
                     <div className="absolute bottom-4 left-4 right-4">
                       {component.name === 'Button' && (
                         <Button size="sm" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30">
@@ -150,7 +144,6 @@ export default function CoreComponentsPage() {
                   </CardHeader>
                   
                   <CardContent className="pt-0">
-                    {/* Variants */}
                     <div className="mb-6">
                       <h4 className="text-sm font-semibold text-muted-foreground mb-3 font-heading uppercase">
                         Variants
@@ -164,7 +157,6 @@ export default function CoreComponentsPage() {
                       </div>
                     </div>
                     
-                    {/* Features */}
                     <div className="mb-6">
                       <h4 className="text-sm font-semibold text-muted-foreground mb-3 font-heading uppercase">
                         Features
@@ -191,7 +183,6 @@ export default function CoreComponentsPage() {
           })}
         </div>
         
-        {/* Action Section */}
         <div className="mt-16 text-center">
           <Card className="p-8 bg-accent-primary/5 border-0">
             <div className="max-w-2xl mx-auto">

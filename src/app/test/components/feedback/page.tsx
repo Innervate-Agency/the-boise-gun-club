@@ -7,13 +7,15 @@ import { ArrowLeft, Activity, Loader2, AlertTriangle, CheckCircle, Info } from '
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { BreadcrumbHero } from '@/components/ui/breadcrumb-hero';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 const feedbackComponents = [
   {
     name: 'Loading States',
     description: 'Skeleton loaders, spinners, and progress indicators for async operations',
     status: 'stable',
-    color: 'from-[#F23005] to-[#8C394B]',
+    color: 'from-abe-red to-scoring-bench-red',
     icon: 'Loader2',
     variants: ['Spinner', 'Skeleton', 'Progress Bar', 'Pulse'],
     features: ['Multiple Sizes', 'Custom Colors', 'Accessibility', 'Smooth Animation'],
@@ -23,7 +25,7 @@ const feedbackComponents = [
     name: 'Alert Messages',
     description: 'Contextual feedback messages for success, error, warning, and info states',
     status: 'stable',
-    color: 'from-[#6f7822] to-[#3F6331]',
+    color: 'from-owyhee-green to-club-house-lawn-green',
     icon: 'AlertTriangle',
     variants: ['Success', 'Error', 'Warning', 'Info'],
     features: ['Auto Dismiss', 'Manual Close', 'Rich Content', 'Icon Support'],
@@ -33,7 +35,7 @@ const feedbackComponents = [
     name: 'Toast Notifications',
     description: 'Non-intrusive notifications that appear temporarily to provide feedback',
     status: 'stable',
-    color: 'from-[#5198cd] to-[#4982A6]',
+    color: 'from-idaho-sky-blue to-snakeriver-blue',
     icon: 'CheckCircle',
     variants: ['Top Right', 'Bottom Right', 'Center', 'Custom Position'],
     features: ['Auto Dismiss', 'Action Buttons', 'Progress Bar', 'Stack Management'],
@@ -43,7 +45,7 @@ const feedbackComponents = [
     name: 'Modal Dialogs',
     description: 'Overlay windows for confirmations, forms, and detailed content',
     status: 'stable',
-    color: 'from-[#F2CB05] to-[#F28705]',
+    color: 'from-leonard-yellow to-lahoma-orange',
     icon: 'Info',
     variants: ['Confirmation', 'Form Modal', 'Full Screen', 'Drawer'],
     features: ['Focus Management', 'Escape Handling', 'Backdrop Click', 'Responsive'],
@@ -53,46 +55,21 @@ const feedbackComponents = [
 
 export default function FeedbackPage() {
   return (
-    <div className="min-h-screen bg-[var(--cloudy-day-white)] dark:bg-[var(--kent-slate-gray)]">
-      {/* Header */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#F23005] to-[#8C394B]">
-        <div className="absolute inset-0 bg-black/10" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="flex items-center gap-4 mb-6">
-            <Button asChild variant="ghost" className="text-white hover:bg-white/10">
-              <Link href="/test/components" className="flex items-center gap-2">
-                <ArrowLeft className="h-4 w-4" />
-                Back to Components
-              </Link>
-            </Button>
-          </div>
-          
-          <div className="flex items-center gap-6 mb-6">
-            <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
-              <Activity className="h-8 w-8 text-white" />
-            </div>
-            <div>
-              <h1 className="text-4xl md:text-5xl font-['Rajdhani'] font-black text-white mb-2">
-                Feedback
-              </h1>
-              <p className="text-xl text-white/90 font-['Noto Sans'] font-light">
-                Loading states, alerts, and user feedback components
-              </p>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <Badge className="bg-white/20 text-white border border-white/30">
-              9 Components
-            </Badge>
-            <Badge className="bg-white/20 text-white border border-white/30">
-              UX Optimized
-            </Badge>
-          </div>
-        </div>
-      </div>
-
-      {/* Components Grid */}
+    <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
+      <BreadcrumbHero
+        breadcrumbs={[
+          { label: 'Components', href: '/test/components' }
+        ]}
+        title="Feedback"
+        description="Loading states, alerts, and user feedback components"
+        icon={Activity}
+        gradient="bg-gradient-to-r from-abe-red to-scoring-bench-red"
+        badges={['9 Components', 'UX Optimized']}
+        backLink={{
+          href: '/test/components',
+          label: 'Back to Components'
+        }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {feedbackComponents.map((component, index) => {
@@ -108,25 +85,21 @@ export default function FeedbackPage() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
-                  {/* Stripe-style gradient header with component preview */}
                   <div className={`h-32 bg-gradient-to-r ${component.color} relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-black/10" />
                     
-                    {/* Status badge */}
                     <div className="absolute top-4 right-4">
-                      <Badge className="bg-white/20 text-white border border-white/30">
+                      <Badge className="bg-white/20 text-white border-white/30">
                         {component.status}
                       </Badge>
                     </div>
                     
-                    {/* Icon */}
                     <div className="absolute top-4 left-4">
                       <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
                         <IconComponent className={`h-4 w-4 text-white ${component.icon === 'Loader2' ? 'animate-spin' : ''}`} />
                       </div>
                     </div>
                     
-                    {/* Component Preview */}
                     <div className="absolute bottom-4 left-4 right-4">
                       {component.name === 'Loading States' && (
                         <div className="flex items-center gap-2">
@@ -158,38 +131,36 @@ export default function FeedbackPage() {
                   </div>
                   
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-2xl font-['Rajdhani'] font-bold text-slate-800 dark:text-white group-hover:text-[var(--lahoma-orange)] transition-colors">
+                    <CardTitle className="text-2xl font-heading font-bold text-card-foreground group-hover:text-lahoma-orange transition-colors">
                       {component.name}
                     </CardTitle>
-                    <CardDescription className="text-slate-600 dark:text-[var(--don-gray)] font-['Noto Sans'] leading-relaxed">
+                    <CardDescription className="text-muted-foreground font-body leading-relaxed">
                       {component.description}
                     </CardDescription>
                   </CardHeader>
                   
                   <CardContent className="pt-0">
-                    {/* Variants */}
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-slate-700 dark:text-white mb-3 font-['Rajdhani'] uppercase">
+                      <h4 className="text-sm font-semibold text-muted-foreground mb-3 font-heading uppercase">
                         Variants
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {component.variants.map((variant) => (
-                          <Badge key={variant} variant="outline" className="text-xs border-slate-300 text-slate-600">
+                          <Badge key={variant} variant="outline" className="text-xs">
                             {variant}
                           </Badge>
                         ))}
                       </div>
                     </div>
                     
-                    {/* Features */}
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-slate-700 dark:text-white mb-3 font-['Rajdhani'] uppercase">
+                      <h4 className="text-sm font-semibold text-muted-foreground mb-3 font-heading uppercase">
                         Features
                       </h4>
                       <div className="grid grid-cols-2 gap-2">
                         {component.features.map((feature) => (
-                          <div key={feature} className="flex items-center gap-2 text-sm text-slate-600 dark:text-[var(--don-gray)]">
-                            <Activity className="w-3 h-3 text-[#F23005]" />
+                          <div key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <Activity className="w-3 h-3 text-abe-red" />
                             {feature}
                           </div>
                         ))}
@@ -206,20 +177,19 @@ export default function FeedbackPage() {
           })}
         </div>
         
-        {/* Action Section */}
         <div className="mt-16 text-center">
-          <Card className="p-8 bg-gradient-to-r from-[#F23005]/5 to-[#8C394B]/5 border-0">
+          <Card className="p-8 bg-gradient-to-r from-abe-red/5 to-scoring-bench-red/5 border-0">
             <div className="max-w-2xl mx-auto">
-              <Activity className="h-12 w-12 text-[#F23005] mx-auto mb-4" />
-              <h3 className="text-2xl font-['Rajdhani'] font-bold text-slate-800 dark:text-white mb-4">
+              <Activity className="h-12 w-12 text-abe-red mx-auto mb-4" />
+              <h3 className="text-2xl font-heading font-bold text-text-primary mb-4">
                 Communicate Clearly
               </h3>
-              <p className="text-slate-600 dark:text-[var(--don-gray)] font-['Noto Sans'] mb-6">
+              <p className="text-muted-foreground font-body mb-6">
                 Keep users informed with clear feedback components that enhance the 
                 overall experience and reduce uncertainty.
               </p>
               <div className="flex gap-4 justify-center">
-                <Button asChild className="bg-[#F23005] hover:bg-[#8C394B] text-white">
+                <Button asChild className="bg-abe-red hover:bg-scoring-bench-red text-white">
                   <Link href="http://localhost:6006" target="_blank">
                     View in Storybook
                   </Link>
