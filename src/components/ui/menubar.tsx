@@ -2,21 +2,52 @@
 
 import * as React from "react"
 import * as MenubarPrimitive from "@radix-ui/react-menubar"
-import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
+import { CheckIcon, ChevronRightIcon, CircleIcon, Settings, Trophy, Calendar, Target } from "lucide-react"
+import { motion } from "framer-motion"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
+const menubarVariants = cva(
+  "flex items-center gap-1 p-1 transition-all duration-300",
+  {
+    variants: {
+      variant: {
+        default: "bg-background rounded-md border h-9 shadow-xs",
+        premium: "bg-gradient-to-r from-[#F2CB05]/10 to-[#F28705]/10 backdrop-blur-sm border border-[#F2CB05]/20 rounded-xl h-10 shadow-lg",
+        glass: "bg-white/5 backdrop-blur-md border border-white/10 rounded-xl h-10 shadow-xl",
+        tournament: "bg-gradient-to-r from-slate-900/90 to-slate-800/90 backdrop-blur-sm border border-[#F2CB05]/30 rounded-xl h-12 shadow-2xl",
+        minimal: "bg-transparent border-b border-border h-auto rounded-none p-0",
+      },
+      size: {
+        sm: "h-8 gap-0.5 p-0.5",
+        md: "h-9 gap-1 p-1",
+        lg: "h-10 gap-1.5 p-1.5",
+        xl: "h-12 gap-2 p-2",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "md",
+    },
+  }
+)
+
+interface MenubarProps extends React.ComponentProps<typeof MenubarPrimitive.Root> {
+  variant?: VariantProps<typeof menubarVariants>["variant"]
+  size?: VariantProps<typeof menubarVariants>["size"]
+}
+
 function Menubar({
   className,
+  variant = "default",
+  size = "md",
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Root>) {
+}: MenubarProps) {
   return (
     <MenubarPrimitive.Root
       data-slot="menubar"
-      className={cn(
-        "bg-background flex h-9 items-center gap-1 rounded-md border p-1 shadow-xs",
-        className
-      )}
+      className={cn(menubarVariants({ variant, size }), className)}
       {...props}
     />
   )
@@ -48,20 +79,71 @@ function MenubarRadioGroup({
   )
 }
 
+const menubarTriggerVariants = cva(
+  "flex items-center font-medium outline-hidden select-none transition-all duration-300",
+  {
+    variants: {
+      variant: {
+        default: "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground rounded-sm px-2 py-1 text-sm",
+        premium: "focus:bg-gradient-to-r focus:from-[#F2CB05]/20 focus:to-[#F28705]/20 data-[state=open]:bg-gradient-to-r data-[state=open]:from-[#F2CB05] data-[state=open]:to-[#F28705] data-[state=open]:text-black hover:bg-white/10 rounded-lg px-3 py-1.5 text-sm font-semibold transform hover:scale-105 active:scale-95",
+        glass: "focus:bg-white/20 data-[state=open]:bg-white/30 data-[state=open]:backdrop-blur-sm hover:bg-white/10 rounded-lg px-3 py-1.5 text-sm font-medium transform hover:scale-105 active:scale-95",
+        tournament: "focus:bg-gradient-to-r focus:from-[#F2CB05]/30 focus:to-[#F28705]/30 data-[state=open]:bg-gradient-to-r data-[state=open]:from-[#F2CB05] data-[state=open]:to-[#F28705] data-[state=open]:text-black hover:bg-white/5 rounded-lg px-4 py-2 text-sm font-bold transform hover:scale-105 active:scale-95",
+        minimal: "focus:text-[#F2CB05] data-[state=open]:text-[#F2CB05] data-[state=open]:border-b-2 data-[state=open]:border-[#F2CB05] hover:text-[#F28705] px-3 py-1.5 text-sm font-medium rounded-none",
+      },
+      size: {
+        sm: "px-1.5 py-0.5 text-xs",
+        md: "px-2 py-1 text-sm",
+        lg: "px-3 py-1.5 text-base",
+        xl: "px-4 py-2 text-lg",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "md",
+    },
+  }
+)
+
+interface MenubarTriggerProps extends React.ComponentProps<typeof MenubarPrimitive.Trigger> {
+  variant?: VariantProps<typeof menubarTriggerVariants>["variant"]
+  size?: VariantProps<typeof menubarTriggerVariants>["size"]
+}
+
 function MenubarTrigger({
   className,
+  variant = "default",
+  size = "md",
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Trigger>) {
+}: MenubarTriggerProps) {
   return (
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
-      className={cn(
-        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
-        className
-      )}
+      className={cn(menubarTriggerVariants({ variant, size }), className)}
       {...props}
     />
   )
+}
+
+const menubarContentVariants = cva(
+  "z-50 min-w-[12rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden border p-1 data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+  {
+    variants: {
+      variant: {
+        default: "bg-popover text-popover-foreground rounded-md shadow-md",
+        premium: "bg-gradient-to-b from-white/95 to-white/90 dark:from-slate-900/95 dark:to-slate-800/90 backdrop-blur-md border-[#F2CB05]/20 rounded-xl shadow-2xl",
+        glass: "bg-white/10 backdrop-blur-md border-white/20 rounded-xl shadow-2xl text-white",
+        tournament: "bg-gradient-to-b from-slate-900/95 to-slate-800/95 backdrop-blur-md border-[#F2CB05]/30 rounded-xl shadow-2xl text-white",
+        minimal: "bg-popover text-popover-foreground rounded-md shadow-md",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+interface MenubarContentProps extends React.ComponentProps<typeof MenubarPrimitive.Content> {
+  variant?: VariantProps<typeof menubarContentVariants>["variant"]
 }
 
 function MenubarContent({
@@ -69,8 +151,9 @@ function MenubarContent({
   align = "start",
   alignOffset = -4,
   sideOffset = 8,
+  variant = "default",
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Content>) {
+}: MenubarContentProps) {
   return (
     <MenubarPortal>
       <MenubarPrimitive.Content
@@ -78,14 +161,34 @@ function MenubarContent({
         align={align}
         alignOffset={alignOffset}
         sideOffset={sideOffset}
-        className={cn(
-          "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[12rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-md",
-          className
-        )}
+        className={cn(menubarContentVariants({ variant }), className)}
         {...props}
       />
     </MenubarPortal>
   )
+}
+
+const menubarItemVariants = cva(
+  "relative flex cursor-default items-center gap-2 outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 transition-all duration-300",
+  {
+    variants: {
+      variant: {
+        default: "focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground rounded-sm px-2 py-1.5 text-sm",
+        premium: "focus:bg-gradient-to-r focus:from-[#F2CB05]/20 focus:to-[#F28705]/20 hover:bg-white/10 rounded-lg px-3 py-2 text-sm font-medium transform hover:scale-105 active:scale-95",
+        glass: "focus:bg-white/20 hover:bg-white/10 rounded-lg px-3 py-2 text-sm font-medium transform hover:scale-105 active:scale-95",
+        tournament: "focus:bg-gradient-to-r focus:from-[#F2CB05]/30 focus:to-[#F28705]/30 hover:bg-white/5 rounded-lg px-3 py-2 text-sm font-semibold transform hover:scale-105 active:scale-95",
+        destructive: "text-destructive focus:bg-destructive/10 dark:focus:bg-destructive/20 focus:text-destructive *:[svg]:!text-destructive rounded-sm px-2 py-1.5 text-sm",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+interface MenubarItemProps extends React.ComponentProps<typeof MenubarPrimitive.Item> {
+  inset?: boolean
+  variant?: VariantProps<typeof menubarItemVariants>["variant"]
 }
 
 function MenubarItem({
@@ -93,19 +196,13 @@ function MenubarItem({
   inset,
   variant = "default",
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Item> & {
-  inset?: boolean
-  variant?: "default" | "destructive"
-}) {
+}: MenubarItemProps) {
   return (
     <MenubarPrimitive.Item
       data-slot="menubar-item"
       data-inset={inset}
       data-variant={variant}
-      className={cn(
-        "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        className
-      )}
+      className={cn(menubarItemVariants({ variant }), className)}
       {...props}
     />
   )
@@ -256,6 +353,70 @@ function MenubarSubContent({
   )
 }
 
+// Gun Club Preset Components
+interface AdminMenubarProps extends MenubarProps {
+  section?: "tournament" | "schedule" | "membership" | "settings"
+}
+
+function AdminMenubar({ section = "tournament", ...props }: AdminMenubarProps) {
+  const getVariant = () => {
+    switch (section) {
+      case "tournament": return "tournament"
+      case "schedule": return "premium"
+      case "membership": return "glass"
+      case "settings": return "minimal"
+      default: return "default"
+    }
+  }
+
+  return <Menubar variant={getVariant()} {...props} />
+}
+
+function TournamentMenubar(props: MenubarProps) {
+  return <Menubar variant="tournament" size="lg" {...props} />
+}
+
+function ScheduleMenubar(props: MenubarProps) {
+  return <Menubar variant="premium" size="md" {...props} />
+}
+
+// Preset menu items with icons
+function SettingsMenuItem({ children, ...props }: MenubarItemProps) {
+  return (
+    <MenubarItem {...props}>
+      <Settings className="size-4" />
+      {children}
+    </MenubarItem>
+  )
+}
+
+function TournamentMenuItem({ children, ...props }: MenubarItemProps) {
+  return (
+    <MenubarItem {...props}>
+      <Trophy className="size-4" />
+      {children}
+    </MenubarItem>
+  )
+}
+
+function ScheduleMenuItem({ children, ...props }: MenubarItemProps) {
+  return (
+    <MenubarItem {...props}>
+      <Calendar className="size-4" />
+      {children}
+    </MenubarItem>
+  )
+}
+
+function RangeMenuItem({ children, ...props }: MenubarItemProps) {
+  return (
+    <MenubarItem {...props}>
+      <Target className="size-4" />
+      {children}
+    </MenubarItem>
+  )
+}
+
 export {
   Menubar,
   MenubarPortal,
@@ -273,4 +434,15 @@ export {
   MenubarSub,
   MenubarSubTrigger,
   MenubarSubContent,
+  AdminMenubar,
+  TournamentMenubar,
+  ScheduleMenubar,
+  SettingsMenuItem,
+  TournamentMenuItem,
+  ScheduleMenuItem,
+  RangeMenuItem,
+  menubarVariants,
+  menubarTriggerVariants,
+  menubarContentVariants,
+  menubarItemVariants,
 }

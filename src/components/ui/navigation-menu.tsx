@@ -1,45 +1,85 @@
 import * as React from "react"
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
-import { cva } from "class-variance-authority"
-import { ChevronDownIcon } from "lucide-react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { ChevronDownIcon, Home, Trophy, Calendar, Target, Users, Shield } from "lucide-react"
+import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
+
+const navigationMenuVariants = cva(
+  "group/navigation-menu relative flex max-w-max flex-1 items-center justify-center transition-all duration-300",
+  {
+    variants: {
+      variant: {
+        default: "",
+        premium: "bg-gradient-to-r from-[#F2CB05]/5 to-[#F28705]/5 backdrop-blur-sm rounded-xl p-2 shadow-lg",
+        glass: "bg-white/5 backdrop-blur-md rounded-xl p-2 shadow-xl",
+        tournament: "bg-gradient-to-r from-slate-900/50 to-slate-800/50 backdrop-blur-sm rounded-xl p-3 shadow-2xl",
+        minimal: "border-b border-border pb-2",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+interface NavigationMenuProps extends React.ComponentProps<typeof NavigationMenuPrimitive.Root> {
+  viewport?: boolean
+  variant?: VariantProps<typeof navigationMenuVariants>["variant"]
+}
 
 function NavigationMenu({
   className,
   children,
   viewport = true,
+  variant = "default",
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Root> & {
-  viewport?: boolean
-}) {
+}: NavigationMenuProps) {
   return (
     <NavigationMenuPrimitive.Root
       data-slot="navigation-menu"
       data-viewport={viewport}
-      className={cn(
-        "group/navigation-menu relative flex max-w-max flex-1 items-center justify-center",
-        className
-      )}
+      className={cn(navigationMenuVariants({ variant }), className)}
       {...props}
     >
       {children}
-      {viewport && <NavigationMenuViewport />}
+      {viewport && <NavigationMenuViewport variant={variant} />}
     </NavigationMenuPrimitive.Root>
   )
 }
 
+const navigationMenuListVariants = cva(
+  "group flex flex-1 list-none items-center justify-center transition-all duration-300",
+  {
+    variants: {
+      variant: {
+        default: "gap-1",
+        premium: "gap-2",
+        glass: "gap-2",
+        tournament: "gap-3",
+        minimal: "gap-1",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+interface NavigationMenuListProps extends React.ComponentProps<typeof NavigationMenuPrimitive.List> {
+  variant?: VariantProps<typeof navigationMenuListVariants>["variant"]
+}
+
 function NavigationMenuList({
   className,
+  variant = "default",
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.List>) {
+}: NavigationMenuListProps) {
   return (
     <NavigationMenuPrimitive.List
       data-slot="navigation-menu-list"
-      className={cn(
-        "group flex flex-1 list-none items-center justify-center gap-1",
-        className
-      )}
+      className={cn(navigationMenuListVariants({ variant }), className)}
       {...props}
     />
   )
@@ -59,18 +99,37 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1"
+  "group inline-flex w-max items-center justify-center font-medium disabled:pointer-events-none disabled:opacity-50 outline-none transition-all duration-300",
+  {
+    variants: {
+      variant: {
+        default: "h-9 rounded-md bg-background px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:outline-1",
+        premium: "h-10 rounded-lg px-5 py-2.5 text-sm font-semibold hover:bg-gradient-to-r hover:from-[#F2CB05]/20 hover:to-[#F28705]/20 data-[state=open]:bg-gradient-to-r data-[state=open]:from-[#F2CB05] data-[state=open]:to-[#F28705] data-[state=open]:text-black transform hover:scale-105 active:scale-95",
+        glass: "h-10 rounded-lg px-5 py-2.5 text-sm font-medium hover:bg-white/20 data-[state=open]:bg-white/30 data-[state=open]:backdrop-blur-sm transform hover:scale-105 active:scale-95",
+        tournament: "h-12 rounded-lg px-6 py-3 text-sm font-bold hover:bg-gradient-to-r hover:from-[#F2CB05]/30 hover:to-[#F28705]/30 data-[state=open]:bg-gradient-to-r data-[state=open]:from-[#F2CB05] data-[state=open]:to-[#F28705] data-[state=open]:text-black transform hover:scale-105 active:scale-95",
+        minimal: "h-9 rounded-none px-4 py-2 text-sm hover:text-[#F2CB05] data-[state=open]:text-[#F2CB05] data-[state=open]:border-b-2 data-[state=open]:border-[#F2CB05]",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
 )
+
+interface NavigationMenuTriggerProps extends React.ComponentProps<typeof NavigationMenuPrimitive.Trigger> {
+  variant?: VariantProps<typeof navigationMenuTriggerStyle>["variant"]
+}
 
 function NavigationMenuTrigger({
   className,
   children,
+  variant = "default",
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Trigger>) {
+}: NavigationMenuTriggerProps) {
   return (
     <NavigationMenuPrimitive.Trigger
       data-slot="navigation-menu-trigger"
-      className={cn(navigationMenuTriggerStyle(), "group", className)}
+      className={cn(navigationMenuTriggerStyle({ variant }), "group", className)}
       {...props}
     >
       {children}{" "}
@@ -99,10 +158,33 @@ function NavigationMenuContent({
   )
 }
 
+const navigationMenuViewportVariants = cva(
+  "origin-top-center data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden border shadow md:w-[var(--radix-navigation-menu-viewport-width)]",
+  {
+    variants: {
+      variant: {
+        default: "bg-popover text-popover-foreground rounded-md",
+        premium: "bg-gradient-to-b from-white/95 to-white/90 dark:from-slate-900/95 dark:to-slate-800/90 backdrop-blur-md border-[#F2CB05]/20 rounded-xl shadow-2xl",
+        glass: "bg-white/10 backdrop-blur-md border-white/20 rounded-xl shadow-2xl text-white",
+        tournament: "bg-gradient-to-b from-slate-900/95 to-slate-800/95 backdrop-blur-md border-[#F2CB05]/30 rounded-xl shadow-2xl text-white",
+        minimal: "bg-popover text-popover-foreground rounded-md",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+interface NavigationMenuViewportProps extends React.ComponentProps<typeof NavigationMenuPrimitive.Viewport> {
+  variant?: VariantProps<typeof navigationMenuViewportVariants>["variant"]
+}
+
 function NavigationMenuViewport({
   className,
+  variant = "default",
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>) {
+}: NavigationMenuViewportProps) {
   return (
     <div
       className={cn(
@@ -111,27 +193,44 @@ function NavigationMenuViewport({
     >
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
-        className={cn(
-          "origin-top-center bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow md:w-[var(--radix-navigation-menu-viewport-width)]",
-          className
-        )}
+        className={cn(navigationMenuViewportVariants({ variant }), className)}
         {...props}
       />
     </div>
   )
 }
 
+const navigationMenuLinkVariants = cva(
+  "flex flex-col gap-1 text-sm transition-all outline-none [&_svg:not([class*='size-'])]:size-4",
+  {
+    variants: {
+      variant: {
+        default: "data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground rounded-sm p-2 focus-visible:ring-[3px] focus-visible:outline-1",
+        premium: "data-[active=true]:bg-gradient-to-r data-[active=true]:from-[#F2CB05]/20 data-[active=true]:to-[#F28705]/20 hover:bg-gradient-to-r hover:from-[#F2CB05]/10 hover:to-[#F28705]/10 focus:bg-gradient-to-r focus:from-[#F2CB05]/20 focus:to-[#F28705]/20 rounded-lg p-3 font-medium transform hover:scale-105 active:scale-95",
+        glass: "data-[active=true]:bg-white/30 hover:bg-white/20 focus:bg-white/30 rounded-lg p-3 font-medium transform hover:scale-105 active:scale-95",
+        tournament: "data-[active=true]:bg-gradient-to-r data-[active=true]:from-[#F2CB05]/30 data-[active=true]:to-[#F28705]/30 hover:bg-gradient-to-r hover:from-[#F2CB05]/20 hover:to-[#F28705]/20 focus:bg-gradient-to-r focus:from-[#F2CB05]/30 focus:to-[#F28705]/30 rounded-lg p-3 font-semibold transform hover:scale-105 active:scale-95",
+        minimal: "data-[active=true]:text-[#F2CB05] hover:text-[#F2CB05] focus:text-[#F2CB05] rounded-none p-2",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
+interface NavigationMenuLinkProps extends React.ComponentProps<typeof NavigationMenuPrimitive.Link> {
+  variant?: VariantProps<typeof navigationMenuLinkVariants>["variant"]
+}
+
 function NavigationMenuLink({
   className,
+  variant = "default",
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Link>) {
+}: NavigationMenuLinkProps) {
   return (
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
-      className={cn(
-        "data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
-        className
-      )}
+      className={cn(navigationMenuLinkVariants({ variant }), className)}
       {...props}
     />
   )
@@ -155,6 +254,92 @@ function NavigationMenuIndicator({
   )
 }
 
+// Gun Club Preset Components
+interface SiteNavigationProps extends NavigationMenuProps {
+  section?: "main" | "admin" | "tournament" | "member"
+}
+
+function SiteNavigation({ section = "main", ...props }: SiteNavigationProps) {
+  const getVariant = () => {
+    switch (section) {
+      case "main": return "default"
+      case "admin": return "tournament"
+      case "tournament": return "premium"
+      case "member": return "glass"
+      default: return "default"
+    }
+  }
+
+  return <NavigationMenu variant={getVariant()} {...props} />
+}
+
+function MainNavigation(props: NavigationMenuProps) {
+  return <NavigationMenu variant="default" {...props} />
+}
+
+function AdminNavigation(props: NavigationMenuProps) {
+  return <NavigationMenu variant="tournament" {...props} />
+}
+
+function TournamentNavigation(props: NavigationMenuProps) {
+  return <NavigationMenu variant="premium" {...props} />
+}
+
+// Preset navigation items with icons
+function HomeNavigationItem({ children, ...props }: React.ComponentProps<"li">) {
+  return (
+    <NavigationMenuItem {...props}>
+      <Home className="size-4" />
+      {children}
+    </NavigationMenuItem>
+  )
+}
+
+function TournamentNavigationItem({ children, ...props }: React.ComponentProps<"li">) {
+  return (
+    <NavigationMenuItem {...props}>
+      <Trophy className="size-4" />
+      {children}
+    </NavigationMenuItem>
+  )
+}
+
+function ScheduleNavigationItem({ children, ...props }: React.ComponentProps<"li">) {
+  return (
+    <NavigationMenuItem {...props}>
+      <Calendar className="size-4" />
+      {children}
+    </NavigationMenuItem>
+  )
+}
+
+function MembershipNavigationItem({ children, ...props }: React.ComponentProps<"li">) {
+  return (
+    <NavigationMenuItem {...props}>
+      <Users className="size-4" />
+      {children}
+    </NavigationMenuItem>
+  )
+}
+
+function SafetyNavigationItem({ children, ...props }: React.ComponentProps<"li">) {
+  return (
+    <NavigationMenuItem {...props}>
+      <Shield className="size-4" />
+      {children}
+    </NavigationMenuItem>
+  )
+}
+
+function RangeNavigationItem({ children, ...props }: React.ComponentProps<"li">) {
+  return (
+    <NavigationMenuItem {...props}>
+      <Target className="size-4" />
+      {children}
+    </NavigationMenuItem>
+  )
+}
+
 export {
   NavigationMenu,
   NavigationMenuList,
@@ -164,5 +349,19 @@ export {
   NavigationMenuLink,
   NavigationMenuIndicator,
   NavigationMenuViewport,
+  SiteNavigation,
+  MainNavigation,
+  AdminNavigation,
+  TournamentNavigation,
+  HomeNavigationItem,
+  TournamentNavigationItem,
+  ScheduleNavigationItem,
+  MembershipNavigationItem,
+  SafetyNavigationItem,
+  RangeNavigationItem,
   navigationMenuTriggerStyle,
+  navigationMenuVariants,
+  navigationMenuListVariants,
+  navigationMenuViewportVariants,
+  navigationMenuLinkVariants,
 }
