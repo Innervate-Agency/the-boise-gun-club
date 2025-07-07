@@ -15,7 +15,7 @@ const coreComponents = [
     description: 'Interactive button component with multiple variants and states',
     href: '/test/components/buttons',
     status: 'stable',
-    color: 'from-[#F28705] to-[#F25C05]',
+    color: 'from-lahoma-orange to-abe-red',
     icon: 'MousePointer',
     variants: ['Primary', 'Secondary', 'Ghost', 'Destructive'],
     features: ['Accessibility', 'Loading States', 'Icon Support', 'Size Variants'],
@@ -26,7 +26,7 @@ const coreComponents = [
     description: 'Flexible container component for grouping related content',
     href: '/test/components/cards', 
     status: 'stable',
-    color: 'from-[#5198cd] to-[#4982A6]',
+    color: 'from-idaho-sky-blue to-snakeriver-blue',
     icon: 'Layers',
     variants: ['Default', 'Elevated', 'Outline', 'Filled'],
     features: ['Header/Footer', 'Nested Content', 'Hover Effects', 'Shadow Variants'],
@@ -37,7 +37,7 @@ const coreComponents = [
     description: 'Small status and labeling component for UI emphasis',
     href: '/test/components/badges',
     status: 'stable',
-    color: 'from-[#6f7822] to-[#3F6331]',
+    color: 'from-owyhee-green to-club-house-lawn-green',
     icon: 'Shield', 
     variants: ['Default', 'Secondary', 'Destructive', 'Outline'],
     features: ['Status Colors', 'Size Options', 'Icon Support', 'Custom Styling'],
@@ -48,7 +48,7 @@ const coreComponents = [
     description: 'Form input fields with validation and accessibility',
     href: '/test/components/forms',
     status: 'stable',
-    color: 'from-[#F2CB05] to-[#F28705]',
+    color: 'from-leonard-yellow to-lahoma-orange',
     icon: 'Edit3',
     variants: ['Text', 'Email', 'Password', 'Search'],
     features: ['Validation', 'Placeholder', 'Disabled State', 'Error Handling'],
@@ -58,7 +58,7 @@ const coreComponents = [
 
 export default function CoreComponentsPage() {
   return (
-    <div className="min-h-screen bg-[var(--cloudy-day-white)] dark:bg-[var(--kent-slate-gray)]">
+    <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
       {/* Header with Breadcrumbs */}
       <BreadcrumbHero
         breadcrumbs={[
@@ -67,7 +67,7 @@ export default function CoreComponentsPage() {
         title="Core Components"
         description="Essential UI building blocks with Stripe-inspired design"
         icon={Layers}
-        gradient="bg-gradient-to-r from-[var(--lahoma-orange)] to-[var(--abe-red)]"
+        gradient="bg-gradient-to-r from-lahoma-orange to-abe-red"
         badges={['12 Components', 'Production Ready']}
         backLink={{
           href: '/test/components',
@@ -141,10 +141,10 @@ export default function CoreComponentsPage() {
                   </div>
                   
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-2xl font-heading font-bold text-gray-900 dark:text-white group-hover:text-accent-primary transition-colors">
+                    <CardTitle className="text-2xl font-heading font-bold text-card-foreground group-hover:text-accent-primary transition-colors">
                       {component.name}
                     </CardTitle>
-                    <CardDescription className="text-gray-600 dark:text-gray-300 font-body leading-relaxed">
+                    <CardDescription className="text-muted-foreground font-body leading-relaxed">
                       {component.description}
                     </CardDescription>
                   </CardHeader>
@@ -152,7 +152,7 @@ export default function CoreComponentsPage() {
                   <CardContent className="pt-0">
                     {/* Variants */}
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-gray-700 dark:text-white mb-3 font-heading uppercase">
+                      <h4 className="text-sm font-semibold text-muted-foreground mb-3 font-heading uppercase">
                         Variants
                       </h4>
                       <div className="flex flex-wrap gap-2">
@@ -166,12 +166,12 @@ export default function CoreComponentsPage() {
                     
                     {/* Features */}
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-gray-700 dark:text-white mb-3 font-heading uppercase">
+                      <h4 className="text-sm font-semibold text-muted-foreground mb-3 font-heading uppercase">
                         Features
                       </h4>
                       <div className="grid grid-cols-2 gap-2">
                         {component.features.map((feature) => (
-                          <div key={feature} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                          <div key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
                             <div className="w-1.5 h-1.5 bg-accent-primary rounded-full" />
                             {feature}
                           </div>
@@ -196,10 +196,10 @@ export default function CoreComponentsPage() {
           <Card className="p-8 bg-accent-primary/5 border-0">
             <div className="max-w-2xl mx-auto">
               <Target className="h-12 w-12 text-accent-primary mx-auto mb-4" />
-              <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-4">
+              <h3 className="text-2xl font-heading font-bold text-text-primary mb-4">
                 Ready to Build Something Amazing?
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 font-body mb-6">
+              <p className="text-muted-foreground font-body mb-6">
                 These core components form the foundation of every great user interface. 
                 Start building your next project with confidence.
               </p>
