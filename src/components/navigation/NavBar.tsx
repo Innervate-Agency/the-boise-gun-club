@@ -9,12 +9,13 @@ import Image from 'next/image';
 import MegaMenu from './MegaMenu';
 import MobileMenu from './MobileMenu';
 
-// Clean navigation structure from GOLD_EXTRACTED.md
+// Clean navigation structure - Home, Club Info, Membership, Forums, Events
 const links = [
     { href: '/', label: 'Home' },
     { href: '/club-info', label: 'Club Info' },
     { href: '/membership', label: 'Membership' },
-    { href: '/forum', label: 'Forums' }
+    { href: '/forum', label: 'Forums' },
+    { href: '/events', label: 'Events' }
 ];
 
 export default function NavBar() {

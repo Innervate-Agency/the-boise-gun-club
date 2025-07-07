@@ -55,9 +55,9 @@ const dataComponents = [
 
 export default function DataDisplayPage() {
   return (
-    <div className="min-h-screen bg-[var(--cloudy-day-white)] dark:bg-[var(--kent-slate-gray)]">
+    <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
       {/* Header */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#6f7822] to-[#3F6331]">
+      <div className="relative overflow-hidden bg-gradient-to-r from-owyhee-green to-club-house-lawn-green">
         <div className="absolute inset-0 bg-black/10" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex items-center gap-4 mb-6">
@@ -74,10 +74,10 @@ export default function DataDisplayPage() {
               <BarChart3 className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h1 className="text-4xl md:text-5xl font-['Rajdhani'] font-black text-white mb-2">
+              <h1 className="text-4xl md:text-5xl font-heading font-black text-white mb-2">
                 Data Display
               </h1>
-              <p className="text-xl text-white/90 font-['Noto Sans'] font-light">
+              <p className="text-xl text-white/90 font-body font-light">
                 Tables, charts, and data visualization with real-time updates
               </p>
             </div>
@@ -107,20 +107,20 @@ export default function DataDisplayPage() {
               <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <CardTitle className="text-2xl font-['Rajdhani'] font-bold text-[var(--kent-slate-gray)] dark:text-white">
+                    <CardTitle className="text-2xl font-heading font-bold text-card-foreground">
                       {component.name}
                     </CardTitle>
                     <Badge className={
                       component.status === 'stable' 
-                        ? 'bg-[#6f7822]/10 text-[#6f7822] border border-[#6f7822]/20'
+                        ? 'bg-owyhee-green/10 text-owyhee-green border border-owyhee-green/20'
                         : component.status === 'new'
-                        ? 'bg-[#F23005]/10 text-[#F23005] border border-[#F23005]/20'
-                        : 'bg-[#5198cd]/10 text-[#5198cd] border border-[#5198cd]/20'
+                        ? 'bg-abe-red/10 text-abe-red border border-abe-red/20'
+                        : 'bg-idaho-sky-blue/10 text-idaho-sky-blue border border-idaho-sky-blue/20'
                     }>
                       {component.status}
                     </Badge>
                   </div>
-                  <CardDescription className="text-[var(--kent-slate-gray)]/80 dark:text-[var(--don-gray)] font-['Noto Sans'] leading-relaxed">
+                  <CardDescription className="text-muted-foreground font-body leading-relaxed">
                     {component.description}
                   </CardDescription>
                 </CardHeader>
@@ -128,7 +128,7 @@ export default function DataDisplayPage() {
                 <CardContent>
                   {/* Variants */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-[var(--kent-slate-gray)] dark:text-white mb-3 font-['Rajdhani'] uppercase">
+                    <h4 className="text-sm font-semibold text-muted-foreground mb-3 font-heading uppercase">
                       Variants
                     </h4>
                     <div className="flex flex-wrap gap-2">
@@ -142,20 +142,20 @@ export default function DataDisplayPage() {
                   
                   {/* Features */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-[var(--kent-slate-gray)] dark:text-white mb-3 font-['Rajdhani'] uppercase">
+                    <h4 className="text-sm font-semibold text-muted-foreground mb-3 font-heading uppercase">
                       Features
                     </h4>
                     <div className="grid grid-cols-2 gap-2">
                       {component.features.map((feature) => (
-                        <div key={feature} className="flex items-center gap-2 text-sm text-[var(--kent-slate-gray)]/80 dark:text-[var(--don-gray)]">
-                          <TrendingUp className="w-3 h-3 text-[#6f7822]" />
+                        <div key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <TrendingUp className="w-3 h-3 text-owyhee-green" />
                           {feature}
                         </div>
                       ))}
                     </div>
                   </div>
                   
-                  <Button className="w-full bg-[#6f7822] hover:bg-[#3F6331] text-white">
+                  <Button className="w-full bg-owyhee-green hover:bg-club-house-lawn-green text-white">
                     View Examples
                   </Button>
                 </CardContent>
@@ -166,18 +166,18 @@ export default function DataDisplayPage() {
         
         {/* Action Section */}
         <div className="mt-16 text-center">
-          <Card className="p-8 bg-gradient-to-r from-[#6f7822]/5 to-[#3F6331]/5 border-0">
+          <Card className="p-8 bg-gradient-to-r from-owyhee-green/5 to-club-house-lawn-green/5 border-0">
             <div className="max-w-2xl mx-auto">
-              <BarChart3 className="h-12 w-12 text-[#6f7822] mx-auto mb-4" />
-              <h3 className="text-2xl font-['Rajdhani'] font-bold text-[var(--kent-slate-gray)] dark:text-white mb-4">
+              <BarChart3 className="h-12 w-12 text-owyhee-green mx-auto mb-4" />
+              <h3 className="text-2xl font-heading font-bold text-text-primary mb-4">
                 Data-Driven Insights
               </h3>
-              <p className="text-[var(--kent-slate-gray)]/80 dark:text-[var(--don-gray)] font-['Noto Sans'] mb-6">
+              <p className="text-muted-foreground font-body mb-6">
                 Transform shooting scores and club metrics into actionable insights with our 
                 comprehensive data visualization components.
               </p>
               <div className="flex gap-4 justify-center">
-                <Button asChild className="bg-[#6f7822] hover:bg-[#3F6331] text-white">
+                <Button asChild className="bg-owyhee-green hover:bg-club-house-lawn-green text-white">
                   <Link href="http://localhost:6006" target="_blank">
                     View in Storybook
                   </Link>
