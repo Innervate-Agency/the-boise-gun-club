@@ -63,7 +63,7 @@ export function FloatingBackground({
   intensity = 'medium',
   animated = true
 }: FloatingBackgroundProps) {
-  const splashes = customSplashes || presetSplashes[preset] || presetSplashes.gunclub;
+  const splashes = customSplashes || presetSplashes[preset as keyof typeof presetSplashes] || presetSplashes.gunclub;
   const multiplier = intensityMultipliers[intensity];
 
   return (

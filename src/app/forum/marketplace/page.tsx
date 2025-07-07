@@ -38,7 +38,7 @@ export default function Page() {
       <div className="space-y-0">
         {page.sections.map((section, index) => {
           const contentOrder = index % 2 === 1 ? 'md:order-first' : '';
-          const background = index % 2 === 0 ? 'grid' : 'mist';
+          const background = index % 2 === 0 ? 'grid' : 'dots';
 
           return (
             <Section key={index} background={background}>

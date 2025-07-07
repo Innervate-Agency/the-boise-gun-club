@@ -15,10 +15,10 @@ export default function ButtonPreview() {
         <div className="space-y-6">
           <h2 className="text-2xl font-heading font-bold">Primary Buttons</h2>
           <div className="flex flex-wrap gap-4">
-            <Button variant="primary" size="sm">Small</Button>
-            <Button variant="primary" size="md">Medium</Button>
-            <Button variant="primary" size="lg">Large</Button>
-            <Button variant="primary" disabled>Disabled</Button>
+            <Button variant="default" size="sm">Small</Button>
+            <Button variant="default" size="default">Medium</Button>
+            <Button variant="default" size="lg">Large</Button>
+            <Button variant="default" disabled>Disabled</Button>
           </div>
         </div>
 
@@ -27,7 +27,7 @@ export default function ButtonPreview() {
           <h2 className="text-2xl font-heading font-bold">Secondary Buttons</h2>
           <div className="flex flex-wrap gap-4">
             <Button variant="secondary" size="sm">Small</Button>
-            <Button variant="secondary" size="md">Medium</Button>
+            <Button variant="secondary" size="default">Medium</Button>
             <Button variant="secondary" size="lg">Large</Button>
             <Button variant="secondary" disabled>Disabled</Button>
           </div>
@@ -38,7 +38,7 @@ export default function ButtonPreview() {
           <h2 className="text-2xl font-heading font-bold">Interactive Demo</h2>
           <div className="flex flex-wrap gap-4">
             <Button 
-              variant="primary" 
+              variant="default" 
               onClick={() => alert('Primary button clicked!')}
             >
               Click Me

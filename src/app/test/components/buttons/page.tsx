@@ -192,7 +192,7 @@ export default function ButtonsPlayground() {
                     <Play className="w-4 h-4 mr-2" />
                     Primary Small
                   </Button>
-                  <Button variant="default" size="md" className="bg-[var(--lahoma-orange)] hover:bg-[var(--abe-red)] text-white">
+                  <Button variant="default" size="default" className="bg-[var(--lahoma-orange)] hover:bg-[var(--abe-red)] text-white">
                     <Download className="w-4 h-4 mr-2" />
                     Primary Medium
                   </Button>
@@ -206,7 +206,7 @@ export default function ButtonsPlayground() {
                     <Heart className="w-4 h-4 mr-2" />
                     Secondary Small
                   </Button>
-                  <Button variant="outline" size="md" className="border-[var(--lahoma-orange)] text-[var(--lahoma-orange)] hover:bg-[var(--lahoma-orange)] hover:text-white">
+                  <Button variant="outline" size="default" className="border-[var(--lahoma-orange)] text-[var(--lahoma-orange)] hover:bg-[var(--lahoma-orange)] hover:text-white">
                     <Share className="w-4 h-4 mr-2" />
                     Secondary Medium
                   </Button>
@@ -340,7 +340,7 @@ export default function ButtonsPlayground() {
                 title="Basic Button"
                 code={`import { Button } from '@/components/ui/button';
 
-<Button variant="primary" size="md">
+<Button variant="primary" size="default">
   Click Me
 </Button>`}
               />

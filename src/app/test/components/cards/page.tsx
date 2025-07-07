@@ -131,8 +131,8 @@ export default function CardPlayground() {
                     )}
                     <div className="p-4">
                       <div className="flex items-center gap-2 mb-2">
-                        <Badge variant="primary" size="sm">Demo</Badge>
-                        <Badge variant="info" size="sm">Interactive</Badge>
+                        <Badge>Demo</Badge>
+                        <Badge>Interactive</Badge>
                       </div>
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">Sample Card Title</h3>
                       <p className="text-gray-600 mb-4">This is a sample card with {selectedVariant} styling. Adjust the controls to see different variations.</p>
@@ -142,7 +142,7 @@ export default function CardPlayground() {
                             <CalendarIcon className="w-4 h-4" />
                             Today
                           </div>
-                          <Button variant="primary" size="sm">View Details</Button>
+                          <Button>View Details</Button>
                         </div>
                       )}
                     </div>
@@ -153,7 +153,7 @@ export default function CardPlayground() {
               {/* Generated Code */}
               <CodeSnippet
                 title="Current Configuration"
-                code={`<Card variant="${selectedVariant}">
+                code={`<Card>
   ${showImage ? `<div className="relative h-48 mb-4">
     <Image
       src="/images/events.webp"
@@ -171,7 +171,7 @@ export default function CardPlayground() {
     </p>
     ${showFooter ? `<div className="flex items-center justify-between pt-4 border-t">
       <span className="text-sm text-gray-500">Today</span>
-      <Button variant="primary" size="sm">View Details</Button>
+      <Button>View Details</Button>
     </div>` : ''}
   </div>
 </Card>`}
@@ -185,7 +185,7 @@ export default function CardPlayground() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="text-lg font-medium text-gray-900 mb-3">Default Card</h3>
-                  <Card variant="default">
+                  <Card>
                     <div className="p-4">
                       <h4 className="font-semibold text-gray-900 mb-2">Clean & Simple</h4>
                       <p className="text-gray-600 text-sm">Standard card with subtle shadow and clean styling.</p>
@@ -195,7 +195,7 @@ export default function CardPlayground() {
                 
                 <div>
                   <h3 className="text-lg font-medium text-gray-900 mb-3">Glass Card</h3>
-                  <Card variant="glass">
+                  <Card>
                     <div className="p-4">
                       <h4 className="font-semibold text-gray-900 mb-2">Modern Glass</h4>
                       <p className="text-gray-600 text-sm">Glassmorphism effect with blur and transparency.</p>
@@ -205,7 +205,7 @@ export default function CardPlayground() {
                 
                 <div>
                   <h3 className="text-lg font-medium text-gray-900 mb-3">Gradient Card</h3>
-                  <Card variant="gradient">
+                  <Card>
                     <div className="p-4">
                       <h4 className="font-semibold text-white mb-2">Bold Gradient</h4>
                       <p className="text-gray-100 text-sm">Eye-catching gradient background for special content.</p>
@@ -224,7 +224,7 @@ export default function CardPlayground() {
                 <div>
                   <h3 className="text-lg font-medium text-gray-900 mb-3">Event Cards</h3>
                   <div className="grid md:grid-cols-2 gap-4">
-                    <Card variant="default">
+                    <Card>
                       <div className="relative h-48">
                         <Image
                           src="/images/events.webp"
@@ -233,7 +233,7 @@ export default function CardPlayground() {
                           className="object-cover rounded-t-lg"
                         />
                         <div className="absolute top-3 left-3">
-                          <Badge variant="warning" size="sm">Registration Open</Badge>
+                          <Badge>Registration Open</Badge>
                         </div>
                       </div>
                       <div className="p-4">
@@ -251,12 +251,12 @@ export default function CardPlayground() {
                         </div>
                         <div className="flex items-center justify-between">
                           <div className="text-sm font-medium text-gray-900">$25 Entry Fee</div>
-                          <Button variant="primary" size="sm">Register Now</Button>
+                          <Button>Register Now</Button>
                         </div>
                       </div>
                     </Card>
                     
-                    <Card variant="default">
+                    <Card>
                       <div className="relative h-48">
                         <Image
                           src="/images/training.webp"
@@ -265,7 +265,7 @@ export default function CardPlayground() {
                           className="object-cover rounded-t-lg"
                         />
                         <div className="absolute top-3 left-3">
-                          <Badge variant="success" size="sm">Available</Badge>
+                          <Badge>Available</Badge>
                         </div>
                       </div>
                       <div className="p-4">
@@ -283,7 +283,7 @@ export default function CardPlayground() {
                         </div>
                         <div className="flex items-center justify-between">
                           <div className="text-sm font-medium text-gray-900">Free for Members</div>
-                          <Button variant="primary" size="sm">Sign Up</Button>
+                          <Button>Sign Up</Button>
                         </div>
                       </div>
                     </Card>
@@ -291,11 +291,11 @@ export default function CardPlayground() {
                   <div className="mt-3">
                     <CodeSnippet
                       title="Event Card"
-                      code={`<Card variant="default">
+                      code={`<Card>
   <div className="relative h-48">
     <Image src="/images/events.webp" alt="Event" fill />
     <div className="absolute top-3 left-3">
-      <Badge variant="warning" size="sm">Registration Open</Badge>
+      <Badge>Registration Open</Badge>
     </div>
   </div>
   <div className="p-4">
@@ -307,7 +307,7 @@ export default function CardPlayground() {
     </p>
     <div className="flex items-center justify-between">
       <div className="text-sm font-medium">$25 Entry Fee</div>
-      <Button variant="primary" size="sm">Register Now</Button>
+      <Button>Register Now</Button>
     </div>
   </div>
 </Card>`}
@@ -319,7 +319,7 @@ export default function CardPlayground() {
                 <div>
                   <h3 className="text-lg font-medium text-gray-900 mb-3">Member Profile Cards</h3>
                   <div className="grid md:grid-cols-2 gap-4">
-                    <Card variant="glass">
+                    <Card>
                       <div className="p-6">
                         <div className="flex items-center gap-4 mb-4">
                           <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
@@ -330,7 +330,7 @@ export default function CardPlayground() {
                             <p className="text-sm text-gray-600">Premium Member</p>
                           </div>
                           <div className="ml-auto">
-                            <Badge variant="gold" size="sm">Champion</Badge>
+                            <Badge>Champion</Badge>
                           </div>
                         </div>
                         <div className="space-y-2 text-sm">
@@ -348,12 +348,12 @@ export default function CardPlayground() {
                           </div>
                         </div>
                         <div className="mt-4 pt-4 border-t border-gray-200">
-                          <Button variant="secondary" size="sm" className="w-full">View Profile</Button>
+                          <Button className="w-full">View Profile</Button>
                         </div>
                       </div>
                     </Card>
                     
-                    <Card variant="default">
+                    <Card>
                       <div className="p-6">
                         <div className="flex items-center gap-4 mb-4">
                           <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center">
@@ -364,7 +364,7 @@ export default function CardPlayground() {
                             <p className="text-sm text-gray-600">Basic Member</p>
                           </div>
                           <div className="ml-auto">
-                            <Badge variant="info" size="sm">Active</Badge>
+                            <Badge>Active</Badge>
                           </div>
                         </div>
                         <div className="space-y-2 text-sm">
@@ -382,7 +382,7 @@ export default function CardPlayground() {
                           </div>
                         </div>
                         <div className="mt-4 pt-4 border-t border-gray-200">
-                          <Button variant="secondary" size="sm" className="w-full">View Profile</Button>
+                          <Button className="w-full">View Profile</Button>
                         </div>
                       </div>
                     </Card>
@@ -390,7 +390,7 @@ export default function CardPlayground() {
                   <div className="mt-3">
                     <CodeSnippet
                       title="Member Profile"
-                      code={`<Card variant="glass">
+                      code={`<Card>
   <div className="p-6">
     <div className="flex items-center gap-4 mb-4">
       <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
@@ -400,7 +400,7 @@ export default function CardPlayground() {
         <h4 className="font-semibold text-gray-900">Sarah Johnson</h4>
         <p className="text-sm text-gray-600">Premium Member</p>
       </div>
-      <Badge variant="gold" size="sm">Champion</Badge>
+      <Badge>Champion</Badge>
     </div>
     <!-- Member stats -->
   </div>
@@ -413,28 +413,28 @@ export default function CardPlayground() {
                 <div>
                   <h3 className="text-lg font-medium text-gray-900 mb-3">Statistics Dashboard</h3>
                   <div className="grid md:grid-cols-4 gap-4">
-                    <Card variant="default">
+                    <Card>
                       <div className="p-4 text-center">
                         <div className="text-2xl font-bold text-[var(--accent-primary)] mb-1">247</div>
                         <div className="text-sm text-gray-600">Active Members</div>
                       </div>
                     </Card>
                     
-                    <Card variant="default">
+                    <Card>
                       <div className="p-4 text-center">
                         <div className="text-2xl font-bold text-green-600 mb-1">12</div>
                         <div className="text-sm text-gray-600">Events This Month</div>
                       </div>
                     </Card>
                     
-                    <Card variant="default">
+                    <Card>
                       <div className="p-4 text-center">
                         <div className="text-2xl font-bold text-blue-600 mb-1">98%</div>
                         <div className="text-sm text-gray-600">Safety Record</div>
                       </div>
                     </Card>
                     
-                    <Card variant="default">
+                    <Card>
                       <div className="p-4 text-center">
                         <div className="text-2xl font-bold text-purple-600 mb-1">5</div>
                         <div className="text-sm text-gray-600">Ranges Available</div>
@@ -444,7 +444,7 @@ export default function CardPlayground() {
                   <div className="mt-3">
                     <CodeSnippet
                       title="Stat Cards"
-                      code={`<Card variant="default">
+                      code={`<Card>
   <div className="p-4 text-center">
     <div className="text-2xl font-bold text-[var(--accent-primary)] mb-1">
       247
@@ -460,7 +460,7 @@ export default function CardPlayground() {
                 <div>
                   <h3 className="text-lg font-medium text-gray-900 mb-3">Social Media Card</h3>
                   <div className="max-w-md">
-                    <Card variant="default">
+                    <Card>
                       <div className="relative h-48">
                         <Image
                           src="/images/membership.webp"
@@ -494,7 +494,7 @@ export default function CardPlayground() {
                               Share
                             </button>
                           </div>
-                          <Badge variant="success" size="sm">Safety First</Badge>
+                          <Badge>Safety First</Badge>
                         </div>
                       </div>
                     </Card>
@@ -502,7 +502,7 @@ export default function CardPlayground() {
                   <div className="mt-3">
                     <CodeSnippet
                       title="Social Media Card"
-                      code={`<Card variant="default">
+                      code={`<Card>
   <div className="relative h-48">
     <Image src="/images/membership.webp" alt="Club photo" fill />
   </div>
@@ -541,15 +541,15 @@ export default function CardPlayground() {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Version</span>
-                  <Badge variant="primary">1.0.0</Badge>
+                  <Badge>1.0.0</Badge>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Status</span>
-                  <Badge variant="success">Stable</Badge>
+                  <Badge>Stable</Badge>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Variants</span>
-                  <Badge variant="info">3 Types</Badge>
+                  <Badge>3 Types</Badge>
                 </div>
               </div>
             </div>

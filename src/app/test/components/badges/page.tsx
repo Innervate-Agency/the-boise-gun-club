@@ -154,7 +154,7 @@ export default function BadgesPlayground() {
             {/* Live Preview */}
             <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-8 mb-6">
               <div className="flex items-center justify-center">
-                <Badge variant={variant as any} size={size as any}>
+                <Badge variant={variant as any}>
                   {variant.charAt(0).toUpperCase() + variant.slice(1)} Badge
                 </Badge>
               </div>
@@ -163,7 +163,7 @@ export default function BadgesPlayground() {
             {/* Code Output */}
             <CodeSnippet
               title="Generated Code"
-              code={`<Badge variant="${variant}" size="${size}">
+              code={`<Badge variant="${variant}">
   ${variant.charAt(0).toUpperCase() + variant.slice(1)} Badge
 </Badge>`}
             />
@@ -182,7 +182,7 @@ export default function BadgesPlayground() {
                   <h4 className="text-sm font-medium text-slate-600 dark:text-slate-400 mb-3">Small Size</h4>
                   <div className="flex flex-wrap gap-2">
                     {badgeVariants.map((v) => (
-                      <Badge key={`sm-${v}`} variant={v as any} size="sm">
+                      <Badge key={`sm-${v}`} variant={v as any}>
                         {v}
                       </Badge>
                     ))}
@@ -194,7 +194,7 @@ export default function BadgesPlayground() {
                   <h4 className="text-sm font-medium text-slate-600 dark:text-slate-400 mb-3">Medium Size</h4>
                   <div className="flex flex-wrap gap-2">
                     {badgeVariants.map((v) => (
-                      <Badge key={`md-${v}`} variant={v as any} size="md">
+                      <Badge key={`md-${v}`} variant={v as any}>
                         {v}
                       </Badge>
                     ))}
@@ -206,7 +206,7 @@ export default function BadgesPlayground() {
                   <h4 className="text-sm font-medium text-slate-600 dark:text-slate-400 mb-3">Large Size</h4>
                   <div className="flex flex-wrap gap-2">
                     {badgeVariants.map((v) => (
-                      <Badge key={`lg-${v}`} variant={v as any} size="lg">
+                      <Badge key={`lg-${v}`} variant={v as any}>
                         {v}
                       </Badge>
                     ))}
@@ -221,19 +221,19 @@ export default function BadgesPlayground() {
                 Badges with Icons
               </h3>
               <div className="grid grid-cols-2 gap-3">
-                <Badge variant="gold" size="md">
+                <Badge variant="secondary">
                   <Trophy className="w-3 h-3 mr-1" />
                   Champion
                 </Badge>
-                <Badge variant="primary" size="md">
+                <Badge variant="default">
                   <Target className="w-3 h-3 mr-1" />
                   Expert
                 </Badge>
-                <Badge variant="success" size="md">
+                <Badge variant="default">
                   <CheckCircle className="w-3 h-3 mr-1" />
                   Certified
                 </Badge>
-                <Badge variant="info" size="md">
+                <Badge variant="outline">
                   <Shield className="w-3 h-3 mr-1" />
                   Member
                 </Badge>
@@ -262,7 +262,7 @@ export default function BadgesPlayground() {
                     <div className="flex justify-center mb-4">
                       <IconComponent className="w-8 h-8 text-slate-600 dark:text-slate-400" />
                     </div>
-                    <Badge variant={badge.variant as any} size="md" className="mb-3">
+                    <Badge variant={badge.variant as any} className="mb-3">
                       {badge.text}
                     </Badge>
                     <p className="text-sm text-slate-600 dark:text-slate-400">
@@ -294,20 +294,20 @@ export default function BadgesPlayground() {
                       <p className="text-slate-600 dark:text-slate-400">Member since 2018</p>
                     </div>
                     <div className="flex gap-2">
-                      <Badge variant="gold" size="sm">
+                      <Badge variant="secondary">
                         <Trophy className="w-3 h-3 mr-1" />
                         Champion
                       </Badge>
-                      <Badge variant="success" size="sm">
+                      <Badge variant="default">
                         <CheckCircle className="w-3 h-3 mr-1" />
                         Certified
                       </Badge>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    <Badge variant="primary" size="sm">Expert Marksman</Badge>
-                    <Badge variant="info" size="sm">Safety Officer</Badge>
-                    <Badge variant="secondary" size="sm">Instructor</Badge>
+                    <Badge variant="default">Expert Marksman</Badge>
+                    <Badge variant="outline">Safety Officer</Badge>
+                    <Badge variant="secondary">Instructor</Badge>
                   </div>
                 </div>
               </div>
@@ -326,7 +326,7 @@ export default function BadgesPlayground() {
                         <p className="text-sm text-slate-600 dark:text-slate-400">March 15, 2025</p>
                       </div>
                     </div>
-                    <Badge variant="success" size="sm">
+                    <Badge variant="default">
                       <CheckCircle className="w-3 h-3 mr-1" />
                       Registered
                     </Badge>
@@ -340,7 +340,7 @@ export default function BadgesPlayground() {
                         <p className="text-sm text-slate-600 dark:text-slate-400">April 20, 2025</p>
                       </div>
                     </div>
-                    <Badge variant="warning" size="sm">
+                    <Badge variant="secondary">
                       <Clock className="w-3 h-3 mr-1" />
                       Pending
                     </Badge>
@@ -358,7 +358,7 @@ export default function BadgesPlayground() {
                     <button className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
                       <Calendar className="w-5 h-5 text-slate-600 dark:text-slate-400" />
                     </button>
-                    <Badge variant="danger" size="sm" className="absolute -top-2 -right-2 min-w-[20px] h-5 rounded-full text-xs">
+                    <Badge variant="destructive" className="absolute -top-2 -right-2 min-w-[20px] h-5 rounded-full text-xs">
                       3
                     </Badge>
                   </div>
@@ -367,7 +367,7 @@ export default function BadgesPlayground() {
                     <button className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
                       <Trophy className="w-5 h-5 text-slate-600 dark:text-slate-400" />
                     </button>
-                    <Badge variant="gold" size="sm" className="absolute -top-2 -right-2 min-w-[20px] h-5 rounded-full text-xs">
+                    <Badge variant="secondary" className="absolute -top-2 -right-2 min-w-[20px] h-5 rounded-full text-xs">
                       1
                     </Badge>
                   </div>
@@ -376,7 +376,7 @@ export default function BadgesPlayground() {
                     <button className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
                       <Zap className="w-5 h-5 text-slate-600 dark:text-slate-400" />
                     </button>
-                    <Badge variant="primary" size="sm" className="absolute -top-2 -right-2 min-w-[20px] h-5 rounded-full text-xs">
+                    <Badge variant="default" className="absolute -top-2 -right-2 min-w-[20px] h-5 rounded-full text-xs">
                       5
                     </Badge>
                   </div>
@@ -430,7 +430,7 @@ export default function BadgesPlayground() {
                 title="Basic Badge"
                 code={`import { Badge } from '@/components/ui/badge';
 
-<Badge variant="primary">
+<Badge variant="default">
   Member
 </Badge>`}
               />
@@ -438,7 +438,7 @@ export default function BadgesPlayground() {
                 title="Badge with Icon"
                 code={`import { Trophy } from 'lucide-react';
 
-<Badge variant="gold">
+<Badge variant="secondary">
   <Trophy className="w-3 h-3 mr-1" />
   Champion
 </Badge>`}
@@ -450,8 +450,8 @@ export default function BadgesPlayground() {
     <Calendar className="w-5 h-5" />
   </button>
   <Badge 
-    variant="danger" 
-    size="sm"
+    variant="destructive" 
+   
     className="absolute -top-2 -right-2"
   >
     3
@@ -461,11 +461,11 @@ export default function BadgesPlayground() {
               <CodeSnippet
                 title="Member Status"
                 code={`<div className="flex gap-2">
-  <Badge variant="gold">
+  <Badge variant="secondary">
     <Trophy className="w-3 h-3 mr-1" />
     Champion
   </Badge>
-  <Badge variant="success">
+  <Badge variant="default">
     <CheckCircle className="w-3 h-3 mr-1" />
     Certified
   </Badge>

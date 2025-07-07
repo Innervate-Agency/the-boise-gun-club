@@ -26,7 +26,7 @@ import {
 
 interface PricingFeature {
   name: string;
-  included: boolean | 'limited' | number;
+  included: boolean | 'limited' | number | string;
   description?: string;
   highlight?: boolean;
 }
