@@ -1,4 +1,4 @@
-// Content data structure interfaces
+// Comprehensive Content Data Structure Interfaces
 
 export interface Event {
   id: number;
@@ -7,12 +7,22 @@ export interface Event {
   time: string;
   location: string;
   description: string;
+  category: 'competition' | 'training' | 'social' | 'maintenance' | 'meeting' | 'fun shoot' | 'family';
+  attendees?: number;
+  isFeatured?: boolean;
+  registrationOpen?: boolean;
+  detailsLink?: string;
+  image?: string;
 }
 
 export interface Announcement {
-  id: number;
-  text: string;
-  active: boolean;
+  id: string;
+  title: string;
+  date: string;
+  category: string;
+  priority: 'high' | 'medium' | 'low';
+  content: string;
+  expires: string;
 }
 
 export interface HeroContent {
@@ -64,32 +74,6 @@ export interface Facility {
   image: string;
 }
 
-export interface ContentData {
-  hero: HeroContent;
-  about: AboutContent;
-  events: Event[];
-  announcements: Announcement[];
-  contact: ContactInfo;
-  team: TeamMember[];
-  facilities: Facility[];
-  lastUpdated: string;
-}
-
-// API Response types
-export interface ContentApiResponse {
-  data?: ContentData;
-  error?: string;
-  details?: string;
-}
-
-export interface SaveContentResponse {
-  success: boolean;
-  message?: string;
-  error?: string;
-  details?: string;
-}
-
-// Gallery types for admin panel compatibility
 export interface GalleryItem {
   id: number;
   title: string;
@@ -113,24 +97,41 @@ export interface Hours {
   holidays: string;
 }
 
-// Extended content data for admin panel
-export interface AdminContentData {
+// Main ContentData type for the entire site
+export interface ContentData {
+  hero: HeroContent;
+  about: AboutContent;
   events: Event[];
+  announcements: Announcement[];
+  contact: ContactInfo;
+  team: TeamMember[];
+  facilities: Facility[];
+  gallery: GalleryItem[];
   clubInfo: ClubInfo;
   hours: Hours;
-  gallery: GalleryItem[];
   lastUpdated: string;
 }
 
+// API Response types
+export interface ContentApiResponse {
+  data?: ContentData;
+  error?: string;
+  details?: string;
+}
+
+export interface SaveContentResponse {
+  success: boolean;
+  message?: string;
+  error?: string;
+  details?: string;
+}
+
 // Component prop types
-export interface ButtonProps {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'tertiary';
-  size?: 'sm' | 'md' | 'lg';
-  disabled?: boolean;
-  className?: string;
-  type?: 'button' | 'submit' | 'reset';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'destructive' | 'outline' | 'ghost' | 'link';
+  size?: 'sm' | 'md' | 'lg' | 'icon';
+  asChild?: boolean;
 }
 
 export interface CardProps {
@@ -155,6 +156,7 @@ export interface NavigationItem {
   href: string;
   icon?: React.ComponentType<{ className?: string }>;
   external?: boolean;
+  children?: NavigationItem[];
 }
 
 // Form types
@@ -175,4 +177,4 @@ export interface AnimationConfig {
   easing?: string;
   repeat?: boolean;
   direction?: 'normal' | 'reverse' | 'alternate';
-} 
+}

@@ -93,7 +93,7 @@ const MorningMistAnimation: React.FC<MorningMistProps> = ({
       const size = sizeBase + getRandomValue(id * 3 + 2, 0, sizeBase * 0.6);
 
       // Intensity-based opacity adjustments
-      const opacityMultipliers = {
+      const opacityMultipliers: Record<'subtle' | 'medium' | 'dense', number> = {
         subtle: 0.8,
         medium: 1.2,
         dense: 1.8
@@ -114,7 +114,7 @@ const MorningMistAnimation: React.FC<MorningMistProps> = ({
 
     const generateParticles = () => {
       // Adjust particle count based on screen size and intensity
-      const intensityMultipliers = {
+      const intensityMultipliers: Record<'subtle' | 'medium' | 'dense', number> = {
         subtle: 1,
         medium: 1.5,
         dense: 2.5
