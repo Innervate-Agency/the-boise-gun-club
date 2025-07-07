@@ -63,12 +63,12 @@ export default function CardPlayground() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <Link href="/test/components" className="inline-flex items-center gap-2 text-[var(--accent-primary)] hover:text-[var(--accent-primary)]/80 mb-4">
+          <Link href="/test/components" className="inline-flex items-center gap-2 text-accent-primary hover:text-accent-primary/80 mb-4">
             <ArrowLeftIcon className="w-4 h-4" />
             Back to Components
           </Link>
-          <h1 className="text-4xl font-bold font-heading text-gray-900 mb-2">Card Playground</h1>
-          <p className="text-gray-600">Flexible content containers with various layouts and styles</p>
+          <h1 className="text-4xl font-bold font-heading text-text-primary mb-2">Card Playground</h1>
+          <p className="text-text-secondary">Flexible content containers with various layouts and styles</p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -77,12 +77,12 @@ export default function CardPlayground() {
             
             {/* Live Demo Section */}
             <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Interactive Demo</h2>
+              <h2 className="text-xl font-semibold text-text-primary mb-4">Interactive Demo</h2>
               
               {/* Controls */}
               <div className="grid grid-cols-3 gap-4 mb-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Variant</label>
+                  <label className="block text-sm font-medium text-text-secondary mb-2">Variant</label>
                   <select 
                     value={selectedVariant}
                     onChange={(e) => setSelectedVariant(e.target.value)}
@@ -101,7 +101,7 @@ export default function CardPlayground() {
                     onChange={(e) => setShowImage(e.target.checked)}
                     className="mr-2"
                   />
-                  <label htmlFor="showImage" className="text-sm font-medium text-gray-700">Include Image</label>
+                  <label htmlFor="showImage" className="text-sm font-medium text-text-secondary">Include Image</label>
                 </div>
                 <div className="flex items-center">
                   <input
@@ -111,7 +111,7 @@ export default function CardPlayground() {
                     onChange={(e) => setShowFooter(e.target.checked)}
                     className="mr-2"
                   />
-                  <label htmlFor="showFooter" className="text-sm font-medium text-gray-700">Show Footer</label>
+                  <label htmlFor="showFooter" className="text-sm font-medium text-text-secondary">Show Footer</label>
                 </div>
               </div>
 
@@ -134,11 +134,11 @@ export default function CardPlayground() {
                         <Badge>Demo</Badge>
                         <Badge>Interactive</Badge>
                       </div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Sample Card Title</h3>
-                      <p className="text-gray-600 mb-4">This is a sample card with {selectedVariant} styling. Adjust the controls to see different variations.</p>
+                      <h3 className="text-lg font-semibold text-text-primary mb-2">Sample Card Title</h3>
+                      <p className="text-text-secondary mb-4">This is a sample card with {selectedVariant} styling. Adjust the controls to see different variations.</p>
                       {showFooter && (
                         <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                          <div className="flex items-center gap-2 text-sm text-gray-500">
+                          <div className="flex items-center gap-2 text-sm text-text-secondary">
                             <CalendarIcon className="w-4 h-4" />
                             Today
                           </div>
@@ -163,14 +163,14 @@ export default function CardPlayground() {
     />
   </div>` : ''}
   <div className="p-4">
-    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+    <h3 className="text-lg font-semibold text-text-primary mb-2">
       Sample Card Title
     </h3>
-    <p className="text-gray-600 mb-4">
+    <p className="text-text-secondary mb-4">
       Card content goes here...
     </p>
     ${showFooter ? `<div className="flex items-center justify-between pt-4 border-t">
-      <span className="text-sm text-gray-500">Today</span>
+      <span className="text-sm text-text-secondary">Today</span>
       <Button>View Details</Button>
     </div>` : ''}
   </div>
@@ -180,31 +180,31 @@ export default function CardPlayground() {
 
             {/* Card Variants */}
             <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Card Variants</h2>
+              <h2 className="text-xl font-semibold text-text-primary mb-4">Card Variants</h2>
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-3">Default Card</h3>
+                  <h3 className="text-lg font-medium text-text-primary mb-3">Default Card</h3>
                   <Card>
                     <div className="p-4">
-                      <h4 className="font-semibold text-gray-900 mb-2">Clean & Simple</h4>
-                      <p className="text-gray-600 text-sm">Standard card with subtle shadow and clean styling.</p>
+                      <h4 className="font-semibold text-text-primary mb-2">Clean & Simple</h4>
+                      <p className="text-text-secondary text-sm">Standard card with subtle shadow and clean styling.</p>
                     </div>
                   </Card>
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-3">Glass Card</h3>
+                  <h3 className="text-lg font-medium text-text-primary mb-3">Glass Card</h3>
                   <Card>
                     <div className="p-4">
-                      <h4 className="font-semibold text-gray-900 mb-2">Modern Glass</h4>
-                      <p className="text-gray-600 text-sm">Glassmorphism effect with blur and transparency.</p>
+                      <h4 className="font-semibold text-text-primary mb-2">Modern Glass</h4>
+                      <p className="text-text-secondary text-sm">Glassmorphism effect with blur and transparency.</p>
                     </div>
                   </Card>
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-3">Gradient Card</h3>
+                  <h3 className="text-lg font-medium text-text-primary mb-3">Gradient Card</h3>
                   <Card>
                     <div className="p-4">
                       <h4 className="font-semibold text-white mb-2">Bold Gradient</h4>
@@ -217,12 +217,12 @@ export default function CardPlayground() {
 
             {/* Real-World Examples */}
             <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Real-World Examples</h2>
+              <h2 className="text-xl font-semibold text-text-primary mb-4">Real-World Examples</h2>
               
               <div className="space-y-8">
                 {/* Event Card */}
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-3">Event Cards</h3>
+                  <h3 className="text-lg font-medium text-text-primary mb-3">Event Cards</h3>
                   <div className="grid md:grid-cols-2 gap-4">
                     <Card>
                       <div className="relative h-48">
@@ -237,9 +237,9 @@ export default function CardPlayground() {
                         </div>
                       </div>
                       <div className="p-4">
-                        <h4 className="text-lg font-semibold text-gray-900 mb-2">Monthly Competition</h4>
-                        <p className="text-gray-600 text-sm mb-3">Join our monthly shooting competition. All skill levels welcome!</p>
-                        <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                        <h4 className="text-lg font-semibold text-text-primary mb-2">Monthly Competition</h4>
+                        <p className="text-text-secondary text-sm mb-3">Join our monthly shooting competition. All skill levels welcome!</p>
+                        <div className="flex items-center gap-4 text-sm text-text-secondary mb-4">
                           <div className="flex items-center gap-1">
                             <CalendarIcon className="w-4 h-4" />
                             Sep 15, 2024
@@ -250,7 +250,7 @@ export default function CardPlayground() {
                           </div>
                         </div>
                         <div className="flex items-center justify-between">
-                          <div className="text-sm font-medium text-gray-900">$25 Entry Fee</div>
+                          <div className="text-sm font-medium text-text-primary">$25 Entry Fee</div>
                           <Button>Register Now</Button>
                         </div>
                       </div>
@@ -269,9 +269,9 @@ export default function CardPlayground() {
                         </div>
                       </div>
                       <div className="p-4">
-                        <h4 className="text-lg font-semibold text-gray-900 mb-2">Safety Training Course</h4>
-                        <p className="text-gray-600 text-sm mb-3">Comprehensive firearm safety training for all members.</p>
-                        <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                        <h4 className="text-lg font-semibold text-text-primary mb-2">Safety Training Course</h4>
+                        <p className="text-text-secondary text-sm mb-3">Comprehensive firearm safety training for all members.</p>
+                        <div className="flex items-center gap-4 text-sm text-text-secondary mb-4">
                           <div className="flex items-center gap-1">
                             <CalendarIcon className="w-4 h-4" />
                             Sep 20, 2024
@@ -282,7 +282,7 @@ export default function CardPlayground() {
                           </div>
                         </div>
                         <div className="flex items-center justify-between">
-                          <div className="text-sm font-medium text-gray-900">Free for Members</div>
+                          <div className="text-sm font-medium text-text-primary">Free for Members</div>
                           <Button>Sign Up</Button>
                         </div>
                       </div>
@@ -299,10 +299,10 @@ export default function CardPlayground() {
     </div>
   </div>
   <div className="p-4">
-    <h4 className="text-lg font-semibold text-gray-900 mb-2">
+    <h4 className="text-lg font-semibold text-text-primary mb-2">
       Monthly Competition
     </h4>
-    <p className="text-gray-600 text-sm mb-3">
+    <p className="text-text-secondary text-sm mb-3">
       Join our monthly shooting competition.
     </p>
     <div className="flex items-center justify-between">
@@ -317,7 +317,7 @@ export default function CardPlayground() {
 
                 {/* Member Profile Card */}
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-3">Member Profile Cards</h3>
+                  <h3 className="text-lg font-medium text-text-primary mb-3">Member Profile Cards</h3>
                   <div className="grid md:grid-cols-2 gap-4">
                     <Card>
                       <div className="p-6">
@@ -326,8 +326,8 @@ export default function CardPlayground() {
                             <UserIcon className="w-6 h-6 text-white" />
                           </div>
                           <div>
-                            <h4 className="font-semibold text-gray-900">Sarah Johnson</h4>
-                            <p className="text-sm text-gray-600">Premium Member</p>
+                            <h4 className="font-semibold text-text-primary">Sarah Johnson</h4>
+                            <p className="text-sm text-text-secondary">Premium Member</p>
                           </div>
                           <div className="ml-auto">
                             <Badge>Champion</Badge>
@@ -335,16 +335,16 @@ export default function CardPlayground() {
                         </div>
                         <div className="space-y-2 text-sm">
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Member Since</span>
-                            <span className="text-gray-900">2021</span>
+                            <span className="text-text-secondary">Member Since</span>
+                            <span className="text-text-primary">2021</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Competitions Won</span>
-                            <span className="text-gray-900">12</span>
+                            <span className="text-text-secondary">Competitions Won</span>
+                            <span className="text-text-primary">12</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Safety Courses</span>
-                            <span className="text-gray-900">8/8</span>
+                            <span className="text-text-secondary">Safety Courses</span>
+                            <span className="text-text-primary">8/8</span>
                           </div>
                         </div>
                         <div className="mt-4 pt-4 border-t border-gray-200">
@@ -360,8 +360,8 @@ export default function CardPlayground() {
                             <UserIcon className="w-6 h-6 text-white" />
                           </div>
                           <div>
-                            <h4 className="font-semibold text-gray-900">Mike Wilson</h4>
-                            <p className="text-sm text-gray-600">Basic Member</p>
+                            <h4 className="font-semibold text-text-primary">Mike Wilson</h4>
+                            <p className="text-sm text-text-secondary">Basic Member</p>
                           </div>
                           <div className="ml-auto">
                             <Badge>Active</Badge>
@@ -369,16 +369,16 @@ export default function CardPlayground() {
                         </div>
                         <div className="space-y-2 text-sm">
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Member Since</span>
-                            <span className="text-gray-900">2023</span>
+                            <span className="text-text-secondary">Member Since</span>
+                            <span className="text-text-primary">2023</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Events Attended</span>
-                            <span className="text-gray-900">15</span>
+                            <span className="text-text-secondary">Events Attended</span>
+                            <span className="text-text-primary">15</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Safety Courses</span>
-                            <span className="text-gray-900">3/8</span>
+                            <span className="text-text-secondary">Safety Courses</span>
+                            <span className="text-text-primary">3/8</span>
                           </div>
                         </div>
                         <div className="mt-4 pt-4 border-t border-gray-200">
@@ -397,8 +397,8 @@ export default function CardPlayground() {
         <UserIcon className="w-6 h-6 text-white" />
       </div>
       <div>
-        <h4 className="font-semibold text-gray-900">Sarah Johnson</h4>
-        <p className="text-sm text-gray-600">Premium Member</p>
+        <h4 className="font-semibold text-text-primary">Sarah Johnson</h4>
+        <p className="text-sm text-text-secondary">Premium Member</p>
       </div>
       <Badge>Champion</Badge>
     </div>
@@ -411,33 +411,33 @@ export default function CardPlayground() {
 
                 {/* Stat Cards */}
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-3">Statistics Dashboard</h3>
+                  <h3 className="text-lg font-medium text-text-primary mb-3">Statistics Dashboard</h3>
                   <div className="grid md:grid-cols-4 gap-4">
                     <Card>
                       <div className="p-4 text-center">
-                        <div className="text-2xl font-bold text-[var(--accent-primary)] mb-1">247</div>
-                        <div className="text-sm text-gray-600">Active Members</div>
+                        <div className="text-2xl font-bold text-accent-primary mb-1">247</div>
+                        <div className="text-sm text-text-secondary">Active Members</div>
                       </div>
                     </Card>
                     
                     <Card>
                       <div className="p-4 text-center">
                         <div className="text-2xl font-bold text-green-600 mb-1">12</div>
-                        <div className="text-sm text-gray-600">Events This Month</div>
+                        <div className="text-sm text-text-secondary">Events This Month</div>
                       </div>
                     </Card>
                     
                     <Card>
                       <div className="p-4 text-center">
                         <div className="text-2xl font-bold text-blue-600 mb-1">98%</div>
-                        <div className="text-sm text-gray-600">Safety Record</div>
+                        <div className="text-sm text-text-secondary">Safety Record</div>
                       </div>
                     </Card>
                     
                     <Card>
                       <div className="p-4 text-center">
                         <div className="text-2xl font-bold text-purple-600 mb-1">5</div>
-                        <div className="text-sm text-gray-600">Ranges Available</div>
+                        <div className="text-sm text-text-secondary">Ranges Available</div>
                       </div>
                     </Card>
                   </div>
@@ -446,10 +446,10 @@ export default function CardPlayground() {
                       title="Stat Cards"
                       code={`<Card>
   <div className="p-4 text-center">
-    <div className="text-2xl font-bold text-[var(--accent-primary)] mb-1">
+    <div className="text-2xl font-bold text-accent-primary mb-1">
       247
     </div>
-    <div className="text-sm text-gray-600">Active Members</div>
+    <div className="text-sm text-text-secondary">Active Members</div>
   </div>
 </Card>`}
                     />
@@ -458,7 +458,7 @@ export default function CardPlayground() {
 
                 {/* Social Media Card */}
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-3">Social Media Card</h3>
+                  <h3 className="text-lg font-medium text-text-primary mb-3">Social Media Card</h3>
                   <div className="max-w-md">
                     <Card>
                       <div className="relative h-48">
@@ -475,21 +475,21 @@ export default function CardPlayground() {
                             <span className="text-white font-semibold text-sm">BGC</span>
                           </div>
                           <div>
-                            <div className="font-medium text-gray-900">Boise Gun Club</div>
-                            <div className="text-sm text-gray-500">2 hours ago</div>
+                            <div className="font-medium text-text-primary">Boise Gun Club</div>
+                            <div className="text-sm text-text-secondary">2 hours ago</div>
                           </div>
                         </div>
-                        <p className="text-gray-800 mb-3">Great turnout at today's safety training! 32 new members completed their certification. 🎯</p>
+                        <p className="text-text-primary mb-3">Great turnout at today's safety training! 32 new members completed their certification. 🎯</p>
                         <div className="flex items-center justify-between pt-3 border-t border-gray-200">
                           <div className="flex items-center gap-4">
                             <button 
                               onClick={() => setIsLiked(!isLiked)}
-                              className={`flex items-center gap-1 text-sm ${isLiked ? 'text-red-500' : 'text-gray-500'} hover:text-red-500 transition-colors`}
+                              className={`flex items-center gap-1 text-sm ${isLiked ? 'text-red-500' : 'text-text-secondary'} hover:text-red-500 transition-colors`}
                             >
                               <HeartIcon className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} />
                               {isLiked ? '48' : '47'}
                             </button>
-                            <button className="flex items-center gap-1 text-sm text-gray-500 hover:text-blue-500 transition-colors">
+                            <button className="flex items-center gap-1 text-sm text-text-secondary hover:text-blue-500 transition-colors">
                               <ShareIcon className="w-4 h-4" />
                               Share
                             </button>
@@ -512,11 +512,11 @@ export default function CardPlayground() {
         <span className="text-white font-semibold text-sm">BGC</span>
       </div>
       <div>
-        <div className="font-medium text-gray-900">Boise Gun Club</div>
-        <div className="text-sm text-gray-500">2 hours ago</div>
+        <div className="font-medium text-text-primary">Boise Gun Club</div>
+        <div className="text-sm text-text-secondary">2 hours ago</div>
       </div>
     </div>
-    <p className="text-gray-800 mb-3">
+    <p className="text-text-primary mb-3">
       Great turnout at today's safety training!
     </p>
     <!-- Social actions -->
@@ -536,19 +536,19 @@ export default function CardPlayground() {
             <div className="bg-white rounded-xl p-6 border border-gray-200">
               <div className="flex items-center gap-2 mb-4">
                 <CheckCircleIcon className="w-5 h-5 text-green-500" />
-                <h3 className="text-lg font-semibold text-gray-900">Component Status</h3>
+                <h3 className="text-lg font-semibold text-text-primary">Component Status</h3>
               </div>
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Version</span>
+                  <span className="text-text-secondary">Version</span>
                   <Badge>1.0.0</Badge>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Status</span>
+                  <span className="text-text-secondary">Status</span>
                   <Badge>Stable</Badge>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Variants</span>
+                  <span className="text-text-secondary">Variants</span>
                   <Badge>3 Types</Badge>
                 </div>
               </div>
@@ -556,57 +556,57 @@ export default function CardPlayground() {
 
             {/* Props Documentation */}
             <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Props</h3>
+              <h3 className="text-lg font-semibold text-text-primary mb-4">Props</h3>
               <div className="space-y-4">
                 <div>
                   <div className="font-mono text-sm text-blue-600 mb-1">variant</div>
-                  <div className="text-sm text-gray-600 mb-1">'default' | 'glass' | 'gradient'</div>
-                  <div className="text-xs text-gray-500">Visual style variant</div>
+                  <div className="text-sm text-text-secondary mb-1">'default' | 'glass' | 'gradient'</div>
+                  <div className="text-xs text-text-secondary">Visual style variant</div>
                 </div>
                 <div>
                   <div className="font-mono text-sm text-blue-600 mb-1">children</div>
-                  <div className="text-sm text-gray-600 mb-1">ReactNode</div>
-                  <div className="text-xs text-gray-500">Card content</div>
+                  <div className="text-sm text-text-secondary mb-1">ReactNode</div>
+                  <div className="text-xs text-text-secondary">Card content</div>
                 </div>
                 <div>
                   <div className="font-mono text-sm text-blue-600 mb-1">className</div>
-                  <div className="text-sm text-gray-600 mb-1">string</div>
-                  <div className="text-xs text-gray-500">Additional CSS classes</div>
+                  <div className="text-sm text-text-secondary mb-1">string</div>
+                  <div className="text-xs text-text-secondary">Additional CSS classes</div>
                 </div>
                 <div>
                   <div className="font-mono text-sm text-blue-600 mb-1">onClick</div>
-                  <div className="text-sm text-gray-600 mb-1">() =&gt; void</div>
-                  <div className="text-xs text-gray-500">Make card clickable</div>
+                  <div className="text-sm text-text-secondary mb-1">() =&gt; void</div>
+                  <div className="text-xs text-text-secondary">Make card clickable</div>
                 </div>
               </div>
             </div>
 
             {/* Usage Guidelines */}
             <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Usage Guidelines</h3>
+              <h3 className="text-lg font-semibold text-text-primary mb-4">Usage Guidelines</h3>
               <div className="space-y-3 text-sm">
                 <div>
-                  <div className="font-medium text-gray-900 mb-1">Content Structure</div>
-                  <div className="text-gray-600">Use consistent padding (p-4 or p-6) and spacing between elements.</div>
+                  <div className="font-medium text-text-primary mb-1">Content Structure</div>
+                  <div className="text-text-secondary">Use consistent padding (p-4 or p-6) and spacing between elements.</div>
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900 mb-1">Images</div>
-                  <div className="text-gray-600">Always use Next.js Image component with proper aspect ratios.</div>
+                  <div className="font-medium text-text-primary mb-1">Images</div>
+                  <div className="text-text-secondary">Always use Next.js Image component with proper aspect ratios.</div>
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900 mb-1">Actions</div>
-                  <div className="text-gray-600">Place primary actions in the footer, secondary in the header.</div>
+                  <div className="font-medium text-text-primary mb-1">Actions</div>
+                  <div className="text-text-secondary">Place primary actions in the footer, secondary in the header.</div>
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900 mb-1">Accessibility</div>
-                  <div className="text-gray-600">Ensure proper heading hierarchy and focus management.</div>
+                  <div className="font-medium text-text-primary mb-1">Accessibility</div>
+                  <div className="text-text-secondary">Ensure proper heading hierarchy and focus management.</div>
                 </div>
               </div>
             </div>
 
             {/* Quick Import */}
             <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Import</h3>
+              <h3 className="text-lg font-semibold text-text-primary mb-4">Quick Import</h3>
               <CodeSnippet
                 title="Import Statement"
                 code={`import { Card } from '@/components/ui/card';`}
@@ -617,4 +617,4 @@ export default function CardPlayground() {
       </div>
     </div>
   );
-} 
+}

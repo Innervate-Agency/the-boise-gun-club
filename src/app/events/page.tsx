@@ -1,223 +1,384 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
-import { CalendarDaysIcon, ClockIcon, MapPinIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { useContent } from '@/hooks/useContent';
+import { Calendar, Clock, MapPin, Users, Trophy, Target, DollarSign, User } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
-interface Event {
-  id: string;
-  title: string;
-  date: string;
-  time?: string;
-  repeats?: string;
-  location: string;
-  description: string;
-  category: string;
-  image: string;
-  detailsLink?: string;
-}
-
-const EventCard: React.FC<{ event: Event, index: number }> = ({ event, index }) => {
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, delay: index * 0.15, ease: 'easeOut' },
-    },
-  };
-
+export default function EventsPage() {
   return (
-    <motion.div
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      className="glass-premium rounded-xl shadow-2xl overflow-hidden border border-white/20 flex flex-col group hover:border-[var(--accent-primary)]/70 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[var(--accent-primary)]/20"
-    >
-      <div className="relative h-48 md:h-56 w-full overflow-hidden">
-        <Image 
-          src={event.image} 
-          alt={event.title} 
-          fill 
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-        <span className="absolute top-3 right-3 bg-[var(--accent-primary)]/90 text-white text-xs font-semibold px-3 py-1 rounded-full tracking-wide">
-          {event.category}
-        </span>
-      </div>
-      <div className="p-5 md:p-6 flex-grow flex flex-col">
-        <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-2 leading-tight group-hover:text-[var(--accent-primary)] transition-colors duration-300">
-          {event.title}
-        </h3>
+    <div className="min-h-screen bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-tertiary">
+      {/* Hero Section */}
+      <section className="relative py-24 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/events.webp"
+            alt="Boise Gun Club Events"
+            fill
+            className="object-cover opacity-30"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/20 to-leonard-yellow/20" />
+        </div>
         
-        <div className="space-y-2 text-sm text-[var(--text-secondary)] mb-4">
-          <div className="flex items-center">
-            <CalendarDaysIcon className="w-4 h-4 mr-2 text-[var(--accent-secondary)]" />
-            <span>{event.date}{event.repeats ? <span className="text-[var(--text-secondary)]"> ({event.repeats})</span> : ''}</span>
-          </div>
-          {event.time && (
-            <div className="flex items-center">
-              <ClockIcon className="w-4 h-4 mr-2 text-[var(--accent-secondary)]" />
-              <span>{event.time}</span>
+        {/* Floating Background Effects */}
+        <div className="absolute top-20 left-10 w-64 h-64 bg-lahoma-orange/10 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-10 right-10 w-48 h-48 bg-leonard-yellow/15 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }} />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <Badge className="mb-6 bg-leonard-yellow/20 text-leonard-yellow border-leonard-yellow/30">
+              <Calendar className="w-4 h-4 mr-2" />
+              Club Events & Tournaments
+            </Badge>
+            
+            <h1 className="text-4xl md:text-6xl font-heading font-bold text-gray-900 dark:text-white mb-6">
+              UPCOMING EVENTS
+            </h1>
+            
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto font-body">
+              Join us for competitive tournaments, training sessions, and family-friendly events. 
+              From weekly leagues to championship competitions - there's something for every shooter.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="bg-lahoma-orange hover:bg-leonard-yellow text-white dark:text-white font-heading">
+                <Calendar className="w-5 h-5 mr-2" />
+                View Full Calendar
+              </Button>
+              <Button variant="outline" size="lg" className="border-leonard-yellow text-leonard-yellow hover:bg-leonard-yellow/10">
+                <Trophy className="w-5 h-5 mr-2" />
+                Tournament Results
+              </Button>
             </div>
-          )}
-          <div className="flex items-center">
-            <MapPinIcon className="w-4 h-4 mr-2 text-[var(--accent-secondary)]" />
-            <span>{event.location}</span>
           </div>
         </div>
+      </section>
 
-        <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-5 flex-grow">
-          {event.description}
-        </p>
-
-        {event.detailsLink ? (
-          <Link 
-            href={event.detailsLink}
-            className="mt-auto inline-flex items-center justify-center text-sm font-semibold text-[var(--accent-primary)] hover:text-white bg-[var(--bg-secondary)]/50 hover:bg-[var(--accent-primary)]/80 px-5 py-2.5 rounded-md transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[var(--accent-primary)]/30"
-          >
-            View Details <ChevronRightIcon className="w-4 h-4 ml-1.5 transform transition-transform duration-300 group-hover:translate-x-0.5" />
-          </Link>
-        ) : (
-          (<div className="mt-auto h-[42px]"></div>) // Placeholder for consistent card height if no button
-        )}
-      </div>
-    </motion.div>
-  );
-};
-
-const EventsPage: React.FC = () => {
-  const { content, loading, error } = useContent();
-  const pageTitle = "Upcoming Events";
-
-  const headerVariants = {
-    hidden: { opacity: 0, y: -50 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.7, ease: "easeOut" }
-    },
-  };
-
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
-    }),
-  };
-  // Convert content events to the format expected by EventCard
-  const events = content?.events?.map(event => {
-    // Map category to valid image types for getShootingSportsImage
-    // let imageType: 'events' | 'training' | 'membership' | 'ranges' | 'competition' | 'hero' | 'equipment' | 'community' = 'events';
-    
-    // switch (event.category?.toLowerCase()) {
-    //   case 'competition':
-    //     imageType = 'competition';
-    //     break;
-    //   case 'training':
-    //     imageType = 'training';
-    //     break;
-    //   case 'fun shoot':
-    //   case 'social':
-    //     imageType = 'community';
-    //     break;
-    //   case 'equipment':
-    //     imageType = 'equipment';
-    //     break;
-    //   default:
-    //     imageType = 'events';
-    // }
-
-    return {
-      id: event.id.toString(),
-      title: event.title,
-      date: new Date(event.date).toLocaleDateString('en-US', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-      }),
-      time: event.time,
-      location: event.location,
-      description: event.description,
-      category: event.category || 'Event',
-      image: '/images/events.webp',
-      detailsLink: `/events/${event.id}`
-    };
-  }) || [];
-
-  if (loading) {
-    return (
-      <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[var(--accent-primary)] mx-auto mb-4"></div>
-          <p className="text-xl">Loading events...</p>
+      {/* Calendar Integration Section */}
+      <section className="py-16 bg-white/5 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-white mb-4">
+              LIVE EVENT CALENDAR
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 font-body">
+              Our directors update this calendar in real-time with new events, schedule changes, and tournament announcements.
+            </p>
+          </div>
+          
+          {/* Google Calendar Embed Placeholder */}
+          <div className="bg-card/95 backdrop-blur-xl rounded-2xl border border-border/20 p-8 shadow-2xl">
+            <div className="aspect-video bg-gradient-to-br from-leonard-yellow/5 to-lahoma-orange/5 rounded-xl border border-leonard-yellow/20 flex items-center justify-center">
+              <div className="text-center">
+                <Calendar className="w-16 h-16 text-leonard-yellow mx-auto mb-4" />
+                <h3 className="text-xl font-heading font-bold text-gray-900 dark:text-white mb-2">
+                  Google Calendar Integration
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 font-body">
+                  Live calendar will be embedded here, managed by club directors
+                </p>
+                <Badge className="mt-4 bg-brand-green/20 text-brand-green border-brand-green/30">
+                  Real-time Updates
+                </Badge>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    );
-  }
+      </section>
 
-  if (error) {
-    return (
-      <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-xl text-red-400">Error loading events: {error}</p>
-        </div>
-      </div>
-    );
-  }
+      {/* Featured Events Grid */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-white mb-4">
+              FEATURED EVENTS
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 font-body max-w-2xl mx-auto">
+              Championship tournaments, weekly leagues, and special events throughout the season.
+            </p>
+          </div>
 
-  return (
-    <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden">
-      
-      <motion.header 
-        className="relative py-24 md:py-32 text-center bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/events.jpg')" }} // Consider a specific events header image
-        variants={headerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-        <div className="relative z-10 container mx-auto px-4">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold tracking-tight text-shadow-lg"
-            variants={sectionVariants} custom={0}
-          >
-            {pageTitle}
-          </motion.h1>
-          <motion.p 
-            className="mt-6 text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto"
-            variants={sectionVariants} custom={1}
-          >
-            Stay up-to-date with all the competitions, training sessions, and social gatherings at Boise Gun Club.
-          </motion.p>
-        </div>
-      </motion.header>      <main className="relative z-10 container mx-auto px-4 py-16 md:py-24">
-        {/* Add filtering/sorting options here in the future */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-          {events.map((event, index) => (
-            <EventCard key={event.id} event={event} index={index} />
-          ))}
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Idaho State Sporting Clays Championship */}
+            <Card className="rounded-xl overflow-hidden group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl">
+              <div className="h-32 bg-gradient-to-r from-lahoma-orange to-leonard-yellow relative">
+                <Badge className="absolute top-4 left-4 bg-white/20 text-white dark:text-white border-white/30">
+                  Championship
+                </Badge>
+                <Trophy className="absolute bottom-4 right-4 w-8 h-8 text-white/80" />
+              </div>
+              <CardHeader>
+                <CardTitle className="font-heading text-gray-900 dark:text-white flex items-center gap-2">
+                  <Target className="w-5 h-5 text-lahoma-orange" />
+                  Idaho State Sporting Clays Championship
+                </CardTitle>
+                <CardDescription className="font-body text-gray-600 dark:text-gray-300">
+                  Premier sporting clays competition featuring 100 targets across 15 stations
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Calendar className="w-4 h-4" />
+                    March 15-16, 2025
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Clock className="w-4 h-4" />
+                    8:00 AM - 6:00 PM
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <DollarSign className="w-4 h-4" />
+                    $85 Entry Fee
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Users className="w-4 h-4" />
+                    150 Shooters Expected
+                  </div>
+                </div>
+                <Button className="w-full bg-lahoma-orange hover:bg-leonard-yellow text-white dark:text-white">
+                  Register Now
+                </Button>
+              </CardContent>
+            </Card>
 
-        {events.length === 0 && (
-          <motion.div 
-            initial={{opacity: 0, y: 20}} animate={{opacity:1, y: 0}} transition={{duration: 0.5}}
-            className="text-center py-12 text-[var(--text-secondary)] text-lg"
-          >
-            <p>No upcoming events at the moment. Please check back soon!</p>
-          </motion.div>
-        )}
-      </main>
+            {/* Weekly Trap League */}
+            <Card className="rounded-xl overflow-hidden group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl">
+              <div className="h-32 bg-gradient-to-r from-brand-green to-brand-green-light relative">
+                <Badge className="absolute top-4 left-4 bg-white/20 text-white dark:text-white border-white/30">
+                  Weekly League
+                </Badge>
+                <Target className="absolute bottom-4 right-4 w-8 h-8 text-white/80" />
+              </div>
+              <CardHeader>
+                <CardTitle className="font-heading text-gray-900 dark:text-white flex items-center gap-2">
+                  <Target className="w-5 h-5 text-brand-green" />
+                  Tuesday Night Trap League
+                </CardTitle>
+                <CardDescription className="font-body text-gray-600 dark:text-gray-300">
+                  Weekly 16-yard trap competition. All skill levels welcome!
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Calendar className="w-4 h-4" />
+                    Every Tuesday
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Clock className="w-4 h-4" />
+                    6:00 PM - 8:00 PM
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <DollarSign className="w-4 h-4" />
+                    $120 Season
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Users className="w-4 h-4" />
+                    40 Shooters
+                  </div>
+                </div>
+                <Button className="w-full bg-brand-green hover:bg-brand-green-light text-white dark:text-white">
+                  Join League
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Youth Training Camp */}
+            <Card className="rounded-xl overflow-hidden group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl">
+              <div className="h-32 bg-gradient-to-r from-brand-blue to-brand-blue-dark relative">
+                <Badge className="absolute top-4 left-4 bg-white/20 text-white dark:text-white border-white/30">
+                  Youth Program
+                </Badge>
+                <User className="absolute bottom-4 right-4 w-8 h-8 text-white/80" />
+              </div>
+              <CardHeader>
+                <CardTitle className="font-heading text-gray-900 dark:text-white flex items-center gap-2">
+                  <User className="w-5 h-5 text-brand-blue" />
+                  Summer Youth Training Camp
+                </CardTitle>
+                <CardDescription className="font-body text-gray-600 dark:text-gray-300">
+                  5-day intensive training for young shooters ages 12-18
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Calendar className="w-4 h-4" />
+                    July 8-12, 2025
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Clock className="w-4 h-4" />
+                    9:00 AM - 3:00 PM
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <DollarSign className="w-4 h-4" />
+                    $250 (includes targets)
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Users className="w-4 h-4" />
+                    Limited to 20 Youth
+                  </div>
+                </div>
+                <Button className="w-full bg-brand-blue hover:bg-brand-blue-dark text-white dark:text-white">
+                  Register Youth
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Ladies Day */}
+            <Card className="rounded-xl overflow-hidden group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl">
+              <div className="h-32 bg-gradient-to-r from-leonard-yellow to-lahoma-orange relative">
+                <Badge className="absolute top-4 left-4 bg-white/20 text-white dark:text-white border-white/30">
+                  Special Event
+                </Badge>
+                <Users className="absolute bottom-4 right-4 w-8 h-8 text-white/80" />
+              </div>
+              <CardHeader>
+                <CardTitle className="font-heading text-gray-900 dark:text-white flex items-center gap-2">
+                  <Users className="w-5 h-5 text-leonard-yellow" />
+                  Ladies Day Sporting Clays
+                </CardTitle>
+                <CardDescription className="font-body text-gray-600 dark:text-gray-300">
+                  Special event designed for women shooters with professional instruction
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Calendar className="w-4 h-4" />
+                    April 5, 2025
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Clock className="w-4 h-4" />
+                    10:00 AM - 4:00 PM
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <DollarSign className="w-4 h-4" />
+                    $45 (lunch included)
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Users className="w-4 h-4" />
+                    30 Participants
+                  </div>
+                </div>
+                <Button className="w-full bg-leonard-yellow hover:bg-lahoma-orange text-black dark:text-black">
+                  Register Now
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Corporate Team Building */}
+            <Card className="rounded-xl overflow-hidden group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl">
+              <div className="h-32 bg-gradient-to-r from-brand-red-action to-lahoma-orange relative">
+                <Badge className="absolute top-4 left-4 bg-white/20 text-white dark:text-white border-white/30">
+                  Corporate
+                </Badge>
+                <Users className="absolute bottom-4 right-4 w-8 h-8 text-white/80" />
+              </div>
+              <CardHeader>
+                <CardTitle className="font-heading text-gray-900 dark:text-white flex items-center gap-2">
+                  <Users className="w-5 h-5 text-brand-red-action" />
+                  Corporate Team Building
+                </CardTitle>
+                <CardDescription className="font-body text-gray-600 dark:text-gray-300">
+                  Custom corporate events with professional instruction and catering
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Calendar className="w-4 h-4" />
+                    By Appointment
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Clock className="w-4 h-4" />
+                    Half or Full Day
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <DollarSign className="w-4 h-4" />
+                    Custom Pricing
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Users className="w-4 h-4" />
+                    10-50 People
+                  </div>
+                </div>
+                <Button className="w-full bg-brand-red-action hover:bg-lahoma-orange text-white dark:text-white">
+                  Get Quote
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Veterans Day Tribute */}
+            <Card className="rounded-xl overflow-hidden group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl">
+              <div className="h-32 bg-gradient-to-r from-brand-blue-dark to-brand-red-action relative">
+                <Badge className="absolute top-4 left-4 bg-white/20 text-white dark:text-white border-white/30">
+                  Special Tribute
+                </Badge>
+                <Trophy className="absolute bottom-4 right-4 w-8 h-8 text-white/80" />
+              </div>
+              <CardHeader>
+                <CardTitle className="font-heading text-gray-900 dark:text-white flex items-center gap-2">
+                  <Trophy className="w-5 h-5 text-brand-blue-dark" />
+                  Veterans Day Memorial Shoot
+                </CardTitle>
+                <CardDescription className="font-body text-gray-600 dark:text-gray-300">
+                  Honoring our veterans with a special tribute sporting clays event
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Calendar className="w-4 h-4" />
+                    November 11, 2025
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Clock className="w-4 h-4" />
+                    9:00 AM - 5:00 PM
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <DollarSign className="w-4 h-4" />
+                    Free for Veterans
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Users className="w-4 h-4" />
+                    All Welcome
+                  </div>
+                </div>
+                <Button className="w-full bg-brand-blue-dark hover:bg-brand-red-action text-white dark:text-white">
+                  Learn More
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-lahoma-orange/10 to-leonard-yellow/10 backdrop-blur-sm">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-heading font-bold text-gray-900 dark:text-white mb-6">
+            READY TO COMPETE?
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 font-body">
+            Join our vibrant shooting community and participate in events that challenge and inspire. 
+            From beginner-friendly leagues to championship competitions.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-lahoma-orange hover:bg-leonard-yellow text-white dark:text-white font-heading">
+              <Trophy className="w-5 h-5 mr-2" />
+              View Tournament Schedule
+            </Button>
+            <Button variant="outline" size="lg" className="border-leonard-yellow text-leonard-yellow hover:bg-leonard-yellow/10">
+              <Users className="w-5 h-5 mr-2" />
+              Join a League
+            </Button>
+          </div>
+        </div>
+      </section>
     </div>
   );
-};
-
-export default EventsPage;
+}
