@@ -1,0 +1,123 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Design Research/Stripe + ClickUp Analysis" />
+
+# Stripe + ClickUp Design Research
+
+## Research Findings
+
+### Stripe's Premium Micro-Interactions
+
+Based on analysis of stripe.com, here are the key patterns that make their components feel premium:
+
+#### Animation Timing
+- **Duration**: `150ms` for micro-interactions
+- **Easing**: `cubic-bezier(0.215, 0.61, 0.355, 1)` - Stripe's signature easing function
+- **Hover delays**: Instant response with smooth transitions
+
+#### Button Styling
+- **Border radius**: Consistent `8px` 
+- **Shadows**: `0 2px 4px -1px rgba(50,50,93,.25)` for depth
+- **Scale effects**: Subtle `scale(1.02)` on hover
+- **Focus states**: Clean ring indicators
+
+#### Visual Hierarchy
+- **Typography**: Medium font weights, never too heavy
+- **Spacing**: Generous white space and consistent padding
+- **Subtle gradients**: Professional color transitions
+- **Refined shadows**: Layered for realistic depth
+
+### ClickUp's Gradient Magic
+
+While CSS details were limited, ClickUp's visual patterns include:
+
+#### Glassmorphism
+- **Backdrop blur**: Creates depth and modern feel
+- **Transparency layers**: Multiple opacity levels
+- **Color overlays**: Vibrant but tasteful
+
+#### Animation Patterns
+- **Smooth tab transitions**: Seamless state changes
+- **Interactive elements**: Responsive hover states
+- **Dynamic content**: Smooth filtering and sorting
+
+## Application to Boise Gun Club
+
+### What We Keep (Already Perfect)
+- ✅ **Color system**: Our brand colors are spot-on
+- ✅ **Typography**: Rajdhani + Noto Sans combination works beautifully  
+- ✅ **Layout patterns**: `/test/components` page is the gold standard
+- ✅ **Card designs**: The component cards are already "fucking shmexy"
+
+### What We Add (Stripe + ClickUp Fusion)
+- 🎯 **Micro-interactions**: Stripe's precise 150ms transitions
+- 🎯 **Easing functions**: `cubic-bezier(0.215, 0.61, 0.355, 1)`
+- 🎯 **Shadow system**: Professional depth with realistic shadows
+- 🎯 **Glassmorphism**: ClickUp-style transparency and blur effects
+- 🎯 **Hover states**: Subtle scale and lift effects
+
+## Component Enhancement Strategy
+
+### Phase 1: Extract `/test/components` Cards
+- Convert the sexy component cards into reusable Storybook components
+- Maintain exact styling and animations
+- Add interactive controls for customization
+
+### Phase 2: Stripe Micro-Interactions
+- Apply Stripe's easing and timing to all interactions
+- Enhance hover states with professional shadow systems
+- Add focus states that match Stripe's accessibility standards
+
+### Phase 3: ClickUp Glassmorphism
+- Layer transparency effects over our existing gradients
+- Add backdrop blur to create depth
+- Implement color splash animations
+
+### Phase 4: Complete shadcn Integration
+- Install all shadcn components
+- Customize each with our fusion aesthetic
+- Create comprehensive component library
+
+## Technical Implementation
+
+### CSS Custom Properties (Enhanced)
+```css
+/* Stripe-inspired timing */
+--transition-fast: 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
+--transition-smooth: 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+
+/* Professional shadows */
+--shadow-stripe-sm: 0 2px 4px -1px rgba(50,50,93,.25);
+--shadow-stripe-md: 0 4px 8px -2px rgba(50,50,93,.25);
+--shadow-stripe-lg: 0 8px 16px -4px rgba(50,50,93,.25);
+
+/* Glassmorphism layers */
+--glass-subtle: rgba(255, 255, 255, 0.05);
+--glass-medium: rgba(255, 255, 255, 0.1);
+--glass-strong: rgba(255, 255, 255, 0.15);
+```
+
+### Component Patterns
+```tsx
+// Example: Enhanced button with Stripe timing
+const EnhancedButton = () => (
+  <button className="
+    transition-all duration-150 
+    hover:scale-[1.02] hover:-translate-y-0.5
+    shadow-[0_2px_4px_-1px_rgba(50,50,93,.25)]
+    hover:shadow-[0_4px_8px_-2px_rgba(50,50,93,.25)]
+  ">
+    Premium Button
+  </button>
+);
+```
+
+## Next Steps
+
+1. **Extract component cards** from `/test/components` into Storybook
+2. **Install complete shadcn library** for customization base
+3. **Apply Stripe timing** to all interactive elements  
+4. **Layer ClickUp glassmorphism** over existing designs
+5. **Build comprehensive component showcase** in Storybook
+
+The goal is to enhance the already excellent foundation with premium micro-interactions and visual depth, not replace the established aesthetic.
