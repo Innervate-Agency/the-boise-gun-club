@@ -4,8 +4,6 @@ import { useEffect, useState } from 'react';
 import NavBar from '../components/navigation/NavBar';
 import Footer from '../components/layout/Footer';
 import NewThemeToggle from '../components/ui/NewThemeToggle';
-import AccessibilityFAB from '../components/ui/AccessibilityFAB';
-import ChatwootWidget from '../components/chat/ChatwootWidget';
 
 interface ClientLayoutProps {
   children: React.ReactNode;
@@ -31,24 +29,12 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
   return (
     <>
       <NavBar />
-      <main className="flex-1 w-full min-h-screen pt-[80px] md:pt-[90px]">
+      <main className="flex-1 w-full min-h-screen">
         {children}
       </main>
       <Footer />
       <NewThemeToggle />
-      <AccessibilityFAB />
-      {mounted && (
-        <ChatwootWidget 
-          websiteToken={process.env.NEXT_PUBLIC_CHATWOOT_WEBSITE_TOKEN || 'demo-token'}
-          settings={{
-            hideMessageBubble: false,
-            position: 'right',
-            locale: 'en',
-            type: 'standard',
-            darkMode: 'auto'
-          }}
-        />
-      )}
+      {/* Theme and accessibility controls will be added here */}
     </>
   );
 }

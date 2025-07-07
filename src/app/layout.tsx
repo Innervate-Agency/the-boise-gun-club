@@ -3,6 +3,7 @@ import ClientLayout from './ClientLayout';
 import FontLoader from './components/FontLoader';
 import { ThemeProvider } from '../components/ui/ThemeContext';
 import './globals.css';
+// import './fonts.css'; // This file was deleted
 
 export const metadata: Metadata = {
   title: 'Boise Gun Club - Premier Shooting Sports Facility',
