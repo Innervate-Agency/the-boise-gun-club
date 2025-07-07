@@ -99,31 +99,17 @@ const MembershipOptions = () => {
     };
 
     return (
-        <section className="relative py-20 overflow-hidden bg-[#36454F]">
+        <section className="relative py-20 overflow-hidden bg-ed-charcoal">
             {/* Decorative background elements */}
             <div className="absolute inset-0 opacity-10">
-                <div className="absolute inset-0" style={{
-                    backgroundImage: `
-                        linear-gradient(45deg, #5D4037 25%, transparent 25%),
-                        linear-gradient(-45deg, #5D4037 25%, transparent 25%),
-                        linear-gradient(45deg, transparent 75%, #5D4037 75%),
-                        linear-gradient(-45deg, transparent 75%, #5D4037 75%)
-                    `,
-                    backgroundSize: '20px 20px',
-                    backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
-                }} />
+                <div className="absolute inset-0 bg-[linear-gradient(45deg,var(--craters-moon)_25%,transparent_25%),linear-gradient(-45deg,var(--craters-moon)_25%,transparent_25%),linear-gradient(45deg,transparent_75%,var(--craters-moon)_75%),linear-gradient(-45deg,transparent_75%,var(--craters-moon)_75%)] bg-[20px_20px] [background-position:0_0,0_10px,10px_-10px,-10px_0px]" />
             </div>
 
             <div className="container mx-auto px-4">
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <motion.h2
-                        className="text-5xl font-bold mb-6 text-[#FFBF00]"
-                        style={{
-                            fontFamily: 'var(--font-space-grotesk)',
-                            letterSpacing: '0.1em',
-                            textShadow: '3px 3px 0px rgba(93, 64, 55, 0.5)'
-                        }}
+                        className="text-5xl font-bold mb-6 text-leonard-yellow"
                         initial={{ opacity: 0, y: -20 }}
                         animate={inView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.6 }}
@@ -173,4 +159,4 @@ const MembershipOptions = () => {
     );
 };
 
-export default MembershipOptions; 
+export default MembershipOptions;

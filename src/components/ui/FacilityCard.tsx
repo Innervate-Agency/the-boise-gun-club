@@ -61,10 +61,10 @@ const FacilityCard: React.FC<FacilityCardProps> = ({
             {/* Mica/Acrylic background blur effect */}
             <div className="absolute inset-0 backdrop-blur-2xl bg-[rgba(75,75,75,0.4)] border border-[rgba(255,255,255,0.08)] shadow-2xl z-0 group-hover:bg-[rgba(75,75,75,0.5)] transition-colors duration-500" />
             {/* Top gradient border */}
-            <div className="absolute top-0 left-10 right-10 h-[1px] bg-gradient-to-r from-transparent via-[var(--accent-primary)]/40 to-transparent z-[1]" />
+            <div className="absolute top-0 left-10 right-10 h-[1px] bg-gradient-to-r from-transparent via-accent-primary/40 to-transparent z-[1]" />
             {/* Subtle corner gradients */}
-            <div className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-[var(--accent-primary)]/20 to-transparent z-[1]" />
-            <div className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-[var(--accent-primary)]/10 to-transparent z-[1]" />
+            <div className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-accent-primary/20 to-transparent z-[1]" />
+            <div className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-accent-primary/10 to-transparent z-[1]" />
             {/* Content container */}
             <div className="relative z-10 p-8">
                 {/* Subtle grid pattern */}
@@ -77,7 +77,7 @@ const FacilityCard: React.FC<FacilityCardProps> = ({
                         <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg relative">
                             {/* Gradient border */}
                             <div className="absolute inset-0 p-[1px] rounded-xl">
-                                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[var(--accent-primary)]/40 via-[var(--accent-primary)]/20 to-[var(--accent-primary)]/40 animate-gradient-slow" />
+                                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-accent-primary/40 via-accent-primary/20 to-accent-primary/40 animate-gradient-slow" />
                             </div>
 
                             {/* Image */}
@@ -92,32 +92,32 @@ const FacilityCard: React.FC<FacilityCardProps> = ({
                             </div>
 
                             {/* Hover glow */}
-                            <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 bg-[var(--accent-primary)]/20 transition-opacity duration-700" />
+                            <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 bg-accent-primary/20 transition-opacity duration-700" />
                         </div>
 
                         {/* Glow effect */}
-                        <div className="absolute -inset-1 bg-[var(--accent-primary)]/0 group-hover:bg-[var(--accent-primary)]/20 rounded-xl blur-xl transition-colors duration-700 -z-10" />
+                        <div className="absolute -inset-1 bg-accent-primary/0 group-hover:bg-accent-primary/20 rounded-xl blur-xl transition-colors duration-700 -z-10" />
                     </div>
 
                     {/* Title with animated gradient on hover */}
-                    <h3 className="text-2xl ml-5 tracking-wide group-hover:bg-gradient-to-r group-hover:from-[var(--accent-primary)] group-hover:to-[var(--accent-primary)]/70 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500">
+                    <h3 className="text-2xl ml-5 tracking-wide group-hover:bg-gradient-to-r group-hover:from-accent-primary group-hover:to-accent-primary/70 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500">
                         {title}
                     </h3>
                 </div>
 
                 {/* Description with improved typography */}
-                <p className="text-[var(--text-secondary)] mb-6 text-base leading-relaxed">
+                <p className="text-text-secondary mb-6 text-base leading-relaxed">
                     {description}
                 </p>
 
                 {/* Animated link */}
                 <Link
                     href={link}
-                    className="inline-flex items-center text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] text-sm tracking-wide transition-colors duration-300 group-hover:translate-x-1"
+                    className="inline-flex items-center text-accent-primary hover:text-accent-secondary text-sm tracking-wide transition-colors duration-300 group-hover:translate-x-1"
                    >
                     <span className="relative">
                         {linkText}
-                        <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--accent-primary)] group-hover:w-full transition-all duration-300"></span>
+                        <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-accent-primary group-hover:w-full transition-all duration-300"></span>
                     </span>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -143,4 +143,4 @@ const FacilityCard: React.FC<FacilityCardProps> = ({
     );
 };
 
-export default FacilityCard; 
+export default FacilityCard;

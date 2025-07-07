@@ -22,6 +22,7 @@ interface PageHeroProps {
     href?: string;
     onClick?: () => void;
   };
+  icon?: React.ComponentType<any>;
   backgroundPreset?: 'warm' | 'cool' | 'mixed' | 'gunclub';
   intensity?: 'subtle' | 'medium' | 'premium';
   size?: 'sm' | 'md' | 'lg' | 'xl';

@@ -125,16 +125,11 @@ export default function MuseumPage() {
     }, []);
 
     return (
-        <main className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pt-20">
+        <main className="min-h-screen bg-bg-primary text-text-primary pt-20">
             {/* Hero Section */}
-            <section className="section-spacing bg-gradient-to-br from-[var(--accent-primary)]/10 via-[var(--bg-primary)] to-[var(--accent-secondary)]/5 relative overflow-hidden">
+            <section className="section-spacing bg-gradient-to-br from-accent-primary/10 via-bg-primary to-accent-secondary/5 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0"
-                         style={{ 
-                             backgroundImage: `url('/images/Grid/Grid (2).webp')`, 
-                             backgroundSize: '150px 150px',
-                             backgroundRepeat: 'repeat'
-                         }} />
+                    <div className="absolute inset-0 bg-[url('/images/Grid/Grid_(2).webp')] bg-[150px_150px] bg-repeat" />
                 </div>
                 
                 <div className="stripe-container relative z-10">
@@ -145,13 +140,13 @@ export default function MuseumPage() {
                         transition={{ duration: 0.8 }}
                         className="text-center mb-16"
                     >
-                        <h1 className="text-5xl md:text-7xl font-bold text-[var(--accent-primary)] mb-6">
+                        <h1 className="text-5xl md:text-7xl font-bold text-accent-primary mb-6">
                             CLUB MUSEUM
                         </h1>
-                        <h2 className="text-3xl md:text-4xl text-[var(--text-secondary)] mb-8">
+                        <h2 className="text-3xl md:text-4xl text-text-secondary mb-8">
                             Preserving 50 Years of Excellence
                         </h2>
-                        <p className="text-xl text-[var(--text-primary)] max-w-4xl mx-auto leading-relaxed">
+                        <p className="text-xl text-text-primary max-w-4xl mx-auto leading-relaxed">
                             Step into our museum and discover the rich heritage of Boise Gun Club. From our founding in 1973 
                             to becoming Idaho's premier shotgun sports facility, every artifact tells the story of dedication, 
                             sportsmanship, and the pursuit of excellence that defines our community.
@@ -167,13 +162,13 @@ export default function MuseumPage() {
                         <div className="inline-flex space-x-4">
                             <Link
                                 href="/about"
-                                className="px-8 py-4 bg-[var(--accent-primary)] text-white rounded-lg hover:bg-[var(--accent-secondary)] transition-colors uppercase tracking-wide"
+                                className="px-8 py-4 bg-accent-primary text-white rounded-lg hover:bg-accent-secondary transition-colors uppercase tracking-wide"
                             >
                                 Learn Our Story
                             </Link>
                             <Link
                                 href="/membership"
-                                className="px-8 py-4 border-2 border-[var(--accent-primary)] text-[var(--accent-primary)] rounded-lg hover:bg-[var(--accent-primary)] hover:text-white transition-colors uppercase tracking-wide"
+                                className="px-8 py-4 border-2 border-accent-primary text-accent-primary rounded-lg hover:bg-accent-primary hover:text-white transition-colors uppercase tracking-wide"
                             >
                                 Join the Legacy
                             </Link>
@@ -183,7 +178,7 @@ export default function MuseumPage() {
             </section>
 
             {/* Timeline Section */}
-            <section className="section-spacing bg-[var(--bg-secondary)] relative">
+            <section className="section-spacing bg-bg-secondary relative">
                 <div className="stripe-container">
                     <motion.div
                         ref={timelineRef}
@@ -192,13 +187,13 @@ export default function MuseumPage() {
                         transition={{ duration: 0.8 }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-4xl md:text-5xl font-bold text-[var(--accent-primary)] mb-4">
+                        <h2 className="text-4xl md:text-5xl font-bold text-accent-primary mb-4">
                             CLUB TIMELINE
                         </h2>
-                        <h3 className="text-2xl md:text-3xl text-[var(--text-secondary)] mb-6">
+                        <h3 className="text-2xl md:text-3xl text-text-secondary mb-6">
                             Five Decades of Milestones
                         </h3>
-                        <p className="text-lg text-[var(--text-primary)] max-w-3xl mx-auto leading-relaxed">
+                        <p className="text-lg text-text-primary max-w-3xl mx-auto leading-relaxed">
                             From humble beginnings to championship glory, explore the key moments that shaped 
                             Boise Gun Club into the institution it is today.
                         </p>
@@ -206,7 +201,7 @@ export default function MuseumPage() {
 
                     <div className="relative">
                         {/* Timeline line */}
-                        <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-[var(--accent-primary)] opacity-20"></div>
+                        <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-accent-primary opacity-20"></div>
                         
                         <div className="space-y-16">
                             {timelineMilestones.map((milestone, index) => (
@@ -220,13 +215,13 @@ export default function MuseumPage() {
                                     {/* Content */}
                                     <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
                                         <div className="stripe-card glass-card">
-                                            <div className="text-3xl font-bold text-[var(--accent-primary)] mb-2">
+                                            <div className="text-3xl font-bold text-accent-primary mb-2">
                                                 {milestone.year}
                                             </div>
-                                            <h4 className="text-xl font-bold text-[var(--text-primary)] mb-3">
+                                            <h4 className="text-xl font-bold text-text-primary mb-3">
                                                 {milestone.title}
                                             </h4>
-                                            <p className="text-[var(--text-secondary)] leading-relaxed">
+                                            <p className="text-text-secondary leading-relaxed">
                                                 {milestone.description}
                                             </p>
                                         </div>
@@ -234,7 +229,7 @@ export default function MuseumPage() {
                                     
                                     {/* Timeline dot */}
                                     <div className="w-2/12 flex justify-center">
-                                        <div className="w-6 h-6 bg-[var(--accent-primary)] rounded-full border-4 border-[var(--bg-primary)] relative z-10"></div>
+                                        <div className="w-6 h-6 bg-accent-primary rounded-full border-4 border-bg-primary relative z-10"></div>
                                     </div>
                                     
                                     {/* Spacer */}
@@ -247,7 +242,7 @@ export default function MuseumPage() {
             </section>
 
             {/* Museum Artifacts */}
-            <section className="section-spacing bg-[var(--bg-primary)] relative">
+            <section className="section-spacing bg-bg-primary relative">
                 <div className="stripe-container">
                     <motion.div
                         ref={artifactsRef}
@@ -256,13 +251,13 @@ export default function MuseumPage() {
                         transition={{ duration: 0.8 }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-4xl md:text-5xl font-bold text-[var(--accent-primary)] mb-4">
+                        <h2 className="text-4xl md:text-5xl font-bold text-accent-primary mb-4">
                             MUSEUM COLLECTION
                         </h2>
-                        <h3 className="text-2xl md:text-3xl text-[var(--text-secondary)] mb-6">
+                        <h3 className="text-2xl md:text-3xl text-text-secondary mb-6">
                             Artifacts of Excellence
                         </h3>
-                        <p className="text-lg text-[var(--text-primary)] max-w-3xl mx-auto leading-relaxed">
+                        <p className="text-lg text-text-primary max-w-3xl mx-auto leading-relaxed">
                             Each piece in our collection represents a chapter in the ongoing story of Boise Gun Club. 
                             These artifacts preserve the memories, achievements, and spirit of our shooting community.
                         </p>
@@ -278,17 +273,17 @@ export default function MuseumPage() {
                                 className="stripe-card glass-card"
                             >
                                 <div className="flex items-center justify-between mb-4">
-                                    <span className="px-3 py-1 bg-[var(--accent-primary)] text-white text-xs rounded-full uppercase tracking-wide">
+                                    <span className="px-3 py-1 bg-accent-primary text-white text-xs rounded-full uppercase tracking-wide">
                                         {artifact.category}
                                     </span>
-                                    <span className="text-[var(--text-secondary)] text-sm">
+                                    <span className="text-text-secondary text-sm">
                                         {artifact.year}
                                     </span>
                                 </div>
-                                <h4 className="text-xl font-bold text-[var(--text-primary)] mb-3">
+                                <h4 className="text-xl font-bold text-text-primary mb-3">
                                     {artifact.title}
                                 </h4>
-                                <p className="text-[var(--text-secondary)] leading-relaxed">
+                                <p className="text-text-secondary leading-relaxed">
                                     {artifact.description}
                                 </p>
                             </motion.div>
@@ -298,7 +293,7 @@ export default function MuseumPage() {
             </section>
 
             {/* Call to Action */}
-            <section className="section-spacing bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white relative overflow-hidden">
+            <section className="section-spacing bg-gradient-to-r from-accent-primary to-accent-secondary text-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-black/20"></div>
                 <div className="stripe-container relative z-10 text-center">
                     <motion.div
@@ -316,13 +311,13 @@ export default function MuseumPage() {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 href="/membership"
-                                className="px-8 py-4 bg-white text-[var(--accent-primary)] rounded-lg hover:bg-gray-100 transition-colors uppercase tracking-wide"
+                                className="px-8 py-4 bg-white text-accent-primary rounded-lg hover:bg-gray-100 transition-colors uppercase tracking-wide"
                             >
                                 Join Today
                             </Link>
                             <Link
                                 href="/contact"
-                                className="px-8 py-4 border-2 border-white text-white rounded-lg hover:bg-white hover:text-[var(--accent-primary)] transition-colors uppercase tracking-wide"
+                                className="px-8 py-4 border-2 border-white text-white rounded-lg hover:bg-white hover:text-accent-primary transition-colors uppercase tracking-wide"
                             >
                                 Visit Museum
                             </Link>
