@@ -75,10 +75,10 @@ export const GlassFusionCards: StoryObj = {
           description="Subtitle with glassmorphism"
           badge="New"
           intensity="premium"
-          headerGradient="from-[var(--accent-primary)] to-[var(--accent-secondary)]"
-          splashColor="var(--accent-tertiary)"
+          headerGradient="from-[#F23005] to-[#f07b1d]"
+          splashColor="#E3C03C"
         >
-          <p className="text-[var(--text-secondary)] font-body">
+          <p className="text-muted-foreground font-body">
             This is a premium glass fusion card with all the effects enabled.
           </p>
         </GlassFusionCard>
@@ -87,10 +87,10 @@ export const GlassFusionCards: StoryObj = {
           title="Medium Intensity"
           badge="Beta"
           intensity="medium"
-          headerGradient="from-[var(--brand-blue)] to-[var(--brand-green)]"
-          splashColor="var(--brand-blue)"
+          headerGradient="from-[#5198cd] to-[#6f7822]"
+          splashColor="#5198cd"
         >
-          <p className="text-[var(--text-secondary)] font-body">
+          <p className="text-muted-foreground font-body">
             Medium intensity glassmorphism for balanced visual hierarchy.
           </p>
         </GlassFusionCard>
@@ -99,9 +99,9 @@ export const GlassFusionCards: StoryObj = {
           title="Subtle Effect"
           intensity="subtle"
           variant="gradient"
-          headerGradient="from-[var(--brand-green)] to-[var(--brand-green-light)]"
+          headerGradient="from-[#6f7822] to-[#909233]"
         >
-          <p className="text-[var(--text-secondary)] font-body">
+          <p className="text-muted-foreground font-body">
             Subtle glassmorphism for supporting content.
           </p>
         </GlassFusionCard>
@@ -119,10 +119,10 @@ export const FloatingBackgrounds: StoryObj = {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <FloatingBackground preset="gunclub" intensity="premium" className="min-h-[300px] rounded-xl p-8">
           <div className="text-center">
-            <h3 className="text-2xl font-heading font-bold text-[var(--text-primary)] mb-4">
+            <h3 className="text-2xl font-heading font-bold text-card-foreground mb-4">
               Gun Club Preset
             </h3>
-            <p className="text-[var(--text-secondary)] font-body mb-6">
+            <p className="text-muted-foreground font-body mb-6">
               Premium intensity with animated color splashes using our brand colors.
             </p>
             <PremiumButton effect="lift" icon={<ArrowRight className="w-4 h-4" />}>
@@ -133,10 +133,10 @@ export const FloatingBackgrounds: StoryObj = {
 
         <FloatingBackground preset="warm" intensity="medium" className="min-h-[300px] rounded-xl p-8">
           <div className="text-center">
-            <h3 className="text-2xl font-heading font-bold text-[var(--text-primary)] mb-4">
+            <h3 className="text-2xl font-heading font-bold text-card-foreground mb-4">
               Warm Preset
             </h3>
-            <p className="text-[var(--text-secondary)] font-body mb-6">
+            <p className="text-muted-foreground font-body mb-6">
               Medium intensity with warm orange and red tones.
             </p>
             <PremiumButton effect="glow" variant="outline">
@@ -147,10 +147,10 @@ export const FloatingBackgrounds: StoryObj = {
 
         <FloatingBackground preset="cool" intensity="subtle" className="min-h-[300px] rounded-xl p-8">
           <div className="text-center">
-            <h3 className="text-2xl font-heading font-bold text-[var(--text-primary)] mb-4">
+            <h3 className="text-2xl font-heading font-bold text-card-foreground mb-4">
               Cool Preset
             </h3>
-            <p className="text-[var(--text-secondary)] font-body mb-6">
+            <p className="text-muted-foreground font-body mb-6">
               Subtle intensity with blue and green tones.
             </p>
             <PremiumButton effect="pulse" variant="secondary">
@@ -161,10 +161,10 @@ export const FloatingBackgrounds: StoryObj = {
 
         <FloatingBackground preset="mixed" intensity="medium" className="min-h-[300px] rounded-xl p-8">
           <div className="text-center">
-            <h3 className="text-2xl font-heading font-bold text-[var(--text-primary)] mb-4">
+            <h3 className="text-2xl font-heading font-bold text-card-foreground mb-4">
               Mixed Preset
             </h3>
-            <p className="text-[var(--text-secondary)] font-body mb-6">
+            <p className="text-muted-foreground font-body mb-6">
               Balanced mix of all brand colors with medium intensity.
             </p>
             <PremiumButton effect="shimmer">
@@ -183,11 +183,11 @@ export const CompleteShowcase: StoryObj = {
     <FloatingBackground preset="gunclub" intensity="premium" className="min-h-screen p-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-heading font-black text-[var(--text-primary)] mb-4">
+          <h1 className="text-4xl md:text-6xl font-heading font-black text-card-foreground mb-4">
             Premium Fusion
-            <span className="text-[var(--accent-primary)]"> Components</span>
+            <span className="text-accent-primary"> Components</span>
           </h1>
-          <p className="text-xl text-[var(--text-secondary)] font-body font-light max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground font-body font-light max-w-3xl mx-auto">
             Stripe-inspired design meets ClickUp gradients with Boise Gun Club branding
           </p>
         </div>
@@ -198,8 +198,8 @@ export const CompleteShowcase: StoryObj = {
             description="Elite member benefits"
             badge="Premium"
             intensity="premium"
-            headerGradient="from-[var(--accent-primary)] to-[var(--accent-secondary)]"
-            splashColor="var(--accent-tertiary)"
+            headerGradient="from-[#F23005] to-[#f07b1d]"
+            splashColor="#E3C03C"
           >
             <div className="space-y-4">
               <p className="text-gray-700 dark:text-gray-300 font-body">
@@ -216,8 +216,8 @@ export const CompleteShowcase: StoryObj = {
             description="Tournament ready"
             badge="Popular"
             intensity="medium"
-            headerGradient="from-[var(--brand-blue)] to-[var(--brand-green)]"
-            splashColor="var(--brand-blue)"
+            headerGradient="from-[#5198cd] to-[#6f7822]"
+            splashColor="#5198cd"
           >
             <div className="space-y-4">
               <p className="text-gray-700 dark:text-gray-300 font-body">
@@ -233,8 +233,8 @@ export const CompleteShowcase: StoryObj = {
             title="Recreation"
             description="Family friendly"
             intensity="subtle"
-            headerGradient="from-[var(--brand-green)] to-[var(--brand-green-light)]"
-            splashColor="var(--brand-green)"
+            headerGradient="from-[#6f7822] to-[#909233]"
+            splashColor="#6f7822"
           >
             <div className="space-y-4">
               <p className="text-gray-700 dark:text-gray-300 font-body">

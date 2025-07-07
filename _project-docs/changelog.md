@@ -24,6 +24,10 @@ Date: July 7, 2025
 
 🔧 Key Fixes:
 
+    ✅ MAJOR: Fixed white text on light theme issue - Added missing CSS variables (--card, --card-foreground, --muted-foreground)
+    ✅ COMPLETE: Implemented proper 26-color brand palette in ComponentCards using exact hex values from themes.css
+    ✅ Added brand color variables (--leonard-yellow, --lahoma-orange) to both light and dark themes
+    ✅ Fixed semantic color system - All shadcn/ui components now use proper theme variables
     Fixed text contrast issues - Added comprehensive text contrast system to design system
     Enhanced Storybook theming - Added theme decorator for proper light/dark mode testing
     Updated buttons page to use proper brand colors

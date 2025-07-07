@@ -32,8 +32,8 @@ export const WithBlueGradient: Story = {
   args: {
     title: 'Range Training',
     badge: 'New',
-    headerGradient: 'from-[var(--idaho-sky-blue)] to-[var(--snakeriver-blue)]',
-    splashColor: 'var(--idaho-sky-blue)',
+    headerGradient: 'from-[#5198cd] to-[#3c81c0]',
+    splashColor: '#5198cd',
     children: (
       <div>
         <p className="font-body text-gray-600 dark:text-gray-300 mb-4">
@@ -50,14 +50,14 @@ export const WithBlueGradient: Story = {
 export const GreenVariant: Story = {
   args: {
     title: 'Competition Events',
-    headerGradient: 'from-[var(--owyhee-green)] to-[var(--club-house-lawn-green)]',
-    splashColor: 'var(--owyhee-green)',
+    headerGradient: 'from-[#6f7822] to-[#3F6331]',
+    splashColor: '#6f7822',
     children: (
       <div>
         <p className="font-body text-gray-600 dark:text-gray-300 mb-4">
           Weekly tournaments and seasonal championships
         </p>
-        <PremiumButton className="w-full bg-[var(--owyhee-green)] hover:bg-[var(--club-house-lawn-green)]">
+        <PremiumButton className="w-full bg-[#6f7822] hover:bg-[#3F6331]">
           Register
         </PremiumButton>
       </div>
