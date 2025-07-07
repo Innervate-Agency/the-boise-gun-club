@@ -9,7 +9,7 @@ interface AnimatedSplashCardProps {
 export default function AnimatedSplashCard({ children, className = '' }: AnimatedSplashCardProps) {
   return (
     <motion.div
-      className={`relative rounded-2xl shadow-lg bg-white dark:bg-[#181A20] border-t-4 border-[#F28705] overflow-hidden ${className}`}
+      className={`relative rounded-2xl shadow-lg bg-white dark:bg-gray-900 border-t-4 border-lahoma-orange overflow-hidden ${className}`}
       whileHover="hovered"
       initial="rest"
       animate="rest"
@@ -22,10 +22,8 @@ export default function AnimatedSplashCard({ children, className = '' }: Animate
             hovered: { opacity: 1, scale: 1 },
           }}
           transition={{ duration: 0.5, type: 'spring', stiffness: 80 }}
-          className="absolute inset-0 pointer-events-none z-0"
+          className="absolute inset-0 pointer-events-none z-0 bg-gradient-radial from-leonard-yellow via-lahoma-orange to-red-600"
           style={{
-            background:
-              'radial-gradient(circle at 30% 30%, #F2CB05 0%, #F28705 40%, #F23005 100%)',
             opacity: 0.18,
             filter: 'blur(8px)',
           }}

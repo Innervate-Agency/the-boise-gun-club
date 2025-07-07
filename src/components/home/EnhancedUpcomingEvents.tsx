@@ -99,11 +99,11 @@ const UpcomingEvents = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="bg-gradient-to-br from-[#1a1a1a] to-black border border-[#F28705]/20 rounded-lg p-8"
+                            className="bg-gradient-to-br from-gray-900 to-black border border-lahoma-orange/20 rounded-lg p-8"
                         >
                             <div className="flex flex-col md:flex-row gap-6">
                                 <div className="shrink-0">
-                                    <div className="w-20 h-20 bg-gradient-to-br from-[#F28705] to-[#E85E27] rounded-lg flex flex-col items-center justify-center text-white relative">
+                                    <div className="w-20 h-20 bg-gradient-to-br from-lahoma-orange to-orange-600 rounded-lg flex flex-col items-center justify-center text-white relative">
                                         <span className="text-2xl font-bold">{day}</span>
                                         <span className="text-xs uppercase">{month}</span>
                                         
@@ -160,7 +160,7 @@ const UpcomingEvents = () => {
                             {events.map((event) => (
                                 <motion.div 
                                     key={event.id}
-                                    className={`p-4 rounded-lg cursor-pointer border border-white/10 transition-all ${selectedEvent.id === event.id ? 'bg-[#F28705]/10 border-[#F28705]/30' : 'bg-[#1a1a1a]/50 hover:bg-[#1a1a1a]'}`}
+                                    className={`p-4 rounded-lg cursor-pointer border border-white/10 transition-all ${selectedEvent.id === event.id ? 'bg-lahoma-orange/10 border-lahoma-orange/30' : 'bg-gray-900/50 hover:bg-gray-900'}`}
                                     onClick={() => setSelectedEvent(event)}
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}

@@ -52,7 +52,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--bg-primary)] via-[var(--bg-secondary)] to-[var(--bg-tertiary)]" />
         
         {/* 45-degree geometric overlay */}
-        <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-[#f28705]/10 via-transparent via-[#f2cb05]/5 to-[#4982a6]/8" />
+        <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-lahoma-orange/10 via-transparent via-leonard-yellow/5 to-blue-600/8" />
         
         {/* Angled grid pattern */}
         <div className="absolute inset-0 opacity-3 bg-[url('/images/Grid/Grid_(1).webp')] bg-[length:400px_400px] bg-repeat rotate-45 scale-150" />
@@ -121,7 +121,7 @@ export default function HeroSection() {
       {/* Subtle Static Particles */}
       <div className="absolute inset-0">
         {[...Array(8)].map((_, i) => {
-          const colors = ['bg-[#F2CB05]', 'bg-[#F28705]', 'bg-[#F25C05]', 'bg-[#F23005]', 'bg-[#4982A6]', 'bg-[#3F6331]', 'bg-[#C9D2EF]'];
+          const colors = ['bg-leonard-yellow', 'bg-lahoma-orange', 'bg-orange-600', 'bg-red-600', 'bg-blue-600', 'bg-green-600', 'bg-blue-200'];
           const positions = ['left-[25%] top-[30%]', 'left-[60%] top-[20%]', 'left-[80%] top-[40%]', 'left-[30%] top-[70%]', 'left-[70%] top-[60%]', 'left-[40%] top-[80%]', 'left-[85%] top-[25%]', 'left-[15%] top-[50%]'];
           return (
           <motion.div
@@ -217,7 +217,7 @@ export default function HeroSection() {
               <Button 
                 asChild
                 size="lg" 
-                className="relative overflow-hidden bg-gradient-to-r from-[#F28705] via-[#F25C05] to-[#F23005] hover:from-[#F23005] hover:to-[#F28705] text-white px-12 py-6 text-xl font-bold rounded-2xl transition-all duration-500 border-0 shadow-[0_0_40px_rgba(242,135,5,0.4),0_20px_40px_rgba(0,0,0,0.2)]"
+                className="relative overflow-hidden bg-gradient-to-r from-lahoma-orange via-orange-600 to-red-600 hover:from-red-600 hover:to-lahoma-orange text-white px-12 py-6 text-xl font-bold rounded-2xl transition-all duration-500 border-0 shadow-[0_0_40px_rgba(242,135,5,0.4),0_20px_40px_rgba(0,0,0,0.2)]"
               >
                 <Link href="/membership" className="flex items-center relative z-10">
                   <Trophy className="mr-3 h-6 w-6" />
@@ -250,9 +250,9 @@ export default function HeroSection() {
             transition={{ duration: 1, delay: 0.8 }}
           >
             {[
-              { icon: Target, title: "World-Class Ranges", desc: "30 championship-grade fields", color: "#F28705", fractal: 11 },
-              { icon: Star, title: "Family Community", desc: "Welcome all skill levels", color: "#F2CB05", fractal: 19 },
-              { icon: Trophy, title: "125+ Years Excellence", desc: "Proven tradition", color: "#4982A6", fractal: 27 }
+              { icon: Target, title: "World-Class Ranges", desc: "30 championship-grade fields", color: "lahoma-orange", fractal: 11 },
+              { icon: Star, title: "Family Community", desc: "Welcome all skill levels", color: "leonard-yellow", fractal: 19 },
+              { icon: Trophy, title: "125+ Years Excellence", desc: "Proven tradition", color: "blue-600", fractal: 27 }
             ].map((feature, i) => (
               <motion.div
                 key={i}
@@ -274,9 +274,9 @@ export default function HeroSection() {
 
                   <CardContent className="p-10 text-center relative z-10">
                     <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500
-                      ${feature.color === '#F28705' ? 'bg-gradient-to-br from-[#F28705] to-[#F28705]/50 shadow-[0_0_30px_#F28705]/25' : ''}
-                      ${feature.color === '#F2CB05' ? 'bg-gradient-to-br from-[#F2CB05] to-[#F2CB05]/50 shadow-[0_0_30px_#F2CB05]/25' : ''}
-                      ${feature.color === '#4982A6' ? 'bg-gradient-to-br from-[#4982A6] to-[#4982A6]/50 shadow-[0_0_30px_#4982A6]/25' : ''}`}
+                      ${feature.color === 'lahoma-orange' ? 'bg-gradient-to-br from-lahoma-orange to-lahoma-orange/50 shadow-orange-500/25' : ''}
+                      ${feature.color === 'leonard-yellow' ? 'bg-gradient-to-br from-leonard-yellow to-leonard-yellow/50 shadow-yellow-500/25' : ''}
+                      ${feature.color === 'blue-600' ? 'bg-gradient-to-br from-blue-600 to-blue-600/50 shadow-blue-500/25' : ''}`}
                     >
                       <feature.icon className="h-10 w-10 text-white" />
                     </div>
