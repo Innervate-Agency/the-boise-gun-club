@@ -1,5 +1,4 @@
 import type { Preview } from '@storybook/nextjs-vite'
-import React from 'react'
 import '../src/app/globals.css'
 import '../src/styles/themes.css'
 
@@ -58,7 +57,7 @@ const preview: Preview = {
         document.documentElement.setAttribute('data-theme', theme);
       }
       
-      return <Story />;
+      return Story();
     },
   ],
 };

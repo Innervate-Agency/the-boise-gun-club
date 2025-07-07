@@ -15,9 +15,7 @@ const config: StorybookConfig = {
   ],
   "framework": {
     "name": "@storybook/nextjs-vite",
-    "options": {
-      "nextConfigPath": "../next.config.ts"
-    }
+    "options": {}
   },
   "staticDirs": [
     "../public"
