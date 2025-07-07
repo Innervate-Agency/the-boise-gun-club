@@ -67,7 +67,7 @@ function ComponentCard({
     >
       <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden bg-white dark:bg-[var(--ed-charcoal)]">
         {/* Stripe-style gradient header - The actual sexy part! */}
-        <div className={`h-32 bg-gradient-to-r ${color} relative overflow-hidden`}>
+        <div className={`h-32 bg-gradient-to-r ${color} relative overflow-hidden rounded-t-xl`}>
           <div className="absolute inset-0 bg-black/5" />
           
           {/* Status badge */}
