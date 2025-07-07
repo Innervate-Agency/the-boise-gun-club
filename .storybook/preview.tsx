@@ -1,23 +1,7 @@
 import type { Preview } from '@storybook/nextjs-vite'
-import { Rajdhani, Noto_Sans } from 'next/font/google'
+import React from 'react'
 import '../src/app/globals.css'
 import '../src/styles/themes.css'
-
-// Configure fonts for Storybook
-const rajdhani = Rajdhani({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-heading',
-  display: 'swap',
-})
-
-const notoSans = Noto_Sans({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-body',
-  display: 'swap',
-})
 
 const preview: Preview = {
   parameters: {
@@ -64,7 +48,7 @@ const preview: Preview = {
     (Story, context) => {
       const theme = context.globals.theme || 'light';
       
-      // Apply theme and fonts properly
+      // Apply theme properly
       if (typeof document !== 'undefined') {
         if (theme === 'dark') {
           document.documentElement.classList.add('dark');
@@ -72,16 +56,9 @@ const preview: Preview = {
           document.documentElement.classList.remove('dark');
         }
         document.documentElement.setAttribute('data-theme', theme);
-        
-        // Apply font classes
-        document.documentElement.className = `${rajdhani.variable} ${notoSans.variable} ${document.documentElement.className}`;
       }
       
-      return (
-        <div className={`${rajdhani.variable} ${notoSans.variable} font-body`}>
-          <Story />
-        </div>
-      );
+      return <Story />;
     },
   ],
 };
