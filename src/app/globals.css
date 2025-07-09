@@ -12,8 +12,9 @@
   --color-accent-secondary: #f07b1d;
   --color-accent-tertiary: #E3C03C;
   
-  --font-heading: "Refrigerator Deluxe", sans-serif;
-  --font-body: "Museo Sans", sans-serif;
+  --font-heading: "Rajdhani", sans-serif;
+  --font-body: "Noto Sans", sans-serif;
+  --font-serif: "Noto Serif", serif;
   
   --transition-fast: 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
   --transition-smooth: 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
