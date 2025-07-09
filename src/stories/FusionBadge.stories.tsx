@@ -22,7 +22,7 @@ const meta: Meta<typeof Badge> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'primary', 'secondary', 'success', 'warning', 'error', 'info', 'premium', 'glass', 'outline', 'destructive'],
+      options: ['default', 'primary', 'secondary', 'success', 'warning', 'error', 'info', 'premium', 'elite', 'glass', 'outline', 'destructive'],
     },
     size: {
       control: 'select',
@@ -62,6 +62,7 @@ export const AllVariants: Story = {
         <Badge variant="error">Error</Badge>
         <Badge variant="info">Info</Badge>
         <Badge variant="premium" shimmer>Premium</Badge>
+        <Badge variant="elite">Elite</Badge>
         <Badge variant="glass">Glass</Badge>
         <Badge variant="outline">Outline</Badge>
         <Badge variant="destructive">Destructive</Badge>
@@ -458,6 +459,62 @@ export const EventBadges: Story = {
             </Badge>
             <p className="text-xs text-muted-foreground mt-2">5 Tournaments</p>
           </div>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+// Elite Showcase
+export const EliteShowcase: Story = {
+  render: () => (
+    <div className="space-y-8">
+      <h2 className="text-2xl font-heading font-bold mb-4">Elite Badge Variants</h2>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Premium vs Elite Comparison */}
+        <div className="bg-card/50 rounded-xl p-6 border border-border/20">
+          <h3 className="font-heading font-semibold mb-4">Premium vs Elite</h3>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="font-medium">Premium Badge</span>
+              <Badge variant="premium" shimmer size="lg">Premium</Badge>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="font-medium">Elite Badge</span>
+              <Badge variant="elite" size="lg">Elite</Badge>
+            </div>
+          </div>
+        </div>
+        
+        {/* Elite in Action */}
+        <div className="bg-card/50 rounded-xl p-6 border border-border/20">
+          <h3 className="font-heading font-semibold mb-4">Elite Classifications</h3>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="font-medium">Elite Champion</span>
+              <Badge variant="elite" icon={<Trophy className="h-3 w-3" />}>Champion</Badge>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="font-medium">Elite Member</span>
+              <Badge variant="elite" icon={<Star className="h-3 w-3" />}>Elite</Badge>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="font-medium">Master Class</span>
+              <Badge variant="elite" icon={<Award className="h-3 w-3" />}>Master</Badge>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Elite Size Variations */}
+      <div className="bg-gradient-to-br from-leonard-yellow/10 to-lahoma-orange/10 rounded-xl p-6 border border-leonard-yellow/20">
+        <h3 className="font-heading font-semibold mb-4">Elite Size Variations</h3>
+        <div className="flex items-center gap-4 flex-wrap">
+          <Badge variant="elite" size="sm">Small Elite</Badge>
+          <Badge variant="elite" size="default">Default Elite</Badge>
+          <Badge variant="elite" size="lg">Large Elite</Badge>
+          <Badge variant="elite" size="xl">Extra Large Elite</Badge>
         </div>
       </div>
     </div>

@@ -11,7 +11,8 @@ const inputVariants = cva(
     variants: {
       variant: {
         default: "bg-card border-border/50 hover:border-border focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/20",
-        premium: "bg-gradient-to-r from-leonard-yellow/5 to-lahoma-orange/5 border-leonard-yellow/30 hover:border-leonard-yellow/50 focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/30 focus:shadow-lg",
+        premium: "bg-gradient-to-r from-leonard-yellow/5 to-lahoma-orange/5 border-leonard-yellow/30 hover:border-leonard-yellow/50 focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/30 focus:shadow-lg transition-all duration-300 relative overflow-hidden group",
+        elite: "bg-gradient-to-r from-leonard-yellow/10 via-lahoma-orange/10 to-leonard-yellow/10 border-2 border-leonard-yellow/50 hover:border-leonard-yellow focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/40 focus:shadow-xl transition-all duration-300 relative overflow-hidden group",
         glass: "bg-[var(--card)]/10 backdrop-blur-sm border-white/20 hover:border-white/30 focus:border-white/50 focus:ring-2 focus:ring-white/20",
         outline: "bg-transparent border-border hover:border-border/80 focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/20",
         filled: "bg-muted border-transparent hover:bg-muted/80 focus:bg-card focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/20",
@@ -120,6 +121,16 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({
         disabled && "opacity-50 cursor-not-allowed",
         className
       )}>
+        {/* Premium input subtle glow */}
+        {variant === 'premium' && isFocused && (
+          <div className="absolute inset-0 bg-leonard-yellow/10 rounded-lg opacity-100 transition-opacity duration-300 pointer-events-none" />
+        )}
+        
+        {/* Elite input enhanced glow */}
+        {variant === 'elite' && isFocused && (
+          <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/15 to-lahoma-orange/15 rounded-lg opacity-100 transition-opacity duration-300 pointer-events-none" />
+        )}
+        
         {/* Premium shimmer effect */}
         {variant === 'premium' && isFocused && (
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 animate-shimmer pointer-events-none rounded-lg" />

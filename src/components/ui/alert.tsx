@@ -15,7 +15,8 @@ const alertVariants = cva(
         warning: "bg-gradient-to-r from-leonard-yellow/10 to-lahoma-orange/10 text-amber-800 dark:text-amber-200 border-leonard-yellow/20 [&>svg]:text-leonard-yellow",
         error: "bg-gradient-to-r from-red-500/10 to-brand-red-action/10 text-red-800 dark:text-red-200 border-[var(--brand-red-action)]/20 [&>svg]:text-[var(--brand-red-action)]",
         info: "bg-gradient-to-r from-brand-blue/10 to-brand-blue-dark/10 text-brand-blue border-brand-blue/20 [&>svg]:text-brand-blue",
-        premium: "bg-gradient-to-r from-leonard-yellow/15 to-lahoma-orange/15 text-amber-900 dark:text-amber-100 border-leonard-yellow/30 [&>svg]:text-lahoma-orange relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-leonard-yellow/5 before:to-lahoma-orange/5 before:opacity-50",
+        premium: "bg-gradient-to-r from-leonard-yellow/15 to-lahoma-orange/15 text-amber-900 dark:text-amber-100 border-leonard-yellow/30 [&>svg]:text-lahoma-orange relative overflow-hidden group",
+        elite: "bg-gradient-to-r from-leonard-yellow/20 to-lahoma-orange/20 text-amber-900 dark:text-amber-100 border-2 border-leonard-yellow/50 [&>svg]:text-lahoma-orange shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group",
       },
       size: {
         default: "px-6 py-4",
@@ -38,6 +39,7 @@ const alertIcons = {
   error: XCircle,
   info: Info,
   premium: Zap,
+  elite: Zap,
 } as const
 
 interface AlertProps extends React.ComponentProps<"div">, VariantProps<typeof alertVariants> {
@@ -79,6 +81,11 @@ function Alert({
         <div className="absolute inset-0 bg-gradient-to-br from-leonard-yellow/10 via-transparent to-lahoma-orange/10 pointer-events-none" />
       )}
       
+      {/* Enhanced background gradient for elite variant */}
+      {variant === 'elite' && (
+        <div className="absolute inset-0 bg-gradient-to-br from-leonard-yellow/15 via-transparent to-lahoma-orange/15 pointer-events-none opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+      )}
+      
       {/* Icon */}
       {IconComponent && (
         <IconComponent className="relative z-10" />
@@ -103,6 +110,11 @@ function Alert({
       {/* Subtle animation shimmer for premium variant */}
       {variant === 'premium' && (
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full animate-shimmer pointer-events-none" />
+      )}
+      
+      {/* Enhanced shimmer effect for elite variant */}
+      {variant === 'elite' && (
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent transform -skew-x-12 -translate-x-full animate-shimmer pointer-events-none" />
       )}
     </div>
   )
@@ -197,6 +209,14 @@ function PremiumAlert({ children, ...props }: Omit<AlertProps, 'variant'>) {
   )
 }
 
+function EliteAlert({ children, ...props }: Omit<AlertProps, 'variant'>) {
+  return (
+    <Alert variant="elite" {...props}>
+      {children}
+    </Alert>
+  )
+}
+
 export { 
   Alert, 
   AlertTitle, 
@@ -205,5 +225,6 @@ export {
   WarningAlert,
   ErrorAlert,
   InfoAlert,
-  PremiumAlert
+  PremiumAlert,
+  EliteAlert
 }
