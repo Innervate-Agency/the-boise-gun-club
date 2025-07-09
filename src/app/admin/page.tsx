@@ -3,6 +3,9 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 // Environment-based password - more secure
 const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'boise2025';
@@ -319,48 +322,44 @@ const AdminPage = () => {
         <div className="absolute inset-0 bg-[url('/images/Smoke/Background_03.webp')] bg-cover bg-center opacity-10" />
         
         <motion.div 
-          className="glass-premium rounded-3xl p-12 max-w-md w-full text-center relative z-10 border border-white/20"
+          className="glass-premium rounded-3xl p-12 max-w-md w-full text-center relative z-10 border border-[var(--glass-border)]"
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-5xl font-bold text-[var(--accent-gold)] mb-8 font-['Rajdhani']">🎯</h1>
-          <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-8 font-['Rajdhani'] uppercase tracking-wide">
+          <h1 className="text-5xl font-bold text-[var(--accent-gold)] mb-8 font-heading">🎯</h1>
+          <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-8 font-heading uppercase tracking-wide">
             BOISE GUN CLUB<br />WEBSITE EDITOR
           </h2>
             <form onSubmit={handleLogin} className="mb-6">
-            <label className="block text-lg font-semibold text-[var(--text-secondary)] mb-3 font-['Noto Sans']">
+            <label className="block text-lg font-semibold text-[var(--text-secondary)] mb-3 font-body">
               Enter Password:
             </label>
-            <input
+            <Input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               disabled={isLockedOut}
-              className="w-full px-4 py-4 text-xl bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg 
-                       focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-transparent 
-                       transition-all duration-200 text-center text-[var(--text-primary)]
-                       disabled:opacity-50 disabled:cursor-not-allowed backdrop-blur-sm"
+              className="text-xl text-center disabled:opacity-50 disabled:cursor-not-allowed"
               placeholder={isLockedOut ? `Locked out (${lockoutTimeRemaining}s)` : "Password"}
               required
               autoComplete="current-password"
             />
           </form>
           
-          <button
+          <Button
             onClick={(e) => {
               e.preventDefault();
               handleLogin(e);
             }}
             disabled={isLockedOut}
-            className="w-full bg-[var(--accent-primary)] text-black text-xl font-bold py-4 rounded-lg 
-                     hover:bg-[var(--accent-hover)] transition-all duration-200 
-                     disabled:opacity-50 disabled:cursor-not-allowed font-['Rajdhani'] uppercase tracking-wide"
+            className="w-full text-xl py-4"
+            size="lg"
           >
             {isLockedOut ? `🔒 LOCKED (${lockoutTimeRemaining}s)` : '🔓 LOGIN'}
-          </button>
+          </Button>
           
-          <p className="text-sm text-[var(--text-tertiary)] mt-6 font-['Noto Sans']">
+          <p className="text-sm text-[var(--text-tertiary)] mt-6 font-body">
             Need help? Call the web developer
           </p>
         </motion.div>
@@ -382,8 +381,8 @@ const AdminPage = () => {
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
           >
-            <h1 className="text-5xl font-bold text-[var(--accent-gold)] mb-4 font-['Rajdhani'] uppercase tracking-wide">🎯 WEBSITE EDITOR</h1>
-            <p className="text-xl text-[var(--text-secondary)] font-['Noto Sans']">Choose what you want to edit:</p>
+            <h1 className="text-5xl font-bold text-[var(--accent-gold)] mb-4 font-heading uppercase tracking-wide">🎯 WEBSITE EDITOR</h1>
+            <p className="text-xl text-[var(--text-secondary)] font-body">Choose what you want to edit:</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -396,7 +395,7 @@ const AdminPage = () => {
               <motion.button
                 key={item.section}
                 onClick={() => setCurrentSection(item.section)}
-                className="glass-premium rounded-2xl p-8 text-center hover:scale-[1.02] transition-all duration-300 border border-white/20 group"
+                className="glass-premium rounded-2xl p-8 text-center hover:scale-[1.02] transition-all duration-300 border border-[var(--glass-border)] group"
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: index * 0.1 }}
@@ -408,20 +407,21 @@ const AdminPage = () => {
                 
                 <div className="relative z-10">
                   <div className="text-6xl mb-4">{item.icon}</div>
-                  <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2 font-['Rajdhani'] uppercase tracking-wide">{item.title}</h3>
-                  <p className="text-[var(--text-secondary)] font-['Noto Sans']">{item.desc}</p>
+                  <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2 font-heading uppercase tracking-wide">{item.title}</h3>
+                  <p className="text-[var(--text-secondary)] font-body">{item.desc}</p>
                 </div>
               </motion.button>
             ))}
           </div>
 
           <div className="text-center">
-            <button
+            <Button
               onClick={() => setIsLoggedIn(false)}
-              className="glass-premium px-8 py-4 rounded-lg text-xl font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-red-500/30 text-red-400 hover:bg-red-500/10"
+              variant="destructive"
+              size="lg"
             >
               🚪 LOGOUT
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -437,74 +437,69 @@ const AdminPage = () => {
         
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-['Rajdhani'] uppercase tracking-wide">📅 EDIT EVENTS</h1>
-            <button
+            <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-heading uppercase tracking-wide">📅 EDIT EVENTS</h1>
+            <Button
               onClick={() => setCurrentSection(null)}
-              className="glass-premium px-6 py-3 rounded-lg font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)]"
+              variant="outline"
             >
               ← BACK
-            </button>
+            </Button>
           </div>          <div className="space-y-6 mb-8">
-            {content.events.map((event, index) => (              <div key={event.id} className="glass-premium rounded-xl p-6 border border-white/20">
+            {content.events.map((event, index) => (              <div key={event.id} className="glass-premium rounded-xl p-6 border border-[var(--glass-border)]">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-2xl font-bold text-[var(--accent-gold)] font-['Rajdhani'] uppercase tracking-wide">{event.title || `Event ${index + 1}`}</h3>
-                  <button
+                  <h3 className="text-2xl font-bold text-[var(--accent-gold)] font-heading uppercase tracking-wide">{event.title || `Event ${index + 1}`}</h3>
+                  <Button
                     onClick={() => deleteEvent(index)}
-                    className="bg-red-500/20 text-red-400 px-4 py-2 rounded font-bold hover:bg-red-500/30 transition-all duration-200 border border-red-500/30 font-['Rajdhani'] uppercase"
+                    variant="destructive"
                   >
                     🗑️ DELETE
-                  </button>
+                  </Button>
                 </div>
                 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Event Name:</label>
-                    <input
+                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Event Name:</label>
+                    <Input
                       type="text"
                       value={event.title}
                       onChange={(e) => updateEvent(index, 'title', e.target.value)}
-                      className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Date:</label>
-                    <input
+                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Date:</label>
+                    <Input
                       type="date"
                       value={event.date}
                       onChange={(e) => updateEvent(index, 'date', e.target.value)}
-                      className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Time:</label>
-                    <input
+                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Time:</label>
+                    <Input
                       type="text"
                       value={event.time}
                       onChange={(e) => updateEvent(index, 'time', e.target.value)}
-                      className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                       placeholder="9:00 AM"
                     />
                   </div>
                     <div>
-                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Location:</label>
-                    <input
+                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Location:</label>
+                    <Input
                       type="text"
                       value={event.location}
                       onChange={(e) => updateEvent(index, 'location', e.target.value)}
-                      className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                       placeholder="Trap Fields 1-5"
                     />
                   </div>
                 </div>
                 
-                <div className="col-span-2">
-                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Description:</label>
-                  <textarea
+                <div className="col-span-2 mt-4">
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Description:</label>
+                  <Textarea
                     value={event.description}
                     onChange={(e) => updateEvent(index, 'description', e.target.value)}
-                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20 resize-none"
                     rows={3}
                     placeholder="Event description..."
                   />
@@ -514,21 +509,21 @@ const AdminPage = () => {
           </div>
 
           <div className="flex gap-4 justify-center">
-            <button
+            <Button
               onClick={addEvent}
-              className="glass-premium px-8 py-4 rounded-lg text-xl font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-green-500/30 text-green-400 hover:bg-green-500/10"
+              variant="outline"
+              className="border-green-500/30 text-green-400 hover:bg-green-500/10 hover:text-green-300"
             >
               ➕ ADD NEW EVENT
-            </button>
+            </Button>
             
-            <button
+            <Button
               onClick={handleSave}
               disabled={saveStatus === 'saving'}
-              className="glass-premium px-8 py-4 rounded-lg text-xl font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 disabled:opacity-50 border border-white/20 text-[var(--text-primary)]"
             >
               {saveStatus === 'saving' ? '💾 SAVING...' : 
                saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -545,116 +540,106 @@ const AdminPage = () => {
         
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-['Rajdhani'] uppercase tracking-wide">📞 EDIT CONTACT INFO</h1>
-            <button
+            <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-heading uppercase tracking-wide">📞 EDIT CONTACT INFO</h1>
+            <Button
               onClick={() => setCurrentSection(null)}
-              className="glass-premium px-6 py-3 rounded-lg font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)]"
+              variant="outline"
             >
               ← BACK
-            </button>
+            </Button>
           </div>
 
           <div className="space-y-6 mb-8">
             {/* Club Information Section */}
-            <div className="glass-premium rounded-xl p-6 border border-white/20">
-              <h3 className="text-2xl font-bold text-[var(--accent-gold)] mb-4 font-['Rajdhani'] uppercase tracking-wide">📍 Club Information</h3>
+            <div className="glass-premium rounded-xl p-6 border border-[var(--glass-border)]">
+              <h3 className="text-2xl font-bold text-[var(--accent-gold)] mb-4 font-heading uppercase tracking-wide">📍 Club Information</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Club Name:</label>                  <input
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Club Name:</label>                  <Input
                     type="text"
                     value={content.clubInfo.name}
                     onChange={(e) => updateClubInfo('name', e.target.value)}
-                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                   />
                 </div>
                 <div>
-                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Founded Year:</label>
-                  <input
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Founded Year:</label>
+                  <Input
                     type="text"
                     value={content.clubInfo.founded}
                     onChange={(e) => updateClubInfo('founded', e.target.value)}
-                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                   />
                 </div>
                 <div>
-                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Number of Members:</label>
-                  <input
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Number of Members:</label>
+                  <Input
                     type="text"
                     value={content.clubInfo.members}
                     onChange={(e) => updateClubInfo('members', e.target.value)}
-                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     placeholder="1200+"
                   />
                 </div>
                 <div>
-                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Property Size (acres):</label>
-                  <input
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Property Size (acres):</label>
+                  <Input
                     type="text"
                     value={content.clubInfo.acres}
                     onChange={(e) => updateClubInfo('acres', e.target.value)}
-                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     placeholder="320"
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Address:</label>
-                  <input
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Address:</label>
+                  <Input
                     type="text"
                     value={content.clubInfo.address}
                     onChange={(e) => updateClubInfo('address', e.target.value)}
-                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                   />
                 </div>
                 <div>
-                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Phone Number:</label>
-                  <input
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Phone Number:</label>
+                  <Input
                     type="text"
                     value={content.clubInfo.phone}
                     onChange={(e) => updateClubInfo('phone', e.target.value)}
-                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                   />
                 </div>
                 <div>
-                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Email Address:</label>
-                  <input
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Email Address:</label>
+                  <Input
                     type="email"
                     value={content.clubInfo.email}
                     onChange={(e) => updateClubInfo('email', e.target.value)}
-                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                   />
                 </div>
               </div>
             </div>            {/* Hours Section */}
-            <div className="glass-premium rounded-xl p-6 border border-white/20">
-              <h3 className="text-2xl font-bold text-[var(--accent-gold)] mb-4 font-['Rajdhani'] uppercase tracking-wide">🕒 Operating Hours</h3>
+            <div className="glass-premium rounded-xl p-6 border border-[var(--glass-border)]">
+              <h3 className="text-2xl font-bold text-[var(--accent-gold)] mb-4 font-heading uppercase tracking-wide">🕒 Operating Hours</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Weekdays:</label>
-                  <input
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Weekdays:</label>
+                  <Input
                     type="text"
                     value={content.hours.weekdays}
                     onChange={(e) => updateHours('weekdays', e.target.value)}
-                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     placeholder="Monday - Friday: 9:00 AM - 6:00 PM"
                   />
                 </div>
                 <div>
-                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Weekends:</label>
-                  <input
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Weekends:</label>
+                  <Input
                     type="text"
                     value={content.hours.weekends}
                     onChange={(e) => updateHours('weekends', e.target.value)}
-                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     placeholder="Saturday - Sunday: 8:00 AM - 8:00 PM"
                   />
                 </div>
                 <div>
-                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Holidays:</label>
-                  <input
+                  <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Holidays:</label>
+                  <Input
                     type="text"
                     value={content.hours.holidays}
                     onChange={(e) => updateHours('holidays', e.target.value)}
-                    className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     placeholder="Closed on major holidays"
                   />                </div>
               </div>
@@ -662,14 +647,14 @@ const AdminPage = () => {
           </div>
 
           <div className="text-center">
-            <button
+            <Button
               onClick={handleSave}
               disabled={saveStatus === 'saving'}
-              className="glass-premium px-8 py-4 rounded-lg text-xl font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 disabled:opacity-50 border border-white/20 text-[var(--text-primary)]"
+              size="lg"
             >
               {saveStatus === 'saving' ? '💾 SAVING...' : 
                saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -685,17 +670,17 @@ const AdminPage = () => {
         
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-['Rajdhani'] uppercase tracking-wide">📸 EDIT GALLERY</h1>
-            <button
+            <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-heading uppercase tracking-wide">📸 EDIT GALLERY</h1>
+            <Button
               onClick={() => setCurrentSection(null)}
-              className="glass-premium px-6 py-3 rounded-lg font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)]"
+              variant="outline"
             >
               ← BACK
-            </button>
+            </Button>
           </div>
 
           <div className="glass-premium rounded-xl p-4 mb-6 border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10">
-            <p className="text-lg font-semibold text-[var(--accent-primary)] font-['Noto Sans']">
+            <p className="text-lg font-semibold text-[var(--accent-primary)] font-body">
               📝 NOTE: To add new images, you&apos;ll need to upload them to the /public/images/ folder first, 
               then use the file path like: /images/your-photo.jpg
             </p>
@@ -703,45 +688,42 @@ const AdminPage = () => {
 
           <div className="space-y-6 mb-8">
             {content.gallery.map((item, index) => (
-              <div key={item.id} className="glass-premium rounded-xl p-6 border border-white/20">
+              <div key={item.id} className="glass-premium rounded-xl p-6 border border-[var(--glass-border)]">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-2xl font-bold text-[var(--accent-gold)] font-['Rajdhani'] uppercase tracking-wide">{item.title || `Photo ${index + 1}`}</h3>
-                  <button
+                  <h3 className="text-2xl font-bold text-[var(--accent-gold)] font-heading uppercase tracking-wide">{item.title || `Photo ${index + 1}`}</h3>
+                  <Button
                     onClick={() => deleteGalleryItem(index)}
-                    className="bg-red-500/20 text-red-400 px-4 py-2 rounded font-bold hover:bg-red-500/30 transition-all duration-200 border border-red-500/30 font-['Rajdhani'] uppercase"
+                    variant="destructive"
                   >
                     🗑️ DELETE
-                  </button>
+                  </Button>
                 </div>
                 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Photo Title:</label>
-                    <input
+                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Photo Title:</label>
+                    <Input
                       type="text"
                       value={item.title}                      onChange={(e) => updateGalleryItem(index, 'title', e.target.value)}
-                      className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Year:</label>
-                    <input
+                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Year:</label>
+                    <Input
                       type="text"
                       value={item.year}
                       onChange={(e) => updateGalleryItem(index, 'year', e.target.value)}
-                      className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                       placeholder="2025"
                     />
                   </div>
                   
                   <div className="md:col-span-2">
-                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Image Path:</label>
-                    <input
+                    <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Image Path:</label>
+                    <Input
                       type="text"
                       value={item.image}
                       onChange={(e) => updateGalleryItem(index, 'image', e.target.value)}
-                      className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                       placeholder="/images/your-photo.jpg"
                     />
                   </div>
@@ -749,8 +731,8 @@ const AdminPage = () => {
 
                 {/* Image Preview */}
                 <div className="mt-4">
-                  <p className="text-sm font-semibold text-[var(--text-secondary)] mb-2 font-['Noto Sans']">Preview:</p>
-                  <div className="w-32 h-24 border-2 border-white/20 rounded-lg overflow-hidden glass-premium">
+                  <p className="text-sm font-semibold text-[var(--text-secondary)] mb-2 font-body">Preview:</p>
+                  <div className="w-32 h-24 border-2 border-[var(--glass-border)] rounded-lg overflow-hidden glass-premium">
                     <Image 
                       src={item.image} 
                       alt={item.title}
@@ -766,21 +748,20 @@ const AdminPage = () => {
               </div>
             ))}
           </div>          <div className="flex gap-4 justify-center">
-            <button
+            <Button
               onClick={addGalleryItem}
-              className="glass-premium px-8 py-4 rounded-lg text-xl font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)]"
+              variant="outline"
             >
               ➕ ADD NEW PHOTO
-            </button>
+            </Button>
             
-            <button
+            <Button
               onClick={handleSave}
               disabled={saveStatus === 'saving'}
-              className="glass-premium px-8 py-4 rounded-lg text-xl font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 disabled:opacity-50 border border-white/20 text-[var(--text-primary)]"
             >
               {saveStatus === 'saving' ? '💾 SAVING...' : 
                saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -796,92 +777,88 @@ const AdminPage = () => {
         
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-['Rajdhani'] uppercase tracking-wide">ℹ️ EDIT CLUB INFO</h1>
-            <button
+            <h1 className="text-4xl font-bold text-[var(--accent-gold)] font-heading uppercase tracking-wide">ℹ️ EDIT CLUB INFO</h1>
+            <Button
               onClick={() => setCurrentSection(null)}
-              className="glass-premium px-6 py-3 rounded-lg font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)]"
+              variant="outline"
             >
               ← BACK
-            </button>
+            </Button>
           </div>
 
-          <div className="glass-premium rounded-xl p-6 mb-8 border border-white/20">
-            <h3 className="text-2xl font-bold text-[var(--accent-gold)] mb-6 font-['Rajdhani'] uppercase tracking-wide">🏛️ Basic Club Information</h3>
+          <div className="glass-premium rounded-xl p-6 mb-8 border border-[var(--glass-border)]">
+            <h3 className="text-2xl font-bold text-[var(--accent-gold)] mb-6 font-heading uppercase tracking-wide">🏛️ Basic Club Information</h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Club Name:</label>
-                <input
+                <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Club Name:</label>
+                <Input
                   type="text"
                   value={content.clubInfo.name}
                   onChange={(e) => updateClubInfo('name', e.target.value)}
-                  className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                 />
               </div>
               
               <div>
-                <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Founded Year:</label>                <input
+                <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Founded Year:</label>                <Input
                   type="text"
                   value={content.clubInfo.founded}
                   onChange={(e) => updateClubInfo('founded', e.target.value)}
-                  className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                   placeholder="1898"
                 />
               </div>
               
               <div>
-                <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Number of Members:</label>
-                <input
+                <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Number of Members:</label>
+                <Input
                   type="text"
                   value={content.clubInfo.members}
                   onChange={(e) => updateClubInfo('members', e.target.value)}
-                  className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                   placeholder="1200+"
                 />
               </div>
               
               <div>
-                <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-['Noto Sans']">Property Size (acres):</label>
-                <input
+                <label className="block text-lg font-semibold mb-2 text-[var(--accent-primary)] font-body">Property Size (acres):</label>
+                <Input
                   type="text"
                   value={content.clubInfo.acres}
                   onChange={(e) => updateClubInfo('acres', e.target.value)}
-                  className="w-full px-4 py-3 text-lg glass-input rounded-lg focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-[var(--accent-primary)] transition-all duration-200 text-[var(--text-primary)] border border-white/20"
                   placeholder="320"
                 />
               </div>
             </div>
             
             <div className="mt-6 p-4 glass-premium rounded-lg border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10">
-              <h4 className="text-lg font-semibold text-[var(--accent-primary)] mb-2 font-['Noto Sans']">📊 Current Stats Display:</h4>
+              <h4 className="text-lg font-semibold text-[var(--accent-primary)] mb-2 font-body">📊 Current Stats Display:</h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div className="glass-premium p-3 rounded border border-white/20">
-                  <div className="text-2xl font-bold text-[var(--accent-gold)] font-['Rajdhani']">{content.clubInfo.founded}</div>
-                  <div className="text-sm text-[var(--text-secondary)] font-['Noto Sans']">Founded</div>
+                <div className="glass-premium p-3 rounded border border-[var(--glass-border)]">
+                  <div className="text-2xl font-bold text-[var(--accent-gold)] font-heading">{content.clubInfo.founded}</div>
+                  <div className="text-sm text-[var(--text-secondary)] font-body">Founded</div>
                 </div>
-                <div className="glass-premium p-3 rounded border border-white/20">
-                  <div className="text-2xl font-bold text-[var(--accent-gold)] font-['Rajdhani']">{content.clubInfo.members}</div>
-                  <div className="text-sm text-[var(--text-secondary)] font-['Noto Sans']">Members</div>
+                <div className="glass-premium p-3 rounded border border-[var(--glass-border)]">
+                  <div className="text-2xl font-bold text-[var(--accent-gold)] font-heading">{content.clubInfo.members}</div>
+                  <div className="text-sm text-[var(--text-secondary)] font-body">Members</div>
                 </div>
-                <div className="glass-premium p-3 rounded border border-white/20">
-                  <div className="text-2xl font-bold text-[var(--accent-gold)] font-['Rajdhani']">{content.clubInfo.acres}</div>
-                  <div className="text-sm text-[var(--text-secondary)] font-['Noto Sans']">Acres</div>
-                </div>                <div className="glass-premium p-3 rounded border border-white/20">
-                  <div className="text-2xl font-bold text-[var(--accent-gold)] font-['Rajdhani']">Idaho</div>
-                  <div className="text-sm text-[var(--text-secondary)] font-['Noto Sans']">State</div>
+                <div className="glass-premium p-3 rounded border border-[var(--glass-border)]">
+                  <div className="text-2xl font-bold text-[var(--accent-gold)] font-heading">{content.clubInfo.acres}</div>
+                  <div className="text-sm text-[var(--text-secondary)] font-body">Acres</div>
+                </div>                <div className="glass-premium p-3 rounded border border-[var(--glass-border)]">
+                  <div className="text-2xl font-bold text-[var(--accent-gold)] font-heading">Idaho</div>
+                  <div className="text-sm text-[var(--text-secondary)] font-body">State</div>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="text-center">
-            <button
+            <Button
               onClick={handleSave}
               disabled={saveStatus === 'saving'}
-              className="glass-premium px-8 py-4 rounded-lg text-xl font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 disabled:opacity-50 border border-white/20 text-[var(--text-primary)]"
+              size="lg"
             >
               {saveStatus === 'saving' ? '💾 SAVING...' : 
                saveStatus === 'saved' ? '✅ SAVED!' : '💾 SAVE CHANGES'}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -891,14 +868,14 @@ const AdminPage = () => {
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] p-8">
       <div className="max-w-4xl mx-auto text-center">
-        <h1 className="text-4xl font-bold mb-8 text-[var(--text-primary)] font-['Rajdhani']">🚧 Coming Soon</h1>
-        <p className="text-xl text-[var(--text-secondary)] mb-8 font-['Noto Sans']">This section is being built!</p>
-        <button
+        <h1 className="text-4xl font-bold mb-8 text-[var(--text-primary)] font-heading">🚧 Coming Soon</h1>
+        <p className="text-xl text-[var(--text-secondary)] mb-8 font-body">This section is being built!</p>
+        <Button
           onClick={() => setCurrentSection(null)}
-          className="glass-premium px-6 py-3 rounded-lg font-heading font-bold uppercase tracking-wide hover:scale-105 transition-all duration-200 border border-white/20 text-[var(--text-primary)]"
+          variant="outline"
         >
           ← BACK TO MAIN MENU
-        </button>
+        </Button>
       </div>
     </div>
   );

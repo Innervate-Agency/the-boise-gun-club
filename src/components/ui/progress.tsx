@@ -18,7 +18,7 @@ const progressVariants = cva(
         error: "bg-red-500/20",
         info: "bg-brand-blue/20",
         premium: "bg-gradient-to-r from-leonard-yellow/20 to-lahoma-orange/20 border border-leonard-yellow/30",
-        glass: "bg-white/10 backdrop-blur-sm border border-white/20",
+        glass: "bg-[var(--card)]/10 backdrop-blur-sm border border-white/20",
       },
       size: {
         sm: "h-1.5 rounded-full",

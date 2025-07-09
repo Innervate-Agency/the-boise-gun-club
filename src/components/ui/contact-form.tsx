@@ -186,7 +186,7 @@ export function ContactForm({
   const getCardClassName = () => {
     switch (variant) {
       case 'glass':
-        return 'bg-white/10 backdrop-blur-md border-white/20';
+        return 'bg-[var(--card)]/10 backdrop-blur-md border-white/20';
       case 'minimal':
         return 'border-0 bg-transparent shadow-none';
       default:
@@ -262,7 +262,7 @@ export function ContactForm({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="name">
-                  Full Name <span className="text-red-500">*</span>
+                  Full Name <span className="text-[var(--brand-red-action)]">*</span>
                 </Label>
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -280,7 +280,7 @@ export function ContactForm({
 
               <div className="space-y-2">
                 <Label htmlFor="email">
-                  Email Address <span className="text-red-500">*</span>
+                  Email Address <span className="text-[var(--brand-red-action)]">*</span>
                 </Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -316,7 +316,7 @@ export function ContactForm({
 
               <div className="space-y-2">
                 <Label htmlFor="subject">
-                  Subject <span className="text-red-500">*</span>
+                  Subject <span className="text-[var(--brand-red-action)]">*</span>
                 </Label>
                 <Select
                   required
@@ -378,7 +378,7 @@ export function ContactForm({
             {/* Message */}
             <div className="space-y-2">
               <Label htmlFor="message">
-                Message <span className="text-red-500">*</span>
+                Message <span className="text-[var(--brand-red-action)]">*</span>
               </Label>
               <div className="relative">
                 <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
@@ -417,7 +417,7 @@ export function ContactForm({
                   <a href="/privacy" className="text-accent-primary hover:text-accent-secondary underline">
                     Privacy Policy
                   </a>
-                  <span className="text-red-500 ml-1">*</span>
+                  <span className="text-[var(--brand-red-action)] ml-1">*</span>
                 </Label>
               </div>
 
@@ -437,7 +437,7 @@ export function ContactForm({
             <Button
               type="submit"
               disabled={isSubmitting || !formData.agreeToTerms}
-              className="w-full bg-accent-primary hover:bg-accent-secondary text-white font-heading font-semibold text-lg py-6"
+              className="w-full bg-accent-primary hover:bg-accent-secondary text-[var(--card)] font-heading font-semibold text-lg py-6"
             >
               {isSubmitting ? (
                 <>

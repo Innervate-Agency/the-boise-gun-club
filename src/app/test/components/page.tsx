@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { PageHeroV2 } from '@/components/common/PageHeroV2';
 import { 
   MousePointer, 
   Shield, 
@@ -47,7 +48,7 @@ const categories: ComponentCategory[] = [
     description: 'Essential UI building blocks with Stripe-inspired design and accessibility',
     href: '/test/components/core',
     icon: Layers,
-    color: 'from-lahoma-orange to-abe-red',
+    color: 'from-accent-primary to-accent-secondary',
     status: 'stable',
     features: ['Buttons', 'Cards', 'Badges', 'Inputs'],
     componentCount: 12
@@ -57,7 +58,7 @@ const categories: ComponentCategory[] = [
     description: 'Complete form system with validation, auto-completion and smart interactions',
     href: '/test/components/forms',
     icon: FileText,
-    color: 'from-idaho-sky-blue to-snakeriver-blue',
+    color: 'from-brand-blue to-accent-primary',
     status: 'stable',
     features: ['Validation', 'Auto-complete', 'Multi-step', 'File Upload'],
     componentCount: 8
@@ -67,7 +68,7 @@ const categories: ComponentCategory[] = [
     description: 'Tables, charts, and data visualization with real-time updates',
     href: '/test/components/data',
     icon: BarChart3,
-    color: 'from-owyhee-green to-club-house-lawn-green',
+    color: 'from-brand-green to-accent-secondary',
     status: 'stable',
     features: ['Tables', 'Charts', 'Progress', 'Statistics'],
     componentCount: 6
@@ -77,7 +78,7 @@ const categories: ComponentCategory[] = [
     description: 'Advanced navigation patterns with mega menus and breadcrumbs',
     href: '/test/components/navigation',
     icon: Radar,
-    color: 'from-leonard-yellow to-lahoma-orange',
+    color: 'from-accent-secondary to-accent-primary',
     status: 'stable',
     features: ['Mega Menu', 'Breadcrumbs', 'Tabs', 'Dropdown'],
     componentCount: 7
@@ -87,7 +88,7 @@ const categories: ComponentCategory[] = [
     description: 'Loading states, alerts, and user feedback components',
     href: '/test/components/feedback',
     icon: Activity,
-    color: 'from-abe-red to-scoring-bench-red',
+    color: 'from-brand-red-action to-accent-primary',
     status: 'stable',
     features: ['Loading', 'Alerts', 'Toasts', 'Modals'],
     componentCount: 9
@@ -97,7 +98,7 @@ const categories: ComponentCategory[] = [
     description: 'Gamification components for shotgun sports achievements and scoring',
     href: '/test/components/gaming',
     icon: Trophy,
-    color: 'from-jerry-orange to-abe-red',
+    color: 'from-accent-primary to-accent-secondary',
     status: 'new',
     features: ['Leaderboards', 'Achievements', 'Scoring', 'Competitions'],
     componentCount: 5
@@ -150,54 +151,42 @@ export default function ComponentsOverview() {
   );
 
   return (
-    <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
-      {/* Compact Hero Section with Search */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-lahoma-orange to-abe-red h-[300px]">
-        <div className="absolute inset-0 bg-black/10" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 h-full flex flex-col justify-center">
-          
-          {/* Title and Icon */}
-          <div className="flex items-center gap-6 mb-6">
-            <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
-              <Target className="h-8 w-8 text-white" />
-            </div>
-            <div className="flex-1">
-              <h1 className="text-4xl md:text-5xl font-heading font-black text-white mb-2">
-                Component
-                <span className="text-leonard-yellow"> Arsenal</span>
-              </h1>
-              <p className="text-xl text-white/90 font-body font-light">
-                Production-ready components built with shadcn/ui, styled like Stripe, enhanced with ClickUp gradients
-              </p>
-            </div>
-            
+    <div className="min-h-screen bg-bg-primary text-text-primary">
+      <PageHeroV2
+        title={
+          <>
+            Component
+            <span className="text-accent-primary"> Arsenal</span>
+          </>
+        }
+        subtitle="Production-ready components built with shadcn/ui, styled like Stripe, enhanced with ClickUp gradients"
+        icon={Target}
+        gradient="from-accent-primary to-accent-secondary"
+      >
+        <div className="flex items-center justify-between">
             {/* Search Bar */}
             <div className="w-80 hidden lg:block">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white/60" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder="Search components..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60"
+                  className="pl-10 bg-card/10 dark:bg-card/50 backdrop-blur-sm border-card-foreground/20 text-card-foreground placeholder:text-muted-foreground"
                 />
               </div>
             </div>
-          </div>
-          
-          {/* Stats and Mobile Search */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6 text-sm text-white/90">
+            <div className="flex items-center gap-6 text-sm text-card-foreground/90">
               <span className="flex items-center gap-2">
-                <Code className="h-4 w-4 text-leonard-yellow" />
+                <Code className="h-4 w-4 text-accent-primary" />
                 47+ Components
               </span>
               <span className="flex items-center gap-2">
-                <Palette className="h-4 w-4 text-white" />
+                <Palette className="h-4 w-4 text-card-foreground" />
                 Stripe Design
               </span>
               <span className="flex items-center gap-2">
-                <Zap className="h-4 w-4 text-white" />
+                <Zap className="h-4 w-4 text-card-foreground" />
                 ClickUp Gradients
               </span>
             </div>
@@ -205,18 +194,17 @@ export default function ComponentsOverview() {
             {/* Mobile Search */}
             <div className="w-64 lg:hidden">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white/60" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder="Search..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 text-sm"
+                  className="pl-10 bg-card/10 dark:bg-card/50 backdrop-blur-sm border-card-foreground/20 text-card-foreground placeholder:text-muted-foreground text-sm"
                 />
               </div>
             </div>
           </div>
-        </div>
-      </div>
+      </PageHeroV2>
 
       {/* Components Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -282,7 +270,7 @@ export default function ComponentsOverview() {
                     </div>
 
                     <CardHeader className="pb-3">
-                      <CardTitle className="text-xl font-heading font-bold text-card-foreground group-hover:text-lahoma-orange transition-colors">
+                      <CardTitle className="text-xl font-heading font-bold text-card-foreground group-hover:text-orange-500 transition-colors">
                         {category.title}
                       </CardTitle>
                       <CardDescription className="text-muted-foreground font-body font-light leading-relaxed">
@@ -312,7 +300,7 @@ export default function ComponentsOverview() {
                       {/* Action */}
                       <Button 
                         variant="ghost" 
-                        className="w-full group-hover:bg-accent-primary/10 group-hover:text-accent-primary transition-colors font-heading font-semibold"
+                        className="w-full group-hover:bg-orange-500/10 group-hover:text-orange-500 transition-colors font-heading font-semibold"
                       >
                         Explore Components
                         <motion.div
@@ -353,10 +341,10 @@ export default function ComponentsOverview() {
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { label: 'Total Components', value: '47+', color: 'from-lahoma-orange to-abe-red' },
-              { label: 'Component Categories', value: '6', color: 'from-leonard-yellow to-lahoma-orange' },
-              { label: 'Design Patterns', value: '25+', color: 'from-club-house-roof-blue to-club-house-walk-gray' },
-              { label: 'Lines of Code', value: '10k+', color: 'from-club-house-lawn-green to-owyhee-green' }
+              { label: 'Total Components', value: '47+', color: 'from-orange-500 to-red-500' },
+              { label: 'Component Categories', value: '6', color: 'from-yellow-500 to-orange-500' },
+              { label: 'Design Patterns', value: '25+', color: 'from-blue-500 to-orange-500' },
+              { label: 'Lines of Code', value: '10k+', color: 'from-green-500 to-yellow-500' }
             ].map((stat, index) => (
               <Card key={index} className="border-0 shadow-lg bg-card overflow-hidden">
                 <CardContent className="p-6 text-center">

@@ -15,7 +15,7 @@ const feedbackComponents = [
     name: 'Loading States',
     description: 'Skeleton loaders, spinners, and progress indicators for async operations',
     status: 'stable',
-    color: 'from-abe-red to-scoring-bench-red',
+    color: 'from-red-500 to-red-600',
     icon: 'Loader2',
     variants: ['Spinner', 'Skeleton', 'Progress Bar', 'Pulse'],
     features: ['Multiple Sizes', 'Custom Colors', 'Accessibility', 'Smooth Animation'],
@@ -25,7 +25,7 @@ const feedbackComponents = [
     name: 'Alert Messages',
     description: 'Contextual feedback messages for success, error, warning, and info states',
     status: 'stable',
-    color: 'from-owyhee-green to-club-house-lawn-green',
+    color: 'from-green-500 to-green-600',
     icon: 'AlertTriangle',
     variants: ['Success', 'Error', 'Warning', 'Info'],
     features: ['Auto Dismiss', 'Manual Close', 'Rich Content', 'Icon Support'],
@@ -35,7 +35,7 @@ const feedbackComponents = [
     name: 'Toast Notifications',
     description: 'Non-intrusive notifications that appear temporarily to provide feedback',
     status: 'stable',
-    color: 'from-idaho-sky-blue to-snakeriver-blue',
+    color: 'from-blue-500 to-blue-600',
     icon: 'CheckCircle',
     variants: ['Top Right', 'Bottom Right', 'Center', 'Custom Position'],
     features: ['Auto Dismiss', 'Action Buttons', 'Progress Bar', 'Stack Management'],
@@ -45,7 +45,7 @@ const feedbackComponents = [
     name: 'Modal Dialogs',
     description: 'Overlay windows for confirmations, forms, and detailed content',
     status: 'stable',
-    color: 'from-leonard-yellow to-lahoma-orange',
+    color: 'from-yellow-500 to-orange-500',
     icon: 'Info',
     variants: ['Confirmation', 'Form Modal', 'Full Screen', 'Drawer'],
     features: ['Focus Management', 'Escape Handling', 'Backdrop Click', 'Responsive'],
@@ -55,7 +55,7 @@ const feedbackComponents = [
 
 export default function FeedbackPage() {
   return (
-    <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
+    <div className="min-h-screen bg-bg-primary text-text-primary">
       <BreadcrumbHero
         breadcrumbs={[
           { label: 'Components', href: '/test/components' }
@@ -63,7 +63,7 @@ export default function FeedbackPage() {
         title="Feedback"
         description="Loading states, alerts, and user feedback components"
         icon={Activity}
-        gradient="bg-gradient-to-r from-abe-red to-scoring-bench-red"
+        gradient="bg-gradient-to-r from-red-500 to-red-600"
         badges={['9 Components', 'UX Optimized']}
         backLink={{
           href: '/test/components',
@@ -131,7 +131,7 @@ export default function FeedbackPage() {
                   </div>
                   
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-2xl font-heading font-bold text-card-foreground group-hover:text-lahoma-orange transition-colors">
+                    <CardTitle className="text-2xl font-heading font-bold text-card-foreground group-hover:text-orange-500 transition-colors">
                       {component.name}
                     </CardTitle>
                     <CardDescription className="text-muted-foreground font-body leading-relaxed">
@@ -160,7 +160,7 @@ export default function FeedbackPage() {
                       <div className="grid grid-cols-2 gap-2">
                         {component.features.map((feature) => (
                           <div key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <Activity className="w-3 h-3 text-abe-red" />
+                            <Activity className="w-3 h-3 text-red-500" />
                             {feature}
                           </div>
                         ))}
@@ -178,9 +178,9 @@ export default function FeedbackPage() {
         </div>
         
         <div className="mt-16 text-center">
-          <Card className="p-8 bg-gradient-to-r from-abe-red/5 to-scoring-bench-red/5 border-0">
+          <Card className="p-8 bg-gradient-to-r from-red-500/5 to-red-600/5 border-0">
             <div className="max-w-2xl mx-auto">
-              <Activity className="h-12 w-12 text-abe-red mx-auto mb-4" />
+              <Activity className="h-12 w-12 text-red-500 mx-auto mb-4" />
               <h3 className="text-2xl font-heading font-bold text-text-primary mb-4">
                 Communicate Clearly
               </h3>
@@ -189,7 +189,7 @@ export default function FeedbackPage() {
                 overall experience and reduce uncertainty.
               </p>
               <div className="flex gap-4 justify-center">
-                <Button asChild className="bg-abe-red hover:bg-scoring-bench-red text-white">
+                <Button asChild className="bg-red-500 hover:bg-red-600 text-white">
                   <Link href="http://localhost:6006" target="_blank">
                     View in Storybook
                   </Link>

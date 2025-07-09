@@ -12,7 +12,7 @@ const inputVariants = cva(
       variant: {
         default: "bg-card border-border/50 hover:border-border focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/20",
         premium: "bg-gradient-to-r from-leonard-yellow/5 to-lahoma-orange/5 border-leonard-yellow/30 hover:border-leonard-yellow/50 focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/30 focus:shadow-lg",
-        glass: "bg-white/10 backdrop-blur-sm border-white/20 hover:border-white/30 focus:border-white/50 focus:ring-2 focus:ring-white/20",
+        glass: "bg-[var(--card)]/10 backdrop-blur-sm border-white/20 hover:border-white/30 focus:border-white/50 focus:ring-2 focus:ring-white/20",
         outline: "bg-transparent border-border hover:border-border/80 focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/20",
         filled: "bg-muted border-transparent hover:bg-muted/80 focus:bg-card focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/20",
       },
@@ -24,7 +24,7 @@ const inputVariants = cva(
       state: {
         default: "",
         success: "border-brand-green focus:border-brand-green focus:ring-brand-green/20",
-        error: "border-red-500 focus:border-red-500 focus:ring-red-500/20",
+        error: "border-[var(--brand-red-action)] focus:border-[var(--brand-red-action)] focus:ring-red-500/20",
         loading: "border-brand-blue focus:border-brand-blue focus:ring-brand-blue/20",
       },
     },
@@ -172,7 +172,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({
             <Check className="h-4 w-4 text-brand-green" />
           )}
           {error && (
-            <X className="h-4 w-4 text-red-500" />
+            <X className="h-4 w-4 text-[var(--brand-red-action)]" />
           )}
           
           {/* Password visibility toggle */}
@@ -218,7 +218,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({
             transition={{ duration: 0.2 }}
             className={cn(
               "text-xs font-medium",
-              error ? "text-red-500" : success ? "text-brand-green" : "text-muted-foreground"
+              error ? "text-[var(--brand-red-action)]" : success ? "text-brand-green" : "text-muted-foreground"
             )}
           >
             {helperText}

@@ -8,7 +8,7 @@ export default function ButtonPreview() {
       <div className="max-w-4xl mx-auto space-y-12">
         <div className="space-y-4">
           <h1 className="text-4xl font-heading font-bold">Button Component Preview</h1>
-          <p className="text-text-secondary">Testing the new button design system with all variants and states.</p>
+          <p className="text-muted-foreground">Testing the new button design system with all variants and states.</p>
         </div>
 
         {/* Primary Buttons */}

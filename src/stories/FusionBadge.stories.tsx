@@ -482,3 +482,22 @@ export const Playground: Story = {
     </div>
   ),
 };
+
+// Glassmorphism Showcase
+export const Glassmorphism: Story = {
+  render: () => (
+    <div className="relative h-64 w-full rounded-lg overflow-hidden">
+      <img 
+        src="https://images.unsplash.com/photo-1587174486073-ae5e3c2e6a04?q=80&w=2070&auto=format&fit=crop" 
+        alt="Shooting range background"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/30" />
+      <div className="relative h-full flex items-center justify-center gap-4">
+        <Badge variant="glass" size="lg">Skeet Range</Badge>
+        <Badge variant="glass" size="lg" icon={<Target className="h-3.5 w-3.5" />}>Trap Field</Badge>
+        <Badge variant="glass" size="lg" icon={<Trophy className="h-3.5 w-3.5" />}>5-Stand</Badge>
+      </div>
+    </div>
+  ),
+};

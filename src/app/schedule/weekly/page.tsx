@@ -21,6 +21,7 @@ import {
   Moon,
   CloudRain
 } from 'lucide-react';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -180,7 +181,7 @@ export default function WeeklySchedulePage() {
   const [selectedDay, setSelectedDay] = useState('Monday')
 
   return (
-    <main className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
+    <main className="min-h-screen bg-background text-foreground font-body">
       
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
@@ -202,19 +203,19 @@ export default function WeeklySchedulePage() {
           <motion.div {...fadeInUp}>
             <div className="flex items-center justify-center mb-6">
               <Calendar className="w-16 h-16 text-[var(--accent-primary)] mr-4" />
-              <h1 className="text-5xl md:text-7xl font-bold text-white font-['Rajdhani'] uppercase tracking-tight leading-none">
+              <h1 className="text-5xl md:text-7xl font-bold text-white font-heading uppercase tracking-tight leading-none">
                 Weekly <span className="text-[var(--accent-primary)]">Schedule</span>
               </h1>
             </div>
-            <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-8 max-w-3xl mx-auto font-['Noto Sans'] font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-secondary-foreground mb-8 max-w-3xl mx-auto font-light leading-relaxed">
               Plan your visit with our comprehensive weekly schedule. From leagues and competitions 
               to open shooting and training programs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] text-white font-['Rajdhani'] tracking-wide px-8 py-6 text-lg transform hover:scale-105 transition-all duration-300">
+              <Button asChild size="lg">
                 <Link href="#schedule">VIEW THIS WEEK</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-black font-['Rajdhani'] tracking-wide px-8 py-6 text-lg transform hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+              <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-black backdrop-blur-sm">
                 <Link href="/schedule/reservations">MAKE RESERVATION</Link>
               </Button>
             </div>
@@ -223,13 +224,13 @@ export default function WeeklySchedulePage() {
       </section>
 
       {/* Operating Hours */}
-      <section className="py-24 bg-[var(--bg-secondary)]">
+      <section className="py-24 bg-secondary">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary-foreground font-heading uppercase tracking-tight">
               Range <span className="text-[var(--accent-primary)]">Hours</span>
             </h2>
-            <p className="text-xl text-[var(--text-secondary)] font-['Noto Sans'] font-light">
+            <p className="text-xl text-secondary-foreground font-light">
               Our facility is open year-round with extended weekend hours.
             </p>
           </div>
@@ -238,14 +239,14 @@ export default function WeeklySchedulePage() {
             <Card className="text-center hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
               <CardContent className="p-8">
                 <Sun className="w-12 h-12 text-[var(--accent-primary)] mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-4 font-['Rajdhani'] uppercase text-[var(--text-primary)]">
+                <h3 className="text-2xl font-bold mb-4 font-heading uppercase text-primary-foreground">
                   Weekdays
                 </h3>
                 <div className="space-y-2">
-                  <p className="text-lg font-['Noto Sans'] font-light text-[var(--text-secondary)]">
+                  <p className="text-lg font-light text-secondary-foreground">
                     {scheduleData.regularHours.weekday.days}
                   </p>
-                  <p className="text-3xl font-bold text-[var(--accent-primary)] font-['Rajdhani']">
+                  <p className="text-3xl font-bold text-[var(--accent-primary)] font-heading">
                     {scheduleData.regularHours.weekday.open} - {scheduleData.regularHours.weekday.close}
                   </p>
                 </div>
@@ -255,14 +256,14 @@ export default function WeeklySchedulePage() {
             <Card className="text-center hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-[var(--accent-primary)] bg-gradient-to-br from-[var(--accent-primary)]/5 to-transparent">
               <CardContent className="p-8">
                 <Moon className="w-12 h-12 text-[var(--accent-primary)] mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-4 font-['Rajdhani'] uppercase text-[var(--text-primary)]">
+                <h3 className="text-2xl font-bold mb-4 font-heading uppercase text-primary-foreground">
                   Weekends
                 </h3>
                 <div className="space-y-2">
-                  <p className="text-lg font-['Noto Sans'] font-light text-[var(--text-secondary)]">
+                  <p className="text-lg font-light text-secondary-foreground">
                     {scheduleData.regularHours.weekend.days}
                   </p>
-                  <p className="text-3xl font-bold text-[var(--accent-primary)] font-['Rajdhani']">
+                  <p className="text-3xl font-bold text-[var(--accent-primary)] font-heading">
                     {scheduleData.regularHours.weekend.open} - {scheduleData.regularHours.weekend.close}
                   </p>
                 </div>
@@ -273,7 +274,7 @@ export default function WeeklySchedulePage() {
           <div className="mt-12 text-center">
             <div className="inline-flex items-center gap-3 p-4 bg-gradient-to-r from-[var(--accent-primary)]/10 to-transparent rounded-lg border border-[var(--accent-primary)]/20">
               <AlertCircle className="w-6 h-6 text-[var(--accent-primary)]" />
-              <p className="text-[var(--text-secondary)] font-['Noto Sans'] font-light">
+              <p className="text-secondary-foreground font-light">
                 <strong>Please Note:</strong> {scheduleData.regularHours.closed}
               </p>
             </div>
@@ -285,29 +286,23 @@ export default function WeeklySchedulePage() {
       <section id="schedule" className="py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary-foreground font-heading uppercase tracking-tight">
               Daily <span className="text-[var(--accent-primary)]">Activities</span>
             </h2>
-            <p className="text-xl text-[var(--text-secondary)] font-['Noto Sans'] font-light">
+            <p className="text-xl text-secondary-foreground font-light">
               Click on any day to see detailed schedule and activities.
             </p>
           </div>
 
           {/* Day Selector */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {scheduleData.dailySchedule.map((day) => (
-              <button
-                key={day.day}
-                onClick={() => setSelectedDay(day.day)}
-                className={`px-6 py-3 rounded-lg font-['Rajdhani'] uppercase font-bold tracking-wide transition-all duration-300 ${
-                  selectedDay === day.day
-                    ? 'bg-[var(--accent-primary)] text-white transform scale-105'
-                    : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--accent-primary)]/10 hover:text-[var(--accent-primary)]'
-                }`}
-              >
-                {day.dayCode}
-              </button>
-            ))}
+            <ToggleGroup type="single" value={selectedDay} onValueChange={(value) => { if (value) setSelectedDay(value)}}>
+              {scheduleData.dailySchedule.map((day) => (
+                <ToggleGroupItem key={day.day} value={day.day} aria-label={`Select ${day.day}`}>
+                  {day.dayCode}
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroup>
           </div>
 
           {/* Selected Day Schedule */}
@@ -321,7 +316,7 @@ export default function WeeklySchedulePage() {
                 transition={{ duration: 0.5 }}
                 className="space-y-6"
               >
-                <h3 className="text-3xl font-bold text-center mb-8 font-['Rajdhani'] uppercase text-[var(--text-primary)]">
+                <h3 className="text-3xl font-bold text-center mb-8 font-heading uppercase text-primary-foreground">
                   {day.day} Schedule
                 </h3>
                 
@@ -340,14 +335,14 @@ export default function WeeklySchedulePage() {
                                 <Badge className={getActivityColor(activity.type)}>
                                   {activity.type.charAt(0).toUpperCase() + activity.type.slice(1)}
                                 </Badge>
-                                <span className="text-[var(--text-secondary)] font-['Noto Sans'] font-light">
+                                <span className="text-secondary-foreground font-light">
                                   {activity.time}
                                 </span>
                               </div>
-                              <h4 className="text-xl font-bold mb-2 font-['Rajdhani'] uppercase text-[var(--text-primary)]">
+                              <h4 className="text-xl font-bold mb-2 font-heading uppercase text-primary-foreground">
                                 {activity.activity}
                               </h4>
-                              <p className="text-[var(--text-secondary)] font-['Noto Sans'] font-light">
+                              <p className="text-secondary-foreground font-light">
                                 <strong>Location:</strong> {activity.fields}
                               </p>
                             </div>
@@ -363,13 +358,13 @@ export default function WeeklySchedulePage() {
       </section>
 
       {/* League Information */}
-      <section className="py-24 bg-[var(--bg-secondary)]">
+      <section className="py-24 bg-secondary">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary-foreground font-heading uppercase tracking-tight">
               League <span className="text-[var(--accent-primary)]">Information</span>
             </h2>
-            <p className="text-xl text-[var(--text-secondary)] font-['Noto Sans'] font-light">
+            <p className="text-xl text-secondary-foreground font-light">
               Join our competitive leagues and improve your skills with fellow shooters.
             </p>
           </div>
@@ -383,7 +378,7 @@ export default function WeeklySchedulePage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="h-full hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-secondary)] border-0">
+                <Card className="h-full hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 bg-card border-0">
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-2">
                       <Trophy className="w-6 h-6 text-[var(--accent-primary)]" />
@@ -391,7 +386,7 @@ export default function WeeklySchedulePage() {
                         {league.season}
                       </Badge>
                     </div>
-                    <h3 className="text-xl font-bold font-['Rajdhani'] uppercase text-[var(--text-primary)]">
+                    <h3 className="text-xl font-bold font-heading uppercase text-primary-foreground">
                       {league.name}
                     </h3>
                   </CardHeader>
@@ -399,21 +394,21 @@ export default function WeeklySchedulePage() {
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <Calendar className="w-4 h-4 text-[var(--accent-secondary)]" />
-                        <span className="text-[var(--text-secondary)] font-['Noto Sans'] font-light">
+                        <span className="text-secondary-foreground font-light">
                           {league.day}s, {league.time}
                         </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Users className="w-4 h-4 text-[var(--accent-secondary)]" />
-                        <span className="text-[var(--text-secondary)] font-['Noto Sans'] font-light">
+                        <span className="text-secondary-foreground font-light">
                           {league.level}
                         </span>
                       </div>
-                      <p className="text-[var(--text-secondary)] font-['Noto Sans'] font-light leading-relaxed">
+                      <p className="text-secondary-foreground font-light leading-relaxed">
                         {league.description}
                       </p>
                       <div className="pt-4">
-                        <p className="text-sm text-[var(--text-secondary)] font-['Noto Sans'] font-light">
+                        <p className="text-sm text-secondary-foreground font-light">
                           <strong>Contact:</strong> {league.contact}
                         </p>
                       </div>
@@ -430,10 +425,10 @@ export default function WeeklySchedulePage() {
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--text-primary)] font-['Rajdhani'] uppercase tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary-foreground font-heading uppercase tracking-tight">
               Weather <span className="text-[var(--accent-primary)]">Policy</span>
             </h2>
-            <p className="text-xl text-[var(--text-secondary)] font-['Noto Sans'] font-light">
+            <p className="text-xl text-secondary-foreground font-light">
               Safety first - we monitor weather conditions closely for all activities.
             </p>
           </div>
@@ -442,10 +437,10 @@ export default function WeeklySchedulePage() {
             <Card className="text-center border-2 border-green-500/20 bg-gradient-to-br from-green-500/5 to-transparent">
               <CardContent className="p-8">
                 <Sun className="w-12 h-12 text-green-500 mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-3 font-['Rajdhani'] uppercase text-[var(--text-primary)]">
+                <h3 className="text-xl font-bold mb-3 font-heading uppercase text-primary-foreground">
                   Clear Conditions
                 </h3>
-                <p className="text-[var(--text-secondary)] font-['Noto Sans'] font-light">
+                <p className="text-secondary-foreground font-light">
                   All ranges open. Normal operating hours and activities.
                 </p>
               </CardContent>
@@ -454,10 +449,10 @@ export default function WeeklySchedulePage() {
             <Card className="text-center border-2 border-yellow-500/20 bg-gradient-to-br from-yellow-500/5 to-transparent">
               <CardContent className="p-8">
                 <CloudRain className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-3 font-['Rajdhani'] uppercase text-[var(--text-primary)]">
+                <h3 className="text-xl font-bold mb-3 font-heading uppercase text-primary-foreground">
                   Light Rain
                 </h3>
-                <p className="text-[var(--text-secondary)] font-['Noto Sans'] font-light">
+                <p className="text-secondary-foreground font-light">
                   Operations continue. Some outdoor activities may be modified.
                 </p>
               </CardContent>
@@ -466,10 +461,10 @@ export default function WeeklySchedulePage() {
             <Card className="text-center border-2 border-red-500/20 bg-gradient-to-br from-red-500/5 to-transparent">
               <CardContent className="p-8">
                 <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-3 font-['Rajdhani'] uppercase text-[var(--text-primary)]">
+                <h3 className="text-xl font-bold mb-3 font-heading uppercase text-primary-foreground">
                   Severe Weather
                 </h3>
-                <p className="text-[var(--text-secondary)] font-['Noto Sans'] font-light">
+                <p className="text-secondary-foreground font-light">
                   All outdoor activities suspended. Facility may close temporarily.
                 </p>
               </CardContent>
@@ -477,7 +472,7 @@ export default function WeeklySchedulePage() {
           </div>
 
           <div className="mt-12 text-center">
-            <Button asChild className="bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] text-white">
+            <Button asChild>
               <Link href="/weather">Check Current Conditions</Link>
             </Button>
           </div>
@@ -489,18 +484,18 @@ export default function WeeklySchedulePage() {
         <div className="absolute inset-0 bg-black/10" />
         <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
           <Phone className="w-16 h-16 text-white mx-auto mb-6" />
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white font-['Rajdhani'] uppercase">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white font-heading uppercase">
             Questions About<br />The Schedule?
           </h2>
-          <p className="text-xl text-white/90 mb-8 font-['Noto Sans'] font-light max-w-2xl mx-auto">
+          <p className="text-xl text-white/90 mb-8 font-light max-w-2xl mx-auto">
             Need to make a reservation or have questions about league participation? 
             Our staff is here to help plan your visit.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-white text-[var(--accent-primary)] hover:bg-gray-100 font-['Rajdhani'] tracking-wide px-8 py-6 text-lg">
+            <Button asChild size="lg" className="bg-white text-[var(--accent-primary)] hover:bg-gray-100 font-heading tracking-wide px-8 py-6 text-lg">
               <Link href="/schedule/reservations">MAKE RESERVATION</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-[var(--accent-primary)] font-['Rajdhani'] tracking-wide px-8 py-6 text-lg">
+            <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-[var(--accent-primary)] font-heading tracking-wide px-8 py-6 text-lg">
               <Link href="/contact">CONTACT US</Link>
             </Button>
           </div>

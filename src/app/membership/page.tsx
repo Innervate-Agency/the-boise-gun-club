@@ -11,7 +11,8 @@ import {
   Trophy,
   Shield,
   Star,
-  Gift
+  Gift,
+  Clock
 } from 'lucide-react';
 import { PageHero } from '@/components/ui/page-hero';
 import { FeatureGrid } from '@/components/ui/feature-grid';

@@ -17,7 +17,7 @@ import { BreadcrumbHero } from '@/components/ui/breadcrumb-hero';
 
 export default function FormsPage() {
   return (
-    <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
+    <div className="min-h-screen bg-bg-primary text-text-primary">
       <BreadcrumbHero
         breadcrumbs={[
           { label: 'Components', href: '/test/components' }
@@ -25,7 +25,7 @@ export default function FormsPage() {
         title="Form Components"
         description="Complete form system with validation, auto-completion and smart interactions"
         icon={FileText}
-        gradient="bg-gradient-to-r from-idaho-sky-blue to-snakeriver-blue"
+        gradient="bg-gradient-to-r from-blue-500 to-blue-600"
         badges={['8 Components', 'Production Ready']}
         backLink={{
           href: '/test/components',
@@ -34,9 +34,9 @@ export default function FormsPage() {
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-2 gap-12">
-          <div className="bg-white dark:bg-secondary rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
             <h2 className="text-2xl font-heading font-bold text-text-primary mb-6 flex items-center gap-3">
-              <Target className="w-6 h-6 text-accent-primary" />
+              <Target className="w-6 h-6 text-orange-500" />
               Membership Registration
             </h2>
             <form className="space-y-6">
@@ -64,7 +64,7 @@ export default function FormsPage() {
                   <Input type="password" id="password" placeholder="Minimum 8 characters" required />
                 </div>
               </div>
-              <Button type="submit" className="w-full bg-accent-primary hover:bg-accent-secondary text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2">
+              <Button type="submit" className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2">
                 <Shield className="w-5 h-5" />
                 Submit Registration
               </Button>

@@ -15,7 +15,7 @@ const coreComponents = [
     description: 'Interactive button component with multiple variants and states',
     href: '/test/components/buttons',
     status: 'stable',
-    color: 'from-lahoma-orange to-abe-red',
+    color: 'from-orange-500 to-red-500',
     icon: 'MousePointer',
     variants: ['Primary', 'Secondary', 'Ghost', 'Destructive'],
     features: ['Accessibility', 'Loading States', 'Icon Support', 'Size Variants'],
@@ -26,7 +26,7 @@ const coreComponents = [
     description: 'Flexible container component for grouping related content',
     href: '/test/components/cards', 
     status: 'stable',
-    color: 'from-idaho-sky-blue to-snakeriver-blue',
+    color: 'from-blue-500 to-cyan-500',
     icon: 'Layers',
     variants: ['Default', 'Elevated', 'Outline', 'Filled'],
     features: ['Header/Footer', 'Nested Content', 'Hover Effects', 'Shadow Variants'],
@@ -37,7 +37,7 @@ const coreComponents = [
     description: 'Small status and labeling component for UI emphasis',
     href: '/test/components/badges',
     status: 'stable',
-    color: 'from-owyhee-green to-club-house-lawn-green',
+    color: 'from-green-500 to-emerald-500',
     icon: 'Shield', 
     variants: ['Default', 'Secondary', 'Destructive', 'Outline'],
     features: ['Status Colors', 'Size Options', 'Icon Support', 'Custom Styling'],
@@ -48,7 +48,7 @@ const coreComponents = [
     description: 'Form input fields with validation and accessibility',
     href: '/test/components/forms',
     status: 'stable',
-    color: 'from-leonard-yellow to-lahoma-orange',
+    color: 'from-yellow-500 to-orange-500',
     icon: 'Edit3',
     variants: ['Text', 'Email', 'Password', 'Search'],
     features: ['Validation', 'Placeholder', 'Disabled State', 'Error Handling'],
@@ -58,7 +58,7 @@ const coreComponents = [
 
 export default function CoreComponentsPage() {
   return (
-    <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
+    <div className="min-h-screen bg-bg-primary text-text-primary">
       <BreadcrumbHero
         breadcrumbs={[
           { label: 'Components', href: '/test/components' }
@@ -66,7 +66,7 @@ export default function CoreComponentsPage() {
         title="Core Components"
         description="Essential UI building blocks with Stripe-inspired design"
         icon={Layers}
-        gradient="bg-gradient-to-r from-lahoma-orange to-abe-red"
+        gradient="bg-gradient-to-r from-orange-500 to-red-500"
         badges={['12 Components', 'Production Ready']}
         backLink={{
           href: '/test/components',
@@ -135,7 +135,7 @@ export default function CoreComponentsPage() {
                   </div>
                   
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-2xl font-heading font-bold text-card-foreground group-hover:text-accent-primary transition-colors">
+                    <CardTitle className="text-2xl font-heading font-bold text-card-foreground group-hover:text-orange-500 transition-colors">
                       {component.name}
                     </CardTitle>
                     <CardDescription className="text-muted-foreground font-body leading-relaxed">
@@ -164,7 +164,7 @@ export default function CoreComponentsPage() {
                       <div className="grid grid-cols-2 gap-2">
                         {component.features.map((feature) => (
                           <div key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <div className="w-1.5 h-1.5 bg-accent-primary rounded-full" />
+                            <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
                             {feature}
                           </div>
                         ))}
@@ -184,9 +184,9 @@ export default function CoreComponentsPage() {
         </div>
         
         <div className="mt-16 text-center">
-          <Card className="p-8 bg-accent-primary/5 border-0">
+          <Card className="p-8 bg-orange-500/5 border-0">
             <div className="max-w-2xl mx-auto">
-              <Target className="h-12 w-12 text-accent-primary mx-auto mb-4" />
+              <Target className="h-12 w-12 text-orange-500 mx-auto mb-4" />
               <h3 className="text-2xl font-heading font-bold text-text-primary mb-4">
                 Ready to Build Something Amazing?
               </h3>
@@ -195,7 +195,7 @@ export default function CoreComponentsPage() {
                 Start building your next project with confidence.
               </p>
               <div className="flex gap-4 justify-center">
-                <Button asChild className="bg-accent-primary hover:bg-accent-secondary text-white">
+                <Button asChild className="bg-orange-500 hover:bg-orange-600 text-white">
                   <Link href="http://localhost:6006" target="_blank">
                     View in Storybook
                   </Link>

@@ -113,25 +113,25 @@ const socialLinks = [
     name: 'Facebook',
     icon: Facebook,
     href: 'https://facebook.com/boisegunclub',
-    color: 'hover:text-blue-600'
+    color: 'hover:text-[var(--brand-blue)]'
   },
   {
     name: 'Instagram',
     icon: Instagram,
     href: 'https://instagram.com/boisegunclub',
-    color: 'hover:text-pink-600'
+    color: 'hover:text-[var(--brand-red-action)]'
   },
   {
     name: 'YouTube',
     icon: Youtube,
     href: 'https://youtube.com/@boisegunclub',
-    color: 'hover:text-red-600'
+    color: 'hover:text-[var(--brand-red-action)]'
   },
   {
     name: 'Twitter',
     icon: Twitter,
     href: 'https://twitter.com/boisegunclub',
-    color: 'hover:text-blue-400'
+    color: 'hover:text-[var(--brand-blue)]'
   }
 ];
 
@@ -151,7 +151,7 @@ export function SiteFooter({
   const getFooterClassName = () => {
     switch (variant) {
       case 'glass':
-        return 'bg-black/80 backdrop-blur-md text-white';
+        return 'bg-[var(--bg-primary)]/80 backdrop-blur-md text-[var(--card)]';
       case 'minimal':
         return 'bg-muted/50 border-t';
       default:
@@ -183,7 +183,7 @@ export function SiteFooter({
                 />
                 <Button 
                   type="submit"
-                  className="bg-accent-primary hover:bg-accent-secondary text-white font-heading font-semibold"
+                  className="bg-accent-primary hover:bg-accent-secondary text-[var(--card)] font-heading font-semibold"
                 >
                   Subscribe
                   <ArrowRight className="w-4 h-4 ml-2" />

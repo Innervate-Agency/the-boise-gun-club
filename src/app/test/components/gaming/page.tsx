@@ -47,7 +47,7 @@ const achievements = [
 
 export default function GamingPage() {
   return (
-    <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
+    <div className="min-h-screen bg-bg-primary text-text-primary">
       <BreadcrumbHero
         breadcrumbs={[
           { label: 'Components', href: '/test/components' }
@@ -55,7 +55,7 @@ export default function GamingPage() {
         title="Gaming Elements"
         description="Gamification components for shotgun sports achievements and scoring"
         icon={Trophy}
-        gradient="bg-gradient-to-r from-jerry-orange to-abe-red"
+        gradient="bg-gradient-to-r from-orange-500 to-red-500"
         badges={['5 Components', 'New']}
         backLink={{
           href: '/test/components',

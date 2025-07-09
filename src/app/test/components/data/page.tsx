@@ -56,7 +56,7 @@ const dataComponents = [
 
 export default function DataDisplayPage() {
   return (
-    <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
+    <div className="min-h-screen bg-bg-primary text-text-primary">
       <BreadcrumbHero
         breadcrumbs={[
           { label: 'Components', href: '/test/components' }
@@ -64,7 +64,7 @@ export default function DataDisplayPage() {
         title="Data Display"
         description="Tables, charts, and data visualization with real-time updates"
         icon={BarChart3}
-        gradient="bg-gradient-to-r from-owyhee-green to-club-house-lawn-green"
+        gradient="bg-gradient-to-r from-green-500 to-green-600"
         badges={['6 Components', 'Real-time Ready']}
         backLink={{
           href: '/test/components',
@@ -89,8 +89,8 @@ export default function DataDisplayPage() {
                     </CardTitle>
                     <Badge className={
                       component.status === 'stable' 
-                        ? 'bg-owyhee-green/10 text-owyhee-green border border-owyhee-green/20'
-                        : 'bg-abe-red/10 text-abe-red border border-abe-red/20'
+                        ? 'bg-green-500/10 text-green-500 border border-green-500/20'
+                        : 'bg-red-500/10 text-red-500 border border-red-500/20'
                     }>
                       {component.status}
                     </Badge>
@@ -121,14 +121,14 @@ export default function DataDisplayPage() {
                     <div className="grid grid-cols-2 gap-2">
                       {component.features.map((feature) => (
                         <div key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <TrendingUp className="w-3 h-3 text-owyhee-green" />
+                          <TrendingUp className="w-3 h-3 text-green-500" />
                           {feature}
                         </div>
                       ))}
                     </div>
                   </div>
                   
-                  <Button className="w-full bg-owyhee-green hover:bg-club-house-lawn-green text-white">
+                  <Button className="w-full bg-green-500 hover:bg-green-600 text-white">
                     View Examples
                   </Button>
                 </CardContent>
@@ -138,9 +138,9 @@ export default function DataDisplayPage() {
         </div>
         
         <div className="mt-16 text-center">
-          <Card className="p-8 bg-gradient-to-r from-owyhee-green/5 to-club-house-lawn-green/5 border-0">
+          <Card className="p-8 bg-gradient-to-r from-green-500/5 to-green-600/5 border-0">
             <div className="max-w-2xl mx-auto">
-              <BarChart3 className="h-12 w-12 text-owyhee-green mx-auto mb-4" />
+              <BarChart3 className="h-12 w-12 text-green-500 mx-auto mb-4" />
               <h3 className="text-2xl font-heading font-bold text-text-primary mb-4">
                 Data-Driven Insights
               </h3>
@@ -149,7 +149,7 @@ export default function DataDisplayPage() {
                 comprehensive data visualization components.
               </p>
               <div className="flex gap-4 justify-center">
-                <Button asChild className="bg-owyhee-green hover:bg-club-house-lawn-green text-white">
+                <Button asChild className="bg-green-500 hover:bg-green-600 text-white">
                   <Link href="http://localhost:6006" target="_blank">
                     View in Storybook
                   </Link>

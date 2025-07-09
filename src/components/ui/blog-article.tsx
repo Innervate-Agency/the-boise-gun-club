@@ -103,14 +103,14 @@ export function BlogCard({
             className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
           {article.featured && (
-            <Badge className="absolute top-4 left-4 bg-accent-primary text-white">
+            <Badge className="absolute top-4 left-4 bg-accent-primary text-[var(--card)]">
               Featured
             </Badge>
           )}
           {article.category && (
             <Badge 
               variant="secondary" 
-              className="absolute top-4 right-4 bg-black/50 text-white border-0"
+              className="absolute top-4 right-4 bg-[var(--bg-primary)]/50 text-[var(--card)] border-0"
             >
               {article.category}
             </Badge>

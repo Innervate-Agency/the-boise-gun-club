@@ -1,11 +1,11 @@
 import React from 'react';
-import HeroSection from '../components/home/HeroSection';
-import UpcomingEvents from '../components/home/UpcomingEvents';
-import MemberSpotlight from '../components/home/MemberSpotlight';
-import PricingSection from '../components/home/PricingSection';
-import ClubRulesSection from '../components/home/ClubRulesSection';
-import PhotoSubmissionSection from '../components/home/PhotoSubmissionSection';
-import ContactInfo from '../components/home/ContactInfo';
+import HeroSection from '@/components/home/HeroSection';
+import UpcomingEvents from '@/components/home/UpcomingEvents';
+import MemberSpotlight from '@/components/home/MemberSpotlight';
+import PricingSection from '@/components/home/PricingSection';
+import ClubRulesSection from '@/components/home/ClubRulesSection';
+import PhotoSubmissionSection from '@/components/home/PhotoSubmissionSection';
+import ContactInfo from '@/components/home/ContactInfo';
 
 const memberSpotlight = {
   name: 'Jane Doe',

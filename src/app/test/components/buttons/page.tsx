@@ -85,7 +85,7 @@ export default function ButtonsPlayground() {
   };
 
   return (
-    <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
+    <div className="min-h-screen bg-bg-primary text-text-primary">
       {/* Header with Breadcrumbs */}
       <BreadcrumbHero
         breadcrumbs={[
@@ -95,7 +95,7 @@ export default function ButtonsPlayground() {
         title="Button Arsenal"
         description="Interactive button components with micro-interactions, loading states, and advanced animations"
         icon={MousePointer}
-        gradient="bg-gradient-to-r from-lahoma-orange to-abe-red"
+        gradient="bg-gradient-to-r from-orange-500 to-red-500"
         badges={['8 Variants', 'Interactive Demo', 'Production Ready']}
         backLink={{
           href: '/test/components/core',
@@ -107,7 +107,7 @@ export default function ButtonsPlayground() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Live Demo Panel */}
-          <div className="bg-white dark:bg-secondary rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
             <h2 className="text-2xl font-heading font-bold mb-6">
               Interactive Demo
             </h2>
@@ -151,14 +151,14 @@ export default function ButtonsPlayground() {
             </div>
 
             {/* Live Preview */}
-            <div className="bg-gray-50 dark:bg-tertiary rounded-xl p-8 mb-6">
+            <div className="bg-gray-50 dark:bg-slate-900 rounded-xl p-8 mb-6">
               <div className="flex items-center justify-center">
                 <Button
                   variant={variant as any}
                   size={size as any}
                   disabled={disabled || loading}
                   onClick={() => alert('Button clicked!')}
-                  className="relative bg-accent-primary hover:bg-accent-secondary text-white"
+                  className="relative bg-orange-500 hover:bg-orange-600 text-white"
                 >
                   {loading && <Loader2 className="w-4 h-4 animate-spin mr-2" />}
                   {loading ? 'Processing...' : 'Join The Elite'}
@@ -176,35 +176,35 @@ export default function ButtonsPlayground() {
           {/* Examples Panel */}
           <div className="space-y-8">
             {/* Basic Variants */}
-            <div className="bg-white dark:bg-secondary rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
               <h3 className="text-xl font-heading font-bold mb-6">
                 Button Variants
               </h3>
               <div className="space-y-4">
                 <div className="flex flex-wrap gap-3">
-                  <Button variant="default" size="sm" className="bg-lahoma-orange hover:bg-abe-red text-white">
+                  <Button variant="default" size="sm" className="bg-orange-500 hover:bg-red-500 text-white">
                     <Play className="w-4 h-4 mr-2" />
                     Primary Small
                   </Button>
-                  <Button variant="default" size="default" className="bg-lahoma-orange hover:bg-abe-red text-white">
+                  <Button variant="default" size="default" className="bg-orange-500 hover:bg-red-500 text-white">
                     <Download className="w-4 h-4 mr-2" />
                     Primary Medium
                   </Button>
-                  <Button variant="default" size="lg" className="bg-lahoma-orange hover:bg-abe-red text-white">
+                  <Button variant="default" size="lg" className="bg-orange-500 hover:bg-red-500 text-white">
                     <Target className="w-5 h-5 mr-2" />
                     Primary Large
                   </Button>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <Button variant="outline" size="sm" className="border-lahoma-orange text-lahoma-orange hover:bg-lahoma-orange hover:text-white">
+                  <Button variant="outline" size="sm" className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
                     <Heart className="w-4 h-4 mr-2" />
                     Secondary Small
                   </Button>
-                  <Button variant="outline" size="default" className="border-lahoma-orange text-lahoma-orange hover:bg-lahoma-orange hover:text-white">
+                  <Button variant="outline" size="default" className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
                     <Share className="w-4 h-4 mr-2" />
                     Secondary Medium
                   </Button>
-                  <Button variant="outline" size="lg" className="border-lahoma-orange text-lahoma-orange hover:bg-lahoma-orange hover:text-white">
+                  <Button variant="outline" size="lg" className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
                     <Settings className="w-5 h-5 mr-2" />
                     Secondary Large
                   </Button>
@@ -213,25 +213,25 @@ export default function ButtonsPlayground() {
             </div>
 
             {/* Gun Club Specific Examples */}
-            <div className="bg-white dark:bg-secondary rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
               <h3 className="text-xl font-heading font-bold mb-6">
                 Gun Club Actions
               </h3>
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <Button onClick={() => alert('Registering for event...')} className="bg-lahoma-orange hover:bg-abe-red text-white">
+                  <Button onClick={() => alert('Registering for event...')} className="bg-orange-500 hover:bg-red-500 text-white">
                     <Plus className="w-4 h-4 mr-2" />
                     Register for Event
                   </Button>
-                  <Button variant="outline" onClick={() => alert('Booking range time...')} className="border-lahoma-orange text-lahoma-orange hover:bg-lahoma-orange hover:text-white">
+                  <Button variant="outline" onClick={() => alert('Booking range time...')} className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
                     <Target className="w-4 h-4 mr-2" />
                     Book Range Time
                   </Button>
-                  <Button onClick={() => alert('Joining membership...')} className="bg-lahoma-orange hover:bg-abe-red text-white">
+                  <Button onClick={() => alert('Joining membership...')} className="bg-orange-500 hover:bg-red-500 text-white">
                     <Zap className="w-4 h-4 mr-2" />
                     Join Membership
                   </Button>
-                  <Button variant="outline" onClick={() => alert('Viewing scores...')} className="border-lahoma-orange text-lahoma-orange hover:bg-lahoma-orange hover:text-white">
+                  <Button variant="outline" onClick={() => alert('Viewing scores...')} className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
                     <Download className="w-4 h-4 mr-2" />
                     Download Scores
                   </Button>
@@ -240,7 +240,7 @@ export default function ButtonsPlayground() {
             </div>
 
             {/* Async Action Example */}
-            <div className="bg-white dark:bg-secondary rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
               <h3 className="text-xl font-heading font-bold mb-6">
                 Async Actions
               </h3>
@@ -248,7 +248,7 @@ export default function ButtonsPlayground() {
                 <Button 
                   onClick={handleAsyncAction}
                   disabled={loading}
-                  className="w-full bg-lahoma-orange hover:bg-abe-red text-white"
+                  className="w-full bg-orange-500 hover:bg-red-500 text-white"
                 >
                   {loading ? (
                     <>
@@ -269,13 +269,13 @@ export default function ButtonsPlayground() {
             </div>
 
             {/* State Examples */}
-            <div className="bg-white dark:bg-secondary rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
               <h3 className="text-xl font-heading font-bold mb-6">
                 Button States
               </h3>
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <Button className="bg-lahoma-orange hover:bg-abe-red text-white">
+                  <Button className="bg-orange-500 hover:bg-red-500 text-white">
                     <Edit className="w-4 h-4 mr-2" />
                     Normal State
                   </Button>
@@ -294,7 +294,7 @@ export default function ButtonsPlayground() {
 
         {/* Usage Guidelines */}
         <div className="mt-16">
-          <div className="bg-white dark:bg-secondary rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
             <h2 className="text-2xl font-heading font-bold mb-6">
               Usage Guidelines
             </h2>
@@ -325,7 +325,7 @@ export default function ButtonsPlayground() {
 
         {/* Code Examples */}
         <div className="mt-16">
-          <div className="bg-white dark:bg-secondary rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-600 p-8">
             <h2 className="text-2xl font-heading font-bold mb-6">
               Implementation Examples
             </h2>

@@ -9,7 +9,7 @@ interface AnimatedSplashCardProps {
 export default function AnimatedSplashCard({ children, className = '' }: AnimatedSplashCardProps) {
   return (
     <motion.div
-      className={`relative rounded-2xl shadow-lg bg-white dark:bg-gray-900 border-t-4 border-lahoma-orange overflow-hidden ${className}`}
+      className={`relative rounded-2xl shadow-lg bg-[var(--card)] dark:bg-gray-900 border-t-4 border-lahoma-orange overflow-hidden ${className}`}
       whileHover="hovered"
       initial="rest"
       animate="rest"

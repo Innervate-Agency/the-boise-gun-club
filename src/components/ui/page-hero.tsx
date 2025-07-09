@@ -69,7 +69,7 @@ export function PageHero({
         <div className="max-w-4xl mx-auto text-center">
           {badge && (
             <div className="mb-6">
-              <Badge className="bg-white/20 backdrop-blur-sm text-white border-white/30 font-body text-sm px-4 py-2">
+              <Badge className="bg-[var(--card)]/20 backdrop-blur-sm text-[var(--card)] border-white/30 font-body text-sm px-4 py-2">
                 {badge}
               </Badge>
             </div>
@@ -99,7 +99,7 @@ export function PageHero({
               {primaryAction && (
                 <Button
                   size="lg"
-                  className="bg-accent-primary hover:bg-accent-secondary text-white font-heading font-semibold px-8 py-4 text-lg"
+                  className="bg-accent-primary hover:bg-accent-secondary text-[var(--card)] font-heading font-semibold px-8 py-4 text-lg"
                   onClick={primaryAction.onClick}
                 >
                   {primaryAction.text}
@@ -111,7 +111,7 @@ export function PageHero({
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-white/30 text-card-foreground hover:bg-white/10 font-heading font-semibold px-8 py-4 text-lg backdrop-blur-sm"
+                  className="border-white/30 text-card-foreground hover:bg-[var(--card)]/10 font-heading font-semibold px-8 py-4 text-lg backdrop-blur-sm"
                   onClick={secondaryAction.onClick}
                 >
                   {secondaryAction.text}
@@ -130,7 +130,7 @@ export function PageHero({
 
       {showScrollIndicator && (
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="flex flex-col items-center text-white/70">
+          <div className="flex flex-col items-center text-[var(--card)]/70">
             <span className="text-sm font-body mb-2">Scroll down</span>
             <ChevronDown className="w-6 h-6" />
           </div>

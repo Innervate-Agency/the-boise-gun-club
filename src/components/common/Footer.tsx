@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 const socialLinks = [
     { name: 'Facebook', url: '#', icon: 'M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z' },
@@ -31,12 +33,12 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-[var(--bg-primary)] text-[var(--text-secondary)] py-8">
+        <footer className="bg-[var(--bg-primary)] text-[var(--text-secondary)] py-8 font-body">
             <div className="max-w-content mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6">
                 {/* Left Column - Contact & Navigation */}
                 <div className="space-y-6">
                     <div>
-                        <h3 className="text-xl mb-3">Contact Us</h3>
+                        <h3 className="text-xl mb-3 font-heading text-[var(--text-primary)]">Contact Us</h3>
                         <address className="not-italic text-base space-y-1 text-[var(--text-secondary)]">
                             <p>Boise Gun Club</p>
                             <p>1234 Range Road</p>
@@ -71,14 +73,6 @@ export default function Footer() {
                                     fill="currentColor"
                                     viewBox="0 0 24 24"
                                     aria-hidden="true"
-                                    style={{
-                                        minWidth: '24px',
-                                        maxWidth: '24px',
-                                        minHeight: '24px',
-                                        maxHeight: '24px',
-                                        fontSize: '16px',
-                                        lineHeight: 'normal'
-                                    }}
                                 >
                                     <path d={social.icon} />
                                 </svg>
@@ -90,13 +84,13 @@ export default function Footer() {
                 {/* Right Column - Newsletter */}
                 <div className="space-y-6">
                     <div>
-                        <h3 className="text-xl mb-3">Stay Updated</h3>
+                        <h3 className="text-xl mb-3 font-heading text-[var(--text-primary)]">Stay Updated</h3>
                         <p className="text-[var(--text-secondary)] mb-4 text-base">
                             Subscribe to our newsletter for the latest events, matches, and club news.
                         </p>
                         <form onSubmit={handleSubmit} className="space-y-3">
                             <div>
-                                <input
+                                <Input
                                     type="email"
                                     value={email}
                                     onChange={(e) => {
@@ -104,19 +98,19 @@ export default function Footer() {
                                         setIsValidEmail(true);
                                     }}
                                     placeholder="Enter your email"
-                                    className={`w-full px-3 py-2 bg-[var(--bg-tertiary)] border text-base ${isValidEmail ? 'border-[var(--glass-border)]' : 'border-red-500'
-                                        } rounded-lg focus:outline-none focus:border-[var(--accent-primary)] transition-colors text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]`}
+                                    className={!isValidEmail ? 'border-[var(--destructive)]' : ''}
                                 />
                                 {!isValidEmail && (
-                                    <p className="mt-1 text-red-500 text-sm">Please enter a valid email address</p>
+                                    <p className="mt-1 text-[var(--destructive)] text-sm">Please enter a valid email address</p>
                                 )}
                             </div>
-                            <button
+                            <Button
                                 type="submit"
-                                className="w-full px-4 py-2 bg-[var(--accent-primary)] hover:brightness-90 text-white rounded-lg transition-colors text-base"
+                                className="w-full"
+                                variant="default"
                             >
                                 Subscribe
-                            </button>
+                            </Button>
                         </form>
                     </div>
                 </div>

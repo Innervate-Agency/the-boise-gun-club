@@ -6,21 +6,21 @@ import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center rounded-full border font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none transition-all duration-200 ease-out relative overflow-hidden",
+  "inline-flex items-center justify-center rounded-full border font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none transition-fast relative overflow-hidden",
   {
     variants: {
       variant: {
         default: "border-border/50 bg-card text-card-foreground hover:bg-muted/80 hover:border-border",
         primary: "border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 hover:border-primary/50",
         secondary: "border-muted-foreground/30 bg-muted text-muted-foreground hover:bg-muted/80",
-        success: "border-[var(--brand-green)]/30 bg-[var(--brand-green)]/10 text-[var(--brand-green)] hover:bg-[var(--brand-green)]/20 hover:border-[var(--brand-green)]/50",
-        warning: "border-[var(--leonard-yellow)]/50 bg-[var(--leonard-yellow)]/10 text-[var(--leonard-yellow)] hover:bg-[var(--leonard-yellow)]/20 hover:border-[var(--leonard-yellow)]/70",
-        error: "border-red-500/30 bg-red-500/10 text-red-500 hover:bg-red-500/20 hover:border-red-500/50",
-        info: "border-[var(--brand-blue)]/30 bg-[var(--brand-blue)]/10 text-[var(--brand-blue)] hover:bg-[var(--brand-blue)]/20 hover:border-[var(--brand-blue)]/50",
-        premium: "border-[var(--leonard-yellow)]/50 bg-gradient-to-r from-[var(--leonard-yellow)]/20 to-[var(--lahoma-orange)]/20 text-[var(--leonard-yellow)] hover:from-[var(--leonard-yellow)]/30 hover:to-[var(--lahoma-orange)]/30 hover:border-[var(--leonard-yellow)]/70 shadow-sm",
-        glass: "border-white/20 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white/30",
+        success: "border-brand-green/30 bg-brand-green/10 text-brand-green hover:bg-brand-green/20 hover:border-brand-green/50 dark:border-brand-green/30 dark:bg-brand-green/10 dark:text-brand-green dark:hover:bg-brand-green/20",
+        warning: "border-leonard-yellow/50 bg-leonard-yellow/10 text-leonard-yellow hover:bg-leonard-yellow/20 hover:border-leonard-yellow/70 dark:border-leonard-yellow/50 dark:bg-leonard-yellow/10 dark:text-leonard-yellow dark:hover:bg-leonard-yellow/20",
+        error: "border-brand-red/30 bg-brand-red/10 text-brand-red hover:bg-brand-red/20 hover:border-brand-red/50 dark:border-brand-red/30 dark:bg-brand-red/10 dark:text-brand-red dark:hover:bg-brand-red/20",
+        info: "border-brand-blue/30 bg-brand-blue/10 text-brand-blue hover:bg-brand-blue/20 hover:border-brand-blue/50 dark:border-brand-blue/30 dark:bg-brand-blue/10 dark:text-brand-blue dark:hover:bg-brand-blue/20",
+        premium: "border-primary/50 bg-gradient-to-r from-primary/20 to-accent-secondary/20 text-primary hover:from-primary/30 hover:to-accent-secondary/30 hover:border-primary/70 shadow-sm",
+        glass: "border-white/20 bg-card/10 backdrop-blur-sm text-card hover:bg-card/20 hover:border-white/30 dark:border-white/10 dark:bg-card/5 dark:hover:bg-card/10",
         outline: "border-border text-foreground hover:bg-accent hover:text-accent-foreground",
-        destructive: "border-transparent bg-red-500 text-white hover:bg-red-500/90 shadow-sm",
+        destructive: "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-sm",
       },
       size: {
         sm: "px-2 py-0.5 text-[10px] gap-1 [&>svg]:size-2.5",
@@ -93,7 +93,7 @@ function Badge({
         <button
           type="button"
           onClick={onDismiss}
-          className="ml-1 flex-shrink-0 hover:bg-black/10 rounded-full p-0.5 transition-colors"
+          className="ml-1 flex-shrink-0 hover:bg-primary/10 rounded-full p-0.5 transition-fast"
         >
           <svg className="h-2.5 w-2.5" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />

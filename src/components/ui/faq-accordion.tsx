@@ -229,7 +229,7 @@ export function FAQAccordion({
                 {faq.question}
               </CardTitle>
               {faq.featured && (
-                <Badge className="bg-accent-primary text-white">
+                <Badge className="bg-accent-primary text-[var(--card)]">
                   Featured
                 </Badge>
               )}
@@ -284,7 +284,7 @@ export function FAQAccordion({
             </span>
             <div className="flex items-center gap-2 ml-4">
               {faq.featured && (
-                <Badge className="bg-accent-primary text-white text-xs">
+                <Badge className="bg-accent-primary text-[var(--card)] text-xs">
                   Featured
                 </Badge>
               )}
@@ -342,7 +342,7 @@ export function FAQAccordion({
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="w-12 h-12 bg-gradient-to-br from-accent-primary to-brand-blue rounded-xl flex items-center justify-center">
-            <HelpCircle className="w-6 h-6 text-white" />
+            <HelpCircle className="w-6 h-6 text-[var(--card)]" />
           </div>
           <div>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-card-foreground">
@@ -402,7 +402,7 @@ export function FAQAccordion({
                       'w-10 h-10 rounded-lg mx-auto mb-3 flex items-center justify-center bg-gradient-to-br',
                       category.color
                     )}>
-                      <IconComponent className="w-5 h-5 text-white" />
+                      <IconComponent className="w-5 h-5 text-[var(--card)]" />
                     </div>
                     <h4 className="font-heading font-semibold text-card-foreground text-sm mb-1">
                       {category.title}

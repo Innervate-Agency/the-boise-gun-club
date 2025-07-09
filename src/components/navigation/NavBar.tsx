@@ -14,8 +14,9 @@ const links = [
     { href: '/', label: 'Home' },
     { href: '/club-info', label: 'Club Info' },
     { href: '/membership', label: 'Membership' },
-    { href: '/forum', label: 'Forums' },
-    { href: '/events', label: 'Events' }
+    { href: '/news', label: 'News' },
+    { href: '/events', label: 'Events' },
+    { href: 'https://forums.boisegunclub.com', label: 'Forums', external: true }
 ];
 
 export default function NavBar() {
@@ -92,20 +93,36 @@ export default function NavBar() {
                     {/* Menu (center) */}
                     <nav className="hidden md:flex items-center space-x-8 flex-grow justify-center">
                         {links.map((link) => (
-                            <Link
-                                key={link.href}
-                                href={link.href}
-                                className={`
-                                    text-sm font-medium tracking-wide
-                                    ${pathname === link.href 
-                                        ? 'text-[var(--accent-primary)]' 
-                                        : 'text-[var(--text-primary)] hover:text-[var(--accent-secondary)]'
-                                    }
-                                    transition-colors duration-200
-                                `}
-                            >
-                                {link.label}
-                            </Link>
+                            link.external ? (
+                                <a
+                                    key={link.href}
+                                    href={link.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`
+                                        text-sm font-medium tracking-wide
+                                        text-[var(--text-primary)] hover:text-[var(--accent-secondary)]
+                                        transition-colors duration-200
+                                    `}
+                                >
+                                    {link.label}
+                                </a>
+                            ) : (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    className={`
+                                        text-sm font-medium tracking-wide
+                                        ${pathname === link.href 
+                                            ? 'text-[var(--accent-primary)]' 
+                                            : 'text-[var(--text-primary)] hover:text-[var(--accent-secondary)]'
+                                        }
+                                        transition-colors duration-200
+                                    `}
+                                >
+                                    {link.label}
+                                </Link>
+                            )
                         ))}
                     </nav>
 

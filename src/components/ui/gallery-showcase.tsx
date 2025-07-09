@@ -103,17 +103,17 @@ export function GalleryCard({
         
         {/* Overlay */}
         <div className={cn(
-          'absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center',
+          'absolute inset-0 bg-[var(--bg-primary)]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center',
           isHovered && 'opacity-100'
         )}>
           <div className="flex items-center gap-2">
             {image.type === 'video' ? (
-              <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                <Play className="w-6 h-6 text-white ml-1" />
+              <div className="w-12 h-12 bg-[var(--card)]/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                <Play className="w-6 h-6 text-[var(--card)] ml-1" />
               </div>
             ) : (
-              <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                <ZoomIn className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 bg-[var(--card)]/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                <ZoomIn className="w-6 h-6 text-[var(--card)]" />
               </div>
             )}
           </div>
@@ -122,17 +122,17 @@ export function GalleryCard({
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-wrap gap-2">
           {image.featured && (
-            <Badge className="bg-accent-primary text-white">
+            <Badge className="bg-accent-primary text-[var(--card)]">
               Featured
             </Badge>
           )}
           {image.category && (
-            <Badge variant="secondary" className="bg-black/50 text-white border-0">
+            <Badge variant="secondary" className="bg-[var(--bg-primary)]/50 text-[var(--card)] border-0">
               {image.category}
             </Badge>
           )}
           {image.type === 'video' && (
-            <Badge variant="secondary" className="bg-black/50 text-white border-0">
+            <Badge variant="secondary" className="bg-[var(--bg-primary)]/50 text-[var(--card)] border-0">
               <Video className="w-3 h-3 mr-1" />
               Video
             </Badge>
@@ -143,15 +143,15 @@ export function GalleryCard({
         {showStats && (
           <div className="absolute bottom-3 right-3 flex items-center gap-2">
             {image.likes && (
-              <div className="flex items-center gap-1 bg-black/50 backdrop-blur-sm rounded-full px-2 py-1">
-                <Heart className="w-3 h-3 text-white" />
-                <span className="text-xs text-white">{image.likes}</span>
+              <div className="flex items-center gap-1 bg-[var(--bg-primary)]/50 backdrop-blur-sm rounded-full px-2 py-1">
+                <Heart className="w-3 h-3 text-[var(--card)]" />
+                <span className="text-xs text-[var(--card)]">{image.likes}</span>
               </div>
             )}
             {image.downloads && (
-              <div className="flex items-center gap-1 bg-black/50 backdrop-blur-sm rounded-full px-2 py-1">
-                <Download className="w-3 h-3 text-white" />
-                <span className="text-xs text-white">{image.downloads}</span>
+              <div className="flex items-center gap-1 bg-[var(--bg-primary)]/50 backdrop-blur-sm rounded-full px-2 py-1">
+                <Download className="w-3 h-3 text-[var(--card)]" />
+                <span className="text-xs text-[var(--card)]">{image.downloads}</span>
               </div>
             )}
           </div>
@@ -332,7 +332,7 @@ export function GalleryLightbox({
   return (
     <Dialog open={true} onOpenChange={() => onClose?.()}>
       <DialogContent 
-        className="max-w-7xl w-full h-full max-h-[95vh] p-0 bg-black/95 border-0"
+        className="max-w-7xl w-full h-full max-h-[95vh] p-0 bg-[var(--bg-primary)]/95 border-0"
         onKeyDown={handleKeyDown}
       >
         <div className="relative w-full h-full flex items-center justify-center">
@@ -340,7 +340,7 @@ export function GalleryLightbox({
           <Button
             variant="ghost"
             size="sm"
-            className="absolute top-4 right-4 z-50 text-white hover:bg-white/20"
+            className="absolute top-4 right-4 z-50 text-[var(--card)] hover:bg-[var(--card)]/20"
             onClick={onClose}
           >
             <X className="w-5 h-5" />
@@ -350,7 +350,7 @@ export function GalleryLightbox({
           <Button
             variant="ghost"
             size="sm"
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-40 text-white hover:bg-white/20"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-40 text-[var(--card)] hover:bg-[var(--card)]/20"
             onClick={goToPrevious}
           >
             <ChevronLeft className="w-6 h-6" />
@@ -359,7 +359,7 @@ export function GalleryLightbox({
           <Button
             variant="ghost"
             size="sm"
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-40 text-white hover:bg-white/20"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-40 text-[var(--card)] hover:bg-[var(--card)]/20"
             onClick={goToNext}
           >
             <ChevronRight className="w-6 h-6" />
@@ -388,17 +388,17 @@ export function GalleryLightbox({
           {/* Image Info */}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
             <div className="max-w-4xl mx-auto">
-              <div className="flex items-start justify-between text-white">
+              <div className="flex items-start justify-between text-[var(--card)]">
                 <div className="flex-1">
                   <h3 className="text-xl font-heading font-bold mb-2">
                     {currentImage.title || currentImage.alt}
                   </h3>
                   {currentImage.description && (
-                    <p className="text-white/80 font-body mb-2">
+                    <p className="text-[var(--card)]/80 font-body mb-2">
                       {currentImage.description}
                     </p>
                   )}
-                  <div className="flex items-center gap-4 text-sm text-white/60">
+                  <div className="flex items-center gap-4 text-sm text-[var(--card)]/60">
                     {currentImage.photographer && (
                       <div className="flex items-center gap-1">
                         <User className="w-4 h-4" />
@@ -420,14 +420,14 @@ export function GalleryLightbox({
 
                 {/* Actions */}
                 <div className="flex items-center gap-2 ml-4">
-                  <Button variant="ghost" size="sm" className="text-white hover:bg-white/20">
+                  <Button variant="ghost" size="sm" className="text-[var(--card)] hover:bg-[var(--card)]/20">
                     <Heart className="w-4 h-4 mr-2" />
                     {currentImage.likes || 0}
                   </Button>
-                  <Button variant="ghost" size="sm" className="text-white hover:bg-white/20">
+                  <Button variant="ghost" size="sm" className="text-[var(--card)] hover:bg-[var(--card)]/20">
                     <Share2 className="w-4 h-4" />
                   </Button>
-                  <Button variant="ghost" size="sm" className="text-white hover:bg-white/20">
+                  <Button variant="ghost" size="sm" className="text-[var(--card)] hover:bg-[var(--card)]/20">
                     <Download className="w-4 h-4" />
                   </Button>
                 </div>
@@ -456,8 +456,8 @@ export function GalleryLightbox({
                     className="object-cover"
                   />
                   {image.type === 'video' && (
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                      <Play className="w-4 h-4 text-white" />
+                    <div className="absolute inset-0 bg-[var(--bg-primary)]/40 flex items-center justify-center">
+                      <Play className="w-4 h-4 text-[var(--card)]" />
                     </div>
                   )}
                 </button>

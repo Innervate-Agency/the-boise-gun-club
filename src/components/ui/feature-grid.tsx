@@ -53,7 +53,7 @@ export function FeatureGrid({
       case 'glass':
         return cn(
           baseClasses,
-          'bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15'
+          'bg-[var(--card)]/10 backdrop-blur-md border-white/20 hover:bg-[var(--card)]/15'
         );
       case 'gradient':
         return cn(

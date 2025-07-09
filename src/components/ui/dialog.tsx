@@ -14,7 +14,7 @@ const dialogVariants = cva(
     variants: {
       variant: {
         default: "bg-card/95 backdrop-blur-xl border-border/20",
-        glass: "bg-white/10 backdrop-blur-2xl border-white/20 dark:bg-black/10 dark:border-white/10",
+        glass: "bg-[var(--card)]/10 backdrop-blur-2xl border-white/20 dark:bg-[var(--bg-primary)]/10 dark:border-white/10",
         premium: "bg-gradient-to-br from-leonard-yellow/5 to-lahoma-orange/5 backdrop-blur-2xl border-leonard-yellow/20 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-leonard-yellow/10 before:to-lahoma-orange/10 before:opacity-50",
         solid: "bg-card border-border shadow-2xl",
       },
@@ -38,10 +38,10 @@ const overlayVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-black/50 backdrop-blur-sm",
-        glass: "bg-black/30 backdrop-blur-lg",
+        default: "bg-[var(--bg-primary)]/50 backdrop-blur-sm",
+        glass: "bg-[var(--bg-primary)]/30 backdrop-blur-lg",
         premium: "bg-gradient-to-br from-black/40 to-black/60 backdrop-blur-lg",
-        solid: "bg-black/75",
+        solid: "bg-[var(--bg-primary)]/75",
       },
     },
     defaultVariants: {
@@ -140,7 +140,7 @@ function DialogContent({
           className={cn(
             "absolute top-4 right-4 p-2 rounded-full transition-all duration-200 z-20",
             "opacity-70 hover:opacity-100 hover:scale-110",
-            "bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20",
+            "bg-[var(--bg-primary)]/10 hover:bg-[var(--bg-primary)]/20 dark:bg-[var(--card)]/10 dark:hover:bg-[var(--card)]/20",
             "backdrop-blur-sm border border-white/20",
             "focus:ring-2 focus:ring-lahoma-orange/50 focus:ring-offset-2 focus:outline-none",
             "[&_svg]:size-4 [&_svg]:shrink-0"

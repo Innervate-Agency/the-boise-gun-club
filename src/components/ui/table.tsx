@@ -13,7 +13,7 @@ const tableVariants = cva(
       variant: {
         default: "bg-card border border-border/50",
         premium: "bg-gradient-to-br from-[var(--leonard-yellow)]/5 to-[var(--lahoma-orange)]/5 border border-[var(--leonard-yellow)]/30 shadow-xl",
-        glass: "bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl",
+        glass: "bg-[var(--card)]/10 backdrop-blur-xl border border-white/20 shadow-2xl",
         tournament: "bg-gradient-to-br from-[var(--brand-blue)]/5 to-[var(--brand-green)]/5 border border-[var(--brand-blue)]/30 shadow-xl",
       },
     },
@@ -30,7 +30,7 @@ const tableRowVariants = cva(
       variant: {
         default: "hover:bg-muted/50 data-[state=selected]:bg-muted",
         premium: "hover:bg-[var(--leonard-yellow)]/10 data-[state=selected]:bg-[var(--lahoma-orange)]/20",
-        glass: "hover:bg-white/10 data-[state=selected]:bg-white/20",
+        glass: "hover:bg-[var(--card)]/10 data-[state=selected]:bg-[var(--card)]/20",
         tournament: "hover:bg-[var(--brand-blue)]/10 data-[state=selected]:bg-[var(--brand-green)]/20",
       },
       position: {

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, GlassFusionCard } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
@@ -54,14 +54,14 @@ interface PricingTableProps {
   plans: PricingPlan[];
   showAnnualDiscount?: boolean;
   showFeatureComparison?: boolean;
-  variant?: 'default' | 'compact' | 'detailed';
+  variant?: 'default' | 'compact' | 'detailed' | 'fusion';
   className?: string;
 }
 
 interface PricingCardProps {
   plan: PricingPlan;
   isAnnual?: boolean;
-  variant?: 'default' | 'compact' | 'detailed';
+  variant?: 'default' | 'compact' | 'detailed' | 'fusion';
   showFeatures?: boolean;
   className?: string;
 }
@@ -87,12 +87,70 @@ export function PricingCard({
 
   const IconComponent = plan.icon || Target;
 
+  // Fusion variant using GlassFusionCard
+  if (variant === 'fusion') {
+    return (
+      <GlassFusionCard
+        className={cn(
+          'transition-all duration-300 hover:scale-[1.02]',
+          plan.popular || plan.recommended ? 'scale-105 z-10' : '',
+          className
+        )}
+        headerGradient={plan.color ? `from-[${plan.color}] to-[var(--accent-secondary)]` : 'from-[var(--lahoma-orange)] to-[var(--accent-secondary)]'}
+        badge={plan.badge || (plan.popular ? 'Most Popular' : plan.recommended ? 'Recommended' : undefined)}
+        intensity="medium"
+      >
+        <div className="text-center p-6">
+          <div className="flex items-center justify-center mb-4">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-[var(--lahoma-orange)] to-[var(--accent-secondary)] rounded-xl">
+              <IconComponent className="h-6 w-6 text-[var(--card)]" />
+            </div>
+          </div>
+          
+          <h3 className="text-2xl font-heading font-bold mb-2">{plan.name}</h3>
+          <p className="text-[var(--muted-foreground)] dark:text-[var(--muted-foreground)] font-body mb-6">{plan.description}</p>
+          
+          <div className="mb-6">
+            <span className="text-4xl font-heading font-black">${price}</span>
+            <span className="text-lg text-[var(--muted-foreground)] dark:text-[var(--muted-foreground)]">/{isAnnual ? 'year' : 'month'}</span>
+            {isAnnual && savings > 0 && (
+              <div className="text-sm text-[var(--brand-green)] dark:text-green-400 mt-1">
+                Save ${savings}/year
+              </div>
+            )}
+          </div>
+          
+          {showFeatures && (
+            <ul className="space-y-3 mb-8 text-left">
+              {plan.features.map((feature, i) => (
+                <li key={i} className="flex items-center gap-3">
+                  <Check className={cn('h-4 w-4', feature.included ? 'text-[var(--owyhee-green)]' : 'text-[var(--muted-foreground)]')} />
+                  <span className={cn('font-body text-sm', !feature.included && 'opacity-50')}>
+                    {feature.name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+          
+          <Button
+            variant="premium"
+            effect={plan.popular || plan.recommended ? 'glow' : 'lift'}
+            className="w-full"
+          >
+            {plan.ctaText || 'Get Started'}
+          </Button>
+        </div>
+      </GlassFusionCard>
+    );
+  }
+
   return (
     <Card className={cn(getCardClassName(), 'overflow-hidden', className)}>
       {/* Popular Badge */}
       {(plan.popular || plan.recommended) && (
         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-          <Badge className="bg-accent-primary text-white px-4 py-1 text-sm font-heading font-semibold">
+          <Badge className="bg-accent-primary text-[var(--card)] px-4 py-1 text-sm font-heading font-semibold">
             {plan.badge || (plan.popular ? 'Most Popular' : 'Recommended')}
           </Badge>
         </div>
@@ -108,7 +166,7 @@ export function PricingCard({
             'w-12 h-12 rounded-xl flex items-center justify-center',
             plan.color ? `bg-gradient-to-br ${plan.color}` : 'bg-gradient-to-br from-accent-primary to-brand-blue'
           )}>
-            <IconComponent className="w-6 h-6 text-white" />
+            <IconComponent className="w-6 h-6 text-[var(--card)]" />
           </div>
         </div>
 
@@ -153,7 +211,7 @@ export function PricingCard({
           className={cn(
             'w-full mb-6 font-heading font-semibold',
             (plan.popular || plan.recommended) 
-              ? 'bg-accent-primary hover:bg-accent-secondary text-white' 
+              ? 'bg-accent-primary hover:bg-accent-secondary text-[var(--card)]' 
               : 'bg-card hover:bg-muted'
           )}
           variant={plan.ctaVariant || ((plan.popular || plan.recommended) ? 'default' : 'outline')}
@@ -183,7 +241,7 @@ export function PricingCard({
                     ) : feature.included === false ? (
                       <X className="w-4 h-4 text-muted-foreground" />
                     ) : typeof feature.included === 'number' ? (
-                      <div className="w-4 h-4 bg-accent-primary text-white rounded-full flex items-center justify-center text-xs font-bold">
+                      <div className="w-4 h-4 bg-accent-primary text-[var(--card)] rounded-full flex items-center justify-center text-xs font-bold">
                         {feature.included}
                       </div>
                     ) : (
@@ -290,7 +348,7 @@ export function PricingTable({
                 Annual
               </span>
               {maxSavings > 0 && (
-                <Badge className="bg-accent-primary text-white">
+                <Badge className="bg-accent-primary text-[var(--card)]">
                   Save up to ${maxSavings}
                 </Badge>
               )}
@@ -367,7 +425,7 @@ export function PricingTable({
                               ) : feature.included === false ? (
                                 <X className="w-5 h-5 text-muted-foreground mx-auto" />
                               ) : typeof feature.included === 'number' ? (
-                                <Badge className="bg-accent-primary text-white">
+                                <Badge className="bg-accent-primary text-[var(--card)]">
                                   {feature.included}
                                 </Badge>
                               ) : (
@@ -495,3 +553,21 @@ export const samplePlans: PricingPlan[] = [
     ctaText: 'Join Elite'
   }
 ];
+
+// PricingFusion preset component
+export function PricingFusion({
+  plans = samplePlans,
+  showAnnualDiscount = true,
+  showFeatureComparison = false,
+  className
+}: Omit<PricingTableProps, 'variant'>) {
+  return (
+    <PricingTable
+      plans={plans}
+      showAnnualDiscount={showAnnualDiscount}
+      showFeatureComparison={showFeatureComparison}
+      variant="fusion"
+      className={className}
+    />
+  );
+}

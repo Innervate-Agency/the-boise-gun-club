@@ -48,11 +48,35 @@ module.exports = {
         'muted-foreground': 'var(--muted-foreground)',
         'brand-blue': 'var(--brand-blue)',
         'brand-green': 'var(--brand-green)',
+        'brand-red': 'var(--brand-red-action)',
         'brand-red-action': 'var(--brand-red-action)',
       },
       fontFamily: {
         heading: ['var(--font-heading)', 'sans-serif'],
         body: ['var(--font-body)', 'sans-serif'],
+      },
+      transitionDuration: {
+        'fast': '150ms',
+        'smooth': '300ms',
+      },
+      transitionTimingFunction: {
+        'fast': 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+        'smooth': 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+      },
+      boxShadow: {
+        'sm': '0 2px 4px -1px rgba(50,50,93,.25)',
+        'md': '0 4px 8px -2px rgba(50,50,93,.25)',
+        'lg': '0 8px 16px -4px rgba(50,50,93,.25)',
+      },
+      animation: {
+        'shimmer': 'shimmer 2s ease-in-out infinite',
+      },
+      keyframes: {
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '50%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
       },
     },
   },

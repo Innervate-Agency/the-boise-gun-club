@@ -15,7 +15,7 @@ const menubarVariants = cva(
       variant: {
         default: "bg-background rounded-md border h-9 shadow-xs",
         premium: "bg-gradient-to-r from-[#F2CB05]/10 to-[#F28705]/10 backdrop-blur-sm border border-[#F2CB05]/20 rounded-xl h-10 shadow-lg",
-        glass: "bg-white/5 backdrop-blur-md border border-white/10 rounded-xl h-10 shadow-xl",
+        glass: "bg-[var(--card)]/5 backdrop-blur-md border border-white/10 rounded-xl h-10 shadow-xl",
         tournament: "bg-gradient-to-r from-slate-900/90 to-slate-800/90 backdrop-blur-sm border border-[#F2CB05]/30 rounded-xl h-12 shadow-2xl",
         minimal: "bg-transparent border-b border-border h-auto rounded-none p-0",
       },
@@ -85,9 +85,9 @@ const menubarTriggerVariants = cva(
     variants: {
       variant: {
         default: "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground rounded-sm px-2 py-1 text-sm",
-        premium: "focus:bg-gradient-to-r focus:from-[#F2CB05]/20 focus:to-[#F28705]/20 data-[state=open]:bg-gradient-to-r data-[state=open]:from-[#F2CB05] data-[state=open]:to-[#F28705] data-[state=open]:text-black hover:bg-white/10 rounded-lg px-3 py-1.5 text-sm font-semibold transform hover:scale-105 active:scale-95",
-        glass: "focus:bg-white/20 data-[state=open]:bg-white/30 data-[state=open]:backdrop-blur-sm hover:bg-white/10 rounded-lg px-3 py-1.5 text-sm font-medium transform hover:scale-105 active:scale-95",
-        tournament: "focus:bg-gradient-to-r focus:from-[#F2CB05]/30 focus:to-[#F28705]/30 data-[state=open]:bg-gradient-to-r data-[state=open]:from-[#F2CB05] data-[state=open]:to-[#F28705] data-[state=open]:text-black hover:bg-white/5 rounded-lg px-4 py-2 text-sm font-bold transform hover:scale-105 active:scale-95",
+        premium: "focus:bg-gradient-to-r focus:from-[#F2CB05]/20 focus:to-[#F28705]/20 data-[state=open]:bg-gradient-to-r data-[state=open]:from-[#F2CB05] data-[state=open]:to-[#F28705] data-[state=open]:text-[var(--text-primary)] hover:bg-[var(--card)]/10 rounded-lg px-3 py-1.5 text-sm font-semibold transform hover:scale-105 active:scale-95",
+        glass: "focus:bg-[var(--card)]/20 data-[state=open]:bg-[var(--card)]/30 data-[state=open]:backdrop-blur-sm hover:bg-[var(--card)]/10 rounded-lg px-3 py-1.5 text-sm font-medium transform hover:scale-105 active:scale-95",
+        tournament: "focus:bg-gradient-to-r focus:from-[#F2CB05]/30 focus:to-[#F28705]/30 data-[state=open]:bg-gradient-to-r data-[state=open]:from-[#F2CB05] data-[state=open]:to-[#F28705] data-[state=open]:text-[var(--text-primary)] hover:bg-[var(--card)]/5 rounded-lg px-4 py-2 text-sm font-bold transform hover:scale-105 active:scale-95",
         minimal: "focus:text-[#F2CB05] data-[state=open]:text-[#F2CB05] data-[state=open]:border-b-2 data-[state=open]:border-[#F2CB05] hover:text-[#F28705] px-3 py-1.5 text-sm font-medium rounded-none",
       },
       size: {
@@ -131,8 +131,8 @@ const menubarContentVariants = cva(
       variant: {
         default: "bg-popover text-popover-foreground rounded-md shadow-md",
         premium: "bg-gradient-to-b from-white/95 to-white/90 dark:from-slate-900/95 dark:to-slate-800/90 backdrop-blur-md border-[#F2CB05]/20 rounded-xl shadow-2xl",
-        glass: "bg-white/10 backdrop-blur-md border-white/20 rounded-xl shadow-2xl text-white",
-        tournament: "bg-gradient-to-b from-slate-900/95 to-slate-800/95 backdrop-blur-md border-[#F2CB05]/30 rounded-xl shadow-2xl text-white",
+        glass: "bg-[var(--card)]/10 backdrop-blur-md border-white/20 rounded-xl shadow-2xl text-[var(--card)]",
+        tournament: "bg-gradient-to-b from-slate-900/95 to-slate-800/95 backdrop-blur-md border-[#F2CB05]/30 rounded-xl shadow-2xl text-[var(--card)]",
         minimal: "bg-popover text-popover-foreground rounded-md shadow-md",
       },
     },
@@ -174,9 +174,9 @@ const menubarItemVariants = cva(
     variants: {
       variant: {
         default: "focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground rounded-sm px-2 py-1.5 text-sm",
-        premium: "focus:bg-gradient-to-r focus:from-[#F2CB05]/20 focus:to-[#F28705]/20 hover:bg-white/10 rounded-lg px-3 py-2 text-sm font-medium transform hover:scale-105 active:scale-95",
-        glass: "focus:bg-white/20 hover:bg-white/10 rounded-lg px-3 py-2 text-sm font-medium transform hover:scale-105 active:scale-95",
-        tournament: "focus:bg-gradient-to-r focus:from-[#F2CB05]/30 focus:to-[#F28705]/30 hover:bg-white/5 rounded-lg px-3 py-2 text-sm font-semibold transform hover:scale-105 active:scale-95",
+        premium: "focus:bg-gradient-to-r focus:from-[#F2CB05]/20 focus:to-[#F28705]/20 hover:bg-[var(--card)]/10 rounded-lg px-3 py-2 text-sm font-medium transform hover:scale-105 active:scale-95",
+        glass: "focus:bg-[var(--card)]/20 hover:bg-[var(--card)]/10 rounded-lg px-3 py-2 text-sm font-medium transform hover:scale-105 active:scale-95",
+        tournament: "focus:bg-gradient-to-r focus:from-[#F2CB05]/30 focus:to-[#F28705]/30 hover:bg-[var(--card)]/5 rounded-lg px-3 py-2 text-sm font-semibold transform hover:scale-105 active:scale-95",
         destructive: "text-destructive focus:bg-destructive/10 dark:focus:bg-destructive/20 focus:text-destructive *:[svg]:!text-destructive rounded-sm px-2 py-1.5 text-sm",
       },
     },

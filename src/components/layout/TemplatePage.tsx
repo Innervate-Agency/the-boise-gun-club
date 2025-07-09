@@ -3,6 +3,11 @@
 import { motion } from 'framer-motion';
 import { useContent } from '@/hooks/useContent';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import { Input } from '@/components/ui/input';
+import { SearchIcon, HomeIcon } from 'lucide-react';
 
 interface TemplatePageProps {
   title: string;
@@ -14,89 +19,87 @@ const TemplatePage: React.FC<TemplatePageProps> = ({ title, description, childre
   const { content, loading, error } = useContent();
 
   const headerVariants = {
-    hidden: { opacity: 0, y: -50 },
+    hidden: { opacity: 0, y: -20 },
     visible: { 
       opacity: 1, 
       y: 0, 
-      transition: { duration: 0.7, ease: "easeOut" }
+      transition: { duration: 0.5, ease: "easeOut" }
     },
-  };
-
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
-    }),
   };
 
   if (loading) {
     return (
-      <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[var(--accent-primary)] mx-auto mb-4"></div>
-          <p className="text-xl font-['Noto Sans']">Loading...</p>
-        </div>
+      <div className="relative min-h-screen bg-background flex items-center justify-center">
+        <LoadingSpinner size="lg" />
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden flex items-center justify-center">
+      <div className="relative min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <p className="text-xl text-red-400 font-['Noto Sans']">Error: {error}</p>
+          <p className="text-xl text-destructive">{`Error: ${error}`}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-hidden">
+    <div className="relative min-h-screen bg-background text-foreground">
       
       <main className="relative z-10">
-        <div className="container mx-auto px-6 py-24">
-          <div className="max-w-6xl mx-auto">
-            {/* Header */}
+        <div className="container mx-auto px-6 py-16">
+          <div className="max-w-7xl mx-auto">
+            {/* Standardized Hero Section */}
             <motion.header
-              className="text-center mb-16"
+              className="mb-16"
               variants={headerVariants}
               initial="hidden"
               animate="visible"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 font-['Rajdhani'] text-[var(--text-primary)] leading-tight">
-                {title}
-              </h1>
-              <p className="text-xl md:text-2xl text-[var(--text-secondary)] max-w-4xl mx-auto font-['Noto Sans'] leading-relaxed">
-                {description}
-              </p>
+              <div className="flex flex-col md:flex-row justify-between items-start gap-8">
+                {/* Left Side: Breadcrumbs, Title, Description */}
+                <div className="space-y-4 text-left">
+                  <Breadcrumb>
+                    <BreadcrumbList>
+                      <BreadcrumbItem>
+                        <BreadcrumbLink asChild>
+                          <Link href="/"><HomeIcon className="h-4 w-4" /></Link>
+                        </BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                        {/* This should be dynamic based on page hierarchy */}
+                        <BreadcrumbLink asChild>
+                          <Link href="/club-info">Club Info</Link>
+                        </BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                        <BreadcrumbPage>{title}</BreadcrumbPage>
+                      </BreadcrumbItem>
+                    </BreadcrumbList>
+                  </Breadcrumb>
+                  <h1 className="text-4xl md:text-5xl font-heading font-bold text-primary-foreground leading-tight">
+                    {title}
+                  </h1>
+                  <p className="text-lg md:text-xl text-muted-foreground max-w-3xl">
+                    {description}
+                  </p>
+                </div>
+
+                {/* Right Side: Search Bar */}
+                <div className="w-full md:w-auto md:min-w-[300px]">
+                  <div className="relative">
+                    <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                    <Input placeholder="Search this section..." className="pl-10" />
+                  </div>
+                </div>
+              </div>
             </motion.header>
 
-            {/* Sample Content */}
-            <motion.section
-              className="mb-16"
-              custom={0}
-              variants={sectionVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-['Rajdhani'] text-[var(--text-primary)]">
-                Sample Section
-              </h2>
-              <p className="text-lg text-[var(--text-secondary)] leading-relaxed font-['Noto Sans'] mb-6">
-                This is sample content to demonstrate the template structure. You can customize this content 
-                and add your own sections, images, and interactive elements.
-              </p>
-              <div className="flex gap-4">
-                <Link href="/another-page" className="text-[var(--accent-primary)] hover:underline font-['Noto Sans']">
-                  Another Link →
-                </Link>
-              </div>
-            </motion.section>
-
-            {/* Custom content */}
+            {/* Custom content from child pages */}
             {children}
           </div>
         </div>

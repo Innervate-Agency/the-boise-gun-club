@@ -30,7 +30,7 @@ export function NavigationFusion({
 
   const variantClasses = {
     glass: 'glass-premium p-2 rounded-xl',
-    solid: 'bg-white dark:bg-secondary shadow-lg p-2 rounded-xl',
+    solid: 'bg-[var(--card)] dark:bg-secondary shadow-lg p-2 rounded-xl',
     minimal: 'p-1'
   };
 
@@ -42,10 +42,10 @@ export function NavigationFusion({
           href={item.href}
           className={cn(
             'flex items-center gap-2 px-4 py-2 rounded-lg font-body text-sm transition-all duration-200',
-            'hover:bg-white/20 hover:backdrop-blur-sm',
+            'hover:bg-[var(--card)]/20 hover:backdrop-blur-sm',
             item.active 
-              ? 'bg-[var(--lahoma-orange)] text-white shadow-lg' 
-              : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+              ? 'bg-[var(--lahoma-orange)] text-[var(--card)] shadow-lg' 
+              : 'text-gray-700 dark:text-[var(--muted-foreground)] hover:text-gray-900 dark:hover:text-[var(--card)]'
           )}
         >
           {item.icon}

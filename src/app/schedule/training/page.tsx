@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import Section from '@/components/layout/Section';
+import { Button } from '@/components/ui/button';
 
 export default function Page() {
   const page = {
@@ -54,13 +55,13 @@ export default function Page() {
                     <Image src={section.imageUrl} alt={section.title} fill className="object-cover transform hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="text-left">
-                    <h2 className="text-3xl font-bold uppercase text-leonard-yellow mb-2">{section.title}</h2>
-                    <h3 className="text-xl font-semibold text-gray-300 mb-4">{section.subtitle}</h3>
-                    <div className="text-lg text-gray-200 mb-6 space-y-4" dangerouslySetInnerHTML={{ __html: section.description }} />
+                    <h2 className="text-3xl font-heading uppercase text-[var(--accent-primary)] mb-2">{section.title}</h2>
+                    <h3 className="text-xl font-heading text-secondary-foreground mb-4">{section.subtitle}</h3>
+                    <div className="text-lg text-primary-foreground mb-6 space-y-4" dangerouslySetInnerHTML={{ __html: section.description }} />
                     {section.link && (
-                      <Link href={section.link} className="inline-block bg-lahoma-orange text-dark-bg font-bold py-2 px-6 rounded-lg hover:bg-leonard-yellow transition-colors duration-300">
-                        {section.linkText}
-                      </Link>
+                      <Button asChild>
+                        <Link href={section.link}>{section.linkText}</Link>
+                      </Button>
                     )}
                   </div>
                 </div>

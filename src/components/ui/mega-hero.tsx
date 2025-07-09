@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { PremiumButton } from './premium-button';
+import { Button } from './button';
 import { FloatingBackground } from './floating-background';
 import { Badge } from '@/components/ui/badge';
 
@@ -63,7 +63,7 @@ export function MegaHero({
       )}
     >
       {/* Glass overlay for depth */}
-      <div className="absolute inset-0 bg-black/10 backdrop-blur-[1px]" />
+      <div className="absolute inset-0 bg-[var(--bg-primary)]/10 backdrop-blur-[1px]" />
       
       {/* Content container */}
       <div className={cn(
@@ -75,9 +75,9 @@ export function MegaHero({
         {/* Icon */}
         {icon && (
           <div className="mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl shadow-2xl">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-[var(--card)]/20 backdrop-blur-sm rounded-2xl shadow-2xl">
               {React.cloneElement(icon as React.ReactElement, {
-                className: "h-10 w-10 text-white"
+                className: "h-10 w-10 text-[var(--card)]"
               })}
             </div>
           </div>
@@ -85,7 +85,7 @@ export function MegaHero({
         
         {/* Title */}
         <h1 className={cn(
-          'text-5xl md:text-6xl lg:text-7xl font-heading font-black text-white mb-6 leading-tight',
+          'text-5xl md:text-6xl lg:text-7xl font-heading font-black text-[var(--card)] mb-6 leading-tight',
           centerContent ? 'text-center' : 'text-left'
         )}>
           {title}
@@ -105,7 +105,7 @@ export function MegaHero({
         {/* Description */}
         {description && (
           <p className={cn(
-            'text-xl text-white/90 max-w-3xl mb-12 font-body font-light leading-relaxed',
+            'text-xl text-[var(--card)]/90 max-w-3xl mb-12 font-body font-light leading-relaxed',
             centerContent ? 'text-center mx-auto' : 'text-left'
           )}>
             {description}
@@ -120,9 +120,10 @@ export function MegaHero({
             'flex-col sm:flex-row'
           )}>
             {primaryCTA && (
-              <PremiumButton
+              <Button
                 onClick={primaryCTA.onClick}
                 size="lg"
+                variant="premium"
                 effect="glow"
                 intensity="premium"
                 gradient="from-white to-white/90"
@@ -131,20 +132,20 @@ export function MegaHero({
                 icon={primaryCTA.icon}
               >
                 {primaryCTA.text}
-              </PremiumButton>
+              </Button>
             )}
             
             {secondaryCTA && (
-              <PremiumButton
+              <Button
                 onClick={secondaryCTA.onClick}
                 variant="outline"
                 size="lg"
                 effect="lift"
-                className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
+                className="border-white/30 text-[var(--card)] hover:bg-[var(--card)]/10 backdrop-blur-sm"
                 icon={secondaryCTA.icon}
               >
                 {secondaryCTA.text}
-              </PremiumButton>
+              </Button>
             )}
           </div>
         )}
@@ -158,7 +159,7 @@ export function MegaHero({
             {badges.map((badge, index) => (
               <Badge
                 key={index}
-                className="bg-white/20 backdrop-blur-sm text-white border-white/30 font-body"
+                className="bg-[var(--card)]/20 backdrop-blur-sm text-[var(--card)] border-white/30 font-body"
               >
                 {badge}
               </Badge>

@@ -126,8 +126,8 @@ export function SiteNavigation({
 
     switch (variant) {
       case 'glass':
-        variantClasses = 'bg-white/10 backdrop-blur-md border-white/20';
-        scrollClasses = isScrolled ? 'bg-white/20 shadow-lg' : '';
+        variantClasses = 'bg-[var(--card)]/10 backdrop-blur-md border-white/20';
+        scrollClasses = isScrolled ? 'bg-[var(--card)]/20 shadow-lg' : '';
         break;
       case 'solid':
         variantClasses = 'bg-card border-border';
@@ -226,7 +226,7 @@ export function SiteNavigation({
             {/* CTA Button */}
             <Button 
               asChild
-              className="bg-accent-primary hover:bg-accent-secondary text-white font-heading font-semibold"
+              className="bg-accent-primary hover:bg-accent-secondary text-[var(--card)] font-heading font-semibold"
             >
               <Link href="/membership">
                 Join Today
@@ -289,7 +289,7 @@ export function SiteNavigation({
                 <div className="pt-4 mt-6 border-t">
                   <Button 
                     asChild
-                    className="w-full bg-accent-primary hover:bg-accent-secondary text-white font-heading font-semibold"
+                    className="w-full bg-accent-primary hover:bg-accent-secondary text-[var(--card)] font-heading font-semibold"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <Link href="/membership">

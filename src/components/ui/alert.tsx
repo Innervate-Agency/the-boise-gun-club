@@ -13,7 +13,7 @@ const alertVariants = cva(
         default: "bg-card/95 text-card-foreground border-border/20",
         success: "bg-gradient-to-r from-brand-green/10 to-brand-green-light/10 text-brand-green border-brand-green/20 [&>svg]:text-brand-green",
         warning: "bg-gradient-to-r from-leonard-yellow/10 to-lahoma-orange/10 text-amber-800 dark:text-amber-200 border-leonard-yellow/20 [&>svg]:text-leonard-yellow",
-        error: "bg-gradient-to-r from-red-500/10 to-brand-red-action/10 text-red-800 dark:text-red-200 border-red-500/20 [&>svg]:text-red-500",
+        error: "bg-gradient-to-r from-red-500/10 to-brand-red-action/10 text-red-800 dark:text-red-200 border-[var(--brand-red-action)]/20 [&>svg]:text-[var(--brand-red-action)]",
         info: "bg-gradient-to-r from-brand-blue/10 to-brand-blue-dark/10 text-brand-blue border-brand-blue/20 [&>svg]:text-brand-blue",
         premium: "bg-gradient-to-r from-leonard-yellow/15 to-lahoma-orange/15 text-amber-900 dark:text-amber-100 border-leonard-yellow/30 [&>svg]:text-lahoma-orange relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-leonard-yellow/5 before:to-lahoma-orange/5 before:opacity-50",
       },
@@ -93,7 +93,7 @@ function Alert({
       {dismissible && (
         <button
           onClick={handleDismiss}
-          className="absolute top-3 right-3 p-1 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors duration-200 opacity-70 hover:opacity-100"
+          className="absolute top-3 right-3 p-1 rounded-full hover:bg-[var(--bg-primary)]/10 dark:hover:bg-[var(--card)]/10 transition-colors duration-200 opacity-70 hover:opacity-100"
           aria-label="Dismiss alert"
         >
           <X className="h-4 w-4" />

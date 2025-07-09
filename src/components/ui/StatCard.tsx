@@ -93,7 +93,7 @@ const StatCard: React.FC<StatCardProps> = ({ value, label }) => {
 
                 {/* Label with glassmorphic tag */}
                 <div className="relative">
-                    <div className="text-white/80 text-sm font-body uppercase tracking-wider">{label}</div>
+                    <div className="text-[var(--card)]/80 text-sm font-body uppercase tracking-wider">{label}</div>
 
                     {/* Decorative accent element */}
                     <div className="absolute -top-1 -left-2 w-1 h-1 rounded-full bg-[var(--accent-gold)] opacity-70"></div>

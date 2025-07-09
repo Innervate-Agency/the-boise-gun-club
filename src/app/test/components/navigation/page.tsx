@@ -10,13 +10,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { BreadcrumbHero } from '@/components/ui/breadcrumb-hero';
 import { SiteNavigation } from '@/components/ui/site-navigation';
 import { SmartBreadcrumbs } from '@/components/ui/breadcrumb';
-import { VoiceNavigation } from '@/components/ui/voice-navigation';
-import { SpatialNavigation } from '@/components/ui/spatial-navigation';
-import { TabNavigation } from '@/components/ui/tab-navigation';
+// import { VoiceNavigation } from '@/components/ui/voice-navigation';
+// import { SpatialNavigation } from '@/components/ui/spatial-navigation';
+// import { TabNavigation } from '@/components/ui/tab-navigation';
 
 export default function NavigationPage() {
   return (
-    <div className="min-h-screen bg-cloudy-day-white dark:bg-kent-slate-gray">
+    <div className="min-h-screen bg-bg-primary text-text-primary">
       <BreadcrumbHero
         breadcrumbs={[
           { label: 'Components', href: '/test/components' }
@@ -24,7 +24,7 @@ export default function NavigationPage() {
         title="Navigation"
         description="Advanced navigation patterns with mega menus and breadcrumbs"
         icon={Radar}
-        gradient="bg-gradient-to-r from-leonard-yellow to-lahoma-orange"
+        gradient="bg-gradient-to-r from-yellow-500 to-orange-500"
         badges={['7 Components', 'Production Ready']}
         backLink={{
           href: '/test/components',
@@ -47,7 +47,7 @@ export default function NavigationPage() {
           <CardContent>
             <SmartBreadcrumbs items={[
               { label: 'Home', href: '/', icon: Compass },
-              { label: 'Ranges', href: '/ranges', icon: Target },
+              { label: 'Ranges', href: '/ranges', icon: Layers },
               { label: 'Trap Range', href: '/ranges/trap', icon: null },
             ]} />
           </CardContent>
@@ -57,7 +57,7 @@ export default function NavigationPage() {
             <CardTitle>Voice Navigation</CardTitle>
           </CardHeader>
           <CardContent>
-            <VoiceNavigation />
+            <p className="text-muted-foreground">Voice navigation component coming soon...</p>
           </CardContent>
         </Card>
         <Card>
@@ -65,7 +65,7 @@ export default function NavigationPage() {
             <CardTitle>Spatial Navigation</CardTitle>
           </CardHeader>
           <CardContent>
-            <SpatialNavigation />
+            <p className="text-muted-foreground">Spatial navigation component coming soon...</p>
           </CardContent>
         </Card>
         <Card>
@@ -73,7 +73,7 @@ export default function NavigationPage() {
             <CardTitle>Tab Navigation</CardTitle>
           </CardHeader>
           <CardContent>
-            <TabNavigation />
+            <p className="text-muted-foreground">Tab navigation component coming soon...</p>
           </CardContent>
         </Card>
       </div>

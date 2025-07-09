@@ -18,6 +18,8 @@ import {
   Award,
   Clock
 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 // Mock data for gun club analytics
 const generateShootingData = () => {
@@ -52,18 +54,19 @@ const AnimatedBarChart = ({ data, title, color }: any) => {
   const maxValue = Math.max(...data.map((d: any) => Math.max(d.trapShooting, d.skeetShooting, d.sportingClays)));
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-slate-700">
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white">
+    <Card>
+      <CardHeader className="flex flex-row items-center justify-between">
+        <CardTitle className="font-heading">
           {title}
-        </h3>
-        <button
+        </CardTitle>
+        <Button
           onClick={() => setIsVisible(!isVisible)}
-          className="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+          variant="ghost"
+          size="icon"
         >
           {isVisible ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
-        </button>
-      </div>
+        </Button>
+      </CardHeader>
       
       <AnimatePresence>
         {isVisible && (
@@ -71,15 +74,15 @@ const AnimatedBarChart = ({ data, title, color }: any) => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="space-y-4"
+            className="space-y-4 p-6 pt-0"
           >
             {data.map((item: any, index: number) => (
               <div key={item.month} className="space-y-2">
-                <div className="flex justify-between text-sm font-medium text-slate-600 dark:text-slate-300">
+                <div className="flex justify-between text-sm font-medium text-secondary-foreground">
                   <span>{item.month}</span>
                   <span>{item.trapShooting}%</span>
                 </div>
-                <div className="relative h-3 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                <div className="relative h-3 bg-muted rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${(item.trapShooting / maxValue) * 100}%` }}
@@ -94,7 +97,7 @@ const AnimatedBarChart = ({ data, title, color }: any) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </Card>
   );
 };
 
@@ -106,96 +109,97 @@ const CircularProgressChart = ({ value, label, color, icon: Icon }: any) => {
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
-      className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-slate-700 text-center"
     >
-      <div className="relative w-32 h-32 mx-auto mb-4">
-        <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
-          <circle
-            cx="50"
-            cy="50"
-            r="45"
-            stroke="currentColor"
-            strokeWidth="8"
-            fill="none"
-            className="text-slate-200 dark:text-slate-700"
-          />
-          <motion.circle
-            cx="50"
-            cy="50"
-            r="45"
-            stroke="currentColor"
-            strokeWidth="8"
-            fill="none"
-            strokeLinecap="round"
-            className={color}
-            initial={{ strokeDashoffset: circumference }}
-            animate={{ strokeDashoffset }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            style={{
-              strokeDasharray,
-            }}
-          />
-        </svg>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-slate-900 dark:text-white">
-              {value}%
+      <Card className="text-center p-6">
+        <div className="relative w-32 h-32 mx-auto mb-4">
+          <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
+            <circle
+              cx="50"
+              cy="50"
+              r="45"
+              stroke="currentColor"
+              strokeWidth="8"
+              fill="none"
+              className="text-muted"
+            />
+            <motion.circle
+              cx="50"
+              cy="50"
+              r="45"
+              stroke="currentColor"
+              strokeWidth="8"
+              fill="none"
+              strokeLinecap="round"
+              className={color}
+              initial={{ strokeDashoffset: circumference }}
+              animate={{ strokeDashoffset }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              style={{
+                strokeDasharray,
+              }}
+            />
+          </svg>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-primary-foreground">
+                {value}%
+              </div>
+              <Icon className="h-5 w-5 mx-auto mt-1 text-secondary-foreground" />
             </div>
-            <Icon className="h-5 w-5 mx-auto mt-1 text-slate-500" />
           </div>
         </div>
-      </div>
-      <h4 className="font-heading font-semibold text-slate-900 dark:text-white">
-        {label}
-      </h4>
+        <h4 className="font-heading font-semibold text-primary-foreground">
+          {label}
+        </h4>
+      </Card>
     </motion.div>
   );
 };
 
 const LeaderboardCard = ({ data }: any) => {
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-slate-700">
-      <div className="flex items-center gap-3 mb-6">
+    <Card>
+      <CardHeader className="flex flex-row items-center gap-3">
         <Trophy className="h-6 w-6 text-[var(--accent-primary)]" />
-        <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white">
+        <CardTitle className="font-heading">
           Top Performers
-        </h3>
-      </div>
+        </CardTitle>
+      </CardHeader>
       
-      <div className="space-y-4">
+      <CardContent className="space-y-4">
         {data.map((member: any, index: number) => (
           <motion.div
             key={member.name}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors"
+            className="flex items-center justify-between p-3 rounded-lg bg-muted hover:bg-accent transition-colors"
           >
             <div className="flex items-center gap-3">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
                 index === 0 ? 'bg-yellow-500 text-white' :
                 index === 1 ? 'bg-gray-400 text-white' :
                 index === 2 ? 'bg-amber-600 text-white' :
-                'bg-slate-300 dark:bg-slate-600 text-slate-700 dark:text-slate-300'
+                'bg-muted-foreground text-muted'
               }`}>
                 {index + 1}
               </div>
               <div>
-                <div className="font-semibold text-slate-900 dark:text-white">
+                <div className="font-semibold text-primary-foreground">
                   {member.name}
                 </div>
-                <div className="text-sm text-slate-500 dark:text-slate-400">
+                <div className="text-sm text-secondary-foreground">
                   {member.discipline}
                 </div>
               </div>
             </div>
             <div className="text-right">
-              <div className="font-bold text-slate-900 dark:text-white">
+              <div className="font-bold text-primary-foreground">
                 {member.score}%
               </div>
               <div className={`text-sm flex items-center gap-1 ${
                 member.improvement > 0 ? 'text-green-600' : 
-                member.improvement < 0 ? 'text-red-600' : 'text-slate-500'
+                member.improvement < 0 ? 'text-red-600' : 'text-secondary-foreground'
               }`}>
                 {member.improvement > 0 ? '↗' : member.improvement < 0 ? '↘' : '→'}
                 {Math.abs(member.improvement)}
@@ -203,8 +207,8 @@ const LeaderboardCard = ({ data }: any) => {
             </div>
           </motion.div>
         ))}
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -242,18 +246,18 @@ const RealTimeActivityFeed = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-200 dark:border-slate-700">
-      <div className="flex items-center gap-3 mb-6">
+    <Card>
+      <CardHeader className="flex flex-row items-center gap-3">
         <Activity className="h-6 w-6 text-[var(--accent-secondary)]" />
-        <h3 className="text-xl font-heading font-bold text-slate-900 dark:text-white">
+        <CardTitle className="font-heading">
           Live Activity Feed
-        </h3>
+        </CardTitle>
         <div className="ml-auto">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
         </div>
-      </div>
+      </CardHeader>
       
-      <div className="space-y-3">
+      <CardContent className="space-y-3">
         <AnimatePresence>
           {activities.map((activity) => (
             <motion.div
@@ -261,24 +265,24 @@ const RealTimeActivityFeed = () => {
               initial={{ opacity: 0, y: -20, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
-              className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-700"
+              className="flex items-center gap-3 p-3 rounded-lg bg-muted"
             >
               {getActivityIcon(activity.type)}
               <div className="flex-1 min-w-0">
-                <div className="text-sm text-slate-900 dark:text-white">
+                <div className="text-sm text-primary-foreground">
                   <span className="font-semibold">{activity.user}</span>
                   {' '}{activity.action} in{' '}
                   <span className="font-semibold text-[var(--accent-primary)]">{activity.target}</span>
                 </div>
-                <div className="text-xs text-slate-500 dark:text-slate-400">
+                <div className="text-xs text-secondary-foreground">
                   {activity.time}
                 </div>
               </div>
             </motion.div>
           ))}
         </AnimatePresence>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -296,25 +300,26 @@ export default function ChartsPlayground() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white">
+      <div className="bg-card text-card-foreground border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center"
+            className="text-left"
           >
-            <div className="flex justify-center mb-4">
+            <div className="flex items-center gap-4 mb-4">
               <BarChart3 className="h-12 w-12 text-[var(--accent-primary)]" />
+              <div>
+                <h1 className="text-4xl md:text-5xl font-heading font-bold">
+                  DATA VISUALIZATION ARSENAL
+                </h1>
+                <p className="text-xl text-muted-foreground max-w-3xl">
+                  Advanced interactive charts and analytics for tracking shooting performance.
+                </p>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-              DATA VISUALIZATION ARSENAL
-            </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Advanced interactive charts and analytics for tracking shooting performance, 
-              member engagement, and competition statistics with real-time updates.
-            </p>
           </motion.div>
         </div>
       </div>
@@ -326,18 +331,14 @@ export default function ChartsPlayground() {
             {chartTypes.map((type) => {
               const IconComponent = type.icon;
               return (
-                <button
+                <Button
                   key={type.id}
                   onClick={() => setSelectedChart(type.id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
-                    selectedChart === type.id
-                      ? 'bg-[var(--accent-primary)] text-white shadow-lg'
-                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
-                  }`}
+                  variant={selectedChart === type.id ? 'default' : 'outline'}
                 >
-                  <IconComponent className="h-4 w-4" />
+                  <IconComponent className="h-4 w-4 mr-2" />
                   {type.label}
-                </button>
+                </Button>
               );
             })}
           </div>
@@ -438,61 +439,66 @@ export default function ChartsPlayground() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="mt-16 bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-xl border border-slate-200 dark:border-slate-700"
+          className="mt-16"
         >
-          <h2 className="text-2xl font-heading font-bold text-slate-900 dark:text-white mb-6">
-            Implementation Guide
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
-                Featured Libraries
-              </h3>
-              <div className="space-y-3">
-                <div className="p-3 bg-slate-50 dark:bg-slate-700 rounded-lg">
-                  <div className="font-medium text-slate-900 dark:text-white">Recharts</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400">React charting library built on D3</div>
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl font-heading">
+                Implementation Guide
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-lg font-semibold text-primary-foreground mb-4">
+                    Featured Libraries
+                  </h3>
+                  <div className="space-y-3">
+                    <div className="p-3 bg-muted rounded-lg">
+                      <div className="font-medium text-primary-foreground">Recharts</div>
+                      <div className="text-sm text-secondary-foreground">React charting library built on D3</div>
+                    </div>
+                    <div className="p-3 bg-muted rounded-lg">
+                      <div className="font-medium text-primary-foreground">Framer Motion</div>
+                      <div className="text-sm text-secondary-foreground">Advanced animations and transitions</div>
+                    </div>
+                    <div className="p-3 bg-muted rounded-lg">
+                      <div className="font-medium text-primary-foreground">React Spring</div>
+                      <div className="text-sm text-secondary-foreground">Spring-physics based animations</div>
+                    </div>
+                  </div>
                 </div>
-                <div className="p-3 bg-slate-50 dark:bg-slate-700 rounded-lg">
-                  <div className="font-medium text-slate-900 dark:text-white">Framer Motion</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400">Advanced animations and transitions</div>
-                </div>
-                <div className="p-3 bg-slate-50 dark:bg-slate-700 rounded-lg">
-                  <div className="font-medium text-slate-900 dark:text-white">React Spring</div>
-                  <div className="text-sm text-slate-600 dark:text-slate-400">Spring-physics based animations</div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold text-primary-foreground mb-4">
+                    Key Features
+                  </h3>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-primary-foreground">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      Real-time data streaming
+                    </div>
+                    <div className="flex items-center gap-2 text-primary-foreground">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                      Interactive hover states
+                    </div>
+                    <div className="flex items-center gap-2 text-primary-foreground">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                      Smooth animations
+                    </div>
+                    <div className="flex items-center gap-2 text-primary-foreground">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                      Responsive design
+                    </div>
+                    <div className="flex items-center gap-2 text-primary-foreground">
+                      <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
+                      Dark mode support
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
-                Key Features
-              </h3>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  Real-time data streaming
-                </div>
-                <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  Interactive hover states
-                </div>
-                <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                  Smooth animations
-                </div>
-                <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                  Responsive design
-                </div>
-                <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
-                  Dark mode support
-                </div>
-              </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </motion.div>
       </div>
     </div>

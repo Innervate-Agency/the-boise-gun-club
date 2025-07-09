@@ -63,7 +63,7 @@ export default function CardPlayground() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <Link href="/test/components" className="inline-flex items-center gap-2 text-accent-primary hover:text-accent-primary/80 mb-4">
+          <Link href="/test/components" className="inline-flex items-center gap-2 text-orange-500 hover:text-orange-400 mb-4">
             <ArrowLeftIcon className="w-4 h-4" />
             Back to Components
           </Link>
@@ -415,7 +415,7 @@ export default function CardPlayground() {
                   <div className="grid md:grid-cols-4 gap-4">
                     <Card>
                       <div className="p-4 text-center">
-                        <div className="text-2xl font-bold text-accent-primary mb-1">247</div>
+                        <div className="text-2xl font-bold text-orange-500 mb-1">247</div>
                         <div className="text-sm text-text-secondary">Active Members</div>
                       </div>
                     </Card>
@@ -446,7 +446,7 @@ export default function CardPlayground() {
                       title="Stat Cards"
                       code={`<Card>
   <div className="p-4 text-center">
-    <div className="text-2xl font-bold text-accent-primary mb-1">
+    <div className="text-2xl font-bold text-orange-500 mb-1">
       247
     </div>
     <div className="text-sm text-text-secondary">Active Members</div>

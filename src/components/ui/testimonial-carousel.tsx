@@ -68,7 +68,7 @@ export function TestimonialCarousel({
   const getCardClassName = () => {
     switch (variant) {
       case 'glass':
-        return 'bg-white/10 backdrop-blur-md border-white/20';
+        return 'bg-[var(--card)]/10 backdrop-blur-md border-white/20';
       case 'minimal':
         return 'border-0 bg-transparent';
       default:
@@ -114,8 +114,8 @@ export function TestimonialCarousel({
                       className={cn(
                         'w-5 h-5',
                         i < currentTestimonial.rating!
-                          ? 'text-[#F2CB05] fill-current'
-                          : 'text-gray-300'
+                          ? 'text-[var(--leonard-yellow)] fill-current'
+                          : 'text-[var(--muted-foreground)]'
                       )}
                     />
                   ))}
@@ -123,15 +123,15 @@ export function TestimonialCarousel({
               )}
 
               {/* Content */}
-              <blockquote className="text-xl md:text-2xl font-body font-light text-card-foreground leading-relaxed mb-8 italic">
+              <div className="text-xl md:text-2xl font-body font-light text-card-foreground leading-relaxed mb-8 italic">
                 "{currentTestimonial.content}"
-              </blockquote>
+              </div>
 
               {/* Author */}
               <div className="flex items-center justify-center gap-4">
                 <Avatar className="h-16 w-16">
                   <AvatarImage src={currentTestimonial.avatar} />
-                  <AvatarFallback className="bg-accent-primary text-white font-heading font-bold text-lg">
+                  <AvatarFallback className="bg-accent-primary text-[var(--card)] font-heading font-bold text-lg">
                     {currentTestimonial.name
                       .split(' ')
                       .map(n => n[0])
@@ -169,7 +169,7 @@ export function TestimonialCarousel({
               <Button
                 variant="outline"
                 size="sm"
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 rounded-full w-12 h-12 p-0 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 rounded-full w-12 h-12 p-0 bg-[var(--card)]/10 backdrop-blur-sm border-white/20 hover:bg-[var(--card)]/20"
                 onClick={goToPrevious}
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -178,7 +178,7 @@ export function TestimonialCarousel({
               <Button
                 variant="outline"
                 size="sm"
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 rounded-full w-12 h-12 p-0 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 rounded-full w-12 h-12 p-0 bg-[var(--card)]/10 backdrop-blur-sm border-white/20 hover:bg-[var(--card)]/20"
                 onClick={goToNext}
               >
                 <ChevronRight className="w-5 h-5" />
@@ -197,7 +197,7 @@ export function TestimonialCarousel({
                   'w-3 h-3 rounded-full transition-all duration-300',
                   index === currentIndex
                     ? 'bg-accent-primary scale-125'
-                    : 'bg-gray-300 hover:bg-gray-400'
+                    : 'bg-[var(--muted)] hover:bg-[var(--muted)]/80'
                 )}
                 onClick={() => goToSlide(index)}
               />

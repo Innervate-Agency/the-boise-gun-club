@@ -12,8 +12,8 @@ const navigationMenuVariants = cva(
     variants: {
       variant: {
         default: "",
-        premium: "bg-gradient-to-r from-[#F2CB05]/5 to-[#F28705]/5 backdrop-blur-sm rounded-xl p-2 shadow-lg",
-        glass: "bg-white/5 backdrop-blur-md rounded-xl p-2 shadow-xl",
+        premium: "bg-gradient-to-r from-[var(--leonard-yellow)]/5 to-[var(--lahoma-orange)]/5 backdrop-blur-sm rounded-xl p-2 shadow-lg",
+        glass: "bg-[var(--card)]/5 backdrop-blur-md rounded-xl p-2 shadow-xl",
         tournament: "bg-gradient-to-r from-slate-900/50 to-slate-800/50 backdrop-blur-sm rounded-xl p-3 shadow-2xl",
         minimal: "border-b border-border pb-2",
       },
@@ -104,10 +104,10 @@ const navigationMenuTriggerStyle = cva(
     variants: {
       variant: {
         default: "h-9 rounded-md bg-background px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:outline-1",
-        premium: "h-10 rounded-lg px-5 py-2.5 text-sm font-semibold hover:bg-gradient-to-r hover:from-[#F2CB05]/20 hover:to-[#F28705]/20 data-[state=open]:bg-gradient-to-r data-[state=open]:from-[#F2CB05] data-[state=open]:to-[#F28705] data-[state=open]:text-black transform hover:scale-105 active:scale-95",
-        glass: "h-10 rounded-lg px-5 py-2.5 text-sm font-medium hover:bg-white/20 data-[state=open]:bg-white/30 data-[state=open]:backdrop-blur-sm transform hover:scale-105 active:scale-95",
-        tournament: "h-12 rounded-lg px-6 py-3 text-sm font-bold hover:bg-gradient-to-r hover:from-[#F2CB05]/30 hover:to-[#F28705]/30 data-[state=open]:bg-gradient-to-r data-[state=open]:from-[#F2CB05] data-[state=open]:to-[#F28705] data-[state=open]:text-black transform hover:scale-105 active:scale-95",
-        minimal: "h-9 rounded-none px-4 py-2 text-sm hover:text-[#F2CB05] data-[state=open]:text-[#F2CB05] data-[state=open]:border-b-2 data-[state=open]:border-[#F2CB05]",
+        premium: "h-10 rounded-lg px-5 py-2.5 text-sm font-semibold hover:bg-gradient-to-r hover:from-[var(--leonard-yellow)]/20 hover:to-[var(--lahoma-orange)]/20 data-[state=open]:bg-gradient-to-r data-[state=open]:from-[var(--leonard-yellow)] data-[state=open]:to-[var(--lahoma-orange)] data-[state=open]:text-[var(--text-primary)] transform hover:scale-105 active:scale-95",
+        glass: "h-10 rounded-lg px-5 py-2.5 text-sm font-medium hover:bg-[var(--card)]/20 data-[state=open]:bg-[var(--card)]/30 data-[state=open]:backdrop-blur-sm transform hover:scale-105 active:scale-95",
+        tournament: "h-12 rounded-lg px-6 py-3 text-sm font-bold hover:bg-gradient-to-r hover:from-[var(--leonard-yellow)]/30 hover:to-[var(--lahoma-orange)]/30 data-[state=open]:bg-gradient-to-r data-[state=open]:from-[var(--leonard-yellow)] data-[state=open]:to-[var(--lahoma-orange)] data-[state=open]:text-[var(--text-primary)] transform hover:scale-105 active:scale-95",
+        minimal: "h-9 rounded-none px-4 py-2 text-sm hover:text-[var(--leonard-yellow)] data-[state=open]:text-[var(--leonard-yellow)] data-[state=open]:border-b-2 data-[state=open]:border-[var(--leonard-yellow)]",
       },
     },
     defaultVariants: {
@@ -164,9 +164,9 @@ const navigationMenuViewportVariants = cva(
     variants: {
       variant: {
         default: "bg-popover text-popover-foreground rounded-md",
-        premium: "bg-gradient-to-b from-white/95 to-white/90 dark:from-slate-900/95 dark:to-slate-800/90 backdrop-blur-md border-[#F2CB05]/20 rounded-xl shadow-2xl",
-        glass: "bg-white/10 backdrop-blur-md border-white/20 rounded-xl shadow-2xl text-white",
-        tournament: "bg-gradient-to-b from-slate-900/95 to-slate-800/95 backdrop-blur-md border-[#F2CB05]/30 rounded-xl shadow-2xl text-white",
+        premium: "bg-gradient-to-b from-white/95 to-white/90 dark:from-slate-900/95 dark:to-slate-800/90 backdrop-blur-md border-[var(--leonard-yellow)]/20 rounded-xl shadow-2xl",
+        glass: "bg-[var(--card)]/10 backdrop-blur-md border-white/20 rounded-xl shadow-2xl text-[var(--card)]",
+        tournament: "bg-gradient-to-b from-slate-900/95 to-slate-800/95 backdrop-blur-md border-[var(--leonard-yellow)]/30 rounded-xl shadow-2xl text-[var(--card)]",
         minimal: "bg-popover text-popover-foreground rounded-md",
       },
     },
@@ -206,10 +206,10 @@ const navigationMenuLinkVariants = cva(
     variants: {
       variant: {
         default: "data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground rounded-sm p-2 focus-visible:ring-[3px] focus-visible:outline-1",
-        premium: "data-[active=true]:bg-gradient-to-r data-[active=true]:from-[#F2CB05]/20 data-[active=true]:to-[#F28705]/20 hover:bg-gradient-to-r hover:from-[#F2CB05]/10 hover:to-[#F28705]/10 focus:bg-gradient-to-r focus:from-[#F2CB05]/20 focus:to-[#F28705]/20 rounded-lg p-3 font-medium transform hover:scale-105 active:scale-95",
-        glass: "data-[active=true]:bg-white/30 hover:bg-white/20 focus:bg-white/30 rounded-lg p-3 font-medium transform hover:scale-105 active:scale-95",
-        tournament: "data-[active=true]:bg-gradient-to-r data-[active=true]:from-[#F2CB05]/30 data-[active=true]:to-[#F28705]/30 hover:bg-gradient-to-r hover:from-[#F2CB05]/20 hover:to-[#F28705]/20 focus:bg-gradient-to-r focus:from-[#F2CB05]/30 focus:to-[#F28705]/30 rounded-lg p-3 font-semibold transform hover:scale-105 active:scale-95",
-        minimal: "data-[active=true]:text-[#F2CB05] hover:text-[#F2CB05] focus:text-[#F2CB05] rounded-none p-2",
+        premium: "data-[active=true]:bg-gradient-to-r data-[active=true]:from-[var(--leonard-yellow)]/20 data-[active=true]:to-[var(--lahoma-orange)]/20 hover:bg-gradient-to-r hover:from-[var(--leonard-yellow)]/10 hover:to-[var(--lahoma-orange)]/10 focus:bg-gradient-to-r focus:from-[var(--leonard-yellow)]/20 focus:to-[var(--lahoma-orange)]/20 rounded-lg p-3 font-medium transform hover:scale-105 active:scale-95",
+        glass: "data-[active=true]:bg-[var(--card)]/30 hover:bg-[var(--card)]/20 focus:bg-[var(--card)]/30 rounded-lg p-3 font-medium transform hover:scale-105 active:scale-95",
+        tournament: "data-[active=true]:bg-gradient-to-r data-[active=true]:from-[var(--leonard-yellow)]/30 data-[active=true]:to-[var(--lahoma-orange)]/30 hover:bg-gradient-to-r hover:from-[var(--leonard-yellow)]/20 hover:to-[var(--lahoma-orange)]/20 focus:bg-gradient-to-r focus:from-[var(--leonard-yellow)]/30 focus:to-[var(--lahoma-orange)]/30 rounded-lg p-3 font-semibold transform hover:scale-105 active:scale-95",
+        minimal: "data-[active=true]:text-[var(--leonard-yellow)] hover:text-[var(--leonard-yellow)] focus:text-[var(--leonard-yellow)] rounded-none p-2",
       },
     },
     defaultVariants: {

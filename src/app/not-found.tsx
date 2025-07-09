@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)] flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-[var(--bg-primary)] flex items-center justify-center relative overflow-hidden p-4">
       {/* Background effects */}
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-secondary)] opacity-50">
       </div>
@@ -22,7 +23,7 @@ export default function NotFound() {
       />
       
       {/* Content */}
-      <div className="relative z-10 text-center px-4">
+      <div className="relative z-10 text-left">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -56,16 +57,13 @@ export default function NotFound() {
             Target Not Found
           </h2>
           
-          <p className="font-body text-lg md:text-xl text-[var(--text-secondary)] mb-8 max-w-md mx-auto">
+          <p className="font-body text-lg md:text-xl text-[var(--text-secondary)] mb-8 max-w-md">
             Looks like this clay pigeon flew off course. Let&apos;s get you back on target.
           </p>
           
-          <Link
-            href="/"
-            className="inline-block bg-[var(--accent-primary)] text-white px-8 py-4 rounded-lg font-body text-lg font-semibold uppercase tracking-wider hover:bg-[var(--accent-secondary)] transition-colors duration-300"
-          >
-            Return Home
-          </Link>
+          <Button asChild size="lg">
+            <Link href="/">Return Home</Link>
+          </Button>
         </motion.div>
       </div>
     </div>

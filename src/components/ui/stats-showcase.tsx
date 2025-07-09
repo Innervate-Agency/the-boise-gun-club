@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, GlassFusionCard } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { LucideIcon } from 'lucide-react';
 
@@ -22,9 +22,9 @@ interface StatsShowcaseProps {
   title?: string;
   subtitle?: string;
   stats: Stat[];
-  layout?: 'grid' | 'inline' | 'cards';
+  layout?: 'grid' | 'inline' | 'cards' | 'fusion';
   columns?: 2 | 3 | 4 | 5;
-  variant?: 'default' | 'glass' | 'minimal';
+  variant?: 'default' | 'glass' | 'minimal' | 'fusion';
   className?: string;
 }
 
@@ -36,9 +36,9 @@ const columnClasses = {
 };
 
 const trendColors = {
-  up: 'text-green-600 bg-green-100 dark:text-green-400 dark:bg-green-900/20',
-  down: 'text-red-600 bg-red-100 dark:text-red-400 dark:bg-red-900/20',
-  neutral: 'text-gray-600 bg-gray-100 dark:text-gray-400 dark:bg-gray-900/20'
+  up: 'text-[var(--brand-green)] bg-[var(--brand-green)]/10',
+  down: 'text-[var(--brand-red-action)] bg-[var(--brand-red-action)]/10',
+  neutral: 'text-[var(--muted-foreground)] bg-[var(--muted)]'
 };
 
 export function StatsShowcase({
@@ -53,9 +53,11 @@ export function StatsShowcase({
   const getCardClassName = () => {
     switch (variant) {
       case 'glass':
-        return 'bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15';
+        return 'bg-[var(--card)]/10 backdrop-blur-md border-[var(--muted)]/20 hover:bg-[var(--card)]/15';
       case 'minimal':
-        return 'border-0 bg-transparent hover:bg-muted/50';
+        return 'border-0 bg-transparent hover:bg-[var(--muted)]/50';
+      case 'fusion':
+        return 'glass-fusion';
       default:
         return 'hover:shadow-lg';
     }
@@ -68,7 +70,7 @@ export function StatsShowcase({
       return cn(baseClasses, `text-[${stat.color}]`);
     }
     
-    return cn(baseClasses, 'text-card-foreground');
+    return cn(baseClasses, 'text-[var(--card-foreground)]');
   };
 
   if (layout === 'inline') {
@@ -114,6 +116,72 @@ export function StatsShowcase({
                   </Badge>
                 )}
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Fusion layout using GlassFusionCard
+  if (layout === 'fusion' || variant === 'fusion') {
+    return (
+      <section className={cn('py-16', className)}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {(title || subtitle) && (
+            <div className="text-center mb-12">
+              {subtitle && (
+                <p className="text-lg text-accent-primary font-heading font-semibold mb-4 uppercase tracking-wider">
+                  {subtitle}
+                </p>
+              )}
+              {title && (
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-card-foreground mb-6">
+                  {title}
+                </h2>
+              )}
+            </div>
+          )}
+
+          <div className={cn('grid gap-6', columnClasses[columns])}>
+            {stats.map((stat, index) => (
+              <GlassFusionCard
+                key={index}
+                className="text-center transition-all duration-300 hover:scale-[1.02]"
+                headerGradient={stat.color ? `from-[${stat.color}] to-[var(--accent-secondary)]` : 'from-[var(--lahoma-orange)] to-[var(--accent-secondary)]'}
+                intensity="medium"
+              >
+                <CardContent className="p-6">
+                  {stat.icon && (
+                    <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-[var(--lahoma-orange)] to-[var(--accent-secondary)] rounded-xl mb-4">
+                      <stat.icon className="h-6 w-6 text-[var(--card)]" />
+                    </div>
+                  )}
+                  
+                  <div className={getValueClassName(stat)}>
+                    {stat.value}
+                  </div>
+                  
+                  <div className="text-lg font-heading font-semibold text-card-foreground mb-2">
+                    {stat.label}
+                  </div>
+                  
+                  {stat.description && (
+                    <div className="text-sm text-muted-foreground font-body mb-3">
+                      {stat.description}
+                    </div>
+                  )}
+                  
+                  {stat.change && (
+                    <Badge className={cn(
+                      'text-xs',
+                      trendColors[stat.change.trend]
+                    )}>
+                      {stat.change.value}
+                    </Badge>
+                  )}
+                </CardContent>
+              </GlassFusionCard>
             ))}
           </div>
         </div>
@@ -183,3 +251,31 @@ export function StatsShowcase({
     </section>
   );
 }
+
+// Preset Components
+export const StatsFusion = ({ stats, className, variant = 'cards' }: {
+  stats: Stat[];
+  className?: string;
+  variant?: 'minimal' | 'cards' | 'hero';
+}) => {
+  if (variant === 'minimal') {
+    return (
+      <StatsShowcase
+        stats={stats}
+        layout="inline"
+        variant="minimal"
+        className={className}
+      />
+    );
+  }
+
+  return (
+    <StatsShowcase
+      stats={stats}
+      layout="fusion"
+      variant="fusion"
+      columns={4}
+      className={className}
+    />
+  );
+};

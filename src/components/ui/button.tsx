@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-fast disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive relative overflow-hidden",
   {
     variants: {
       variant: {
@@ -20,7 +20,7 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
-        premium: "bg-[var(--leonard-yellow)] hover:bg-[var(--lahoma-orange)] text-black shadow-lg hover:shadow-xl transition-all duration-200",
+        premium: "bg-leonard-yellow hover:bg-lahoma-orange text-black shadow-lg hover:shadow-xl transition-fast hover:scale-105 dark:bg-leonard-yellow dark:hover:bg-lahoma-orange dark:text-black border-leonard-yellow/20",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -36,24 +36,76 @@ const buttonVariants = cva(
   }
 )
 
+interface ButtonProps extends React.ComponentProps<"button">, VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+  loading?: boolean
+  icon?: React.ReactNode
+  iconPosition?: 'left' | 'right'
+  effect?: 'none' | 'lift' | 'glow' | 'pulse' | 'shimmer'
+}
+
 function Button({
   className,
   variant,
   size,
   asChild = false,
+  loading = false,
+  icon,
+  iconPosition = 'left',
+  effect = 'none',
+  children,
+  disabled,
   ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
+}: ButtonProps) {
   const Comp = asChild ? Slot : "button"
+  const isDisabled = disabled || loading
 
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(
+        buttonVariants({ variant, size }),
+        effect === 'lift' && 'hover:scale-105 hover:shadow-lg',
+        effect === 'glow' && 'hover:shadow-lg hover:shadow-primary/25',
+        effect === 'pulse' && 'animate-pulse',
+        effect === 'shimmer' && 'relative overflow-hidden',
+        className
+      )}
+      disabled={isDisabled}
       {...props}
-    />
+    >
+      {/* Shimmer effect */}
+      {effect === 'shimmer' && (
+        <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      )}
+      
+      {/* Loading spinner */}
+      {loading && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+        </div>
+      )}
+      
+      {/* Content wrapper */}
+      <div className={cn(
+        'flex items-center gap-2',
+        loading && 'opacity-0'
+      )}>
+        {icon && iconPosition === 'left' && (
+          <span className="flex-shrink-0">
+            {icon}
+          </span>
+        )}
+        
+        {children}
+        
+        {icon && iconPosition === 'right' && (
+          <span className="flex-shrink-0">
+            {icon}
+          </span>
+        )}
+      </div>
+    </Comp>
   )
 }
 
