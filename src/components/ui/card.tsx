@@ -12,13 +12,15 @@ const cardVariants = cva(
   {
     variants: {
       variant: {
-        default: "py-6 border-muted shadow-sm hover:shadow-md dark:border-muted",
-        glass: "py-6 border-white/20 shadow-lg relative overflow-hidden group backdrop-blur-md bg-card/10 hover:bg-card/20 dark:bg-card/10 dark:border-white/10 dark:hover:bg-card/20",
-        gradient: "bg-gradient-to-br from-leonard-yellow/5 to-lahoma-orange/5 py-6 border-leonard-yellow/20 shadow-sm hover:shadow-md dark:from-leonard-yellow/5 dark:to-lahoma-orange/5 dark:border-leonard-yellow/20",
-        fusion: "overflow-hidden border-0 backdrop-blur-xl bg-card/80 shadow-md hover:shadow-lg transition-fast dark:bg-card/80",
-        solid: "bg-card shadow-lg py-6 border-muted hover:shadow-xl dark:bg-card dark:border-muted",
-        animated: "py-6 border-muted shadow-sm hover:shadow-md dark:border-muted",
-        professional: "bg-card py-6 border-muted shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-200 dark:bg-card dark:border-muted"
+        default: "py-6 border-muted shadow-sm hover:shadow-md hover:shadow-lahoma-orange/15 hover:scale-[1.01] dark:border-muted dark:hover:shadow-lahoma-orange/25",
+        glass: "py-6 border-white/20 shadow-lg relative overflow-hidden group backdrop-blur-md bg-card/10 hover:bg-card/20 hover:shadow-xl hover:shadow-lahoma-orange/25 hover:scale-[1.02] dark:bg-card/10 dark:border-white/10 dark:hover:bg-card/20",
+        gradient: "bg-gradient-to-br from-leonard-yellow/10 to-lahoma-orange/10 py-6 border-leonard-yellow/30 shadow-md hover:shadow-lg hover:shadow-lahoma-orange/30 hover:scale-[1.02] hover:from-leonard-yellow/15 hover:to-lahoma-orange/15 dark:from-leonard-yellow/10 dark:to-lahoma-orange/10 dark:border-leonard-yellow/30",
+        fusion: "overflow-hidden border-0 backdrop-blur-xl bg-card/80 shadow-md hover:shadow-xl hover:shadow-lahoma-orange/25 hover:scale-[1.02] transition-all duration-300 dark:bg-card/80",
+        solid: "bg-card shadow-lg py-6 border-muted hover:shadow-xl hover:shadow-lahoma-orange/20 hover:scale-[1.01] dark:bg-card dark:border-muted",
+        animated: "py-6 border-muted shadow-sm hover:shadow-lg hover:shadow-lahoma-orange/25 hover:scale-[1.02] hover:rotate-1 transition-all duration-300 dark:border-muted",
+        professional: "bg-card py-6 border-muted shadow-sm hover:shadow-lg hover:shadow-lahoma-orange/20 hover:scale-[1.02] transition-all duration-200 dark:bg-card dark:border-muted",
+        premium: "bg-gradient-to-br from-card via-card to-leonard-yellow/5 py-6 border-leonard-yellow/30 shadow-lg hover:shadow-xl hover:shadow-lahoma-orange/35 hover:scale-[1.03] hover:from-leonard-yellow/5 hover:to-lahoma-orange/10 transition-all duration-300 dark:from-card dark:to-leonard-yellow/5",
+        elite: "bg-card py-6 border-2 border-transparent bg-clip-padding shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 relative overflow-hidden group dark:bg-card"
       },
       padding: {
         none: "",
@@ -127,13 +129,29 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       >
         {/* Glass card gradient overlay */}
         {variant === "glass" && (
-          <div className="absolute inset-0 bg-gradient-to-br from-leonard-yellow/10 via-transparent to-lahoma-orange/10 opacity-0 group-hover:opacity-100 transition-smooth" />
+          <>
+            <div className="absolute inset-0 bg-gradient-to-br from-leonard-yellow/10 via-transparent to-lahoma-orange/10 opacity-0 group-hover:opacity-100 transition-smooth" />
+            <div className="absolute top-4 right-4 w-16 h-16 rounded-full bg-leonard-yellow/20 blur-lg opacity-50 group-hover:opacity-80 transition-all duration-500" />
+          </>
+        )}
+        
+        {/* Premium card effects */}
+        {variant === "premium" && (
+          <>
+            <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-gradient-to-br from-leonard-yellow/30 to-lahoma-orange/30 blur-xl opacity-70 group-hover:opacity-100 transition-all duration-500" />
+            <div className="absolute -bottom-6 -left-6 w-16 h-16 rounded-full bg-gradient-to-br from-lahoma-orange/20 to-leonard-yellow/20 blur-lg opacity-50 group-hover:opacity-80 transition-all duration-500" />
+          </>
+        )}
+
+        {/* Elite card animated border */}
+        {variant === "elite" && (
+          <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow via-lahoma-orange to-leonard-yellow bg-[length:200%_100%] animate-shimmer rounded-xl opacity-30 group-hover:opacity-60 transition-all duration-500" />
         )}
         
         {/* Fusion card floating splash */}
         {variant === "fusion" && (
           <div className={cn(
-            "absolute -top-12 -right-12 w-24 h-24 rounded-full opacity-30 blur-xl",
+            "absolute -top-12 -right-12 w-24 h-24 rounded-full opacity-30 blur-xl group-hover:opacity-50 transition-all duration-500",
             `bg-${splashColor}`
           )} />
         )}
@@ -316,6 +334,34 @@ const ProfessionalCard = React.forwardRef<HTMLDivElement, CardProps>(
 )
 ProfessionalCard.displayName = "ProfessionalCard"
 
+const PremiumCard = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, children, ...props }, ref) => (
+    <Card 
+      ref={ref}
+      variant="premium"
+      className={cn("group", className)}
+      {...props}
+    >
+      {children}
+    </Card>
+  )
+)
+PremiumCard.displayName = "PremiumCard"
+
+const EliteCard = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, children, ...props }, ref) => (
+    <Card 
+      ref={ref}
+      variant="elite"
+      className={cn("group", className)}
+      {...props}
+    >
+      {children}
+    </Card>
+  )
+)
+EliteCard.displayName = "EliteCard"
+
 export {
   Card,
   CardHeader,
@@ -329,5 +375,7 @@ export {
   AnimatedCard,
   GradientCard,
   GlassFusionCard,
-  ProfessionalCard
+  ProfessionalCard,
+  PremiumCard,
+  EliteCard
 }

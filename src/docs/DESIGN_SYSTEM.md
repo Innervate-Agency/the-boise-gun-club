@@ -41,10 +41,15 @@ This document defines the visual design standards and aesthetic guidelines for t
 - Example: "BOISE" (font-weight: 800) + "GUNCLUB" (font-weight: 300)
 - Usage: Hero sections, main page titles, brand elements
 
-**H2-H3 - Editorial Headings (Noto Serif)**
+**H2 - Page Titles (Rajdhani)**
+- Standard capitalization, can be used multiple times per page
+- Font-weight: 600 for professional hierarchy
+- Usage: Section headers, page titles, major content divisions
+
+**H3 - Editorial Headings (Noto Serif)**
 - Adds texture and sophistication to content sections
 - Standard capitalization with proper weight variations
-- Usage: Section headers, article titles, feature introductions
+- Usage: Article titles, feature introductions, content subsections
 
 **H4-H6 - Supporting Headings (Noto Sans)**
 - Consistent with body text for seamless reading flow

@@ -5,37 +5,41 @@ import '../src/styles/themes.css'
 // Add font CSS variables for Storybook
 const fontStyleSheet = document.createElement('style');
 fontStyleSheet.textContent = `
+  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700;800&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+  
   :root {
-    --font-heading: "Refrigerator Deluxe", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --font-body: "Museo Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-heading: "Rajdhani", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-body: "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-serif: "Noto Serif", Georgia, "Times New Roman", serif;
   }
   
-  @font-face {
-    font-family: 'Refrigerator Deluxe';
-    src: url('/fonts/Refrigerator Deluxe.otf') format('opentype');
-    font-weight: normal;
-    font-display: swap;
+  /* Apply typography hierarchy */
+  h1 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    text-transform: uppercase;
   }
   
-  @font-face {
-    font-family: 'Refrigerator Deluxe';
-    src: url('/fonts/Refrigerator Deluxe Bold.otf') format('opentype');
-    font-weight: bold;
-    font-display: swap;
+  h2 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-transform: none;
   }
   
-  @font-face {
-    font-family: 'Museo Sans';
-    src: url('/fonts/MuseoSans-300.otf') format('opentype');
-    font-weight: 300;
-    font-display: swap;
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    text-transform: none;
   }
   
-  @font-face {
-    font-family: 'Museo Sans';
-    src: url('/fonts/MuseoSans_500.otf') format('opentype');
-    font-weight: 500;
-    font-display: swap;
+  h4, h5, h6 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: none;
+  }
+  
+  body, p, div, span {
+    font-family: var(--font-body);
   }
 `;
 if (typeof document !== 'undefined') {

@@ -20,13 +20,15 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-muted/50 hover:text-foreground focus-visible:ring-leonard-yellow/50 dark:hover:bg-muted/50",
         link: "text-leonard-yellow underline-offset-4 hover:underline focus-visible:ring-leonard-yellow/50",
-        premium: "bg-gradient-to-r from-leonard-yellow to-lahoma-orange text-black shadow-lg hover:shadow-xl hover:scale-105 focus-visible:ring-leonard-yellow/50 border border-leonard-yellow/20 dark:from-leonard-yellow dark:to-lahoma-orange dark:text-black",
+        premium: "bg-gradient-to-r from-leonard-yellow to-lahoma-orange text-black shadow-lg hover:shadow-xl hover:scale-105 focus-visible:ring-leonard-yellow/50 border border-leonard-yellow/20 dark:from-leonard-yellow dark:to-lahoma-orange dark:text-black relative overflow-hidden group",
+        elite: "bg-gradient-to-r from-leonard-yellow via-lahoma-orange to-leonard-yellow bg-[length:200%_100%] text-black shadow-xl hover:shadow-2xl hover:scale-110 focus-visible:ring-leonard-yellow/50 border-2 border-leonard-yellow/30 transition-all duration-300 relative overflow-hidden group animate-shimmer",
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        icon: "size-9",
+        default: "h-10 px-4 py-2 gap-2 has-[>svg]:px-3",
+        sm: "h-8 px-3 py-1.5 gap-1.5 has-[>svg]:px-2.5 text-xs",
+        lg: "h-12 px-6 py-3 gap-2.5 has-[>svg]:px-5 text-base",
+        xl: "h-14 px-8 py-4 gap-3 has-[>svg]:px-7 text-lg",
+        icon: "size-10 p-0",
       },
     },
     defaultVariants: {
@@ -77,6 +79,16 @@ function Button({
       {/* Shimmer effect */}
       {effect === 'shimmer' && (
         <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      )}
+      
+      {/* Premium button glow effect */}
+      {variant === 'premium' && (
+        <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/60 to-brand-red/40 blur-lg opacity-0 group-hover:opacity-40 transition-all duration-300 -z-10" />
+      )}
+      
+      {/* Elite button animated background */}
+      {variant === 'elite' && (
+        <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/30 via-brand-red/20 to-lahoma-orange/30 blur-xl opacity-40 group-hover:opacity-70 transition-all duration-500 -z-10" />
       )}
       
       {/* Loading spinner */}
