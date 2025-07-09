@@ -5,22 +5,22 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-fast disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive relative overflow-hidden",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium font-body transition-fast disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-leonard-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-98 relative overflow-hidden",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
-        primary: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+        default: "bg-leonard-yellow text-black shadow-sm hover:bg-lahoma-orange hover:shadow-md focus-visible:ring-leonard-yellow/50 dark:bg-leonard-yellow dark:text-black dark:hover:bg-lahoma-orange",
+        primary: "bg-leonard-yellow text-black shadow-sm hover:bg-lahoma-orange hover:shadow-md focus-visible:ring-leonard-yellow/50 dark:bg-leonard-yellow dark:text-black dark:hover:bg-lahoma-orange",
         destructive:
-          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+          "bg-brand-red text-white shadow-sm hover:bg-brand-red/90 hover:shadow-md focus-visible:ring-brand-red/50 dark:bg-brand-red dark:hover:bg-brand-red/90",
         outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+          "border border-muted bg-background shadow-sm hover:bg-muted/50 hover:shadow-md focus-visible:ring-leonard-yellow/50 dark:bg-background dark:border-muted dark:hover:bg-muted/50",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+          "bg-muted text-muted-foreground shadow-sm hover:bg-muted/80 hover:shadow-md focus-visible:ring-leonard-yellow/50 dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted/80",
         ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
-        premium: "bg-leonard-yellow hover:bg-lahoma-orange text-black shadow-lg hover:shadow-xl transition-fast hover:scale-105 dark:bg-leonard-yellow dark:hover:bg-lahoma-orange dark:text-black border-leonard-yellow/20",
+          "hover:bg-muted/50 hover:text-foreground focus-visible:ring-leonard-yellow/50 dark:hover:bg-muted/50",
+        link: "text-leonard-yellow underline-offset-4 hover:underline focus-visible:ring-leonard-yellow/50",
+        premium: "bg-gradient-to-r from-leonard-yellow to-lahoma-orange text-black shadow-lg hover:shadow-xl hover:scale-105 focus-visible:ring-leonard-yellow/50 border border-leonard-yellow/20 dark:from-leonard-yellow dark:to-lahoma-orange dark:text-black",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

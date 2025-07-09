@@ -128,3 +128,66 @@ h4, h5, h6 {
   font-weight: 300;
   text-transform: uppercase;
 }
+
+/* Gradient border system for special callout cards */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(45deg, #F2CB05, #F28705);
+  border-radius: 12px;
+  padding: 2px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #F2CB05, #F28705);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.gradient-border-content {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.gradient-border-animated {
+  position: relative;
+  background: linear-gradient(45deg, #F2CB05, #F28705, #F2CB05, #F28705);
+  background-size: 300% 300%;
+  animation: gradient-shift 3s ease infinite;
+  border-radius: 12px;
+  padding: 2px;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Subtle gradient border for professional use */
+.gradient-border-subtle {
+  position: relative;
+  background: linear-gradient(45deg, #F2CB05/20, #F28705/20);
+  border-radius: 8px;
+  padding: 1px;
+}
+
+.gradient-border-subtle .gradient-border-content {
+  background: var(--card);
+  border-radius: 7px;
+  padding: 1rem;
+}

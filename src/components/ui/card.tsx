@@ -8,16 +8,17 @@ import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
 const cardVariants = cva(
-  "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border shadow-sm transition-fast",
+  "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border transition-fast hover:shadow-md",
   {
     variants: {
       variant: {
-        default: "py-6 border-muted dark:border-muted",
-        glass: "py-6 border-muted/50 shadow-lg relative overflow-hidden group backdrop-blur-md bg-card/80 dark:bg-card/80 dark:border-muted/50",
-        gradient: "bg-gradient-to-br from-accent-primary/5 to-transparent py-6 border-accent-primary/20 dark:from-accent-primary/5 dark:border-accent-primary/20",
-        fusion: "overflow-hidden border-0 backdrop-blur-xl bg-card/80 border-muted/20 shadow-md hover:shadow-lg transition-fast dark:bg-card/80 dark:border-muted/20",
-        solid: "bg-card shadow-xl py-6 border-muted dark:bg-card dark:border-muted",
-        animated: "py-6 border-muted dark:border-muted"
+        default: "py-6 border-muted shadow-sm hover:shadow-md dark:border-muted",
+        glass: "py-6 border-white/20 shadow-lg relative overflow-hidden group backdrop-blur-md bg-card/10 hover:bg-card/20 dark:bg-card/10 dark:border-white/10 dark:hover:bg-card/20",
+        gradient: "bg-gradient-to-br from-leonard-yellow/5 to-lahoma-orange/5 py-6 border-leonard-yellow/20 shadow-sm hover:shadow-md dark:from-leonard-yellow/5 dark:to-lahoma-orange/5 dark:border-leonard-yellow/20",
+        fusion: "overflow-hidden border-0 backdrop-blur-xl bg-card/80 shadow-md hover:shadow-lg transition-fast dark:bg-card/80",
+        solid: "bg-card shadow-lg py-6 border-muted hover:shadow-xl dark:bg-card dark:border-muted",
+        animated: "py-6 border-muted shadow-sm hover:shadow-md dark:border-muted",
+        professional: "bg-card py-6 border-muted shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-200 dark:bg-card dark:border-muted"
       },
       padding: {
         none: "",
@@ -126,7 +127,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       >
         {/* Glass card gradient overlay */}
         {variant === "glass" && (
-          <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/5 via-transparent to-accent-secondary/5 opacity-0 group-hover:opacity-100 transition-smooth" />
+          <div className="absolute inset-0 bg-gradient-to-br from-leonard-yellow/10 via-transparent to-lahoma-orange/10 opacity-0 group-hover:opacity-100 transition-smooth" />
         )}
         
         {/* Fusion card floating splash */}
@@ -301,6 +302,20 @@ const GlassFusionCard = React.forwardRef<HTMLDivElement, CardProps>(
 )
 GlassFusionCard.displayName = "GlassFusionCard"
 
+const ProfessionalCard = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, children, ...props }, ref) => (
+    <Card 
+      ref={ref}
+      variant="professional"
+      className={className}
+      {...props}
+    >
+      {children}
+    </Card>
+  )
+)
+ProfessionalCard.displayName = "ProfessionalCard"
+
 export {
   Card,
   CardHeader,
@@ -313,5 +328,6 @@ export {
   GlassCard,
   AnimatedCard,
   GradientCard,
-  GlassFusionCard
+  GlassFusionCard,
+  ProfessionalCard
 }

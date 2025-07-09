@@ -79,6 +79,9 @@ module.exports = {
           '100%': { transform: 'translateX(100%)' },
         },
       },
+      scale: {
+        '98': '0.98',
+      },
     },
   },
   plugins: [],
