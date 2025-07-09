@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Rajdhani, Noto_Sans } from 'next/font/google';
+import { Rajdhani, Noto_Sans, Noto_Serif } from 'next/font/google';
 import ClientLayout from './ClientLayout'; 
 import { ThemeProvider } from '../components/ui/ThemeContext';
 import './globals.css';
@@ -7,7 +7,7 @@ import './globals.css';
 // Configure fonts using Next.js built-in system
 const rajdhani = Rajdhani({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-heading',
   display: 'swap',
 });
@@ -17,6 +17,14 @@ const notoSans = Noto_Sans({
   weight: ['300', '400', '500', '600', '700'],
   style: ['normal', 'italic'],
   variable: '--font-body',
+  display: 'swap',
+});
+
+const notoSerif = Noto_Serif({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
   display: 'swap',
 });
 
@@ -31,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`h-full ${rajdhani.variable} ${notoSans.variable}`} suppressHydrationWarning={true}>
+    <html lang="en" className={`h-full ${rajdhani.variable} ${notoSans.variable} ${notoSerif.variable}`} suppressHydrationWarning={true}>
       <head>
         {/* Optimized critical images */}
         <link rel="preload" as="image" href="/images/hero-bg.webp" />

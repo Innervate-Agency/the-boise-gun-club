@@ -81,10 +81,25 @@ body {
   color: var(--text-primary);
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* Typography hierarchy following design system */
+h1 {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  text-transform: none;
+  color: var(--text-primary);
+}
+
+h4, h5, h6 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: none;
   color: var(--text-primary);
 }
 
@@ -95,4 +110,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .font-body {
   font-family: var(--font-body);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Brand title utilities for BOISE + GUNCLUB pattern */
+.brand-title-heavy {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.brand-title-light {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  text-transform: uppercase;
 }
