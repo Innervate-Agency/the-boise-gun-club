@@ -1,6 +1,6 @@
 'use client';
 
-import { GlassFusionCard, Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { FloatingBackground } from '@/components/ui/floating-background';
 import { Badge } from '@/components/ui/badge';
@@ -22,7 +22,7 @@ export default function FusionDemoPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Glass Fusion Card */}
-          <GlassFusionCard
+          <Card
             title="Elite Membership"
             description="$75/year + $6 per round"
             badge="Most Popular"
@@ -33,7 +33,7 @@ export default function FusionDemoPage() {
             <Button className="w-full" variant="outline">
               Join Today
             </Button>
-          </GlassFusionCard>
+          </Card>
 
           {/* Standard Card with Proper Contrast */}
           <Card className="rounded-xl overflow-hidden">

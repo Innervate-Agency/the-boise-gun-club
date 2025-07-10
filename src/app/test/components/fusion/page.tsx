@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { GlassFusionCard } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { FloatingBackground } from '@/components/ui/floating-background';
 import { Badge } from '@/components/ui/badge';
 import { 
@@ -128,7 +128,7 @@ export default function FusionComponentsPage() {
 
           {/* Card Examples */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <GlassFusionCard
+            <Card
               title="Championship"
               description="Elite membership tier"
               badge="Premium"
@@ -145,9 +145,9 @@ export default function FusionComponentsPage() {
                   Join Elite
                 </Button>
               </div>
-            </GlassFusionCard>
+            </Card>
 
-            <GlassFusionCard
+            <Card
               title="Competition"
               description="Tournament focused"
               badge="Popular"
@@ -164,9 +164,9 @@ export default function FusionComponentsPage() {
                   Compete
                 </Button>
               </div>
-            </GlassFusionCard>
+            </Card>
 
-            <GlassFusionCard
+            <Card
               title="Recreation"
               description="Family friendly"
               intensity={selectedIntensity}
@@ -182,7 +182,7 @@ export default function FusionComponentsPage() {
                   Start Here
                 </Button>
               </div>
-            </GlassFusionCard>
+            </Card>
           </div>
         </section>
 
@@ -290,7 +290,7 @@ export default function FusionComponentsPage() {
                 </div>
               </div>
               
-              <GlassFusionCard
+              <Card
                 title="Premium Experience"
                 description="Fusion design system"
                 badge="Live Demo"
@@ -312,7 +312,7 @@ export default function FusionComponentsPage() {
                     Interactive Demo
                   </Button>
                 </div>
-              </GlassFusionCard>
+              </Card>
             </div>
           </FloatingBackground>
         </section>

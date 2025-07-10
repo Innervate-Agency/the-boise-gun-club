@@ -12,7 +12,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'primary', 'destructive', 'outline', 'secondary', 'ghost', 'link', 'premium'],
+      options: ['default', 'primary', 'destructive', 'outline', 'secondary', 'ghost', 'link', 'premium', 'elite'],
     },
     size: {
       control: 'select',
@@ -55,8 +55,16 @@ export const Primary: Story = {
 export const Premium: Story = {
   args: {
     variant: 'premium',
-    children: 'Join The Elite',
+    children: 'Premium Membership',
     effect: 'lift',
+  },
+};
+
+export const Elite: Story = {
+  args: {
+    variant: 'elite',
+    children: 'Elite Champion',
+    effect: 'shimmer',
   },
 };
 
@@ -235,4 +243,72 @@ export const NavigationButton: Story = {
     icon: <ArrowRight className="w-4 h-4" />,
     iconPosition: 'right',
   },
+};
+
+// FUSION SHOWCASE - All variants side by side
+export const FusionShowcase: Story = {
+  render: () => (
+    <div className="space-y-8 p-8">
+      <div className="text-center space-y-2">
+        <h2 className="text-2xl font-heading font-bold text-text-primary">Button Fusion System</h2>
+        <p className="text-text-secondary">ClickUp + Stripe meets Boise Gun Club professional aesthetics</p>
+      </div>
+      
+      {/* Primary Variants */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">Core Variants</h3>
+        <div className="flex flex-wrap gap-4">
+          <Button>Default</Button>
+          <Button variant="primary">Primary</Button>
+          <Button variant="premium">Premium</Button>
+          <Button variant="elite">Elite</Button>
+        </div>
+      </div>
+      
+      {/* With Icons */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">With Icons</h3>
+        <div className="flex flex-wrap gap-4">
+          <Button icon={<Target className="w-4 h-4" />}>Default + Icon</Button>
+          <Button variant="premium" icon={<Star className="w-4 h-4" />}>Premium + Icon</Button>
+          <Button variant="elite" icon={<Zap className="w-4 h-4" />}>Elite + Icon</Button>
+        </div>
+      </div>
+      
+      {/* Sizes */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">Sizes (Elite)</h3>
+        <div className="flex flex-wrap items-center gap-4">
+          <Button variant="elite" size="sm">Small Elite</Button>
+          <Button variant="elite">Default Elite</Button>
+          <Button variant="elite" size="lg">Large Elite</Button>
+          <Button variant="elite" size="xl">XL Elite</Button>
+        </div>
+      </div>
+      
+      {/* Real Gun Club Examples */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">Gun Club Examples</h3>
+        <div className="flex flex-wrap gap-4">
+          <Button variant="elite" icon={<Target className="w-4 h-4" />} size="lg">
+            Join Championship
+          </Button>
+          <Button variant="premium" icon={<Star className="w-4 h-4" />}>
+            Premium Range Access
+          </Button>
+          <Button variant="outline" icon={<ArrowRight className="w-4 h-4" />} iconPosition="right">
+            View Schedule
+          </Button>
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story: 'Complete showcase of the Button fusion system with Premium and Elite variants using Leonard Yellow and Lahoma Orange gradients.'
+      }
+    }
+  }
 };

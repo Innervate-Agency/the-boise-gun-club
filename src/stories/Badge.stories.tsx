@@ -9,7 +9,7 @@ import { Trophy, Target, Award, CheckCircle, XCircle, Clock, Star, Zap } from 'l
 import { useState } from 'react';
 
 const meta: Meta<typeof Badge> = {
-  title: 'Components/Fusion/Badge',
+  title: 'Components/UI/Badge',
   component: Badge,
   parameters: {
     layout: 'padded',

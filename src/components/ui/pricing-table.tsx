@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, GlassFusionCard } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
@@ -87,10 +87,10 @@ export function PricingCard({
 
   const IconComponent = plan.icon || Target;
 
-  // Fusion variant using GlassFusionCard
+  // Elite variant using premium Card
   if (variant === 'fusion') {
     return (
-      <GlassFusionCard
+      <Card variant="elite"
         className={cn(
           'transition-all duration-300 hover:scale-[1.02]',
           plan.popular || plan.recommended ? 'scale-105 z-10' : '',
@@ -141,7 +141,7 @@ export function PricingCard({
             {plan.ctaText || 'Get Started'}
           </Button>
         </div>
-      </GlassFusionCard>
+      </Card>
     );
   }
 

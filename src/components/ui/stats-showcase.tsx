@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Card, CardContent, GlassFusionCard } from '@/components/ui/card';
+import { Card, CardContent, Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { LucideIcon } from 'lucide-react';
 
@@ -123,7 +123,7 @@ export function StatsShowcase({
     );
   }
 
-  // Fusion layout using GlassFusionCard
+  // Fusion layout using Card
   if (layout === 'fusion' || variant === 'fusion') {
     return (
       <section className={cn('py-16', className)}>
@@ -145,7 +145,7 @@ export function StatsShowcase({
 
           <div className={cn('grid gap-6', columnClasses[columns])}>
             {stats.map((stat, index) => (
-              <GlassFusionCard
+              <Card
                 key={index}
                 className="text-center transition-all duration-300 hover:scale-[1.02]"
                 headerGradient={stat.color ? `from-[${stat.color}] to-[var(--accent-secondary)]` : 'from-[var(--color-lahoma-orange)] to-[var(--accent-secondary)]'}
@@ -181,7 +181,7 @@ export function StatsShowcase({
                     </Badge>
                   )}
                 </CardContent>
-              </GlassFusionCard>
+              </Card>
             ))}
           </div>
         </div>
