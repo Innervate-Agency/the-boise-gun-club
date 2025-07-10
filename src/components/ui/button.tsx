@@ -59,11 +59,30 @@ function Button({
   disabled,
   ...props
 }: ButtonProps) {
-  const Comp = asChild ? Slot : "button"
   const isDisabled = disabled || loading
 
+  if (asChild) {
+    // When asChild is true, we need to pass all styles and props to the single child
+    return (
+      <Slot
+        className={cn(
+          buttonVariants({ variant, size }),
+          effect === 'lift' && 'hover:scale-105 hover:shadow-lg',
+          effect === 'glow' && 'hover:shadow-lg hover:shadow-primary/25',
+          effect === 'pulse' && 'animate-pulse',
+          effect === 'shimmer' && 'relative overflow-hidden',
+          className
+        )}
+        data-disabled={isDisabled}
+        {...props}
+      >
+        {children}
+      </Slot>
+    )
+  }
+
   return (
-    <Comp
+    <button
       data-slot="button"
       className={cn(
         buttonVariants({ variant, size }),
@@ -117,7 +136,7 @@ function Button({
           </span>
         )}
       </div>
-    </Comp>
+    </button>
   )
 }
 
