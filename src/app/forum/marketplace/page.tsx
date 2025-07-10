@@ -54,11 +54,11 @@ export default function Page() {
                     <Image src={section.imageUrl} alt={section.title} fill className="object-cover transform hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="text-left">
-                    <h2 className="text-3xl font-bold uppercase text-leonard-yellow mb-2">{section.title}</h2>
+                    <h2 className="text-3xl font-bold uppercase text-color-leonard-yellow mb-2">{section.title}</h2>
                     <h3 className="text-xl font-semibold text-gray-300 mb-4">{section.subtitle}</h3>
                     <div className="text-lg text-gray-200 mb-6 space-y-4" dangerouslySetInnerHTML={{ __html: section.description }} />
                     {section.link && (
-                      <Link href={section.link} className="inline-block bg-lahoma-orange text-dark-bg font-bold py-2 px-6 rounded-lg hover:bg-leonard-yellow transition-colors duration-300">
+                      <Link href={section.link} className="inline-block bg-color-lahoma-orange text-dark-bg font-bold py-2 px-6 rounded-lg hover:bg-color-leonard-yellow transition-colors duration-300">
                         {section.linkText}
                       </Link>
                     )}

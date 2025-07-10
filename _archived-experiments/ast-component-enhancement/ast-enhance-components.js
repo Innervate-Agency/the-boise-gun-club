@@ -29,8 +29,8 @@ const componentTemplates = {
     cvaPattern: /badgeVariants.*=.*cva/,
     variantObjectName: 'variant',
     variants: {
-      premium: '"bg-gradient-to-r from-leonard-yellow to-lahoma-orange text-black shadow-md border border-leonard-yellow/20 hover:shadow-lg hover:scale-105 transition-all duration-300 relative overflow-hidden group"',
-      elite: '"bg-gradient-to-r from-leonard-yellow via-lahoma-orange to-leonard-yellow bg-[length:200%_100%] text-black shadow-lg border-2 border-leonard-yellow/30 animate-shimmer hover:shadow-xl hover:scale-110 transition-all duration-300 relative overflow-hidden group"'
+      premium: '"bg-gradient-to-r from-[var(--color-leonard-yellow)] to-[var(--color-lahoma-orange)] text-black shadow-sm border border-[var(--color-leonard-yellow)] hover:shadow-md hover:scale-[1.02] transition-all duration-150 relative overflow-hidden group dark:text-white dark:border-[var(--color-leonard-yellow)]"',
+      elite: '"bg-gradient-to-r from-[var(--color-leonard-yellow)] via-[var(--color-lahoma-orange)] to-[var(--color-leonard-yellow)] bg-[length:200%_100%] text-black shadow-md border-2 border-[var(--color-leonard-yellow)] animate-shimmer hover:shadow-lg hover:scale-[1.05] transition-all duration-150 relative overflow-hidden group dark:text-white dark:border-[var(--color-leonard-yellow)] motion-reduce:animate-none"'
     },
     requiredImports: ['cn']
   },
@@ -39,8 +39,8 @@ const componentTemplates = {
     cvaPattern: /inputVariants.*=.*cva/,
     variantObjectName: 'variant',
     variants: {
-      premium: '"border-leonard-yellow/30 focus:border-leonard-yellow focus:ring-leonard-yellow/20 bg-gradient-to-r from-background to-leonard-yellow/5 hover:border-leonard-yellow/50 transition-all duration-300 relative overflow-hidden group"',
-      elite: '"border-2 border-leonard-yellow/50 focus:border-leonard-yellow focus:ring-leonard-yellow/30 bg-gradient-to-r from-background via-leonard-yellow/5 to-lahoma-orange/5 hover:border-leonard-yellow transition-all duration-300 relative overflow-hidden group"'
+      premium: '"border-[var(--color-leonard-yellow)] focus:border-[var(--color-leonard-yellow)] focus:ring-[var(--color-leonard-yellow)] bg-gradient-to-r from-background to-[var(--color-leonard-yellow)] hover:border-[var(--color-leonard-yellow)] transition-all duration-150 relative overflow-hidden group dark:border-[var(--color-leonard-yellow)] dark:focus:border-[var(--color-leonard-yellow)] dark:bg-gradient-to-r dark:from-background dark:to-[var(--color-leonard-yellow)]"',
+      elite: '"border-2 border-[var(--color-leonard-yellow)] focus:border-[var(--color-leonard-yellow)] focus:ring-[var(--color-leonard-yellow)] bg-gradient-to-r from-background via-[var(--color-leonard-yellow)] to-[var(--color-lahoma-orange)] hover:border-[var(--color-leonard-yellow)] transition-all duration-150 relative overflow-hidden group dark:border-[var(--color-leonard-yellow)] dark:focus:border-[var(--color-leonard-yellow)] dark:bg-gradient-to-r dark:from-background dark:via-[var(--color-leonard-yellow)] dark:to-[var(--color-lahoma-orange)]"'
     },
     requiredImports: ['cn']
   },
@@ -49,8 +49,8 @@ const componentTemplates = {
     cvaPattern: /alertVariants.*=.*cva/,
     variantObjectName: 'variant',
     variants: {
-      premium: '"border-leonard-yellow/40 bg-gradient-to-r from-leonard-yellow/10 to-lahoma-orange/10 shadow-md relative overflow-hidden group"',
-      elite: '"border-2 border-leonard-yellow/60 bg-gradient-to-r from-leonard-yellow/15 to-lahoma-orange/15 shadow-lg relative overflow-hidden group"'
+      premium: '"border-[var(--color-leonard-yellow)] bg-gradient-to-r from-[var(--color-leonard-yellow)] to-[var(--color-lahoma-orange)] shadow-sm relative overflow-hidden group dark:border-[var(--color-leonard-yellow)] dark:bg-gradient-to-r dark:from-[var(--color-leonard-yellow)] dark:to-[var(--color-lahoma-orange)]"',
+      elite: '"border-2 border-[var(--color-leonard-yellow)] bg-gradient-to-r from-[var(--color-leonard-yellow)] to-[var(--color-lahoma-orange)] shadow-md relative overflow-hidden group dark:border-[var(--color-leonard-yellow)] dark:bg-gradient-to-r dark:from-[var(--color-leonard-yellow)] dark:to-[var(--color-lahoma-orange)]"'
     },
     requiredImports: ['cn']
   },
@@ -59,8 +59,8 @@ const componentTemplates = {
     cvaPattern: /selectTriggerVariants.*=.*cva/,
     variantObjectName: 'variant',
     variants: {
-      premium: '"border-leonard-yellow/30 focus:border-leonard-yellow focus:ring-leonard-yellow/20 hover:border-leonard-yellow/50 transition-all duration-300"',
-      elite: '"border-2 border-leonard-yellow/50 focus:border-leonard-yellow focus:ring-leonard-yellow/30 hover:border-leonard-yellow transition-all duration-300"'
+      premium: '"border-[var(--color-leonard-yellow)] focus:border-[var(--color-leonard-yellow)] focus:ring-[var(--color-leonard-yellow)] hover:border-[var(--color-leonard-yellow)] transition-all duration-150 dark:border-[var(--color-leonard-yellow)] dark:focus:border-[var(--color-leonard-yellow)]"',
+      elite: '"border-2 border-[var(--color-leonard-yellow)] focus:border-[var(--color-leonard-yellow)] focus:ring-[var(--color-leonard-yellow)] hover:border-[var(--color-leonard-yellow)] transition-all duration-150 dark:border-[var(--color-leonard-yellow)] dark:focus:border-[var(--color-leonard-yellow)]"'
     },
     requiredImports: ['cn']
   }

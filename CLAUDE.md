@@ -70,9 +70,9 @@ Content is managed through:
 - `src/types/content.ts` - Content type definitions
 
 ### Typography and Branding
-- Headings: 'Rajdhani' font (font-heading class) - Display font for titles and H1
-- Body text: 'Noto Sans' font (font-body class) - Body text and H4-H6 headings  
-- Editorial: 'Noto Serif' font (font-serif class) - H2-H3 headings for texture
+- Headings: 'Rajdhani' font (font-heading class) - Display font for H1-H2 titles
+- Body text: 'Noto Sans' font (font-body class) - Body text and H3-H6 headings  
+- Editorial: 'Noto Serif' font (editorial-subtitle class) - Special subtitles for texture
 - Premium fonts loaded via local .otf files with fallbacks
 - Brand colors via CSS custom properties:
   - `--accent-primary` (leonard-yellow #F2CB05)

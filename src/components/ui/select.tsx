@@ -13,11 +13,11 @@ const selectTriggerVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-card border-border/50 hover:border-border focus:border-[var(--lahoma-orange)] focus:ring-2 focus:ring-[var(--lahoma-orange)]/20 data-[placeholder]:text-muted-foreground",
-        premium: "bg-gradient-to-r from-[var(--leonard-yellow)]/5 to-[var(--lahoma-orange)]/5 border-[var(--leonard-yellow)]/30 hover:border-[var(--leonard-yellow)]/50 focus:border-[var(--lahoma-orange)] focus:ring-2 focus:ring-[var(--lahoma-orange)]/30 focus:shadow-lg data-[placeholder]:text-muted-foreground",
+        default: "bg-card border-border/50 hover:border-border focus:border-[var(--color-lahoma-orange)] focus:ring-2 focus:ring-[var(--color-lahoma-orange)]/20 data-[placeholder]:text-muted-foreground",
+        premium: "bg-gradient-to-r from-[var(--color-leonard-yellow)]/5 to-[var(--color-lahoma-orange)]/5 border-[var(--color-leonard-yellow)]/30 hover:border-[var(--color-leonard-yellow)]/50 focus:border-[var(--color-lahoma-orange)] focus:ring-2 focus:ring-[var(--color-lahoma-orange)]/30 focus:shadow-lg data-[placeholder]:text-muted-foreground",
         glass: "bg-[var(--card)]/10 backdrop-blur-sm border-white/20 hover:border-white/30 focus:border-white/50 focus:ring-2 focus:ring-white/20 data-[placeholder]:text-white/50",
-        outline: "bg-transparent border-border hover:border-border/80 focus:border-[var(--lahoma-orange)] focus:ring-2 focus:ring-[var(--lahoma-orange)]/20 data-[placeholder]:text-muted-foreground",
-        filled: "bg-muted border-transparent hover:bg-muted/80 focus:bg-card focus:border-[var(--lahoma-orange)] focus:ring-2 focus:ring-[var(--lahoma-orange)]/20 data-[placeholder]:text-muted-foreground",
+        outline: "bg-transparent border-border hover:border-border/80 focus:border-[var(--color-lahoma-orange)] focus:ring-2 focus:ring-[var(--color-lahoma-orange)]/20 data-[placeholder]:text-muted-foreground",
+        filled: "bg-muted border-transparent hover:bg-muted/80 focus:bg-card focus:border-[var(--color-lahoma-orange)] focus:ring-2 focus:ring-[var(--color-lahoma-orange)]/20 data-[placeholder]:text-muted-foreground",
       },
       size: {
         sm: "h-8 px-3 text-sm",
@@ -38,7 +38,7 @@ const selectContentVariants = cva(
     variants: {
       variant: {
         default: "bg-popover text-popover-foreground border-border",
-        premium: "bg-gradient-to-b from-card to-card/95 backdrop-blur-md border-[var(--leonard-yellow)]/20 shadow-2xl",
+        premium: "bg-gradient-to-b from-card to-card/95 backdrop-blur-md border-[var(--color-leonard-yellow)]/20 shadow-2xl",
         glass: "bg-[var(--card)]/10 backdrop-blur-md border-white/20 shadow-2xl text-[var(--card)]",
         outline: "bg-popover text-popover-foreground border-border",
         filled: "bg-muted text-foreground border-border",
@@ -56,7 +56,7 @@ const selectItemVariants = cva(
     variants: {
       variant: {
         default: "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-        premium: "hover:bg-gradient-to-r hover:from-[var(--leonard-yellow)]/10 hover:to-[var(--lahoma-orange)]/10 focus:bg-gradient-to-r focus:from-[var(--leonard-yellow)]/20 focus:to-[var(--lahoma-orange)]/20",
+        premium: "hover:bg-gradient-to-r hover:from-[var(--color-leonard-yellow)]/10 hover:to-[var(--color-lahoma-orange)]/10 focus:bg-gradient-to-r focus:from-[var(--color-leonard-yellow)]/20 focus:to-[var(--color-lahoma-orange)]/20",
         glass: "hover:bg-[var(--card)]/20 focus:bg-[var(--card)]/30 text-[var(--card)]",
         outline: "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
         filled: "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",

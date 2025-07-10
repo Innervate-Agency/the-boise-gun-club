@@ -61,7 +61,7 @@ const MembershipCard = ({ tier, onSelect }: MembershipCardProps) => {
 
             {/* Parallel lines background pattern */}
             <div className="absolute inset-0 overflow-hidden opacity-20">
-                <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,var(--leonard-yellow)_10px,var(--leonard-yellow)_11px)]" />
+                <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,var(--color-leonard-yellow)_10px,var(--color-leonard-yellow)_11px)]" />
             </div>            {/* Subtle mist effect particles */}
             {isHovered && mistParticles.map(particle => (
                 <motion.div
@@ -86,13 +86,13 @@ const MembershipCard = ({ tier, onSelect }: MembershipCardProps) => {
             <div className="relative p-8 transform-gpu transition-transform duration-500 hover:scale-[1.02]">
                 {/* Featured badge */}
                 {tier.featured && (
-                    <div className="absolute -top-1 -right-1 bg-[var(--leonard-yellow)] text-[var(--craters-moon)] px-4 py-1 rounded-bl-lg rounded-tr-lg font-bold text-sm transform rotate-3">
+                    <div className="absolute -top-1 -right-1 bg-[var(--color-leonard-yellow)] text-[var(--craters-moon)] px-4 py-1 rounded-bl-lg rounded-tr-lg font-bold text-sm transform rotate-3">
                         MOST POPULAR
                     </div>
                 )}
 
                 {/* Tier name with Art Deco styling */}
-                <h3 className="text-3xl font-bold mb-4 text-[var(--leonard-yellow)] font-heading tracking-wider text-shadow shadow-black/50">
+                <h3 className="text-3xl font-bold mb-4 text-[var(--color-leonard-yellow)] font-heading tracking-wider text-shadow shadow-black/50">
                     {tier.name.toUpperCase()}
                 </h3>
 
@@ -109,7 +109,7 @@ const MembershipCard = ({ tier, onSelect }: MembershipCardProps) => {
                 <ul className="space-y-3 mb-8">
                     {tier.benefits.map((benefit, index) => (
                         <li key={index} className="flex items-center text-white/90 dark:text-white/90">
-                            <Check className="w-5 h-5 mr-3 text-[var(--leonard-yellow)]" />
+                            <Check className="w-5 h-5 mr-3 text-[var(--color-leonard-yellow)]" />
                             {benefit}
                         </li>
                     ))}
@@ -118,7 +118,7 @@ const MembershipCard = ({ tier, onSelect }: MembershipCardProps) => {
                 {/* CTA Button */}
                 <Button
                     onClick={() => onSelect(tier.id)}
-                    className="w-full py-4 px-8 rounded-lg bg-[var(--leonard-yellow)] text-[var(--craters-moon)] font-heading uppercase tracking-wide font-bold text-lg hover:brightness-95 transform transition-all duration-300 hover:shadow-xl"
+                    className="w-full py-4 px-8 rounded-lg bg-[var(--color-leonard-yellow)] text-[var(--craters-moon)] font-heading uppercase tracking-wide font-bold text-lg hover:brightness-95 transform transition-all duration-300 hover:shadow-xl"
                 >
                     Select {tier.name}
                 </Button>

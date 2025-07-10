@@ -148,12 +148,12 @@ export function StatsShowcase({
               <GlassFusionCard
                 key={index}
                 className="text-center transition-all duration-300 hover:scale-[1.02]"
-                headerGradient={stat.color ? `from-[${stat.color}] to-[var(--accent-secondary)]` : 'from-[var(--lahoma-orange)] to-[var(--accent-secondary)]'}
+                headerGradient={stat.color ? `from-[${stat.color}] to-[var(--accent-secondary)]` : 'from-[var(--color-lahoma-orange)] to-[var(--accent-secondary)]'}
                 intensity="medium"
               >
                 <CardContent className="p-6">
                   {stat.icon && (
-                    <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-[var(--lahoma-orange)] to-[var(--accent-secondary)] rounded-xl mb-4">
+                    <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-[var(--color-lahoma-orange)] to-[var(--accent-secondary)] rounded-xl mb-4">
                       <stat.icon className="h-6 w-6 text-[var(--card)]" />
                     </div>
                   )}

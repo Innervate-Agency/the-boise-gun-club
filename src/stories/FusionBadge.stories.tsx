@@ -189,7 +189,7 @@ export const Classifications: Story = {
       
       <div className="bg-card/50 rounded-xl p-6 border border-border/20">
         <div className="flex items-center gap-3 mb-4">
-          <Award className="h-5 w-5 text-leonard-yellow" />
+          <Award className="h-5 w-5 text-color-leonard-yellow" />
           <h3 className="font-heading font-semibold">Classification Examples</h3>
         </div>
         <div className="space-y-3">
@@ -362,7 +362,7 @@ export const EventBadges: Story = {
         {/* Tournament Results */}
         <div className="bg-card/50 rounded-xl p-6 border border-border/20">
           <div className="flex items-center gap-3 mb-4">
-            <Trophy className="h-5 w-5 text-leonard-yellow" />
+            <Trophy className="h-5 w-5 text-color-leonard-yellow" />
             <h3 className="font-heading font-semibold">Tournament Results</h3>
           </div>
           <div className="space-y-3">
@@ -429,9 +429,9 @@ export const EventBadges: Story = {
       </div>
       
       {/* Achievement Badges */}
-      <div className="bg-gradient-to-br from-leonard-yellow/10 to-lahoma-orange/10 rounded-xl p-6 border border-leonard-yellow/20">
+      <div className="bg-gradient-to-br from-color-leonard-yellow/10 to-color-lahoma-orange/10 rounded-xl p-6 border border-color-leonard-yellow/20">
         <div className="flex items-center gap-3 mb-6">
-          <Zap className="h-6 w-6 text-lahoma-orange" />
+          <Zap className="h-6 w-6 text-color-lahoma-orange" />
           <h3 className="font-heading font-bold">Achievement Unlocked!</h3>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -508,7 +508,7 @@ export const EliteShowcase: Story = {
       </div>
       
       {/* Elite Size Variations */}
-      <div className="bg-gradient-to-br from-leonard-yellow/10 to-lahoma-orange/10 rounded-xl p-6 border border-leonard-yellow/20">
+      <div className="bg-gradient-to-br from-color-leonard-yellow/10 to-color-lahoma-orange/10 rounded-xl p-6 border border-color-leonard-yellow/20">
         <h3 className="font-heading font-semibold mb-4">Elite Size Variations</h3>
         <div className="flex items-center gap-4 flex-wrap">
           <Badge variant="elite" size="sm">Small Elite</Badge>

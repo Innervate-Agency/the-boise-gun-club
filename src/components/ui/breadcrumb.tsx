@@ -12,9 +12,9 @@ const breadcrumbVariants = cva(
     variants: {
       variant: {
         default: "",
-        premium: "bg-gradient-to-r from-[var(--leonard-yellow)]/5 to-[var(--lahoma-orange)]/5 backdrop-blur-sm border border-[var(--leonard-yellow)]/10 rounded-lg p-3 shadow-lg",
+        premium: "bg-gradient-to-r from-[var(--color-leonard-yellow)]/5 to-[var(--color-lahoma-orange)]/5 backdrop-blur-sm border border-[var(--color-leonard-yellow)]/10 rounded-lg p-3 shadow-lg",
         glass: "bg-[var(--card)]/5 backdrop-blur-md border border-white/10 rounded-lg p-3 shadow-xl",
-        tournament: "bg-gradient-to-r from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-[var(--leonard-yellow)]/20 rounded-xl p-4 shadow-2xl",
+        tournament: "bg-gradient-to-r from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-[var(--color-leonard-yellow)]/20 rounded-xl p-4 shadow-2xl",
         minimal: "border-b border-border pb-2",
       },
       size: {
@@ -62,9 +62,9 @@ const breadcrumbLinkVariants = cva(
     variants: {
       variant: {
         default: "hover:text-foreground",
-        premium: "hover:text-[var(--leonard-yellow)] hover:drop-shadow-sm",
+        premium: "hover:text-[var(--color-leonard-yellow)] hover:drop-shadow-sm",
         glass: "hover:text-[var(--card)] hover:drop-shadow-sm",
-        tournament: "hover:text-[var(--leonard-yellow)] hover:drop-shadow-md font-medium",
+        tournament: "hover:text-[var(--color-leonard-yellow)] hover:drop-shadow-md font-medium",
         minimal: "hover:text-foreground",
       },
     },
@@ -80,9 +80,9 @@ const breadcrumbPageVariants = cva(
     variants: {
       variant: {
         default: "text-foreground",
-        premium: "text-[var(--leonard-yellow)] font-semibold drop-shadow-sm",
+        premium: "text-[var(--color-leonard-yellow)] font-semibold drop-shadow-sm",
         glass: "text-[var(--card)] font-medium drop-shadow-sm",
-        tournament: "text-[var(--leonard-yellow)] font-bold drop-shadow-md",
+        tournament: "text-[var(--color-leonard-yellow)] font-bold drop-shadow-md",
         minimal: "text-foreground",
       },
     },
@@ -187,9 +187,9 @@ function BreadcrumbSeparator({
 }: BreadcrumbSeparatorProps) {
   const getSeparatorColor = () => {
     switch (variant) {
-      case "premium": return "text-[var(--leonard-yellow)]/60"
+      case "premium": return "text-[var(--color-leonard-yellow)]/60"
       case "glass": return "text-[var(--card)]/40"
-      case "tournament": return "text-[var(--leonard-yellow)]/80"
+      case "tournament": return "text-[var(--color-leonard-yellow)]/80"
       default: return "text-muted-foreground"
     }
   }

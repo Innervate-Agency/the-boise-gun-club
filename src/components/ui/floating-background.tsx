@@ -25,9 +25,9 @@ interface FloatingBackgroundProps {
 
 const presetSplashes = {
   warm: [
-    { color: 'var(--lahoma-orange)', size: 300, x: '20%', y: '10%', blur: 60, opacity: 0.15, duration: 8 },
+    { color: 'var(--color-lahoma-orange)', size: 300, x: '20%', y: '10%', blur: 60, opacity: 0.15, duration: 8 },
     { color: 'var(--accent-primary)', size: 200, x: '80%', y: '30%', blur: 80, opacity: 0.1, duration: 10, delay: 2 },
-    { color: 'var(--leonard-yellow)', size: 150, x: '60%', y: '70%', blur: 70, opacity: 0.12, duration: 12, delay: 4 }
+    { color: 'var(--color-leonard-yellow)', size: 150, x: '60%', y: '70%', blur: 70, opacity: 0.12, duration: 12, delay: 4 }
   ],
   cool: [
     { color: 'var(--brand-blue)', size: 250, x: '15%', y: '20%', blur: 70, opacity: 0.12, duration: 9 },
@@ -35,14 +35,14 @@ const presetSplashes = {
     { color: 'var(--brand-blue)', size: 220, x: '40%', y: '80%', blur: 75, opacity: 0.1, duration: 13, delay: 3 }
   ],
   mixed: [
-    { color: 'var(--lahoma-orange)', size: 280, x: '25%', y: '15%', blur: 65, opacity: 0.12, duration: 8 },
+    { color: 'var(--color-lahoma-orange)', size: 280, x: '25%', y: '15%', blur: 65, opacity: 0.12, duration: 8 },
     { color: 'var(--brand-blue)', size: 200, x: '70%', y: '40%', blur: 80, opacity: 0.09, duration: 10, delay: 2 },
     { color: 'var(--brand-green)', size: 160, x: '50%', y: '75%', blur: 70, opacity: 0.11, duration: 12, delay: 4 },
-    { color: 'var(--leonard-yellow)', size: 120, x: '85%', y: '20%', blur: 60, opacity: 0.08, duration: 14, delay: 6 }
+    { color: 'var(--color-leonard-yellow)', size: 120, x: '85%', y: '20%', blur: 60, opacity: 0.08, duration: 14, delay: 6 }
   ],
   gunclub: [
-    { color: 'var(--lahoma-orange)', size: 320, x: '20%', y: '10%', blur: 60, opacity: 0.15, duration: 8 },
-    { color: 'var(--leonard-yellow)', size: 200, x: '80%', y: '30%', blur: 80, opacity: 0.12, duration: 10, delay: 2 },
+    { color: 'var(--color-lahoma-orange)', size: 320, x: '20%', y: '10%', blur: 60, opacity: 0.15, duration: 8 },
+    { color: 'var(--color-leonard-yellow)', size: 200, x: '80%', y: '30%', blur: 80, opacity: 0.12, duration: 10, delay: 2 },
     { color: 'var(--accent-primary)', size: 180, x: '60%', y: '70%', blur: 70, opacity: 0.1, duration: 12, delay: 4 },
     { color: 'var(--brand-blue)', size: 150, x: '10%', y: '60%', blur: 90, opacity: 0.08, duration: 14, delay: 6 },
     { color: 'var(--brand-green)', size: 140, x: '90%', y: '80%', blur: 75, opacity: 0.09, duration: 16, delay: 8 }

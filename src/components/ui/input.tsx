@@ -6,16 +6,16 @@ import { Eye, EyeOff, Check, X, Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const inputVariants = cva(
-  "flex w-full rounded-lg border transition-all duration-200 outline-none font-body",
+  "flex w-full rounded-lg border [transition:var(--transition-fast)] outline-none font-body",
   {
     variants: {
       variant: {
-        default: "bg-card border-border/50 hover:border-border focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/20",
-        premium: "bg-gradient-to-r from-leonard-yellow/5 to-lahoma-orange/5 border-leonard-yellow/30 hover:border-leonard-yellow/50 focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/30 focus:shadow-lg transition-all duration-300 relative overflow-hidden group",
-        elite: "bg-gradient-to-r from-leonard-yellow/10 via-lahoma-orange/10 to-leonard-yellow/10 border-2 border-leonard-yellow/50 hover:border-leonard-yellow focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/40 focus:shadow-xl transition-all duration-300 relative overflow-hidden group",
+        default: "bg-card border-border/50 hover:border-border focus:border-(--color-lahoma-orange) focus:ring-2 focus:ring-(--color-lahoma-orange)/20",
+        premium: "bg-gradient-to-r from-(--color-leonard-yellow)/5 to-(--color-lahoma-orange)/5 border-(--color-leonard-yellow)/30 hover:border-(--color-leonard-yellow)/50 focus:border-(--color-lahoma-orange) focus:ring-2 focus:ring-(--color-lahoma-orange)/30 focus:[box-shadow:var(--shadow-lg)] [transition:var(--transition-smooth)] relative overflow-hidden group",
+        elite: "bg-gradient-to-r from-(--color-leonard-yellow)/10 via-(--color-lahoma-orange)/10 to-(--color-leonard-yellow)/10 border-2 border-(--color-leonard-yellow)/50 hover:border-(--color-leonard-yellow) focus:border-(--color-lahoma-orange) focus:ring-2 focus:ring-(--color-lahoma-orange)/40 focus:[box-shadow:var(--shadow-xl)] [transition:var(--transition-smooth)] relative overflow-hidden group motion-reduce:focus:shadow-none",
         glass: "bg-[var(--card)]/10 backdrop-blur-sm border-white/20 hover:border-white/30 focus:border-white/50 focus:ring-2 focus:ring-white/20",
-        outline: "bg-transparent border-border hover:border-border/80 focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/20",
-        filled: "bg-muted border-transparent hover:bg-muted/80 focus:bg-card focus:border-lahoma-orange focus:ring-2 focus:ring-lahoma-orange/20",
+        outline: "bg-transparent border-border hover:border-border/80 focus:border-(--color-lahoma-orange) focus:ring-2 focus:ring-(--color-lahoma-orange)/20",
+        filled: "bg-muted border-transparent hover:bg-muted/80 focus:bg-card focus:border-(--color-lahoma-orange) focus:ring-2 focus:ring-(--color-lahoma-orange)/20",
       },
       size: {
         sm: "h-8 px-3 text-sm",
@@ -123,12 +123,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({
       )}>
         {/* Premium input subtle glow */}
         {variant === 'premium' && isFocused && (
-          <div className="absolute inset-0 bg-leonard-yellow/10 rounded-lg opacity-100 transition-opacity duration-300 pointer-events-none" />
+          <div className="absolute inset-0 bg-(--color-leonard-yellow)/10 rounded-lg opacity-100 [transition:var(--transition-smooth)] pointer-events-none" />
         )}
         
         {/* Elite input enhanced glow */}
         {variant === 'elite' && isFocused && (
-          <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/15 to-lahoma-orange/15 rounded-lg opacity-100 transition-opacity duration-300 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-(--color-leonard-yellow)/15 to-(--color-lahoma-orange)/15 rounded-lg opacity-100 [transition:var(--transition-smooth)] pointer-events-none" />
         )}
         
         {/* Premium shimmer effect */}
@@ -138,7 +138,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({
         
         {/* Left icon */}
         {leftIcon && (
-          <div className="flex-shrink-0 text-muted-foreground group-focus-within:text-lahoma-orange transition-colors">
+          <div className="flex-shrink-0 text-muted-foreground group-focus-within:text-(--color-lahoma-orange) [transition:var(--transition-fast)]">
             {leftIcon}
           </div>
         )}
@@ -199,7 +199,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({
           
           {/* Custom right icon */}
           {rightIcon && (
-            <div className="text-muted-foreground group-focus-within:text-lahoma-orange transition-colors">
+            <div className="text-muted-foreground group-focus-within:text-(--color-lahoma-orange) [transition:var(--transition-fast)]">
               {rightIcon}
             </div>
           )}
@@ -254,7 +254,7 @@ function MemberIDInput({ memberType = "individual", ...props }: MemberInputProps
       placeholder="Enter member ID"
       label="Member ID"
       variant="premium"
-      leftIcon={<span className="text-xs font-mono px-1 py-0.5 bg-leonard-yellow/20 rounded text-leonard-yellow">{memberType.charAt(0).toUpperCase()}</span>}
+      leftIcon={<span className="text-xs font-mono px-1 py-0.5 bg-(--color-leonard-yellow)/20 rounded text-(--color-leonard-yellow)">{memberType.charAt(0).toUpperCase()}</span>}
       {...props}
     />
   )
@@ -281,7 +281,7 @@ function NSCANumberInput(props: Omit<InputProps, "type" | "placeholder" | "leftI
       placeholder="123456"
       label="NSCA Number"
       variant="premium"
-      leftIcon={<span className="text-xs font-bold text-lahoma-orange">NSCA</span>}
+      leftIcon={<span className="text-xs font-bold text-(--color-lahoma-orange)">NSCA</span>}
       {...props}
     />
   )

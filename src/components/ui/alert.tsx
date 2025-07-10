@@ -12,11 +12,11 @@ const alertVariants = cva(
       variant: {
         default: "bg-card/95 text-card-foreground border-border/20",
         success: "bg-gradient-to-r from-brand-green/10 to-brand-green-light/10 text-brand-green border-brand-green/20 [&>svg]:text-brand-green",
-        warning: "bg-gradient-to-r from-leonard-yellow/10 to-lahoma-orange/10 text-amber-800 dark:text-amber-200 border-leonard-yellow/20 [&>svg]:text-leonard-yellow",
+        warning: "bg-gradient-to-r from-color-leonard-yellow/10 to-color-lahoma-orange/10 text-amber-800 dark:text-amber-200 border-color-leonard-yellow/20 [&>svg]:text-color-leonard-yellow",
         error: "bg-gradient-to-r from-red-500/10 to-brand-red-action/10 text-red-800 dark:text-red-200 border-[var(--brand-red-action)]/20 [&>svg]:text-[var(--brand-red-action)]",
         info: "bg-gradient-to-r from-brand-blue/10 to-brand-blue-dark/10 text-brand-blue border-brand-blue/20 [&>svg]:text-brand-blue",
-        premium: "bg-gradient-to-r from-leonard-yellow/15 to-lahoma-orange/15 text-amber-900 dark:text-amber-100 border-leonard-yellow/30 [&>svg]:text-lahoma-orange relative overflow-hidden group",
-        elite: "bg-gradient-to-r from-leonard-yellow/20 to-lahoma-orange/20 text-amber-900 dark:text-amber-100 border-2 border-leonard-yellow/50 [&>svg]:text-lahoma-orange shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group",
+        premium: "bg-gradient-to-r from-color-leonard-yellow/15 to-color-lahoma-orange/15 text-amber-900 dark:text-amber-100 border-color-leonard-yellow/30 [&>svg]:text-color-lahoma-orange relative overflow-hidden group",
+        elite: "bg-gradient-to-r from-color-leonard-yellow/20 to-color-lahoma-orange/20 text-amber-900 dark:text-amber-100 border-2 border-color-leonard-yellow/50 [&>svg]:text-color-lahoma-orange shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group",
       },
       size: {
         default: "px-6 py-4",
@@ -78,12 +78,12 @@ function Alert({
     >
       {/* Background gradient overlay for premium variant */}
       {variant === 'premium' && (
-        <div className="absolute inset-0 bg-gradient-to-br from-leonard-yellow/10 via-transparent to-lahoma-orange/10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-color-leonard-yellow/10 via-transparent to-color-lahoma-orange/10 pointer-events-none" />
       )}
       
       {/* Enhanced background gradient for elite variant */}
       {variant === 'elite' && (
-        <div className="absolute inset-0 bg-gradient-to-br from-leonard-yellow/15 via-transparent to-lahoma-orange/15 pointer-events-none opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-br from-color-leonard-yellow/15 via-transparent to-color-lahoma-orange/15 pointer-events-none opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
       )}
       
       {/* Icon */}

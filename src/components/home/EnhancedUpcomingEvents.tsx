@@ -99,11 +99,11 @@ const UpcomingEvents = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="bg-gradient-to-br from-gray-900 to-black border border-lahoma-orange/20 rounded-lg p-8"
+                            className="bg-gradient-to-br from-gray-900 to-black border border-color-lahoma-orange/20 rounded-lg p-8"
                         >
                             <div className="flex flex-col md:flex-row gap-6">
                                 <div className="shrink-0">
-                                    <div className="w-20 h-20 bg-gradient-to-br from-lahoma-orange to-orange-600 rounded-lg flex flex-col items-center justify-center text-white relative">
+                                    <div className="w-20 h-20 bg-gradient-to-br from-color-lahoma-orange to-orange-600 rounded-lg flex flex-col items-center justify-center text-white relative">
                                         <span className="text-2xl font-bold">{day}</span>
                                         <span className="text-xs uppercase">{month}</span>
                                         
@@ -160,7 +160,7 @@ const UpcomingEvents = () => {
                             {events.map((event) => (
                                 <motion.div 
                                     key={event.id}
-                                    className={`p-4 rounded-lg cursor-pointer border border-white/10 transition-all ${selectedEvent.id === event.id ? 'bg-lahoma-orange/10 border-lahoma-orange/30' : 'bg-gray-900/50 hover:bg-gray-900'}`}
+                                    className={`p-4 rounded-lg cursor-pointer border border-white/10 transition-all ${selectedEvent.id === event.id ? 'bg-color-lahoma-orange/10 border-color-lahoma-orange/30' : 'bg-gray-900/50 hover:bg-gray-900'}`}
                                     onClick={() => setSelectedEvent(event)}
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
@@ -199,7 +199,7 @@ const UpcomingEvents = () => {
                                             id="name"
                                             name="name"
                                             type="text"
-                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-lahoma-orange/50 focus:border-transparent"
+                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-color-lahoma-orange/50 focus:border-transparent"
                                             value={formData.name}
                                             onChange={handleChange}
                                             required
@@ -212,7 +212,7 @@ const UpcomingEvents = () => {
                                             id="email"
                                             name="email"
                                             type="email"
-                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-lahoma-orange/50 focus:border-transparent"
+                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-color-lahoma-orange/50 focus:border-transparent"
                                             value={formData.email}
                                             onChange={handleChange}
                                             required
@@ -225,7 +225,7 @@ const UpcomingEvents = () => {
                                             id="phone"
                                             name="phone"
                                             type="tel"
-                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-lahoma-orange/50 focus:border-transparent"
+                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-color-lahoma-orange/50 focus:border-transparent"
                                             value={formData.phone}
                                             onChange={handleChange}
                                         />
@@ -236,7 +236,7 @@ const UpcomingEvents = () => {
                                         <select
                                             id="event"
                                             name="event"
-                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-lahoma-orange/50 focus:border-transparent"
+                                            className="w-full bg-black/40 text-white border border-white/20 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-color-lahoma-orange/50 focus:border-transparent"
                                             value={formData.event}
                                             onChange={handleChange}
                                             required
@@ -252,7 +252,7 @@ const UpcomingEvents = () => {
                                     
                                     <button
                                         type="submit"
-                                        className="w-full bg-gradient-to-r from-lahoma-orange to-accent-primary text-white font-bold py-3 px-4 rounded hover:from-accent-primary hover:to-lahoma-orange transition-all duration-300"
+                                        className="w-full bg-gradient-to-r from-color-lahoma-orange to-accent-primary text-white font-bold py-3 px-4 rounded hover:from-accent-primary hover:to-color-lahoma-orange transition-all duration-300"
                                     >
                                         REGISTER NOW
                                     </button>

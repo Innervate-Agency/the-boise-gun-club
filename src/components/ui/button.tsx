@@ -5,23 +5,23 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium font-body transition-fast disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-leonard-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-98 relative overflow-hidden",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium font-body [transition:var(--transition-fast)] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-(--color-leonard-yellow) focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] relative overflow-hidden",
   {
     variants: {
       variant: {
-        default: "bg-leonard-yellow text-black shadow-sm hover:bg-lahoma-orange hover:shadow-md focus-visible:ring-leonard-yellow/50 dark:bg-leonard-yellow dark:text-black dark:hover:bg-lahoma-orange",
-        primary: "bg-leonard-yellow text-black shadow-sm hover:bg-lahoma-orange hover:shadow-md focus-visible:ring-leonard-yellow/50 dark:bg-leonard-yellow dark:text-black dark:hover:bg-lahoma-orange",
+        default: "bg-(--color-leonard-yellow) text-black [box-shadow:var(--shadow-sm)] hover:bg-(--color-lahoma-orange) hover:[box-shadow:var(--shadow-md)] focus-visible:ring-(--color-leonard-yellow)/50 dark:bg-(--color-leonard-yellow) dark:text-black dark:hover:bg-(--color-lahoma-orange)",
+        primary: "bg-(--color-leonard-yellow) text-black [box-shadow:var(--shadow-sm)] hover:bg-(--color-lahoma-orange) hover:[box-shadow:var(--shadow-md)] focus-visible:ring-(--color-leonard-yellow)/50 dark:bg-(--color-leonard-yellow) dark:text-black dark:hover:bg-(--color-lahoma-orange)",
         destructive:
-          "bg-brand-red text-white shadow-sm hover:bg-brand-red/90 hover:shadow-md focus-visible:ring-brand-red/50 dark:bg-brand-red dark:hover:bg-brand-red/90",
+          "bg-(--color-brand-red) text-white [box-shadow:var(--shadow-sm)] hover:bg-(--color-brand-red)/90 hover:[box-shadow:var(--shadow-md)] focus-visible:ring-(--color-brand-red)/50 dark:bg-(--color-brand-red) dark:hover:bg-(--color-brand-red)/90",
         outline:
-          "border border-muted bg-background shadow-sm hover:bg-muted/50 hover:shadow-md focus-visible:ring-leonard-yellow/50 dark:bg-background dark:border-muted dark:hover:bg-muted/50",
+          "border border-border bg-background [box-shadow:var(--shadow-sm)] hover:bg-muted/50 hover:[box-shadow:var(--shadow-md)] focus-visible:ring-(--color-leonard-yellow)/50 dark:bg-background dark:border-border dark:hover:bg-muted/50",
         secondary:
-          "bg-muted text-muted-foreground shadow-sm hover:bg-muted/80 hover:shadow-md focus-visible:ring-leonard-yellow/50 dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted/80",
+          "bg-muted text-muted-foreground [box-shadow:var(--shadow-sm)] hover:bg-muted/80 hover:[box-shadow:var(--shadow-md)] focus-visible:ring-(--color-leonard-yellow)/50 dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted/80",
         ghost:
-          "hover:bg-muted/50 hover:text-foreground focus-visible:ring-leonard-yellow/50 dark:hover:bg-muted/50",
-        link: "text-leonard-yellow underline-offset-4 hover:underline focus-visible:ring-leonard-yellow/50",
-        premium: "bg-gradient-to-r from-leonard-yellow to-lahoma-orange text-black shadow-lg hover:shadow-xl hover:scale-105 focus-visible:ring-leonard-yellow/50 border border-leonard-yellow/20 dark:from-leonard-yellow dark:to-lahoma-orange dark:text-black relative overflow-hidden group",
-        elite: "bg-gradient-to-r from-leonard-yellow via-lahoma-orange to-leonard-yellow bg-[length:200%_100%] text-black shadow-xl hover:shadow-2xl hover:scale-110 focus-visible:ring-leonard-yellow/50 border-2 border-leonard-yellow/30 transition-all duration-300 relative overflow-hidden group animate-shimmer",
+          "hover:bg-muted/50 hover:text-foreground focus-visible:ring-(--color-leonard-yellow)/50 dark:hover:bg-muted/50",
+        link: "text-(--color-leonard-yellow) underline-offset-4 hover:underline focus-visible:ring-(--color-leonard-yellow)/50",
+        premium: "bg-gradient-to-r from-(--color-leonard-yellow) to-(--color-lahoma-orange) text-black [box-shadow:var(--shadow-md)] hover:[box-shadow:var(--shadow-lg)] hover:scale-[1.02] focus-visible:ring-(--color-leonard-yellow)/50 border border-(--color-leonard-yellow)/20 dark:from-(--color-leonard-yellow) dark:to-(--color-lahoma-orange) dark:text-black relative overflow-hidden group motion-reduce:hover:scale-100",
+        elite: "bg-gradient-to-r from-(--color-leonard-yellow) via-(--color-lahoma-orange) to-(--color-leonard-yellow) bg-[length:200%_100%] text-black [box-shadow:var(--shadow-lg)] hover:[box-shadow:var(--shadow-xl)] hover:scale-[1.05] focus-visible:ring-(--color-leonard-yellow)/50 border-2 border-(--color-leonard-yellow)/30 animate-shimmer relative overflow-hidden group motion-reduce:animate-none motion-reduce:hover:scale-100",
       },
       size: {
         default: "h-10 px-4 py-2 gap-2 has-[>svg]:px-3",
@@ -83,12 +83,12 @@ function Button({
       
       {/* Premium button glow effect */}
       {variant === 'premium' && (
-        <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/60 to-brand-red/40 blur-lg opacity-0 group-hover:opacity-40 transition-all duration-300 -z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-(--color-lahoma-orange)/60 to-(--color-brand-red)/40 blur-lg opacity-0 group-hover:opacity-40 [transition:var(--transition-smooth)] -z-10" />
       )}
       
       {/* Elite button animated background */}
       {variant === 'elite' && (
-        <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/30 via-brand-red/20 to-lahoma-orange/30 blur-xl opacity-40 group-hover:opacity-70 transition-all duration-500 -z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-(--color-lahoma-orange)/30 via-(--color-brand-red)/20 to-(--color-lahoma-orange)/30 blur-xl opacity-40 group-hover:opacity-70 [transition:var(--transition-smooth)] -z-10" />
       )}
       
       {/* Loading spinner */}

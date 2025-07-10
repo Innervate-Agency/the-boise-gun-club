@@ -15,8 +15,8 @@
     --brand-blue: #5198cd;
     --brand-green: #6f7822;
     --brand-red-action: #8C394B;
-    --lahoma-orange: #F28705;
-    --leonard-yellow: #F2CB05;
+    --color-lahoma-orange: #F28705;
+    --color-leonard-yellow: #F2CB05;
   }
 
   .dark, [data-theme="dark"] {
@@ -35,7 +35,7 @@
     --brand-blue: #4982A6;
     --brand-green: #3F6331;
     --brand-red-action: #F23005;
-    --lahoma-orange: #F28705;
-    --leonard-yellow: #F2CB05;
+    --color-lahoma-orange: #F28705;
+    --color-leonard-yellow: #F2CB05;
   }
 }

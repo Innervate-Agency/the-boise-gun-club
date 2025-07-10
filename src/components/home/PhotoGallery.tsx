@@ -45,7 +45,7 @@ const GlassPhotoFrame: React.FC<{ photo: Photo, onClick: () => void }> = ({ phot
                 {/* Hover overlay with info */}
                 <div className="absolute bottom-0 left-0 right-0 bg-gray-900/70 backdrop-blur-sm p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-30">
                     <p className="text-white font-bold font-heading">{photo.alt}</p>
-                    <p className="text-lahoma-orange text-sm font-body">{photo.year}</p>
+                    <p className="text-color-lahoma-orange text-sm font-body">{photo.year}</p>
                 </div>
             </div>
         </motion.div>

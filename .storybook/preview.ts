@@ -56,14 +56,44 @@ fontStyleSheet.textContent = `
     font-family: 'Fira Code', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
   }
   
-  /* Theme-aware styling for docs */
-  .dark .sbdocs-content {
-    color: var(--text-primary, #FDFDFD);
-    background-color: var(--bg-primary, #2F3135);
+  /* Comprehensive dark mode support for Storybook docs */
+  .dark .sbdocs-content,
+  .dark .docs-story,
+  .dark #docs-root,
+  .dark .sb-show-main {
+    color: var(--text-primary, #FDFDFD) !important;
+    background-color: var(--bg-primary, #2F3135) !important;
   }
   
-  .sbdocs-content {
+  .dark .sbdocs-wrapper,
+  .dark .sbdocs-container {
+    background-color: var(--bg-primary, #2F3135) !important;
+  }
+  
+  .dark .sbdocs-h1,
+  .dark .sbdocs-h2,
+  .dark .sbdocs-h3,
+  .dark .sbdocs-h4,
+  .dark .sbdocs-h5,
+  .dark .sbdocs-h6 {
+    color: var(--text-primary, #FDFDFD) !important;
+  }
+  
+  .dark .sbdocs-p {
+    color: var(--text-secondary, #EEF1F7) !important;
+  }
+  
+  /* Light mode defaults */
+  .sbdocs-content,
+  .docs-story,
+  #docs-root,
+  .sb-show-main {
     color: var(--text-primary, #372103);
+    background-color: var(--bg-primary, #f8f6f1);
+  }
+  
+  .sbdocs-wrapper,
+  .sbdocs-container {
     background-color: var(--bg-primary, #f8f6f1);
   }
 `;
@@ -129,40 +159,52 @@ const preview: Preview = {
         const root = document.documentElement;
         const body = document.body;
         
+        // Enhanced theme application with comprehensive targeting
         if (theme === 'dark') {
           root.classList.add('dark');
           body.classList.add('dark');
-          // Apply dark theme to Storybook's own elements
-          const storybook = document.querySelector('#storybook-root');
-          if (storybook) {
-            storybook.classList.add('dark');
-          }
-          // Apply to docs container
-          const docsContainer = document.querySelector('.docs-story');
-          if (docsContainer) {
-            docsContainer.classList.add('dark');
-          }
+          
+          // Target all Storybook containers
+          const containers = [
+            '#storybook-root',
+            '.docs-story', 
+            '#docs-root',
+            '.sb-show-main',
+            '.sbdocs-content',
+            '.sbdocs-wrapper',
+            '.sbdocs-container',
+            '.sidebar-container',
+            '.main-container'
+          ];
+          
+          containers.forEach(selector => {
+            const element = document.querySelector(selector);
+            if (element) {
+              element.classList.add('dark');
+            }
+          });
+          
+          // Use observer to catch dynamically added docs elements
+          const observer = new MutationObserver(() => {
+            containers.forEach(selector => {
+              const elements = document.querySelectorAll(selector);
+              elements.forEach(el => el.classList.add('dark'));
+            });
+          });
+          
+          observer.observe(document.body, { childList: true, subtree: true });
+          
         } else {
           root.classList.remove('dark');
           body.classList.remove('dark');
-          const storybook = document.querySelector('#storybook-root');
-          if (storybook) {
-            storybook.classList.remove('dark');
-          }
-          const docsContainer = document.querySelector('.docs-story');
-          if (docsContainer) {
-            docsContainer.classList.remove('dark');
-          }
+          
+          // Remove dark class from all containers
+          const allDarkElements = document.querySelectorAll('.dark');
+          allDarkElements.forEach(el => el.classList.remove('dark'));
         }
         
         root.setAttribute('data-theme', theme);
         body.setAttribute('data-theme', theme);
-        
-        // Apply theme-specific styling to Storybook UI
-        const storybookUI = document.querySelector('.sidebar-container, .main-container');
-        if (storybookUI) {
-          storybookUI.setAttribute('data-theme', theme);
-        }
         
         // Force CSS variable update for proper theme propagation
         root.style.setProperty('--sb-theme', theme);

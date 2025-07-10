@@ -53,20 +53,20 @@ const MonthView = () => {
 
     if (isLoading) {
         return (
-            <div className="font-mono text-[var(--lahoma-orange)] animate-pulse">
+            <div className="font-mono text-[var(--color-lahoma-orange)] animate-pulse">
                 LOADING CALENDAR DATA...
             </div>
         );
     }
 
     return (
-        <div className="font-mono text-[var(--lahoma-orange)]">
+        <div className="font-mono text-[var(--color-lahoma-orange)]">
             {/* Month navigation */}
             <div className="flex justify-between items-center mb-6">
                 <Button
                     variant="ghost"
                     onClick={() => navigateMonth('prev')}
-                    className="text-[var(--lahoma-orange)] hover:text-[var(--lahoma-orange)]/80 transition-colors"
+                    className="text-[var(--color-lahoma-orange)] hover:text-[var(--color-lahoma-orange)]/80 transition-colors"
                 >
                     {'<< PREV'}
                 </Button>
@@ -76,19 +76,19 @@ const MonthView = () => {
                 <Button
                     variant="ghost"
                     onClick={() => navigateMonth('next')}
-                    className="text-[var(--lahoma-orange)] hover:text-[var(--lahoma-orange)]/80 transition-colors"
+                    className="text-[var(--color-lahoma-orange)] hover:text-[var(--color-lahoma-orange)]/80 transition-colors"
                 >
                     {'NEXT >>'}
                 </Button>
             </div>
 
             {/* Calendar grid */}
-            <div className="grid grid-cols-7 gap-px bg-[var(--lahoma-orange)]/20">
+            <div className="grid grid-cols-7 gap-px bg-[var(--color-lahoma-orange)]/20">
                 {/* Weekday headers */}
                 {['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'].map(day => (
                     <div
                         key={day}
-                        className="p-2 text-center text-[var(--lahoma-orange)] border-b border-[var(--lahoma-orange)]/30"
+                        className="p-2 text-center text-[var(--color-lahoma-orange)] border-b border-[var(--color-lahoma-orange)]/30"
                     >
                         {day}
                     </div>
@@ -105,9 +105,9 @@ const MonthView = () => {
                         <motion.div
                             key={date.toISOString()}
                             className={`
-                                min-h-[100px] p-2 border border-[var(--lahoma-orange)]/30
+                                min-h-[100px] p-2 border border-[var(--color-lahoma-orange)]/30
                                 ${isCurrentMonth ? 'bg-[var(--owyhee-green-dark)]' : 'bg-[var(--owyhee-green-dark)]/50'}
-                                hover:bg-[var(--lahoma-orange)]/10 transition-colors cursor-pointer
+                                hover:bg-[var(--color-lahoma-orange)]/10 transition-colors cursor-pointer
                             `}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -115,15 +115,15 @@ const MonthView = () => {
                             onClick={() => dayEvents[0] && setSelectedEvent(dayEvents[0])}
                         >
                             <div className="text-right mb-2">
-                                <span className={isCurrentMonth ? 'text-[var(--lahoma-orange)]' : 'text-[var(--lahoma-orange)]/50'}>
+                                <span className={isCurrentMonth ? 'text-[var(--color-lahoma-orange)]' : 'text-[var(--color-lahoma-orange)]/50'}>
                                     {date.getDate()}
                                 </span>
                             </div>
                             {dayEvents.map(event => (
                                 <div
                                     key={event.id}
-                                    className="text-xs mb-1 p-1 bg-[var(--lahoma-orange)]/20 hover:bg-[var(--lahoma-orange)]/30
-                                             border border-[var(--lahoma-orange)]/30 cursor-pointer transition-colors"
+                                    className="text-xs mb-1 p-1 bg-[var(--color-lahoma-orange)]/20 hover:bg-[var(--color-lahoma-orange)]/30
+                                             border border-[var(--color-lahoma-orange)]/30 cursor-pointer transition-colors"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         setSelectedEvent(event);

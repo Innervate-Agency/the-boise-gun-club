@@ -12,7 +12,7 @@ const tableVariants = cva(
     variants: {
       variant: {
         default: "bg-card border border-border/50",
-        premium: "bg-gradient-to-br from-[var(--leonard-yellow)]/5 to-[var(--lahoma-orange)]/5 border border-[var(--leonard-yellow)]/30 shadow-xl",
+        premium: "bg-gradient-to-br from-[var(--color-leonard-yellow)]/5 to-[var(--color-lahoma-orange)]/5 border border-[var(--color-leonard-yellow)]/30 shadow-xl",
         glass: "bg-[var(--card)]/10 backdrop-blur-xl border border-white/20 shadow-2xl",
         tournament: "bg-gradient-to-br from-[var(--brand-blue)]/5 to-[var(--brand-green)]/5 border border-[var(--brand-blue)]/30 shadow-xl",
       },
@@ -29,13 +29,13 @@ const tableRowVariants = cva(
     variants: {
       variant: {
         default: "hover:bg-muted/50 data-[state=selected]:bg-muted",
-        premium: "hover:bg-[var(--leonard-yellow)]/10 data-[state=selected]:bg-[var(--lahoma-orange)]/20",
+        premium: "hover:bg-[var(--color-leonard-yellow)]/10 data-[state=selected]:bg-[var(--color-lahoma-orange)]/20",
         glass: "hover:bg-[var(--card)]/10 data-[state=selected]:bg-[var(--card)]/20",
         tournament: "hover:bg-[var(--brand-blue)]/10 data-[state=selected]:bg-[var(--brand-green)]/20",
       },
       position: {
         none: "",
-        first: "bg-gradient-to-r from-[var(--leonard-yellow)]/20 to-[var(--lahoma-orange)]/20 hover:from-[var(--leonard-yellow)]/30 hover:to-[var(--lahoma-orange)]/30",
+        first: "bg-gradient-to-r from-[var(--color-leonard-yellow)]/20 to-[var(--color-lahoma-orange)]/20 hover:from-[var(--color-leonard-yellow)]/30 hover:to-[var(--color-lahoma-orange)]/30",
         second: "bg-gradient-to-r from-gray-300/20 to-gray-400/20 hover:from-gray-300/30 hover:to-gray-400/30",
         third: "bg-gradient-to-r from-amber-600/20 to-amber-700/20 hover:from-amber-600/30 hover:to-amber-700/30",
       },

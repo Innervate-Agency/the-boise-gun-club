@@ -65,8 +65,8 @@
     --brand-blue: #5198cd;
     --brand-green: #6f7822;
     --brand-red-action: #8C394B;
-    --lahoma-orange: #F28705;
-    --leonard-yellow: #F2CB05;
+    --color-lahoma-orange: #F28705;
+    --color-leonard-yellow: #F2CB05;
     --background: #f8f6f1;
     --foreground: #372103;
   }
@@ -87,8 +87,8 @@
     --brand-blue: #4982A6;
     --brand-green: #3F6331;
     --brand-red-action: #F23005;
-    --lahoma-orange: #F28705;
-    --leonard-yellow: #F2CB05;
+    --color-lahoma-orange: #F28705;
+    --color-leonard-yellow: #F2CB05;
     --background: #2F3135;
     --foreground: #FDFDFD;
   }
@@ -118,14 +118,7 @@ h2 {
   color: var(--text-primary);
 }
 
-h3 {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  text-transform: none;
-  color: var(--text-primary);
-}
-
-h4, h5, h6 {
+h3, h4, h5, h6 {
   font-family: var(--font-body);
   font-weight: 600;
   text-transform: none;
@@ -143,6 +136,14 @@ h4, h5, h6 {
 
 .font-serif {
   font-family: var(--font-serif);
+}
+
+/* Editorial subtitle utility - use sparingly for texture */
+.editorial-subtitle {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-secondary);
 }
 
 /* Brand title utilities for BOISE + GUNCLUB pattern */

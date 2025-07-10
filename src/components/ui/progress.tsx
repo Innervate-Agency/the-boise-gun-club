@@ -14,10 +14,10 @@ const progressVariants = cva(
       variant: {
         default: "bg-muted",
         success: "bg-brand-green/20",
-        warning: "bg-leonard-yellow/20", 
+        warning: "bg-color-leonard-yellow/20", 
         error: "bg-red-500/20",
         info: "bg-brand-blue/20",
-        premium: "bg-gradient-to-r from-leonard-yellow/20 to-lahoma-orange/20 border border-leonard-yellow/30",
+        premium: "bg-gradient-to-r from-color-leonard-yellow/20 to-color-lahoma-orange/20 border border-color-leonard-yellow/30",
         glass: "bg-[var(--card)]/10 backdrop-blur-sm border border-white/20",
       },
       size: {
@@ -41,10 +41,10 @@ const progressIndicatorVariants = cva(
       variant: {
         default: "bg-primary",
         success: "bg-gradient-to-r from-brand-green to-brand-green-light",
-        warning: "bg-gradient-to-r from-leonard-yellow to-lahoma-orange",
+        warning: "bg-gradient-to-r from-color-leonard-yellow to-color-lahoma-orange",
         error: "bg-gradient-to-r from-red-500 to-brand-red-action",
         info: "bg-gradient-to-r from-brand-blue to-brand-blue-dark",
-        premium: "bg-gradient-to-r from-leonard-yellow via-lahoma-orange to-leonard-yellow bg-[length:200%_100%]",
+        premium: "bg-gradient-to-r from-color-leonard-yellow via-color-lahoma-orange to-color-leonard-yellow bg-[length:200%_100%]",
         glass: "bg-gradient-to-r from-white/60 to-white/40 backdrop-blur-sm",
       },
       size: {
@@ -195,8 +195,8 @@ function CircularProgress({
             <stop offset="100%" stopColor="var(--brand-green-light)" />
           </linearGradient>
           <linearGradient id="warning-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="var(--leonard-yellow)" />
-            <stop offset="100%" stopColor="var(--lahoma-orange)" />
+            <stop offset="0%" stopColor="var(--color-leonard-yellow)" />
+            <stop offset="100%" stopColor="var(--color-lahoma-orange)" />
           </linearGradient>
           <linearGradient id="error-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#ef4444" />
@@ -207,9 +207,9 @@ function CircularProgress({
             <stop offset="100%" stopColor="var(--brand-blue-dark)" />
           </linearGradient>
           <linearGradient id="premium-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="var(--leonard-yellow)" />
-            <stop offset="50%" stopColor="var(--lahoma-orange)" />
-            <stop offset="100%" stopColor="var(--leonard-yellow)" />
+            <stop offset="0%" stopColor="var(--color-leonard-yellow)" />
+            <stop offset="50%" stopColor="var(--color-lahoma-orange)" />
+            <stop offset="100%" stopColor="var(--color-leonard-yellow)" />
           </linearGradient>
         </defs>
         

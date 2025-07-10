@@ -31,7 +31,7 @@ const featuredEvents = [
     image: "/images/events.webp",
     category: "Championship",
     icon: Trophy,
-    color: "from-lahoma-orange to-leonard-yellow"
+    color: "from-color-lahoma-orange to-color-leonard-yellow"
   },
   {
     title: "Tuesday Night Trap League",
@@ -70,7 +70,7 @@ export default function EventsPage() {
         secondaryAction={{ text: 'Tournament Results', onClick: () => console.log('View Results') }}
         icon={Calendar}
         backgroundPreset="gunclub"
-        gradient="from-lahoma-orange to-leonard-yellow"
+        gradient="from-color-lahoma-orange to-color-leonard-yellow"
       />
 
       <section className="py-20">
@@ -95,7 +95,7 @@ export default function EventsPage() {
                 </div>
                 <CardHeader>
                   <CardTitle className="font-heading text-text-primary flex items-center gap-2">
-                    <Target className="w-5 h-5 text-lahoma-orange" />
+                    <Target className="w-5 h-5 text-color-lahoma-orange" />
                     {event.title}
                   </CardTitle>
                   <CardDescription className="font-body text-text-secondary">
@@ -121,7 +121,7 @@ export default function EventsPage() {
                       {event.attendees}
                     </div>
                   </div>
-                  <Button className="w-full bg-lahoma-orange hover:bg-leonard-yellow text-white">
+                  <Button className="w-full bg-color-lahoma-orange hover:bg-color-leonard-yellow text-white">
                     Register Now
                   </Button>
                 </CardContent>

@@ -114,7 +114,7 @@ export function TestimonialCarousel({
                       className={cn(
                         'w-5 h-5',
                         i < currentTestimonial.rating!
-                          ? 'text-[var(--leonard-yellow)] fill-current'
+                          ? 'text-[var(--color-leonard-yellow)] fill-current'
                           : 'text-[var(--muted-foreground)]'
                       )}
                     />

@@ -37,7 +37,7 @@ export default function FusionDemoPage() {
 
           {/* Standard Card with Proper Contrast */}
           <Card className="rounded-xl overflow-hidden">
-            <div className="h-24 bg-gradient-to-r from-[var(--lahoma-orange)] to-[var(--abe-red)] relative">
+            <div className="h-24 bg-gradient-to-r from-[var(--color-lahoma-orange)] to-[var(--abe-red)] relative">
               <Badge className="absolute top-4 right-4" variant="secondary">
                 Premium
               </Badge>
@@ -104,7 +104,7 @@ export default function FusionDemoPage() {
           <div className="space-y-2">
             <p className="text-primary-foreground">Primary text (should be dark in light mode, white in dark mode)</p>
             <p className="text-secondary-foreground">Secondary text (should be gray in both modes)</p>
-            <p className="text-[var(--lahoma-orange)] hover:text-[var(--abe-red)]">Brand colored text (should be orange)</p>
+            <p className="text-[var(--color-lahoma-orange)] hover:text-[var(--abe-red)]">Brand colored text (should be orange)</p>
           </div>
         </div>
       </div>

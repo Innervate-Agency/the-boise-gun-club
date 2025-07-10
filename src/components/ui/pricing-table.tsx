@@ -96,13 +96,13 @@ export function PricingCard({
           plan.popular || plan.recommended ? 'scale-105 z-10' : '',
           className
         )}
-        headerGradient={plan.color ? `from-[${plan.color}] to-[var(--accent-secondary)]` : 'from-[var(--lahoma-orange)] to-[var(--accent-secondary)]'}
+        headerGradient={plan.color ? `from-[${plan.color}] to-[var(--accent-secondary)]` : 'from-[var(--color-lahoma-orange)] to-[var(--accent-secondary)]'}
         badge={plan.badge || (plan.popular ? 'Most Popular' : plan.recommended ? 'Recommended' : undefined)}
         intensity="medium"
       >
         <div className="text-center p-6">
           <div className="flex items-center justify-center mb-4">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-[var(--lahoma-orange)] to-[var(--accent-secondary)] rounded-xl">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-[var(--color-lahoma-orange)] to-[var(--accent-secondary)] rounded-xl">
               <IconComponent className="h-6 w-6 text-[var(--card)]" />
             </div>
           </div>
@@ -537,7 +537,7 @@ export const samplePlans: PricingPlan[] = [
     },
     icon: Crown,
     recommended: true,
-    color: 'from-lahoma-orange to-accent-primary',
+    color: 'from-color-lahoma-orange to-accent-primary',
     features: [
       { name: 'Range Access', included: true, description: 'Unlimited + 24/7 access' },
       { name: 'Equipment Rental', included: true },

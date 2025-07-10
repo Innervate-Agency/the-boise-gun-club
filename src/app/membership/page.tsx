@@ -86,7 +86,7 @@ export default function MembershipPage() {
         secondaryAction={{ text: 'Explore Our Facilities', href: '/club-info' }}
         icon={Users}
         backgroundPreset="gunclub"
-        gradient="from-lahoma-orange to-abe-red"
+        gradient="from-color-lahoma-orange to-abe-red"
       />
 
       <FeatureGrid

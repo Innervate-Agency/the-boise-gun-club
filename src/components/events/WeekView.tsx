@@ -44,20 +44,20 @@ const WeekView = () => {
 
     if (isLoading) {
         return (
-            <div className="font-mono text-[var(--lahoma-orange)] animate-pulse">
+            <div className="font-mono text-[var(--color-lahoma-orange)] animate-pulse">
                 LOADING WEEK DATA...
             </div>
         );
     }
 
     return (
-        <div className="font-mono text-[var(--lahoma-orange)]">
+        <div className="font-mono text-[var(--color-lahoma-orange)]">
             {/* Week navigation */}
             <div className="flex justify-between items-center mb-6">
                 <Button
                     variant="ghost"
                     onClick={() => navigateWeek('prev')}
-                    className="text-[var(--lahoma-orange)] hover:text-[var(--lahoma-orange)]/80 transition-colors"
+                    className="text-[var(--color-lahoma-orange)] hover:text-[var(--color-lahoma-orange)]/80 transition-colors"
                 >
                     {'<< PREV WEEK'}
                 </Button>
@@ -67,7 +67,7 @@ const WeekView = () => {
                 <Button
                     variant="ghost"
                     onClick={() => navigateWeek('next')}
-                    className="text-[var(--lahoma-orange)] hover:text-[var(--lahoma-orange)]/80 transition-colors"
+                    className="text-[var(--color-lahoma-orange)] hover:text-[var(--color-lahoma-orange)]/80 transition-colors"
                 >
                     {'NEXT WEEK >>'}
                 </Button>
@@ -77,12 +77,12 @@ const WeekView = () => {
             <div className="relative overflow-x-auto">
                 <div className="grid grid-cols-8 min-w-[800px]">
                     {/* Time column */}
-                    <div className="border-r border-[var(--lahoma-orange)]/30">
+                    <div className="border-r border-[var(--color-lahoma-orange)]/30">
                         <div className="h-12" /> {/* Empty corner cell */}
                         {timeSlots.map(time => (
                             <div
                                 key={time}
-                                className="h-16 border-t border-[var(--lahoma-orange)]/30 pr-2 text-right text-[var(--lahoma-orange)]/70"
+                                className="h-16 border-t border-[var(--color-lahoma-orange)]/30 pr-2 text-right text-[var(--color-lahoma-orange)]/70"
                             >
                                 {time}
                             </div>
@@ -94,10 +94,10 @@ const WeekView = () => {
                         <div key={day.toISOString()} className="relative">
                             {/* Day header */}
                             <div
-                                className={`h-12 border-b border-[var(--lahoma-orange)]/30 text-center py-2
+                                className={`h-12 border-b border-[var(--color-lahoma-orange)]/30 text-center py-2
                                     ${day.toDateString() === new Date().toDateString()
-                                        ? 'text-[var(--lahoma-orange)] bg-[var(--lahoma-orange)]/10'
-                                        : 'text-[var(--lahoma-orange)]/70'
+                                        ? 'text-[var(--color-lahoma-orange)] bg-[var(--color-lahoma-orange)]/10'
+                                        : 'text-[var(--color-lahoma-orange)]/70'
                                     }`}
                             >
                                 <div>{day.toLocaleDateString('en-US', { weekday: 'short' })}</div>
@@ -115,13 +115,13 @@ const WeekView = () => {
                                 return (
                                     <div
                                         key={`${dayIndex}-${timeIndex}`}
-                                        className="h-16 border-t border-[var(--lahoma-orange)]/30 relative"
+                                        className="h-16 border-t border-[var(--color-lahoma-orange)]/30 relative"
                                     >
                                         {currentEvents.map(event => (
                                             <motion.div
                                                 key={event.id}
-                                                className="absolute inset-x-1 bg-[var(--lahoma-orange)]/20 border border-[var(--lahoma-orange)]/30
-                                                         cursor-pointer hover:bg-[var(--lahoma-orange)]/30 transition-colors p-1"
+                                                className="absolute inset-x-1 bg-[var(--color-lahoma-orange)]/20 border border-[var(--color-lahoma-orange)]/30
+                                                         cursor-pointer hover:bg-[var(--color-lahoma-orange)]/30 transition-colors p-1"
                                                 style={{
                                                     top: '0',
                                                     height: `${(event.end.getHours() - event.start.getHours()) * 64}px`
@@ -130,7 +130,7 @@ const WeekView = () => {
                                                 animate={{ opacity: 1, scale: 1 }}
                                                 onClick={() => setSelectedEvent(event)}
                                             >
-                                                <div className="text-xs text-[var(--lahoma-orange)] truncate">
+                                                <div className="text-xs text-[var(--color-lahoma-orange)] truncate">
                                                     {event.title}
                                                 </div>
                                             </motion.div>
@@ -144,7 +144,7 @@ const WeekView = () => {
             </div>
 
             {/* Terminal decoration */}
-            <div className="mt-8 text-xs text-[var(--lahoma-orange)]/50">
+            <div className="mt-8 text-xs text-[var(--color-lahoma-orange)]/50">
                 {'> '}Displaying week schedule... Type 'help' for commands_
             </div>
         </div>

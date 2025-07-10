@@ -141,11 +141,11 @@ export const Premium: Story = {
               <div className="row-span-3">
                 <NavigationMenuLink
                   variant="premium"
-                  className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-[var(--leonard-yellow)]/20 to-[var(--lahoma-orange)]/20 p-6 no-underline outline-none focus:shadow-md"
+                  className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-[var(--color-leonard-yellow)]/20 to-[var(--color-lahoma-orange)]/20 p-6 no-underline outline-none focus:shadow-md"
                   href="/"
                 >
-                  <Trophy className="h-6 w-6 text-[var(--leonard-yellow)]" />
-                  <div className="mb-2 mt-4 text-lg font-medium text-[var(--leonard-yellow)]">
+                  <Trophy className="h-6 w-6 text-[var(--color-leonard-yellow)]" />
+                  <div className="mb-2 mt-4 text-lg font-medium text-[var(--color-leonard-yellow)]">
                     Elite Championships
                   </div>
                   <p className="text-sm leading-tight text-muted-foreground">
@@ -183,28 +183,28 @@ export const Premium: Story = {
           <NavigationMenuContent>
             <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               <NavigationMenuLink variant="premium" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none">
-                <Calendar className="h-4 w-4 mb-2 text-[var(--leonard-yellow)]" />
+                <Calendar className="h-4 w-4 mb-2 text-[var(--color-leonard-yellow)]" />
                 <div className="text-sm font-medium leading-none">Event Calendar</div>
                 <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                   Complete calendar of tournaments and events.
                 </p>
               </NavigationMenuLink>
               <NavigationMenuLink variant="premium" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none">
-                <Users className="h-4 w-4 mb-2 text-[var(--leonard-yellow)]" />
+                <Users className="h-4 w-4 mb-2 text-[var(--color-leonard-yellow)]" />
                 <div className="text-sm font-medium leading-none">Registration</div>
                 <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                   Event registration and payment processing.
                 </p>
               </NavigationMenuLink>
               <NavigationMenuLink variant="premium" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none">
-                <Target className="h-4 w-4 mb-2 text-[var(--leonard-yellow)]" />
+                <Target className="h-4 w-4 mb-2 text-[var(--color-leonard-yellow)]" />
                 <div className="text-sm font-medium leading-none">Range Schedule</div>
                 <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                   Range availability and booking system.
                 </p>
               </NavigationMenuLink>
               <NavigationMenuLink variant="premium" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none">
-                <Settings className="h-4 w-4 mb-2 text-[var(--leonard-yellow)]" />
+                <Settings className="h-4 w-4 mb-2 text-[var(--color-leonard-yellow)]" />
                 <div className="text-sm font-medium leading-none">My Schedule</div>
                 <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                   Personal event schedule and reminders.
@@ -340,11 +340,11 @@ export const Tournament: Story = {
                 <div className="row-span-3">
                   <NavigationMenuLink
                     variant="tournament"
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-slate-800/90 to-slate-700/90 p-6 no-underline outline-none focus:shadow-md border border-[var(--leonard-yellow)]/30"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-slate-800/90 to-slate-700/90 p-6 no-underline outline-none focus:shadow-md border border-[var(--color-leonard-yellow)]/30"
                     href="/"
                   >
-                    <Trophy className="h-6 w-6 text-[var(--leonard-yellow)]" />
-                    <div className="mb-2 mt-4 text-lg font-medium text-[var(--leonard-yellow)]">
+                    <Trophy className="h-6 w-6 text-[var(--color-leonard-yellow)]" />
+                    <div className="mb-2 mt-4 text-lg font-medium text-[var(--color-leonard-yellow)]">
                       Elite Tournament System
                     </div>
                     <p className="text-sm leading-tight text-slate-200">
@@ -382,28 +382,28 @@ export const Tournament: Story = {
             <NavigationMenuContent>
               <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                 <NavigationMenuLink variant="tournament" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none text-white">
-                  <Users className="h-4 w-4 mb-2 text-[var(--leonard-yellow)]" />
+                  <Users className="h-4 w-4 mb-2 text-[var(--color-leonard-yellow)]" />
                   <div className="text-sm font-medium leading-none">Registration</div>
                   <p className="line-clamp-2 text-sm leading-snug text-slate-300">
                     Elite competitor registration system.
                   </p>
                 </NavigationMenuLink>
                 <NavigationMenuLink variant="tournament" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none text-white">
-                  <Target className="h-4 w-4 mb-2 text-[var(--leonard-yellow)]" />
+                  <Target className="h-4 w-4 mb-2 text-[var(--color-leonard-yellow)]" />
                   <div className="text-sm font-medium leading-none">Squad Assignments</div>
                   <p className="line-clamp-2 text-sm leading-snug text-slate-300">
                     Professional squad management system.
                   </p>
                 </NavigationMenuLink>
                 <NavigationMenuLink variant="tournament" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none text-white">
-                  <FileText className="h-4 w-4 mb-2 text-[var(--leonard-yellow)]" />
+                  <FileText className="h-4 w-4 mb-2 text-[var(--color-leonard-yellow)]" />
                   <div className="text-sm font-medium leading-none">Score Cards</div>
                   <p className="line-clamp-2 text-sm leading-snug text-slate-300">
                     Digital scorecards and results tracking.
                   </p>
                 </NavigationMenuLink>
                 <NavigationMenuLink variant="tournament" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none text-white">
-                  <Trophy className="h-4 w-4 mb-2 text-[var(--leonard-yellow)]" />
+                  <Trophy className="h-4 w-4 mb-2 text-[var(--color-leonard-yellow)]" />
                   <div className="text-sm font-medium leading-none">Awards</div>
                   <p className="line-clamp-2 text-sm leading-snug text-slate-300">
                     Championship awards and recognition.

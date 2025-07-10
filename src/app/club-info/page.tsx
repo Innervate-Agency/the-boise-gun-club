@@ -70,7 +70,7 @@ export default function ClubInfoPage() {
         secondaryCTA={{ text: 'Explore Facilities', onClick: () => console.log('Explore Facilities') }}
         icon={<Target />}
         backgroundPreset="gunclub"
-        gradient="from-lahoma-orange to-abe-red"
+        gradient="from-color-lahoma-orange to-abe-red"
       />
 
       <StatsShowcase

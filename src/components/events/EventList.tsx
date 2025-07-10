@@ -29,7 +29,7 @@ const EventList = () => {
     };
 
     return (
-        <div className="font-mono text-[var(--lahoma-orange)]">
+        <div className="font-mono text-[var(--color-lahoma-orange)]">
             {/* Filter controls */}
             <div className="mb-6 flex flex-wrap gap-4">
                 {['all', 'competition', 'training', 'social', 'maintenance'].map((category) => (
@@ -40,8 +40,8 @@ const EventList = () => {
                         className={`
                             px-4 py-2 border transition-colors uppercase tracking-wider
                             ${filter === category
-                                ? 'border-[var(--lahoma-orange)] text-[var(--lahoma-orange)] bg-[var(--lahoma-orange)]/10'
-                                : 'border-[var(--lahoma-orange)]/30 text-[var(--lahoma-orange)]/70 hover:border-[var(--lahoma-orange)]/60 hover:text-[var(--lahoma-orange)]'
+                                ? 'border-[var(--color-lahoma-orange)] text-[var(--color-lahoma-orange)] bg-[var(--color-lahoma-orange)]/10'
+                                : 'border-[var(--color-lahoma-orange)]/30 text-[var(--color-lahoma-orange)]/70 hover:border-[var(--color-lahoma-orange)]/60 hover:text-[var(--color-lahoma-orange)]'
                             }
                         `}
                     >
@@ -58,7 +58,7 @@ const EventList = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="text-[var(--lahoma-orange)]/70 text-center py-8"
+                            className="text-[var(--color-lahoma-orange)]/70 text-center py-8"
                         >
                             NO EVENTS FOUND IN DATABASE_
                         </motion.div>
@@ -71,8 +71,8 @@ const EventList = () => {
                             {filteredEvents.map((event, index) => (
                                 <motion.div
                                     key={event.id}
-                                    className="border border-[var(--lahoma-orange)]/30 bg-[var(--owyhee-green-dark)] p-4 cursor-pointer
-                                             hover:bg-[var(--lahoma-orange)]/5 transition-colors"
+                                    className="border border-[var(--color-lahoma-orange)]/30 bg-[var(--owyhee-green-dark)] p-4 cursor-pointer
+                                             hover:bg-[var(--color-lahoma-orange)]/5 transition-colors"
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: index * 0.1 }}
@@ -81,8 +81,8 @@ const EventList = () => {
                                     {/* Event header */}
                                     <div className="flex items-start justify-between mb-2">
                                         <div>
-                                            <h3 className="text-xl text-[var(--lahoma-orange)]">{event.title}</h3>
-                                            <div className="text-[var(--lahoma-orange)]/70">
+                                            <h3 className="text-xl text-[var(--color-lahoma-orange)]">{event.title}</h3>
+                                            <div className="text-[var(--color-lahoma-orange)]/70">
                                                 {formatDate(event.start)}
                                             </div>
                                         </div>
@@ -100,12 +100,12 @@ const EventList = () => {
                                     {/* Event details */}
                                     <div className="grid grid-cols-2 gap-4 text-sm">
                                         <div>
-                                            <span className="text-[var(--lahoma-orange)]/70">LOCATION: </span>
-                                            <span className="text-[var(--lahoma-orange)]">{event.location}</span>
+                                            <span className="text-[var(--color-lahoma-orange)]/70">LOCATION: </span>
+                                            <span className="text-[var(--color-lahoma-orange)]">{event.location}</span>
                                         </div>
                                         <div>
-                                            <span className="text-[var(--lahoma-orange)]/70">CATEGORY: </span>
-                                            <span className="text-[var(--lahoma-orange)]">
+                                            <span className="text-[var(--color-lahoma-orange)]/70">CATEGORY: </span>
+                                            <span className="text-[var(--color-lahoma-orange)]">
                                                 {event.category.toUpperCase()}
                                             </span>
                                         </div>
@@ -114,15 +114,15 @@ const EventList = () => {
                                     {/* Capacity bar */}
                                     {event.maxParticipants && (
                                         <div className="mt-3">
-                                            <div className="flex items-center justify-between text-xs text-[var(--lahoma-orange)]/70 mb-1">
+                                            <div className="flex items-center justify-between text-xs text-[var(--color-lahoma-orange)]/70 mb-1">
                                                 <span>CAPACITY</span>
                                                 <span>
                                                     {event.currentParticipants}/{event.maxParticipants}
                                                 </span>
                                             </div>
-                                            <div className="h-1 bg-[var(--lahoma-orange)]/20 rounded-full overflow-hidden">
+                                            <div className="h-1 bg-[var(--color-lahoma-orange)]/20 rounded-full overflow-hidden">
                                                 <motion.div
-                                                    className="h-full bg-[var(--lahoma-orange)]"
+                                                    className="h-full bg-[var(--color-lahoma-orange)]"
                                                     initial={{ width: 0 }}
                                                     animate={{
                                                         width: `${(event.currentParticipants! / event.maxParticipants) * 100}%`
@@ -134,7 +134,7 @@ const EventList = () => {
                                     )}
 
                                     {/* Terminal decoration */}
-                                    <div className="mt-3 text-xs text-[var(--lahoma-orange)]/50">
+                                    <div className="mt-3 text-xs text-[var(--color-lahoma-orange)]/50">
                                         {'>'} Click for more details_
                                     </div>
                                 </motion.div>

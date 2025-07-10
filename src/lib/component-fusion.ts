@@ -19,16 +19,16 @@ export const fusionVariants = {
       // Base styling
       "relative overflow-hidden group",
       // Background and borders
-      "bg-gradient-to-br from-card via-card to-leonard-yellow/5",
-      "border-leonard-yellow/30 border",
+      "bg-gradient-to-br from-card via-card to-color-leonard-yellow/5",
+      "border-color-leonard-yellow/30 border",
       // Shadows and elevation
-      "shadow-lg hover:shadow-xl hover:shadow-lahoma-orange/25",
+      "shadow-lg hover:shadow-xl hover:shadow-color-lahoma-orange/25",
       // Hover effects
-      "hover:scale-[1.02] hover:from-leonard-yellow/5 hover:to-lahoma-orange/10",
+      "hover:scale-[1.02] hover:from-color-leonard-yellow/5 hover:to-color-lahoma-orange/10",
       // Transitions
       "transition-all duration-300",
       // Dark mode
-      "dark:from-card dark:to-leonard-yellow/5",
+      "dark:from-card dark:to-color-leonard-yellow/5",
     ].join(" "),
     
     // Elite variant: Maximum impact while maintaining professionalism
@@ -38,7 +38,7 @@ export const fusionVariants = {
       // Advanced styling
       "bg-card border-2 border-transparent bg-clip-padding",
       // Enhanced shadows
-      "shadow-lg hover:shadow-2xl hover:shadow-lahoma-orange/35",
+      "shadow-lg hover:shadow-2xl hover:shadow-color-lahoma-orange/35",
       // Sophisticated hover effects
       "hover:scale-[1.02]",
       // Premium transitions
@@ -147,11 +147,11 @@ export const fusionEffects = {
 export const componentEnhancements = {
   button: {
     premium: {
-      className: "bg-gradient-to-r from-leonard-yellow to-lahoma-orange text-black shadow-lg hover:shadow-xl hover:scale-105 focus-visible:ring-leonard-yellow/50 border border-leonard-yellow/20",
+      className: "bg-gradient-to-r from-color-leonard-yellow to-color-lahoma-orange text-black shadow-lg hover:shadow-xl hover:scale-105 focus-visible:ring-color-leonard-yellow/50 border border-color-leonard-yellow/20",
       effects: ["hover-glow"],
     },
     elite: {
-      className: "bg-gradient-to-r from-leonard-yellow via-lahoma-orange to-leonard-yellow bg-[length:200%_100%] text-black shadow-xl hover:shadow-2xl hover:scale-110 focus-visible:ring-leonard-yellow/50 border-2 border-leonard-yellow/30 animate-shimmer",
+      className: "bg-gradient-to-r from-color-leonard-yellow via-color-lahoma-orange to-color-leonard-yellow bg-[length:200%_100%] text-black shadow-xl hover:shadow-2xl hover:scale-110 focus-visible:ring-color-leonard-yellow/50 border-2 border-color-leonard-yellow/30 animate-shimmer",
       effects: ["glow-orange"],
     },
   },
@@ -169,44 +169,44 @@ export const componentEnhancements = {
   
   input: {
     premium: {
-      className: "border-leonard-yellow/30 focus:border-leonard-yellow focus:ring-leonard-yellow/20 bg-gradient-to-r from-background to-leonard-yellow/5",
+      className: "border-color-leonard-yellow/30 focus:border-color-leonard-yellow focus:ring-color-leonard-yellow/20 bg-gradient-to-r from-background to-color-leonard-yellow/5",
       effects: ["glow-subtle"],
     },
     elite: {
-      className: "border-2 border-leonard-yellow/50 focus:border-leonard-yellow focus:ring-leonard-yellow/30 bg-gradient-to-r from-background via-leonard-yellow/5 to-lahoma-orange/5",
+      className: "border-2 border-color-leonard-yellow/50 focus:border-color-leonard-yellow focus:ring-color-leonard-yellow/30 bg-gradient-to-r from-background via-color-leonard-yellow/5 to-color-lahoma-orange/5",
       effects: ["glow-orange"],
     },
   },
   
   badge: {
     premium: {
-      className: "bg-gradient-to-r from-leonard-yellow to-lahoma-orange text-black shadow-md border border-leonard-yellow/20",
+      className: "bg-gradient-to-r from-color-leonard-yellow to-color-lahoma-orange text-black shadow-md border border-color-leonard-yellow/20",
       effects: [],
     },
     elite: {
-      className: "bg-gradient-to-r from-leonard-yellow via-lahoma-orange to-leonard-yellow bg-[length:200%_100%] text-black shadow-lg border-2 border-leonard-yellow/30 animate-shimmer",
+      className: "bg-gradient-to-r from-color-leonard-yellow via-color-lahoma-orange to-color-leonard-yellow bg-[length:200%_100%] text-black shadow-lg border-2 border-color-leonard-yellow/30 animate-shimmer",
       effects: ["glow-subtle"],
     },
   },
   
   select: {
     premium: {
-      className: "border-leonard-yellow/30 focus:border-leonard-yellow focus:ring-leonard-yellow/20",
+      className: "border-color-leonard-yellow/30 focus:border-color-leonard-yellow focus:ring-color-leonard-yellow/20",
       effects: [],
     },
     elite: {
-      className: "border-2 border-leonard-yellow/50 focus:border-leonard-yellow focus:ring-leonard-yellow/30",
+      className: "border-2 border-color-leonard-yellow/50 focus:border-color-leonard-yellow focus:ring-color-leonard-yellow/30",
       effects: ["glow-subtle"],
     },
   },
   
   alert: {
     premium: {
-      className: "border-leonard-yellow/40 bg-gradient-to-r from-leonard-yellow/10 to-lahoma-orange/10",
+      className: "border-color-leonard-yellow/40 bg-gradient-to-r from-color-leonard-yellow/10 to-color-lahoma-orange/10",
       effects: [],
     },
     elite: {
-      className: "border-2 border-leonard-yellow/60 bg-gradient-to-r from-leonard-yellow/15 to-lahoma-orange/15",
+      className: "border-2 border-color-leonard-yellow/60 bg-gradient-to-r from-color-leonard-yellow/15 to-color-lahoma-orange/15",
       effects: ["glow-subtle"],
     },
   },
@@ -273,11 +273,11 @@ ${fusionEffects.glowEffects}
 
 /* Focus ring utilities */
 .focus-ring-leonard { 
-  @apply focus-visible:ring-2 focus-visible:ring-leonard-yellow focus-visible:ring-offset-2; 
+  @apply focus-visible:ring-2 focus-visible:ring-color-leonard-yellow focus-visible:ring-offset-2; 
 }
 
 .focus-ring-lahoma { 
-  @apply focus-visible:ring-2 focus-visible:ring-lahoma-orange focus-visible:ring-offset-2; 
+  @apply focus-visible:ring-2 focus-visible:ring-color-lahoma-orange focus-visible:ring-offset-2; 
 }
 `;
 

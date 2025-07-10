@@ -94,7 +94,7 @@ const defaultCategories: FAQCategory[] = [
     title: 'Events',
     description: 'Competitions, lessons, and activities',
     icon: Calendar,
-    color: 'from-lahoma-orange to-accent-primary'
+    color: 'from-color-lahoma-orange to-accent-primary'
   },
   {
     id: 'billing',

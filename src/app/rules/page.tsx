@@ -73,7 +73,7 @@ export default function RulesPage() {
         secondaryAction={{ text: 'Emergency Info', onClick: () => document.getElementById('emergency')?.scrollIntoView({ behavior: 'smooth' }) }}
         icon={Shield}
         backgroundPreset="gunclub"
-        gradient="from-brand-red-action to-lahoma-orange"
+        gradient="from-brand-red-action to-color-lahoma-orange"
       />
 
       <FeatureGrid
