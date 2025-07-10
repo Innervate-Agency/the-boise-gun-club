@@ -106,7 +106,7 @@ body {
 /* Typography hierarchy following design system */
 h1 {
   font-family: var(--font-heading);
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
   color: var(--text-primary);
 }
@@ -149,7 +149,7 @@ h3, h4, h5, h6 {
 /* Brand title utilities for BOISE + GUNCLUB pattern */
 .brand-title-heavy {
   font-family: var(--font-heading);
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
 }
 

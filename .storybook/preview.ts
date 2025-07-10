@@ -5,7 +5,7 @@ import '../src/styles/themes.css'
 // Add font CSS variables and comprehensive styling for Storybook
 const fontStyleSheet = document.createElement('style');
 fontStyleSheet.textContent = `
-  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700;800&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
   
   :root {
     --font-heading: "Rajdhani", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -13,87 +13,109 @@ fontStyleSheet.textContent = `
     --font-serif: "Noto Serif", Georgia, "Times New Roman", serif;
   }
   
-  /* Apply typography hierarchy to all Storybook contexts */
-  h1, .sbdocs-h1 {
-    font-family: var(--font-heading) !important;
-    font-weight: 800 !important;
-    text-transform: uppercase !important;
+  /* Apply typography hierarchy using proper CSS specificity */
+  .sb-show-main h1,
+  .docs-story h1,
+  .sbdocs-content h1,
+  .sbdocs-h1 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
   }
   
-  h2, .sbdocs-h2 {
-    font-family: var(--font-heading) !important;
-    font-weight: 600 !important;
-    text-transform: none !important;
+  .sb-show-main h2,
+  .docs-story h2,
+  .sbdocs-content h2,
+  .sbdocs-h2 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-transform: none;
   }
   
-  h3, .sbdocs-h3 {
-    font-family: var(--font-serif) !important;
-    font-weight: 600 !important;
-    text-transform: none !important;
+  .sb-show-main h3,
+  .docs-story h3,
+  .sbdocs-content h3,
+  .sbdocs-h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: none;
   }
   
-  h4, h5, h6, .sbdocs-h4, .sbdocs-h5, .sbdocs-h6 {
-    font-family: var(--font-body) !important;
-    font-weight: 600 !important;
-    text-transform: none !important;
+  .sb-show-main h4,
+  .sb-show-main h5,
+  .sb-show-main h6,
+  .docs-story h4,
+  .docs-story h5,
+  .docs-story h6,
+  .sbdocs-content h4,
+  .sbdocs-content h5,
+  .sbdocs-content h6,
+  .sbdocs-h4,
+  .sbdocs-h5,
+  .sbdocs-h6 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: none;
   }
   
-  body, p, div, span, .sbdocs-p, .sbdocs-div {
-    font-family: var(--font-body) !important;
-  }
-  
-  /* Storybook docs specific styling */
-  .docs-story {
-    font-family: var(--font-body) !important;
-  }
-  
-  .sbdocs-content {
-    font-family: var(--font-body) !important;
-  }
-  
-  /* Code blocks should remain monospace */
-  code, pre, .sbdocs-code, .sbdocs-pre {
-    font-family: 'Fira Code', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
-  }
-  
-  /* Comprehensive dark mode support for Storybook docs */
-  .dark .sbdocs-content,
-  .dark .docs-story,
-  .dark #docs-root,
-  .dark .sb-show-main {
-    color: var(--text-primary, #FDFDFD) !important;
-    background-color: var(--bg-primary, #2F3135) !important;
-  }
-  
-  .dark .sbdocs-wrapper,
-  .dark .sbdocs-container {
-    background-color: var(--bg-primary, #2F3135) !important;
-  }
-  
-  .dark .sbdocs-h1,
-  .dark .sbdocs-h2,
-  .dark .sbdocs-h3,
-  .dark .sbdocs-h4,
-  .dark .sbdocs-h5,
-  .dark .sbdocs-h6 {
-    color: var(--text-primary, #FDFDFD) !important;
-  }
-  
-  .dark .sbdocs-p {
-    color: var(--text-secondary, #EEF1F7) !important;
-  }
-  
-  /* Light mode defaults */
-  .sbdocs-content,
+  .sb-show-main,
   .docs-story,
-  #docs-root,
-  .sb-show-main {
+  .sbdocs-content,
+  .sbdocs-p,
+  .sbdocs-div {
+    font-family: var(--font-body);
+  }
+  
+  /* Code blocks with proper specificity */
+  .sb-show-main code,
+  .sb-show-main pre,
+  .docs-story code,
+  .docs-story pre,
+  .sbdocs-content code,
+  .sbdocs-content pre,
+  .sbdocs-code,
+  .sbdocs-pre {
+    font-family: 'Fira Code', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  }
+  
+  /* Dark mode support with proper specificity */
+  html.dark .sbdocs-content,
+  html.dark .docs-story,
+  html.dark #docs-root,
+  html.dark .sb-show-main {
+    color: var(--text-primary, #FDFDFD);
+    background-color: var(--bg-primary, #2F3135);
+  }
+  
+  html.dark .sbdocs-wrapper,
+  html.dark .sbdocs-container {
+    background-color: var(--bg-primary, #2F3135);
+  }
+  
+  html.dark .sbdocs-h1,
+  html.dark .sbdocs-h2,
+  html.dark .sbdocs-h3,
+  html.dark .sbdocs-h4,
+  html.dark .sbdocs-h5,
+  html.dark .sbdocs-h6 {
+    color: var(--text-primary, #FDFDFD);
+  }
+  
+  html.dark .sbdocs-p {
+    color: var(--text-secondary, #EEF1F7);
+  }
+  
+  /* Light mode defaults with proper specificity */
+  html:not(.dark) .sbdocs-content,
+  html:not(.dark) .docs-story,
+  html:not(.dark) #docs-root,
+  html:not(.dark) .sb-show-main {
     color: var(--text-primary, #372103);
     background-color: var(--bg-primary, #f8f6f1);
   }
   
-  .sbdocs-wrapper,
-  .sbdocs-container {
+  html:not(.dark) .sbdocs-wrapper,
+  html:not(.dark) .sbdocs-container {
     background-color: var(--bg-primary, #f8f6f1);
   }
 `;

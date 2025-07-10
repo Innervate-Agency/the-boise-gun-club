@@ -7,7 +7,7 @@ import './globals.css';
 // Configure fonts using Next.js built-in system
 const rajdhani = Rajdhani({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-heading',
   display: 'swap',
 });

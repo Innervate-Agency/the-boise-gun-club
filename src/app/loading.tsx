@@ -5,21 +5,8 @@ import { motion } from 'framer-motion';
 export default function Loading() {
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--bg-primary)]">
-            {/* Background effects */}
-            <div className="absolute inset-0">
-                {/* Smoke texture */}
-                <div 
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                        backgroundImage: `url('/images/Smoke/Background_03.webp')`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center'
-                    }}
-                />
-                
-                {/* Vignette */}
-                <div className="absolute inset-0 bg-radial-gradient from-transparent to-black/60" />
-            </div>
+            {/* Clean background */}
+            <div className="absolute inset-0 bg-bg-primary" />
             
             {/* Loading content */}
             <div className="relative z-10 text-center">

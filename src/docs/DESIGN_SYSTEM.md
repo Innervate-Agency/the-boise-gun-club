@@ -38,7 +38,7 @@ This document defines the visual design standards and aesthetic guidelines for t
 
 **H1 - Brand Titles (Rajdhani)**
 - Always full caps with strategic weight variations
-- Example: "BOISE" (font-weight: 800) + "GUNCLUB" (font-weight: 300)
+- Example: "BOISE" (font-weight: 700) + "GUNCLUB" (font-weight: 300)
 - Usage: Hero sections, main page titles, brand elements
 
 **H2 - Major Sections (Rajdhani)**
