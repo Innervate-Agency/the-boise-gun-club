@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/nextjs-vite'
 import '../src/app/globals.css'
 import '../src/styles/themes.css'
 
-// Add font CSS variables for Storybook
+// Add font CSS variables and comprehensive styling for Storybook
 const fontStyleSheet = document.createElement('style');
 fontStyleSheet.textContent = `
   @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700;800&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
@@ -13,33 +13,58 @@ fontStyleSheet.textContent = `
     --font-serif: "Noto Serif", Georgia, "Times New Roman", serif;
   }
   
-  /* Apply typography hierarchy */
-  h1 {
-    font-family: var(--font-heading);
-    font-weight: 800;
-    text-transform: uppercase;
+  /* Apply typography hierarchy to all Storybook contexts */
+  h1, .sbdocs-h1 {
+    font-family: var(--font-heading) !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
   }
   
-  h2 {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    text-transform: none;
+  h2, .sbdocs-h2 {
+    font-family: var(--font-heading) !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
   }
   
-  h3 {
-    font-family: var(--font-serif);
-    font-weight: 600;
-    text-transform: none;
+  h3, .sbdocs-h3 {
+    font-family: var(--font-serif) !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
   }
   
-  h4, h5, h6 {
-    font-family: var(--font-body);
-    font-weight: 600;
-    text-transform: none;
+  h4, h5, h6, .sbdocs-h4, .sbdocs-h5, .sbdocs-h6 {
+    font-family: var(--font-body) !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
   }
   
-  body, p, div, span {
-    font-family: var(--font-body);
+  body, p, div, span, .sbdocs-p, .sbdocs-div {
+    font-family: var(--font-body) !important;
+  }
+  
+  /* Storybook docs specific styling */
+  .docs-story {
+    font-family: var(--font-body) !important;
+  }
+  
+  .sbdocs-content {
+    font-family: var(--font-body) !important;
+  }
+  
+  /* Code blocks should remain monospace */
+  code, pre, .sbdocs-code, .sbdocs-pre {
+    font-family: 'Fira Code', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+  }
+  
+  /* Theme-aware styling for docs */
+  .dark .sbdocs-content {
+    color: var(--text-primary, #FDFDFD);
+    background-color: var(--bg-primary, #2F3135);
+  }
+  
+  .sbdocs-content {
+    color: var(--text-primary, #372103);
+    background-color: var(--bg-primary, #f8f6f1);
   }
 `;
 if (typeof document !== 'undefined') {
@@ -71,6 +96,14 @@ const preview: Preview = {
 
     a11y: {
       test: 'todo'
+    },
+
+    docs: {
+      theme: undefined, // This will be set dynamically
+      story: {
+        inline: true,
+        height: 'auto',
+      },
     }
   },
 
@@ -91,17 +124,48 @@ const preview: Preview = {
     (Story, context) => {
       const theme = context.globals.theme || 'light';
       
-      // Apply theme properly
+      // Apply theme properly to both stories and docs
       if (typeof document !== 'undefined') {
-        if (theme === 'dark') {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-        document.documentElement.setAttribute('data-theme', theme);
-        
-        // Force CSS variable update
         const root = document.documentElement;
+        const body = document.body;
+        
+        if (theme === 'dark') {
+          root.classList.add('dark');
+          body.classList.add('dark');
+          // Apply dark theme to Storybook's own elements
+          const storybook = document.querySelector('#storybook-root');
+          if (storybook) {
+            storybook.classList.add('dark');
+          }
+          // Apply to docs container
+          const docsContainer = document.querySelector('.docs-story');
+          if (docsContainer) {
+            docsContainer.classList.add('dark');
+          }
+        } else {
+          root.classList.remove('dark');
+          body.classList.remove('dark');
+          const storybook = document.querySelector('#storybook-root');
+          if (storybook) {
+            storybook.classList.remove('dark');
+          }
+          const docsContainer = document.querySelector('.docs-story');
+          if (docsContainer) {
+            docsContainer.classList.remove('dark');
+          }
+        }
+        
+        root.setAttribute('data-theme', theme);
+        body.setAttribute('data-theme', theme);
+        
+        // Apply theme-specific styling to Storybook UI
+        const storybookUI = document.querySelector('.sidebar-container, .main-container');
+        if (storybookUI) {
+          storybookUI.setAttribute('data-theme', theme);
+        }
+        
+        // Force CSS variable update for proper theme propagation
+        root.style.setProperty('--sb-theme', theme);
         root.style.setProperty('--force-update', Math.random().toString());
       }
       

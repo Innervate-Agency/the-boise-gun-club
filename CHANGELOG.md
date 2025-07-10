@@ -8,31 +8,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **CRITICAL SAFETY**: Modern AST-based component enhancement script using ts-morph (2025 standards)
+- Professional scroll motion system with accessibility support (prefers-reduced-motion)
 - Complete typography hierarchy implementation with proper font assignments
 - Stripe-inspired spacing system with comprehensive CSS variables
 - Enhanced component variants (Premium, Elite) with visual impact
 - Gradient border system for special callout cards
 - CalloutCard component with animated and subtle variants
 - Professional glow effects using Lahoma Orange for better contrast
+- Comprehensive fusion CSS effects library for component enhancement
+- Mass component enhancement automation tools and templates
 
 ### Changed
+- **SAFETY CRITICAL**: Replaced dangerous regex-based script with AST parsing solution
 - Typography hierarchy: H1 (Rajdhani caps), H2 (Rajdhani), H3 (Noto Serif), H4-H6 (Noto Sans)
 - Button sizing to match Stripe proportions with proper touch targets
 - Card components with enhanced hover effects, scales, and color-tinted shadows
 - Glow colors from yellow to orange/red for better visual contrast
 - Storybook integration to use proper Google Fonts and design system
+- Homepage with balanced scroll motion effects following "no balls to the walls" philosophy
 
 ### Enhanced
 - Button component with Elite variant featuring animated gradient backgrounds
 - Card component with Premium variant including floating orbs and enhanced effects
+- Badge component with Elite variant and enhanced shimmer effects
+- Input component with Elite variant and enhanced focus states
+- Alert component with Elite variant and gradient backgrounds
 - Visual effects balanced for professional gun club aesthetic
 - Component spacing following Stripe design principles
+- Storybook docs with proper theming and font integration
 
 ### Fixed
+- **CRITICAL**: Prevented file corruption by replacing unsafe code modification script
+- Storybook docs theming - theme toggle now works in both stories AND docs pages
 - Storybook typography rendering and theme consistency
 - Font loading issues in documentation and preview modes
 - Component spacing inconsistencies across different sizes
 - Color contrast issues with glow effects on light backgrounds
+
+### Safety & Development
+- Researched and implemented 2024-2025 best practices for automated code modification
+- Added comprehensive backup system with timestamped file protection
+- Implemented dry-run testing and rollback capabilities for safe component enhancement
+- Created production-ready AST manipulation tools following industry standards
 
 ## [0.4.0] - 2024-01-09
 
