@@ -12,6 +12,7 @@ import {
   type FieldPath,
   type FieldValues,
 } from "react-hook-form"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
@@ -73,16 +74,43 @@ const FormItemContext = React.createContext<FormItemContextValue>(
   {} as FormItemContextValue
 )
 
-function FormItem({ className, ...props }: React.ComponentProps<"div">) {
+const formItemVariants = cva(
+  "grid gap-2 transition-all duration-200",
+  {
+    variants: {
+      variant: {
+        default: "",
+        premium: "p-4 rounded-lg border border-orange-200 bg-gradient-to-br from-white to-orange-50 dark:from-gray-900 dark:to-orange-950 dark:border-orange-800",
+        elite: "p-4 rounded-lg border border-amber-200 bg-gradient-to-br from-white via-amber-50 to-orange-50 relative overflow-hidden dark:from-gray-900 dark:via-amber-950 dark:to-orange-950 dark:border-amber-700",
+        glass: "p-4 rounded-lg border border-white/20 bg-white/10 backdrop-blur-md dark:bg-black/10"
+      }
+    },
+    defaultVariants: {
+      variant: "default"
+    }
+  }
+)
+
+function FormItem({ 
+  className, 
+  variant, 
+  ...props 
+}: React.ComponentProps<"div"> & VariantProps<typeof formItemVariants>) {
   const id = React.useId()
 
   return (
     <FormItemContext.Provider value={{ id }}>
       <div
         data-slot="form-item"
-        className={cn("grid gap-2", className)}
+        className={cn(formItemVariants({ variant }), className)}
         {...props}
-      />
+      >
+        {/* Elite shimmer effect */}
+        {variant === 'elite' && (
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse opacity-30 pointer-events-none" />
+        )}
+        {props.children}
+      </div>
     </FormItemContext.Provider>
   )
 }

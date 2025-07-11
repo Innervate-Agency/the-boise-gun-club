@@ -89,8 +89,9 @@ export default function CardPlayground() {
                     className="w-full border border-gray-300 rounded-lg px-3 py-2"
                   >
                     <option value="default">Default</option>
+                    <option value="premium">Premium</option>
+                    <option value="elite">Elite</option>
                     <option value="glass">Glass</option>
-                    <option value="gradient">Gradient</option>
                   </select>
                 </div>
                 <div className="flex items-center">
@@ -185,7 +186,7 @@ export default function CardPlayground() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="text-lg font-medium text-text-primary mb-3">Default Card</h3>
-                  <Card>
+                  <Card variant="default">
                     <div className="p-4">
                       <h4 className="font-semibold text-text-primary mb-2">Clean & Simple</h4>
                       <p className="text-text-secondary text-sm">Standard card with subtle shadow and clean styling.</p>
@@ -194,21 +195,31 @@ export default function CardPlayground() {
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-medium text-text-primary mb-3">Glass Card</h3>
-                  <Card>
+                  <h3 className="text-lg font-medium text-text-primary mb-3">Premium Card</h3>
+                  <Card variant="premium">
                     <div className="p-4">
-                      <h4 className="font-semibold text-text-primary mb-2">Modern Glass</h4>
-                      <p className="text-text-secondary text-sm">Glassmorphism effect with blur and transparency.</p>
+                      <h4 className="font-semibold text-text-primary mb-2">Premium Style</h4>
+                      <p className="text-text-secondary text-sm">Enhanced styling with Leonard Yellow & Lahoma Orange gradients.</p>
                     </div>
                   </Card>
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-medium text-text-primary mb-3">Gradient Card</h3>
-                  <Card>
+                  <h3 className="text-lg font-medium text-text-primary mb-3">Elite Card</h3>
+                  <Card variant="elite">
                     <div className="p-4">
-                      <h4 className="font-semibold text-white mb-2">Bold Gradient</h4>
-                      <p className="text-gray-100 text-sm">Eye-catching gradient background for special content.</p>
+                      <h4 className="font-semibold text-text-primary mb-2">Elite Experience</h4>
+                      <p className="text-text-secondary text-sm">Premium styling with animated shimmer effects and amber accents.</p>
+                    </div>
+                  </Card>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-medium text-text-primary mb-3">Glass Card</h3>
+                  <Card variant="glass">
+                    <div className="p-4">
+                      <h4 className="font-semibold text-text-primary mb-2">Modern Glass</h4>
+                      <p className="text-text-secondary text-sm">Glassmorphism effect with blur and transparency.</p>
                     </div>
                   </Card>
                 </div>

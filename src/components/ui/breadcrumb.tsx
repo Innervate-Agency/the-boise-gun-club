@@ -7,14 +7,14 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const breadcrumbVariants = cva(
-  "transition-all duration-300",
+  "transition-fast relative overflow-hidden",
   {
     variants: {
       variant: {
         default: "",
-        premium: "bg-gradient-to-r from-[var(--color-leonard-yellow)]/5 to-[var(--color-lahoma-orange)]/5 backdrop-blur-sm border border-[var(--color-leonard-yellow)]/10 rounded-lg p-3 shadow-lg",
-        glass: "bg-[var(--card)]/5 backdrop-blur-md border border-white/10 rounded-lg p-3 shadow-xl",
-        tournament: "bg-gradient-to-r from-slate-900/50 to-slate-800/50 backdrop-blur-sm border border-[var(--color-leonard-yellow)]/20 rounded-xl p-4 shadow-2xl",
+        premium: "bg-gradient-to-r from-leonard-yellow/5 to-lahoma-orange/5 backdrop-blur-sm border border-leonard-yellow/10 rounded-lg p-3 shadow-md hover:shadow-lg group",
+        elite: "bg-gradient-to-r from-leonard-yellow/10 via-lahoma-orange/10 to-leonard-yellow/10 bg-[length:200%_100%] backdrop-blur-sm border-2 border-leonard-yellow/20 rounded-lg p-3 shadow-lg hover:shadow-xl animate-shimmer group",
+        glass: "border-white/20 bg-card/10 backdrop-blur-md text-card hover:bg-card/20 hover:border-white/30 dark:border-white/10 dark:bg-card/5 dark:hover:bg-card/10 rounded-lg p-3 shadow-lg",
         minimal: "border-b border-border pb-2",
       },
       size: {
@@ -32,14 +32,14 @@ const breadcrumbVariants = cva(
 )
 
 const breadcrumbListVariants = cva(
-  "flex flex-wrap items-center break-words transition-all duration-300",
+  "flex flex-wrap items-center break-words transition-fast",
   {
     variants: {
       variant: {
         default: "text-muted-foreground",
-        premium: "text-slate-700 dark:text-slate-200",
-        glass: "text-[var(--card)]/80",
-        tournament: "text-slate-100",
+        premium: "text-foreground",
+        elite: "text-foreground font-semibold",
+        glass: "text-card",
         minimal: "text-muted-foreground",
       },
       size: {
@@ -80,9 +80,9 @@ const breadcrumbPageVariants = cva(
     variants: {
       variant: {
         default: "text-foreground",
-        premium: "text-[var(--color-leonard-yellow)] font-semibold drop-shadow-sm",
-        glass: "text-[var(--card)] font-medium drop-shadow-sm",
-        tournament: "text-[var(--color-leonard-yellow)] font-bold drop-shadow-md",
+        premium: "text-leonard-yellow font-semibold drop-shadow-sm",
+        elite: "text-leonard-yellow font-bold drop-shadow-md",
+        glass: "text-card font-medium drop-shadow-sm",
         minimal: "text-foreground",
       },
     },
@@ -97,14 +97,26 @@ interface BreadcrumbProps extends React.ComponentProps<"nav"> {
   size?: VariantProps<typeof breadcrumbVariants>["size"]
 }
 
-function Breadcrumb({ className, variant = "default", size = "md", ...props }: BreadcrumbProps) {
+function Breadcrumb({ className, variant = "default", size = "md", children, ...props }: BreadcrumbProps) {
   return (
     <nav 
       aria-label="breadcrumb" 
       data-slot="breadcrumb" 
       className={cn(breadcrumbVariants({ variant, size }), className)}
       {...props} 
-    />
+    >
+      {/* Premium glow effect */}
+      {variant === 'premium' && (
+        <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/30 to-leonard-yellow/30 blur-md opacity-50 group-hover:opacity-70 transition-smooth -z-10" />
+      )}
+      
+      {/* Elite shimmer effect */}
+      {variant === 'elite' && (
+        <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/40 to-leonard-yellow/40 blur-lg opacity-60 group-hover:opacity-80 transition-smooth -z-10" />
+      )}
+      
+      {children}
+    </nav>
   )
 }
 

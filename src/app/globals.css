@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  /* Brand Colors */
   --color-primary: #F2CB05;
   --color-secondary: #0A0A0A;
   --color-leonard-yellow: #F2CB05;
@@ -12,18 +13,49 @@
   --color-accent-secondary: #f07b1d;
   --color-accent-tertiary: #E3C03C;
   
+  /* Typography */
   --font-heading: "Rajdhani", sans-serif;
   --font-body: "Noto Sans", sans-serif;
   --font-serif: "Noto Serif", serif;
   
+  /* Transitions - Stripe-inspired precision */
   --transition-fast: 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
   --transition-smooth: 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
   
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  /* Shadow System - Stripe-inspired layered elevation */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 2px 4px -1px rgb(50 50 93 / 0.25);
+  --shadow: 0 4px 8px -2px rgb(50 50 93 / 0.25);
+  --shadow-md: 0 4px 8px -2px rgb(50 50 93 / 0.25);
+  --shadow-lg: 0 8px 16px -4px rgb(50 50 93 / 0.25);
+  --shadow-xl: 0 16px 32px -8px rgb(50 50 93 / 0.25);
+  
+  /* Premium/Elite Gradients */
+  --gradient-premium: linear-gradient(45deg, #F2CB05, #F28705);
+  --gradient-elite: linear-gradient(45deg, #F2CB05, #F28705, #DAA520);
+  --gradient-subtle: linear-gradient(45deg, rgb(242 203 5 / 0.05), rgb(242 135 5 / 0.05));
+  
+  /* Design System Colors */
+  --border: #e5e7eb;
+  --input: #ffffff;
+  --ring: #F2CB05;
+  --radius: 0.5rem;
+  
+  /* Destructive/Error Colors */
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  
+  /* Success Colors */  
+  --success: #22c55e;
+  --success-foreground: #ffffff;
+  
+  /* Warning Colors */
+  --warning: #f59e0b;
+  --warning-foreground: #ffffff;
+  
+  /* Info Colors */
+  --info: #3b82f6;
+  --info-foreground: #ffffff;
   
   /* Stripe-inspired spacing system */
   --space-1: 4px;
@@ -62,6 +94,8 @@
     --accent-tertiary: #E3C03C;
     --card: #ffffff;
     --card-foreground: #372103;
+    --popover: #ffffff;
+    --popover-foreground: #372103;
     --muted: #ede7de;
     --muted-foreground: #693e21;
     --brand-blue: #5198cd;
@@ -84,6 +118,8 @@
     --accent-tertiary: #F25C05;
     --card: #2F3135;
     --card-foreground: #FDFDFD;
+    --popover: #2F3135;
+    --popover-foreground: #FDFDFD;
     --muted: #4B4B4B;
     --muted-foreground: #EEF1F7;
     --brand-blue: #4982A6;
@@ -93,6 +129,27 @@
     --color-leonard-yellow: #F2CB05;
     --background: #2F3135;
     --foreground: #FDFDFD;
+    
+    /* Dark mode design system colors */
+    --border: #374151;
+    --input: #374151;
+    --ring: #F2CB05;
+    
+    /* Dark mode destructive/error colors */
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+    
+    /* Dark mode success colors */
+    --success: #16a34a;
+    --success-foreground: #ffffff;
+    
+    /* Dark mode warning colors */
+    --warning: #d97706;
+    --warning-foreground: #ffffff;
+    
+    /* Dark mode info colors */
+    --info: #2563eb;
+    --info-foreground: #ffffff;
   }
 }
 

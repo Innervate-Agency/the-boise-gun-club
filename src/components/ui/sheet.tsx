@@ -3,6 +3,7 @@
 import * as React from "react"
 import * as SheetPrimitive from "@radix-ui/react-dialog"
 import { XIcon } from "lucide-react"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
@@ -44,12 +45,31 @@ function SheetOverlay({
   )
 }
 
+const sheetContentVariants = cva(
+  "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
+  {
+    variants: {
+      variant: {
+        default: "shadow-lg border-border",
+        premium: "border-orange-200 bg-gradient-to-br from-white to-orange-50 shadow-xl dark:from-gray-900 dark:to-orange-950 dark:border-orange-800",
+        elite: "border-amber-200 bg-gradient-to-br from-white via-amber-50 to-orange-50 shadow-2xl relative overflow-hidden dark:from-gray-900 dark:via-amber-950 dark:to-orange-950 dark:border-amber-700",
+        glass: "border-white/20 bg-white/10 backdrop-blur-md shadow-xl dark:bg-black/10"
+      }
+    },
+    defaultVariants: {
+      variant: "default"
+    }
+  }
+)
+
 function SheetContent({
   className,
+  variant,
   children,
   side = "right",
   ...props
-}: React.ComponentProps<typeof SheetPrimitive.Content> & {
+}: React.ComponentProps<typeof SheetPrimitive.Content> & 
+  VariantProps<typeof sheetContentVariants> & {
   side?: "top" | "right" | "bottom" | "left"
 }) {
   return (
@@ -58,7 +78,7 @@ function SheetContent({
       <SheetPrimitive.Content
         data-slot="sheet-content"
         className={cn(
-          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
+          sheetContentVariants({ variant }),
           side === "right" &&
             "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
           side === "left" &&
@@ -71,6 +91,10 @@ function SheetContent({
         )}
         {...props}
       >
+        {/* Elite shimmer effect */}
+        {variant === 'elite' && (
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse opacity-30 pointer-events-none" />
+        )}
         {children}
         <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
           <XIcon className="size-4" />

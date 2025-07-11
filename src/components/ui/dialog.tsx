@@ -9,14 +9,14 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const dialogVariants = cva(
-  "fixed top-[50%] left-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-6 border shadow-2xl duration-300 rounded-2xl overflow-hidden",
+  "fixed top-[50%] left-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-6 border duration-300 rounded-2xl overflow-hidden transition-fast relative",
   {
     variants: {
       variant: {
-        default: "bg-card/95 backdrop-blur-xl border-border/20",
-        glass: "bg-[var(--card)]/10 backdrop-blur-2xl border-white/20 dark:bg-[var(--bg-primary)]/10 dark:border-white/10",
-        premium: "bg-gradient-to-br from-color-leonard-yellow/5 to-color-lahoma-orange/5 backdrop-blur-2xl border-color-leonard-yellow/20 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-color-leonard-yellow/10 before:to-color-lahoma-orange/10 before:opacity-50",
-        solid: "bg-card border-border shadow-2xl",
+        default: "bg-card text-card-foreground border-border shadow-xl",
+        premium: "bg-gradient-to-r from-leonard-yellow to-lahoma-orange text-black shadow-lg border border-leonard-yellow/20 hover:shadow-xl group",
+        elite: "bg-gradient-to-r from-leonard-yellow via-lahoma-orange to-leonard-yellow bg-[length:200%_100%] text-black shadow-xl border-2 border-leonard-yellow/30 animate-shimmer group",
+        glass: "border-white/20 bg-card/10 backdrop-blur-sm text-card hover:bg-card/20 hover:border-white/30 dark:border-white/10 dark:bg-card/5 dark:hover:bg-card/10 shadow-xl",
       },
       size: {
         sm: "max-w-[400px] p-4",
@@ -34,14 +34,14 @@ const dialogVariants = cva(
 )
 
 const overlayVariants = cva(
-  "fixed inset-0 z-50 transition-all duration-300",
+  "fixed inset-0 z-50 transition-smooth",
   {
     variants: {
       variant: {
-        default: "bg-[var(--bg-primary)]/50 backdrop-blur-sm",
-        glass: "bg-[var(--bg-primary)]/30 backdrop-blur-lg",
-        premium: "bg-gradient-to-br from-black/40 to-black/60 backdrop-blur-lg",
-        solid: "bg-[var(--bg-primary)]/75",
+        default: "bg-background/50 backdrop-blur-sm",
+        premium: "bg-gradient-to-br from-black/40 to-leonard-yellow/10 backdrop-blur-lg",
+        elite: "bg-gradient-to-br from-black/50 to-lahoma-orange/10 backdrop-blur-lg",
+        glass: "bg-background/30 backdrop-blur-lg",
       },
     },
     defaultVariants: {
@@ -118,14 +118,14 @@ function DialogContent({
       )}
       {...props}
     >
-      {/* Premium shimmer effect */}
+      {/* Premium glow effect */}
       {variant === 'premium' && (
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full animate-shimmer pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/30 to-leonard-yellow/30 blur-md opacity-50 group-hover:opacity-70 transition-smooth -z-10" />
       )}
       
-      {/* Glass effect enhancement */}
-      {variant === 'glass' && (
-        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+      {/* Elite shimmer effect */}
+      {variant === 'elite' && (
+        <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/40 to-leonard-yellow/40 blur-lg opacity-60 group-hover:opacity-80 transition-smooth -z-10" />
       )}
       
       {/* Content */}

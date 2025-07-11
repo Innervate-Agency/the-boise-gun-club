@@ -3,6 +3,7 @@
 import * as React from "react"
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
@@ -31,22 +32,43 @@ function DropdownMenuTrigger({
   )
 }
 
+const dropdownContentVariants = cva(
+  "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border p-1 transition-all duration-200",
+  {
+    variants: {
+      variant: {
+        default: "border-border shadow-md",
+        premium: "border-orange-200 bg-gradient-to-br from-white to-orange-50 shadow-lg dark:from-gray-900 dark:to-orange-950 dark:border-orange-800",
+        elite: "border-amber-200 bg-gradient-to-br from-white via-amber-50 to-orange-50 shadow-xl relative overflow-hidden dark:from-gray-900 dark:via-amber-950 dark:to-orange-950 dark:border-amber-700",
+        glass: "border-white/20 bg-white/10 backdrop-blur-md shadow-lg dark:bg-black/10"
+      }
+    },
+    defaultVariants: {
+      variant: "default"
+    }
+  }
+)
+
 function DropdownMenuContent({
   className,
+  variant,
   sideOffset = 4,
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.Content>) {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Content> & VariantProps<typeof dropdownContentVariants>) {
   return (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
         data-slot="dropdown-menu-content"
         sideOffset={sideOffset}
-        className={cn(
-          "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md",
-          className
-        )}
+        className={cn(dropdownContentVariants({ variant }), className)}
         {...props}
-      />
+      >
+        {/* Elite shimmer effect */}
+        {variant === 'elite' && (
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse opacity-30 pointer-events-none" />
+        )}
+        {props.children}
+      </DropdownMenuPrimitive.Content>
     </DropdownMenuPrimitive.Portal>
   )
 }
