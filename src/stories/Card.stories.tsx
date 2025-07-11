@@ -62,32 +62,6 @@ export const Glass: Story = {
   ),
 };
 
-export const PremiumGradient: Story = {
-  render: (args) => (
-    <Card variant="premium" className="w-[350px]" {...args}>
-      <CardHeader>
-        <CardTitle>Premium Gradient</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p>This card has a subtle orange gradient background.</p>
-      </CardContent>
-    </Card>
-  ),
-};
-
-export const EliteVariant: Story = {
-  render: (args) => (
-    <Card variant="elite" className="w-[350px]" {...args}>
-      <CardHeader>
-        <CardTitle>Elite Card</CardTitle>
-        <CardDescription>Premium elite styling with shimmer effects</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p>This card demonstrates the elite variant with amber gradients and subtle animations.</p>
-      </CardContent>
-    </Card>
-  ),
-};
 
 export const Premium: Story = {
   render: (args) => (
@@ -153,7 +127,7 @@ export const FusionShowcase: Story = {
     <div className="space-y-8 p-8 max-w-6xl">
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-heading font-bold text-text-primary">Card Fusion System</h2>
-        <p className="text-text-secondary">Professional card variants for different membership tiers</p>
+        <p className="text-text-secondary">Stripe precision + ClickUp vibrancy + Windows 11 Mica = Professional gun club excellence</p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -179,11 +153,11 @@ export const FusionShowcase: Story = {
         <Card variant="premium" className="w-full">
           <CardHeader>
             <CardTitle>Premium Membership</CardTitle>
-            <CardDescription>Enhanced access and exclusive benefits</CardDescription>
+            <CardDescription>Enhanced access with Stripe-inspired precision</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <Badge variant="premium">Most Popular</Badge>
+              <Badge variant="premium" shimmer>Most Popular</Badge>
               <ul className="space-y-2 text-sm text-text-secondary">
                 <li>• Extended range hours</li>
                 <li>• Advanced training programs</li>
@@ -201,11 +175,11 @@ export const FusionShowcase: Story = {
         <Card variant="elite" className="w-full">
           <CardHeader>
             <CardTitle>Elite Championship</CardTitle>
-            <CardDescription>Exclusive top-tier membership</CardDescription>
+            <CardDescription>Windows 11 Mica effects + ClickUp gradients</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <Badge variant="elite">Exclusive</Badge>
+              <Badge variant="elite" shimmer>Exclusive</Badge>
               <ul className="space-y-2 text-sm text-text-secondary">
                 <li>• 24/7 range access</li>
                 <li>• Personal coaching sessions</li>
@@ -226,7 +200,78 @@ export const FusionShowcase: Story = {
     layout: 'fullscreen',
     docs: {
       description: {
-        story: 'Complete showcase of the Card fusion system showing membership tiers with appropriate styling.'
+        story: 'Complete showcase of the Card fusion system: Stripe precision micro-interactions + ClickUp gradient hints + Windows 11 Mica noise textures. Professional restraint meets cutting-edge design.'
+      }
+    }
+  }
+};
+
+// NEW: Enhanced Micro-Interactions Showcase
+export const MicroInteractionsShowcase: Story = {
+  render: () => (
+    <div className="space-y-8 p-8 max-w-4xl">
+      <div className="text-center space-y-2">
+        <h2 className="text-2xl font-heading font-bold text-text-primary">Enhanced Micro-Interactions</h2>
+        <p className="text-text-secondary">Stripe precision timing + ClickUp hover effects + Windows 11 material depth</p>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Stripe-inspired precision */}
+        <Card className="w-full">
+          <CardHeader>
+            <CardTitle>Stripe Precision</CardTitle>
+            <CardDescription>150ms cubic-bezier transitions + subtle lift effects</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <Button variant="primary" className="w-full">Hover for lift effect</Button>
+              <Badge variant="success">Active Status</Badge>
+              <p className="text-sm text-text-secondary">Notice the precise 150ms timing and subtle elevation changes</p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* ClickUp + Mica fusion */}
+        <Card variant="premium" className="w-full">
+          <CardHeader>
+            <CardTitle>ClickUp + Mica Fusion</CardTitle>
+            <CardDescription>Gradient hints + Mica noise textures</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <Button variant="premium" className="w-full">Premium interaction</Button>
+              <Badge variant="premium" shimmer>Premium Badge</Badge>
+              <p className="text-sm text-text-secondary">Subtle gradient hints and Windows 11 Mica effects on hover</p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Elite showcase */}
+        <Card variant="elite" className="w-full md:col-span-2">
+          <CardHeader>
+            <CardTitle>Elite Material Depth</CardTitle>
+            <CardDescription>Maximum sophistication with animated shimmer + enhanced Mica</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <div className="flex flex-wrap gap-2">
+                <Button variant="elite">Elite Button</Button>
+                <Badge variant="elite" shimmer>Elite Badge</Badge>
+                <Badge variant="success">High Score</Badge>
+                <Badge variant="warning">Range Officer</Badge>
+              </div>
+              <p className="text-sm text-text-secondary">Enhanced shadow system + animated backgrounds + colorful noise patterns</p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  ),
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story: 'Detailed showcase of the enhanced micro-interactions combining Stripe precision, ClickUp vibrancy, and Windows 11 Mica effects - all with professional restraint appropriate for a gun club context.'
       }
     }
   }

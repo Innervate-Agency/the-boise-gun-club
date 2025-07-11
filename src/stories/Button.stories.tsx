@@ -251,7 +251,7 @@ export const FusionShowcase: Story = {
     <div className="space-y-8 p-8">
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-heading font-bold text-text-primary">Button Fusion System</h2>
-        <p className="text-text-secondary">ClickUp + Stripe meets Boise Gun Club professional aesthetics</p>
+        <p className="text-text-secondary">Stripe precision + ClickUp vibrancy + Windows 11 Mica = Professional gun club excellence</p>
       </div>
       
       {/* Primary Variants */}
@@ -277,13 +277,24 @@ export const FusionShowcase: Story = {
       
       {/* Sizes */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Sizes (Elite)</h3>
+        <h3 className="text-lg font-semibold">Sizes (Elite with Mica)</h3>
         <div className="flex flex-wrap items-center gap-4">
           <Button variant="elite" size="sm">Small Elite</Button>
           <Button variant="elite">Default Elite</Button>
           <Button variant="elite" size="lg">Large Elite</Button>
           <Button variant="elite" size="xl">XL Elite</Button>
         </div>
+      </div>
+      
+      {/* Micro-interactions showcase */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">Enhanced Micro-Interactions</h3>
+        <div className="flex flex-wrap gap-4">
+          <Button variant="default">Stripe Precision (150ms)</Button>
+          <Button variant="premium">ClickUp Gradients + Mica</Button>
+          <Button variant="elite">Windows 11 Material Depth</Button>
+        </div>
+        <p className="text-sm text-text-secondary">Hover to experience: Stripe cubic-bezier timing + ClickUp gradient hints + Windows 11 Mica noise textures</p>
       </div>
       
       {/* Real Gun Club Examples */}
@@ -307,7 +318,7 @@ export const FusionShowcase: Story = {
     layout: 'fullscreen',
     docs: {
       description: {
-        story: 'Complete showcase of the Button fusion system with Premium and Elite variants using Leonard Yellow and Lahoma Orange gradients.'
+        story: 'Complete showcase of the Button fusion system: Stripe precision micro-interactions + ClickUp gradient hints + Windows 11 Mica noise textures with professional restraint.'
       }
     }
   }

@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center rounded-full border font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none transition-fast relative overflow-hidden",
+  "inline-flex items-center justify-center rounded-full border font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none transition-stripe-fast relative overflow-hidden",
   {
     variants: {
       variant: {
@@ -17,8 +17,8 @@ const badgeVariants = cva(
         warning: "border-leonard-yellow/50 bg-leonard-yellow/10 text-leonard-yellow hover:bg-leonard-yellow/20 hover:border-leonard-yellow/70 dark:border-leonard-yellow/50 dark:bg-leonard-yellow/10 dark:text-leonard-yellow dark:hover:bg-leonard-yellow/20",
         error: "border-brand-red/30 bg-brand-red/10 text-brand-red hover:bg-brand-red/20 hover:border-brand-red/50 dark:border-brand-red/30 dark:bg-brand-red/10 dark:text-brand-red dark:hover:bg-brand-red/20",
         info: "border-brand-blue/30 bg-brand-blue/10 text-brand-blue hover:bg-brand-blue/20 hover:border-brand-blue/50 dark:border-brand-blue/30 dark:bg-brand-blue/10 dark:text-brand-blue dark:hover:bg-brand-blue/20",
-        premium: "bg-gradient-to-r from-leonard-yellow to-lahoma-orange text-black shadow-md border border-leonard-yellow/20 hover:shadow-lg hover:scale-[1.05] transition-smooth relative overflow-hidden group motion-reduce:hover:scale-100",
-        elite: "bg-gradient-to-r from-leonard-yellow via-lahoma-orange to-leonard-yellow bg-[length:200%_100%] text-black shadow-lg border-2 border-leonard-yellow/30 animate-shimmer hover:shadow-xl hover:scale-[1.10] transition-smooth relative overflow-hidden group motion-reduce:animate-none motion-reduce:hover:scale-100",
+        premium: "bg-gradient-to-r from-leonard-yellow to-lahoma-orange text-black shadow-premium border border-leonard-yellow/20 hover:shadow-premium-hover hover:scale-[1.05] transition-stripe-normal relative overflow-hidden group motion-reduce:hover:scale-100",
+        elite: "bg-gradient-to-r from-leonard-yellow via-lahoma-orange to-leonard-yellow bg-[length:200%_100%] text-black shadow-elite border-2 border-leonard-yellow/30 animate-shimmer hover:shadow-elite-hover hover:scale-[1.10] transition-stripe-normal relative overflow-hidden group motion-reduce:animate-none motion-reduce:hover:scale-100",
         glass: "border-white/20 bg-card/10 backdrop-blur-sm text-card hover:bg-card/20 hover:border-white/30 dark:border-white/10 dark:bg-card/5 dark:hover:bg-card/10",
         outline: "border-border text-foreground hover:bg-accent hover:text-accent-foreground",
         destructive: "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-sm",
@@ -74,19 +74,30 @@ function Badge({
       )}
       {...props}
     >
-      {/* Premium badge glow effect */}
+      {/* Premium badge with subtle Mica and gradient hint */}
       {variant === 'premium' && (
-        <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/30 to-leonard-yellow/30 blur-md opacity-50 group-hover:opacity-70 transition-smooth -z-10" />
+        <>
+          <div className="absolute inset-0 mica-premium opacity-0 group-hover:opacity-20 transition-stripe-normal -z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/20 to-leonard-yellow/20 blur-sm opacity-30 group-hover:opacity-50 transition-stripe-normal -z-10" />
+        </>
       )}
       
-      {/* Elite badge shimmer effect */}
+      {/* Elite badge with enhanced Mica effect */}
       {variant === 'elite' && (
-        <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/40 to-leonard-yellow/40 blur-lg opacity-60 group-hover:opacity-80 transition-smooth -z-10" />
+        <>
+          <div className="absolute inset-0 mica-elite opacity-10 group-hover:opacity-30 transition-stripe-normal -z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/25 to-leonard-yellow/25 blur-md opacity-40 group-hover:opacity-60 transition-stripe-normal -z-10" />
+        </>
       )}
       
       {/* Premium shimmer effect */}
       {variant === 'premium' && shimmer && (
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-shimmer rounded-full" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 animate-shimmer rounded-full transition-stripe-normal" />
+      )}
+      
+      {/* Subtle data visualization shadow for status badges */}
+      {(variant === 'success' || variant === 'warning' || variant === 'error' || variant === 'info') && (
+        <div className="absolute inset-0 data-card-shadow hover:data-card-shadow-hover transition-stripe-fast -z-10" />
       )}
       
       {/* Icon */}

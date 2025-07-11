@@ -42,7 +42,7 @@ This document defines the visual design standards and aesthetic guidelines for t
 
 **H1 - Brand Titles (Rajdhani)**
 - Always full caps with strategic weight variations
-- Example: "BOISE" (font-weight: 800) + "GUNCLUB" (font-weight: 300)
+- Example: "BOISE" (font-weight: 700) + "GUNCLUB" (font-weight: 300)
 - Usage: Hero sections, main page titles, brand elements
 
 **H2 - Major Sections (Rajdhani)**
@@ -167,17 +167,19 @@ This document defines the visual design standards and aesthetic guidelines for t
 .gradient-border { border-image: linear-gradient(45deg, #F2CB05, #F28705) 1; }
 ```
 
-### 5.3. Color Splash Elements
+### 5.3. Gradient Splash Effects (ClickUp-Inspired)
 
-**Floating Background Elements:**
-- Subtle color orbs with blur effects
-- Earth-tone palette appropriate for gun club context
+**Background Gradient Splashes:**
+- Leonard Yellow/Lahoma Orange gradient areas with blur effects
+- Applied behind Premium/Elite components
+- No floating orbs - use gradient overlays instead
 - Animated movement with reduced motion respect
 
 **Usage Guidelines:**
-- Maximum 2-3 splash elements per screen
-- Opacity: 10-20% to avoid overwhelming content
-- Colors: Muted versions of brand palette
+- Maximum 2-3 gradient splash areas per screen
+- Opacity: 30-40% for Premium, 40-60% for Elite
+- Always use Leonard Yellow to Lahoma Orange gradients
+- Apply blur effects for soft, professional appearance
 
 ## 6. Component-Specific Guidelines
 
@@ -199,15 +201,29 @@ This document defines the visual design standards and aesthetic guidelines for t
 
 **Standard Card:**
 - Clean white background with subtle shadow
-- Rounded corners (8px) for modern feel
+- Rounded corners (12px) for modern feel
 - Proper content padding and spacing
-- Hover state with shadow elevation
+- Hover state with shadow elevation (shadow-sm → shadow-md)
 
 **Glass Card:**
 - Backdrop blur with transparent background
 - Subtle border with brand color accent
 - Use only over background imagery
 - Enhanced typography contrast
+
+**Premium Card (Fusion):**
+- Leonard Yellow to Lahoma Orange gradient background
+- Stripe shadow system (shadow-md → shadow-lg on hover)
+- ClickUp-style gradient splash effects
+- Scale animation on hover (1.05x)
+- Black text for optimal contrast
+
+**Elite Card (Fusion):**
+- Animated shimmer gradient background
+- Enhanced shadow progression (shadow-lg → shadow-xl)
+- Stronger gradient splash effects
+- Advanced scale animation (1.10x)
+- Maximum visual impact for premium content
 
 ### 6.3. Navigation Design
 

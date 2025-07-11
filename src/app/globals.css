@@ -30,10 +30,30 @@
   --shadow-lg: 0 8px 16px -4px rgb(50 50 93 / 0.25);
   --shadow-xl: 0 16px 32px -8px rgb(50 50 93 / 0.25);
   
+  /* Enhanced shadow system with color-aware shadows */
+  --shadow-premium: 0 4px 20px -4px rgb(242 203 5 / 0.15);
+  --shadow-premium-hover: 0 8px 30px -6px rgb(242 203 5 / 0.25);
+  --shadow-elite: 0 8px 25px -5px rgb(242 135 5 / 0.2);
+  --shadow-elite-hover: 0 12px 40px -8px rgb(242 135 5 / 0.3);
+  
+  /* Stripe-inspired form field shadows */
+  --shadow-input: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px 0 rgb(0 0 0 / 0.06);
+  --shadow-input-focus: 0 0 0 3px rgb(242 203 5 / 0.15);
+  
   /* Premium/Elite Gradients */
   --gradient-premium: linear-gradient(45deg, #F2CB05, #F28705);
   --gradient-elite: linear-gradient(45deg, #F2CB05, #F28705, #DAA520);
   --gradient-subtle: linear-gradient(45deg, rgb(242 203 5 / 0.05), rgb(242 135 5 / 0.05));
+  
+  /* ClickUp-inspired gradient hints (professional restraint) */
+  --gradient-hint-premium: linear-gradient(45deg, rgb(242 203 5 / 0.03), rgb(242 135 5 / 0.03));
+  --gradient-hint-elite: linear-gradient(45deg, rgb(242 203 5 / 0.05), rgb(242 135 5 / 0.05));
+  --gradient-border-premium: linear-gradient(45deg, rgb(242 203 5 / 0.3), rgb(242 135 5 / 0.3));
+  --gradient-border-elite: linear-gradient(45deg, rgb(242 203 5 / 0.5), rgb(242 135 5 / 0.5));
+  
+  /* Windows 11 Mica-inspired noise patterns */
+  --mica-noise-premium: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIG51bU9jdGF2ZXM9IjQiIHNlZWQ9IjEiLz48L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI0YyQ0IwNSIgZmlsbC1vcGFjaXR5PSIwLjAzIiBmaWx0ZXI9InVybCgjbm9pc2UpIi8+PC9zdmc+');
+  --mica-noise-elite: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIG51bU9jdGF2ZXM9IjQiIHNlZWQ9IjIiLz48L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI0YyODcwNSIgZmlsbC1vcGFjaXR5PSIwLjA1IiBmaWx0ZXI9InVybCgjbm9pc2UpIi8+PC9zdmc+');
   
   /* Design System Colors */
   --border: #e5e7eb;
@@ -70,6 +90,20 @@
   --space-16: 64px;
   --space-20: 80px;
   --space-24: 96px;
+  
+  /* Stripe-inspired precision timing */
+  --duration-instant: 0ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+  --duration-slower: 500ms;
+  
+  /* Stripe-inspired easing curves */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   
   /* Component spacing */
   --button-padding-x: var(--space-4);
@@ -375,6 +409,47 @@ h3, h4, h5, h6 {
 /* Professional transitions matching Stripe standards */
 .transition-fast { transition: all 150ms cubic-bezier(0.215, 0.61, 0.355, 1); }
 .transition-smooth { transition: all 300ms cubic-bezier(0.215, 0.61, 0.355, 1); }
+
+/* Enhanced Stripe-inspired transitions */
+.transition-stripe-fast { transition: all var(--duration-fast) var(--ease-out); }
+.transition-stripe-normal { transition: all var(--duration-normal) var(--ease-in-out); }
+.transition-stripe-slow { transition: all var(--duration-slow) var(--ease-out); }
+.transition-stripe-bounce { transition: all var(--duration-normal) var(--ease-bounce); }
+.transition-stripe-elastic { transition: all var(--duration-slower) var(--ease-elastic); }
+
+/* Stripe-inspired micro-interactions */
+.button-press { transform: scale(0.98); }
+.button-lift { transform: translateY(-1px); }
+.button-glow { box-shadow: var(--shadow-premium); }
+.button-glow-hover { box-shadow: var(--shadow-premium-hover); }
+
+/* ClickUp-inspired gradient hints (subtle professional enhancement) */
+.gradient-hint-bg { background: var(--gradient-hint-premium); }
+.gradient-hint-border { border: 1px solid transparent; background: var(--gradient-border-premium) border-box; }
+
+/* Windows 11 Mica effects (opaque glass with noise) */
+.mica-premium {
+  background: var(--mica-noise-premium), var(--gradient-hint-premium);
+  background-blend-mode: multiply;
+  backdrop-filter: blur(8px);
+}
+
+.mica-elite {
+  background: var(--mica-noise-elite), var(--gradient-hint-elite);
+  background-blend-mode: multiply;
+  backdrop-filter: blur(12px);
+}
+
+/* Enhanced form field focus states (Stripe-inspired) */
+.form-field-focus {
+  box-shadow: var(--shadow-input-focus);
+  border-color: var(--color-leonard-yellow);
+  outline: none;
+}
+
+/* Subtle data visualization shadows (Stripe-inspired) */
+.data-card-shadow { box-shadow: var(--shadow-sm), 0 0 0 1px rgb(0 0 0 / 0.05); }
+.data-card-shadow-hover { box-shadow: var(--shadow-md), 0 0 0 1px rgb(0 0 0 / 0.1); }
 
 /* Focus ring utilities with brand colors */
 .focus-ring-leonard { 
