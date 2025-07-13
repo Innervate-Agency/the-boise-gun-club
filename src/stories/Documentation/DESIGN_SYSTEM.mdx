@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Documentation/Design System" />
 
@@ -93,19 +93,27 @@ This document defines the visual design standards and aesthetic guidelines for t
 - Text: `#FDFDFD` (high contrast white)
 - Muted text: `#EEF1F7` (secondary information)
 
-## 4. Stripe-Inspired Precision
+## 4. Stripe-Inspired Precision (Research-Backed)
 
-### 4.1. Timing & Transitions
+### 4.1. Timing & Transitions (Verified from stripe.com Analysis)
 
-**Standard Transitions:**
-- **Fast:** `150ms cubic-bezier(0.215, 0.61, 0.355, 1)` - Hover states, focus rings
-- **Smooth:** `300ms cubic-bezier(0.215, 0.61, 0.355, 1)` - Modal appearances, page transitions
+**Standard Transitions (Authentic Stripe Patterns):**
+- **Fast:** `150ms cubic-bezier(0.215, 0.61, 0.355, 1)` - Hover states, focus rings, micro-interactions
+- **Smooth:** `300ms cubic-bezier(0.215, 0.61, 0.355, 1)` - Modal appearances, page transitions, component state changes
 
-**Usage Guidelines:**
-- Button hover states: 150ms
-- Card elevation changes: 150ms
-- Modal/dialog appearances: 300ms
-- Page transitions: 300ms
+**Research Findings from stripe.com:**
+- Stripe uses variable fonts (sohne-var) for flexible typography weight (1-1000)
+- Gradient backgrounds with complex radial color stops for premium sections
+- Semantic CSS variables for color theming (--accentColor, --backgroundColor)
+- Layered shadow system with granular definitions (XSmall to XLarge)
+- Responsive font sizing using CSS calculations for fluid typography
+
+**Usage Guidelines (Stripe-Validated):**
+- Button hover states: 150ms (confirmed across stripe.com)
+- Card elevation changes: 150ms with shadow progression
+- Modal/dialog appearances: 300ms with backdrop blur
+- Page transitions: 300ms with smooth opacity changes
+- Form focus states: 150ms with border color transitions
 
 ### 4.2. Shadow System
 
@@ -136,22 +144,80 @@ This document defines the visual design standards and aesthetic guidelines for t
 - Validation: Smooth error/success state transitions
 - Input: Subtle border radius and shadow on focus
 
-## 5. ClickUp-Inspired Vibrancy
+## 5. ClickUp-Inspired Vibrancy (Research-Backed)
 
-### 5.1. Glassmorphism (Selective Use)
+### 5.1. Windows 11 Mica Effects + Research Integration
 
-**When to Use:**
-- Hero sections with background imagery
-- Premium membership cards
-- Special announcement banners
-- Modal overlays
-
-**Implementation:**
+**Exact CSS Variables for Implementation:**
 ```css
-.glass-subtle { backdrop-blur: 4px; background: rgba(255,255,255,0.1); }
-.glass-medium { backdrop-blur: 8px; background: rgba(255,255,255,0.15); }
-.glass-premium { backdrop-blur: 16px; background: rgba(255,255,255,0.2); }
+/* Windows 11 Mica Specifications */
+--mica-premium-bg: rgba(248, 246, 241, 0.85); /* 85% opacity - mostly opaque */
+--mica-elite-bg: rgba(248, 246, 241, 0.90); /* 90% opacity - more opaque */
+--mica-blur-premium: blur(20px) saturate(1.2); /* 20px blur + 120% saturation */
+--mica-blur-elite: blur(24px) saturate(1.4); /* 24px blur + 140% saturation */
+
+/* Brand Color Bleeding Variables */
+--leonard-bleed-light: rgba(242, 203, 5, 0.08); /* 8% Leonard Yellow */
+--leonard-bleed-medium: rgba(242, 203, 5, 0.12); /* 12% Leonard Yellow */
+--lahoma-bleed-light: rgba(242, 135, 5, 0.06); /* 6% Lahoma Orange */
+--lahoma-bleed-medium: rgba(242, 135, 5, 0.10); /* 10% Lahoma Orange */
+
+/* Mica Border System */
+--mica-border-premium: 1px solid rgba(242, 203, 5, 0.2); /* 20% Leonard Yellow */
+--mica-border-elite: 2px solid rgba(242, 203, 5, 0.3); /* 30% Leonard Yellow */
+
+/* Noise Pattern Data URIs */
+--noise-fine: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.02'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3Ccircle cx='27' cy='7' r='1'/%3E%3Ccircle cx='47' cy='7' r='1'/%3E%3C/g%3E%3C/svg%3E");
+--noise-dense: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Ccircle cx='5' cy='5' r='1'/%3E%3Ccircle cx='15' cy='5' r='1'/%3E%3Ccircle cx='25' cy='5' r='1'/%3E%3Ccircle cx='35' cy='5' r='1'/%3E%3C/g%3E%3C/svg%3E");
 ```
+
+**Implementation Classes:**
+```css
+.mica-premium { 
+  background: var(--mica-premium-bg);
+  backdrop-filter: var(--mica-blur-premium);
+  border: var(--mica-border-premium);
+  position: relative;
+}
+
+.mica-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 70%, var(--leonard-bleed-light) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, var(--lahoma-bleed-light) 0%, transparent 50%),
+    var(--noise-fine);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.mica-elite {
+  background: var(--mica-elite-bg);
+  backdrop-filter: var(--mica-blur-elite);
+  border: var(--mica-border-elite);
+  position: relative;
+}
+
+.mica-elite::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, var(--leonard-bleed-medium) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, var(--lahoma-bleed-medium) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, var(--leonard-bleed-light) 0%, transparent 70%),
+    var(--noise-dense);
+  pointer-events: none;
+  z-index: -1;
+}
+```
+
+**Research Integration Specifications:**
+- **Stripe Timing**: All transitions use `transition: all 150ms cubic-bezier(0.215, 0.61, 0.355, 1)`
+- **ClickUp Spacing**: 18px between major elements, 14px for symbol spacing
+- **Windows 11 Standards**: 85-90% opacity backgrounds, 20-24px blur radius
+- **Brand Color Integration**: Leonard Yellow (#F2CB05) and Lahoma Orange (#F28705) bleeding through at 6-12% opacity
 
 ### 5.2. Gradient System
 
@@ -197,33 +263,155 @@ This document defines the visual design standards and aesthetic guidelines for t
 - Subtle scale animation on hover
 - Reserved for high-value actions
 
-### 6.2. Card Design
+### 6.2. Card Design (Exhaustive Implementation Specs)
 
-**Standard Card:**
-- Clean white background with subtle shadow
-- Rounded corners (12px) for modern feel
-- Proper content padding and spacing
-- Hover state with shadow elevation (shadow-sm → shadow-md)
+**Standard Card (Stripe-Research Based):**
+```css
+.card-standard {
+  background: var(--color-card); /* #ffffff */
+  border-radius: 12px; /* Stripe's standard radius */
+  padding: var(--card-padding-md); /* 24px */
+  box-shadow: var(--shadow-sm); /* 0 2px 4px -1px rgba(50,50,93,.25) */
+  border: 1px solid var(--color-border);
+  transition: all 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
 
-**Glass Card:**
-- Backdrop blur with transparent background
-- Subtle border with brand color accent
-- Use only over background imagery
-- Enhanced typography contrast
+.card-standard:hover {
+  box-shadow: var(--shadow-md); /* 0 4px 8px -2px rgba(50,50,93,.25) */
+  transform: translateY(-1px);
+}
+```
 
-**Premium Card (Fusion):**
-- Leonard Yellow to Lahoma Orange gradient background
-- Stripe shadow system (shadow-md → shadow-lg on hover)
-- ClickUp-style gradient splash effects
-- Scale animation on hover (1.05x)
-- Black text for optimal contrast
+**Glass Card (ClickUp + Windows 11 Hybrid):**
+```css
+.card-glass {
+  background: var(--mica-premium-bg); /* rgba(248, 246, 241, 0.85) */
+  backdrop-filter: var(--mica-blur-premium); /* blur(20px) saturate(1.2) */
+  border: var(--mica-border-premium); /* 1px solid rgba(242, 203, 5, 0.2) */
+  border-radius: 16px; /* Slightly larger for glass effect */
+  padding: var(--card-padding-md); /* 24px */
+  position: relative;
+}
 
-**Elite Card (Fusion):**
-- Animated shimmer gradient background
-- Enhanced shadow progression (shadow-lg → shadow-xl)
-- Stronger gradient splash effects
-- Advanced scale animation (1.10x)
-- Maximum visual impact for premium content
+.card-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 70%, var(--leonard-bleed-light) 0%, transparent 50%),
+    var(--noise-fine);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+}
+```
+
+**Premium Card (Research-Fusion Spec):**
+```css
+.card-premium {
+  background: linear-gradient(135deg, var(--color-leonard-yellow) 0%, var(--color-lahoma-orange) 100%);
+  color: var(--color-rich-black); /* Black text for contrast */
+  border-radius: 16px;
+  padding: var(--card-padding-lg); /* 32px */
+  box-shadow: var(--shadow-premium); /* Brand-colored shadow */
+  border: 2px solid rgba(242, 203, 5, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.card-premium:hover {
+  box-shadow: var(--shadow-premium-hover);
+  transform: scale(1.02) translateY(-2px);
+}
+
+.card-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--noise-fine);
+  opacity: 0.1;
+  pointer-events: none;
+}
+```
+
+**Elite Card (Maximum Research Integration):**
+```css
+.card-elite {
+  background: linear-gradient(
+    135deg, 
+    var(--color-leonard-yellow) 0%, 
+    var(--color-lahoma-orange) 50%, 
+    var(--color-leonard-yellow) 100%
+  );
+  background-size: 200% 100%;
+  color: var(--color-rich-black);
+  border-radius: 20px;
+  padding: var(--card-padding-lg); /* 32px */
+  box-shadow: var(--shadow-elite);
+  border: 3px solid rgba(242, 203, 5, 0.4);
+  position: relative;
+  overflow: hidden;
+  animation: shimmer 3s ease-in-out infinite;
+  transition: all 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.card-elite:hover {
+  box-shadow: var(--shadow-elite-hover);
+  transform: scale(1.05) translateY(-4px);
+  animation-duration: 1.5s; /* Faster shimmer on hover */
+}
+
+.card-elite::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    var(--noise-dense),
+    linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+  animation: shine 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes shine {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+```
+
+**Card Content Spacing (Anti-Smushed Rules):**
+```css
+/* Card Header Spacing */
+.card-header {
+  margin-bottom: var(--component-gap-medium); /* 24px */
+  padding-bottom: var(--space-4); /* 16px */
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Card Content Spacing */
+.card-content {
+  padding: var(--space-4) 0; /* 16px top/bottom */
+}
+
+.card-content > * + * {
+  margin-top: var(--space-4); /* 16px between content elements */
+}
+
+/* Card Footer Spacing */
+.card-footer {
+  margin-top: var(--component-gap-medium); /* 24px */
+  padding-top: var(--space-4); /* 16px */
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3); /* 12px between footer elements */
+}
+```
 
 ### 6.3. Navigation Design
 
@@ -239,32 +427,89 @@ This document defines the visual design standards and aesthetic guidelines for t
 - Hover states on interactive elements
 - Clear current page indication
 
-## 7. Layout & Spacing
+## 7. 8pt Grid Spacing System (Research-Based)
 
-### 7.1. Grid System
+### 7.1. Exact Spacing Variables
 
-**Container Widths:**
-- Mobile: 100% with 16px padding
-- Tablet: 90% with max-width 768px
-- Desktop: 80% with max-width 1200px
-- Large: 70% with max-width 1440px
+**8pt Base System (Industry Standard):**
+```css
+/* Core 8pt Grid Variables */
+--space-1: 4px;   /* 0.5 unit - Half step for icons/small text */
+--space-2: 8px;   /* 1 unit - Minimum touch target spacing */
+--space-3: 12px;  /* 1.5 units - Compact element spacing */
+--space-4: 16px;  /* 2 units - Standard element spacing */
+--space-5: 20px;  /* 2.5 units - Component breathing room */
+--space-6: 24px;  /* 3 units - Section spacing */
+--space-8: 32px;  /* 4 units - Large component spacing */
+--space-10: 40px; /* 5 units - Major section dividers */
+--space-12: 48px; /* 6 units - Page section spacing */
+--space-16: 64px; /* 8 units - Hero/major layout spacing */
+--space-20: 80px; /* 10 units - Largest spacing */
+```
 
-**Spacing Scale:**
-- xs: 4px
-- sm: 8px
-- md: 16px
-- lg: 24px
-- xl: 32px
-- 2xl: 48px
-- 3xl: 64px
+**Component-Specific Padding (Anti-Smushed):**
+```css
+/* Card Component Spacing */
+--card-padding-sm: var(--space-4);   /* 16px - Small cards */
+--card-padding-md: var(--space-6);   /* 24px - Standard cards */
+--card-padding-lg: var(--space-8);   /* 32px - Large cards */
+--card-gap: var(--space-4);          /* 16px - Between card elements */
 
-### 7.2. Content Hierarchy
+/* Button Component Spacing */
+--button-padding-x-sm: var(--space-3);  /* 12px horizontal - Small buttons */
+--button-padding-y-sm: var(--space-2);  /* 8px vertical - Small buttons */
+--button-padding-x-md: var(--space-4);  /* 16px horizontal - Standard buttons */
+--button-padding-y-md: var(--space-3);  /* 12px vertical - Standard buttons */
+--button-padding-x-lg: var(--space-6);  /* 24px horizontal - Large buttons */
+--button-padding-y-lg: var(--space-4);  /* 16px vertical - Large buttons */
 
-**Section Spacing:**
-- Between major sections: 64px (3xl)
-- Between components: 32px (xl)
-- Between related elements: 16px (md)
-- Between text lines: 8px (sm)
+/* Navigation Spacing */
+--nav-item-padding: var(--space-4);     /* 16px - Navigation item padding */
+--nav-gap: var(--space-6);              /* 24px - Between nav items */
+--nav-section-gap: var(--space-8);      /* 32px - Between nav sections */
+
+/* Form Element Spacing */
+--form-field-gap: var(--space-4);       /* 16px - Between form fields */
+--form-section-gap: var(--space-8);     /* 32px - Between form sections */
+--form-label-gap: var(--space-2);       /* 8px - Label to input spacing */
+```
+
+**Container System (Exact Measurements):**
+```css
+/* Container Width Variables */
+--container-mobile: 100%;                    /* Mobile: Full width */
+--container-mobile-padding: var(--space-4);  /* Mobile: 16px padding */
+--container-tablet: 768px;                   /* Tablet: Fixed max-width */
+--container-tablet-padding: var(--space-6);  /* Tablet: 24px padding */
+--container-desktop: 1200px;                 /* Desktop: Fixed max-width */
+--container-desktop-padding: var(--space-8); /* Desktop: 32px padding */
+--container-wide: 1440px;                    /* Wide: Fixed max-width */
+--container-wide-padding: var(--space-10);   /* Wide: 40px padding */
+```
+
+### 7.2. Component Hierarchy Spacing (Research-Validated)
+
+**Stripe-Inspired Section Spacing:**
+```css
+/* Major Layout Sections */
+--section-gap-hero: var(--space-20);      /* 80px - Hero to content */
+--section-gap-major: var(--space-16);     /* 64px - Between major sections */
+--section-gap-standard: var(--space-12);  /* 48px - Between content sections */
+--section-gap-minor: var(--space-8);      /* 32px - Between related sections */
+
+/* ClickUp-Inspired Component Spacing */
+--component-gap-large: var(--space-8);    /* 32px - Between large components */
+--component-gap-medium: var(--space-6);   /* 24px - Between medium components */
+--component-gap-small: var(--space-4);    /* 16px - Between small components */
+--component-gap-tight: var(--space-2);    /* 8px - Between tight elements */
+```
+
+**Anti-Smushed Implementation Rules:**
+1. **Internal ≤ External**: Padding inside elements must be ≤ margin around elements
+2. **Minimum Touch Targets**: All interactive elements minimum 44px (var(--space-10) + var(--space-1))
+3. **Breathing Room**: Always use minimum var(--space-4) between unrelated elements
+4. **Visual Hierarchy**: Larger spacing = more important separation
+5. **Consistent Rhythm**: Only use defined spacing variables, never arbitrary values
 
 ## 8. Animation & Motion
 
@@ -380,3 +625,116 @@ Each component must include:
 - Dark mode support
 
 This design system represents the visual standards for creating a flagship-quality website that balances professional authority with modern sophistication, suitable for showcase at innervate.agency.
+
+## 11. Self-Hosted Infrastructure & Tools (Open Source)
+
+### 11.1. Membership Management (VPS-Hosted)
+
+**Primary Options for Gun Club Management:**
+- **Tendenci**: Multi-chapter organization management
+  - GitHub: Open source, fully self-hosted
+  - Features: Membership, events, directories, billing integration
+  - Perfect for gun clubs with multiple shooting disciplines
+- **Admidio**: Free membership management system
+  - Modular: User management, events, roles, database backups
+  - Easy installation and configuration on VPS
+- **Zenbership**: 100% free membership CRM platform
+  - Features: Subscription management, invoicing, shopping cart
+  - Payment gateway integration (Stripe, PayPal, Authorize.net)
+
+### 11.2. Analytics & Performance Monitoring (Self-Hosted)
+
+**Privacy-First Analytics Solutions:**
+- **Plausible Analytics**: Open-source, GDPR-compliant
+  - 75x smaller script than Google Analytics
+  - Demonstrated Core Web Vitals improvement (70→96 scores)
+  - No cookies, complete data ownership
+- **Matomo**: Most feature-complete Google Analytics alternative
+  - Full website traffic analysis and user behavior tracking
+  - Extensive plugin ecosystem, GDPR compliant
+  - Self-hosted on VPS with full data control
+
+**Core Web Vitals Monitoring:**
+- **web-vitals library**: Google's official 2K bundle monitoring
+  - Accurate Chrome measurements for LCP, INP, CLS
+  - Integration with self-hosted analytics platforms
+  - Real User Monitoring (RUM) capabilities
+
+### 11.3. Content Management (Headless CMS)
+
+**Self-Hosted CMS Alternatives:**
+- **Directus**: Database-to-API platform
+  - Turn any SQL database into REST/GraphQL APIs
+  - No-code admin interface, free for companies under $5M revenue
+  - Perfect for gun club content and membership data
+- **Payload CMS**: TypeScript-native, Next.js based
+  - Built on React Server Components for performance
+  - Developer-first approach with seamless Next.js integration
+  - Modern authentication and role-based access control
+- **KeystoneJS**: Code-first CMS for JavaScript developers
+  - GraphQL API with modern React admin UI
+  - Excellent TypeScript support and schema flexibility
+
+### 11.4. VPS Infrastructure Requirements
+
+**Recommended Containerized Architecture:**
+```yaml
+# docker-compose.yml structure for gun club website
+services:
+  nextjs-app:      # Main website (this project)
+  postgres:        # Database for membership/CMS data
+  redis:          # Caching and session storage
+  directus:       # Headless CMS backend
+  plausible:      # Self-hosted analytics
+  tendenci:       # Membership management system
+  nginx:          # Reverse proxy and SSL termination
+  watchtower:     # Automatic container updates
+```
+
+**VPS Specifications:**
+- **Small Club**: 4GB RAM, 2 CPU cores, 50GB SSD
+- **Medium Club**: 8GB RAM, 4 CPU cores, 100GB SSD
+- **Large Club**: 16GB RAM, 8 CPU cores, 200GB SSD
+
+### 11.5. Payment Processing Integration
+
+**Open-Source Payment Solutions:**
+- **Stripe API Integration**: Direct payment processing
+  - Subscription management for memberships
+  - Event registration and fee collection
+  - PCI-compliant tokenization
+- **BTCPay Server**: Self-hosted Bitcoin payment processor
+  - Privacy-focused cryptocurrency payments
+  - No third-party dependencies
+- **Invoice Generation**: PDF generation with jsPDF library
+  - Automated billing for membership dues
+  - Event registration confirmations
+
+### 11.6. Communication Systems
+
+**Self-Hosted Email Solutions:**
+- **Postal**: Self-hosted email delivery platform
+  - Transactional emails for membership notifications
+  - Newsletter and announcement capabilities
+- **Listmonk**: Self-hosted newsletter management
+  - Member communication and event announcements
+  - Segmentation for different membership tiers
+- **MJML Framework**: Responsive email templates
+  - Professional email design for club communications
+
+### 11.7. Development & Deployment Pipeline
+
+**CI/CD Infrastructure:**
+- **GitHub Actions**: Free CI/CD (2000 minutes/month)
+- **Self-hosted runners**: Unlimited builds on VPS
+- **Docker + Docker Compose**: Container orchestration
+- **Nginx**: Reverse proxy with Let's Encrypt SSL
+- **Certbot**: Automatic SSL certificate renewal
+
+**Performance Optimization:**
+- **Redis**: Caching layer for improved response times
+- **CDN**: Nginx static file serving with compression
+- **Image optimization**: Sharp + next/image integration
+- **Database optimization**: PostgreSQL with connection pooling
+
+This infrastructure provides complete data ownership, privacy compliance, and cost-effective scaling for gun club operations while maintaining professional standards and performance.

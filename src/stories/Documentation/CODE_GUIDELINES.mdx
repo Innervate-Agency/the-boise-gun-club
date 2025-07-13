@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Documentation/Code Guidelines" />
 
@@ -175,18 +175,101 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 - Monitor animation performance with React DevTools
 - Respect `prefers-reduced-motion` for accessibility
 
-## 5. TypeScript Best Practices
+## 5. Tech Stack Standards (July 2025 Best Practices)
 
-### 5.1. Strict Mode is Mandatory
+### 5.1. Core Framework Versions
 
-The `tsconfig.json` must have `"strict": true`.
+**Next.js 15.3.5 + React 19 Standards:**
+- **React 19 Stable**: Full support with React Compiler (experimental)
+- **Server Components**: Default to server, opt-in to client for interactivity
+- **Turbopack**: Enable with `--turbo` flag for 5x faster builds
+- **Async Request APIs**: fetch requests no longer cached by default (breaking change)
+- **Authorization APIs**: forbidden() and unauthorized() for 403/401 errors
 
-### 5.2. Type Everything
+**Performance Requirements:**
+- **Bundle Analysis**: Use `npm run analyze` for webpack-bundle-analyzer
+- **Core Web Vitals**: LCP ≤2.5s, INP ≤200ms, CLS ≤0.1 (2025 metrics)
+- **Image Optimization**: next/image with loading='lazy' and responsive sizes
 
+### 5.2. TypeScript Best Practices
+
+**Strict Mode is Mandatory:**
+The `tsconfig.json` must have `"strict": true` with all strict family options:
+- `noImplicitAny: true` - Prevents implicit any types
+- `strictNullChecks: true` - Ensures null/undefined safety
+- `strictFunctionTypes: true` - Function parameter checking
+- `noUncheckedIndexedAccess: true` - Array/object access safety
+
+**Type Everything:**
 - **Props:** All component props must be explicitly typed with an `interface` or `type`.
 - **State:** Use `useState<MyType>(...)` to type state.
 - **Hooks:** Custom hooks must have typed inputs and outputs.
 - **Events:** Use React's event types, e.g., `React.MouseEvent<HTMLButtonElement>`.
+
+### 5.3. Tailwind CSS v4 Standards
+
+**CSS-First Configuration:**
+- **@theme directive**: Replace JavaScript config with CSS variables
+- **Direct utility syntax**: `bg-leonard-yellow` not `bg-[var(--color-leonard-yellow)]`
+- **Modern CSS features**: Built on cascade layers, @property, color-mix()
+- **Performance**: 5x faster builds, 100x faster incremental (microseconds)
+
+**Setup Requirements:**
+```css
+@import "tailwindcss";
+@theme {
+  --color-leonard-yellow: #F2CB05;
+  --color-lahoma-orange: #F28705;
+}
+```
+
+### 5.4. Motion for React (v12+) Standards
+
+**Performance-First Animation:**
+- **Hardware acceleration**: Transform and opacity properties only
+- **Timing standards**: 200-500ms durations for UI animations
+- **Mobile optimization**: Simplified animations for limited processing
+- **Built-in props**: Use whileTap, whileHover instead of custom handlers
+- **LazyMotion**: Import only needed features to reduce bundle size
+
+### 5.5. Storybook 9 Integration
+
+**Component Documentation Standards:**
+- **Separation**: Stories (CSF) separate from documentation (MDX)
+- **Doc Blocks**: Use Meta, Primary, Controls, Story for structured docs
+- **Testing**: Interaction tests, accessibility tests, visual tests
+- **Organization**: Tag-based story organization for large component libraries
+
+### 5.6. Testing Framework Requirements
+
+**Jest + React Testing Library:**
+- **Snapshot testing**: Component regression testing
+- **React Test Renderer**: Fast testing without full app builds
+- **Performance focus**: Optimized for speed and reliability
+- **Best practices**: Commit snapshots, readable tests, review changes
+
+### 5.7. ESLint 9 Configuration
+
+**Modern Linting Standards:**
+- **Flat config**: Default format since ESLint v9.0.0
+- **TypeScript integration**: Use typescript-eslint for React projects
+- **React rules**: eslint-plugin-jsx-a11y for accessibility checks
+- **Configuration files**: Support for .ts/.mts/.cts config files
+
+### 5.8. Development Tools Integration
+
+**Required Tools:**
+- **TypeScript 5.x**: Strict mode with all safety features
+- **Prettier**: Automated code formatting
+- **Husky**: Git hooks for quality gates
+- **lint-staged**: Pre-commit code formatting
+
+**Performance Monitoring:**
+- **web-vitals library**: Real User Monitoring integration
+- **Next.js Analytics**: Built-in performance tracking
+- **Error boundaries**: Comprehensive error handling
+
+## 6. TypeScript Implementation Details
 - **Avoid `any`:** Do not use `any`. Use `unknown` for values that are truly dynamic and perform type-checking.
 
 ### 5.3. Type Organization
