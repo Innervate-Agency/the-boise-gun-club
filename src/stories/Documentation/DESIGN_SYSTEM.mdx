@@ -2,9 +2,17 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Documentation/Design System" />
 
-# Design System: Visual Standards
+# Design System: Implementation Guide & Specifications
 
-This document defines the visual design standards and aesthetic guidelines for the Boise Gun Club v4 project. It combines Stripe-inspired precision with ClickUp-inspired vibrancy, tailored for a professional gun club context.
+This document provides comprehensive implementation specifications and exact code patterns for the Boise Gun Club v4 design system. Based on extensive research of Stripe, ClickUp, and Windows 11 design patterns, adapted for professional gun club aesthetics.
+
+## 🎯 Quick Reference
+
+**Brand Colors**: Leonard Yellow (#F2CB05) → Lahoma Orange (#F28705)  
+**Typography**: Rajdhani (Display) + Noto Sans (Body) + Noto Serif (Editorial)  
+**Timing**: 150ms/300ms (Stripe-standard) with cubic-bezier(0.215, 0.61, 0.355, 1)  
+**Spacing**: 8pt Grid System (4px base unit) with anti-smushed component rules  
+**Effects**: Windows 11 Mica (85-90% opacity) + Leonard Yellow bleeding (6-12%)
 
 ## 1. Brand Identity & Philosophy
 
@@ -258,9 +266,40 @@ This document defines the visual design standards and aesthetic guidelines for t
 - Text: `#FDFDFD` (high contrast white)
 - Muted text: `#EEF1F7` (secondary information)
 
-## 4. Stripe-Inspired Precision (Research-Backed)
+## 4. Windows 11 Mica Effects (Research-Backed Implementation)
 
-### 4.1. Exact Animation Timing System (Research-Based 2025)
+### 4.1. Exact Mica CSS Variables for Brand Integration
+
+**Research-Validated Mica Specifications:**
+```css
+/* Windows 11 Mica Base Variables (85-90% Opacity Rule) */
+--mica-premium-bg: rgba(248, 246, 241, 0.85);      /* 85% warm background */
+--mica-elite-bg: rgba(248, 246, 241, 0.90);        /* 90% solid background */
+--mica-glass-bg: rgba(255, 255, 255, 0.88);        /* 88% pure white */
+
+/* Mica Blur Specifications (20-24px Research Standard) */
+--mica-blur-premium: blur(20px) saturate(1.2);     /* Standard Mica blur */
+--mica-blur-elite: blur(24px) saturate(1.4);       /* Enhanced Mica blur */
+--mica-blur-subtle: blur(16px) saturate(1.1);      /* Subtle Mica effect */
+
+/* Brand Integration Bleeding (Leonard Yellow/Lahoma Orange) */
+--leonard-bleed-light: rgba(242, 203, 5, 0.06);    /* 6% Leonard Yellow */
+--leonard-bleed-medium: rgba(242, 203, 5, 0.10);   /* 10% Leonard Yellow */
+--leonard-bleed-strong: rgba(242, 203, 5, 0.12);   /* 12% Leonard Yellow */
+--lahoma-bleed-light: rgba(242, 135, 5, 0.06);     /* 6% Lahoma Orange */
+--lahoma-bleed-medium: rgba(242, 135, 5, 0.08);    /* 8% Lahoma Orange */
+
+/* Mica Border System */
+--mica-border-premium: 1px solid rgba(242, 203, 5, 0.2);    /* Leonard border */
+--mica-border-elite: 2px solid rgba(242, 135, 5, 0.25);     /* Lahoma border */
+--mica-border-subtle: 1px solid rgba(255, 255, 255, 0.3);   /* Neutral border */
+
+/* Noise Patterns (Research-Based SVG Data URIs) */
+--noise-fine: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.015'/%3E%3C/svg%3E");
+--noise-dense: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
+```
+
+### 4.2. Exact Animation Timing System (Stripe Research-Based 2025)
 
 **Core Timing Functions (Production-Ready):**
 ```css

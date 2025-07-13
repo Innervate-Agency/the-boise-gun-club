@@ -1,48 +1,184 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand Colors */
+  /* =================================================== */
+  /* COMPLETE BOISE GUN CLUB FUSION DESIGN SYSTEM v2.0 */
+  /* Triple Fusion: Stripe + ClickUp + Windows 11 Mica  */
+  /* =================================================== */
+  
+  /* -------------------- TYPOGRAPHY -------------------- */
+  --font-heading: "Rajdhani", "Inter", "system-ui", sans-serif;
+  --font-body: "Noto Sans", "Inter", "system-ui", sans-serif;
+  --font-serif: "Noto Serif", "Georgia", "Times New Roman", serif;
+  
+  /* ================== COMPLETE BRAND COLOR PALETTE ================== */
+  /* Theme Story: "Spring Day Along The East Fork of The Owyhee River" */
+  
+  /* Primary Brand Colors */
   --color-primary: #F2CB05;
   --color-secondary: #0A0A0A;
   --color-leonard-yellow: #F2CB05;
   --color-lahoma-orange: #F28705;
   
-  /* Typography */
-  --font-heading: "Rajdhani", sans-serif;
-  --font-body: "Noto Sans", sans-serif;
+  /* Light Theme Colors - Spring Day Along The East Fork of The Owyhee River */
+  --color-cloudy-day-white: #f8f6f1;
+  --color-overcast: #ede7de;
+  --color-sand-dune-brown: #c08051;
+  --color-craters-of-the-moon: #372103;
+  --color-desert-cliff-brown: #693e21;
+  --color-clay-pidgeon-orange: #F23005;
+  --color-gunclub-orange: #f07b1d;
+  --color-wildeye-susan-yellow: #E3C03C;
+  --color-idaho-sky-blue: #5198cd;
+  --color-snake-river-blue: #3c81c0;
+  --color-owyhee-field-green: #6f7822;
+  --color-boise-yard-green: #909233;
+  --color-scoring-bench-red: #8C394B;
   
-  /* Design System Colors */
+  /* Dark Theme Colors - Misty Fall Morning in the Cascades */
+  --color-kent-slate-gray: #2F3135;
+  --color-ed-charcoal: #4B4B4B;
+  --color-pidgeon-clay-gray: #494657;
+  --color-chester-white: #FDFDFD;
+  --color-don-gray: #EEF1F7;
+  --color-jerry-orange: #F25C05;
+  --color-abe-red: #F23005;
+  --color-clubhouse-roof-blue: #4982A6;
+  --color-clubhouse-walk-gray: #C9D2EF;
+  --color-clubhouse-lawn-green: #3F6331;
+  
+  /* Legacy Compatibility Colors */
+  --color-brand-blue: #5198cd;
+  --color-brand-green: #6f7822;
+  --color-brand-red: #8C394B;
+  --color-rich-black: #0A0A0A;
+  --color-pure-white: #FFFFFF;
+  
+  /* -------------------- DESIGN SYSTEM -------------------- */
   --border: #e5e7eb;
-  --input: #ffffff;
+  --input: #f8f6f1;
   --ring: #F2CB05;
   --radius: 0.5rem;
   
-  /* Destructive/Error Colors */
+  /* State Colors */
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  
-  /* Success Colors */  
   --success: #22c55e;
   --success-foreground: #ffffff;
-  
-  /* Warning Colors */
   --warning: #f59e0b;
   --warning-foreground: #ffffff;
-  
-  /* Info Colors */
   --info: #3b82f6;
   --info-foreground: #ffffff;
   
+  /* -------------------- ANIMATION SYSTEM -------------------- */
   /* Stripe-Inspired Timing */
+  --timing-instant: 100ms;
   --timing-fast: 150ms;
-  --timing-normal: 300ms;
-  --ease-stripe: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --timing-normal: 250ms;
+  --timing-slow: 350ms;
+  --timing-slower: 500ms;
   
-  /* Shadow System */
+  /* Advanced Easing Curves */
+  --ease-stripe: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* -------------------- SHADOW SYSTEM -------------------- */
+  /* Standard Shadow Progression */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  /* Brand-Colored Shadows */
   --shadow-premium: 0 4px 8px -2px rgba(242, 203, 5, 0.25), 0 2px 4px -1px rgba(242, 135, 5, 0.15);
   --shadow-premium-hover: 0 8px 16px -4px rgba(242, 203, 5, 0.35), 0 4px 8px -2px rgba(242, 135, 5, 0.25);
   --shadow-elite: 0 8px 16px -4px rgba(242, 203, 5, 0.3), 0 4px 8px -2px rgba(242, 135, 5, 0.2);
   --shadow-elite-hover: 0 16px 32px -8px rgba(242, 203, 5, 0.4), 0 8px 16px -4px rgba(242, 135, 5, 0.3);
+  
+  /* Inset Shadows */
+  --shadow-inset-sm: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --shadow-inset-md: inset 0 4px 8px 0 rgba(0, 0, 0, 0.12);
+  
+  /* Data Visualization Shadows */
+  --shadow-data-card: 0 2px 4px -1px rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+  --shadow-data-card-hover: 0 4px 8px -2px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  
+  /* -------------------- MICA EFFECTS -------------------- */
+  /* Windows 11 Mica Background Variables */
+  --mica-premium-bg: rgba(248, 246, 241, 0.85);
+  --mica-elite-bg: rgba(248, 246, 241, 0.90);
+  --mica-glass-bg: rgba(255, 255, 255, 0.88);
+  
+  /* Mica Blur Specifications */
+  --mica-blur-premium: blur(20px) saturate(1.2);
+  --mica-blur-elite: blur(24px) saturate(1.4);
+  --mica-blur-subtle: blur(16px) saturate(1.1);
+  
+  /* Brand Bleeding Effects */
+  --leonard-bleed-light: rgba(242, 203, 5, 0.06);
+  --leonard-bleed-medium: rgba(242, 203, 5, 0.10);
+  --leonard-bleed-strong: rgba(242, 203, 5, 0.12);
+  --lahoma-bleed-light: rgba(242, 135, 5, 0.06);
+  --lahoma-bleed-medium: rgba(242, 135, 5, 0.08);
+  --lahoma-bleed-strong: rgba(242, 135, 5, 0.10);
+  
+  /* Mica Border System */
+  --mica-border-premium: 1px solid rgba(242, 203, 5, 0.2);
+  --mica-border-elite: 2px solid rgba(242, 135, 5, 0.25);
+  --mica-border-subtle: 1px solid rgba(255, 255, 255, 0.3);
+  
+  /* ================== COMPREHENSIVE GRADIENT SYSTEM ================== */
+  
+  /* Primary Brand Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-leonard-yellow) 0%, var(--color-lahoma-orange) 100%);
+  --gradient-primary-soft: linear-gradient(135deg, rgba(242, 203, 5, 0.1) 0%, rgba(242, 135, 5, 0.1) 100%);
+  --gradient-primary-reverse: linear-gradient(135deg, var(--color-lahoma-orange) 0%, var(--color-leonard-yellow) 100%);
+  
+  /* Complex Multi-Stop Gradients */
+  --gradient-premium: linear-gradient(135deg, var(--color-leonard-yellow) 0%, var(--color-lahoma-orange) 45%, var(--color-leonard-yellow) 100%);
+  --gradient-elite: linear-gradient(135deg, var(--color-leonard-yellow) 0%, var(--color-lahoma-orange) 25%, var(--color-leonard-yellow) 50%, var(--color-lahoma-orange) 75%, var(--color-leonard-yellow) 100%);
+  
+  /* Idaho Landscape Gradients */
+  --gradient-owyhee-river: linear-gradient(135deg, var(--color-idaho-sky-blue) 0%, var(--color-snake-river-blue) 50%, var(--color-owyhee-field-green) 100%);
+  --gradient-spring-day: linear-gradient(135deg, var(--color-cloudy-day-white) 0%, var(--color-overcast) 50%, var(--color-sand-dune-brown) 100%);
+  --gradient-cascade-morning: linear-gradient(135deg, var(--color-kent-slate-gray) 0%, var(--color-pidgeon-clay-gray) 50%, var(--color-ed-charcoal) 100%);
+  --gradient-desert-cliff: linear-gradient(135deg, var(--color-sand-dune-brown) 0%, var(--color-desert-cliff-brown) 50%, var(--color-craters-of-the-moon) 100%);
+  
+  /* Clay Shooting Themed Gradients */
+  --gradient-clay-explosion: linear-gradient(135deg, var(--color-clay-pidgeon-orange) 0%, var(--color-gunclub-orange) 50%, var(--color-jerry-orange) 100%);
+  --gradient-scoring-bench: linear-gradient(135deg, var(--color-scoring-bench-red) 0%, var(--color-abe-red) 50%, var(--color-clay-pidgeon-orange) 100%);
+  --gradient-wildflower-field: linear-gradient(135deg, var(--color-wildeye-susan-yellow) 0%, var(--color-boise-yard-green) 50%, var(--color-owyhee-field-green) 100%);
+  --gradient-clubhouse-view: linear-gradient(135deg, var(--color-clubhouse-roof-blue) 0%, var(--color-clubhouse-walk-gray) 50%, var(--color-clubhouse-lawn-green) 100%);
+  
+  /* Radial Gradients */
+  --gradient-radial-subtle: radial-gradient(circle at center, rgba(242, 203, 5, 0.08) 0%, transparent 70%);
+  --gradient-radial-prominent: radial-gradient(circle at center, rgba(242, 203, 5, 0.15) 0%, rgba(242, 135, 5, 0.08) 50%, transparent 100%);
+  --gradient-radial-owyhee: radial-gradient(circle at center, var(--color-idaho-sky-blue) 0%, var(--color-owyhee-field-green) 70%, transparent 100%);
+  --gradient-radial-sunset: radial-gradient(circle at center, var(--color-wildeye-susan-yellow) 0%, var(--color-gunclub-orange) 40%, var(--color-clay-pidgeon-orange) 80%, transparent 100%);
+  
+  /* Text Gradients */
+  --gradient-text: linear-gradient(135deg, var(--color-leonard-yellow) 0%, var(--color-lahoma-orange) 100%);
+  --gradient-text-reverse: linear-gradient(135deg, var(--color-lahoma-orange) 0%, var(--color-leonard-yellow) 100%);
+  --gradient-text-wildflower: linear-gradient(135deg, var(--color-wildeye-susan-yellow) 0%, var(--color-boise-yard-green) 100%);
+  --gradient-text-river: linear-gradient(135deg, var(--color-idaho-sky-blue) 0%, var(--color-snake-river-blue) 100%);
+  --gradient-text-desert: linear-gradient(135deg, var(--color-sand-dune-brown) 0%, var(--color-craters-of-the-moon) 100%);
+  
+  /* Achievement Level Gradients */
+  --gradient-novice: linear-gradient(135deg, var(--color-overcast) 0%, var(--color-desert-cliff-brown) 100%);
+  --gradient-marksman: linear-gradient(135deg, var(--color-clubhouse-walk-gray) 0%, var(--color-idaho-sky-blue) 100%);
+  --gradient-expert: linear-gradient(135deg, var(--color-boise-yard-green) 0%, var(--color-owyhee-field-green) 100%);
+  --gradient-master: linear-gradient(135deg, var(--color-wildeye-susan-yellow) 0%, var(--color-gunclub-orange) 50%, var(--color-clay-pidgeon-orange) 100%);
+  --gradient-legend: linear-gradient(135deg, var(--color-leonard-yellow) 0%, var(--color-lahoma-orange) 25%, var(--color-jerry-orange) 50%, var(--color-abe-red) 75%, var(--color-scoring-bench-red) 100%);
+  
+  /* -------------------- NOISE PATTERNS -------------------- */
+  --noise-fine: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+  --noise-dense: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E");
 }
 
 
@@ -56,9 +192,9 @@
     --accent-primary: #F23005;
     --accent-secondary: #f07b1d;
     --accent-tertiary: #E3C03C;
-    --card: #ffffff;
+    --card: #f8f6f1;
     --card-foreground: #372103;
-    --popover: #ffffff;
+    --popover: #f8f6f1;
     --popover-foreground: #372103;
     --muted: #ede7de;
     --muted-foreground: #693e21;
@@ -202,20 +338,258 @@ h3, h4, h5, h6 {
   animation: shimmer 3s ease-in-out infinite;
 }
 
-/* Mica Effects for Premium/Elite Components */
+/* ===================== UTILITY CLASSES ===================== */
+
+/* Typography Utilities */
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+
+.text-primary { color: var(--foreground); }
+.text-secondary { color: var(--muted-foreground); }
+.text-success { color: var(--color-brand-green); }
+.text-error { color: var(--color-brand-red); }
+.text-info { color: var(--color-brand-blue); }
+.text-muted { color: var(--muted-foreground); }
+
+.text-gradient {
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Editorial Subtitle Implementation */
+.editorial-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--muted-foreground);
+}
+
+/* Animation Utilities */
+.transition-stripe-instant { transition: all var(--timing-instant) var(--ease-stripe); }
+.transition-stripe-fast { transition: all var(--timing-fast) var(--ease-stripe); }
+.transition-stripe-normal { transition: all var(--timing-normal) var(--ease-stripe); }
+.transition-stripe-slow { transition: all var(--timing-slow) var(--ease-stripe); }
+
+/* Enhanced Micro-interactions */
+.hover\:button-lift:hover {
+  transform: translateY(-1px);
+}
+
+.active\:button-press:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+/* Glass Effect Utilities */
+.glass-card {
+  background: var(--mica-glass-bg);
+  backdrop-filter: var(--mica-blur-subtle);
+  border: var(--mica-border-subtle);
+}
+
+.glass-premium {
+  background: var(--mica-premium-bg);
+  backdrop-filter: var(--mica-blur-premium);
+  border: var(--mica-border-premium);
+}
+
+.glass-elite {
+  background: var(--mica-elite-bg);
+  backdrop-filter: var(--mica-blur-elite);
+  border: var(--mica-border-elite);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px) saturate(1.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Shadow Utilities */
+.shadow-xs { box-shadow: var(--shadow-xs); }
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+.shadow-2xl { box-shadow: var(--shadow-2xl); }
+
+.shadow-inset-sm { box-shadow: var(--shadow-inset-sm); }
+.shadow-inset-md { box-shadow: var(--shadow-inset-md); }
+
+.data-card-shadow { box-shadow: var(--shadow-data-card); }
+.hover\:data-card-shadow-hover:hover { box-shadow: var(--shadow-data-card-hover); }
+
+/* Premium Shadow System */
+.shadow-premium { box-shadow: var(--shadow-premium); }
+.hover\:shadow-premium-hover:hover { box-shadow: var(--shadow-premium-hover); }
+.shadow-elite { box-shadow: var(--shadow-elite); }
+.hover\:shadow-elite-hover:hover { box-shadow: var(--shadow-elite-hover); }
+
+/* ================== COMPREHENSIVE COLOR UTILITIES ================== */
+
+/* Idaho-Themed Text Colors */
+.text-cloudy-day-white { color: var(--color-cloudy-day-white); }
+.text-overcast { color: var(--color-overcast); }
+.text-sand-dune-brown { color: var(--color-sand-dune-brown); }
+.text-craters-of-the-moon { color: var(--color-craters-of-the-moon); }
+.text-desert-cliff-brown { color: var(--color-desert-cliff-brown); }
+.text-clay-pidgeon-orange { color: var(--color-clay-pidgeon-orange); }
+.text-gunclub-orange { color: var(--color-gunclub-orange); }
+.text-wildeye-susan-yellow { color: var(--color-wildeye-susan-yellow); }
+.text-idaho-sky-blue { color: var(--color-idaho-sky-blue); }
+.text-snake-river-blue { color: var(--color-snake-river-blue); }
+.text-owyhee-field-green { color: var(--color-owyhee-field-green); }
+.text-boise-yard-green { color: var(--color-boise-yard-green); }
+.text-scoring-bench-red { color: var(--color-scoring-bench-red); }
+.text-kent-slate-gray { color: var(--color-kent-slate-gray); }
+.text-ed-charcoal { color: var(--color-ed-charcoal); }
+.text-pidgeon-clay-gray { color: var(--color-pidgeon-clay-gray); }
+.text-chester-white { color: var(--color-chester-white); }
+.text-don-gray { color: var(--color-don-gray); }
+.text-jerry-orange { color: var(--color-jerry-orange); }
+.text-abe-red { color: var(--color-abe-red); }
+.text-clubhouse-roof-blue { color: var(--color-clubhouse-roof-blue); }
+.text-clubhouse-walk-gray { color: var(--color-clubhouse-walk-gray); }
+.text-clubhouse-lawn-green { color: var(--color-clubhouse-lawn-green); }
+
+/* Idaho-Themed Background Colors */
+.bg-cloudy-day-white { background-color: var(--color-cloudy-day-white); }
+.bg-overcast { background-color: var(--color-overcast); }
+.bg-sand-dune-brown { background-color: var(--color-sand-dune-brown); }
+.bg-craters-of-the-moon { background-color: var(--color-craters-of-the-moon); }
+.bg-desert-cliff-brown { background-color: var(--color-desert-cliff-brown); }
+.bg-clay-pidgeon-orange { background-color: var(--color-clay-pidgeon-orange); }
+.bg-gunclub-orange { background-color: var(--color-gunclub-orange); }
+.bg-wildeye-susan-yellow { background-color: var(--color-wildeye-susan-yellow); }
+.bg-idaho-sky-blue { background-color: var(--color-idaho-sky-blue); }
+.bg-snake-river-blue { background-color: var(--color-snake-river-blue); }
+.bg-owyhee-field-green { background-color: var(--color-owyhee-field-green); }
+.bg-boise-yard-green { background-color: var(--color-boise-yard-green); }
+.bg-scoring-bench-red { background-color: var(--color-scoring-bench-red); }
+.bg-kent-slate-gray { background-color: var(--color-kent-slate-gray); }
+.bg-ed-charcoal { background-color: var(--color-ed-charcoal); }
+.bg-pidgeon-clay-gray { background-color: var(--color-pidgeon-clay-gray); }
+.bg-chester-white { background-color: var(--color-chester-white); }
+.bg-don-gray { background-color: var(--color-don-gray); }
+.bg-jerry-orange { background-color: var(--color-jerry-orange); }
+.bg-abe-red { background-color: var(--color-abe-red); }
+.bg-clubhouse-roof-blue { background-color: var(--color-clubhouse-roof-blue); }
+.bg-clubhouse-walk-gray { background-color: var(--color-clubhouse-walk-gray); }
+.bg-clubhouse-lawn-green { background-color: var(--color-clubhouse-lawn-green); }
+
+/* Idaho-Themed Border Colors */
+.border-clay-pidgeon-orange { border-color: var(--color-clay-pidgeon-orange); }
+.border-gunclub-orange { border-color: var(--color-gunclub-orange); }
+.border-wildeye-susan-yellow { border-color: var(--color-wildeye-susan-yellow); }
+.border-idaho-sky-blue { border-color: var(--color-idaho-sky-blue); }
+.border-snake-river-blue { border-color: var(--color-snake-river-blue); }
+.border-owyhee-field-green { border-color: var(--color-owyhee-field-green); }
+.border-boise-yard-green { border-color: var(--color-boise-yard-green); }
+.border-scoring-bench-red { border-color: var(--color-scoring-bench-red); }
+
+/* Comprehensive Gradient Utilities */
+.bg-gradient-primary { background: var(--gradient-primary); }
+.bg-gradient-primary-soft { background: var(--gradient-primary-soft); }
+.bg-gradient-premium { background: var(--gradient-premium); }
+.bg-gradient-elite { background: var(--gradient-elite); }
+
+/* Idaho Landscape Gradients */
+.bg-gradient-owyhee-river { background: var(--gradient-owyhee-river); }
+.bg-gradient-spring-day { background: var(--gradient-spring-day); }
+.bg-gradient-cascade-morning { background: var(--gradient-cascade-morning); }
+.bg-gradient-desert-cliff { background: var(--gradient-desert-cliff); }
+
+/* Clay Shooting Themed Gradients */
+.bg-gradient-clay-explosion { background: var(--gradient-clay-explosion); }
+.bg-gradient-scoring-bench { background: var(--gradient-scoring-bench); }
+.bg-gradient-wildflower-field { background: var(--gradient-wildflower-field); }
+.bg-gradient-clubhouse-view { background: var(--gradient-clubhouse-view); }
+
+/* Achievement Level Gradients */
+.bg-gradient-novice { background: var(--gradient-novice); }
+.bg-gradient-marksman { background: var(--gradient-marksman); }
+.bg-gradient-expert { background: var(--gradient-expert); }
+.bg-gradient-master { background: var(--gradient-master); }
+.bg-gradient-legend { background: var(--gradient-legend); }
+
+/* Text Gradient Utilities */
+.text-gradient-wildflower {
+  background: var(--gradient-text-wildflower);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-river {
+  background: var(--gradient-text-river);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-desert {
+  background: var(--gradient-text-desert);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-master {
+  background: var(--gradient-master);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-legend {
+  background: var(--gradient-legend);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Brand Bleeding Effects */
+.leonard-bleed-light { background-color: var(--leonard-bleed-light); }
+.leonard-bleed-medium { background-color: var(--leonard-bleed-medium); }
+.leonard-bleed-strong { background-color: var(--leonard-bleed-strong); }
+.lahoma-bleed-light { background-color: var(--lahoma-bleed-light); }
+.lahoma-bleed-medium { background-color: var(--lahoma-bleed-medium); }
+.lahoma-bleed-strong { background-color: var(--lahoma-bleed-strong); }
+
+/* Shimmer Animation for Elite Components */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Enhanced Mica Effects for Premium/Elite Components */
 .mica-premium {
   background-image: 
-    radial-gradient(circle at 20% 80%, rgba(242, 203, 5, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(242, 135, 5, 0.08) 0%, transparent 50%),
+    var(--noise-fine),
+    radial-gradient(circle at 20% 80%, var(--leonard-bleed-light) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, var(--lahoma-bleed-light) 0%, transparent 50%),
     radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
 }
 
 .mica-elite {
   background-image: 
-    radial-gradient(circle at 20% 80%, rgba(242, 203, 5, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(242, 135, 5, 0.12) 0%, transparent 50%),
+    var(--noise-dense),
+    radial-gradient(circle at 20% 80%, var(--leonard-bleed-medium) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, var(--lahoma-bleed-medium) 0%, transparent 50%),
     radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 60% 60%, rgba(242, 203, 5, 0.06) 0%, transparent 50%);
+    radial-gradient(circle at 60% 60%, var(--leonard-bleed-light) 0%, transparent 50%);
 }
 
 
