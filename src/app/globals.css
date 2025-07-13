@@ -184,51 +184,63 @@
 
 @layer base {
   :root, [data-theme="light"] {
-    --bg-primary: #f8f6f1;
-    --bg-secondary: #ede7de;
-    --bg-tertiary: #c08051;
-    --text-primary: #372103;
-    --text-secondary: #693e21;
-    --accent-primary: #F23005;
-    --accent-secondary: #f07b1d;
-    --accent-tertiary: #E3C03C;
-    --card: #f8f6f1;
-    --card-foreground: #372103;
-    --popover: #f8f6f1;
-    --popover-foreground: #372103;
-    --muted: #ede7de;
-    --muted-foreground: #693e21;
-    --brand-blue: #5198cd;
-    --brand-green: #6f7822;
-    --brand-red-action: #8C394B;
+    /* Existing Theme Variables - Spring Day Along The East Fork of The Owyhee River */
+    --bg-primary: #f8f6f1;              /* cloudy-day-white */
+    --bg-secondary: #ede7de;             /* overcast */
+    --bg-tertiary: #c08051;              /* sand-dune-brown */
+    --text-primary: #372103;             /* craters-of-the-moon */
+    --text-secondary: #693e21;           /* desert-cliff-brown */
+    --accent-primary: #F23005;           /* clay-pidgeon-orange */
+    --accent-secondary: #f07b1d;         /* gunclub-orange */
+    --accent-tertiary: #E3C03C;          /* wildeye-susan-yellow */
+    --card: #f8f6f1;                     /* cloudy-day-white */
+    --card-foreground: #372103;          /* craters-of-the-moon */
+    --popover: #f8f6f1;                  /* cloudy-day-white */
+    --popover-foreground: #372103;       /* craters-of-the-moon */
+    --muted: #ede7de;                    /* overcast */
+    --muted-foreground: #693e21;         /* desert-cliff-brown */
+    --brand-blue: #5198cd;               /* idaho-sky-blue */
+    --brand-green: #6f7822;              /* owyhee-field-green */
+    --brand-red-action: #8C394B;         /* scoring-bench-red */
     --color-lahoma-orange: #F28705;
     --color-leonard-yellow: #F2CB05;
-    --background: #f8f6f1;
-    --foreground: #372103;
+    --background: #f8f6f1;               /* cloudy-day-white */
+    --foreground: #372103;               /* craters-of-the-moon */
+    
+    /* Idaho Theme Extensions */
+    --idaho-snake-river-blue: #3c81c0;
+    --idaho-boise-yard-green: #909233;
+    --idaho-jerry-orange: #F25C05;
+    --idaho-abe-red: #F23005;
   }
 
   .dark, [data-theme="dark"] {
-    --bg-primary: #2F3135;
-    --bg-secondary: #4B4B4B;
-    --bg-tertiary: #494657;
-    --text-primary: #FDFDFD;
-    --text-secondary: #EEF1F7;
-    --accent-primary: #F28705;
-    --accent-secondary: #F2CB05;
-    --accent-tertiary: #F25C05;
-    --card: #2F3135;
-    --card-foreground: #FDFDFD;
-    --popover: #2F3135;
-    --popover-foreground: #FDFDFD;
-    --muted: #4B4B4B;
-    --muted-foreground: #EEF1F7;
-    --brand-blue: #4982A6;
-    --brand-green: #3F6331;
-    --brand-red-action: #F23005;
+    /* Existing Theme Variables - Misty Fall Morning in the Cascades */
+    --bg-primary: #2F3135;               /* kent-slate-gray */
+    --bg-secondary: #4B4B4B;             /* ed-charcoal */
+    --bg-tertiary: #494657;              /* pidgeon-clay-gray */
+    --text-primary: #FDFDFD;             /* chester-white */
+    --text-secondary: #EEF1F7;           /* don-gray */
+    --accent-primary: #F28705;           /* lahoma-orange */
+    --accent-secondary: #F2CB05;         /* leonard-yellow */
+    --accent-tertiary: #F25C05;          /* jerry-orange */
+    --card: #2F3135;                     /* kent-slate-gray */
+    --card-foreground: #FDFDFD;          /* chester-white */
+    --popover: #2F3135;                  /* kent-slate-gray */
+    --popover-foreground: #FDFDFD;       /* chester-white */
+    --muted: #4B4B4B;                    /* ed-charcoal */
+    --muted-foreground: #EEF1F7;         /* don-gray */
+    --brand-blue: #4982A6;               /* clubhouse-roof-blue */
+    --brand-green: #3F6331;              /* clubhouse-lawn-green */
+    --brand-red-action: #F23005;         /* abe-red */
     --color-lahoma-orange: #F28705;
     --color-leonard-yellow: #F2CB05;
-    --background: #2F3135;
-    --foreground: #FDFDFD;
+    --background: #2F3135;               /* kent-slate-gray */
+    --foreground: #FDFDFD;               /* chester-white */
+    
+    /* Idaho Theme Extensions */
+    --idaho-clubhouse-walk-gray: #C9D2EF;
+    --idaho-scoring-bench-red: #8C394B;
     
     /* Dark mode design system colors */
     --border: #374151;

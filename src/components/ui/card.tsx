@@ -2,35 +2,84 @@
 
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
+import { Star, Award, Target, Trophy, Crown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
 const cardVariants = cva(
-  "bg-card text-card-foreground flex flex-col rounded-xl border transition-stripe-fast relative overflow-hidden",
+  "flex flex-col rounded-xl border transition-stripe-fast relative overflow-hidden font-body",
   {
     variants: {
       variant: {
-        default: "border-border bg-card hover:bg-muted/80 shadow-sm hover:shadow-md hover:button-lift",
-        glass: "border-white/20 bg-card/10 backdrop-blur-sm text-card hover:bg-card/20 hover:border-white/30 dark:border-white/10 dark:bg-card/5 dark:hover:bg-card/10 shadow-lg hover:shadow-xl transition-stripe-normal",
-        premium: "bg-background/95 backdrop-blur-sm text-foreground shadow-premium border border-leonard-yellow/20 hover:shadow-premium-hover hover:scale-[1.02] hover:button-lift transition-stripe-normal group",
-        elite: "bg-background/90 backdrop-blur-md text-foreground shadow-elite border-2 border-leonard-yellow/30 hover:shadow-elite-hover hover:scale-[1.05] hover:button-lift transition-stripe-normal group"
+        default: "bg-card text-card-foreground border-border shadow-sm hover:shadow-md hover:button-lift",
+        
+        // Premium Cards - Subtle and elegant
+        premium: "bg-card text-card-foreground border-[var(--color-leonard-yellow)]/20 shadow-premium hover:shadow-premium-hover hover:scale-[1.01] transition-stripe-normal group",
+        elite: "bg-card text-card-foreground border-2 border-[var(--color-leonard-yellow)]/30 shadow-elite hover:shadow-elite-hover hover:scale-[1.02] transition-stripe-normal group",
+        
+        // Glass Effects - Clean and professional  
+        glass: "bg-card/10 backdrop-blur-sm text-card-foreground border-white/20 shadow-lg hover:shadow-xl hover:scale-[1.01] transition-stripe-normal group"
       },
       size: {
+        xs: "p-3",
         sm: "p-4",
         md: "p-6", 
-        lg: "p-8"
+        lg: "p-8",
+        xl: "p-10"
+      },
+      elevation: {
+        none: "shadow-none",
+        sm: "shadow-sm",
+        md: "shadow-md", 
+        lg: "shadow-lg",
+        xl: "shadow-xl",
+        "2xl": "shadow-2xl"
+      },
+      rounded: {
+        none: "rounded-none",
+        sm: "rounded-lg",
+        md: "rounded-xl",
+        lg: "rounded-2xl",
+        full: "rounded-3xl"
       }
     },
     defaultVariants: {
       variant: "default",
-      size: "md"
+      size: "md",
+      elevation: "md",
+      rounded: "md"
     },
   }
 )
 
+// Achievement level mapping for automatic variant selection
+const achievementVariants = {
+  'Novice': 'novice',
+  'D': 'novice', 
+  'C': 'marksman',
+  'B': 'marksman',
+  'A': 'expert',
+  'AA': 'expert',
+  'Master': 'master',
+  'Legend': 'legend'
+} as const
+
+// Achievement icons mapping
+const achievementIcons = {
+  novice: Target,
+  marksman: Star,
+  expert: Award, 
+  master: Trophy,
+  legend: Crown
+} as const
+
 export interface CardProps extends React.ComponentProps<"div">, VariantProps<typeof cardVariants> {
   animate?: boolean
+  achievement?: keyof typeof achievementVariants
+  showAchievementIcon?: boolean
+  glowOnHover?: boolean
+  interactive?: boolean
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
@@ -38,52 +87,64 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
     className, 
     variant, 
     size,
+    elevation,
+    rounded,
     animate = false,
+    achievement,
+    showAchievementIcon = false,
+    glowOnHover = false,
+    interactive = false,
     children,
     ...props 
   }, ref) => {
-    const [isInView, setIsInView] = React.useState(false)
-    const observerRef = React.useRef<HTMLDivElement>(null)
-
-    React.useEffect(() => {
-      if (!animate) return
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setIsInView(true)
-            observer.unobserve(entry.target)
-          }
-        },
-        {
-          rootMargin: '0px',
-          threshold: 0.1,
-        }
-      )
-
-      if (observerRef.current) {
-        observer.observe(observerRef.current)
-      }
-
-      return () => {
-        if (observerRef.current) {
-          observer.unobserve(observerRef.current)
-        }
-      }
-    }, [animate])
+    const cardRef = React.useRef<HTMLDivElement>(null)
+    const isInView = useInView(cardRef, { once: true, margin: "-10%" })
+    
+    // Auto-select variant based on achievement if provided
+    const finalVariant = achievement && achievementVariants[achievement] 
+      ? achievementVariants[achievement] as keyof typeof cardVariants.variants.variant
+      : variant
+    
+    // Get achievement icon if needed
+    const AchievementIcon = showAchievementIcon && finalVariant && achievementIcons[finalVariant as keyof typeof achievementIcons]
+      ? achievementIcons[finalVariant as keyof typeof achievementIcons]
+      : null
 
     const motionVariants = {
-      hidden: { opacity: 0, y: 20 },
-      visible: { opacity: 1, y: 0 }
+      hidden: { 
+        opacity: 0, 
+        y: 20, 
+        scale: 0.95,
+        filter: "blur(4px)"
+      },
+      visible: { 
+        opacity: 1, 
+        y: 0, 
+        scale: 1,
+        filter: "blur(0px)",
+        transition: {
+          duration: 0.6,
+          ease: "easeOut",
+          staggerChildren: 0.1
+        }
+      }
+    }
+    
+    const glowVariants = {
+      initial: { boxShadow: "0 0 0 rgba(242, 203, 5, 0)" },
+      hover: { 
+        boxShadow: "0 0 20px rgba(242, 203, 5, 0.4), 0 0 40px rgba(242, 135, 5, 0.2)",
+        transition: { duration: 0.3 }
+      }
     }
 
     const Comp = animate ? motion.div : "div"
     const motionProps = animate ? {
-      ref: observerRef,
+      ref: cardRef,
       variants: motionVariants,
       initial: "hidden",
       animate: isInView ? "visible" : "hidden",
-      transition: { duration: 0.6 }
+      whileHover: glowOnHover ? glowVariants.hover : undefined
     } : {}
 
     return (
@@ -91,35 +152,70 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         ref={ref}
         data-slot="card"
         className={cn(
-          cardVariants({ variant, size }),
+          cardVariants({ variant: finalVariant, size, elevation, rounded }),
+          interactive && "cursor-pointer select-none",
           className
         )}
         {...motionProps}
         {...props}
       >
-        {/* Premium card with subtle Mica and gradient hint */}
-        {variant === 'premium' && (
+        {/* Premium/Elite Mica Effects */}
+        {(finalVariant === 'premium' || finalVariant === 'glass-premium') && (
           <>
             <div className="absolute inset-0 mica-premium opacity-30 group-hover:opacity-50 transition-stripe-normal -z-10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/3 to-lahoma-orange/3 transition-stripe-normal -z-10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/5 to-lahoma-orange/5 blur-sm opacity-0 group-hover:opacity-100 transition-stripe-normal -z-10" />
+            <div className="absolute inset-0 leonard-bleed-light opacity-40 group-hover:opacity-60 transition-stripe-normal -z-10" />
+            <div className="absolute inset-0 lahoma-bleed-light blur-sm opacity-0 group-hover:opacity-100 transition-stripe-normal -z-10" />
           </>
         )}
         
-        {/* Elite card with enhanced Mica and gradient effects */}
-        {variant === 'elite' && (
+        {(finalVariant === 'elite' || finalVariant === 'glass-elite' || finalVariant === 'legend') && (
           <>
             <div className="absolute inset-0 mica-elite opacity-40 group-hover:opacity-60 transition-stripe-normal -z-10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/4 to-lahoma-orange/4 transition-stripe-normal -z-10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/6 via-lahoma-orange/6 to-leonard-yellow/6 blur-md opacity-0 group-hover:opacity-100 transition-stripe-normal -z-10" />
-            <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-50 group-hover:opacity-80 transition-stripe-normal -z-10" />
+            <div className="absolute inset-0 leonard-bleed-medium opacity-50 group-hover:opacity-70 transition-stripe-normal -z-10" />
+            <div className="absolute inset-0 lahoma-bleed-medium blur-md opacity-0 group-hover:opacity-100 transition-stripe-normal -z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent animate-shimmer opacity-60 group-hover:opacity-100 transition-stripe-normal -z-10" />
           </>
         )}
         
-        {/* Content wrapper with enhanced contrast for premium variants */}
+        {/* Master level special effects */}
+        {finalVariant === 'master' && (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-r from-wildeye-susan-yellow/10 to-gunclub-orange/10 opacity-30 group-hover:opacity-50 transition-stripe-normal -z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/6 to-transparent animate-shimmer opacity-40 group-hover:opacity-70 transition-stripe-normal -z-10" />
+          </>
+        )}
+        
+        {/* Clay shooting themed effects */}
+        {finalVariant === 'clay' && (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-r from-clay-pidgeon-orange/10 to-jerry-orange/10 opacity-40 group-hover:opacity-60 transition-stripe-normal -z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer opacity-50 group-hover:opacity-80 transition-stripe-normal -z-10" />
+          </>
+        )}
+        
+        {/* Landscape themed subtle effects */}
+        {(finalVariant === 'owyhee' || finalVariant === 'spring' || finalVariant === 'cascade' || finalVariant === 'desert') && (
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-stripe-normal -z-10" />
+        )}
+        
+        {/* Achievement Icon */}
+        {AchievementIcon && (
+          <div className="absolute top-4 right-4 z-20">
+            <AchievementIcon className={cn(
+              "w-5 h-5 opacity-70 group-hover:opacity-100 transition-stripe-fast",
+              finalVariant === 'legend' && "text-leonard-yellow",
+              finalVariant === 'master' && "text-gunclub-orange",
+              finalVariant === 'expert' && "text-owyhee-field-green",
+              finalVariant === 'marksman' && "text-idaho-sky-blue",
+              finalVariant === 'novice' && "text-desert-cliff-brown"
+            )} />
+          </div>
+        )}
+        
+        {/* Content wrapper with enhanced contrast for special variants */}
         <div className={cn(
           "relative z-10",
-          (variant === 'premium' || variant === 'elite') && "backdrop-blur-sm"
+          (finalVariant === 'premium' || finalVariant === 'elite' || finalVariant === 'glass-premium' || finalVariant === 'glass-elite') && "backdrop-blur-sm"
         )}>
           {children}
         </div>
@@ -195,48 +291,209 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-// Preset Card Components following the design system
-const PremiumCard = React.forwardRef<HTMLDivElement, CardProps>(
+// ================== PRESET CARD COMPONENTS ================== //
+
+// Idaho Landscape Cards
+const OwyheeCard = React.forwardRef<HTMLDivElement, Omit<CardProps, 'variant'>>(
   ({ className, children, ...props }, ref) => (
+    <Card ref={ref} variant="owyhee" className={cn("group", className)} {...props}>
+      {children}
+    </Card>
+  )
+)
+OwyheeCard.displayName = "OwyheeCard"
+
+const SpringCard = React.forwardRef<HTMLDivElement, Omit<CardProps, 'variant'>>(
+  ({ className, children, ...props }, ref) => (
+    <Card ref={ref} variant="spring" className={cn("group", className)} {...props}>
+      {children}
+    </Card>
+  )
+)
+SpringCard.displayName = "SpringCard"
+
+const CascadeCard = React.forwardRef<HTMLDivElement, Omit<CardProps, 'variant'>>(
+  ({ className, children, ...props }, ref) => (
+    <Card ref={ref} variant="cascade" className={cn("group", className)} {...props}>
+      {children}
+    </Card>
+  )
+)
+CascadeCard.displayName = "CascadeCard"
+
+// Clay Shooting Themed Cards
+const ClayCard = React.forwardRef<HTMLDivElement, Omit<CardProps, 'variant'>>(
+  ({ className, children, ...props }, ref) => (
+    <Card ref={ref} variant="clay" className={cn("group", className)} animate glowOnHover {...props}>
+      {children}
+    </Card>
+  )
+)
+ClayCard.displayName = "ClayCard"
+
+const ScoringCard = React.forwardRef<HTMLDivElement, Omit<CardProps, 'variant'>>(
+  ({ className, children, ...props }, ref) => (
+    <Card ref={ref} variant="scoring" className={cn("group", className)} {...props}>
+      {children}
+    </Card>
+  )
+)
+ScoringCard.displayName = "ScoringCard"
+
+// Achievement Level Cards
+const AchievementCard = React.forwardRef<HTMLDivElement, Omit<CardProps, 'variant'> & { level: keyof typeof achievementVariants }>(
+  ({ level, className, children, showAchievementIcon = true, ...props }, ref) => (
     <Card 
-      ref={ref}
-      variant="premium"
-      className={cn("group", className)}
+      ref={ref} 
+      achievement={level}
+      showAchievementIcon={showAchievementIcon}
+      className={cn("group", className)} 
+      animate
+      interactive
       {...props}
     >
+      {children}
+    </Card>
+  )
+)
+AchievementCard.displayName = "AchievementCard"
+
+// Premium Fusion Cards
+const PremiumCard = React.forwardRef<HTMLDivElement, Omit<CardProps, 'variant'>>(
+  ({ className, children, ...props }, ref) => (
+    <Card ref={ref} variant="premium" className={cn("group", className)} animate {...props}>
       {children}
     </Card>
   )
 )
 PremiumCard.displayName = "PremiumCard"
 
-const EliteCard = React.forwardRef<HTMLDivElement, CardProps>(
+const EliteCard = React.forwardRef<HTMLDivElement, Omit<CardProps, 'variant'>>(
   ({ className, children, ...props }, ref) => (
-    <Card 
-      ref={ref}
-      variant="elite"
-      className={cn("group", className)}
-      {...props}
-    >
+    <Card ref={ref} variant="elite" className={cn("group", className)} animate glowOnHover {...props}>
       {children}
     </Card>
   )
 )
 EliteCard.displayName = "EliteCard"
 
-const GlassCard = React.forwardRef<HTMLDivElement, CardProps>(
+const LegendCard = React.forwardRef<HTMLDivElement, Omit<CardProps, 'variant'>>(
   ({ className, children, ...props }, ref) => (
-    <Card 
-      ref={ref}
-      variant="glass" 
-      className={className}
-      {...props}
-    >
+    <Card ref={ref} variant="legend" className={cn("group", className)} animate glowOnHover showAchievementIcon {...props}>
+      {children}
+    </Card>
+  )
+)
+LegendCard.displayName = "LegendCard"
+
+// Glass Effect Cards
+const GlassCard = React.forwardRef<HTMLDivElement, Omit<CardProps, 'variant'>>(
+  ({ className, children, ...props }, ref) => (
+    <Card ref={ref} variant="glass" className={cn("group", className)} {...props}>
       {children}
     </Card>
   )
 )
 GlassCard.displayName = "GlassCard"
+
+const GlassPremiumCard = React.forwardRef<HTMLDivElement, Omit<CardProps, 'variant'>>(
+  ({ className, children, ...props }, ref) => (
+    <Card ref={ref} variant="glass-premium" className={cn("group", className)} animate {...props}>
+      {children}
+    </Card>
+  )
+)
+GlassPremiumCard.displayName = "GlassPremiumCard"
+
+// Gun Club Specific Cards
+interface MemberCardProps extends Omit<CardProps, 'variant'> {
+  memberLevel?: keyof typeof achievementVariants
+  memberName?: string
+  memberNumber?: string
+}
+
+const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(
+  ({ memberLevel = 'Novice', memberName, memberNumber, className, children, ...props }, ref) => (
+    <Card 
+      ref={ref}
+      achievement={memberLevel}
+      showAchievementIcon
+      className={cn("group member-card", className)}
+      animate
+      interactive
+      {...props}
+    >
+      <div className="space-y-4">
+        {(memberName || memberNumber) && (
+          <div className="flex items-center justify-between">
+            {memberName && (
+              <h3 className="font-heading font-semibold text-lg">{memberName}</h3>
+            )}
+            {memberNumber && (
+              <span className="text-sm opacity-70 font-mono">#{memberNumber}</span>
+            )}
+          </div>
+        )}
+        {children}
+      </div>
+    </Card>
+  )
+)
+MemberCard.displayName = "MemberCard"
+
+interface ScoreCardProps extends Omit<CardProps, 'variant'> {
+  discipline?: string
+  score?: number
+  maxScore?: number
+  date?: string
+}
+
+const ScoreCard = React.forwardRef<HTMLDivElement, ScoreCardProps>(
+  ({ discipline, score, maxScore = 25, date, className, children, ...props }, ref) => {
+    const percentage = score ? (score / maxScore) * 100 : 0
+    const level = percentage >= 95 ? 'Master' : percentage >= 85 ? 'AA' : percentage >= 70 ? 'A' : percentage >= 50 ? 'B' : 'C'
+    
+    return (
+      <Card 
+        ref={ref}
+        variant="clay"
+        className={cn("group score-card", className)}
+        animate
+        interactive
+        {...props}
+      >
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            {discipline && (
+              <h3 className="font-heading font-semibold">{discipline}</h3>
+            )}
+            {date && (
+              <span className="text-sm opacity-70">{date}</span>
+            )}
+          </div>
+          
+          {score !== undefined && (
+            <div className="flex items-center justify-between">
+              <span className="text-2xl font-bold font-heading">{score}/{maxScore}</span>
+              <span className={cn(
+                "px-2 py-1 rounded-full text-xs font-semibold",
+                percentage >= 95 && "bg-gradient-master text-chester-white",
+                percentage >= 85 && percentage < 95 && "bg-gradient-expert text-chester-white", 
+                percentage >= 70 && percentage < 85 && "bg-gradient-marksman text-chester-white",
+                percentage < 70 && "bg-gradient-novice text-craters-of-the-moon"
+              )}>
+                {level}
+              </span>
+            </div>
+          )}
+          
+          {children}
+        </div>
+      </Card>
+    )
+  }
+)
+ScoreCard.displayName = "ScoreCard"
 
 export {
   Card,
@@ -246,21 +503,75 @@ export {
   CardAction,
   CardDescription,
   CardContent,
-  // Preset exports following design system
+  
+  // Idaho Landscape Cards
+  OwyheeCard,
+  SpringCard, 
+  CascadeCard,
+  
+  // Clay Shooting Themed Cards
+  ClayCard,
+  ScoringCard,
+  
+  // Achievement Level Cards
+  AchievementCard,
+  
+  // Premium Fusion Cards
   PremiumCard,
   EliteCard,
-  GlassCard
+  LegendCard,
+  
+  // Glass Effect Cards
+  GlassCard,
+  GlassPremiumCard,
+  
+  // Gun Club Specific Cards
+  MemberCard,
+  ScoreCard,
+  
+  // Types and utilities
+  cardVariants,
+  achievementVariants,
+  type CardProps,
+  type MemberCardProps,
+  type ScoreCardProps
 }
 
-// Example Usage:
-// <PremiumCard>
-//   <CardContent>
-//     Premium fusion card with Leonard Yellow to Lahoma Orange gradient
-//   </CardContent>
-// </PremiumCard>
+// ================== USAGE EXAMPLES ================== //
 
-// <EliteCard>
-//   <CardContent>
-//     Elite fusion card with shimmer animation and enhanced gradients
-//   </CardContent>
-// </EliteCard>
+// Idaho Landscape Cards:
+// <OwyheeCard>
+//   <CardContent>Beautiful Idaho Sky Blue to Owyhee Field Green gradient</CardContent>
+// </OwyheeCard>
+
+// <SpringCard>
+//   <CardContent>Warm spring day colors from Cloudy Day White to Sand Dune Brown</CardContent>
+// </SpringCard>
+
+// Achievement Cards with Auto-Icons:
+// <AchievementCard level="Master">
+//   <CardContent>Automatically uses Master gradient with Trophy icon</CardContent>
+// </AchievementCard>
+
+// <LegendCard>
+//   <CardContent>Elite Legend card with Crown icon and full gradient spectrum</CardContent>
+// </LegendCard>
+
+// Clay Shooting Themed:
+// <ClayCard>
+//   <CardContent>Clay Pidgeon Orange explosion gradient with shimmer</CardContent>
+// </ClayCard>
+
+// Gun Club Specific:
+// <MemberCard memberLevel="AA" memberName="John Doe" memberNumber="12345">
+//   <CardContent>Member details with achievement-based styling</CardContent>
+// </MemberCard>
+
+// <ScoreCard discipline="Trap" score={23} maxScore={25} date="2024-01-13">
+//   <CardContent>Automatic grade calculation and achievement styling</CardContent>
+// </ScoreCard>
+
+// Glass Effects:
+// <GlassPremiumCard>
+//   <CardContent>Premium glass with Mica effects and Leonard Yellow bleeding</CardContent>
+// </GlassPremiumCard>
