@@ -9,7 +9,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { BreadcrumbHero } from '@/components/ui/breadcrumb-hero';
 import { SiteNavigation } from '@/components/ui/site-navigation';
-import { SmartBreadcrumbs } from '@/components/ui/breadcrumb';
 // import { VoiceNavigation } from '@/components/ui/voice-navigation';
 // import { SpatialNavigation } from '@/components/ui/spatial-navigation';
 // import { TabNavigation } from '@/components/ui/tab-navigation';
@@ -45,11 +44,7 @@ export default function NavigationPage() {
             <CardTitle>Smart Breadcrumbs</CardTitle>
           </CardHeader>
           <CardContent>
-            <SmartBreadcrumbs items={[
-              { label: 'Home', href: '/', icon: Compass },
-              { label: 'Ranges', href: '/ranges', icon: Layers },
-              { label: 'Trap Range', href: '/ranges/trap', icon: null },
-            ]} />
+            <p className="text-muted-foreground">Smart breadcrumbs component coming soon...</p>
           </CardContent>
         </Card>
         <Card>

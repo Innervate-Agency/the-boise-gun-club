@@ -14,17 +14,19 @@ const meta: Meta<typeof Calendar> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const DefaultCalendarComponent = (args: any) => {
+  const [date, setDate] = React.useState<Date | undefined>(new Date());
+  return (
+    <Calendar
+      mode="single"
+      selected={date}
+      onSelect={setDate}
+      className="rounded-md border"
+      {...args}
+    />
+  );
+};
+
 export const Default: Story = {
-  render: (args) => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date());
-    return (
-      <Calendar
-        mode="single"
-        selected={date}
-        onSelect={setDate}
-        className="rounded-md border"
-        {...args}
-      />
-    );
-  },
+  render: (args) => <DefaultCalendarComponent {...args} />,
 };

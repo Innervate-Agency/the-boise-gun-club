@@ -78,7 +78,7 @@ export default function ForumPage() {
                 {isAuthenticated ? 'Signing you into the forum...' : 'Redirecting to forum...'}
               </p>
               <p className="text-sm text-[var(--text-secondary)]">
-                If you're not redirected automatically, <a href="https://forum.boisegunclub.com" className="text-[var(--accent-primary)] hover:underline">click here</a>
+                If you&apos;re not redirected automatically, <a href="https://forums.boisegunclub.com" className="text-[var(--accent-primary)] hover:underline">click here</a>
               </p>
             </>
           ) : (

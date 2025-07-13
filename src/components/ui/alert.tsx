@@ -6,22 +6,24 @@ import { X, CheckCircle, AlertTriangle, XCircle, Info, Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const alertVariants = cva(
-  "relative w-full rounded-xl px-6 py-4 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*5)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-4 gap-y-1 items-start [&>svg]:size-5 [&>svg]:translate-y-0.5 transition-all duration-300 ease-out shadow-lg hover:shadow-xl backdrop-blur-sm border overflow-hidden",
+  "relative w-full rounded-xl text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*5)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-4 gap-y-1 items-start [&>svg]:size-5 [&>svg]:translate-y-0.5 transition-stripe-fast border relative overflow-hidden font-body",
   {
     variants: {
       variant: {
-        default: "bg-card/95 text-card-foreground border-border/20",
-        success: "bg-gradient-to-r from-brand-green/10 to-brand-green-light/10 text-brand-green border-brand-green/20 [&>svg]:text-brand-green",
-        warning: "bg-gradient-to-r from-color-leonard-yellow/10 to-color-lahoma-orange/10 text-amber-800 dark:text-amber-200 border-color-leonard-yellow/20 [&>svg]:text-color-leonard-yellow",
-        error: "bg-gradient-to-r from-red-500/10 to-brand-red-action/10 text-red-800 dark:text-red-200 border-[var(--brand-red-action)]/20 [&>svg]:text-[var(--brand-red-action)]",
-        info: "bg-gradient-to-r from-brand-blue/10 to-brand-blue-dark/10 text-brand-blue border-brand-blue/20 [&>svg]:text-brand-blue",
-        premium: "bg-gradient-to-r from-color-leonard-yellow/15 to-color-lahoma-orange/15 text-amber-900 dark:text-amber-100 border-color-leonard-yellow/30 [&>svg]:text-color-lahoma-orange relative overflow-hidden group",
-        elite: "bg-gradient-to-r from-color-leonard-yellow/20 to-color-lahoma-orange/20 text-amber-900 dark:text-amber-100 border-2 border-color-leonard-yellow/50 [&>svg]:text-color-lahoma-orange shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group",
+        default: "bg-card text-card-foreground border-border shadow-sm hover:shadow-md hover:button-lift",
+        success: "bg-gradient-to-r from-brand-green/8 to-brand-green/5 text-brand-green border-brand-green/30 shadow-sm hover:shadow-md [&>svg]:text-brand-green data-card-shadow hover:data-card-shadow-hover",
+        warning: "bg-gradient-to-r from-leonard-yellow/8 to-lahoma-orange/5 text-amber-800 dark:text-amber-200 border-leonard-yellow/30 shadow-sm hover:shadow-md [&>svg]:text-leonard-yellow data-card-shadow hover:data-card-shadow-hover",
+        error: "bg-gradient-to-r from-brand-red/8 to-brand-red/5 text-red-800 dark:text-red-200 border-brand-red/30 shadow-sm hover:shadow-md [&>svg]:text-brand-red data-card-shadow hover:data-card-shadow-hover",
+        info: "bg-gradient-to-r from-brand-blue/8 to-brand-blue/5 text-brand-blue border-brand-blue/30 shadow-sm hover:shadow-md [&>svg]:text-brand-blue data-card-shadow hover:data-card-shadow-hover",
+        premium: "bg-gradient-to-r from-card via-card to-leonard-yellow/5 border-leonard-yellow/20 shadow-premium hover:shadow-premium-hover hover:scale-[1.02] transition-stripe-normal group text-foreground [&>svg]:text-lahoma-orange",
+        elite: "bg-gradient-to-r from-card via-leonard-yellow/3 to-lahoma-orange/3 border-2 border-leonard-yellow/30 shadow-elite hover:shadow-elite-hover hover:scale-[1.05] transition-stripe-normal group animate-shimmer text-foreground [&>svg]:text-lahoma-orange",
+        glass: "bg-card/10 backdrop-blur-sm border-white/20 shadow-lg hover:bg-card/20 hover:border-white/30 transition-stripe-fast text-card-foreground [&>svg]:text-card-foreground"
       },
       size: {
-        default: "px-6 py-4",
-        sm: "px-4 py-3 text-sm",
+        sm: "px-4 py-3 text-xs",
+        default: "px-6 py-4 text-sm",
         lg: "px-8 py-6 text-base",
+        xl: "px-10 py-8 text-lg"
       },
     },
     defaultVariants: {
@@ -40,6 +42,7 @@ const alertIcons = {
   info: Info,
   premium: Zap,
   elite: Zap,
+  glass: Info,
 } as const
 
 interface AlertProps extends React.ComponentProps<"div">, VariantProps<typeof alertVariants> {
@@ -76,14 +79,26 @@ function Alert({
       className={cn(alertVariants({ variant, size }), className)}
       {...props}
     >
-      {/* Background gradient overlay for premium variant */}
+      {/* Premium Mica Effect */}
       {variant === 'premium' && (
-        <div className="absolute inset-0 bg-gradient-to-br from-color-leonard-yellow/10 via-transparent to-color-lahoma-orange/10 pointer-events-none" />
+        <>
+          <div className="absolute inset-0 mica-premium opacity-40 group-hover:opacity-60 transition-stripe-normal -z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/3 to-lahoma-orange/3 blur-sm opacity-0 group-hover:opacity-100 transition-stripe-normal -z-10" />
+        </>
       )}
       
-      {/* Enhanced background gradient for elite variant */}
+      {/* Elite Mica Effect + Shimmer */}
       {variant === 'elite' && (
-        <div className="absolute inset-0 bg-gradient-to-br from-color-leonard-yellow/15 via-transparent to-color-lahoma-orange/15 pointer-events-none opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+        <>
+          <div className="absolute inset-0 mica-elite opacity-50 group-hover:opacity-70 transition-stripe-normal -z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/4 via-lahoma-orange/4 to-leonard-yellow/4 blur-md opacity-0 group-hover:opacity-100 transition-stripe-normal -z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent animate-shimmer -z-10" />
+        </>
+      )}
+      
+      {/* Glass Effect */}
+      {variant === 'glass' && (
+        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-sm -z-10" />
       )}
       
       {/* Icon */}
@@ -91,8 +106,11 @@ function Alert({
         <IconComponent className="relative z-10" />
       )}
       
-      {/* Content */}
-      <div className="relative z-10 col-start-2 space-y-1">
+      {/* Content wrapper with enhanced contrast for premium variants */}
+      <div className={cn(
+        "relative z-10 col-start-2 space-y-1",
+        (variant === 'premium' || variant === 'elite') && "backdrop-blur-sm"
+      )}>
         {children}
       </div>
       
@@ -100,21 +118,11 @@ function Alert({
       {dismissible && (
         <button
           onClick={handleDismiss}
-          className="absolute top-3 right-3 p-1 rounded-full hover:bg-[var(--bg-primary)]/10 dark:hover:bg-[var(--card)]/10 transition-colors duration-200 opacity-70 hover:opacity-100"
+          className="absolute top-3 right-3 p-1 rounded-full hover:bg-muted/20 transition-stripe-fast opacity-70 hover:opacity-100 z-20"
           aria-label="Dismiss alert"
         >
           <X className="h-4 w-4" />
         </button>
-      )}
-      
-      {/* Subtle animation shimmer for premium variant */}
-      {variant === 'premium' && (
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full animate-shimmer pointer-events-none" />
-      )}
-      
-      {/* Enhanced shimmer effect for elite variant */}
-      {variant === 'elite' && (
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent transform -skew-x-12 -translate-x-full animate-shimmer pointer-events-none" />
       )}
     </div>
   )
@@ -217,6 +225,14 @@ function EliteAlert({ children, ...props }: Omit<AlertProps, 'variant'>) {
   )
 }
 
+function GlassAlert({ children, ...props }: Omit<AlertProps, 'variant'>) {
+  return (
+    <Alert variant="glass" {...props}>
+      {children}
+    </Alert>
+  )
+}
+
 export { 
   Alert, 
   AlertTitle, 
@@ -226,5 +242,6 @@ export {
   ErrorAlert,
   InfoAlert,
   PremiumAlert,
-  EliteAlert
+  EliteAlert,
+  GlassAlert
 }

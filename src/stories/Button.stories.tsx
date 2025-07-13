@@ -245,6 +245,56 @@ export const NavigationButton: Story = {
   },
 };
 
+// REFINED SHOWCASE - Highlighting the sophisticated approach
+export const RefinedShowcase: Story = {
+  render: () => (
+    <div className="space-y-8 p-8">
+      <div className="text-center space-y-2">
+        <h2 className="text-2xl font-heading font-bold text-text-primary">Refined Button Design</h2>
+        <p className="text-text-secondary">Professional sophistication with subtle enhancement - no overwhelming gradients</p>
+      </div>
+      
+      {/* Before/After Comparison */}
+      <div className="space-y-6">
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">✅ Refined Approach (Current)</h3>
+          <div className="flex flex-wrap gap-4">
+            <Button variant="premium">Premium with Subtle Hints</Button>
+            <Button variant="elite">Elite with Mica Texture</Button>
+          </div>
+          <p className="text-sm text-text-secondary">
+            Subtle gradient hints (3-5% opacity) + Windows 11 Mica noise textures + Stripe precision timing
+          </p>
+        </div>
+        
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">Professional Enhancement Details</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 border rounded-lg">
+              <h4 className="font-medium mb-2">Stripe Precision</h4>
+              <Button variant="primary" className="mb-2">Hover for 150ms timing</Button>
+              <p className="text-xs text-text-secondary">Cubic-bezier(0.215, 0.61, 0.355, 1) transitions</p>
+            </div>
+            <div className="p-4 border rounded-lg">
+              <h4 className="font-medium mb-2">Windows 11 Mica</h4>
+              <Button variant="premium" className="mb-2">Subtle material depth</Button>
+              <p className="text-xs text-text-secondary">Opaque glass with brand-colored noise</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story: 'Showcase of the refined button approach: professional restraint with cutting-edge effects that enhance rather than overwhelm the content.'
+      }
+    }
+  }
+};
+
 // FUSION SHOWCASE - All variants side by side
 export const FusionShowcase: Story = {
   render: () => (

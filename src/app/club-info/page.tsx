@@ -108,7 +108,7 @@ export default function ClubInfoPage() {
               </h2>
               <div className="space-y-6 text-lg text-text-secondary font-body font-light leading-relaxed">
                 <p>
-                  Founded in 1898 by dedicated sporting enthusiasts, the Boise Gun Club has been Idaho's premier destination for shotgun sports for over 125 years. We've built our reputation on providing a safe, welcoming environment for shooters of all skill levels.
+                  Founded in 1898 by dedicated sporting enthusiasts, the Boise Gun Club has been Idaho&apos;s premier destination for shotgun sports for over 125 years. We&apos;ve built our reputation on providing a safe, welcoming environment for shooters of all skill levels.
                 </p>
                 <p>
                   Our mission is simple: champion the shooting sports through comprehensive education, unwavering commitment to safety, and fostering a vibrant community that celebrates both tradition and progress.

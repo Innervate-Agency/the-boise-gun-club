@@ -38,31 +38,196 @@ This document defines the visual design standards and aesthetic guidelines for t
 --font-serif: "Noto Serif", "Georgia", "Times New Roman", serif;
 ```
 
-### 2.2. Typography Hierarchy
+### 2.2. Exact Typography Implementation
 
-**H1 - Brand Titles (Rajdhani)**
-- Always full caps with strategic weight variations
-- Example: "BOISE" (font-weight: 700) + "GUNCLUB" (font-weight: 300)
-- Usage: Hero sections, main page titles, brand elements
+**Complete Typography Scale:**
+```css
+/* Heading Styles */
+.text-h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem); /* 40px - 64px */
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
 
-**H2 - Major Sections (Rajdhani)**
-- Standard capitalization, can be used multiple times per page
-- Font-weight: 600 for professional hierarchy
-- Usage: Section headers, page titles, major content divisions
+.text-h1-light {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
 
-**H3-H6 - Content Hierarchy (Noto Sans)**
-- Consistent font-weight: 600 across all levels
-- Usage: All standard content headings, subsections, supporting text
+.text-h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem); /* 32px - 48px */
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
 
-**Special: Editorial Subtitles (Noto Serif)**
-- Use `.editorial-subtitle` class for texture and sophistication
-- Font-weight: 400 italic for elegant distinction
-- Usage: Taglines, descriptive subtitles, editorial emphasis only
+.text-h3 {
+  font-family: var(--font-body);
+  font-size: clamp(1.5rem, 3vw, 2rem); /* 24px - 32px */
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
 
-**Body Text (Noto Sans)**
-- Optimized for readability across all devices
-- Clear information hierarchy with appropriate line spacing
-- Usage: Paragraphs, lists, form labels, descriptions
+.text-h4 {
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem); /* 20px - 24px */
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.text-h5 {
+  font-family: var(--font-body);
+  font-size: clamp(1.125rem, 2vw, 1.25rem); /* 18px - 20px */
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+}
+
+.text-h6 {
+  font-family: var(--font-body);
+  font-size: 1rem; /* 16px */
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+/* Body Text Variants */
+.text-body-lg {
+  font-family: var(--font-body);
+  font-size: 1.125rem; /* 18px */
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-size: 1rem; /* 16px */
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+.text-body-sm {
+  font-family: var(--font-body);
+  font-size: 0.875rem; /* 14px */
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.text-caption {
+  font-family: var(--font-body);
+  font-size: 0.75rem; /* 12px */
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+/* Editorial Subtitle */
+.editorial-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.125rem; /* 18px */
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--color-text-muted);
+}
+
+/* Text Weight Utilities */
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+
+/* Text Color Utilities */
+.text-primary { color: var(--color-leonard-yellow); }
+.text-secondary { color: var(--color-lahoma-orange); }
+.text-success { color: var(--color-brand-green); }
+.text-error { color: var(--color-brand-red); }
+.text-info { color: var(--color-brand-blue); }
+.text-muted { color: var(--color-text-muted); }
+
+/* Text Gradient */
+.text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Responsive Typography Adjustments */
+@media (max-width: 768px) {
+  .text-h1 { font-size: clamp(2rem, 8vw, 2.5rem); }
+  .text-h2 { font-size: clamp(1.75rem, 6vw, 2rem); }
+  .text-h3 { font-size: clamp(1.5rem, 5vw, 1.75rem); }
+}
+
+/* Dark Mode Typography */
+@media (prefers-color-scheme: dark) {
+  .text-h1, .text-h2, .text-h3, .text-h4, .text-h5, .text-h6 {
+    color: var(--color-text-dark);
+  }
+  .text-body, .text-body-lg, .text-body-sm, .text-caption {
+    color: var(--color-text-dark);
+  }
+  .editorial-subtitle {
+    color: var(--color-text-muted-dark);
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .text-h1, .text-h2, .text-h3, .text-h4, .text-h5, .text-h6 {
+    font-weight: 700;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  }
+  .text-gradient {
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: var(--color-leonard-yellow);
+  }
+}
+```
+
+**Usage Examples:**
+```html
+<!-- Brand Title Pattern -->
+<h1 class="text-h1">
+  <span class="font-bold">BOISE</span>
+  <span class="font-light">GUNCLUB</span>
+</h1>
+
+<!-- Section Headers -->
+<h2 class="text-h2 text-gradient">Membership Benefits</h2>
+
+<!-- Content Hierarchy -->
+<h3 class="text-h3">Range Safety Rules</h3>
+<h4 class="text-h4">Eye and Ear Protection</h4>
+
+<!-- Editorial Subtitle -->
+<p class="editorial-subtitle">Where precision meets passion in the heart of Idaho</p>
+
+<!-- Body Content -->
+<p class="text-body">Our state-of-the-art facility features multiple shooting ranges...</p>
+<p class="text-body-sm text-muted">Last updated: July 2025</p>
+```
 
 ## 3. Color System
 
@@ -95,143 +260,722 @@ This document defines the visual design standards and aesthetic guidelines for t
 
 ## 4. Stripe-Inspired Precision (Research-Backed)
 
-### 4.1. Timing & Transitions (Verified from stripe.com Analysis)
+### 4.1. Exact Animation Timing System (Research-Based 2025)
 
-**Standard Transitions (Authentic Stripe Patterns):**
-- **Fast:** `150ms cubic-bezier(0.215, 0.61, 0.355, 1)` - Hover states, focus rings, micro-interactions
-- **Smooth:** `300ms cubic-bezier(0.215, 0.61, 0.355, 1)` - Modal appearances, page transitions, component state changes
-
-**Research Findings from stripe.com:**
-- Stripe uses variable fonts (sohne-var) for flexible typography weight (1-1000)
-- Gradient backgrounds with complex radial color stops for premium sections
-- Semantic CSS variables for color theming (--accentColor, --backgroundColor)
-- Layered shadow system with granular definitions (XSmall to XLarge)
-- Responsive font sizing using CSS calculations for fluid typography
-
-**Usage Guidelines (Stripe-Validated):**
-- Button hover states: 150ms (confirmed across stripe.com)
-- Card elevation changes: 150ms with shadow progression
-- Modal/dialog appearances: 300ms with backdrop blur
-- Page transitions: 300ms with smooth opacity changes
-- Form focus states: 150ms with border color transitions
-
-### 4.2. Shadow System
-
-**Layered Elevation:**
+**Core Timing Functions (Production-Ready):**
 ```css
---shadow-sm: 0 2px 4px -1px rgba(50,50,93,.25);
---shadow-md: 0 4px 8px -2px rgba(50,50,93,.25);
---shadow-lg: 0 8px 16px -4px rgba(50,50,93,.25);
---shadow-xl: 0 16px 32px -8px rgba(50,50,93,.25);
+/* Primary Easing Curves */
+--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);        /* Sharp deceleration - buttons, cards */
+--ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);       /* Smooth deceleration - modals, sheets */
+--ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);      /* Gentle deceleration - page transitions */
+--ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);   /* Smooth acceleration/deceleration */
+--ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Subtle bounce - success states */
+
+/* Duration Variables */
+--duration-instant: 100ms;  /* Immediate feedback - button press */
+--duration-fast: 150ms;     /* Quick interactions - hover, focus */
+--duration-normal: 250ms;   /* Standard transitions - cards, menus */
+--duration-slow: 350ms;     /* Complex transitions - modals, sheets */
+--duration-slower: 500ms;   /* Page transitions, major state changes */
 ```
 
-**Application:**
-- Cards: `shadow-sm` default, `shadow-md` hover
-- Buttons: `shadow-sm` default, `shadow-lg` premium variants
-- Modals: `shadow-xl` for strong elevation
-- Tooltips: `shadow-md` for subtle floating
+**Timing Application Map:**
+```css
+/* Button Interactions */
+.btn:hover { transition: all var(--duration-fast) var(--ease-out-expo); }
+.btn:active { transition: all var(--duration-instant) var(--ease-out-expo); }
 
-### 4.3. Micro-Interactions
+/* Card Interactions */
+.card:hover { transition: all var(--duration-fast) var(--ease-out-quart); }
 
-**Button States:**
-- Hover: Subtle color shift + shadow elevation
-- Active: Slight scale reduction (0.98) + shadow reduction
-- Focus: Outline ring with brand color
-- Loading: Spinner with fade-in animation
+/* Modal/Dialog Appearances */
+.modal { transition: all var(--duration-slow) var(--ease-out-cubic); }
 
-**Form Elements:**
-- Focus: Floating label animation + border color change
-- Validation: Smooth error/success state transitions
-- Input: Subtle border radius and shadow on focus
+/* Form Focus States */
+.input:focus { transition: all var(--duration-fast) var(--ease-out-quart); }
+
+/* Success/Error Feedback */
+.success-state { transition: all var(--duration-normal) var(--ease-bounce); }
+```
+
+**Performance Guidelines (2025 Standards):**
+- Use `transform` and `opacity` only for 60fps animations
+- Prefer `will-change: transform` for complex hover states
+- Always include `@media (prefers-reduced-motion: reduce)` fallbacks
+- Max animation duration: 500ms (accessibility compliance)
+- Test on low-end devices to ensure smooth performance
+
+### 4.2. Comprehensive Shadow System (Multi-Layer 2025)
+
+**Base Shadow Variables:**
+```css
+/* Core Shadow Layers (Multi-Shadow Approach) */
+--shadow-xs: 
+  0 1px 2px 0 rgba(0, 0, 0, 0.05);
+--shadow-sm: 
+  0 1px 3px 0 rgba(0, 0, 0, 0.1),
+  0 1px 2px 0 rgba(0, 0, 0, 0.06);
+--shadow-md: 
+  0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+--shadow-lg: 
+  0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  0 4px 6px -2px rgba(0, 0, 0, 0.05);
+--shadow-xl: 
+  0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  0 10px 10px -5px rgba(0, 0, 0, 0.04);
+--shadow-2xl: 
+  0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+/* Brand-Colored Shadows (Premium/Elite) */
+--shadow-premium: 
+  0 4px 12px -2px rgba(242, 203, 5, 0.25),
+  0 2px 6px -1px rgba(242, 203, 5, 0.15),
+  0 1px 3px 0 rgba(0, 0, 0, 0.08);
+--shadow-premium-hover: 
+  0 8px 20px -4px rgba(242, 203, 5, 0.35),
+  0 4px 12px -2px rgba(242, 203, 5, 0.25),
+  0 2px 6px -1px rgba(0, 0, 0, 0.12);
+--shadow-elite: 
+  0 6px 16px -3px rgba(242, 135, 5, 0.3),
+  0 3px 8px -1px rgba(242, 203, 5, 0.2),
+  0 1px 4px 0 rgba(0, 0, 0, 0.1);
+--shadow-elite-hover: 
+  0 12px 28px -6px rgba(242, 135, 5, 0.4),
+  0 6px 16px -3px rgba(242, 203, 5, 0.3),
+  0 3px 8px -1px rgba(0, 0, 0, 0.15);
+
+/* Inset Shadows (Neumorphic) */
+--shadow-inset-sm: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+--shadow-inset-md: inset 0 4px 8px 0 rgba(0, 0, 0, 0.12);
+```
+
+**Shadow Progression Implementation:**
+```css
+/* Standard Card Progression */
+.card {
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--duration-fast) var(--ease-out-expo);
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.card:active {
+  box-shadow: var(--shadow-xs);
+  transform: translateY(0);
+}
+
+/* Button Shadow States */
+.btn-primary {
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-fast) var(--ease-out-expo);
+}
+.btn-primary:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.btn-primary:active {
+  box-shadow: var(--shadow-xs);
+  transform: translateY(0) scale(0.98);
+}
+
+/* Premium Button Shadows */
+.btn-premium {
+  box-shadow: var(--shadow-premium);
+}
+.btn-premium:hover {
+  box-shadow: var(--shadow-premium-hover);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Modal/Dialog Shadows */
+.modal {
+  box-shadow: var(--shadow-2xl);
+}
+```
+
+**Application Guidelines:**
+- **Consistent Ratios:** All shadows maintain 2:1 blur-to-spread ratio
+- **Layer Strategy:** Use 2-3 shadow layers for depth without performance impact
+- **Color Theory:** Warm shadows (Leonard Yellow) for premium, cool shadows for standard
+- **Elevation Hierarchy:** xs→sm→md→lg→xl→2xl for logical depth progression
+
+### 4.3. Exact Micro-Interaction Specifications
+
+**Button State Implementations:**
+```css
+/* Primary Button Complete State System */
+.btn-primary {
+  background: var(--color-leonard-yellow);
+  color: var(--color-rich-black);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-fast) var(--ease-out-expo);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover State */
+.btn-primary:hover {
+  background: var(--color-lahoma-orange);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* Active State */
+.btn-primary:active {
+  background: var(--color-lahoma-orange);
+  box-shadow: var(--shadow-xs);
+  transform: translateY(0) scale(0.98);
+  transition-duration: var(--duration-instant);
+}
+
+/* Focus State */
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-leonard-yellow);
+  outline-offset: 2px;
+  box-shadow: 
+    var(--shadow-sm),
+    0 0 0 4px rgba(242, 203, 5, 0.2);
+}
+
+/* Disabled State */
+.btn-primary:disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Loading State */
+.btn-primary.loading {
+  pointer-events: none;
+  position: relative;
+}
+.btn-primary.loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  border-radius: inherit;
+}
+.btn-primary.loading::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid var(--color-rich-black);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  z-index: 1;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+```
+
+**Form Element Micro-Interactions:**
+```css
+/* Input Field Complete System */
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  background: #ffffff;
+  transition: all var(--duration-fast) var(--ease-out-quart);
+  position: relative;
+}
+
+/* Focus State */
+.form-input:focus {
+  border-color: var(--color-leonard-yellow);
+  box-shadow: 
+    0 0 0 4px rgba(242, 203, 5, 0.1),
+    var(--shadow-sm);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+/* Error State */
+.form-input.error {
+  border-color: var(--color-brand-red);
+  box-shadow: 0 0 0 4px rgba(140, 57, 75, 0.1);
+}
+
+/* Success State */
+.form-input.success {
+  border-color: var(--color-brand-green);
+  box-shadow: 0 0 0 4px rgba(111, 120, 34, 0.1);
+}
+
+/* Floating Label Implementation */
+.form-field {
+  position: relative;
+}
+
+.form-label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #6b7280;
+  pointer-events: none;
+  transition: all var(--duration-normal) var(--ease-out-cubic);
+  background: #ffffff;
+  padding: 0 4px;
+}
+
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+  top: 0;
+  left: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-leonard-yellow);
+  transform: translateY(-50%);
+}
+
+/* Validation Feedback Animation */
+.form-feedback {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: all var(--duration-normal) var(--ease-out-cubic);
+}
+
+.form-feedback.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-feedback.error {
+  color: var(--color-brand-red);
+}
+
+.form-feedback.success {
+  color: var(--color-brand-green);
+}
+```
+
+**Card Interaction System:**
+```css
+/* Interactive Card Complete Implementation */
+.card-interactive {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-fast) var(--ease-out-expo);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-interactive:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: rgba(242, 203, 5, 0.3);
+}
+
+.card-interactive:active {
+  transform: translateY(-1px) scale(0.99);
+  transition-duration: var(--duration-instant);
+}
+
+/* Ripple Effect for Cards */
+.card-interactive::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(242, 203, 5, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width var(--duration-slow) var(--ease-out-cubic),
+              height var(--duration-slow) var(--ease-out-cubic);
+}
+
+.card-interactive:active::before {
+  width: 300px;
+  height: 300px;
+}
+```
 
 ## 5. ClickUp-Inspired Vibrancy (Research-Backed)
 
-### 5.1. Windows 11 Mica Effects + Research Integration
+### 5.1. Glassmorphism Implementation (2025 Standards)
 
 **Exact CSS Variables for Implementation:**
 ```css
-/* Windows 11 Mica Specifications */
---mica-premium-bg: rgba(248, 246, 241, 0.85); /* 85% opacity - mostly opaque */
---mica-elite-bg: rgba(248, 246, 241, 0.90); /* 90% opacity - more opaque */
---mica-blur-premium: blur(20px) saturate(1.2); /* 20px blur + 120% saturation */
---mica-blur-elite: blur(24px) saturate(1.4); /* 24px blur + 140% saturation */
+/* Core Glassmorphism Variables (Research-Based) */
+--glass-bg-light: rgba(255, 255, 255, 0.15);    /* 15% white - standard glass */
+--glass-bg-medium: rgba(255, 255, 255, 0.2);    /* 20% white - prominent glass */
+--glass-bg-heavy: rgba(255, 255, 255, 0.25);    /* 25% white - solid glass */
+--glass-border: rgba(255, 255, 255, 0.3);       /* 30% white - glass borders */
 
-/* Brand Color Bleeding Variables */
---leonard-bleed-light: rgba(242, 203, 5, 0.08); /* 8% Leonard Yellow */
---leonard-bleed-medium: rgba(242, 203, 5, 0.12); /* 12% Leonard Yellow */
---lahoma-bleed-light: rgba(242, 135, 5, 0.06); /* 6% Lahoma Orange */
---lahoma-bleed-medium: rgba(242, 135, 5, 0.10); /* 10% Lahoma Orange */
+/* Backdrop Filter Specifications */
+--glass-blur-subtle: blur(8px) saturate(1.1);   /* Subtle glass effect */
+--glass-blur-standard: blur(10px) saturate(1.2); /* Standard glass effect */
+--glass-blur-strong: blur(16px) saturate(1.4);  /* Strong glass effect */
+--glass-blur-ultra: blur(20px) saturate(1.6);   /* Ultra glass effect */
 
-/* Mica Border System */
---mica-border-premium: 1px solid rgba(242, 203, 5, 0.2); /* 20% Leonard Yellow */
---mica-border-elite: 2px solid rgba(242, 203, 5, 0.3); /* 30% Leonard Yellow */
+/* Brand-Integrated Glass Variables */
+--glass-leonard-bg: rgba(242, 203, 5, 0.08);    /* 8% Leonard Yellow glass */
+--glass-leonard-border: rgba(242, 203, 5, 0.25); /* 25% Leonard Yellow border */
+--glass-lahoma-bg: rgba(242, 135, 5, 0.06);     /* 6% Lahoma Orange glass */
+--glass-lahoma-border: rgba(242, 135, 5, 0.25); /* 25% Lahoma Orange border */
 
-/* Noise Pattern Data URIs */
---noise-fine: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.02'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3Ccircle cx='27' cy='7' r='1'/%3E%3Ccircle cx='47' cy='7' r='1'/%3E%3C/g%3E%3C/svg%3E");
---noise-dense: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Ccircle cx='5' cy='5' r='1'/%3E%3Ccircle cx='15' cy='5' r='1'/%3E%3Ccircle cx='25' cy='5' r='1'/%3E%3Ccircle cx='35' cy='5' r='1'/%3E%3C/g%3E%3C/svg%3E");
+/* Dark Theme Glass Variants */
+--glass-dark-bg: rgba(0, 0, 0, 0.15);           /* 15% black for dark mode */
+--glass-dark-border: rgba(255, 255, 255, 0.1);  /* 10% white border dark mode */
+
+/* Noise Patterns for Texture */
+--noise-fine: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
 ```
 
-**Implementation Classes:**
+**Glass Component Implementations:**
 ```css
-.mica-premium { 
-  background: var(--mica-premium-bg);
-  backdrop-filter: var(--mica-blur-premium);
-  border: var(--mica-border-premium);
+/* Standard Glass Card */
+.glass-card {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur-standard);
+  -webkit-backdrop-filter: var(--glass-blur-standard);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   position: relative;
+  overflow: hidden;
+  transition: all var(--duration-fast) var(--ease-out-expo);
 }
 
-.mica-premium::before {
+.glass-card:hover {
+  background: var(--glass-bg-medium);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 8px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Premium Glass with Brand Integration */
+.glass-premium {
+  background: 
+    linear-gradient(135deg, var(--glass-leonard-bg), var(--glass-lahoma-bg)),
+    var(--glass-bg-medium);
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
+  border: 2px solid var(--glass-leonard-border);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 
+    0 8px 16px rgba(242, 203, 5, 0.15),
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-premium::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(circle at 30% 70%, var(--leonard-bleed-light) 0%, transparent 50%),
-    radial-gradient(circle at 70% 30%, var(--lahoma-bleed-light) 0%, transparent 50%),
-    var(--noise-fine);
+  background: var(--noise-fine);
+  opacity: 0.5;
   pointer-events: none;
   z-index: -1;
 }
 
-.mica-elite {
-  background: var(--mica-elite-bg);
-  backdrop-filter: var(--mica-blur-elite);
-  border: var(--mica-border-elite);
+/* Elite Glass with Animation */
+.glass-elite {
+  background: 
+    radial-gradient(circle at 30% 70%, var(--glass-leonard-bg) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, var(--glass-lahoma-bg) 0%, transparent 50%),
+    var(--glass-bg-heavy);
+  backdrop-filter: var(--glass-blur-ultra);
+  -webkit-backdrop-filter: var(--glass-blur-ultra);
+  border: 3px solid;
+  border-image: linear-gradient(45deg, var(--glass-leonard-border), var(--glass-lahoma-border)) 1;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 
+    0 12px 24px rgba(242, 203, 5, 0.2),
+    0 6px 12px rgba(242, 135, 5, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 2px 0 rgba(255, 255, 255, 0.4);
   position: relative;
+  overflow: hidden;
+  animation: glass-shimmer 4s ease-in-out infinite;
 }
 
-.mica-elite::before {
+.glass-elite::before {
   content: '';
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(circle at 20% 80%, var(--leonard-bleed-medium) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, var(--lahoma-bleed-medium) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, var(--leonard-bleed-light) 0%, transparent 70%),
-    var(--noise-dense);
+    var(--noise-fine),
+    linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  animation: glass-shine 3s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
 }
+
+@keyframes glass-shimmer {
+  0%, 100% { 
+    backdrop-filter: var(--glass-blur-ultra); 
+    border-image-source: linear-gradient(45deg, var(--glass-leonard-border), var(--glass-lahoma-border));
+  }
+  50% { 
+    backdrop-filter: blur(24px) saturate(1.8); 
+    border-image-source: linear-gradient(45deg, var(--glass-lahoma-border), var(--glass-leonard-border));
+  }
+}
+
+@keyframes glass-shine {
+  0%, 100% { transform: translateX(-100%) rotate(45deg); }
+  50% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* Glass Navigation */
+.glass-nav {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur-standard);
+  -webkit-backdrop-filter: var(--glass-blur-standard);
+  border-bottom: 1px solid var(--glass-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Firefox Fallback (No backdrop-filter support) */
+@-moz-document url-prefix() {
+  .glass-card,
+  .glass-premium,
+  .glass-elite,
+  .glass-nav {
+    background: rgba(248, 246, 241, 0.95); /* Higher opacity fallback */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Reduced Motion Alternative */
+@media (prefers-reduced-motion: reduce) {
+  .glass-elite {
+    animation: none;
+  }
+  .glass-elite::before {
+    animation: none;
+  }
+}
 ```
 
-**Research Integration Specifications:**
-- **Stripe Timing**: All transitions use `transition: all 150ms cubic-bezier(0.215, 0.61, 0.355, 1)`
-- **ClickUp Spacing**: 18px between major elements, 14px for symbol spacing
-- **Windows 11 Standards**: 85-90% opacity backgrounds, 20-24px blur radius
-- **Brand Color Integration**: Leonard Yellow (#F2CB05) and Lahoma Orange (#F28705) bleeding through at 6-12% opacity
+**Browser Support & Performance:**
+- **Chrome/Safari**: Full backdrop-filter support (88%+ browser coverage)
+- **Firefox**: Fallback with higher opacity backgrounds
+- **Performance**: Use `will-change: backdrop-filter` for hover states
+- **Accessibility**: Maintain 4.5:1 contrast ratio on glass backgrounds
 
-### 5.2. Gradient System
+### 5.2. Advanced Gradient System (Multi-Stop Implementation)
 
-**Subtle Gradients (Professional):**
-- Background overlays: Linear gradients with 5-10% opacity
-- Button accents: Subtle Leonard Yellow to Lahoma Orange
-- Card borders: Animated gradients for special content
-
-**Implementation:**
+**Exact Gradient Variables:**
 ```css
-.gradient-subtle { background: linear-gradient(45deg, #F2CB05/5%, #F28705/5%); }
-.gradient-accent { background: linear-gradient(45deg, #F2CB05, #F28705); }
-.gradient-border { border-image: linear-gradient(45deg, #F2CB05, #F28705) 1; }
+/* Primary Brand Gradients */
+--gradient-primary: linear-gradient(135deg, #F2CB05 0%, #F28705 100%);
+--gradient-primary-soft: linear-gradient(135deg, rgba(242, 203, 5, 0.1) 0%, rgba(242, 135, 5, 0.1) 100%);
+--gradient-primary-reverse: linear-gradient(135deg, #F28705 0%, #F2CB05 100%);
+
+/* Multi-Stop Premium Gradients */
+--gradient-premium: linear-gradient(
+  135deg,
+  #F2CB05 0%,
+  #F28705 25%,
+  #F2CB05 50%,
+  #F28705 75%,
+  #F2CB05 100%
+);
+--gradient-elite: linear-gradient(
+  135deg,
+  #F2CB05 0%,
+  #F28705 15%,
+  #F2CB05 30%,
+  #F28705 45%,
+  #F2CB05 60%,
+  #F28705 75%,
+  #F2CB05 90%,
+  #F28705 100%
+);
+
+/* Radial Gradients for Background Effects */
+--gradient-radial-subtle: radial-gradient(
+  circle at 50% 50%,
+  rgba(242, 203, 5, 0.05) 0%,
+  rgba(242, 135, 5, 0.03) 50%,
+  transparent 100%
+);
+--gradient-radial-prominent: radial-gradient(
+  ellipse at 30% 70%,
+  rgba(242, 203, 5, 0.15) 0%,
+  rgba(242, 135, 5, 0.08) 40%,
+  transparent 80%
+);
+
+/* Conic Gradients for Special Effects */
+--gradient-conic-spin: conic-gradient(
+  from 0deg,
+  #F2CB05 0deg,
+  #F28705 90deg,
+  #F2CB05 180deg,
+  #F28705 270deg,
+  #F2CB05 360deg
+);
+
+/* Text Gradients */
+--gradient-text: linear-gradient(135deg, #F2CB05 0%, #F28705 100%);
+--gradient-text-reverse: linear-gradient(135deg, #F28705 0%, #F2CB05 100%);
 ```
+
+**Gradient Implementation Classes:**
+```css
+/* Background Gradients */
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-soft {
+  background: var(--gradient-primary-soft);
+}
+
+.bg-gradient-premium {
+  background: var(--gradient-premium);
+  background-size: 200% 100%;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+.bg-gradient-elite {
+  background: var(--gradient-elite);
+  background-size: 300% 100%;
+  animation: gradient-complex 4s ease-in-out infinite;
+}
+
+/* Text Gradients */
+.text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+.text-gradient-reverse {
+  background: var(--gradient-text-reverse);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+/* Border Gradients */
+.border-gradient {
+  border: 2px solid transparent;
+  background: 
+    linear-gradient(var(--color-background), var(--color-background)) padding-box,
+    var(--gradient-primary) border-box;
+  border-radius: 8px;
+}
+
+.border-gradient-animated {
+  border: 3px solid transparent;
+  background: 
+    linear-gradient(var(--color-background), var(--color-background)) padding-box,
+    var(--gradient-premium) border-box;
+  background-size: 200% 100%;
+  border-radius: 12px;
+  animation: gradient-shift 2s ease-in-out infinite;
+}
+
+/* Gradient Animations */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes gradient-complex {
+  0%, 100% { background-position: 0% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 50% 0%; }
+  75% { background-position: 50% 100%; }
+}
+
+/* Gradient Overlay System */
+.gradient-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-radial-subtle);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.gradient-overlay-prominent::before {
+  background: var(--gradient-radial-prominent);
+}
+
+/* Gradient Mesh Background */
+.gradient-mesh {
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(242, 203, 5, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(242, 135, 5, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(242, 135, 5, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(242, 203, 5, 0.04) 0%, transparent 50%),
+    var(--color-background);
+  animation: mesh-float 8s ease-in-out infinite;
+}
+
+@keyframes mesh-float {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.02) rotate(0.5deg); }
+  50% { transform: scale(1.01) rotate(-0.3deg); }
+  75% { transform: scale(1.03) rotate(0.2deg); }
+}
+```
+
+**Gradient Usage Guidelines:**
+- **Subtlety**: Use 5-15% opacity for background effects
+- **Animation**: Limit to Premium/Elite components only
+- **Performance**: Use `transform` for animations, not `background-position`
+- **Accessibility**: Ensure sufficient contrast over gradient backgrounds
+- **Fallbacks**: Provide solid color fallbacks for older browsers
 
 ### 5.3. Gradient Splash Effects (ClickUp-Inspired)
 
@@ -247,21 +991,270 @@ This document defines the visual design standards and aesthetic guidelines for t
 - Always use Leonard Yellow to Lahoma Orange gradients
 - Apply blur effects for soft, professional appearance
 
-## 6. Component-Specific Guidelines
+## 6. Component Enhancement Specifications
 
-### 6.1. Button Design
+### 6.1. Complete Button System Implementation
 
-**Primary Button:**
-- Leonard Yellow background with subtle shadow
-- Hover: Lahoma Orange with shadow elevation
-- Typography: Noto Sans, semibold weight
-- Padding: Comfortable touch targets (min 44px height)
+**Base Button Architecture:**
+```css
+/* Button Foundation */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--duration-fast) var(--ease-out-expo);
+  user-select: none;
+  -webkit-user-select: none;
+  white-space: nowrap;
+}
 
-**Premium Button:**
-- Gradient background with shimmer effect
-- Enhanced shadow system for elevation
-- Subtle scale animation on hover
-- Reserved for high-value actions
+/* Size Variants */
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 14px;
+  min-height: 36px;
+  border-radius: 6px;
+}
+
+.btn-md {
+  padding: 12px 24px;
+  font-size: 16px;
+  min-height: 44px;
+  border-radius: 8px;
+}
+
+.btn-lg {
+  padding: 16px 32px;
+  font-size: 18px;
+  min-height: 52px;
+  border-radius: 10px;
+}
+
+.btn-xl {
+  padding: 20px 40px;
+  font-size: 20px;
+  min-height: 60px;
+  border-radius: 12px;
+}
+```
+
+**Primary Button Complete Implementation:**
+```css
+.btn-primary {
+  background: var(--color-leonard-yellow);
+  color: var(--color-rich-black);
+  border-color: var(--color-leonard-yellow);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: var(--color-lahoma-orange);
+  border-color: var(--color-lahoma-orange);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  background: var(--color-lahoma-orange);
+  box-shadow: var(--shadow-xs);
+  transform: translateY(0) scale(0.98);
+  transition-duration: var(--duration-instant);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-leonard-yellow);
+  outline-offset: 2px;
+  box-shadow: 
+    var(--shadow-sm),
+    0 0 0 4px rgba(242, 203, 5, 0.2);
+}
+```
+
+**Premium Button with Gradient & Effects:**
+```css
+.btn-premium {
+  background: var(--gradient-primary);
+  color: var(--color-rich-black);
+  border-color: transparent;
+  box-shadow: var(--shadow-premium);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform var(--duration-slow) var(--ease-out-cubic);
+}
+
+.btn-premium:hover {
+  box-shadow: var(--shadow-premium-hover);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn-premium:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-premium:active {
+  transform: translateY(-1px) scale(1.01);
+  transition-duration: var(--duration-instant);
+}
+```
+
+**Elite Button with Advanced Animation:**
+```css
+.btn-elite {
+  background: var(--gradient-premium);
+  background-size: 200% 100%;
+  color: var(--color-rich-black);
+  border: 3px solid;
+  border-image: var(--gradient-primary) 1;
+  box-shadow: var(--shadow-elite);
+  position: relative;
+  overflow: hidden;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+.btn-elite::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(45deg, transparent 20%, rgba(255, 255, 255, 0.2) 50%, transparent 80%),
+    var(--noise-fine);
+  transform: translateX(-100%) rotate(45deg);
+  transition: transform var(--duration-slower) var(--ease-out-cubic);
+}
+
+.btn-elite:hover {
+  box-shadow: var(--shadow-elite-hover);
+  transform: translateY(-3px) scale(1.05);
+  animation-duration: 1.5s;
+}
+
+.btn-elite:hover::before {
+  transform: translateX(100%) rotate(45deg);
+}
+
+.btn-elite:active {
+  transform: translateY(-2px) scale(1.03);
+  transition-duration: var(--duration-instant);
+}
+```
+
+**Ghost & Outline Variants:**
+```css
+.btn-ghost {
+  background: transparent;
+  color: var(--color-leonard-yellow);
+  border-color: var(--color-leonard-yellow);
+  box-shadow: none;
+}
+
+.btn-ghost:hover {
+  background: var(--color-leonard-yellow);
+  color: var(--color-rich-black);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+  box-shadow: none;
+}
+
+.btn-outline:hover {
+  background: var(--color-leonard-yellow);
+  color: var(--color-rich-black);
+  border-color: var(--color-leonard-yellow);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+```
+
+**Button States & Accessibility:**
+```css
+.btn:disabled,
+.btn.disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  border-color: #e5e7eb;
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.btn.loading {
+  pointer-events: none;
+  position: relative;
+}
+
+.btn.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .btn {
+    border-width: 3px;
+  }
+  .btn-premium,
+  .btn-elite {
+    background: var(--color-leonard-yellow);
+    border: 3px solid var(--color-rich-black);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn::before {
+    transition: none;
+    animation: none;
+    transform: none;
+  }
+  .btn:hover {
+    transform: none;
+  }
+}
+```
 
 ### 6.2. Card Design (Exhaustive Implementation Specs)
 
@@ -511,35 +1504,293 @@ This document defines the visual design standards and aesthetic guidelines for t
 4. **Visual Hierarchy**: Larger spacing = more important separation
 5. **Consistent Rhythm**: Only use defined spacing variables, never arbitrary values
 
-## 8. Animation & Motion
+## 8. Animation & Motion System (Performance-Optimized)
 
-### 8.1. Scroll Effects (Balanced Approach)
+### 8.1. Exact Animation Implementations
 
-**Progressive Disclosure:**
-- Fade-in on scroll with intersection observer
-- Subtle upward movement (20px) on reveal
-- Staggered animations for grouped elements
-- Respect `prefers-reduced-motion` setting
+**Scroll-Triggered Animations:**
+```css
+/* Fade-in on Scroll */
+.animate-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--duration-slow) var(--ease-out-cubic);
+}
 
-**Parallax Elements:**
-- Subtle background movement (0.5x scroll speed)
-- Limited to hero sections and feature highlights
-- No motion sickness inducing effects
-- Always optional/disableable
+.animate-fade-in.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-### 8.2. Loading States
+/* Staggered Animation System */
+.animate-stagger {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all var(--duration-slow) var(--ease-out-cubic);
+}
 
-**Skeleton Screens:**
-- Gradient shimmer animation
-- Proper content shape approximation
-- Smooth transition to actual content
-- Consistent with overall design system
+.animate-stagger:nth-child(1) { transition-delay: 0ms; }
+.animate-stagger:nth-child(2) { transition-delay: 100ms; }
+.animate-stagger:nth-child(3) { transition-delay: 200ms; }
+.animate-stagger:nth-child(4) { transition-delay: 300ms; }
+.animate-stagger:nth-child(5) { transition-delay: 400ms; }
 
-**Micro-Interactions:**
-- Button press feedback (subtle scale)
-- Form field focus animations
-- Success/error state transitions
-- Tooltip appearances
+.animate-stagger.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scale Animation */
+.animate-scale {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.animate-scale.in-view {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Slide Animations */
+.animate-slide-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all var(--duration-slow) var(--ease-out-cubic);
+}
+
+.animate-slide-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all var(--duration-slow) var(--ease-out-cubic);
+}
+
+.animate-slide-left.in-view,
+.animate-slide-right.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+```
+
+**Intersection Observer Implementation:**
+```javascript
+// Optimized Scroll Animation Controller
+const observerOptions = {
+  root: null,
+  rootMargin: '0px 0px -100px 0px', // Trigger 100px before element enters
+  threshold: 0.1
+};
+
+const animationObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      // Only observe once for performance
+      animationObserver.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+// Auto-initialize all animation elements
+document.addEventListener('DOMContentLoaded', () => {
+  const animatedElements = document.querySelectorAll(
+    '.animate-fade-in, .animate-stagger, .animate-scale, .animate-slide-left, .animate-slide-right'
+  );
+  animatedElements.forEach(el => animationObserver.observe(el));
+});
+```
+
+### 8.2. Loading States & Skeletons
+
+**Skeleton Screen Implementation:**
+```css
+/* Base Skeleton */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-border) 25%,
+    rgba(255, 255, 255, 0.3) 50%,
+    var(--color-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Skeleton Variants */
+.skeleton-text {
+  height: 16px;
+  margin: 8px 0;
+  border-radius: 4px;
+}
+
+.skeleton-text-lg {
+  height: 24px;
+  margin: 12px 0;
+  border-radius: 6px;
+}
+
+.skeleton-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.skeleton-card {
+  height: 200px;
+  border-radius: 12px;
+  margin: 16px 0;
+}
+
+.skeleton-button {
+  height: 44px;
+  width: 120px;
+  border-radius: 8px;
+}
+
+/* Skeleton Pulse Alternative */
+.skeleton-pulse {
+  background: var(--color-border);
+  animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+```
+
+**Content Loading Transition:**
+```css
+/* Smooth Content Replacement */
+.content-loader {
+  position: relative;
+  min-height: 200px;
+}
+
+.skeleton-wrapper {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  transition: opacity var(--duration-normal) var(--ease-out-cubic);
+}
+
+.skeleton-wrapper.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.content-wrapper {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all var(--duration-normal) var(--ease-out-cubic);
+}
+
+.content-wrapper.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+```
+
+### 8.3. Performance-Optimized Animations
+
+**Hardware Acceleration Classes:**
+```css
+/* Force GPU Acceleration */
+.gpu-accelerated {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Remove will-change after animation */
+.gpu-accelerated.animation-complete {
+  will-change: auto;
+}
+
+/* Optimized Transform Animations */
+.transform-optimized {
+  transform: translateZ(0); /* Force layer creation */
+}
+```
+
+**Reduced Motion Overrides:**
+```css
+/* Complete Reduced Motion System */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-fade-in,
+  .animate-stagger,
+  .animate-scale,
+  .animate-slide-left,
+  .animate-slide-right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  
+  .skeleton {
+    animation: none;
+    background: var(--color-border);
+  }
+  
+  .btn:hover {
+    transform: none;
+  }
+}
+```
+
+**Animation Performance Monitoring:**
+```javascript
+// Performance monitoring for animations
+class AnimationPerformance {
+  constructor() {
+    this.frameCount = 0;
+    this.lastTime = performance.now();
+    this.fps = 0;
+  }
+  
+  measureFPS() {
+    this.frameCount++;
+    const currentTime = performance.now();
+    const elapsed = currentTime - this.lastTime;
+    
+    if (elapsed >= 1000) {
+      this.fps = Math.round((this.frameCount * 1000) / elapsed);
+      this.frameCount = 0;
+      this.lastTime = currentTime;
+      
+      // Disable complex animations if FPS drops below 30
+      if (this.fps < 30) {
+        document.body.classList.add('low-performance');
+      }
+    }
+    
+    requestAnimationFrame(() => this.measureFPS());
+  }
+}
+
+// CSS for low performance mode
+.low-performance .btn-premium::before,
+.low-performance .btn-elite::before,
+.low-performance .glass-elite {
+  animation: none;
+  transform: none;
+}
+```
 
 ## 9. Accessibility Standards
 
@@ -567,64 +1818,567 @@ This document defines the visual design standards and aesthetic guidelines for t
 - Skip links for main content areas
 - Proper ARIA labels and roles
 
-## 10. Implementation Notes
+## 10. Implementation & Integration Guide
 
-### 10.1. CSS Custom Properties & Tailwind v4 Syntax
+### 10.1. Complete CSS Variable System
 
-All design tokens must be defined as CSS custom properties in `globals.css`:
-
+**Core Design Tokens (globals.css):**
 ```css
 @theme {
+  /* Brand Colors */
   --color-leonard-yellow: #F2CB05;
   --color-lahoma-orange: #F28705;
-  --font-heading: "Rajdhani", sans-serif;
-  --font-body: "Noto Sans", sans-serif;
-  --font-serif: "Noto Serif", serif;
-  --transition-fast: 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  --shadow-sm: 0 2px 4px -1px rgba(50,50,93,.25);
+  --color-rich-black: #0A0A0A;
+  --color-pure-white: #FFFFFF;
+  --color-brand-blue: #5198cd;
+  --color-brand-green: #6f7822;
+  --color-brand-red: #8C394B;
+  
+  /* Context Colors */
+  --color-background: #f8f6f1;
+  --color-card: #ffffff;
+  --color-text: #372103;
+  --color-text-muted: #693e21;
+  --color-border: #e5e7eb;
+  
+  /* Dark Theme Variants */
+  --color-background-dark: #2F3135;
+  --color-card-dark: #4B4B4B;
+  --color-text-dark: #FDFDFD;
+  --color-text-muted-dark: #EEF1F7;
+  --color-border-dark: #374151;
+  
+  /* Typography */
+  --font-heading: "Rajdhani", "Arial Black", sans-serif;
+  --font-body: "Noto Sans", "Helvetica", "Arial", sans-serif;
+  --font-serif: "Noto Serif", "Georgia", "Times New Roman", serif;
+  
+  /* Animation Timing */
+  --duration-instant: 100ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+  --duration-slower: 500ms;
+  
+  /* Easing Functions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Shadow System */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  /* Brand Shadows */
+  --shadow-premium: 0 4px 12px -2px rgba(242, 203, 5, 0.25), 0 2px 6px -1px rgba(242, 203, 5, 0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+  --shadow-premium-hover: 0 8px 20px -4px rgba(242, 203, 5, 0.35), 0 4px 12px -2px rgba(242, 203, 5, 0.25), 0 2px 6px -1px rgba(0, 0, 0, 0.12);
+  --shadow-elite: 0 6px 16px -3px rgba(242, 135, 5, 0.3), 0 3px 8px -1px rgba(242, 203, 5, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+  --shadow-elite-hover: 0 12px 28px -6px rgba(242, 135, 5, 0.4), 0 6px 16px -3px rgba(242, 203, 5, 0.3), 0 3px 8px -1px rgba(0, 0, 0, 0.15);
+  
+  /* Spacing (8pt Grid) */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+  --space-12: 48px; --space-16: 64px; --space-20: 80px;
+  
+  /* Component Spacing */
+  --card-padding-sm: var(--space-4); --card-padding-md: var(--space-6); --card-padding-lg: var(--space-8);
+  --button-padding-x-sm: var(--space-3); --button-padding-y-sm: var(--space-2);
+  --button-padding-x-md: var(--space-4); --button-padding-y-md: var(--space-3);
+  --button-padding-x-lg: var(--space-6); --button-padding-y-lg: var(--space-4);
+  
+  /* Glass Effects */
+  --glass-bg-light: rgba(255, 255, 255, 0.15);
+  --glass-bg-medium: rgba(255, 255, 255, 0.2);
+  --glass-bg-heavy: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-blur-subtle: blur(8px) saturate(1.1);
+  --glass-blur-standard: blur(10px) saturate(1.2);
+  --glass-blur-strong: blur(16px) saturate(1.4);
+  --glass-blur-ultra: blur(20px) saturate(1.6);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #F2CB05 0%, #F28705 100%);
+  --gradient-primary-soft: linear-gradient(135deg, rgba(242, 203, 5, 0.1) 0%, rgba(242, 135, 5, 0.1) 100%);
+  --gradient-text: linear-gradient(135deg, #F2CB05 0%, #F28705 100%);
 }
 ```
 
-**CRITICAL: Tailwind v4 Modern Syntax (2025 Standard)**
-
-When referencing CSS custom properties defined with `@theme`, use the **direct utility class syntax**:
-
+**Tailwind v4 Utility Usage (2025 Standard):**
 ```html
-<!-- ✅ CORRECT: v4 Direct Utility Syntax -->
-<div class="bg-leonard-yellow">
-<div class="border-leonard-yellow/30">
-<div class="text-lahoma-orange">
+<!-- ✅ CORRECT: Direct utility syntax -->
+<button class="bg-leonard-yellow text-rich-black border-leonard-yellow/30">
+<div class="shadow-premium hover:shadow-premium-hover">
+<span class="text-gradient font-heading font-bold">
 
-<!-- ❌ FORBIDDEN: All old syntax variations -->
-<div class="bg-(--color-leonard-yellow)">
+<!-- ✅ Opacity modifiers -->
+<div class="bg-lahoma-orange/20 border-leonard-yellow/50">
+
+<!-- ✅ State-based utilities -->
+<div class="hover:bg-leonard-yellow focus:shadow-lg active:scale-98">
+
+<!-- ❌ NEVER use these old patterns -->
 <div class="bg-[var(--color-leonard-yellow)]">
-<div class="bg-[--color-leonard-yellow]">
+<div class="bg-(--color-leonard-yellow)">
 <div class="bg-color-leonard-yellow">
 ```
 
-**With Opacity Modifiers:**
-```html
-<div class="bg-leonard-yellow/20">
-<div class="border-lahoma-orange/50">
-<div class="shadow-md">
+### 10.2. Component Integration Patterns
+
+**React Component Template:**
+```typescript
+import { cn } from '@/utils/cn';
+import { cva, type VariantProps } from 'class-variance-authority';
+
+const componentVariants = cva(
+  // Base classes
+  "transition-all duration-fast ease-out-expo",
+  {
+    variants: {
+      variant: {
+        default: "bg-card text-text border-border",
+        primary: "bg-leonard-yellow text-rich-black border-leonard-yellow",
+        premium: "bg-gradient-primary text-rich-black shadow-premium",
+        elite: "bg-gradient-primary shadow-elite border-gradient",
+        glass: "bg-glass-bg-light backdrop-blur-standard border-glass-border"
+      },
+      size: {
+        sm: "px-3 py-2 text-sm",
+        md: "px-4 py-3 text-base",
+        lg: "px-6 py-4 text-lg"
+      }
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "md"
+    }
+  }
+);
+
+export interface ComponentProps 
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof componentVariants> {}
+
+export const Component = ({ className, variant, size, ...props }: ComponentProps) => {
+  return (
+    <div 
+      className={cn(componentVariants({ variant, size }), className)}
+      {...props}
+    />
+  );
+};
 ```
 
-**Theme-Aware Color References:**
-```html
-<div class="bg-card text-text">
-<div class="border-primary hover:bg-primary/10">
+### 10.3. Performance Guidelines
+
+**Animation Performance Checklist:**
+```typescript
+// 1. Use transform and opacity only
+const PERFORMANT_PROPERTIES = ['transform', 'opacity'];
+
+// 2. Enable hardware acceleration for complex animations
+const enableGPU = (element: HTMLElement) => {
+  element.style.willChange = 'transform, opacity';
+  element.style.backfaceVisibility = 'hidden';
+};
+
+// 3. Clean up after animations
+const cleanupGPU = (element: HTMLElement) => {
+  element.style.willChange = 'auto';
+};
+
+// 4. Monitor performance
+const measureFPS = () => {
+  let frameCount = 0;
+  let lastTime = performance.now();
+  
+  const tick = () => {
+    frameCount++;
+    const currentTime = performance.now();
+    
+    if (currentTime - lastTime >= 1000) {
+      const fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
+      if (fps < 30) {
+        document.body.classList.add('low-performance');
+      }
+      frameCount = 0;
+      lastTime = currentTime;
+    }
+    
+    requestAnimationFrame(tick);
+  };
+  
+  requestAnimationFrame(tick);
+};
 ```
 
-### 10.2. Component Documentation
+### 10.4. Testing & Quality Assurance
 
-Each component must include:
-- Design rationale and usage guidelines
-- Accessibility considerations
-- Performance implications
-- Responsive behavior
-- Dark mode support
+**Component Testing Template:**
+```typescript
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { Component } from './Component';
 
-This design system represents the visual standards for creating a flagship-quality website that balances professional authority with modern sophistication, suitable for showcase at innervate.agency.
+describe('Component', () => {
+  it('applies correct variant styles', () => {
+    render(<Component variant="premium" />);
+    const element = screen.getByRole('...');
+    expect(element).toHaveClass('bg-gradient-primary', 'shadow-premium');
+  });
+  
+  it('handles interactions correctly', async () => {
+    const user = userEvent.setup();
+    render(<Component />);
+    const element = screen.getByRole('...');
+    
+    await user.hover(element);
+    expect(element).toHaveClass('hover:shadow-md');
+  });
+  
+  it('respects reduced motion preferences', () => {
+    // Mock reduced motion preference
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: jest.fn().mockImplementation(query => ({
+        matches: query === '(prefers-reduced-motion: reduce)',
+        media: query,
+        onchange: null,
+        addListener: jest.fn(),
+        removeListener: jest.fn()
+      }))
+    });
+    
+    render(<Component />);
+    // Test that animations are disabled
+  });
+});
+```
+
+**Accessibility Testing:**
+```typescript
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
+
+it('meets accessibility standards', async () => {
+  const { container } = render(<Component />);
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
+});
+
+// Color contrast testing
+it('maintains sufficient color contrast', () => {
+  render(<Component variant="primary" />);
+  const element = screen.getByRole('...');
+  
+  // Test contrast ratio >= 4.5:1 for normal text
+  // Test contrast ratio >= 3:1 for large text
+});
+```
+
+### 10.5. Form Component Specifications
+
+**Complete Form System Implementation:**
+```css
+/* Form Field Container */
+.form-field {
+  position: relative;
+  margin-bottom: var(--space-4);
+}
+
+/* Input Base Styles */
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-family: var(--font-body);
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-card);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  transition: all var(--duration-fast) var(--ease-out-quart);
+  appearance: none;
+  outline: none;
+}
+
+/* Input States */
+.form-input:focus {
+  border-color: var(--color-leonard-yellow);
+  box-shadow: 
+    0 0 0 4px rgba(242, 203, 5, 0.1),
+    var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.form-input:hover:not(:focus) {
+  border-color: rgba(242, 203, 5, 0.3);
+}
+
+.form-input.error {
+  border-color: var(--color-brand-red);
+  box-shadow: 0 0 0 4px rgba(140, 57, 75, 0.1);
+}
+
+.form-input.success {
+  border-color: var(--color-brand-green);
+  box-shadow: 0 0 0 4px rgba(111, 120, 34, 0.1);
+}
+
+.form-input:disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  border-color: #e5e7eb;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Floating Label System */
+.form-label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transition: all var(--duration-normal) var(--ease-out-cubic);
+  background: var(--color-card);
+  padding: 0 4px;
+  z-index: 1;
+}
+
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+  top: 0;
+  left: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-leonard-yellow);
+  transform: translateY(-50%);
+}
+
+.form-input.error + .form-label {
+  color: var(--color-brand-red);
+}
+
+.form-input.success + .form-label {
+  color: var(--color-brand-green);
+}
+
+/* Select Dropdown */
+.form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+/* Textarea */
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+  padding-top: 16px;
+  line-height: 1.6;
+}
+
+/* Checkbox & Radio */
+.form-checkbox,
+.form-radio {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  accent-color: var(--color-leonard-yellow);
+  cursor: pointer;
+}
+
+.form-checkbox:focus,
+.form-radio:focus {
+  outline: 2px solid var(--color-leonard-yellow);
+  outline-offset: 2px;
+}
+
+/* Form Validation Messages */
+.form-feedback {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: all var(--duration-normal) var(--ease-out-cubic);
+}
+
+.form-feedback.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-feedback.error {
+  color: var(--color-brand-red);
+}
+
+.form-feedback.success {
+  color: var(--color-brand-green);
+}
+
+.form-feedback.warning {
+  color: var(--color-lahoma-orange);
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: var(--space-6);
+}
+
+.form-group-inline {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.form-group-inline .form-field {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* Premium Form Styling */
+.form-premium .form-input {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur-subtle);
+  border: 2px solid var(--glass-border);
+}
+
+.form-premium .form-input:focus {
+  background: var(--glass-bg-medium);
+  border-color: var(--color-leonard-yellow);
+  box-shadow: 
+    0 0 0 4px rgba(242, 203, 5, 0.15),
+    var(--shadow-md);
+}
+
+.form-premium .form-label {
+  background: transparent;
+}
+
+/* Form Button Integration */
+.form-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.form-actions .btn {
+  min-width: 120px;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .form-input {
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: 14px 16px;
+  }
+  
+  .form-group-inline {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+  
+  .form-actions .btn {
+    width: 100%;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .form-input {
+    border-width: 3px;
+  }
+  
+  .form-input:focus {
+    box-shadow: 
+      0 0 0 6px rgba(242, 203, 5, 0.3),
+      var(--shadow-lg);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .form-input,
+  .form-label,
+  .form-feedback {
+    transition: none;
+    transform: none;
+  }
+  
+  .form-input:focus {
+    transform: none;
+  }
+}
+```
+
+**Form Implementation Examples:**
+```html
+<!-- Standard Form Field -->
+<div class="form-field">
+  <input 
+    type="text" 
+    class="form-input" 
+    placeholder=" " 
+    id="firstName"
+    aria-describedby="firstName-feedback"
+  />
+  <label for="firstName" class="form-label">First Name</label>
+  <div class="form-feedback error" id="firstName-feedback">
+    First name is required
+  </div>
+</div>
+
+<!-- Premium Glass Form -->
+<form class="form-premium">
+  <div class="form-group">
+    <div class="form-field">
+      <input type="email" class="form-input" placeholder=" " id="email" />
+      <label for="email" class="form-label">Email Address</label>
+    </div>
+  </div>
+  
+  <div class="form-actions">
+    <button type="button" class="btn btn-ghost">Cancel</button>
+    <button type="submit" class="btn btn-premium">Submit Application</button>
+  </div>
+</form>
+
+<!-- Inline Form Group -->
+<div class="form-group-inline">
+  <div class="form-field">
+    <input type="text" class="form-input" placeholder=" " id="city" />
+    <label for="city" class="form-label">City</label>
+  </div>
+  <div class="form-field">
+    <select class="form-input form-select" id="state">
+      <option value="">Select State</option>
+      <option value="ID">Idaho</option>
+    </select>
+    <label for="state" class="form-label">State</label>
+  </div>
+</div>
+```
+
+This implementation guide provides exact, copy-paste ready code for all design system components, ensuring consistent application across the entire project while maintaining performance and accessibility standards.
 
 ## 11. Self-Hosted Infrastructure & Tools (Open Source)
 
@@ -675,7 +2429,30 @@ This design system represents the visual standards for creating a flagship-quali
   - GraphQL API with modern React admin UI
   - Excellent TypeScript support and schema flexibility
 
-### 11.4. VPS Infrastructure Requirements
+### 11.4. Production VPS Infrastructure (Contabo Seattle)
+
+**Actual Server Specifications:**
+- **Provider**: Contabo (Seattle data center)
+- **CPU**: 8 vCPUs (AMD E series)
+- **Memory**: 24GB RAM
+- **Storage**: 200GB NVMe SSD
+- **Bandwidth**: 32TB monthly transfer
+- **S3 Storage**: 500GB (Chicago location)
+- **OS**: AlmaLinux 9.6 (upgrading to 10 when stable)
+
+**Security Configuration:**
+- **SSH Access**: Port 42069 (non-standard for security)
+- **Root Access**: Disabled (no root password access)
+- **Firewall**: Fully locked down following 2025 security best practices
+- **Access Control**: Least privilege model, single admin access
+- **Monitoring**: Cockpit installed for emergency management
+- **Backup Strategy**: Daily automated backups at 2AM
+
+**Management & Orchestration:**
+- **Primary Tool**: Coolify v4 (latest) as main backend app controller
+- **Current Load**: Successfully hosting multiple applications
+- **Status**: Production-ready, battle-tested infrastructure
+- **Admin**: Single administrator with full access control
 
 **Recommended Containerized Architecture:**
 ```yaml
@@ -691,10 +2468,13 @@ services:
   watchtower:     # Automatic container updates
 ```
 
-**VPS Specifications:**
-- **Small Club**: 4GB RAM, 2 CPU cores, 50GB SSD
-- **Medium Club**: 8GB RAM, 4 CPU cores, 100GB SSD
-- **Large Club**: 16GB RAM, 8 CPU cores, 200GB SSD
+**Coolify Integration Benefits:**
+- **One-Click Deployments**: Direct GitHub integration for automated deployments
+- **SSL Management**: Automatic Let's Encrypt certificate management
+- **Database Management**: Built-in PostgreSQL, Redis, and other service provisioning
+- **Monitoring**: Real-time resource monitoring and alerting
+- **Backup Integration**: Automated backup orchestration with S3 storage
+- **Security**: Built-in firewall management and security best practices
 
 ### 11.5. Payment Processing Integration
 

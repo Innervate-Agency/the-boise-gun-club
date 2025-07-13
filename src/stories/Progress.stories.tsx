@@ -14,15 +14,17 @@ const meta: Meta<typeof Progress> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const DefaultProgressComponent = (args: any) => {
+  const [progress, setProgress] = React.useState(13);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => setProgress(66), 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return <Progress value={progress} className="w-[60%]" {...args} />;
+};
+
 export const Default: Story = {
-  render: (args) => {
-    const [progress, setProgress] = React.useState(13);
-
-    React.useEffect(() => {
-      const timer = setTimeout(() => setProgress(66), 500);
-      return () => clearTimeout(timer);
-    }, []);
-
-    return <Progress value={progress} className="w-[60%]" {...args} />;
-  },
+  render: (args) => <DefaultProgressComponent {...args} />,
 };

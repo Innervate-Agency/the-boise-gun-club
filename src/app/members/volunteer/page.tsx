@@ -163,7 +163,7 @@ export default function VolunteerOpportunities() {
                 <div className="text-center">
                   <div className="text-6xl font-bold text-[var(--accent-primary)] font-['Rajdhani']">10</div>
                   <p className="text-xl text-[var(--text-primary)] font-['Rajdhani'] uppercase">Hours Per Year</p>
-                  <p className="text-[var(--text-secondary)] font-['Noto Sans']">That's less than one afternoon!</p>
+                  <p className="text-[var(--text-secondary)] font-['Noto Sans']">That&apos;s less than one afternoon!</p>
                 </div>
               </div>
             </CardContent>
@@ -179,7 +179,7 @@ export default function VolunteerOpportunities() {
               Find Your <span className="text-[var(--accent-primary)]">Perfect Role</span>
             </h2>
             <p className="text-lg text-[var(--text-secondary)] font-['Noto Sans']">
-              From technical roles to social coordination - there's something for every skill set and schedule.
+              From technical roles to social coordination - there&apos;s something for every skill set and schedule.
             </p>
           </div>
 

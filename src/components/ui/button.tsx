@@ -20,8 +20,8 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-muted/50 hover:text-foreground focus-visible:ring-leonard-yellow/50 dark:hover:bg-muted/50",
         link: "text-leonard-yellow underline-offset-4 hover:underline focus-visible:ring-leonard-yellow/50",
-        premium: "bg-gradient-to-r from-leonard-yellow to-lahoma-orange text-black shadow-premium hover:shadow-premium-hover hover:scale-[1.02] hover:button-lift focus-visible:ring-leonard-yellow/50 border border-leonard-yellow/20 dark:from-leonard-yellow dark:to-lahoma-orange dark:text-black relative overflow-hidden group motion-reduce:hover:scale-100 transition-stripe-normal",
-        elite: "bg-gradient-to-r from-leonard-yellow via-lahoma-orange to-leonard-yellow bg-[length:200%_100%] text-black shadow-elite hover:shadow-elite-hover hover:scale-[1.05] hover:button-lift focus-visible:ring-leonard-yellow/50 border-2 border-leonard-yellow/30 animate-shimmer relative overflow-hidden group motion-reduce:animate-none motion-reduce:hover:scale-100 transition-stripe-normal",
+        premium: "bg-gradient-to-r from-leonard-yellow to-lahoma-orange text-black shadow-premium hover:shadow-premium-hover hover:scale-[1.02] hover:button-lift focus-visible:ring-leonard-yellow/50 border border-leonard-yellow/20 relative overflow-hidden group motion-reduce:hover:scale-100 transition-stripe-normal",
+        elite: "bg-gradient-to-r from-leonard-yellow via-lahoma-orange to-leonard-yellow bg-[length:200%_100%] text-black shadow-elite hover:shadow-elite-hover hover:scale-[1.05] hover:button-lift focus-visible:ring-leonard-yellow/50 border-2 border-leonard-yellow/30 animate-shimmer relative overflow-hidden group motion-reduce:hover:scale-100 transition-stripe-normal",
       },
       size: {
         default: "h-10 px-4 py-2 gap-2 has-[>svg]:px-3",
@@ -103,16 +103,19 @@ function Button({
       {/* Premium button with subtle Mica effect */}
       {variant === 'premium' && (
         <>
-          <div className="absolute inset-0 mica-premium opacity-0 group-hover:opacity-30 transition-stripe-normal -z-10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/40 to-leonard-yellow/40 blur-md opacity-0 group-hover:opacity-25 transition-stripe-normal -z-10" />
+          <div className="absolute inset-0 mica-premium opacity-40 group-hover:opacity-60 transition-stripe-normal -z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/4 to-lahoma-orange/4 transition-stripe-normal -z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/6 to-lahoma-orange/6 blur-sm opacity-0 group-hover:opacity-100 transition-stripe-normal -z-10" />
         </>
       )}
       
       {/* Elite button with enhanced Mica effect */}
       {variant === 'elite' && (
         <>
-          <div className="absolute inset-0 mica-elite opacity-20 group-hover:opacity-40 transition-stripe-normal -z-10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/30 via-leonard-yellow/30 to-lahoma-orange/30 blur-lg opacity-30 group-hover:opacity-50 transition-stripe-normal -z-10" />
+          <div className="absolute inset-0 mica-elite opacity-50 group-hover:opacity-70 transition-stripe-normal -z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/5 to-lahoma-orange/5 transition-stripe-normal -z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/7 via-lahoma-orange/7 to-leonard-yellow/7 blur-lg opacity-0 group-hover:opacity-100 transition-stripe-normal -z-10" />
+          <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/8 to-transparent opacity-60 group-hover:opacity-100 transition-stripe-normal -z-10" />
         </>
       )}
       
@@ -123,10 +126,11 @@ function Button({
         </div>
       )}
       
-      {/* Content wrapper */}
+      {/* Content wrapper with enhanced contrast for premium variants */}
       <div className={cn(
-        'flex items-center gap-2',
-        loading && 'opacity-0'
+        'flex items-center gap-2 relative z-10',
+        loading && 'opacity-0',
+        (variant === 'premium' || variant === 'elite') && 'backdrop-blur-sm'
       )}>
         {icon && iconPosition === 'left' && (
           <span className="flex-shrink-0">

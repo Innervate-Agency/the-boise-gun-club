@@ -13,8 +13,8 @@ const cardVariants = cva(
       variant: {
         default: "border-border bg-card hover:bg-muted/80 shadow-sm hover:shadow-md hover:button-lift",
         glass: "border-white/20 bg-card/10 backdrop-blur-sm text-card hover:bg-card/20 hover:border-white/30 dark:border-white/10 dark:bg-card/5 dark:hover:bg-card/10 shadow-lg hover:shadow-xl transition-stripe-normal",
-        premium: "bg-gradient-to-r from-leonard-yellow to-lahoma-orange text-black shadow-premium border border-leonard-yellow/20 hover:shadow-premium-hover hover:scale-[1.02] hover:button-lift transition-stripe-normal group",
-        elite: "bg-gradient-to-r from-leonard-yellow via-lahoma-orange to-leonard-yellow bg-[length:200%_100%] text-black shadow-elite border-2 border-leonard-yellow/30 animate-shimmer hover:shadow-elite-hover hover:scale-[1.05] hover:button-lift transition-stripe-normal group"
+        premium: "bg-background/95 backdrop-blur-sm text-foreground shadow-premium border border-leonard-yellow/20 hover:shadow-premium-hover hover:scale-[1.02] hover:button-lift transition-stripe-normal group",
+        elite: "bg-background/90 backdrop-blur-md text-foreground shadow-elite border-2 border-leonard-yellow/30 hover:shadow-elite-hover hover:scale-[1.05] hover:button-lift transition-stripe-normal group"
       },
       size: {
         sm: "p-4",
@@ -100,23 +100,27 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         {/* Premium card with subtle Mica and gradient hint */}
         {variant === 'premium' && (
           <>
-            <div className="absolute inset-0 mica-premium opacity-0 group-hover:opacity-20 transition-stripe-normal -z-10" />
-            <div className="absolute inset-0 gradient-hint-bg opacity-80 group-hover:opacity-100 transition-stripe-normal -z-10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/20 to-leonard-yellow/20 blur-sm opacity-0 group-hover:opacity-40 transition-stripe-normal -z-10" />
+            <div className="absolute inset-0 mica-premium opacity-30 group-hover:opacity-50 transition-stripe-normal -z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/3 to-lahoma-orange/3 transition-stripe-normal -z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/5 to-lahoma-orange/5 blur-sm opacity-0 group-hover:opacity-100 transition-stripe-normal -z-10" />
           </>
         )}
         
         {/* Elite card with enhanced Mica and gradient effects */}
         {variant === 'elite' && (
           <>
-            <div className="absolute inset-0 mica-elite opacity-10 group-hover:opacity-30 transition-stripe-normal -z-10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-lahoma-orange/25 to-leonard-yellow/25 blur-md opacity-40 group-hover:opacity-60 transition-stripe-normal -z-10" />
-            <div className="absolute inset-0 gradient-hint-border opacity-50 group-hover:opacity-80 transition-stripe-normal -z-10" />
+            <div className="absolute inset-0 mica-elite opacity-40 group-hover:opacity-60 transition-stripe-normal -z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/4 to-lahoma-orange/4 transition-stripe-normal -z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-leonard-yellow/6 via-lahoma-orange/6 to-leonard-yellow/6 blur-md opacity-0 group-hover:opacity-100 transition-stripe-normal -z-10" />
+            <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-50 group-hover:opacity-80 transition-stripe-normal -z-10" />
           </>
         )}
         
-        {/* Content wrapper */}
-        <div className="relative z-10">
+        {/* Content wrapper with enhanced contrast for premium variants */}
+        <div className={cn(
+          "relative z-10",
+          (variant === 'premium' || variant === 'elite') && "backdrop-blur-sm"
+        )}>
           {children}
         </div>
       </Comp>

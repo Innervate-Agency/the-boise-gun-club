@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { FloatingBackground } from '@/components/ui/floating-background';
 import { Badge } from '@/components/ui/badge';

@@ -1,4 +1,4 @@
-const { formatDate, parseDate } = require('./dateUtils');
+import { formatDate, parseDate } from './dateUtils';
 
 test('formatDate should format date correctly', () => {
     expect(formatDate(new Date('2023-01-01'))).toBe('01/01/2023');

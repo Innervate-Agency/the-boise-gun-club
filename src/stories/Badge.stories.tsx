@@ -96,58 +96,60 @@ export const SizeVariations: Story = {
   ),
 };
 
-// Interactive Features
-export const InteractiveFeatures: Story = {
-  render: () => {
-    const [badges, setBadges] = useState([
-      { id: 1, text: "Dismissible Badge", variant: "info" as const },
-      { id: 2, text: "Another Badge", variant: "warning" as const },
-      { id: 3, text: "Premium Badge", variant: "premium" as const },
-    ]);
+// Interactive Features Component
+const InteractiveFeaturesComponent = () => {
+  const [badges, setBadges] = useState([
+    { id: 1, text: "Dismissible Badge", variant: "info" as const },
+    { id: 2, text: "Another Badge", variant: "warning" as const },
+    { id: 3, text: "Premium Badge", variant: "premium" as const },
+  ]);
 
-    const removeBadge = (id: number) => {
-      setBadges(badges.filter(badge => badge.id !== id));
-    };
+  const removeBadge = (id: number) => {
+    setBadges(badges.filter(badge => badge.id !== id));
+  };
 
-    return (
-      <div className="space-y-8">
-        <h2 className="text-2xl font-heading font-bold mb-4">Interactive Features</h2>
-        
-        {/* Animated Badges */}
-        <div className="space-y-4">
-          <h3 className="font-heading font-semibold">Animated Badges</h3>
-          <div className="flex flex-wrap gap-4">
-            <Badge variant="success" animate icon={<CheckCircle className="h-3 w-3" />}>Animated</Badge>
-            <Badge variant="warning" pulse>Pulsing</Badge>
-            <Badge variant="premium" shimmer animate>Premium Shimmer</Badge>
-            <Badge variant="info" animate>Hover to Scale</Badge>
-          </div>
-        </div>
-
-        {/* Dismissible Badges */}
-        <div className="space-y-4">
-          <h3 className="font-heading font-semibold">Dismissible Badges</h3>
-          <div className="flex flex-wrap gap-4">
-            {badges.map((badge) => (
-              <Badge
-                key={badge.id}
-                variant={badge.variant}
-                dismissible
-                animate
-                onDismiss={() => removeBadge(badge.id)}
-                shimmer={badge.variant === 'premium'}
-              >
-                {badge.text}
-              </Badge>
-            ))}
-          </div>
-          {badges.length === 0 && (
-            <p className="text-muted-foreground text-sm">All badges dismissed! Refresh to reset.</p>
-          )}
+  return (
+    <div className="space-y-8">
+      <h2 className="text-2xl font-heading font-bold mb-4">Interactive Features</h2>
+      
+      {/* Animated Badges */}
+      <div className="space-y-4">
+        <h3 className="font-heading font-semibold">Animated Badges</h3>
+        <div className="flex flex-wrap gap-4">
+          <Badge variant="success" animate icon={<CheckCircle className="h-3 w-3" />}>Animated</Badge>
+          <Badge variant="warning" pulse>Pulsing</Badge>
+          <Badge variant="premium" shimmer animate>Premium Shimmer</Badge>
+          <Badge variant="info" animate>Hover to Scale</Badge>
         </div>
       </div>
-    );
-  },
+
+      {/* Dismissible Badges */}
+      <div className="space-y-4">
+        <h3 className="font-heading font-semibold">Dismissible Badges</h3>
+        <div className="flex flex-wrap gap-4">
+          {badges.map((badge) => (
+            <Badge
+              key={badge.id}
+              variant={badge.variant}
+              dismissible
+              animate
+              onDismiss={() => removeBadge(badge.id)}
+              shimmer={badge.variant === 'premium'}
+            >
+              {badge.text}
+            </Badge>
+          ))}
+        </div>
+        {badges.length === 0 && (
+          <p className="text-muted-foreground text-sm">All badges dismissed! Refresh to reset.</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export const InteractiveFeatures: Story = {
+  render: () => <InteractiveFeaturesComponent />,
 };
 
 // Gun Club Classifications
