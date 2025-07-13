@@ -1,1 +1,186 @@
-import type { Meta, StoryObj } from '@storybook/react';\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Badge } from '@/components/ui/badge';\n\nconst meta: Meta<typeof Card> = {\n  title: 'Components/UI/Card',\n  component: Card,\n  parameters: {\n    layout: 'centered',\n  },\n  tags: ['autodocs'],\n  argTypes: {\n    variant: {\n      control: 'select',\n      options: ['default', 'premium', 'elite', 'glass'],\n    },\n    size: {\n      control: 'select',\n      options: ['xs', 'sm', 'md', 'lg', 'xl'],\n    },\n  },\n};\n\nexport default meta;\ntype Story = StoryObj<typeof meta>;\n\nexport const Default: Story = {\n  render: (args) => (\n    <Card className=\"w-[350px]\" {...args}>\n      <CardHeader>\n        <CardTitle>Default Card</CardTitle>\n        <CardDescription>Clean card with warm cream background from your design system.</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <p>This uses your beautiful cloudy-day-white color instead of harsh white.</p>\n      </CardContent>\n      <CardFooter>\n        <Button variant=\"primary\">Action</Button>\n      </CardFooter>\n    </Card>\n  ),\n};\n\nexport const Premium: Story = {\n  render: (args) => (\n    <Card variant=\"premium\" className=\"w-[350px]\" {...args}>\n      <CardHeader>\n        <CardTitle>Premium Membership</CardTitle>\n        <CardDescription>Subtle Leonard Yellow accent with professional styling</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <div className=\"space-y-3\">\n          <p>Elegant premium styling using your existing theme variables.</p>\n          <Badge variant=\"premium\">Premium</Badge>\n        </div>\n      </CardContent>\n      <CardFooter>\n        <Button variant=\"premium\" className=\"w-full\">\n          Upgrade to Premium\n        </Button>\n      </CardFooter>\n    </Card>\n  ),\n};\n\nexport const Elite: Story = {\n  render: (args) => (\n    <Card variant=\"elite\" className=\"w-[350px]\" {...args}>\n      <CardHeader>\n        <CardTitle>Elite Championship</CardTitle>\n        <CardDescription>Enhanced border and shadows with restraint</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <div className=\"space-y-3\">\n          <p>Professional elite styling that doesn't hurt your eyes.</p>\n          <Badge variant=\"elite\">Elite</Badge>\n        </div>\n      </CardContent>\n      <CardFooter>\n        <Button variant=\"elite\" className=\"w-full\">\n          Join Elite Program\n        </Button>\n      </CardFooter>\n    </Card>\n  ),\n};\n\nexport const Glass: Story = {\n  render: (args) => (\n    <div className=\"relative w-[400px] h-[300px] p-10 bg-cover bg-center rounded-lg\" style={{ backgroundImage: \"url('https://images.unsplash.com/photo-1587174486073-ae5e3c2e6a04?q=80&w=2070&auto=format&fit=crop')\" }}>\n      <Card variant=\"glass\" {...args}>\n        <CardHeader>\n          <CardTitle>Glass Card</CardTitle>\n          <CardDescription>Clean glassmorphism effect</CardDescription>\n        </CardHeader>\n        <CardContent>\n          <p>Subtle and professional glass effect.</p>\n        </CardContent>\n      </Card>\n    </div>\n  ),\n};\n\n// Clean showcase without the garish colors\nexport const MembershipTiers: Story = {\n  render: () => (\n    <div className=\"space-y-8 p-8 max-w-4xl\">\n      <div className=\"text-center space-y-2\">\n        <h2 className=\"text-2xl font-heading font-bold\">Membership Tiers</h2>\n        <p className=\"text-muted-foreground\">Clean, professional card designs using your theme system</p>\n      </div>\n      \n      <div className=\"grid grid-cols-1 md:grid-cols-3 gap-6\">\n        <Card className=\"w-full\">\n          <CardHeader>\n            <CardTitle>Standard Access</CardTitle>\n            <CardDescription>Basic membership benefits</CardDescription>\n          </CardHeader>\n          <CardContent>\n            <ul className=\"space-y-2 text-sm text-muted-foreground\">\n              <li>• Range access during standard hours</li>\n              <li>• Basic safety training included</li>\n              <li>• Community events access</li>\n            </ul>\n          </CardContent>\n          <CardFooter>\n            <Button variant=\"outline\" className=\"w-full\">Learn More</Button>\n          </CardFooter>\n        </Card>\n\n        <Card variant=\"premium\" className=\"w-full\">\n          <CardHeader>\n            <CardTitle>Premium Membership</CardTitle>\n            <CardDescription>Enhanced access with subtle Leonard Yellow accent</CardDescription>\n          </CardHeader>\n          <CardContent>\n            <div className=\"space-y-3\">\n              <Badge variant=\"premium\">Most Popular</Badge>\n              <ul className=\"space-y-2 text-sm text-muted-foreground\">\n                <li>• Extended range hours</li>\n                <li>• Advanced training programs</li>\n                <li>• Equipment rental discounts</li>\n                <li>• Priority event booking</li>\n              </ul>\n            </div>\n          </CardContent>\n          <CardFooter>\n            <Button variant=\"premium\" className=\"w-full\">Choose Premium</Button>\n          </CardFooter>\n        </Card>\n\n        <Card variant=\"elite\" className=\"w-full\">\n          <CardHeader>\n            <CardTitle>Elite Championship</CardTitle>\n            <CardDescription>Professional styling with enhanced shadows</CardDescription>\n          </CardHeader>\n          <CardContent>\n            <div className=\"space-y-3\">\n              <Badge variant=\"elite\">Exclusive</Badge>\n              <ul className=\"space-y-2 text-sm text-muted-foreground\">\n                <li>• 24/7 range access</li>\n                <li>• Personal coaching sessions</li>\n                <li>• Championship competitions</li>\n                <li>• VIP lounge access</li>\n              </ul>\n            </div>\n          </CardContent>\n          <CardFooter>\n            <Button variant=\"elite\" className=\"w-full\">Join Elite</Button>\n          </CardFooter>\n        </Card>\n      </div>\n    </div>\n  ),\n  parameters: {\n    layout: 'fullscreen',\n  }\n};\n"
+import type { Meta, StoryObj } from '@storybook/react';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+
+const meta: Meta<typeof Card> = {
+  title: 'Components/UI/Card',
+  component: Card,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['default', 'premium', 'elite', 'glass'],
+    },
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  render: (args) => (
+    <Card className="w-[350px]" {...args}>
+      <CardHeader>
+        <CardTitle>Default Card</CardTitle>
+        <CardDescription>Clean card with warm cream background from your design system.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>This uses your beautiful cloudy-day-white color instead of harsh white.</p>
+      </CardContent>
+      <CardFooter>
+        <Button variant="primary">Action</Button>
+      </CardFooter>
+    </Card>
+  ),
+};
+
+export const Premium: Story = {
+  render: (args) => (
+    <Card variant="premium" className="w-[350px]" {...args}>
+      <CardHeader>
+        <CardTitle>Premium Membership</CardTitle>
+        <CardDescription>Subtle Leonard Yellow accent with professional styling</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-3">
+          <p>Elegant premium styling using your existing theme variables.</p>
+          <Badge variant="premium">Premium</Badge>
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button variant="premium" className="w-full">
+          Upgrade to Premium
+        </Button>
+      </CardFooter>
+    </Card>
+  ),
+};
+
+export const Elite: Story = {
+  render: (args) => (
+    <Card variant="elite" className="w-[350px]" {...args}>
+      <CardHeader>
+        <CardTitle>Elite Championship</CardTitle>
+        <CardDescription>Enhanced border and shadows with restraint</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-3">
+          <p>Professional elite styling that doesn't hurt your eyes.</p>
+          <Badge variant="elite">Elite</Badge>
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button variant="elite" className="w-full">
+          Join Elite Program
+        </Button>
+      </CardFooter>
+    </Card>
+  ),
+};
+
+export const Glass: Story = {
+  render: (args) => (
+    <div className="relative w-[400px] h-[300px] p-10 bg-cover bg-center rounded-lg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1587174486073-ae5e3c2e6a04?q=80&w=2070&auto=format&fit=crop')" }}>
+      <Card variant="glass" {...args}>
+        <CardHeader>
+          <CardTitle>Glass Card</CardTitle>
+          <CardDescription>Clean glassmorphism effect</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>Subtle and professional glass effect.</p>
+        </CardContent>
+      </Card>
+    </div>
+  ),
+};
+
+// Clean showcase without the garish colors
+export const MembershipTiers: Story = {
+  render: () => (
+    <div className="space-y-8 p-8 max-w-4xl">
+      <div className="text-center space-y-2">
+        <h2 className="text-2xl font-heading font-bold">Membership Tiers</h2>
+        <p className="text-muted-foreground">Clean, professional card designs using your theme system</p>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card className="w-full">
+          <CardHeader>
+            <CardTitle>Standard Access</CardTitle>
+            <CardDescription>Basic membership benefits</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>• Range access during standard hours</li>
+              <li>• Basic safety training included</li>
+              <li>• Community events access</li>
+            </ul>
+          </CardContent>
+          <CardFooter>
+            <Button variant="outline" className="w-full">Learn More</Button>
+          </CardFooter>
+        </Card>
+
+        <Card variant="premium" className="w-full">
+          <CardHeader>
+            <CardTitle>Premium Membership</CardTitle>
+            <CardDescription>Enhanced access with subtle Leonard Yellow accent</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <Badge variant="premium">Most Popular</Badge>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>• Extended range hours</li>
+                <li>• Advanced training programs</li>
+                <li>• Equipment rental discounts</li>
+                <li>• Priority event booking</li>
+              </ul>
+            </div>
+          </CardContent>
+          <CardFooter>
+            <Button variant="premium" className="w-full">Choose Premium</Button>
+          </CardFooter>
+        </Card>
+
+        <Card variant="elite" className="w-full">
+          <CardHeader>
+            <CardTitle>Elite Championship</CardTitle>
+            <CardDescription>Professional styling with enhanced shadows</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <Badge variant="elite">Exclusive</Badge>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>• 24/7 range access</li>
+                <li>• Personal coaching sessions</li>
+                <li>• Championship competitions</li>
+                <li>• VIP lounge access</li>
+              </ul>
+            </div>
+          </CardContent>
+          <CardFooter>
+            <Button variant="elite" className="w-full">Join Elite</Button>
+          </CardFooter>
+        </Card>
+      </div>
+    </div>
+  ),
+  parameters: {
+    layout: 'fullscreen',
+  }
+};

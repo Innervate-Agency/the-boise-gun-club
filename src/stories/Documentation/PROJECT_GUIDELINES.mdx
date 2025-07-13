@@ -1,294 +1,53 @@
-# Project Guidelines: The Two Rails
+import { Meta } from '@storybook/blocks';
 
-This document is the single source of truth for the Boise Gun Club v4 project. It defines the "two rails" that guide our development practices, ensuring consistency, maintainability, and quality. Adherence to these guidelines is not optional.
+<Meta title="Documentation/Project Guidelines" />
 
-## 1. Core Philosophy
+# Project Guidelines
 
-1.  **Component-Driven:** Our UI is built from a hierarchy of reusable components. Pages are compositions of these components, not monolithic blocks of code.
-2.  **Convention Over Configuration:** We follow established patterns and conventions to minimize boilerplate and cognitive overhead.
-3.  **Single Responsibility:** Each component, hook, or utility has a single, well-defined purpose.
-4.  **Strictness and Clarity:** We use TypeScript's strict mode and explicit typing to catch errors early and make our code self-documenting.
+This documentation provides comprehensive guidance for working with the Boise Gun Club v4 project.
 
----
+## Tech Stack
 
-## 2. Project & Component Architecture
+- **Next.js 15.3.2** with App Router
+- **React 19** with modern patterns  
+- **TypeScript** with strict mode
+- **Tailwind CSS 4.0** with CSS-first configuration
+- **Framer Motion** for animations
+- **Storybook 9.0.15** for component documentation
+- **Jest** with React Testing Library for testing
 
-We use a feature-based architecture within the Next.js App Router.
+## Development Commands
 
-### 2.1. Directory Structure
-
--   `src/app/`: Contains all routes and pages. The `page.tsx` file for any given route should be lean, focusing only on fetching data and composing components.
--   `src/components/ui/`: "Dumb" UI primitives that are globally reusable (e.g., `Button`, `Input`, `Card`). These should be highly generic and styleable.
--   `src/components/common/`: More complex components that are used across multiple features (e.g., `SiteHeader`, `PageTitle`).
--   `src/components/{feature-name}/`: Components that are specific to a single feature or page (e.g., `src/components/membership/MembershipCard`).
--   `src/lib/`: Utility functions, API helpers, and other shared logic.
--   `src/hooks/`: Custom hooks that encapsulate reusable logic.
--   `src/types/`: Global TypeScript type definitions and interfaces.
-
-### 2.2. Page Composition: The Gold Standard
-
-The `page.tsx` file should do as little as possible. Its primary role is to assemble the UI by importing and arranging the necessary components. Logic, state, and complex JSX should be encapsulated within those components.
-
-**Example (`src/app/about/page.tsx`):**
-
-```tsx
-// GOOD: A clean, declarative page composition
-import { AboutHero } from '@/components/about/AboutHero';
-import { OurHistory } from '@/components/about/OurHistory';
-import { BoardOfDirectors } from '@/components/about/BoardOfDirectors';
-
-export default function AboutPage() {
-  return (
-    <main>
-      <AboutHero />
-      <OurHistory />
-      <BoardOfDirectors />
-    </main>
-  );
-}
+### Core Development
+```bash
+npm run dev          # Start development server
+npm run build        # Build production version  
+npm run start        # Start production server
+npm run lint         # Run ESLint
+npm run type-check   # Run TypeScript checking
 ```
 
-### 2.3. Server vs. Client Components
-
--   **Default to Server Components:** All components are Server Components by default. Use them for fetching data and accessing server-side resources.
--   **Opt-in to Client Components:** Only use Client Components when you need interactivity (e.g., `onClick`, `useState`, `useEffect`). Add `"use client";` to the top of the file to make it a Client Component.
--   **Isolate Interactivity:** Keep Client Components as small as possible. Create specific interactive components rather than making an entire page a client component.
-
----
-
-## 3. Styling with Tailwind CSS v4
-
-We use Tailwind CSS v4's CSS-first configuration. All styling rules are defined in `src/app/globals.css`.
-
-### 3.1. Design Tokens & Theming
-
-**There are no hardcoded hex codes.** All colors, fonts, and other design tokens must be defined as CSS variables under the `@theme` directive.
-
-**Example (`src/app/globals.css`):**
-
-```css
-@import "tailwindcss";
-
-@theme {
-  --color-primary: #F2CB05; /* Gold */
-  --color-secondary: #0A0A0A; /* Rich Black */
-  --color-text-light: #FFFFFF;
-  --color-text-dark: #0A0A0A;
-
-  --font-heading: "Rajdhani", sans-serif;
-  --font-body: "Noto Sans", sans-serif;
-  --font-serif: "Noto Serif", serif;
-}
+### Testing & Analysis
+```bash
+npm test             # Run Jest tests
+npm run test:watch   # Run tests in watch mode
+npm run storybook    # Start Storybook dev server
+npm run analyze      # Bundle size analysis
 ```
 
-### 3.2. Light & Dark Mode
+## Component Enhancement Guidelines
 
-We use a selector-based strategy for dark mode. The `dark` class on the `<html>` element activates it. All components must support both modes.
+When creating or enhancing components:
 
--   **Define Dark Mode Variants:** Use the `@custom-variant` rule to define the dark mode selector.
--   **Use CSS Variables:** Define dark mode colors in a `[data-theme='dark']` selector.
--   **Apply in Components:** Use Tailwind's `dark:` prefix to apply dark mode styles.
+1. **Use the CVA Pattern** - Implement variants using Class Variance Authority
+2. **Include Fusion Variants** - Add premium, elite, and glass variants where appropriate  
+3. **Follow Animation Standards** - Use consistent timing and easing
+4. **Implement Accessibility** - Support keyboard navigation and screen readers
+5. **Document in Storybook** - Create comprehensive stories with all variants
 
-**Example (`globals.css`):**
-```css
-@custom-variant dark (&:where(.dark, .dark *));
+## Brand Colors
 
-@layer base {
-  :root {
-    --background: white;
-    --foreground: black;
-  }
-
-  .dark {
-    --background: black;
-    --foreground: white;
-  }
-}
-```
-
-**Example (Component):**
-```tsx
-// GOOD: Uses theme-aware colors and dark mode variants
-<div className="bg-white text-black dark:bg-secondary dark:text-white">
-  ...
-</div>
-```
-
-### 3.3. Forbidden Practices
-
-1.  **NO Hardcoded Colors/Styles:** Do not use `text-[#FFF]`, `border-[#F2CB05]`, etc. Use the CSS variables defined in the theme.
-2.  **NO Raw HTML Elements:** Do not use `<button>`, `<a>`, etc. directly. Use the corresponding component from `src/components/ui`.
-3.  **NO Gratuitous `text-center`:** Only use `text-center` when the design explicitly calls for it. Do not use it as a crutch for layout.
-4.  **NO `@apply`:** `@apply` is forbidden. It creates CSS bloat and defeats the purpose of a utility-first framework. If you need to reuse styles, create a component.
-
----
-
-## 4. Animations with Framer Motion
-
-Animations should be purposeful and performant.
-
-### 4.1. Creating Animation Components
-
-Since Framer Motion requires client-side logic, any component using it must be a Client Component (`"use client"`). To keep server components clean, wrap motion elements in their own client components.
-
-**Example (`src/components/effects/FadeIn.tsx`):**
-
-```tsx
-"use client";
-import { motion } from 'framer-motion';
-
-export function FadeIn({ children }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-```
-
-### 4.2. Performance & Bundle Size
-
--   **Animate `transform` and `opacity`:** Prioritize these properties for GPU-accelerated, smooth animations.
--   **Use `LazyMotion`:** To reduce the bundle size, only import the animation features you need.
-
-```tsx
-"use client";
-import { LazyMotion, domAnimation, m } from "framer-motion";
-
-<LazyMotion features={domAnimation}>
-  <m.div animate={{ x: 100 }}>
-    Hello
-  </m.div>
-</LazyMotion>
-```
-
----
-
-## 5. TypeScript Best Practices
-
-### 5.1. Strict Mode is Mandatory
-
-The `tsconfig.json` must have `"strict": true`.
-
-### 5.2. Type Everything
-
--   **Props:** All component props must be explicitly typed with an `interface` or `type`.
--   **State:** Use `useState<MyType>(...)` to type state.
--   **Hooks:** Custom hooks must have typed inputs and outputs.
--   **Events:** Use React's event types, e.g., `React.MouseEvent<HTMLButtonElement>`.
--   **Avoid `any`:** Do not use `any`. Use `unknown` for values that are truly dynamic and perform type-checking.
-
-### 5.3. Type Organization
-
-Global types that are shared across the application should reside in the `src/types` directory. Component-specific types can be co-located with the component file.
-
----
-
-## 6. The Refactoring Mandate
-
-This project has accrued technical debt. Our immediate priority is to refactor the entire codebase to adhere to these guidelines. The primary "weeds" to pull are:
-
-1.  **The "Hardcoded Hex Code" Weed:** e.g., `border-[#F2CB05]/20`
-2.  **The "Missing Dark Mode" Weed:** e.g., `text-white` without a `dark:` counterpart.
-3.  **The "Raw HTML" Weed:** Using `<button>` or `<a>` instead of a `<Button>` component.
-4.  **The "Centered Text" Weed:** Applying `text-center` indiscriminately.
-
-By systematically eliminating these issues, we will create a cleaner, more consistent, and more maintainable codebase.
-
----
-
-## 7. Design Principles & Micro-Interactions
-
-To create a premium feel, we will adhere to the following principles, derived from analysis of Stripe and ClickUp.
-
-- **Timing & Easing:** All micro-interactions should use a `150ms` duration with a `cubic-bezier(0.215, 0.61, 0.355, 1)` easing function.
-- **Shadows:** We will use a professional, layered shadow system.
-- **Effects:** Subtle `scale`, `lift`, and `glow` effects on hover are encouraged. Glassmorphism (backdrop blur and transparency) should be used tastefully.
-
-### Core CSS Variables:
-```css
-/* To be added to globals.css */
-:root {
-  --transition-fast: 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  --transition-smooth: 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
-
-  --shadow-sm: 0 2px 4px -1px rgba(50,50,93,.25);
-  --shadow-md: 0 4px 8px -2px rgba(50,50,93,.25);
-  --shadow-lg: 0 8px 16px -4px rgba(50,50,93,.25);
-}
-```
-
----
-
-## 8. Component Unification Strategy
-
-This project has two distinct sets of components that must be unified into a single, authoritative component library:
-1.  **Base Components:** The standard, unstyled components located in `src/components/ui`, generated by the `shadcn/ui` CLI.
-2.  **Custom Components:** The heavily-styled and feature-enhanced components developed in Storybook and located in directories like `/test/components/` (often with a "Fusion" prefix).
-
-Our core principle is to achieve the **"best of both worlds"**: the solid, accessible foundation of shadcn/ui combined with the unique, polished aesthetic of our custom components.
-
-### The Methodology
-
-We will not create wrapper components. We will follow the intended shadcn/ui workflow by directly modifying the base components. For each component (e.g., `Button`, `Card`, `Badge`):
-
-1.  **Identify the Source:** The `src/components/ui/{component}.tsx` file is the single source of truth.
-2.  **Merge and Enhance:** The styles, variants, and additional features from the corresponding custom component will be merged directly into the `src/components/ui` file. The goal is a single, enhanced component that does everything.
-3.  **Consolidate Exports:** The file should only have a single default export for the component (e.g., `export { Badge }`). Any specialized variations (e.g., `ClassificationBadge`) should be exported as named exports from the same file.
-4.  **Update Stories:** The corresponding Storybook file will be updated to import only from the unified `src/components/ui` component. The story file will be renamed to match the component (e.g., `Badge.stories.tsx`) and its title updated to `Components/UI/{ComponentName}`.
-5.  **Deprecate and Delete:** Once a component has been unified, the old, redundant custom component file will be deleted to eliminate confusion and code duplication.
-
-This process will be applied systematically, component by component, until the entire library is unified, consistent, and fully compliant with these guidelines.
-
----
-
-## 9. Refactoring Priority
-
-The following is the official order for component unification and refactoring:
-
-### **High Priority (Core UI)**
-1. **Button**
-2. **Card**  
-3. **Tooltip**
-4. **Select**
-5. **Checkbox**
-
-### **Medium Priority (Extended UI)**
-6. **Accordion**
-7. **Avatar**
-8. **Dropdown Menu**
-9. **Popover**
-10. **Sheet**
-
-### **Low Priority (Specialized)**
-11. **Calendar**
-12. **Command**
-13. **Slider**
-14. **Toggle**
-15. **Pagination**
-
----
-
-## 7. Component Unification Strategy
-
-This project has two distinct sets of components that must be unified into a single, authoritative component library:
-1.  **Base Components:** The standard, unstyled components located in `src/components/ui`, generated by the `shadcn/ui` CLI.
-2.  **Custom Components:** The heavily-styled and feature-enhanced components developed in Storybook and located in directories like `/test/components/` (often with a "Fusion" prefix).
-
-Our core principle is to achieve the **"best of both worlds"**: the solid, accessible foundation of shadcn/ui combined with the unique, polished aesthetic of our custom components.
-
-### The Methodology
-
-We will not create wrapper components. We will follow the intended shadcn/ui workflow by directly modifying the base components. For each component (e.g., `Button`, `Card`, `Badge`):
-
-1.  **Identify the Source:** The `src/components/ui/{component}.tsx` file is the single source of truth.
-2.  **Merge and Enhance:** The styles, variants, and additional features from the corresponding custom component will be merged directly into the `src/components/ui` file. The goal is a single, enhanced component that does everything.
-3.  **Consolidate Exports:** The file should only have a single default export for the component (e.g., `export { Badge }`). Any specialized variations (e.g., `ClassificationBadge`) should be exported as named exports from the same file.
-4.  **Update Stories:** The corresponding Storybook file will be updated to import only from the unified `src/components/ui` component. The story file will be renamed to match the component (e.g., `Badge.stories.tsx`) and its title updated to `Components/UI/{ComponentName}`.
-5.  **Deprecate and Delete:** Once a component has been unified, the old, redundant custom component file will be deleted to eliminate confusion and code duplication.
-
-This process will be applied systematically, component by component, until the entire library is unified, consistent, and fully compliant with these guidelines.
+- **Leonard Yellow** (#F2CB05) - Primary accent
+- **Lahoma Orange** (#F28705) - Secondary accent  
+- **Charcoal Gray** (#2C2C2C) - Primary text
+- **Cloudy Day White** (#FEFEFE) - Warm cream background
