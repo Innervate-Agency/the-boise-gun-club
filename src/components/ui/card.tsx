@@ -105,7 +105,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
     
     // Auto-select variant based on achievement if provided
     const finalVariant = achievement && achievementVariants[achievement] 
-      ? achievementVariants[achievement] as keyof typeof cardVariants.variants.variant
+      ? achievementVariants[achievement] as "default" | "premium" | "elite" | "glass" | "glass-premium" | "gradient-border"
       : variant
     
     // Get achievement icon if needed
