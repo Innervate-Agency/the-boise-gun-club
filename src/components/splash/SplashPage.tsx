@@ -76,61 +76,36 @@ export function SplashPage() {
   return (
     <main className="min-h-screen overflow-hidden">
       <section ref={heroRef} className="relative min-h-screen">
-        {/* Theme-Aware Background Layers */}
+        {/* Clean Background Base */}
+        <div className="absolute inset-0 bg-cloudy-day-white dark:bg-kent-slate-gray" />
+
+        {/* ClickUp-Style Organic Gradient Flow */}
         <div className="absolute inset-0">
-          {/* Base gradient */}
-          <div className="absolute inset-0 bg-cloudy-day-white dark:bg-kent-slate-gray" />
-          
-          {/* ClickUp-Style Color Splashes */}
-          <div className="absolute inset-0 bg-clickup-splash-composite opacity-60" />
-          
-          {/* 45-degree geometric overlay */}
-          <div className="absolute inset-0 opacity-15 bg-gradient-to-br from-lahoma-orange/10 via-transparent via-leonard-yellow/5 to-idaho-sky-blue/8" />
-          
-          {/* Angled grid pattern */}
-          <div className="absolute inset-0 opacity-10 bg-[url('/images/Grid/Grid_(1).webp')] bg-splash-grid bg-repeat rotate-splash-45 scale-splash-150" />
+          {/* Flowing gradient meshes like ClickUp */}
+          <div 
+            className="absolute inset-0 opacity-25 blur-2xl"
+            style={{
+              background: `
+                radial-gradient(ellipse 1000px 400px at 30% 20%, var(--color-leonard-yellow) 0%, transparent 50%),
+                radial-gradient(ellipse 800px 600px at 70% 60%, var(--color-lahoma-orange) 0%, transparent 60%),
+                radial-gradient(ellipse 600px 800px at 20% 80%, var(--color-idaho-sky-blue) 0%, transparent 55%),
+                radial-gradient(ellipse 1200px 300px at 80% 10%, var(--color-wildeye-susan-yellow) 0%, transparent 45%),
+                radial-gradient(ellipse 500px 700px at 90% 70%, var(--color-owyhee-field-green) 0%, transparent 50%)
+              `,
+            }}
+          />
+          {/* Secondary flowing layer */}
+          <div 
+            className="absolute inset-0 opacity-15 blur-3xl"
+            style={{
+              background: `
+                radial-gradient(ellipse 1200px 200px at 50% 30%, var(--color-sand-dune-brown) 0%, transparent 60%),
+                radial-gradient(ellipse 300px 900px at 10% 50%, var(--color-leonard-yellow) 0%, transparent 40%),
+                radial-gradient(ellipse 900px 400px at 60% 90%, var(--color-lahoma-orange) 0%, transparent 55%)
+              `,
+            }}
+          />
         </div>
-
-        {/* Blurred Fractal Glows - ClickUp Style */}
-        {brightFractals.slice(0, 6).map((fractalNum, i) => (
-          <motion.div
-            key={`fractal-${fractalNum}`}
-            className={`absolute rounded-full opacity-20 
-              bg-[url('/images/Fractal/${fractalNum}.webp')] bg-cover bg-center
-              ${i === 0 ? 'w-splash-glow-1 h-splash-glow-1 left-[10%] top-[10%]' : ''}
-              ${i === 1 ? 'w-splash-glow-2 h-splash-glow-2 left-[25%] top-[22%]' : ''}
-              ${i === 2 ? 'w-splash-glow-3 h-splash-glow-3 left-[40%] top-[34%]' : ''}
-              ${i === 3 ? 'w-splash-glow-4 h-splash-glow-4 left-[55%] top-[46%]' : ''}
-              ${i === 4 ? 'w-splash-glow-5 h-splash-glow-5 left-[70%] top-[58%]' : ''}
-              ${i === 5 ? 'w-splash-glow-6 h-splash-glow-6 left-[85%] top-[70%]' : ''}
-              blur-splash saturate-150`}
-            animate={{
-              scale: [0.8, 1.2, 0.8],
-              rotate: [0, 180, 360],
-              opacity: [0.1, 0.3, 0.1],
-            }}
-            transition={{
-              duration: 15 + i * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 2,
-            }}
-          />
-        ))}
-
-        {/* Windows 11 Mica Noise Texture */}
-        {dustTextures.map((dustNum, i) => (
-          <div
-            key={`dust-${dustNum}`}
-            className={`absolute inset-0 opacity-10 mix-blend-soft-light 
-              bg-[url('/images/Dust/VintageDust_(${dustNum}).webp')] bg-splash-dust bg-repeat
-              ${i === 0 ? 'rotate-0 scale-100' : ''}
-              ${i === 1 ? 'rotate-splash-15 scale-splash-110' : ''}
-              ${i === 2 ? 'rotate-splash-30 scale-splash-120' : ''}
-              ${i === 3 ? 'rotate-splash-45 scale-splash-130' : ''}
-              ${i === 4 ? 'rotate-splash-60 scale-splash-140' : ''}`}
-          />
-        ))}
 
 
         {/* Hero Content */}
@@ -162,9 +137,9 @@ export function SplashPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.3 }}
               >
-                <h1 className="text-6xl md:text-7xl lg:text-8xl font-heading uppercase tracking-tight leading-[0.85]">
-                  <span className="block text-craters-of-the-moon dark:text-chester-white font-bold">THE BOISE</span>
-                  <span className="block text-craters-of-the-moon dark:text-chester-white font-light">GUN CLUB</span>
+                <h1 className="text-7xl md:text-8xl lg:text-9xl font-heading uppercase tracking-tight leading-[0.8] drop-shadow-lg">
+                  <span className="block text-craters-of-the-moon dark:text-chester-white font-black bg-gradient-to-r from-craters-of-the-moon via-craters-of-the-moon to-desert-cliff-brown bg-clip-text">THE BOISE</span>
+                  <span className="block text-craters-of-the-moon dark:text-chester-white font-light bg-gradient-to-r from-craters-of-the-moon via-craters-of-the-moon to-desert-cliff-brown bg-clip-text">GUN CLUB</span>
                 </h1>
               </motion.div>
 
@@ -209,7 +184,8 @@ export function SplashPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.2 + i * 0.1 }}
                 >
-                  <div className={`h-full group cursor-pointer bg-white dark:bg-card/95 backdrop-blur-sm border border-border/50 rounded-lg hover:scale-splash-102 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-black/20 border-t-2 border-b-0 group-hover:border-b-[5px] border-l-0 border-r-0 ${feature.borderClass} relative overflow-hidden`}>
+                  <div className={`h-full group cursor-pointer mica-glass rounded-lg hover:scale-splash-102 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-black/20 border-t-4 border-b-0 group-hover:border-b-[8px] border-l-0 border-r-0 ${feature.borderClass} relative overflow-hidden`}>
+                    <div className="absolute inset-0 mica-noise"></div>
                     <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                     <div className="p-8 h-full text-left relative z-10">
                       {/* Badge with icon and original title */}
@@ -312,8 +288,9 @@ export function SplashPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 2.2 }}
               >
-                <Card className="glass-medium h-fit">
-                  <CardContent className="p-8">
+                <Card className="mica-glass h-fit relative overflow-hidden">
+                  <div className="absolute inset-0 mica-noise"></div>
+                  <CardContent className="p-8 relative z-10">
                     <div className="flex items-center mb-4">
                       <Mail className="w-6 h-6 text-leonard-yellow mr-3" />
                       <h3 className="text-xl font-heading font-semibold text-craters-of-the-moon dark:text-chester-white">

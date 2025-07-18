@@ -8,13 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- **SPLASH PAGE CARD ENHANCEMENT**: Complete visual upgrade of feature cards with professional interactions
-  - Enhanced card titles from text-2xl to text-3xl with font-bold for better visual hierarchy
-  - Improved card spacing from gap-8 to gap-12 for better breathing room
-  - Enhanced shadow system: shadow-lg default with hover:shadow-2xl and black/20 opacity
-  - Animated border system: top border initially, bottom border appears on hover
-  - Internal glow effect with subtle white gradient overlay on hover
-  - Pure white cards in light mode, proper dark theme support with bg-card theming
+- **SPLASH PAGE COMPLETE REDESIGN**: Revolutionary transformation into regional firearms empire showcase
+  - **Hero Title Enhancement**: Increased to text-7xl/8xl/9xl with font-black contrast and subtle gradient text
+  - **Regional Vision Messaging**: Updated all content to emphasize ALL Treasure Valley firearms communities
+  - **Unified Event Calendar**: Prominently features BGC, Capitol City, and all regional clubs inclusively
+  - **Four Pillars Business Model**: Redesigned 6 feature cards to map to comprehensive business strategy
+  - **ClickUp-Style Organic Gradients**: Replaced circular blurs with sophisticated flowing elliptical gradients
+  - **Windows 11 Mica Glassmorphism**: Implemented authentic backdrop blur with noise texture effects
+  - **Idaho Brand Color Palette**: Organic color field using Leonard Yellow, Lahoma Orange, Idaho Sky Blue, etc.
+  - **Enhanced Card Interactions**: Thicker colorful borders (4px/8px), improved shadows, internal glow effects
+  - **Professional Contact Integration**: Updated footer with refined Innervate Agency branding
+  - **Family-Friendly Messaging**: Added safety-first principles and NRA-certified instruction emphasis
+  - **Target Audience Expansion**: Comprehensive messaging for FFLs, ranges, families, instructors, and enthusiasts
 - **STORYBOOK 100% COMPLETE**: Historic milestone achieving full component coverage
   - **Phase 1**: 5 core navigation stories (LoadingSpinner, StatCard, NewThemeToggle, Breadcrumb, SiteNavigation)
   - **Phase 2**: 5 forms & content stories (Contact-Form, Blog-Article, Pricing-Table, UnsplashImage, AnimatedSplashCard)
