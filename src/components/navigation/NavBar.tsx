@@ -83,7 +83,7 @@ export default function NavBar() {
                                     </span>
                                     {/* Tagline */}
                                     <span className="text-xs font-medium text-[var(--text-secondary)] font-heading">
-                                        Idaho's Premier Shotgun Sports Complex
+                                        Idaho&apos;s Premier Shotgun Sports Complex
                                     </span>
                                 </div>
                             </div>

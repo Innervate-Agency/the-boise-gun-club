@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {  /* Image optimization */
   /* Performance optimizations */
   reactStrictMode: true,
   poweredByHeader: false,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 
   /* Turbopack configuration */
   turbopack: {

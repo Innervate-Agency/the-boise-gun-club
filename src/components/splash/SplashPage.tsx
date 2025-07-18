@@ -435,9 +435,9 @@ export function SplashPage() {
                 </h4>
                 <div className="space-y-4">
                   <p className="text-desert-cliff-brown dark:text-don-gray font-sans text-base leading-relaxed">
-                    The Boise Gun Club is transforming into Treasure Valley's first comprehensive firearms community platform. 
-                    We're building a digital ecosystem that connects gun shops, ALL local firearm clubs, certified instructors, 
-                    gunsmiths, and enthusiasts across Idaho's premier region.
+                    The Boise Gun Club is transforming into Treasure Valley&apos;s first comprehensive firearms community platform. 
+                    We&apos;re building a digital ecosystem that connects gun shops, ALL local firearm clubs, certified instructors, 
+                    gunsmiths, and enthusiasts across Idaho&apos;s premier region.
                   </p>
                   <p className="text-desert-cliff-brown dark:text-don-gray font-sans text-base leading-relaxed">
                     Our platform will feature every club&apos;s events in one unified calendar - from BGC trap shoots to Capitol City competitions. 
