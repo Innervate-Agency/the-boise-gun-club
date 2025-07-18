@@ -137,12 +137,9 @@ function BreadcrumbList({ className, variant = "default", size = "md", ...props 
 
 function BreadcrumbItem({ className, ...props }: React.ComponentProps<"li">) {
   return (
-    <motion.li
+    <li
       data-slot="breadcrumb-item"
       className={cn("inline-flex items-center gap-1.5", className)}
-      initial={{ opacity: 0, x: -10 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.3 }}
       {...props}
     />
   )
