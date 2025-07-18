@@ -27,15 +27,23 @@ export function SplashPage() {
       icon: MapPin, 
       badgeTitle: "Regional Directory",
       title: "Find Local Experts", 
-      desc: "Gun shops, ranges, instructors across Treasure Valley",
+      desc: "Complete directory of gun shops, ranges, instructors, and gunsmiths across Treasure Valley",
       colorClass: "idaho-sky-blue",
       borderClass: "border-t-idaho-sky-blue border-b-idaho-sky-blue"
+    },
+    { 
+      icon: Calendar, 
+      badgeTitle: "Unified Event Calendar",
+      title: "Never Miss Out", 
+      desc: "All shooting events, competitions, and training from every club in the valley - including BGC, Capitol City, and more",
+      colorClass: "wildeye-susan-yellow",
+      borderClass: "border-t-wildeye-susan-yellow border-b-wildeye-susan-yellow"
     },
     { 
       icon: ShoppingBag, 
       badgeTitle: "Service Marketplace",
       title: "Book & Buy", 
-      desc: "Training, gunsmithing, gear - all in one place",
+      desc: "Training, gunsmithing, gear - book services and buy accessories all in one place",
       colorClass: "lahoma-orange",
       borderClass: "border-t-lahoma-orange border-b-lahoma-orange"
     },
@@ -43,23 +51,15 @@ export function SplashPage() {
       icon: MessageCircle, 
       badgeTitle: "Community Forum",
       title: "Connect & Share", 
-      desc: "Connect with enthusiasts, share knowledge",
+      desc: "Discussion, tips, and classifieds - the social hub for Treasure Valley firearms",
       colorClass: "owyhee-field-green",
       borderClass: "border-t-owyhee-field-green border-b-owyhee-field-green"
     },
     { 
-      icon: Calendar, 
-      badgeTitle: "Event Hub",
-      title: "Never Miss Out", 
-      desc: "Competitions, training, club meetings - unified calendar",
-      colorClass: "wildeye-susan-yellow",
-      borderClass: "border-t-wildeye-susan-yellow border-b-wildeye-susan-yellow"
-    },
-    { 
       icon: BookOpen, 
-      badgeTitle: "Resource Center",
+      badgeTitle: "Content & Knowledge",
       title: "Stay Informed", 
-      desc: "Idaho gun laws, safety guides, educational content",
+      desc: "Idaho gun laws, safety guides, reviews, and comprehensive firearms wiki",
       colorClass: "scoring-bench-red",
       borderClass: "border-t-scoring-bench-red border-b-scoring-bench-red"
     },
@@ -67,7 +67,7 @@ export function SplashPage() {
       icon: Building2, 
       badgeTitle: "Business Network",
       title: "Grow Your Business", 
-      desc: "Professional services and industry connections",
+      desc: "Professional services, industry connections, and marketing opportunities",
       colorClass: "gunclub-orange",
       borderClass: "border-t-gunclub-orange border-b-gunclub-orange"
     }
@@ -175,11 +175,8 @@ export function SplashPage() {
                 transition={{ duration: 1, delay: 0.6 }}
                 className="mb-6"
               >
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading text-leonard-yellow mb-2">
-                  A TREASURE VALLEY FIREARM
-                </h2>
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading text-lahoma-orange">
-                  & FIREARM SPORT COLLECTIVE
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading text-leonard-yellow">
+                  A TREASURE VALLEY FIREARM & FIREARM SPORT COLLECTIVE
                 </h2>
               </motion.div>
 
@@ -190,8 +187,8 @@ export function SplashPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.8 }}
               >
-                The comprehensive digital hub for Treasure Valley's firearms community. 
-                Connecting gun shops, ranges, instructors, and enthusiasts across Idaho's premier region.
+                The comprehensive digital hub uniting ALL Treasure Valley firearms communities. 
+                Featuring every club's events, all regional businesses, and connecting enthusiasts, families, and professionals across Idaho's premier firearms region.
               </motion.p>
             </motion.div>
 
@@ -294,18 +291,17 @@ export function SplashPage() {
                 <div className="space-y-4">
                   <p className="text-desert-cliff-brown dark:text-don-gray font-sans text-base leading-relaxed">
                     The Boise Gun Club is transforming into Treasure Valley's first comprehensive firearms community platform. 
-                    We're building a digital ecosystem that connects gun shops, firearm clubs, certified instructors, 
+                    We're building a digital ecosystem that connects gun shops, ALL local firearm clubs, certified instructors, 
                     gunsmiths, and enthusiasts across Idaho's premier region.
                   </p>
                   <p className="text-desert-cliff-brown dark:text-don-gray font-sans text-base leading-relaxed">
-                    Our platform will feature a complete business directory, unified event calendar, community forum, 
-                    service marketplace, and educational resource center. From finding local gunsmithing services to 
-                    booking private instruction, from accessing Idaho gun law guides to coordinating community events — 
-                    we're creating the central hub for everything firearms-related in Treasure Valley.
+                    Our platform will feature every club's events in one unified calendar - from BGC trap shoots to Capitol City competitions. 
+                    Complete business directory, community forum, service marketplace, and educational resource center. 
+                    From finding local gunsmithing services to booking NRA-certified instruction, from accessing Idaho gun law guides to coordinating community events.
                   </p>
                   <p className="text-desert-cliff-brown dark:text-don-gray font-sans text-base leading-relaxed">
-                    This isn't just a website; it's a digital collective bringing together the entire regional firearms 
-                    community under one professional, accessible platform. Built by firearms enthusiasts, for firearms enthusiasts.
+                    This isn't just a website; it's a digital collective bringing together families, professionals, and enthusiasts 
+                    from every firearms community in Treasure Valley. Built with safety-first principles and family-friendly values.
                   </p>
                 </div>
               </motion.div>
@@ -326,7 +322,7 @@ export function SplashPage() {
                     </div>
                     
                     <p className="text-desert-cliff-brown dark:text-don-gray font-sans mb-6 text-sm leading-relaxed">
-                      Be the first to know when the Treasure Valley's premier firearms community platform goes live.
+                      Be the first to know when Idaho's premier firearms community platform goes live. Get early access to the comprehensive directory, unified event calendar, and marketplace.
                     </p>
                     
                     <form className="space-y-4">
@@ -356,7 +352,7 @@ export function SplashPage() {
                 <div className="flex items-center gap-2 text-desert-cliff-brown dark:text-don-gray font-sans text-xs">
                   <Shield className="w-4 h-4" />
                   <span>
-                    Professional development by Innervate Agency. Domain established 2017.
+                    Professional development by Innervate Agency. Proudly serving Idaho's firearms community.
                   </span>
                 </div>
               </div>
