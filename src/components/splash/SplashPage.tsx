@@ -34,11 +34,11 @@ export function SplashPage() {
         title: "Pillar 1: Directory & Marketplace",
         subtitle: "The comprehensive hub for every firearms business in Treasure Valley",
         content: [
-          "A searchable database of every gun-related business and service in the region, from FFLs and shooting ranges to gunsmiths and training instructors.",
-          "Integrated service booking system allowing users to book and pay for gunsmithing, training classes, and other services directly through the platform.",
-          "Aggregated accessory store - a unified e-commerce storefront for non-firearm items where local shops can list inventory, creating a local 'Amazon for gun stuff.'"
+          "Find trusted local gun shops, shooting ranges, certified instructors, and skilled gunsmiths all in one convenient searchable directory.",
+          "Read reviews and ratings from fellow community members to make informed decisions about where to shop and train.",
+          "Access detailed business profiles with services offered, hours, contact information, and specialties to find exactly what you need."
         ],
-        features: ["Gun Shops & FFLs", "Shooting Ranges", "Gunsmiths & Services", "Training & Instruction", "Appraisal Services", "Service Booking System"]
+        features: ["Local Gun Shops", "Shooting Ranges", "Certified Instructors", "Gunsmith Services", "Equipment Appraisals", "Customer Reviews"]
       }
     },
     { 
@@ -48,14 +48,14 @@ export function SplashPage() {
       desc: "All shooting events, competitions, and training from every club in the valley",
       colorClass: "wildeye-susan-yellow",
       detailedContent: {
-        title: "Unified Event Calendar",
+        title: "Pillar 2: Unified Event Calendar",
         subtitle: "Every firearms event in Treasure Valley, all in one place",
         content: [
-          "Aggregated calendar pulling events from all local clubs and ranges - gun shows, competitions, training classes, and community events.",
-          "Never miss a BGC trap shoot, Capitol City competition, or any other regional firearms event.",
-          "Integrated with the content engine to drive massive organic traffic and establish authority in the local firearms community."
+          "Stay up-to-date with all shooting events, competitions, and training opportunities from every club and range in Treasure Valley.",
+          "Get event notifications, RSVP to competitions, and add events directly to your personal calendar.",
+          "Access detailed event information including schedules, registration requirements, and contact details in one convenient location."
         ],
-        features: ["All Club Events", "Competitions", "Training Classes", "Gun Shows", "Community Events", "Automatic Updates"]
+        features: ["Competition Calendar", "Training Schedules", "Gun Shows", "Club Events", "Event Notifications", "Easy Registration"]
       }
     },
     { 
@@ -65,14 +65,14 @@ export function SplashPage() {
       desc: "Training, gunsmithing, gear - book services and buy accessories in one place",
       colorClass: "lahoma-orange",
       detailedContent: {
-        title: "Integrated Service Marketplace",
+        title: "Pillar 3: Integrated Service Marketplace",
         subtitle: "Book services and purchase accessories through one platform",
         content: [
-          "Seamless booking system for gunsmithing, Cerakote applications, training classes, and other professional services.",
-          "5-10% commission on all services booked through the platform, creating sustainable revenue while connecting customers with providers.",
-          "Direct integration with local businesses, helping them grow while building our community ecosystem."
+          "Book appointments with trusted local gunsmiths, Cerakote specialists, and certified training instructors with just a few clicks.",
+          "Browse and purchase accessories, optics, and gear from local shops with convenient online ordering and pickup options.",
+          "Access verified professionals with transparent pricing, availability, and customer reviews to make confident service decisions."
         ],
-        features: ["Service Booking", "Payment Processing", "Commission System", "Business Integration", "Customer Reviews", "Scheduling Management"]
+        features: ["Easy Booking", "Secure Payments", "Verified Professionals", "Online Shopping", "Customer Reviews", "Appointment Scheduling"]
       }
     },
     { 
@@ -82,14 +82,14 @@ export function SplashPage() {
       desc: "Discussion, tips, and classifieds - the social hub for Treasure Valley",
       colorClass: "owyhee-field-green",
       detailedContent: {
-        title: "Pillar 3: Community Forum",
+        title: "Pillar 4: Community Forum",
         subtitle: "The social backbone that keeps users coming back",
         content: [
-          "Dedicated sections for general discussion, Idaho gun laws, and competition shooting across all firearm sports.",
-          "Gear & accessories classifieds for non-firearm items - optics, accessories, and gear trading without legal complications.",
-          "Heavily moderated, family-friendly environment focused on education, safety, and community building."
+          "Connect with fellow shooting enthusiasts, share experiences, and get advice from knowledgeable community members.",
+          "Buy, sell, and trade optics, accessories, and gear with trusted local community members in a safe, moderated environment.",
+          "Access dedicated discussion areas for different shooting sports, safety topics, and general firearms conversation."
         ],
-        features: ["General Discussion", "Idaho Gun Laws", "Competition Shooting", "Gear Classifieds", "Tips & Advice", "Moderated Environment"]
+        features: ["Community Discussion", "Safety Forums", "Competition Talk", "Gear Trading", "Expert Advice", "Family-Friendly"]
       }
     },
     { 
@@ -99,14 +99,14 @@ export function SplashPage() {
       desc: "Idaho gun laws, safety guides, reviews, and comprehensive firearms wiki",
       colorClass: "scoring-bench-red",
       detailedContent: {
-        title: "Pillar 2: Content Engine & SEO",
+        title: "Pillar 5: Content Engine & SEO",
         subtitle: "Authority-building content that drives massive organic traffic",
         content: [
-          "The Gun Wiki - a user-editable but heavily moderated encyclopedia of firearms, optics, and gear, optimized for search.",
-          "High-quality blog featuring articles, reviews of local shops/ranges, interviews with local smiths, and comprehensive Idaho gun law guides.",
-          "Content strategy designed to dominate local search and establish The Boise Gun Club as the definitive firearms authority in Idaho."
+          "Access comprehensive, up-to-date information about Idaho gun laws, safety regulations, and legal requirements for responsible ownership.",
+          "Read detailed reviews of local shops, ranges, and services written by fellow community members with real experiences.",
+          "Learn from expert articles covering firearm safety, maintenance tips, competition techniques, and local shooting sports."
         ],
-        features: ["Gun Wiki", "Blog & Articles", "Local Reviews", "Idaho Gun Laws", "SEO Optimization", "Expert Interviews"]
+        features: ["Idaho Gun Laws", "Safety Guides", "Local Reviews", "Expert Articles", "Maintenance Tips", "Competition Guides"]
       }
     },
     { 
@@ -116,14 +116,14 @@ export function SplashPage() {
       desc: "High-quality apparel and merchandise that people actually want to wear",
       colorClass: "gunclub-orange",
       detailedContent: {
-        title: "Pillar 4: Brand & Apparel Line",
+        title: "Pillar 6: Brand & Apparel Line",
         subtitle: "Building brand recognition through quality merchandise",
         content: [
-          "Print-on-Demand apparel line using services like Printful - zero inventory risk, only produce what sells.",
-          "High-quality, well-designed apparel that people actually want to wear, building brand recognition throughout the community.",
-          "Direct-to-consumer revenue stream while promoting The Boise Gun Club brand at ranges, events, and throughout Treasure Valley."
+          "Show your pride in Treasure Valley's firearms community with high-quality apparel and accessories designed by local enthusiasts.",
+          "Choose from a variety of styles including t-shirts, hoodies, hats, and accessories featuring Idaho-inspired designs and club logos.",
+          "Support the local firearms community while representing your passion for shooting sports with gear that's built to last."
         ],
-        features: ["Print-on-Demand", "Quality Designs", "Zero Inventory Risk", "Brand Building", "Direct Sales", "Community Presence"]
+        features: ["Quality Apparel", "Idaho Designs", "Club Merchandise", "Online Shopping", "Local Pride", "Durable Materials"]
       }
     }
   ];
@@ -222,7 +222,7 @@ export function SplashPage() {
                 transition={{ duration: 1, delay: 0.8 }}
               >
                 The comprehensive digital hub uniting ALL Treasure Valley firearms communities. 
-                Featuring every club's events, all regional businesses, and connecting enthusiasts, families, and professionals across Idaho's premier firearms region.
+                Featuring every club&apos;s events, all regional businesses, and connecting enthusiasts, families, and professionals across Idaho&apos;s premier firearms region.
               </motion.p>
             </motion.div>
 
@@ -241,6 +241,7 @@ export function SplashPage() {
                   variant="default"
                   interactive={true}
                   animate={true}
+                  onClick={() => setSelectedFeature(i)}
                   style={{ 
                     borderTopColor: `var(--color-${feature.colorClass})`
                   }}>
@@ -275,7 +276,10 @@ export function SplashPage() {
                         variant="outline" 
                         size="sm" 
                         className="mt-auto transition-stripe-fast hover:bg-white/50 dark:hover:bg-ed-charcoal/50"
-                        onClick={() => setSelectedFeature(i)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedFeature(i);
+                        }}
                       >
                         Learn More
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -288,22 +292,39 @@ export function SplashPage() {
             {/* Feature Detail Dialog */}
             {selectedFeature !== null && (
               <Dialog open={selectedFeature !== null} onOpenChange={() => setSelectedFeature(null)}>
-                <DialogContent size="lg" className="max-w-4xl bg-dialog-light backdrop-blur-xl border border-leonard-yellow/20 shadow-2xl">
+                <DialogContent size="lg" className="max-w-4xl backdrop-blur-xl border shadow-2xl !fixed !top-1/2 !left-1/2 !-translate-x-1/2 !-translate-y-1/2 !z-50" style={{
+                  backgroundColor: `color-mix(in srgb, var(--color-${features[selectedFeature].colorClass}) 6%, rgba(248, 246, 241, 0.75))`,
+                  borderColor: `color-mix(in srgb, var(--color-${features[selectedFeature].colorClass}) 20%, transparent)`
+                }}>
                   <DialogTitle className="sr-only">{features[selectedFeature].detailedContent.title}</DialogTitle>
-                  <div className="p-6">
+                  
+                  {/* Color-matched background gradient */}
+                  <div className="absolute inset-0 opacity-15 pointer-events-none" style={{
+                    background: `radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--color-${features[selectedFeature].colorClass}) 12%, transparent) 0%, transparent 50%)`
+                  }}></div>
+                  
+                  <div className="p-6 relative z-10">
                     {/* Header */}
-                    <div className="text-center mb-8">
-                      <div className="flex justify-center mb-4">
-                        <div className="p-4 rounded-full bg-gradient-to-r from-leonard-yellow/20 to-lahoma-orange/20 border border-leonard-yellow/30">
-                          {React.createElement(features[selectedFeature].icon, { className: "w-8 h-8 text-leonard-yellow" })}
+                    <div className="text-left mb-8">
+                      <div className="flex items-start mb-4">
+                        <div className="p-4 rounded-full border mr-4" style={{
+                          backgroundColor: `color-mix(in srgb, var(--color-${features[selectedFeature].colorClass}) 12%, transparent)`,
+                          borderColor: `color-mix(in srgb, var(--color-${features[selectedFeature].colorClass}) 25%, transparent)`
+                        }}>
+                          {React.createElement(features[selectedFeature].icon, { 
+                            className: "w-8 h-8", 
+                            style: { color: `var(--color-${features[selectedFeature].colorClass})` }
+                          })}
+                        </div>
+                        <div>
+                          <h2 className="text-4xl font-heading font-bold text-craters-of-the-moon dark:text-chester-white mb-3">
+                            {features[selectedFeature].detailedContent.title}
+                          </h2>
+                          <p className="text-xl text-desert-cliff-brown dark:text-don-gray font-sans">
+                            {features[selectedFeature].detailedContent.subtitle}
+                          </p>
                         </div>
                       </div>
-                      <h2 className="text-4xl font-heading font-bold text-craters-of-the-moon dark:text-chester-white mb-3">
-                        {features[selectedFeature].detailedContent.title}
-                      </h2>
-                      <p className="text-xl text-desert-cliff-brown dark:text-don-gray font-sans">
-                        {features[selectedFeature].detailedContent.subtitle}
-                      </p>
                     </div>
 
                     {/* Content */}
@@ -323,7 +344,9 @@ export function SplashPage() {
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                         {features[selectedFeature].detailedContent.features.map((feature, idx) => (
                           <div key={idx} className="flex items-center space-x-2">
-                            <div className="w-2 h-2 bg-leonard-yellow rounded-full"></div>
+                            <div className="w-2 h-2 rounded-full" style={{
+                              backgroundColor: `var(--color-${features[selectedFeature].colorClass})`
+                            }}></div>
                             <span className="text-desert-cliff-brown dark:text-don-gray font-sans">{feature}</span>
                           </div>
                         ))}
@@ -331,7 +354,7 @@ export function SplashPage() {
                     </div>
 
                     {/* Close Button */}
-                    <div className="flex justify-center mt-8">
+                    <div className="flex justify-start mt-8">
                       <Button 
                         variant="premium" 
                         onClick={() => setSelectedFeature(null)}
@@ -366,16 +389,27 @@ export function SplashPage() {
                     </Button>
                   </motion.div>
                 </DialogTrigger>
-                <DialogContent variant="glass" size="lg" className="max-w-4xl">
+                <DialogContent size="lg" className="max-w-4xl backdrop-blur-xl border shadow-2xl !fixed !top-1/2 !left-1/2 !-translate-x-1/2 !-translate-y-1/2 !z-50" style={{
+                  backgroundColor: `color-mix(in srgb, var(--color-leonard-yellow) 6%, rgba(248, 246, 241, 0.75))`,
+                  borderColor: `color-mix(in srgb, var(--color-leonard-yellow) 20%, transparent)`
+                }}>
                   <DialogTitle className="sr-only">Connect with The Boise Gun Club</DialogTitle>
-                  <ContactForm 
-                    title="Connect with The Boise Gun Club"
-                    subtitle="Questions? Partnerships? Let's Talk"
-                    description="Whether you're interested in joining our regional firearms community, exploring partnership opportunities, or have questions about our upcoming platform, we'd love to hear from you."
-                    variant="minimal"
-                    showContactInfo={false}
-                    formType="contact"
-                  />
+                  
+                  {/* Color-matched background gradient for Leonard Yellow */}
+                  <div className="absolute inset-0 opacity-15 pointer-events-none" style={{
+                    background: `radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--color-leonard-yellow) 12%, transparent) 0%, transparent 50%)`
+                  }}></div>
+                  
+                  <div className="[&_[data-slot=card]]:bg-transparent [&_[data-slot=card]]:border-0 [&_[data-slot=card]]:shadow-none relative z-10">
+                    <ContactForm 
+                      title="Connect with The Boise Gun Club"
+                      subtitle="Questions? Partnerships? Let's Talk"
+                      description="Whether you're interested in joining our regional firearms community, exploring partnership opportunities, or have questions about our upcoming platform, we'd love to hear from you."
+                      variant="minimal"
+                      showContactInfo={false}
+                      formType="contact"
+                    />
+                  </div>
                 </DialogContent>
               </Dialog>
             </motion.div>
@@ -406,12 +440,12 @@ export function SplashPage() {
                     gunsmiths, and enthusiasts across Idaho's premier region.
                   </p>
                   <p className="text-desert-cliff-brown dark:text-don-gray font-sans text-base leading-relaxed">
-                    Our platform will feature every club's events in one unified calendar - from BGC trap shoots to Capitol City competitions. 
+                    Our platform will feature every club&apos;s events in one unified calendar - from BGC trap shoots to Capitol City competitions. 
                     Complete business directory, community forum, service marketplace, and educational resource center. 
                     From finding local gunsmithing services to booking NRA-certified instruction, from accessing Idaho gun law guides to coordinating community events.
                   </p>
                   <p className="text-desert-cliff-brown dark:text-don-gray font-sans text-base leading-relaxed">
-                    This isn't just a website; it's a digital collective bringing together families, professionals, and enthusiasts 
+                    This isn&apos;t just a website; it&apos;s a digital collective bringing together families, professionals, and enthusiasts 
                     from every firearms community in Treasure Valley. Built with safety-first principles and family-friendly values.
                   </p>
                 </div>
@@ -434,7 +468,7 @@ export function SplashPage() {
                     </div>
                     
                     <p className="text-desert-cliff-brown dark:text-don-gray font-sans mb-6 text-sm leading-relaxed">
-                      Be the first to know when Idaho's premier firearms community platform goes live. Get early access to the comprehensive directory, unified event calendar, and marketplace.
+                      Be the first to know when Idaho&apos;s premier firearms community platform goes live. Get early access to the comprehensive directory, unified event calendar, and marketplace.
                     </p>
                     
                     <form className="space-y-4">
@@ -464,7 +498,7 @@ export function SplashPage() {
                 <div className="flex items-center gap-2 text-desert-cliff-brown dark:text-don-gray font-sans text-xs">
                   <Shield className="w-4 h-4" />
                   <span>
-                    Professional development by Innervate Agency. Proudly serving Idaho's firearms community.
+                    Professional development by Innervate Agency. Proudly serving Idaho&apos;s firearms community.
                   </span>
                 </div>
               </div>

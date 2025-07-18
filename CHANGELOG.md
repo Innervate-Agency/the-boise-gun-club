@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **SPLASH PAGE COMPLETE REDESIGN**: Major overhaul with enhanced UX and professional polish
+  - **Interactive Feature Cards**: Full card clickability with color-matched dialog popups
+  - **Customer-Focused Content**: Rewrote all dialog content from internal business strategy to customer benefits
+  - **Professional Shadows**: Subtle default shadows with dramatic hover effects using Stripe-inspired design
+  - **Windows 11 Mica Effects**: Translucent dialogs with backdrop blur and color theming
+  - **Numbered Business Pillars**: Organized 6 pillars (1-6) with comprehensive feature descriptions
+  - **Contact Form Integration**: Professional contact dialog with transparent card backgrounds
+  - **Overscroll Protection**: Prevents old navbar from appearing during pull-to-refresh gestures
 - **SPLASH PAGE CARD ENHANCEMENT**: Complete visual and functional upgrade with professional interactions
   - **Stripe-Style Shadows**: Dramatically enhanced shadow system with 3x default blur and 2x hover growth
   - **Interactive Learn More**: Each card opens detailed business pillar information in slick dialogs
