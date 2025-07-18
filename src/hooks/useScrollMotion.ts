@@ -27,8 +27,8 @@ export function useScrollMotion({
   rootMargin = '0px 0px -10% 0px',
   once = true,
   delay = 0,
-}: ScrollMotionOptions = {}): [React.RefObject<HTMLElement>, ScrollMotionState] {
-  const elementRef = useRef<HTMLElement>(null);
+}: ScrollMotionOptions = {}): [React.RefObject<HTMLDivElement>, ScrollMotionState] {
+  const elementRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<ScrollMotionState>({
     isInView: false,
     hasBeenVisible: false,

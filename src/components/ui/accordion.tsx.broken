@@ -24,7 +24,9 @@ const accordionVariants = cva(
   }
 )
 
-interface AccordionProps extends React.ComponentProps<typeof AccordionPrimitive.Root>, VariantProps<typeof accordionVariants> {}
+interface AccordionProps extends Omit<React.ComponentProps<typeof AccordionPrimitive.Root>, 'variant'> {
+  variant?: "default" | "premium" | "elite" | "glass"
+}
 
 function Accordion({ className, variant, ...props }: AccordionProps) {
   return (

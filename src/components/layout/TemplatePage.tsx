@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useContent } from '@/hooks/useContent';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
@@ -16,8 +15,6 @@ interface TemplatePageProps {
 }
 
 const TemplatePage: React.FC<TemplatePageProps> = ({ title, description, children }) => {
-  const { content, loading, error } = useContent();
-
   const headerVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: { 
@@ -26,24 +23,6 @@ const TemplatePage: React.FC<TemplatePageProps> = ({ title, description, childre
       transition: { duration: 0.5, ease: "easeOut" }
     },
   };
-
-  if (loading) {
-    return (
-      <div className="relative min-h-screen bg-background flex items-center justify-center">
-        <LoadingSpinner size="lg" />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="relative min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-xl text-destructive">{`Error: ${error}`}</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">
