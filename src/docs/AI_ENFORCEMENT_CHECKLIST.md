@@ -107,19 +107,22 @@ const buttonVariants = cva(
 
 ## 🛡️ ENFORCEMENT PROTOCOL
 
-**Before making ANY changes:**
+### **Before making ANY changes:**
+
 1. Ask user to confirm which specific component needs work
 2. Read existing implementation first
 3. Show planned approach using established patterns
 4. Get explicit approval before proceeding
 
-**If violating patterns:**
+### **If violating patterns:**
+
 1. STOP immediately
 2. Reference this checklist
 3. Revise approach to follow established standards
 4. Get user confirmation before continuing
 
-**Never proceed if:**
+### **Never proceed if:**
+
 - Using colors not in the brand system
 - Breaking typography hierarchy  
 - Adding inline styles

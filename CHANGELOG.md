@@ -8,6 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **SPLASH PAGE CARD ENHANCEMENT**: Complete visual and functional upgrade with professional interactions
+  - **Stripe-Style Shadows**: Dramatically enhanced shadow system with 3x default blur and 2x hover growth
+  - **Interactive Learn More**: Each card opens detailed business pillar information in slick dialogs
+  - **Six Business Pillars**: Comprehensive content for Directory & Marketplace, Unified Events, Service Marketplace, Community Forum, Content Engine, and Brand & Apparel
+  - **Windows 11 Mica Dialogs**: Authentic translucent effect with backdrop blur, saturation boost, and brightness enhancement
+  - **Professional Card Styling**: Optimized padding (16px), proper aspect ratios, and instant hover animations
+  - **Comprehensive Business Strategy**: Detailed explanations of revenue streams, marketplace features, and community building
+- **ENHANCED ANIMATION SYSTEM**: Instant 150ms Stripe-inspired transitions with proper cubic-bezier timing
+- **PROPER CSS ARCHITECTURE**: Created `.bg-dialog-light` utility class with theme-aware Mica effects instead of inline styles
+
+### Added
 - **SPLASH PAGE COMPLETE REDESIGN**: Revolutionary transformation into regional firearms empire showcase
   - **Hero Title Enhancement**: Increased to text-7xl/8xl/9xl with font-black contrast and subtle gradient text
   - **Regional Vision Messaging**: Updated all content to emphasize ALL Treasure Valley firearms communities

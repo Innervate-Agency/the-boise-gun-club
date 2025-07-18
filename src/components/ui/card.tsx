@@ -8,30 +8,32 @@ import { Star, Award, Target, Trophy, Crown } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const cardVariants = cva(
-  "flex flex-col rounded-xl border transition-stripe-fast relative overflow-hidden font-body",
+  "flex flex-col rounded-xl transition-stripe-fast relative overflow-hidden font-body",
   {
     variants: {
       variant: {
-        default: "bg-card text-card-foreground border-border shadow-sm hover:shadow-md hover:button-lift",
-        
-        // Premium Cards - Subtle and elegant
-        premium: "bg-card text-card-foreground border-[var(--color-leonard-yellow)]/20 shadow-premium hover:shadow-premium-hover hover:scale-[1.01] transition-stripe-normal group",
-        elite: "bg-card text-card-foreground border-2 border-[var(--color-leonard-yellow)]/30 shadow-elite hover:shadow-elite-hover hover:scale-[1.02] transition-stripe-normal group",
-        
-        // Glass Effects - Clean and professional  
-        glass: "bg-card/10 backdrop-blur-sm text-card-foreground border-white/20 shadow-lg hover:shadow-xl hover:scale-[1.01] transition-stripe-normal group"
+        default: "bg-cloudy-day-white dark:bg-ed-charcoal text-card-foreground shadow-sm hover:shadow-md",
+        premium: "bg-card text-card-foreground border-[var(--color-leonard-yellow)]/20 shadow-premium group",
+        elite: "bg-card text-card-foreground border-2 border-[var(--color-leonard-yellow)]/30 shadow-elite group",
+        glass: "bg-card/10 backdrop-blur-sm text-card-foreground border-white/20 shadow-lg group",
+        'glass-premium': "text-card-foreground shadow-lg group",
+        'gradient-border': "border-transparent bg-clip-padding",
+      },
+      interactive: {
+        true: "hover:shadow-md active:scale-[0.98] transition-stripe-fast cursor-pointer",
+        false: "",
       },
       size: {
         xs: "p-3",
         sm: "p-4",
-        md: "p-6", 
+        md: "p-6",
         lg: "p-8",
         xl: "p-10"
       },
       elevation: {
         none: "shadow-none",
         sm: "shadow-sm",
-        md: "shadow-md", 
+        md: "shadow-md",
         lg: "shadow-lg",
         xl: "shadow-xl",
         "2xl": "shadow-2xl"
@@ -46,8 +48,9 @@ const cardVariants = cva(
     },
     defaultVariants: {
       variant: "default",
+      interactive: false,
       size: "md",
-      elevation: "md",
+      elevation: "none",
       rounded: "md"
     },
   }
@@ -114,18 +117,16 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       hidden: { 
         opacity: 0, 
         y: 20, 
-        scale: 0.95,
-        filter: "blur(4px)"
+        scale: 0.95
       },
       visible: { 
         opacity: 1, 
         y: 0, 
         scale: 1,
-        filter: "blur(0px)",
         transition: {
-          duration: 0.6,
-          ease: "easeOut",
-          staggerChildren: 0.1
+          duration: 0.15,
+          ease: [0.215, 0.61, 0.355, 1],
+          staggerChildren: 0.05
         }
       }
     }

@@ -118,7 +118,7 @@ const contactInfo = [
     icon: Mail,
     label: 'Email',
     value: 'info@boisegunclub.com',
-    link: 'mailto:info@boisegunclub.com'
+link: 'mailto:info@boisegunclub.com'
   },
   {
     icon: Target,

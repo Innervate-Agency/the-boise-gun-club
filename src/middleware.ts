@@ -13,7 +13,7 @@ export function middleware(request: NextRequest) {
     
     // Verify session is valid (simple check - in production use JWT or similar)
     const sessionValue = adminSession.value;
-    const expectedSession = process.env.ADMIN_SESSION_SECRET || 'boise2025-session';
+    const expectedSession = process.env.ADMIN_SESSION_SECRET || 'admin-session-secret';
     
     if (sessionValue !== expectedSession) {
       // Clear invalid session and redirect

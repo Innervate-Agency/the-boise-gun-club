@@ -248,6 +248,7 @@
   
   /* Mica Noise Texture */
   --mica-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
+  --border-width-5: 5px;
 }
 
 /* Utility Classes */
@@ -311,6 +312,27 @@
     --idaho-boise-yard-green: #909233;
     --idaho-jerry-orange: #F25C05;
     --idaho-abe-red: #F23005;
+
+    /* Splash Page Gradients */
+    --splash-gradient-light: radial-gradient(ellipse 1000px 400px at 30% 20%, var(--color-leonard-yellow) 0%, transparent 50%),
+                          radial-gradient(ellipse 800px 600px at 70% 60%, var(--color-lahoma-orange) 0%, transparent 60%),
+                          radial-gradient(ellipse 600px 800px at 20% 80%, var(--color-idaho-sky-blue) 0%, transparent 55%),
+                          radial-gradient(ellipse 1200px 300px at 80% 10%, var(--color-wildeye-susan-yellow) 0%, transparent 45%),
+                          radial-gradient(ellipse 500px 700px at 90% 70%, var(--color-owyhee-field-green) 0%, transparent 50%);
+    --splash-gradient-secondary-light: radial-gradient(ellipse 1200px 200px at 50% 30%, var(--color-sand-dune-brown) 0%, transparent 60%),
+                                     radial-gradient(ellipse 300px 900px at 10% 50%, var(--color-leonard-yellow) 0%, transparent 40%),
+                                     radial-gradient(ellipse 900px 400px at 60% 90%, var(--color-lahoma-orange) 0%, transparent 55%);
+
+    /* Dark Theme Gradient Overrides */
+    --gradient-primary-dark: linear-gradient(135deg, var(--color-jerry-orange) 0%, var(--color-lahoma-orange) 100%);
+    --splash-gradient-dark: radial-gradient(ellipse 1000px 400px at 30% 20%, var(--color-jerry-orange) 0%, transparent 50%),
+                          radial-gradient(ellipse 800px 600px at 70% 60%, var(--color-lahoma-orange) 0%, transparent 60%),
+                          radial-gradient(ellipse 600px 800px at 20% 80%, var(--color-clubhouse-roof-blue) 0%, transparent 55%),
+                          radial-gradient(ellipse 1200px 300px at 80% 10%, var(--color-wildeye-susan-yellow) 0%, transparent 45%),
+                          radial-gradient(ellipse 500px 700px at 90% 70%, var(--color-clubhouse-lawn-green) 0%, transparent 50%);
+    --splash-gradient-secondary-dark: radial-gradient(ellipse 1200px 200px at 50% 30%, var(--color-pidgeon-clay-gray) 0%, transparent 60%),
+                                     radial-gradient(ellipse 300px 900px at 10% 50%, var(--color-jerry-orange) 0%, transparent 40%),
+                                     radial-gradient(ellipse 900px 400px at 60% 90%, var(--color-lahoma-orange) 0%, transparent 55%);
   }
 
   .dark, [data-theme="dark"] {
@@ -429,6 +451,28 @@ h3, h4, h5, h6 {
 
 .hover\:shadow-premium-hover:hover {
   box-shadow: 0 8px 16px -4px rgba(242, 203, 5, 0.35), 0 4px 8px -2px rgba(242, 135, 5, 0.25);
+}
+
+/* Stripe-Style Card Shadows */
+.shadow-card-default {
+  box-shadow: 0 12px 36px -6px rgba(0, 0, 0, 0.24), 0 6px 24px -6px rgba(0, 0, 0, 0.18);
+}
+
+.hover\:shadow-card-hover:hover {
+  box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.24), 0 16px 32px -8px rgba(0, 0, 0, 0.16);
+}
+
+/* Dialog Background Override with Mica Effect */
+.bg-dialog-light {
+  background-color: rgba(248, 246, 241, 0.85) !important; /* cloudy-day-white with transparency */
+  backdrop-filter: blur(20px) saturate(180%) brightness(110%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(110%) !important;
+}
+
+.dark .bg-dialog-light {
+  background-color: rgba(75, 75, 75, 0.85) !important; /* ed-charcoal with transparency */
+  backdrop-filter: blur(20px) saturate(180%) brightness(110%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(110%) !important;
 }
 
 .shadow-elite {
@@ -667,6 +711,25 @@ h3, h4, h5, h6 {
   -webkit-text-fill-color: transparent;
 }
 
+.border-t-5 {
+  border-top-width: var(--border-width-5);
+}
+
+.text-gradient-heading {
+  background: linear-gradient(to right, var(--color-craters-of-the-moon), var(--color-desert-cliff-brown));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-gradient-heading {
+  background: linear-gradient(to right, var(--color-chester-white), var(--color-don-gray));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 /* Brand Bleeding Effects */
 .leonard-bleed-light { background-color: var(--leonard-bleed-light); }
 .leonard-bleed-medium { background-color: var(--leonard-bleed-medium); }
@@ -758,6 +821,37 @@ h3, h4, h5, h6 {
 .dark .enhanced-card:hover {
   box-shadow: var(--card-shadow-hover), var(--internal-glow-dark);
 }
+
+/* New Card Variants */
+.card-variant-gradient-border {
+  border: 2px solid transparent;
+  background-image: linear-gradient(var(--card), var(--card)), var(--gradient-premium);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.card-variant-glass-premium {
+  background: var(--mica-premium-bg);
+  backdrop-filter: var(--mica-blur-premium);
+  border: var(--mica-border-premium);
+}
+
+.card-variant-glass-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--noise-fine),
+    radial-gradient(circle at 20% 80%, var(--leonard-bleed-light) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, var(--lahoma-bleed-light) 0%, transparent 50%);
+  opacity: 0.3;
+  z-index: -1;
+  transition: opacity 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.card-variant-glass-premium:hover::before {
+  opacity: 0.5;
+}
+
 
 /* Simplified glass for footer */
 .glass-simple {

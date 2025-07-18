@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Rajdhani, Noto_Sans, Noto_Serif } from 'next/font/google';
 import ClientLayout from './ClientLayout'; 
-import { ThemeProvider } from '../components/ui/ThemeContext';
 import './globals.css';
 
 // Configure fonts using Next.js built-in system

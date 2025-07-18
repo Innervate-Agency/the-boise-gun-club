@@ -15,57 +15,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly' as const,
       priority: 1.0,
     },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/ranges`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/events`,
-      lastModified: now,
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/membership`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/gallery`,
-      lastModified: now,
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/training`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/safety`,
-      lastModified: lastWeek,
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
   ];
 
-  // TODO: Add dynamic event pages when individual event routes are implemented
+  // TODO: Add dynamic pages when routes are implemented
   // const events = await getEvents();
   // const eventPages = events.map(event => ({
   //   url: `${baseUrl}/events/${event.id}`,

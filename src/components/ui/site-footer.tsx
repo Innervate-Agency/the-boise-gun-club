@@ -92,7 +92,7 @@ const contactInfo = [
     icon: Mail,
     label: 'Email',
     value: 'info@boisegunclub.com',
-    href: 'mailto:info@boisegunclub.com'
+href: 'mailto:info@boisegunclub.com'
   },
   {
     icon: MapPin,

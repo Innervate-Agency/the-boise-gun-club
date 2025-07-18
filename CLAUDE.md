@@ -19,18 +19,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run optimize-images` - Optimize all images (runs automatically before build)
 - `npm run prebuild` - Pre-build optimization including images
 
+### Storybook
+- `npm run storybook` - Start Storybook development server at http://localhost:6006
+- `npm run build-storybook` - Build static Storybook for deployment
+
 ### Analysis
 - `npm run analyze` - Analyze bundle size with webpack-bundle-analyzer
 
 ## Project Architecture
 
 ### Tech Stack
-- Next.js 15.3.2 with App Router
+- Next.js 15.3.5 with App Router and Turbopack optimization
 - React 19
 - TypeScript with strict mode
-- Tailwind CSS 4.0
+- Tailwind CSS 4.1.10 with CSS variables
+- shadcn/ui component library (47+ components)
+- Radix UI primitives for accessibility
 - Framer Motion for animations
-- Jest for testing
+- Jest with React Testing Library for testing
+- Storybook 9.0.15 for component development
 
 ### Directory Structure
 - `src/app/` - Next.js App Router pages and API routes
@@ -54,12 +61,13 @@ Components are organized by feature area:
 - `ui/` - Base UI components (Button, Card, etc.)
 
 ### Path Aliases
-Configured in `tsconfig.json`:
+Configured in `tsconfig.json` and `next.config.ts`:
 - `@/*` - src/ directory
 - `@components/*` - src/components/
 - `@utils/*` - src/utils/
 - `@styles/*` - src/styles/
 - `@hooks/*` - src/hooks/
+- `@lib/*` - src/lib/
 - `@types/*` - src/types/
 
 ### Content Management
@@ -103,13 +111,26 @@ Content is managed through:
 - Font preloading for critical fonts
 - Cache headers for static assets
 
-### Testing
-- Jest with React Testing Library
-- jsdom test environment
-- Component and utility testing setup
+### Testing & Development
+- Jest with React Testing Library for unit/integration tests
+- Storybook with comprehensive component stories and documentation
+- Vitest integration for additional testing capabilities
+- jsdom test environment for browser simulation
+- Playwright for end-to-end testing capabilities
 
-### Code Guidelines
-- Always use descriptive variable names
+### Component Architecture
+- shadcn/ui as the foundation with custom "fusion" variants
+- Class Variance Authority (CVA) for component variants
+- Consistent use of CSS custom properties for theming
+- All components support both light and dark themes
+- Premium/Elite variants with enhanced visual effects
+
+### Development Standards
+- TypeScript strict mode enforced
+- ESLint with Next.js configuration
+- No use of `!important` CSS declarations
+- Component stories required for all UI components
+- Comprehensive error boundaries and loading states
 
 ## Project Progress
 
@@ -223,3 +244,16 @@ Content is managed through:
   - Added Windows 11 Mica noise patterns: `mica-premium`, `mica-elite`
   - Enhanced Button component with proper Leonard Yellow to Lahoma Orange gradients
 - **Project Health**: Upgraded to 9.0/10 with improved component system and working documentation
+
+### Latest Session Achievements (July 2025)
+- **SPLASH PAGE CARD ENHANCEMENT**: Complete visual upgrade of feature cards with professional interactions
+  - Enhanced card titles from text-2xl to text-3xl with font-bold for better visual hierarchy
+  - Improved card spacing from gap-8 to gap-12 for better breathing room
+  - Enhanced shadow system: shadow-lg default with hover:shadow-2xl and black/20 opacity
+  - Animated border system: top border initially, bottom border appears on hover
+  - Internal glow effect with subtle white gradient overlay on hover
+  - Pure white cards in light mode, proper dark theme support with bg-card theming
+  - Git commit: 480386d "feat: Enhance splash page feature cards with professional interactions"
+
+## Development Workflow Memories
+- Always assume that the dev server is running, I follow along with the work we are doing by having it running.
