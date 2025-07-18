@@ -105,7 +105,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
     
     // Auto-select variant based on achievement if provided
     const finalVariant = achievement && achievementVariants[achievement] 
-      ? achievementVariants[achievement] as "default" | "premium" | "elite" | "glass" | "glass-premium" | "gradient-border"
+      ? achievementVariants[achievement] as any
       : variant
     
     // Get achievement icon if needed
@@ -139,7 +139,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       }
     }
 
-    const Comp = animate ? motion.div : "div"
+    const Comp = "div" // Disabled motion.div to fix TypeScript drag event conflicts
     const motionProps = animate ? {
       ref: cardRef,
       variants: motionVariants,
