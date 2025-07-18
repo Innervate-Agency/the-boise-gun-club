@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {  /* Image optimization */
+const nextConfig: NextConfig = {
+  output: 'standalone',  // Creates self-contained build with minimal dependencies
+  /* Image optimization */
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
