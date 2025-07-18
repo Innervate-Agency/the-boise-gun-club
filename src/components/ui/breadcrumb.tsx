@@ -16,6 +16,7 @@ const breadcrumbVariants = cva(
         elite: "bg-gradient-to-r from-leonard-yellow/10 via-lahoma-orange/10 to-leonard-yellow/10 bg-[length:200%_100%] backdrop-blur-sm border-2 border-leonard-yellow/20 rounded-lg p-3 shadow-lg hover:shadow-xl animate-shimmer group",
         glass: "border-white/20 bg-card/10 backdrop-blur-md text-card hover:bg-card/20 hover:border-white/30 dark:border-white/10 dark:bg-card/5 dark:hover:bg-card/10 rounded-lg p-3 shadow-lg",
         minimal: "border-b border-border pb-2",
+        tournament: "bg-gradient-to-r from-leonard-yellow/10 to-lahoma-orange/10 backdrop-blur-sm border border-leonard-yellow/20 rounded-lg p-3 shadow-md",
       },
       size: {
         sm: "text-xs gap-1",
